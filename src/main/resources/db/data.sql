@@ -1,2 +1,2 @@
 INSERT INTO  user_tb ( `login_id`, `email`, `password`, `user_name`, `phone_number`, `user_created_at`, `user_updated_at`)
- VALUES ( 'ssar', 'ssar@nate.com', 'a12345678!', '김쌀', '010-1212-1212', '2023-11-12', '2023-11-12');
+ VALUES ( 'ssar', 'ssar@nate.com', '1234', '김쌀', '010-1212-1212', '2023-11-12', '2023-11-12');

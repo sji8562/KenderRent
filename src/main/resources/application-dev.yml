@@ -51,3 +51,7 @@ mybatis:
 logging:
  level:
   org.mybatis: DEBUG
+
+#초기 파라미터 설정
+tenco:
+  key: 1234567890!
