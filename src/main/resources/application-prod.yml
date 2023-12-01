@@ -11,13 +11,13 @@ spring:
       prefix: /WEB-INF/view/
       suffix: .jsp
   datasource:
-    url: jdbc:mysql://localhost:3306/mybank?serverTimeZone=Asia/Seoul 
+    url: jdbc:mysql://localhost:3306/kender_rent?serverTimeZone=Asia/Seoul 
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: root1234
+    password: asd1234
     h2:
     console:
-      enabled: true  # H2 콘솔 비활성화
+      enabled: false  # H2 콘솔 비활성화
 # sql:
 #  init:
 #    schema-locations:
