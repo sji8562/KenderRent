@@ -38,7 +38,7 @@ dependencies {
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
 	implementation group: 'com.auth0', name: 'java-jwt', version: '4.4.0'
-	// implementation group: 'org.mindrot.bcrypt', name: 'bcrypt', version: '0.3'
+	
 
 
 
