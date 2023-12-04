@@ -1,14 +1,27 @@
 package com.tenco.toyproject.controller;
 
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.tenco.toyproject.repository.entity.User;
+import com.tenco.toyproject.service.MngService;
+
+
 
 
 @Controller
 @RequestMapping("/mng")
 public class MngController {
+	
+	@Autowired
+	private MngService mngService;
+	
 	@GetMapping("/login")
 	public String mngLogin() {
 		return "mng/login";
@@ -16,5 +29,14 @@ public class MngController {
 	@GetMapping("table")
 	public String table() {
 		return "mng/table-basic";
+	}
+	@GetMapping("user")
+	public String UserTable(Model model) {
+		List<User> userList = mngService.findAll();
+		System.out.println(userList.toArray());
+		System.out.println(userList.toString());
+		model.addAttribute("userList",userList);
+		
+		return "mng/user-table";
 	}
 }

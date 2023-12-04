@@ -176,7 +176,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="mng/table"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="table"
                                 aria-expanded="false">
                                 <i class="mdi mdi-border-none"></i>
                                 <span class="hide-menu">Table</span>
@@ -201,6 +201,13 @@
                                 aria-expanded="false">
                                 <i class="mdi mdi-alert-outline"></i>
                                 <span class="hide-menu">404</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="user"
+                                aria-expanded="false">
+                                <i class="mdi mdi-alert-outline"></i>
+                                <span class="hide-menu">유저 조회</span>
                             </a>
                         </li>
                     </ul>
