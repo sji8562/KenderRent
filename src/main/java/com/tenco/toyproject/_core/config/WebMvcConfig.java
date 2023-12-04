@@ -25,8 +25,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	// 서버 컴퓨터에 위치한 Resource를 활용하는 방법(프로젝트 외부 폴더 접근)
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/images/uploads/**")
-		.addResourceLocations("file:///C:\\spring_upload\\bank\\upload/");
+//		registry.addResourceHandler("/images/uploads/**")
+//		.addResourceLocations("file:///C:\\spring_upload\\bank\\upload/");
 	}
 	
 
