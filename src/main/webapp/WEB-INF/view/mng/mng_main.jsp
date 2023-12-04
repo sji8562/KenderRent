@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/layout/header.jsp" %>
---------------------------------
+
 <div style="display: flex; justify-content: center">
     <div style="width: 2400px; text-align: center">
         <div class="container mt-5">
