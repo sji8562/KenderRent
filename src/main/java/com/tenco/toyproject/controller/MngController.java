@@ -34,6 +34,7 @@ public class MngController {
 	@GetMapping("/product/list")
 	public String productList() {
 		return "mng/product/list";
+	}
 
 	@GetMapping("user")
 	public String UserTable(Model model) {
