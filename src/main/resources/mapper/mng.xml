@@ -22,8 +22,12 @@
 			select * from user_tb where username = #{username} and password = #{password}
 		</select>-->
 		
-		<select id="findAll" resultType = "com.tenco.toyproject.repository.entity.User">
-			select * from user_tb
+		<select id="findAllWithPagination" resultType = "com.tenco.toyproject.repository.entity.User">
+			SELECT * FROM user LIMIT #{start}, 5
 		</select>
+		<select id="findAllCount" resultType = "Integer">
+			SELECT count(*) FROM user
+		</select>
+		
 
 </mapper>
