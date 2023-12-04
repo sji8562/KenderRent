@@ -17,4 +17,8 @@ public class MngController {
 	public String table() {
 		return "mng/table-basic";
 	}
+	@GetMapping("/product/list")
+	public String productList() {
+		return "mng/product/list";
+	}
 }
