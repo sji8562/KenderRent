@@ -10,9 +10,9 @@ public class IndexController {
     public String home(){
         return "index";
     }
-    @GetMapping("mng")
+    @GetMapping({"mng"})
     public String manager() {
     	System.out.println("매니저 드간다");
-    	return "mng/mng_main";
+    	return "mng/index";
     }
 }

@@ -3,8 +3,8 @@ package com.tenco.toyproject._core.utils;
 import org.springframework.http.HttpStatus;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+
 
 public class ApiUtils {
 
@@ -18,8 +18,7 @@ public class ApiUtils {
         return new ApiResult<>(false, null, new ApiError(message, status.value()));
     }
 
-    @Getter
-    @Setter
+    @Data
     @AllArgsConstructor
     public static class ApiResult<T> {
         private final boolean success;
@@ -27,8 +26,7 @@ public class ApiUtils {
         private final ApiError error;
     }
 
-    @Getter
-    @Setter
+    @Data
     @AllArgsConstructor
     public static class ApiError {
         private final String message;
