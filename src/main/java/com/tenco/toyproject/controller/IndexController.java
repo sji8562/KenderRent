@@ -14,6 +14,6 @@ public class IndexController {
     @GetMapping({"mng"})
     public String manager() {
     	System.out.println("매니저 드간다");
-    	return "mng/index";
+    	return "mng/mngmain";
     }
 }
