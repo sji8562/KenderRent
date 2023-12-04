@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
  <%@ include file="/WEB-INF/view/mng/layout/mngheader.jsp" %>
+<link rel="stylesheet" href="/css/style.css">
 
-	<div class="table-responsive" style="margin: 100px 100px 100px 300px;">
+	<div class="table-responsive m--margin">
 		<table class="table">
 			<thead class="table-light">
 				<tr>
@@ -24,7 +25,7 @@
 					<td>세상에서 가장 안전한 유모차</td>
 					<td>최상</td>
 					<td>대여중</td>
-					<td><button>상세</button><button>삭제</button></td>
+					<td><a href="/mng/product/detail/1">상세</a><a>삭제</a></td>
 				</tr>
 				<tr>
 					<th scope="row">2</th>
