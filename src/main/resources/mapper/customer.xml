@@ -4,9 +4,10 @@
 <!--반드시 세미콜론 생략-->
 <mapper namespace="com.tenco.toyproject.repository.interfaces.CustomerRepository">
 	<select id="selectNotice" resultType="Map">
+		
 		select * 
 			from customer 
-			where code = 1
+			where code = ${code}
+		
 	</select>
-
 </mapper>

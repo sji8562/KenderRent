@@ -17,11 +17,9 @@ import com.tenco.toyproject.service.CustomerService;
 public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
-	@GetMapping("contact")
-//	 @RequestParam(name = "type", defaultValue = "1" , required = false) int code
-	public String contact(Model model) {
-		
-		List<Map> noticeList = customerService.selectNotice(1);
+	@GetMapping("/contact")
+	public String contact(Model model, @RequestParam(name = "type", defaultValue = "1" , required = false) int code) {
+		List<Map> noticeList = customerService.selectNotice(code);
 		model.addAttribute("noticeList", noticeList);
 		return "customer/contact";
 	}
