@@ -30,6 +30,11 @@ public class MngController {
 	public String table() {
 		return "mng/table-basic";
 	}
+
+	@GetMapping("/product/list")
+	public String productList() {
+		return "mng/product/list";
+
 	@GetMapping("user")
 	public String UserTable(Model model) {
 		List<User> userList = mngService.findAll();
@@ -38,5 +43,6 @@ public class MngController {
 		model.addAttribute("userList",userList);
 		
 		return "mng/user-table";
+
 	}
 }
