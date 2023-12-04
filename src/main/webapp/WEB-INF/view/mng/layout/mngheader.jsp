@@ -35,6 +35,7 @@
 </head>
 
 <body>
+
 	<!-- ============================================================== -->
 	<!-- Preloader - style you can find in spinners.css -->
 	<!-- ============================================================== -->
@@ -199,6 +200,13 @@
 							href="error-404.html" aria-expanded="false"> <i
 								class="mdi mdi-alert-outline"></i> <span class="hide-menu">404</span>
 						</a></li>
+             <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="user"
+                                aria-expanded="false">
+                                <i class="mdi mdi-alert-outline"></i>
+                                <span class="hide-menu">유저 조회</span>
+                            </a>
+                        </li>
 					</ul>
 				</nav>
 				<!-- End Sidebar navigation -->
@@ -211,3 +219,4 @@
 		<!-- ============================================================== -->
 		<!-- Page wrapper  -->
 		<!-- ============================================================== -->
+
