@@ -8,11 +8,12 @@ public class IndexController {
     
     @GetMapping({"index","/"})
     public String home(){
-        return "index";
+        System.out.println("여기로 와따");
+        return "main";
     }
     @GetMapping({"mng"})
     public String manager() {
-    	System.out.println("매니저 드간다");
+    	System.out.println("매니저 페이지로 들어갑니다.");
     	return "mng/index";
     }
 }
