@@ -15,15 +15,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.tenco.toyproject.repository.entity.Product;
+
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tenco.toyproject._core.utils.ApiUtils;
 import com.tenco.toyproject.dto.MngUserDTO;
+
 import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.MngService;
 import com.tenco.toyproject.vo.PageVO;
-
-
 
 
 @Controller
@@ -37,6 +39,7 @@ public class MngController {
 	public String mngLogin() {
 		return "mng/login";
 	}
+
 
 	@GetMapping("/product/list")
 	public String productList() {
@@ -75,6 +78,18 @@ public class MngController {
 	        model.addAttribute("userList", userList);
 		return "mng/user-table";
 	}
+
+	
+	// KWON
+	@GetMapping("/product/list")
+	public String productList(Model model) {
+		
+		List<Product> productList = mngService.findProductAll();
+		System.out.println("productList" + productList);
+		model.addAttribute(productList);
+		
+		return "mng/product/list";
+
 	@GetMapping("/user/{id}/update")
 	public String userUpdate(@PathVariable Integer id , Model model) {
 		User user = mngService.findById(id);
@@ -87,11 +102,16 @@ public class MngController {
 		mngService.update(id,updateDTO);
 //		ResponseEntity.ok().body(ApiUtils.success(null))
 		return "redirect:/mng/user";
+
 	}
 
-	@GetMapping("/product/detail/{pIdx}")
-	public String productDetail(@PathVariable Integer pIdx) {
-		System.out.println(pIdx + "번");
+	@GetMapping("/product/detail/{pId}")
+	public String productDetail(Model model, @PathVariable Integer pId) {
+		System.out.println(pId + "번");
+		
+		Product product = mngService.findProductById(pId);
+		model.addAttribute(product);
+		
 		return "mng/product/detail";
 
 	}
