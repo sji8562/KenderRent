@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,9 +91,9 @@
 							<!-- 카테고리 분류 -->
 							<li><a href="index.html">Home</a></li>
 							<li><a href="categories.html"><i
-									class="fa fa-angle-right" aria-hidden="true"></i>Men's</a></li>
+									class="fa fa-angle-right" aria-hidden="true"></i>${product.firstCategoryId}</a></li>
 							<li class="active"><a href="#"><i
-									class="fa fa-angle-right" aria-hidden="true"></i>Single Product</a></li>
+									class="fa fa-angle-right" aria-hidden="true"></i>${product.secondCategoryId}</a></li>
 						</ul>
 					</div>
 
@@ -127,22 +128,22 @@
 				<div class="col-lg-5">
 					<div class="product_details">
 						<div class="product_details_title">
-							<h2>상품이름</h2>
+							<h2>상품이름 : ${product.name}</h2>
 							<!-- 상세 정보 표시 -->
-							<p><%=request.getAttribute("productDescription")%></p>
+							<p>상세정보 : ${product.content}</p>
 							<!--  -->
 							<table>
 								<tbody>
 									<tr>
 										<th scope="row">가격</th>
-										<td class="price"><%=request.getAttribute("productPrice")%>원</td>
+										<td class="price">${product.price}원</td>
 									<tr>
 										<th>등급</th>
-										<td>aaa</td>
+										<td>${product.formatStatus()}</td>
 									</tr>
 									<tr>
 										<th>수량</th>
-										<td><%=request.getAttribute("productStock")%>개</td>
+										<td>개</td>
 								</tbody>
 							</table>
 						</div>
