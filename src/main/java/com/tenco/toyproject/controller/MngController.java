@@ -5,11 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tenco.toyproject.repository.entity.Product;
 
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tenco.toyproject._core.utils.ApiUtils;
+
+import com.tenco.toyproject._core.handler.exception.Exception500;
 import com.tenco.toyproject.dto.MngUserDTO;
 
 import com.tenco.toyproject.repository.entity.User;
@@ -41,10 +40,12 @@ public class MngController {
 	}
 
 
-//	@GetMapping("/product/list")
-//	public String productList() {
-//		return "mng/product/list";
-//	}
+
+	@GetMapping("/test")
+	public String test() {
+		return "mng/pages-profile";
+	}
+
 
 	@GetMapping("/user")
 	public String UserTable(Model model, PageVO pageVO, @RequestParam(value="nowPage", required=false)String nowPage
@@ -80,7 +81,7 @@ public class MngController {
 	}
 
 	
-	// KWON
+	
 	@GetMapping("/product/list")
 	public String productList(Model model, PageVO pageVO, @RequestParam(value="nowPage", required=false)String nowPage
             , @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
@@ -111,13 +112,34 @@ public class MngController {
 
 	@GetMapping("/user/{id}/update")
 	public String userUpdate(@PathVariable Integer id , Model model) {
-		User user = mngService.findById(id);
-		model.addAttribute("user",user);
-		System.out.println(user.getUserName()+"님을 불러왔습니다.");
-		return "mng/user/update";
+		try {
+			User user = mngService.findById(id);
+			model.addAttribute("user",user);
+			System.out.println(user.getUserName()+"님을 불러왔습니다.");
+			return "mng/user/update";	
+		} catch (Exception e) {
+			throw new Exception500("너 무슨짓 했어");
+		}
+		
 	}
+	
 	@PostMapping("/user/{id}/update")
 	public String  userUpdated(@PathVariable Integer id ,MngUserDTO.UpdateDTO updateDTO) {
+		if(updateDTO == null) {
+			throw new Exception500("다시 한번 확인해주세요");
+		}
+		if (updateDTO.getEmail() == null || updateDTO.getEmail().isEmpty()) {
+			throw new Exception500("이메일을 입력해주세요");
+		}
+		if (updateDTO.getUsername() == null || updateDTO.getUsername().isEmpty()) {
+			throw new Exception500("이름을 입력해주세요");
+		}
+		if (updateDTO.getPassword() == null || updateDTO.getPassword().isEmpty()) {
+			throw new Exception500("비밀번호를 입력해주세요");
+		}
+		if (updateDTO.getPhoneNumber() == null || updateDTO.getPhoneNumber().isEmpty()) {
+			throw new Exception500("전화번호를 입력해주세요");
+		}
 		mngService.update(id,updateDTO);
 //		ResponseEntity.ok().body(ApiUtils.success(null))
 		return "redirect:/mng/user";
@@ -132,7 +154,6 @@ public class MngController {
 		model.addAttribute(product);
 		
 		return "mng/product/detail";
-
 	}
 	
 	@GetMapping("/user/{id}/delete")

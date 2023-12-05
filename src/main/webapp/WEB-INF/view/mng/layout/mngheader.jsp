@@ -176,7 +176,7 @@
 						</a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="mng/product/list" aria-expanded="false"> <i
+							href="/mng/product/list" aria-expanded="false"> <i
 								class="mdi mdi-arrange-bring-forward"></i> <span
 								class="hide-menu">물품 관리</span>
 						</a></li>
@@ -201,10 +201,10 @@
 								class="mdi mdi-alert-outline"></i> <span class="hide-menu">404</span>
 						</a></li>
              <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="mng/user"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/user"
                                 aria-expanded="false">
                                 <i class="mdi mdi-alert-outline"></i>
-                                <span class="hide-menu">유저 조회</span>
+                                <span class="hide-menu">유저 관리</span>
                             </a>
                         </li>
 					</ul>
