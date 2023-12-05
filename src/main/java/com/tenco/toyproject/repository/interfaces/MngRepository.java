@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.data.domain.Page;
 
+import com.tenco.toyproject.dto.MngUserDTO;
 import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.vo.PageVO;
 
@@ -24,7 +25,10 @@ public interface MngRepository {
     //사용자 로그인
     //public User findByUsernameAndPassword(SignInFormDto dto);    
     // 사용자 전체 조회
-	List<User> findAllWithPagination(PageVO pageVO);
+	//유저쪽 xml
+	public int updateById(User user);
+	public User findById(Integer id);
+	public List<User> findAllWithPagination(PageVO pageVO);
 	
 	public int findAllCount();
 	

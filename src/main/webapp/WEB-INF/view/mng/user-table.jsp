@@ -48,13 +48,7 @@
 							<div class="card">
 								<div class="card-body">
 									<h4 class="card-title">유저 조회</h4>
-									<h6 class="card-subtitle">
-										Similar to tables, use the modifier classes .thead-light to
-										make
-										<code>&lt;thead&gt;</code>
-
-										s appear light.
-									</h6>
+									<h6 class="card-subtitle"></h6>
 								</div>
 								<div class="table-responsive">
 									<table class="table">
@@ -71,7 +65,7 @@
 										<tbody>
 											<c:choose>
 												<c:when test="${userList != null }">
-
+											
 													<c:forEach var="userList" items="${userList}">
 														<tr>
 															<th scope="row">${userList.id}</th>
@@ -79,9 +73,17 @@
 															<td>${userList.userName}</td>
 															<td>${userList.phoneNumber }</td>
 															<td>${userList.createdAt}</td>
-			
-															<td><div><input type="button" class="btn" style="border: 1px solid black" value="수정"></div><input type="button" class="dangerous-btn btn" value="삭제"></td>
-															
+															<td>
+																<div>
+																	<button class="btn btn-success"
+																		style="border: 1px solid black"
+																		onclick="location.href='/mng/user/${userList.id}/update'">수정</button>
+																	&nbsp;&nbsp;
+																	<button class="btn-danger btn"
+																		onclick="location.href='/mng/user/delete'">삭제</button>
+																</div>
+															</td>
+
 														</tr>
 													</c:forEach>
 												</c:when>
