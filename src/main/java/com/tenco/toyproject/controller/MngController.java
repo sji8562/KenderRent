@@ -5,11 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,10 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tenco.toyproject.repository.entity.Product;
 
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import com.tenco.toyproject._core.handler.exception.Exception500;
-import com.tenco.toyproject._core.utils.ApiUtils;
 import com.tenco.toyproject.dto.MngUserDTO;
 
 import com.tenco.toyproject.repository.entity.User;
@@ -42,10 +40,6 @@ public class MngController {
 	}
 
 
-	@GetMapping("/product/list")
-	public String productList() {
-		return "mng/product/list";
-	}
 	@GetMapping("/test")
 	public String test() {
 		return "mng/pages-profile";
@@ -85,7 +79,7 @@ public class MngController {
 	}
 
 	
-	// KWON
+	
 	@GetMapping("/product/list")
 	public String productList(Model model) {
 		
@@ -94,7 +88,8 @@ public class MngController {
 		model.addAttribute(productList);
 		
 		return "mng/product/list";
-
+	}
+	
 	@GetMapping("/user/{id}/update")
 	public String userUpdate(@PathVariable Integer id , Model model) {
 		try {
