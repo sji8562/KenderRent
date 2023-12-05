@@ -48,6 +48,12 @@ public interface MngRepository {
 
 	// product 총 개수
 	public int findProductCount();
+	
+	// 특정 물품 삭제 
+	public int deleteByProductId(Integer id);
+	
+	// 물품 등록
+	public int createProduct();
 }
 
 

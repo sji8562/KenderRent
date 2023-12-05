@@ -1,10 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
- <%@ include file="/WEB-INF/view/mng/layout/mngheader.jsp" %>
+ <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="/css/style.css">
+	<div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-5 align-self-center">
+                        <h4 class="page-title">물품 관리</h4>
+                    </div>
+                    <div class="col-7 align-self-center">
+                        <div class="d-flex align-items-center justify-content-end">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                    	<a href="mng/product/productForm" style="text-decoration: none"><button>상품 등록</button></a>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-	<div class="table-responsive m--margin">
+	<div class="table-responsive">
 		<c:choose>
 			<c:when test="${ productList == null }">
 				<p>등록된 상품이 존재하지 않습니다</p>
@@ -30,7 +52,9 @@
 								<td>${product.name}</td>
 								<td>${product.grade}</td>
 								<td>${product.status}</td>
-								<td><a href="/mng/product/detail/${product.id}">상세</a><a>삭제</a></td>
+								<td><a href="/mng/product/detail/${product.id}">상세</a>
+									<a href="/mng/product/${product.id}/delete">삭제</a>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -41,4 +65,4 @@
 	
 </body>
 </html>
-<%@ include file="/WEB-INF/view/mng/layout/mngfooter.jsp" %>
+<%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>

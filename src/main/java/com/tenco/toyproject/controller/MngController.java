@@ -161,4 +161,20 @@ public class MngController {
 		mngService.delete(id);
 		return "redirect:/mng/user";
 	}
+	
+	@GetMapping("/product/{id}/delete")
+	public String productDelete(@PathVariable Integer id) {
+		mngService.deleteProduct(id);
+		return "redirect:/mng/product/list";
+	}
+	
+	@GetMapping("/product/productForm")
+	public String productCreate() {
+		return "/mng/product/productForm";
+	}
+	
+	@GetMapping("/form-basic")
+    public String formBasic() {
+    	return "mng/form-basic";
+    }
 }

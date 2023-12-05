@@ -170,7 +170,7 @@
 						</a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="form-basic.html" aria-expanded="false"> <i
+							href="mng/form-basic" aria-expanded="false"> <i
 								class="mdi mdi-arrange-bring-forward"></i> <span
 								class="hide-menu">Form Basic</span>
 						</a></li>

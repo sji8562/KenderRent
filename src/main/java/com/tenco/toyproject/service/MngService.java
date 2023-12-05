@@ -83,4 +83,16 @@ public class MngService {
 		return mngRepository.findProductCount();
 	}
 
+
+	// 상품 삭제
+	public int deleteProduct(Integer id) {
+		int resultSet = mngRepository.deleteByProductId(id);
+		return resultSet;
+	}
+
+	// 상품 등록
+	public int createProduct() {
+		int resultSet = mngRepository.createProduct();
+		return resultSet;
+	}
 }
