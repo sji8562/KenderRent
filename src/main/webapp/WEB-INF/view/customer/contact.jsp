@@ -17,7 +17,6 @@
 <link rel="stylesheet" type="text/css" href="/css/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/responsive.css">
 
-
 </head>
 <body>
 <div class="super_container">
@@ -26,7 +25,7 @@
 	<jsp:include page="../layout/header.jsp" />
 
 	<br><br><br><br><br><br><br>
-
+	
 	<div class="new_arrivals">
 		<div class="container">
 			<div class="row">
@@ -40,10 +39,10 @@
 				<div class="col text-center">
 					<div class="new_arrivals_sorting">
 						<ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked">공지</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"> <a href="/"> FAQ</a></li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center">1:1문의</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center">상품질문</li>
+							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" onclick="location.href='/customer/contact?type=1'">공지</li>
+							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"onclick="location.href='/customer/contact?type=2'" >FAQ</li>
+							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" onclick="location.href='/customer/contact?type=3'">1:1문의</li>
+							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" onclick="location.href='/customer/contact?type=4'">상품질문</li>
 						</ul>
 					</div>
 				</div>
@@ -62,23 +61,40 @@
 						</thead>
 						<tbody>
 						<c:choose>
-							<c:when test="${no }"></c:when>
-						</c:choose>
-							<c:forEach items="${noticeList }" var="noticeList">
+							<c:when test="${param.type == 1 or param.type == 2}">
+								<c:forEach items="${customerList }" var="customerList">
 								<tr>
-									<td>${noticeList.id }</td>
-									<td>${noticeList.title }</td>
+									<td>${customerList.id }</td>
+									<td>${customerList.title }</td>
 									<td>관리자</td>
-									<td><fmt:formatDate value="${noticeList.create_at }" pattern="yyyy-MM-dd" /></td>
+									<td><fmt:formatDate value="${customerList.create_at }" pattern="yyyy-MM-dd" /></td>
 								</tr>	
 															
 							</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${customerList }" var="customerList">
+								<tr>
+									<td>${customerList.id }</td>
+									<td>${customerList.title }</td>
+									<td>${customerList.username }</td>
+									<td><fmt:formatDate value="${customerList.create_at }" pattern="yyyy. MM. dd" /></td>
+								</tr>	
+															
+							</c:forEach>
+							</c:otherwise>
+						</c:choose>
+							
 						</tbody>	
 					</table>
+					<c:if test="${param.type != 1 and param.type != 2}">
+						<button onclick="location.href='customer/write?'" type="button" class="btn btn-outline-secondary float-right btn-lg"  style='cursor:pointer;'>글쓰기</button>
+					</c:if>
 				</div>
+				
 			</div>
 		</div>
-	<jsp:include page="../layout/header.jsp" />
+	<jsp:include page="../layout/footer.jsp" />
 
 </div>
 

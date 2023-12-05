@@ -19,7 +19,7 @@
 								<li><a href="#">promotion</a></li>
 								<li><a href="#">pages</a></li>
 								<li><a href="#">blog</a></li>
-								<li><a href="/customer/contact/1">고객센터</a></li>
+								<li><a href="/customer/contact">고객센터</a></li>
 							</ul>
 							<ul class="navbar_user">
 								<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
@@ -85,7 +85,7 @@
 				<li class="menu_item"><a href="#">promotion</a></li>
 				<li class="menu_item"><a href="#">pages</a></li>
 				<li class="menu_item"><a href="#">blog</a></li>
-				<li class="menu_item"><a href="/customer/contact/1">고객센터</a></li>
+				<li class="menu_item"><a href="/customer/contact">고객센터</a></li>
 			</ul>
 		</div>
 	</div>
