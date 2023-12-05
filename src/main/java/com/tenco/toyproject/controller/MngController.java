@@ -12,13 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.MngService;
 import com.tenco.toyproject.vo.PageVO;
-
-
 
 
 @Controller
@@ -80,8 +77,7 @@ public class MngController {
 		
 		return "mng/product/list";
 	}
-	
-	// KWON
+
 	@GetMapping("/product/detail/{pId}")
 	public String productDetail(Model model, @PathVariable Integer pId) {
 		System.out.println(pId + "번");
