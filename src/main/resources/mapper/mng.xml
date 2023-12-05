@@ -7,11 +7,12 @@
 
 	<!-- <insert id ="insert"> insert into user_tb(username,password,fullname,created_at)values(#{username},#{password},#{fullname},now() 
 		) </insert> -->
-	<!-- <delete id="deleteById"> delete from user_tb where id = #{id} </delete> 
+	<!--  
 		<select id="findById" resultType = "com.tenco.toyproject.repository.entity.User"> 
 		select * from user_tb where id = #{id} </select> <select id="findByUsernameAndPassword" 
 		resultType = "com.tenco.toyproject.repository.entity.User"> select * from 
 		user_tb where username = #{username} and password = #{password} </select> -->
+	<delete id="deleteById"> delete from user where id = #{id} </delete>
 	<update id='updateById'>
 		update user set
 			email = #{email},

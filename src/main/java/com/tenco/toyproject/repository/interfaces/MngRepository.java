@@ -26,6 +26,7 @@ public interface MngRepository {
     //public User findByUsernameAndPassword(SignInFormDto dto);    
     // 사용자 전체 조회
 	//유저쪽 xml
+	public int deleteById(Integer id);
 	public int updateById(User user);
 	public User findById(Integer id);
 	public List<User> findAllWithPagination(PageVO pageVO);
