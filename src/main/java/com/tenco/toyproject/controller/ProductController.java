@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.service.ProductService;
@@ -22,7 +23,7 @@ public class ProductController {
 	public String categories() {
 		return "product/categories";
 	}
-	
+
 	@GetMapping("detail/{id}")
 	public String detail(@PathVariable Integer id, Model model) {
 		Product product = productService.findById(id);
@@ -30,4 +31,5 @@ public class ProductController {
 		return "product/detail";
 	}
 	
+
 }

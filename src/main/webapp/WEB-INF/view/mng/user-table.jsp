@@ -15,7 +15,7 @@
 	<div class="page-breadcrumb">
 		<div class="row">
 			<div class="col-5 align-self-center">
-				<h4 class="page-title">유저 조회</h4>
+				<h4 class="page-title">유저 관리</h4>
 			</div>
 			<div class="col-7 align-self-center">
 				<div class="d-flex align-items-center justify-content-end">
@@ -48,13 +48,7 @@
 							<div class="card">
 								<div class="card-body">
 									<h4 class="card-title">유저 조회</h4>
-									<h6 class="card-subtitle">
-										Similar to tables, use the modifier classes .thead-light to
-										make
-										<code>&lt;thead&gt;</code>
-
-										s appear light.
-									</h6>
+									<h6 class="card-subtitle"></h6>
 								</div>
 								<div class="table-responsive">
 									<table class="table">
@@ -65,19 +59,31 @@
 												<th scope="col">이름</th>
 												<th scope="col">전화번호</th>
 												<th scope="col">생성날짜</th>
+												<th scope="col">회원관리</th>
 											</tr>
 										</thead>
 										<tbody>
 											<c:choose>
 												<c:when test="${userList != null }">
-												
-													<c:forEach var="userList" items="${userList}"> 
+											
+													<c:forEach var="userList" items="${userList}">
 														<tr>
 															<th scope="row">${userList.id}</th>
 															<td>${userList.email }</td>
 															<td>${userList.userName}</td>
 															<td>${userList.phoneNumber }</td>
 															<td>${userList.createdAt}</td>
+															<td>
+																<div>
+																	<button class="btn btn-success"
+																		style="border: 1px solid black"
+																		onclick="location.href='/mng/user/${userList.id}/update'">수정</button>
+																	&nbsp;&nbsp;
+																	<button class="btn-danger btn"
+																		onclick="location.href='/mng/user/${userList.id}/delete'">삭제</button>
+																</div>
+															</td>
+
 														</tr>
 													</c:forEach>
 												</c:when>
@@ -88,6 +94,28 @@
 										</tbody>
 									</table>
 								</div>
+								<div style="display: block; text-align: center;">
+									<c:if test="${paging.startPage != 1 }">
+										<a
+											href="user?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+									</c:if>
+									<c:forEach begin="${paging.startPage }"
+										end="${paging.endPage }" var="p">
+										<c:choose>
+											<c:when test="${p == paging.nowPage }">
+												<b>${p }</b>
+											</c:when>
+											<c:when test="${p != paging.nowPage }">
+												<a href="user?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+											</c:when>
+										</c:choose>
+									</c:forEach>
+									<c:if test="${paging.endPage != paging.lastPage}">
+										<a
+											href="user?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+									</c:if>
+								</div>
+
 							</div>
 						</div>
 
