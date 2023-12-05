@@ -65,7 +65,7 @@
 					<!-- Logo -->
 					<!-- ============================================================== -->
 					<div class="navbar-brand">
-						<a href="index.html" class="logo"> <!-- Logo icon --> <b
+						<a href="/mng" class="logo"> <!-- Logo icon --> <b
 							class="logo-icon"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 								<!-- Dark Logo icon --> <img src="/assets/images/logo-icon.png"
 								alt="homepage" class="dark-logo" /> <!-- Light Logo icon --> <img
@@ -201,7 +201,7 @@
 								class="mdi mdi-alert-outline"></i> <span class="hide-menu">404</span>
 						</a></li>
              <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="user"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="mng/user"
                                 aria-expanded="false">
                                 <i class="mdi mdi-alert-outline"></i>
                                 <span class="hide-menu">유저 조회</span>
