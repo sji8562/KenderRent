@@ -8,6 +8,8 @@
 			customer c 
 			inner join user u on c.user_id = u.id 
 			where code = #{code}
+			order by c.id desc
+			
 	</select>
 	<insert id="insertInquiry">
 		insert into customer (user_id, product_id,  code, title, content) 
