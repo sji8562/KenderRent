@@ -34,6 +34,18 @@
     <script src="/assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="/dist/js/pages/dashboards/dashboard1.js"></script>
+    <script>
+document.getElementById('applyManagement').addEventListener('mouseenter', function() {
+    // 마우스가 올라갈 때 이벤트 발생
+    document.getElementById('applyManagement').classList.add('show');
+});
+
+document.getElementById('applyManagement').addEventListener('mouseleave', function() {
+    // 마우스가 벗어날 때 이벤트 발생
+    document.getElementById('applyManagement').classList.remove('show');
+});
+</script>
+    
 </body>
 
 </html>
