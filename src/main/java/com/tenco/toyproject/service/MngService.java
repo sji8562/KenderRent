@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tenco.toyproject._core.handler.exception.Exception500;
 import com.tenco.toyproject.dto.MngUserDTO;
 import com.tenco.toyproject.dto.MngUserDTO.UpdateDTO;
 import com.tenco.toyproject.repository.entity.User;
@@ -18,42 +19,45 @@ import com.tenco.toyproject.vo.PageVO;
 
 @Service
 public class MngService {
-	
+
 	@Autowired
 	private MngRepository mngRepository;
-	
-	
+
 	public List<User> findAll(PageVO pageVO) {
 		return mngRepository.findAllWithPagination(pageVO);
-		
+
 	}
 
 	public int countUserList() {
- 
+
 		return mngRepository.findAllCount();
 	}
 
 	public User findById(Integer id) {
-		return mngRepository.findById(id);
+		User user = mngRepository.findById(id);
+		if (user == null) {
+			throw new Exception500("존재하지 않은 회원입니다");
+		}
+		return user;
 	}
-	
+
 	@Transactional
-	public int update(Integer id,MngUserDTO.UpdateDTO updateDTO) {
+	public int update(Integer id, MngUserDTO.UpdateDTO updateDTO) {
 		User userEntity = mngRepository.findById(id);
+		
 		userEntity.setEmail(updateDTO.getEmail());
 		userEntity.setUserName(updateDTO.getUsername());
 		userEntity.setPassword(updateDTO.getPassword());
 		userEntity.setPhoneNumber(updateDTO.getPhoneNumber());
-		
+
 		int resultSet = mngRepository.updateById(userEntity);
-		System.out.println("들어오6+66666666666666666666");
 		return resultSet;
 	}
-	
+
 	@Transactional
 	public int delete(Integer id) {
 		int resultSet = mngRepository.deleteById(id);
 		return resultSet;
 	}
-	
+
 }
