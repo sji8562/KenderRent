@@ -87,8 +87,12 @@
 							
 						</tbody>	
 					</table>
-					<c:if test="${param.type != 1 and param.type != 2}">
-						<button onclick="location.href='customer/write?'" type="button" class="btn btn-outline-secondary float-right btn-lg"  style='cursor:pointer;'>글쓰기</button>
+					
+					<c:if test="${param.type == 3 }">
+						<button onclick="location.href='/customer/write?type=inquiry'" type="button" class="btn btn-outline-secondary float-right btn-lg"  style='cursor:pointer;'>글쓰기</button>
+					</c:if>
+					<c:if test="${param.type == 4 }">
+						<button onclick="location.href='/customer/write?type=productInquiry'" type="button" class="btn btn-outline-secondary float-right btn-lg"  style='cursor:pointer;'>글쓰기</button>
 					</c:if>
 				</div>
 				
