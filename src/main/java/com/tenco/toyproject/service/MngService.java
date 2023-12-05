@@ -31,12 +31,18 @@ public class MngService {
 	}
 	
 	// KWON
-	public List<Product> findProductAll() {
-//	public List<Product> findProductAll(PageVO pageVo) {
-		return mngRepository.findAllProductWithPagination();
+	// 상품 목록 with pagination	
+	public List<Product> findProductAll(PageVO pageVo) {
+		return mngRepository.findAllProductWithPagination(pageVo);
 	}
 
+	// 상품 상세조회
 	public Product findProductById(Integer pId) {
 		return mngRepository.findProductById(pId);
+	}
+
+	// 전체 상품 개수 조회
+	public int countProductList() {
+		return mngRepository.findProductCount();
 	}
 }

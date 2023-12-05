@@ -13,7 +13,6 @@
 				<table class="table">
 					<thead class="table-light">
 						<tr>
-							<th scope="col">#</th>
 							<th scope="col">고유번호</th>
 							<th scope="col">카테고리</th>
 							<th scope="col">물품명</th>
@@ -26,8 +25,7 @@
 						<!-- for 돌릴 부분 -->
 						<c:forEach var="product" items="${ productList }">
 							<tr>
-								<th scope="row">${product.id}</th>
-								<td>${product.id}</td>
+								<td scope="row">${product.id}</td>
 								<td>${product.firstCategoryName} > ${product.secondCategoryName}</td>
 								<td>${product.name}</td>
 								<td>${product.grade}</td>

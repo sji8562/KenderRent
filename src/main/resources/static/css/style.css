@@ -10466,5 +10466,6 @@ File: scss
 
     
 .m--margin {
-	margin: 100px 100px 100px 300px;
+	width: 80%;
+	margin: 100px 300px 100px 300px;
 }

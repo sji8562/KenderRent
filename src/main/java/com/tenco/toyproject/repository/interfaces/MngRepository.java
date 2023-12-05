@@ -31,12 +31,15 @@ public interface MngRepository {
 	
 	// KWON
 	// 물품 전체 조회
-//	List<Product> findAllProductWithPagination(PageVO pageVo);
+	List<Product> findAllProductWithPagination(PageVO pageVo);
 
-	List<Product> findAllProductWithPagination();
+//	List<Product> findAllProductWithPagination();
 
 	// 아이디로 물품 조회
 	Product findProductById(Integer pId);
+
+	// product 총 개수
+	public int findProductCount();
 }
 
 
