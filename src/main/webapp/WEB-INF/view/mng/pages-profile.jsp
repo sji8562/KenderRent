@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ include file="/WEB-INF/view/mng/layout/mngheader.jsp"%>
+    <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
         <!-- ============================================================== -->
@@ -168,4 +168,4 @@
             <!-- footer -->
             <!-- ============================================================== -->
 
-<%@ include file="/WEB-INF/view/mng/layout/mngfooter.jsp"%>
+<%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp"%>
