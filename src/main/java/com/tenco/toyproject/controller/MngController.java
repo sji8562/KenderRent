@@ -40,10 +40,12 @@ public class MngController {
 	}
 
 
+
 	@GetMapping("/test")
 	public String test() {
 		return "mng/pages-profile";
 	}
+
 
 	@GetMapping("/user")
 	public String UserTable(Model model, PageVO pageVO, @RequestParam(value="nowPage", required=false)String nowPage
@@ -81,15 +83,33 @@ public class MngController {
 	
 	
 	@GetMapping("/product/list")
-	public String productList(Model model) {
+	public String productList(Model model, PageVO pageVO, @RequestParam(value="nowPage", required=false)String nowPage
+            , @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		
-		List<Product> productList = mngService.findProductAll();
+		int total = mngService.countProductList();
+        if (nowPage == null && cntPerPage == null) {
+            nowPage = "1";
+            cntPerPage = "5";
+        } else if (nowPage == null) {
+            nowPage = "1";
+        } else if (cntPerPage == null) { 
+            cntPerPage = "5";
+        }
+		
+        pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+        model.addAttribute("paging", pageVO);
+        
+        System.out.println("===============");
+        System.out.println(cntPerPage);
+        System.out.println("===============");
+        
+		List<Product> productList = mngService.findProductAll(pageVO);
 		System.out.println("productList" + productList);
 		model.addAttribute(productList);
 		
 		return "mng/product/list";
 	}
-	
+
 	@GetMapping("/user/{id}/update")
 	public String userUpdate(@PathVariable Integer id , Model model) {
 		try {
