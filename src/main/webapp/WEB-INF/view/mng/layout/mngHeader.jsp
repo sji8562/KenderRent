@@ -25,6 +25,27 @@
 	rel="stylesheet">
 <!-- Custom CSS -->
 <link href="/dist/css/style.min.css" rel="stylesheet">
+<style>
+/* 초기에는 숨겨진 상태 */
+#applyManagement .collapse {
+    display: none;
+}
+
+/* 마우스를 올릴 때 나타나게 함 */
+#applyManagement.show .collapse {
+    display: block;
+}
+
+#applyManagement.show .collapse li.sidebar-item {
+    margin-left: 10px; /* 서브 메뉴 오른쪽으로 10px 이동 */
+    font-size: 12px;
+}
+
+#applyManagement.show .collapse li.sidebar-item {
+/*     padding: 8px 12px; /* 기본 크기로 유지 */ */
+/*     font-size: 14px; /* 기본 폰트 크기로 유지 */ */
+}
+</style>
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -200,13 +221,38 @@
 							href="error-404.html" aria-expanded="false"> <i
 								class="mdi mdi-alert-outline"></i> <span class="hide-menu">404</span>
 						</a></li>
-             <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/user"
-                                aria-expanded="false">
-                                <i class="mdi mdi-alert-outline"></i>
-                                <span class="hide-menu">유저 관리</span>
-                            </a>
-                        </li>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="/mng/user/list" aria-expanded="false"> <i
+								class="mdi mdi-alert-outline"></i> <span class="hide-menu">유저
+									관리</span>
+						</a></li>
+						<li class="sidebar-item" id="applyManagement"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="/mng/apply/list" aria-expanded="false"> <i
+								class="mdi mdi-alert-outline"></i> <span class="hide-menu">신청
+									관리</span>
+						</a>
+							<ul aria-expanded="false" class="collapse first-level">
+								<!-- 대여신청 -->
+								<li class="sidebar-item"><a
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/apply/rental-list"> <i class="mdi mdi-view-dashboard"></i>
+										<span class="hide-menu">대여신청</span>
+								</a></li>
+								<!-- 판매신청 -->
+								<li class="sidebar-item"><a
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/apply/sale-list"> <i class="mdi mdi-view-dashboard"></i>
+										<span class="hide-menu">판매신청</span>
+								</a></li>
+								<!-- 구매신청 -->
+								<li class="sidebar-item"><a
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/apply/purchase-list"> <i
+										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">구매신청</span>
+								</a></li>
+							</ul></li>
 					</ul>
 				</nav>
 				<!-- End Sidebar navigation -->
@@ -219,4 +265,3 @@
 		<!-- ============================================================== -->
 		<!-- Page wrapper  -->
 		<!-- ============================================================== -->
-
