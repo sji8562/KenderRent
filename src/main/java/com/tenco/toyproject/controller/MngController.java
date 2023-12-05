@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -75,14 +76,14 @@ public class MngController {
 		return "mng/user-table";
 	}
 	@GetMapping("/user/{id}/update")
-	public String userUpdate(@PathVariable(value = "id")Integer id , Model model) {
+	public String userUpdate(@PathVariable Integer id , Model model) {
 		User user = mngService.findById(id);
 		model.addAttribute("user",user);
 		System.out.println(user.getUserName()+"님을 불러왔습니다.");
 		return "mng/user/update";
 	}
 	@PostMapping("/user/{id}/update")
-	public String  userUpdated(@PathVariable(value = "id")Integer id ,MngUserDTO.UpdateDTO updateDTO) {
+	public String  userUpdated(@PathVariable Integer id ,MngUserDTO.UpdateDTO updateDTO) {
 		mngService.update(id,updateDTO);
 //		ResponseEntity.ok().body(ApiUtils.success(null))
 		return "redirect:/mng/user";
@@ -93,5 +94,10 @@ public class MngController {
 		System.out.println(pIdx + "번");
 		return "mng/product/detail";
 
+	}
+	@GetMapping("/user/{id}/delete")
+	public String userDelete(@PathVariable Integer id) {
+		mngService.delete(id);
+		return "redirect:/mng/user";
 	}
 }

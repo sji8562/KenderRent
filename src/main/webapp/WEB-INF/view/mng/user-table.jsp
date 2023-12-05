@@ -80,7 +80,7 @@
 																		onclick="location.href='/mng/user/${userList.id}/update'">수정</button>
 																	&nbsp;&nbsp;
 																	<button class="btn-danger btn"
-																		onclick="location.href='/mng/user/delete'">삭제</button>
+																		onclick="location.href='/mng/user/${userList.id}/delete'">삭제</button>
 																</div>
 															</td>
 

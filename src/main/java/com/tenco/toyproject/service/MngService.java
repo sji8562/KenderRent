@@ -45,9 +45,15 @@ public class MngService {
 		userEntity.setPassword(updateDTO.getPassword());
 		userEntity.setPhoneNumber(updateDTO.getPhoneNumber());
 		
-		int resultset = mngRepository.updateById(userEntity);
+		int resultSet = mngRepository.updateById(userEntity);
 		System.out.println("들어오6+66666666666666666666");
-		return resultset;
+		return resultSet;
+	}
+	
+	@Transactional
+	public int delete(Integer id) {
+		int resultSet = mngRepository.deleteById(id);
+		return resultSet;
 	}
 	
 }
