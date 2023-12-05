@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!--반드시 세미콜론 생략-->
-<mapper namespace="com.tenco.toyproject.repository.interfaces.MngRepository">
-		
-		  <!-- <insert id ="insert">
-			insert into user_tb(username,password,fullname,created_at)values(#{username},#{password},#{fullname},now() )
-		</insert>
-		 -->
-		<!--  <update id = 'updateById'>
-			update user_tb set username =#{username},password=#{password},fullname =#{fullname},where id =#{id}
-		</update>
-		<delete id="deleteById">
-			delete from user_tb where id = #{id} 
-		</delete>
-		
-		<select id="findById" resultType = "com.tenco.toyproject.repository.entity.User">
-			select * from user_tb where id = #{id}
-		</select>
-		<select id="findByUsernameAndPassword" resultType = "com.tenco.toyproject.repository.entity.User">
-			select * from user_tb where username = #{username} and password = #{password}
-		</select>-->
-		
-		<select id="findAllWithPagination" resultType = "com.tenco.toyproject.repository.entity.User">
-			SELECT * FROM user LIMIT #{start}, 5
-		</select>
-		<select id="findAllCount" resultType = "Integer">
-			SELECT count(*) FROM user
-		</select>
-		
-		<!-- KWON -->
-		<select id="findAllProductWithPagination" resultType="com.tenco.toyproject.repository.entity.Product">
+
+<!--반드시 세미콜론 생략 -->
+<mapper
+	namespace="com.tenco.toyproject.repository.interfaces.MngRepository">
+
+	<!-- <insert id ="insert"> insert into user_tb(username,password,fullname,created_at)values(#{username},#{password},#{fullname},now() 
+		) </insert> -->
+	<!--  
+		<select id="findById" resultType = "com.tenco.toyproject.repository.entity.User"> 
+		select * from user_tb where id = #{id} </select> <select id="findByUsernameAndPassword" 
+		resultType = "com.tenco.toyproject.repository.entity.User"> select * from 
+		user_tb where username = #{username} and password = #{password} </select> -->
+	<delete id="deleteById"> delete from user where id = #{id} </delete>
+	<update id='updateById'>
+		update user set
+			email = #{email},
+			username = #{userName},
+			password = #{password},
+			phone_number = #{phoneNumber}
+			where id = #{id}
+	</update>
+	<select id="findById"
+		resultType="com.tenco.toyproject.repository.entity.User">
+		SELECT * FROM user where id = #{id}
+	</select>
+	<select id="findAllWithPagination"
+		resultType="com.tenco.toyproject.repository.entity.User">
+		SELECT * FROM user LIMIT #{start}, 5
+	</select>
+	<select id="findAllCount" resultType="Integer">
+		SELECT count(*) FROM user
+	</select>
+  
+  <select id="findAllProductWithPagination" resultType="com.tenco.toyproject.repository.entity.Product">
 			SELECT p.id, p.first_category_id, p.second_category_id, p.price, p.name, p.picUrl, p.content, p.status, p.created_at, p.grade, fc.first_category_name, sc.second_category_name FROM product AS p
 			JOIN first_category AS fc ON fc.id = p.first_category_id
 			JOIN second_category AS sc ON sc.id = p.second_category_id;
 		</select>
+
 
 </mapper>
