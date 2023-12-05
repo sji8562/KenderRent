@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.MngService;
 import com.tenco.toyproject.vo.PageVO;
@@ -34,11 +35,6 @@ public class MngController {
 	@GetMapping("table")
 	public String table() {
 		return "mng/table-basic";
-	}
-
-	@GetMapping("/product/list")
-	public String productList() {
-		return "mng/product/list";
 	}
 
 	@GetMapping("user")
@@ -73,10 +69,26 @@ public class MngController {
 	        model.addAttribute("userList", userList);
 		return "mng/user-table";
 	}
-
-	@GetMapping("/product/detail/{pIdx}")
-	public String productDetail(@PathVariable Integer pIdx) {
-		System.out.println(pIdx + "번");
+	
+	// KWON
+	@GetMapping("/product/list")
+	public String productList(Model model) {
+		
+		List<Product> productList = mngService.findProductAll();
+		System.out.println("productList" + productList);
+		model.addAttribute(productList);
+		
+		return "mng/product/list";
+	}
+	
+	// KWON
+	@GetMapping("/product/detail/{pId}")
+	public String productDetail(Model model, @PathVariable Integer pId) {
+		System.out.println(pId + "번");
+		
+		Product product = mngService.findProductById(pId);
+		model.addAttribute(product);
+		
 		return "mng/product/detail";
 
 	}
