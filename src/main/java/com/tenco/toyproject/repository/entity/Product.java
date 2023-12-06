@@ -30,8 +30,8 @@ public class Product {
 	private String firstCategoryName;
 	private String secondCategoryName;
 
-	
-	public String formatStatus() {
+
+	public String formatStatus(int grade) {
 		String condition = null;
 		if (grade == 1) {
 			condition = "최상";
