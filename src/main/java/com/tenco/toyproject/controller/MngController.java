@@ -165,7 +165,6 @@ public class MngController {
 		mngService.delete(id);
 		return "redirect:/mng/user";
 	}
-	
 
 	@GetMapping("/product/{id}/delete")
 	public String productDelete(@PathVariable Integer id) {
