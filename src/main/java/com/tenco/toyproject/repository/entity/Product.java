@@ -21,16 +21,7 @@ public class Product {
 	private String picUrl;
 	private String content;
 	private Integer status;
-	private String video;
+	private String grade;
 	private Timestamp timeStamp;
 	
-	public String formatStatus() {
-		String condition = null;
-		if (status == 1) {
-			condition = "최상급";
-		} else if (status == 2) {
-			condition = "상급";
-		}
-		return condition;
-	}
 }
