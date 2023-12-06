@@ -169,7 +169,7 @@ public class MngController {
 	@GetMapping("/product/{id}/delete")
 	public String productDelete(@PathVariable Integer id) {
 		mngService.deleteProduct(id);
-		return "redirect:/mng/product/list";
+		return "/mng/product/list";
 	}
 	
 	@GetMapping("/product/productForm")

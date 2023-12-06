@@ -93,7 +93,7 @@
 							<div class="form-group">
 								<label>대여/판매여부</label>
 								<select class="form-select" aria-label="Disabled select example" disabled>
-									<option selected>${product.status}</option>
+									<option value="${product.status}" selected>${product.formatStatusToString()}</option>
 								</select>
 							</div>
 							<div class="form-group">

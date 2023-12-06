@@ -2,11 +2,13 @@ package com.tenco.toyproject.service;
 
 import java.util.List;
 
+import com.tenco.toyproject.handler.exception.CustomRestfulException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -84,7 +86,14 @@ public class MngService {
 	}
 
 	// 상품 삭제
+	@Transactional
 	public int deleteProduct(Integer id) {
+		// 상품 조회
+		Product product = mngRepository.findProductById(id);
+		if(product.getStatus() != 1) {
+			throw new CustomRestfulException("삭제할 수 없는 상태입니다.", HttpStatus.BAD_REQUEST);
+		}
+
 		int resultSet = mngRepository.deleteByProductId(id);
 		return resultSet;
 	}

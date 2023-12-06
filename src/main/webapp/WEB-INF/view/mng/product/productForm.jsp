@@ -1,151 +1,140 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-        <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-5 align-self-center">
-                        <h4 class="page-title">물품 등록</h4>
-                    </div>
-                </div>
+<link rel="stylesheet" href="/css/style.css">
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-5 align-self-center">
+                <h4 class="page-title">물품 등록</h4>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card card-body">
-                            <form class="form-horizontal mt-4">
-                                <div class="form-group">
-                                    <label>Default Text <span class="help"> e.g. "George deo"</span></label>
-                                    <input type="text" class="form-control" value="George deo...">
-                                </div>
-                                <div class="form-group">
-                                    <label for="example-email">Email <span class="help"> e.g.
-                                            "example@gmail.com"</span></label>
-                                    <input type="email" id="example-email" name="example-email" class="form-control"
-                                        placeholder="Email">
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" value="password">
-                                </div>
-                                <div class="form-group">
-                                    <label>Placeholder</label>
-                                    <input type="text" class="form-control" placeholder="placeholder">
-                                </div>
-                                <div class="form-group">
-                                    <label>Text area</label>
-                                    <textarea class="form-control" rows="5"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Read only input</label>
-                                    <input class="form-control" type="text" placeholder="Readonly input hereâ¦" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <fieldset disabled>
-                                        <label for="disabledTextInput">Disabled input</label>
-                                        <input type="text" id="disabledTextInput" class="form-control"
-                                            placeholder="Disabled input">
-                                    </fieldset>
-                                </div>
-                                <div class="form-group row pt-3">
-                                    <div class="col-sm-4">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="customCheck1">
-                                            <label class="form-check-label mb-0" for="customCheck1">Check this custom
-                                                checkbox</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="customCheck2">
-                                            <label class="form-check-label mb-0" for="customCheck2">Check this custom
-                                                checkbox</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="customCheck3">
-                                            <label class="form-check-label mb-0" for="customCheck3">Check this custom
-                                                checkbox</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-check">
-                                            <input type="radio" id="customRadio1" name="customRadio"
-                                                class="form-check-input">
-                                            <label class="form-check-label mb-0" for="customRadio1">Toggle this custom
-                                                radio</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input type="radio" id="customRadio2" name="customRadio"
-                                                class="form-check-input">
-                                            <label class="form-check-label mb-0" for="customRadio2">Toggle this custom
-                                                radio</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Input Select</label>
-                                    <select class="form-select shadow-none col-12" id="inlineFormCustomSelect">
-                                        <option selected>Choose...</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Default file upload</label>
-                                    <input type="file" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Custom File upload</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Upload</span>
-                                        </div>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Helping text</label>
-                                    <input type="text" class="form-control" placeholder="Helping text">
-                                    <span class="help-block"><small>A block of help text that breaks onto a new line and
-                                            may extend beyond one line.</small></span> </div>
-                            </form>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-body">
+<%--                    <h4 class="card-title">물품 번호 ${product.id}번</h4>--%>
+                    <%--<h5 class="card-subtitle"> All bootstrap element classies </h5>--%>
+                    <form class="form-horizontal mt-4">
+                        <div class="form-group">
+                            <label>물품명</label>
+                            <input type="text" class="form-control" value="${product.name}" >
                         </div>
-                    </div>
-                </div>
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-            
-</body>
+                        <div class="form-group">
+                            <label>물품가격</label>
+                            <input type="text" class="form-control" value="${product.price}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="example-email">카테고리</label>
+                            <div style="display: flex;">
+									<span style="margin-right: 10px;">
+										<select class="form-select" aria-label="Disabled select example" disabled>
+											<option selected>${product.firstCategoryName}</option>
+										</select>
+									</span>
+                                <span>
+										<select class="form-select" aria-label="Disabled select example" disabled>
+											<option selected>${product.secondCategoryName}</option>
+										</select>
+									</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>썸네일</label>
+                            <div style="width: 500px;">
+                                <%--									<c:choose>--%>
+                                <%--										<c:when test="${product.picUrl != null}">--%>
+                                <%--											<img src="${product.picUrl}" alt="No Image">--%>
+                                <%--										</c:when>--%>
+                                <%--										<c:otherwise>--%>
+                                <%--											<img src="/assets/images/empty_img.jpg" alt="No Alter Image">--%>
+                                <%--										</c:otherwise>--%>
+                                <%--									</c:choose>--%>
+                                <img src="${product.formatImgUrl()}" />
 
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>물품등급</label>
+                            <select class="form-select" aria-label="Disabled select example" disabled>
+                                <option selected>${product.grade}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>대여/판매여부</label>
+                            <select class="form-select" aria-label="Disabled select example" disabled>
+                                <option selected>${product.formatStatusToString()}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>제품 상세 설명</label>
+                            <%-- TODO text editor --%>
+                            <textarea class="form-control" rows="5" disabled>${product.content}</textarea>
+                        </div>
+                    </form>
+                </div>
+                <button onclick="history.back()">뒤로가기</button>
+                <button onclick="#">등록하기</button>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- .right-sidebar -->
+        <!-- ============================================================== -->
+        <!-- End Right sidebar -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer text-center">
+        All Rights Reserved by Nice admin. Designed and Developed by
+        <a href="https://www.wrappixel.com">WrapPixel</a>.
+    </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
+<!--Wave Effects -->
+<script src="../../dist/js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="../../dist/js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="../../dist/js/custom.min.js"></script>
+
+</body>
 </html>
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>
