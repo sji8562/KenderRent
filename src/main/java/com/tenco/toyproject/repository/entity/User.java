@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "user_tb")
+@Table(name = "user")
 public class User {
 
     
@@ -36,6 +36,8 @@ public class User {
     private String userName;
     @Column(length = 256, nullable = false)
     private String phoneNumber;
+    @Column(length = 256, nullable = false)
+    private String address;
     @Column
     @ColumnDefault("1")
     private int level; // 1 : 유저 / 2 : 관리자
