@@ -140,7 +140,7 @@
 										<td class="price">${product.price}원</td>
 									<tr>
 										<th>등급</th>
-										<td>${product.grade}</td>
+										<td>${product.formatStatus()}</td>
 									</tr>
 									<tr>
 										<th>수량</th>

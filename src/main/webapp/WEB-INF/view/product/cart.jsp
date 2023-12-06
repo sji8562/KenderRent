@@ -56,7 +56,8 @@
 						<tbody>
 							<c:forEach var="product" items="${cartList}">
 								<tr>
-									<td><input type="checkbox" name="selectedProduct"
+									<td>
+										<input type="checkbox" name="selectedProduct"
 										value="${product.price}" onchange="calculateTotalPrice()"></td>
 									<td>${product.name}</td>
 									<td>${product.price}</td>
