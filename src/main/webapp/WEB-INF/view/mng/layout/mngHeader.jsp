@@ -116,7 +116,7 @@
 					<!-- ============================================================== -->
 					<!-- toggle and nav items -->
 					<!-- ============================================================== -->
-					<ul class="navbar-nav float-start me-auto">
+					<%--<ul class="navbar-nav float-start me-auto">
 						<!-- ============================================================== -->
 						<!-- Search -->
 						<!-- ============================================================== -->
@@ -136,7 +136,7 @@
 									<i class="ti-close"></i>
 								</a>
 							</form></li>
-					</ul>
+					</ul>--%>
 					<!-- ============================================================== -->
 					<!-- Right side toggle and nav items -->
 					<!-- ============================================================== -->
@@ -186,12 +186,12 @@
 						</a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="pages-profile.jsp" aria-expanded="false"> <i
+							href="/mng/pages-profile" aria-expanded="false"> <i
 								class="mdi mdi-account-network"></i> <span class="hide-menu">Profile</span>
 						</a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="form-basic.html" aria-expanded="false"> <i
+							href="/mng/form-basic" aria-expanded="false"> <i
 								class="mdi mdi-arrange-bring-forward"></i> <span
 								class="hide-menu">Form Basic</span>
 						</a></li>
@@ -203,24 +203,25 @@
 						</a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="mng/table" aria-expanded="false"> <i
+							href="/mng/table" aria-expanded="false"> <i
 								class="mdi mdi-border-none"></i> <span class="hide-menu">Table</span>
 						</a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="icon-material.html" aria-expanded="false"> <i
+							href="/mng/icon-material" aria-expanded="false"> <i
 								class="mdi mdi-face"></i> <span class="hide-menu">Icon</span>
 						</a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="starter-kit.html" aria-expanded="false"> <i
+							href="/mng/blank" aria-expanded="false"> <i
 								class="mdi mdi-file"></i> <span class="hide-menu">Blank</span>
 						</a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="error-404.html" aria-expanded="false"> <i
+							href="/mng/error-404" aria-expanded="false"> <i
 								class="mdi mdi-alert-outline"></i> <span class="hide-menu">404</span>
 						</a></li>
+
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
 							href="/mng/user/list" aria-expanded="false"> <i
@@ -253,6 +254,7 @@
 										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">구매신청</span>
 								</a></li>
 							</ul></li>
+
 					</ul>
 				</nav>
 				<!-- End Sidebar navigation -->

@@ -4,6 +4,8 @@ package com.tenco.toyproject.repository.entity;
 import java.security.Timestamp;
 
 
+import com.tenco.toyproject.utils.DecimalUtil;
+import com.tenco.toyproject.utils.ImageUtil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -38,5 +40,14 @@ public class Product {
 			condition = "상급";
 		}
 		return condition;
+	}
+
+	public String formatDecimal() {
+		return DecimalUtil.decimalToString(price);
+	}
+
+	// KWON
+	public String formatImgUrl() {
+		return ImageUtil.checkImageUrl(picUrl);
 	}
 }

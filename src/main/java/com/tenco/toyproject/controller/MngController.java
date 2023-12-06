@@ -166,4 +166,41 @@ public class MngController {
 		return "redirect:/mng/user";
 	}
 	
+
+	@GetMapping("/product/{id}/delete")
+	public String productDelete(@PathVariable Integer id) {
+		mngService.deleteProduct(id);
+		return "redirect:/mng/product/list";
+	}
+	
+	@GetMapping("/product/productForm")
+	public String productCreate() {
+		return "/mng/product/productForm";
+	}
+	
+	@GetMapping("/form-basic")
+    public String formBasic() {
+    	return "mng/form-basic";
+    }
+
+	@GetMapping("/table")
+	public String tableBasic() {
+		return "mng/tableBasic";
+	}
+
+	@GetMapping("/icon-material")
+	public String iconMaterial() {
+		return "mng/icon-material";
+	}
+
+	@GetMapping("/blank")
+	public String blank() {
+		return "mng/starter-kit";
+	}
+
+	@GetMapping("/error-404")
+	public String errorPage() {
+		return "mng/error-404";
+	}
+
 }
