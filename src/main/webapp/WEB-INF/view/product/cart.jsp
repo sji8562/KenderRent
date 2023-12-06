@@ -42,35 +42,38 @@
 					</div>
 				</div>
 				<form id="cartForm">
-					<input type="checkbox" id="selectAll" onclick="selectAll()">
-					<label for="selectAll">전체 선택</label> 
-					<!-- 개별 체크박스들 -->
-					<table class="table">
-						<thead>
-							<tr>
-								<th>선택</th>
-								<th>상품 이름</th>
-								<th>가격</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="product" items="${cartList}">
-								<tr>
-									<td>
-										<input type="checkbox" name="selectedProduct"
-										value="${product.price}" onchange="calculateTotalPrice()"></td>
-									<td>${product.name}</td>
-									<td>${product.price}</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+					<div class="product_details">
+						<div class="product_details_title">
+							<input type="checkbox" id="selectAll" onclick="selectAll()">
+							<label for="selectAll">전체 선택</label>
+							<!-- 개별 체크박스들 -->
+							<table class="table">
+								<thead>
+									<tr>
+										<th>선택</th>
+										<th>상품 이름</th>
+										<th>가격</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="product" items="${cartList}">
+										<tr>
+											<td><input type="checkbox" name="selectedProduct"
+												value="${product.price}" onchange="calculateTotalPrice()"></td>
+											<td><a href="/product/detail/${product.id }">${product.name}</a></td>
+											<td>${product.price}</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</form>
 				<hr>
 				<p id="totalPrice">총 가격: 0</p>
 				<div class="red_button buy_button">
-								<a href="/product/order">구매하기</a>
-							</div>
+					<a href="/product/order">구매하기</a>
+				</div>
 			</div>
 		</div>
 		<jsp:include page="../layout/footer.jsp" />
