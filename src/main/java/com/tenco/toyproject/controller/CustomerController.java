@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tenco.toyproject.service.CustomerService;
+import com.tenco.toyproject.vo.PageVO;
 
 @Controller
 @RequestMapping("/customer")
@@ -19,8 +20,24 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 	@GetMapping("/contact")
-	public String contact(Model model, @RequestParam(name = "type", defaultValue = "1" , required = false) int code) {
-		List<Map> customerList = customerService.selectCustomer(code);
+	public String contact(Model model, PageVO pageVO, @RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage, @RequestParam(name = "type", defaultValue = "1" , required = false) int code) {
+		
+		int total = customerService.countCustomer(code);
+	    if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "10";
+		}
+	    pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+	    System.out.println(pageVO.getStart());
+	    model.addAttribute("paging",pageVO);
+	    
+		List<Map<String, Object>> customerList = customerService.selectCustomer(code, pageVO.getStart());
+		System.out.println(customerList);
 		model.addAttribute("customerList", customerList);
 		return "customer/contact";
 	}
@@ -42,5 +59,14 @@ public class CustomerController {
 		}
 		customerService.insertInquiry(2, 0, 4, title, content);
 		return "redirect:/customer/contact";
+	}
+	@GetMapping("/detail")
+	public String detail(Model model, int id) {
+		Map inquiryDetail = customerService.selectInquiryDetail(id);
+		String content = org.springframework.web.util.HtmlUtils.htmlEscape(String.valueOf(inquiryDetail.get("content")));
+		content = content.replaceAll("\n","<br/>");
+		inquiryDetail.put("content", content);
+		model.addAttribute("inquiryDetail", inquiryDetail);
+		return "customer/inquiryDetail";
 	}
 }
