@@ -177,4 +177,24 @@ public class MngController {
     public String formBasic() {
     	return "mng/form-basic";
     }
+
+	@GetMapping("/table")
+	public String tableBasic() {
+		return "mng/tableBasic";
+	}
+
+	@GetMapping("/icon-material")
+	public String iconMaterial() {
+		return "mng/icon-material";
+	}
+
+	@GetMapping("/blank")
+	public String blank() {
+		return "mng/starter-kit";
+	}
+
+	@GetMapping("/error-404")
+	public String errorPage() {
+		return "mng/error-404";
+	}
 }

@@ -9,19 +9,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h4 class="page-title">Basic Table</h4>
-                    </div>
-                    <div class="col-7 align-self-center">
-                        <div class="d-flex align-items-center justify-content-end">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">
-                                        <a href="#">Home</a>
-                                    </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Basic Table</li>
-                                </ol>
-                            </nav>
-                        </div>
+                        <h4 class="page-title">물품 등록</h4>
                     </div>
                 </div>
             </div>
@@ -38,8 +26,6 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card card-body">
-                            <h4 class="card-title">Default Forms</h4>
-                            <h5 class="card-subtitle"> All bootstrap element classies </h5>
                             <form class="form-horizontal mt-4">
                                 <div class="form-group">
                                     <label>Default Text <span class="help"> e.g. "George deo"</span></label>

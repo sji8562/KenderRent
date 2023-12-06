@@ -17,7 +17,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item active" aria-current="page">
-                                    	<a href="mng/product/productForm" style="text-decoration: none"><button>상품 등록</button></a>
+                                    	<a href="/mng/product/productForm" style="text-decoration: none"><button>상품 등록</button></a>
                                     </li>
                                 </ol>
                             </nav>
@@ -44,7 +44,6 @@
 						</tr>
 					</thead>
 					<tbody>
-						<!-- for 돌릴 부분 -->
 						<c:forEach var="product" items="${ productList }">
 							<tr>
 								<td scope="row">${product.id}</td>
