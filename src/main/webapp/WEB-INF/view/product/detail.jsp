@@ -26,6 +26,18 @@
 	href="/css/styles/single_styles.css">
 <link rel="stylesheet" type="text/css"
 	href="/css/styles/single_responsive.css">
+	
+<script>
+		function cart(){
+		alert('작동되는거니?');
+	    let f = document.createElement('a');
+        //폼태그로 감쌀 필요 없다.. 그냥 a태그 해도 됨..
+	    f.setAttribute('method', 'post');
+	    f.setAttribute('action', '/user/logout');
+	    document.body.appendChild(f);
+	    f.submit();
+	}
+</script>	
 </head>
 <body>
 	<div class="super_container">
@@ -159,7 +171,7 @@
 								<a href="/product/order">구매하기</a>
 							</div>
 							<div class="white_button add_to_cart_button">
-								<a href="/product/cart">장바구니</a>
+								<a href="/product/addCart/${product.id }?id=1">장바구니</a>
 							</div>
 							<div
 								class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>
