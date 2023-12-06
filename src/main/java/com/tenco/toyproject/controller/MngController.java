@@ -43,11 +43,16 @@ public class MngController {
 
 	@GetMapping("/test")
 	public String test() {
-		return "mng/pages-profile";
+		return "mng/pagesProfile";
+	}
+	
+	@GetMapping("/apply/list")
+	public String applyList() {
+		return "mng/apply/list";
 	}
 
 
-	@GetMapping("/user")
+	@GetMapping("/user/list")
 	public String UserTable(Model model, PageVO pageVO, @RequestParam(value="nowPage", required=false)String nowPage
             , @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		
@@ -77,9 +82,8 @@ public class MngController {
 	        System.out.println(cntPerPage);
 	        List<User> userList = mngService.findAll(pageVO);
 	        model.addAttribute("userList", userList);
-		return "mng/user-table";
+		return "mng/user/list";
 	}
-
 	
 	
 	@GetMapping("/product/list")
@@ -161,7 +165,7 @@ public class MngController {
 		mngService.delete(id);
 		return "redirect:/mng/user";
 	}
-	
+
 	@GetMapping("/product/{id}/delete")
 	public String productDelete(@PathVariable Integer id) {
 		mngService.deleteProduct(id);

@@ -51,9 +51,12 @@ public interface MngRepository {
 	
 	// 특정 물품 삭제 
 	public int deleteByProductId(Integer id);
+<<<<<<< Updated upstream
 	
 	// 물품 등록
 	public int createProduct();
+=======
+>>>>>>> Stashed changes
 }
 
 
