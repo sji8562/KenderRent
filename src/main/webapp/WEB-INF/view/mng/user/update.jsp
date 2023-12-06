@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/view/mng/layout/mngheader.jsp"%>
+<%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- ============================================================== -->
 <!-- End Left Sidebar - style you can find in sidebar.scss  -->
@@ -15,14 +15,14 @@
 	<div class="page-breadcrumb">
 		<div class="row">
 			<div class="col-5 align-self-center">
-				<h4 class="page-title">Profile</h4>
+				<h4 class="page-title">회원 정보</h4>
 			</div>
 			<div class="col-7 align-self-center">
 				<div class="d-flex align-items-center justify-content-end">
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="#">Home</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Profile</li>
+							<li class="breadcrumb-item active" aria-current="page">회원정보</li>
 						</ol>
 					</nav>
 				</div>
@@ -82,6 +82,30 @@
 										</div>
 									</div>
 									<div class="form-group">
+										<label class="col-md-12">우편번호</label>
+										<div class="col-md-12">
+											<input type="text" value="${user.phoneNumber}"
+												name="address" id="address"
+												class="form-control form-control-line">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-12">주소</label>
+										<div class="col-md-12">
+											<input type="text" value="${user.phoneNumber}"
+												name="address" id="address"
+												class="form-control form-control-line">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-12">상세주소</label>
+										<div class="col-md-12">
+											<input type="text" value="${user.phoneNumber}"
+												name="address" id="address"
+												class="form-control form-control-line">
+										</div>
+									</div>
+									<div class="form-group">
 										<div class="col-sm-12">
 											<button type="submit" class="btn btn-success text-white">수정</button>
 											<button class="btn btn-danger text-white">삭제</button>
@@ -116,4 +140,4 @@
 	<!-- ============================================================== -->
 	<!-- footer -->
 	<!-- ============================================================== -->
-	<%@ include file="/WEB-INF/view/mng/layout/mngfooter.jsp"%>
+	<%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp"%>
