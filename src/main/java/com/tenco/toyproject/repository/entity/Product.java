@@ -24,14 +24,14 @@ public class Product {
 	private String picUrl;
 	private String content;
 	private int status;
-	private String grade;
+	private int grade;
 	private Timestamp createdAt;
 	
 	private String firstCategoryName;
 	private String secondCategoryName;
 
-	
-	public String formatStatus() {
+
+	public String formatStatus(int grade) {
 		String condition = null;
 		if (grade == 1) {
 			condition = "최상급";

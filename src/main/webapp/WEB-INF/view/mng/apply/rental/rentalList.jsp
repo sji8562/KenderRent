@@ -55,11 +55,12 @@
                                         <thead class="table-light">
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">이메일</th>
                                             <th scope="col">이름</th>
-                                            <th scope="col">전화번호</th>
-                                            <th scope="col">생성날짜</th>
-                                            <th scope="col">회원관리</th>
+                                            <th scope="col">제품 번호</th>
+                                            <th scope="col">제품 이름</th>
+                                            <th scope="col">대여 시작일</th>
+                                            <th scope="col">대여 종료일</th>
+                                            <th scope="col">신청일</th>
                                         </tr>
                                         </thead>
                                         <tbody>

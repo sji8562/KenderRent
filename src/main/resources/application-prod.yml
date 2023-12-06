@@ -18,12 +18,12 @@ spring:
     h2:
     console:
       enabled: false  # H2 콘솔 비활성화
-# sql:
-#  init:
-#    schema-locations:
-#      classpath:db/table.sql
-#    data-locations:
-#      classpath:db/data.sql
+  sql:
+    init:
+      schema-locations:
+        classpath:db/table.sql
+      data-locations:
+        classpath:db/data.sql
   #h2: 
   #  console:
   #    enabled: true
