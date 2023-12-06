@@ -57,6 +57,7 @@
 								<th>제목</th>
 								<th>작성자</th>
 								<th>작성일</th>
+								
 							</tr>
 						</thead>
 						<tbody>
@@ -68,6 +69,7 @@
 									<td><a href="/customer/detail?id=${customerList.id }">${customerList.title }</a></td>
 									<td>관리자</td>
 									<td><fmt:formatDate value="${customerList.create_at }" pattern="yyyy-MM-dd" /></td>
+									
 								</tr>	
 															
 							</c:forEach>
