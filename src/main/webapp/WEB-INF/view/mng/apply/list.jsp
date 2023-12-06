@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+		 pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- ============================================================== -->
@@ -53,43 +53,43 @@
 								<div class="table-responsive">
 									<table class="table">
 										<thead class="table-light">
-											<tr>
-												<th scope="col">#</th>
-												<th scope="col">이메일</th>
-												<th scope="col">이름</th>
-												<th scope="col">전화번호</th>
-												<th scope="col">생성날짜</th>
-												<th scope="col">회원관리</th>
-											</tr>
+										<tr>
+											<th scope="col">#</th>
+											<th scope="col">이메일</th>
+											<th scope="col">이름</th>
+											<th scope="col">전화번호</th>
+											<th scope="col">생성날짜</th>
+											<th scope="col">회원관리</th>
+										</tr>
 										</thead>
 										<tbody>
-											<c:choose>
-												<c:when test="${userList != null }">
-											
-													<c:forEach var="userList" items="${userList}">
-														<tr>
-															<th scope="row">${userList.id}</th>
-															<td>${userList.email }</td>
-															<td>${userList.userName}</td>
-															<td>${userList.phoneNumber }</td>
-															<td>${userList.createdAt}</td>
-															<td>
-																<div>
-																	<button class="btn btn-success"
-																		style="border: 1px solid black"
-																		onclick="location.href='/mng/user/${userList.id}/update'">수정</button>
-																	&nbsp;&nbsp;
-																	<button class="btn-danger btn"
-																		onclick="location.href='/mng/user/${userList.id}/delete'">삭제</button>
-																</div>
-															</td>
+										<c:choose>
+										<c:when test="${userList != null }">
 
-														</tr>
-													</c:forEach>
-												</c:when>
-												<c:otherwise>
-													<p>아직 생성된 계정이 없습니다.
-												</c:otherwise>
+											<c:forEach var="userList" items="${userList}">
+												<tr>
+													<th scope="row">${userList.id}</th>
+													<td>${userList.email }</td>
+													<td>${userList.userName}</td>
+													<td>${userList.phoneNumber }</td>
+													<td>${userList.createdAt}</td>
+													<td>
+														<div>
+															<button class="btn btn-success"
+																	style="border: 1px solid black"
+																	onclick="location.href='/mng/user/${userList.id}/update'">수정</button>
+															&nbsp;&nbsp;
+															<button class="btn-danger btn"
+																	onclick="location.href='/mng/user/${userList.id}/delete'">삭제</button>
+														</div>
+													</td>
+
+												</tr>
+											</c:forEach>
+										</c:when>
+										<c:otherwise>
+										<p>아직 생성된 계정이 없습니다.
+											</c:otherwise>
 											</c:choose>
 										</tbody>
 									</table>
@@ -97,10 +97,10 @@
 								<div style="display: block; text-align: center;">
 									<c:if test="${paging.startPage != 1 }">
 										<a
-											href="user?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+												href="user?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
 									</c:if>
 									<c:forEach begin="${paging.startPage }"
-										end="${paging.endPage }" var="p">
+											   end="${paging.endPage }" var="p">
 										<c:choose>
 											<c:when test="${p == paging.nowPage }">
 												<b>${p }</b>
@@ -112,7 +112,7 @@
 									</c:forEach>
 									<c:if test="${paging.endPage != paging.lastPage}">
 										<a
-											href="user?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+												href="user?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
 									</c:if>
 								</div>
 
@@ -134,4 +134,4 @@
 		<!-- End Right sidebar -->
 		<!-- ============================================================== -->
 	</div>
-	<%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp"%>
+<%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp"%>
