@@ -1,8 +1,11 @@
 package com.tenco.toyproject.repository.entity;
 
-import java.sql.Timestamp;
+
+import java.security.Timestamp;
 
 
+import com.tenco.toyproject.utils.DecimalUtil;
+import com.tenco.toyproject.utils.ImageUtil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,27 +13,47 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Product {
-	private Integer id;	
-	private Integer firstCategoryId;	
-	private Integer secondCategoryId;	
-	private Integer price;
+	private int id;
+	private int firstCategoryId;
+	private int secondCategoryId;
+	private int price;
 	private String name;
 	private String picUrl;
 	private String content;
-	private Integer status;
-	private String video;
-	private Timestamp timeStamp;
+	private int status;
+	private int grade;
+	private Timestamp createdAt;
+	
+	private String firstCategoryName;
+	private String secondCategoryName;
+
 	
 	public String formatStatus() {
 		String condition = null;
-		if (status == 1) {
-			condition = "최상급";
-		} else if (status == 2) {
-			condition = "상급";
+		if (grade == 1) {
+			condition = "최상";
+		} else if (grade == 2) {
+			condition = "상";
+		} else if (grade == 3) {
+			condition = "중";
+		} else if (grade == 4) {
+			condition = "하";
+		} else {
+			condition = "최하";
 		}
+		
 		return condition;
+	}
+
+	public String formatDecimal() {
+		return DecimalUtil.decimalToString(price);
+	}
+
+	// KWON
+	public String formatImgUrl() {
+		return ImageUtil.checkImageUrl(picUrl);
 	}
 }

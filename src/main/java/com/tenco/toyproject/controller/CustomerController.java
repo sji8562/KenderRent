@@ -17,8 +17,20 @@ import com.tenco.toyproject.vo.PageVO;
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
-	@Autowired
+	
+	@Autowired // DI 처리
 	private CustomerService customerService;
+
+	
+
+	//사용자 회원가입 페이지 요청
+	//주소설계 http://localhost/customer/custSignUp
+	@GetMapping("/custSignUp")
+	public String custSignUp() {
+		return "customer/custSignUp";
+	}
+	
+
 	@GetMapping("/contact")
 	public String contact(Model model, PageVO pageVO, @RequestParam(value="nowPage", required=false)String nowPage
 			, @RequestParam(value="cntPerPage", required=false)String cntPerPage, @RequestParam(name = "type", defaultValue = "1" , required = false) int code) {

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -155,10 +156,10 @@
 							class="quantity d-flex flex-column flex-sm-row align-items-sm-left">
 
 							<div class="red_button buy_button">
-								<a href="#">구매하기</a>
+								<a href="/product/order">구매하기</a>
 							</div>
 							<div class="white_button add_to_cart_button">
-								<a href="#">장바구니</a>
+								<a href="/product/cart">장바구니</a>
 							</div>
 							<div
 								class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>
@@ -190,7 +191,7 @@
 				<div class="row">
 					<div class="col">
 
-						<!-- Tab Description -->
+						<!-- 상품상세정보 -->
 
 						<div id="tab_1" class="tab_container active">
 							<div class="row">
@@ -335,20 +336,66 @@
 							</div>
 						</div>
 
-						<!-- Tab Reviews -->
+						<!-- 상품문의 -->
 
 						<div id="tab_3" class="tab_container">
 							<div class="row">
 								<div class="col additional_info_col">
 									<div class="tab_title additional_info_title">
-										<h4>Additional Information</h4>
+										<h4>상품문의</h4>
+										<br>
+										<div class="gray_button write_button">
+											<a href="customer/write?">글쓰기</a>
+										</div>
 									</div>
-									<p>
-										COLOR:<span>Gold, Red</span>
-									</p>
-									<p>
-										SIZE:<span>L,M,XL</span>
-									</p>
+
+									<div class="row align-items-center">
+										<div class="col text-center">
+											<table class="table">
+												<thead>
+													<tr>
+														<th>번호</th>
+														<th>제목</th>
+														<th>작성자</th>
+														<th>작성일</th>
+													</tr>
+												</thead>
+												<tbody>
+													<c:choose>
+														<c:when test="${param.type == 1 or param.type == 2}">
+															<c:forEach items="${customerList }" var="customerList">
+																<tr>
+																	<td>${customerList.id }</td>
+																	<td>${customerList.title }</td>
+																	<td>관리자</td>
+																	<td><fmt:formatDate
+																			value="${customerList.create_at }"
+																			pattern="yyyy-MM-dd" /></td>
+																</tr>
+
+															</c:forEach>
+														</c:when>
+														<c:otherwise>
+															<c:forEach items="${customerList }" var="customerList">
+																<tr>
+																	<td>${customerList.id }</td>
+																	<td>${customerList.title }</td>
+																	<td>${customerList.username }</td>
+																	<td><fmt:formatDate
+																			value="${customerList.create_at }"
+																			pattern="yyyy. MM. dd" /></td>
+																</tr>
+
+															</c:forEach>
+														</c:otherwise>
+													</c:choose>
+
+												</tbody>
+											</table>
+
+										</div>
+
+									</div>
 								</div>
 							</div>
 						</div>
@@ -498,5 +545,6 @@
 	<script src="/plugins/easing/easing.js"></script>
 	<script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 	<script src="/js/single_custom.js"></script>
+	<script src="/js/cart.js"></script>
 </body>
 </html>
