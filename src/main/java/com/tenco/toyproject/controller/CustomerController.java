@@ -15,8 +15,10 @@ import com.tenco.toyproject.service.CustomerService;
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
-	@Autowired
+	
+	@Autowired // DI 처리
 	private CustomerService customerService;
+	
 	@GetMapping("contact")
 //	 @RequestParam(name = "type", defaultValue = "1" , required = false) int code
 	public String contact(Model model) {
@@ -25,4 +27,11 @@ public class CustomerController {
 		model.addAttribute("noticeList", noticeList);
 		return "customer/contact";
 	}
+	//사용자 회원가입 페이지 요청
+	//주소설계 http://localhost/customer/custSignUp
+	@GetMapping("/custSignUp")
+	public String custSignUp() {
+		return "customer/custSignUp";
+	}
+	
 }
