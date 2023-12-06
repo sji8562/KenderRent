@@ -1,4 +1,4 @@
-package dto;
+package com.tenco.toyproject.dto;
 
 import lombok.Data;
 

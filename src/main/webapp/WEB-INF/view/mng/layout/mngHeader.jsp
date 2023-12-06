@@ -42,8 +42,8 @@
 }
 
 #applyManagement.show .collapse li.sidebar-item {
-/*     padding: 8px 12px; /* 기본 크기로 유지 */ */
-/*     font-size: 14px; /* 기본 폰트 크기로 유지 */ */
+/*     padding: 8px 12px; /* 기본 크기로 유지 */
+/*     font-size: 14px; /* 기본 폰트 크기로 유지 */
 }
 </style>
 
@@ -221,19 +221,7 @@
 							href="/mng/error-404" aria-expanded="false"> <i
 								class="mdi mdi-alert-outline"></i> <span class="hide-menu">404</span>
 						</a></li>
-<<<<<<< HEAD
-<<<<<<< HEAD
-             			<li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/user"
-                                aria-expanded="false">
-                                <i class="mdi mdi-alert-outline"></i>
-                                <span class="hide-menu">유저 관리</span>
-                            </a>
-                        </li>
-=======
-=======
 
->>>>>>> f9df54ba15e7b2a7d1d7ac1662fe975d5c46c135
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
 							href="/mng/user/list" aria-expanded="false"> <i
@@ -266,11 +254,7 @@
 										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">구매신청</span>
 								</a></li>
 							</ul></li>
-<<<<<<< HEAD
->>>>>>> e2c7d7a38b134948461c2ccb602fee79786c1ee2
-=======
 
->>>>>>> f9df54ba15e7b2a7d1d7ac1662fe975d5c46c135
 					</ul>
 				</nav>
 				<!-- End Sidebar navigation -->
