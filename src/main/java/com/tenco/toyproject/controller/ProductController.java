@@ -9,8 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tenco.toyproject.dto.AddToCartDTO;
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.service.CustomerService;
 import com.tenco.toyproject.service.ProductService;
@@ -34,6 +37,7 @@ public class ProductController {
 		return "product/categories";
 	}
 
+	// 제품 상세페이지
 	@GetMapping("detail/{id}")
 	public String detail(@PathVariable Integer id, Model model) {
 		Product product = productService.findById(id);
@@ -43,12 +47,19 @@ public class ProductController {
 		return "product/detail";
 	}
 	
-	@GetMapping("cart/{userId}")
-	public String cart(@PathVariable Integer userId, Model model) {
-//		Integer userId = 2;
-		List<Product> cartList = productService.showCartById(userId);
+	// 장바구니 목록
+	@GetMapping("cart")
+	public String cart( Model model, int id) {
+		
+		List<Product> cartList = productService.showCartById(id);
 		model.addAttribute("cartList", cartList);
 		return "product/cart";
+	}
+	
+	@GetMapping("addCart/{productId}")
+	public String addToCart(@PathVariable Integer productId, @RequestParam int id) {
+		productService.addToCartById(id, productId);
+		return "redirect:/product/cart";	
 	}
 	
 	@GetMapping("order")
