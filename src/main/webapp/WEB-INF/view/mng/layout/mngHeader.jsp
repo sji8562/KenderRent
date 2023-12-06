@@ -42,8 +42,8 @@
 }
 
 #applyManagement.show .collapse li.sidebar-item {
-/*     padding: 8px 12px; /* 기본 크기로 유지 */ */
-/*     font-size: 14px; /* 기본 폰트 크기로 유지 */ */
+/*     padding: 8px 12px; /* 기본 크기로 유지 */
+/*     font-size: 14px; /* 기본 폰트 크기로 유지 */
 }
 </style>
 

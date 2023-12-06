@@ -87,7 +87,7 @@
 							<div class="form-group">
 								<label>물품등급</label>
 								<select class="form-select" aria-label="Disabled select example" disabled>
-									<option selected>${product.grade}</option>
+									<option selected>${product.formatStatus()}</option>
 								</select>
 							</div>
 							<div class="form-group">

@@ -17,7 +17,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item active" aria-current="page">
-                                    	<a href="/mng/product/productForm" style="text-decoration: none"><button>상품 등록</button></a>
+                                    	<a href="/mng/product/register" style="text-decoration: none"><button>상품 등록</button></a>
                                     </li>
                                 </ol>
                             </nav>
@@ -48,11 +48,12 @@
 							<tr>
 								<td scope="row">${product.id}</td>
 								<td>${product.firstCategoryName} > ${product.secondCategoryName}</td>
-								<td>${product.name}</td>
-								<td>${product.grade}</td>
+								<td><a href="/mng/product/detail/${product.id}" style="text-decoration: none; color: black;">${product.name}</a></td>
+								<td>${product.formatStatus()}</td>
 <%--								<td>${product.status}</td>--%>
 								<td>${product.formatStatusToString()}</td>
-								<td><a href="/mng/product/detail/${product.id}">상세</a>
+<%--								<td><a href="/mng/product/detail/${product.id}">상세</a>--%>
+									<td><a href="/mng/product/modify/${product.id}">수정</a>
 									<%--<a href="/mng/product/${product.id}/delete">삭제</a>--%>
 									<a onclick="confirmOpen('del', ${product.id})">삭제</a>
 								</td>
@@ -112,8 +113,8 @@
 			if(type == 'del') {
 				if(confirm('삭제하시겠습니까?')) {
 					fetch('/mng/product/' + id + '/delete')
-							.then((response) => console.log("response", response))
-							.catch((error) => console.log("error:", error))
+							.then((response) => console.log("response", response)) //성공했을때
+							.catch((error) => console.log("error:", error)) //실패했을때
 				}
 			}
 		}

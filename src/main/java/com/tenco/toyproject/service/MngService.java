@@ -3,6 +3,7 @@ package com.tenco.toyproject.service;
 import java.util.List;
 
 import com.tenco.toyproject.handler.exception.CustomRestfulException;
+import com.tenco.toyproject.repository.entity.FirstCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -90,11 +91,14 @@ public class MngService {
 	public int deleteProduct(Integer id) {
 		// 상품 조회
 		Product product = mngRepository.findProductById(id);
+		System.out.println(product.getStatus()+"해답을 찾아라");
 		if(product.getStatus() != 1) {
-			throw new CustomRestfulException("삭제할 수 없는 상태입니다.", HttpStatus.BAD_REQUEST);
-		}
 
+			throw new Exception500("삭제할 수 없는 상태입니다");
+//			throw new CustomRestfulException("삭제할 수 없는 상태입니다.", HttpStatus.BAD_REQUEST);
+		}
 		int resultSet = mngRepository.deleteByProductId(id);
+		System.out.println(resultSet);
 		return resultSet;
 	}
 
@@ -102,5 +106,11 @@ public class MngService {
 	public int createProduct() {
 		int resultSet = mngRepository.createProduct();
 		return resultSet;
+	}
+
+	// 카테고리 조회
+	public FirstCategory findCategoryAll() {
+		FirstCategory fCategory = mngRepository.findCategoryAll();
+		return fCategory;
 	}
 }

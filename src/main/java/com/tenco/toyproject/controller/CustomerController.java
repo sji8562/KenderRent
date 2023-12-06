@@ -16,8 +16,20 @@ import com.tenco.toyproject.service.CustomerService;
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
-	@Autowired
+	
+	@Autowired // DI 처리
 	private CustomerService customerService;
+
+	
+
+	//사용자 회원가입 페이지 요청
+	//주소설계 http://localhost/customer/custSignUp
+	@GetMapping("/custSignUp")
+	public String custSignUp() {
+		return "customer/custSignUp";
+	}
+	
+
 	@GetMapping("/contact")
 	public String contact(Model model, @RequestParam(name = "type", defaultValue = "1" , required = false) int code) {
 		List<Map> customerList = customerService.selectCustomer(code);

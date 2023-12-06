@@ -55,4 +55,8 @@
 		DELETE FROM product WHERE id = #{id}
 	</delete>
 
+	<!-- first category	-->
+	<select id="">
+
+	</select>
 </mapper>

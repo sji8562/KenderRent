@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-
 public class ApiUtils {
 
     public static <T> ApiResult<T> success(T response) {

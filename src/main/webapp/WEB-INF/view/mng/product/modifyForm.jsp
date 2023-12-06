@@ -12,7 +12,7 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-5 align-self-center">
-                <h4 class="page-title">물품 등록</h4>
+                <h4 class="page-title">물품 수정</h4>
             </div>
         </div>
     </div>
@@ -33,18 +33,18 @@
                         </div>
                         <div class="form-group">
                             <label>물품가격</label>
-                            <input type="text" class="form-control" value="${product.price}" disabled>
+                            <input type="text" class="form-control" value="${product.price}">
                         </div>
                         <div class="form-group">
                             <label for="example-email">카테고리</label>
                             <div style="display: flex;">
 									<span style="margin-right: 10px;">
-										<select class="form-select" aria-label="Disabled select example" disabled>
+										<select class="form-select" aria-label="Disabled select example">
 											<option selected>${product.firstCategoryName}</option>
 										</select>
 									</span>
                                 <span>
-										<select class="form-select" aria-label="Disabled select example" disabled>
+										<select class="form-select" aria-label="Disabled select example">
 											<option selected>${product.secondCategoryName}</option>
 										</select>
 									</span>

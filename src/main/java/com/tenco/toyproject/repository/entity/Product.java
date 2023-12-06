@@ -25,8 +25,7 @@ public class Product {
 	private String picUrl;
 	private String content;
 	private int status;
-	private String vedio;
-	private String grade;
+	private int grade;
 	private Timestamp createdAt;
 	
 	private String firstCategoryName;
@@ -35,11 +34,18 @@ public class Product {
 	
 	public String formatStatus() {
 		String condition = null;
-		if (status == 1) {
-			condition = "최상급";
-		} else if (status == 2) {
-			condition = "상급";
+		if (grade == 1) {
+			condition = "최상";
+		} else if (grade == 2) {
+			condition = "상";
+		} else if (grade == 3) {
+			condition = "중";
+		} else if (grade == 4) {
+			condition = "하";
+		} else {
+			condition = "최하";
 		}
+		
 		return condition;
 	}
 
