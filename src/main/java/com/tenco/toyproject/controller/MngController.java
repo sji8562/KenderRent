@@ -201,4 +201,5 @@ public class MngController {
 	public String errorPage() {
 		return "mng/error-404";
 	}
+
 }
