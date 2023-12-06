@@ -7,6 +7,20 @@
 	<select id="findById"
 	 	resultType="com.tenco.toyproject.repository.entity.Product">
 		select * from product where id = #{id}
+	</select>	
+	
+	<select id="selectCustomer" resultType="Map">
+		select * from 
+			customer c 
+			inner join user u on c.user_id = u.id 
+			where code = 4
 	</select>
+
+    <select id="showCartById" resultType="com.tenco.toyproject.repository.entity.Product">
+    	SELECT p.*
+        FROM product p
+        JOIN cart c ON p.id = c.product_id
+        WHERE c.user_id = #{userId}
+    </select>
 
 </mapper>

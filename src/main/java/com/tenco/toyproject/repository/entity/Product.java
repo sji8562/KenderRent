@@ -24,7 +24,6 @@ public class Product {
 	private String picUrl;
 	private String content;
 	private int status;
-	private String vedio;
 	private String grade;
 	private Timestamp createdAt;
 	
@@ -34,9 +33,9 @@ public class Product {
 	
 	public String formatStatus() {
 		String condition = null;
-		if (status == 1) {
+		if (grade == 1) {
 			condition = "최상급";
-		} else if (status == 2) {
+		} else if (grade == 2) {
 			condition = "상급";
 		}
 		return condition;
@@ -50,4 +49,5 @@ public class Product {
 	public String formatImgUrl() {
 		return ImageUtil.checkImageUrl(picUrl);
 	}
+
 }

@@ -876,12 +876,48 @@ section
 }
 .white_button:hover
 {
-	background: A#F2F2F2 !important;
+	background: #F2F2F2 !important;
 }
 .white_button a
 {
 	display: block;
 	color: black;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 500;
+	text-align: center;
+	line-height: 40px;
+	width: 100%;
+}
+.gray_button
+{
+	display: -webkit-inline-box;
+	display: -moz-inline-box;
+	display: -ms-inline-flexbox;
+	display: -webkit-inline-flex;
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 95px;
+	height: 40px;
+	background:dimgray;
+	border-radius: 3px;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+	border: solid 1px #e5e5e5;
+	border-radius: 2px;
+	top: 20px;
+
+}
+
+.gray_button a
+{
+	display: block;
+	color: white;
 	text-transform: uppercase;
 	font-size: 14px;
 	font-weight: 500;
