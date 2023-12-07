@@ -29,18 +29,22 @@
                     <form class="form-horizontal mt-4">
                         <div class="form-group">
                             <label>물품명</label>
-                            <input type="text" class="form-control" value="${product.name}" >
+                            <input type="text" class="form-control" id="name" name="name" value="${product.name}" >
                         </div>
                         <div class="form-group">
                             <label>물품가격</label>
-                            <input type="text" class="form-control" value="${product.price}">
+                            <input type="text" class="form-control" id="price" name="price" value="${product.price}">
                         </div>
                         <div class="form-group">
                             <label for="example-email">카테고리</label>
                             <div style="display: flex;">
 									<span style="margin-right: 10px;">
+
 										<select class="form-select" aria-label="Disabled select example">
-											<option selected>${product.firstCategoryName}</option>
+
+                                            <%--<c:forEach var="item" items="category">--%>
+                                                <option value="1">${product.firstCategoryName}</option>
+                                            <%--</c:forEach>--%>
 										</select>
 									</span>
                                 <span>
@@ -67,25 +71,31 @@
                         </div>
                         <div class="form-group">
                             <label>물품등급</label>
-                            <select class="form-select" aria-label="Disabled select example" disabled>
-                                <option selected>${product.grade}</option>
+                            <select class="form-select" aria-label="Disabled select example" name="grade">
+                                <option value="최상">최상</option>
+                                <option value="상">상</option>
+                                <option value="중">중</option>
+                                <option value="최하">최하</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>대여/판매여부</label>
-                            <select class="form-select" aria-label="Disabled select example" disabled>
-                                <option selected>${product.formatStatusToString()}</option>
+                            <select class="form-select" aria-label="Disabled select example" id="status" name="status">
+                                <option value="1">재고 있음</option>
+                                <option value="2">대여 중</option>
+                                <option value="3">소독 중</option>
+                                <option value="4">판매 완료</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>제품 상세 설명</label>
                             <%-- TODO text editor --%>
-                            <textarea class="form-control" rows="5" disabled>${product.content}</textarea>
+                            <textarea class="form-control" rows="5">${product.content}</textarea>
                         </div>
                     </form>
                 </div>
                 <button onclick="history.back()">뒤로가기</button>
-                <button onclick="#">등록하기</button>
+                <button onclick="#">수정하기</button>
             </div>
         </div>
         <!-- ============================================================== -->
@@ -103,15 +113,7 @@
     <!-- End Container fluid  -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
-    <!-- footer -->
-    <!-- ============================================================== -->
-    <footer class="footer text-center">
-        All Rights Reserved by Nice admin. Designed and Developed by
-        <a href="https://www.wrappixel.com">WrapPixel</a>.
-    </footer>
-    <!-- ============================================================== -->
-    <!-- End footer -->
-    <!-- ============================================================== -->
+
 </div>
 <!-- ============================================================== -->
 <!-- End Page wrapper  -->

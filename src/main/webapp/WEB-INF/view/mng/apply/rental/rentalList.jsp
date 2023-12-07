@@ -61,30 +61,57 @@
                                             <th scope="col">대여 시작일</th>
                                             <th scope="col">대여 종료일</th>
                                             <th scope="col">신청일</th>
+                                            <th scope="col">신청상태</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <c:choose>
-                                        <c:when test="${userList != null }">
+                                        <c:when test="${rentList != null }">
 
-                                            <c:forEach var="userList" items="${userList}">
+                                            <c:forEach var="rentList" items="${rentList}">
                                                 <tr>
-                                                    <th scope="row">${userList.id}</th>
-                                                    <td>${userList.email }</td>
-                                                    <td>${userList.userName}</td>
-                                                    <td>${userList.phoneNumber }</td>
-                                                    <td>${userList.createdAt}</td>
-                                                    <td>
-                                                        <div>
-                                                            <button class="btn btn-success"
-                                                                    style="border: 1px solid black"
-                                                                    onclick="location.href='/mng/user/${userList.id}/update'">수정</button>
-                                                            &nbsp;&nbsp;
-                                                            <button class="btn-danger btn"
-                                                                    onclick="location.href='/mng/user/${userList.id}/delete'">삭제</button>
-                                                        </div>
-                                                    </td>
-
+                                                    <th scope="row">${rentList.id}</th>
+                                                    <td>${rentList.username}</td>
+                                                    <td>${rentList.productId }</td>
+                                                    <td>${rentList.productName}</td>
+                                                    <td>${rentList.startDay}</td>
+                                                    <td>${rentList.endDay}</td>
+                                                    <td>${rentList.createdAt}</td>
+                                                    <c:choose>
+                                                    <c:when test="${rentList.status == 1}">
+                                                        <td>
+                                                            <div>
+                                                                <button class="btn btn-success"
+                                                                        style="border: 1px solid black"
+                                                                        onclick="location.href='/mng/user/${rentList.id}/update'">대여 확인</button>
+                                                                &nbsp;&nbsp;
+                                                                <button class="btn-danger btn"
+                                                                        onclick="location.href='/mng/user/${rentList.id}/delete'">대여 취소</button>
+                                                            </div>
+                                                        </td>
+                                                    </c:when>
+                                                    <c:when test="${rentList.status == 2}">
+                                                        <td>
+                                                            <div>
+                                                                대여중
+                                                            </div>
+                                                        </td>
+                                                    </c:when>
+                                                    <c:when test="${rentList.status == 3}">
+                                                        <td>
+                                                            <div>
+                                                                반납중
+                                                            </div>
+                                                        </td>
+                                                    </c:when>
+                                                    <c:when test="${rentList.status == 4}">
+                                                        <td>
+                                                            <div>
+                                                                세척중
+                                                            </div>
+                                                        </td>
+                                                    </c:when>
+                                                    </c:choose>
                                                 </tr>
                                             </c:forEach>
                                         </c:when>

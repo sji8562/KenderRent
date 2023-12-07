@@ -7,7 +7,7 @@
 		select * , r.id as status from 
 			board c 
 			inner join user u on c.user_id = u.id
-			left join reply r on r.board_id = c.id 
+			left join reply r on r.board_id = c.id
 			where code = #{code}
 			order by c.id desc
 			LIMIT #{start}, 5

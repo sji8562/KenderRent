@@ -3,10 +3,10 @@ package com.tenco.toyproject.repository.entity;
 
 import java.security.Timestamp;
 
-
 import com.tenco.toyproject.utils.DecimalUtil;
 import com.tenco.toyproject.utils.ImageUtil;
 import com.tenco.toyproject.utils.ProductUtil;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -41,6 +41,6 @@ public class Product {
 		return ImageUtil.checkImageUrl(picUrl);
 	}
 
-	public String formatStatusToString() { return ProductUtil.statusToString(status);
-	}
+	public String formatStatusToString() { return ProductUtil.statusToString(status);}
+	
 }
