@@ -2,8 +2,10 @@ package com.tenco.toyproject.service;
 
 import java.util.List;
 
+import com.tenco.toyproject.dto.MngRentDTO;
 import com.tenco.toyproject.handler.exception.CustomRestfulException;
 import com.tenco.toyproject.repository.entity.FirstCategory;
+import com.tenco.toyproject.repository.entity.Rent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -112,5 +114,15 @@ public class MngService {
 	public FirstCategory findCategoryAll() {
 		FirstCategory fCategory = mngRepository.findCategoryAll();
 		return fCategory;
+	}
+
+	public List<MngRentDTO.RentListDTO> findrentAll(PageVO pageVO) {
+		List<MngRentDTO.RentListDTO> rent = mngRepository.findRentWithUserAll(pageVO);
+		System.out.println(rent.get(0).toString());
+		return rent;
+	}
+
+	public int countRentList() {
+		return mngRepository.findRentAllCount();
 	}
 }

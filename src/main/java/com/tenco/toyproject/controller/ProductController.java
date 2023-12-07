@@ -41,9 +41,9 @@ public class ProductController {
 	@GetMapping("detail/{id}")
 	public String detail(@PathVariable Integer id, Model model) {
 		Product product = productService.findById(id);
-		List<Map> CustomerList = customerService.selectCustomer(4); // 상품문의
-		model.addAttribute("customerList", CustomerList);		
-		model.addAttribute("product", product);
+//		List<Map> CustomerList = customerService.selectCustomer(4); // 상품문의
+//		model.addAttribute("customerList", CustomerList);
+//		model.addAttribute("product", product);
 		return "product/detail";
 	}
 	

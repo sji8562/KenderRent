@@ -32,7 +32,8 @@ public class ProductService {
 	}
 	
 	public List<Map> selectCustomer(int code){
-		return customerRepository.selectCustomer(code);
+//		return customerRepository.selectCustomer(code);
+		return null;
 	}
 	
 	public List<Product> showCartById(Integer userId){
