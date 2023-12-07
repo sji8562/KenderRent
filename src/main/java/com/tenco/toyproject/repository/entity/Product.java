@@ -6,6 +6,7 @@ import java.security.Timestamp;
 
 import com.tenco.toyproject.utils.DecimalUtil;
 import com.tenco.toyproject.utils.ImageUtil;
+import com.tenco.toyproject.utils.ProductUtil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,8 +31,8 @@ public class Product {
 	private String firstCategoryName;
 	private String secondCategoryName;
 
-	
-	public String formatStatus() {
+
+	public String formatStatus(int grade) {
 		String condition = null;
 		if (grade == 1) {
 			condition = "최상";
@@ -55,5 +56,8 @@ public class Product {
 	// KWON
 	public String formatImgUrl() {
 		return ImageUtil.checkImageUrl(picUrl);
+	}
+
+	public String formatStatusToString() { return ProductUtil.statusToString(status);
 	}
 }

@@ -19,6 +19,7 @@ import com.tenco.toyproject.vo.PageVO;
 
 @Controller
 @RequestMapping("/customer")
+
 public class CustomerController {
 	
 	@Autowired // DI 처리
@@ -48,6 +49,7 @@ public class CustomerController {
 			cntPerPage = "10";
 		}
 	    pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+
 	    model.addAttribute("paging",pageVO);
 	    
 		List<Map<String, Object>> customerList = customerService.selectCustomer(code, pageVO.getStart());
