@@ -4,6 +4,8 @@ package com.tenco.toyproject.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.tenco.toyproject.repository.entity.FirstCategory;
+import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -122,6 +124,7 @@ public class MngController {
         model.addAttribute(productList);
 
         return "mng/product/list";
+
     }
 
     @GetMapping("/user/{id}/update")
@@ -178,6 +181,7 @@ public class MngController {
 
     @GetMapping("/product/{id}/delete")
     public String productDelete(@PathVariable Integer id) {
+
         mngService.deleteProduct(id);
         return "redirect:/mng/product/list";
     }
@@ -210,6 +214,24 @@ public class MngController {
     @GetMapping("/error-404")
     public String errorPage() {
         return "mng/error-404";
+    }
+
+    @GetMapping("/product/modify/{pId}")
+    public String productModify(Model model, @PathVariable Integer pId) {
+
+        Product product = mngService.findProductById(pId);
+        model.addAttribute(product);
+
+        return "mng/product/modifyForm";
+    }
+
+    @GetMapping("/product/register")
+    public String productRegister(Model model) {
+
+        FirstCategory fCategory = mngService.findCategoryAll();
+        model.addAttribute(fCategory);
+
+        return "mng/product/submitForm";
     }
 
 }

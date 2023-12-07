@@ -15,7 +15,7 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-5 align-self-center">
-                <h4 class="page-title">신청 관리</h4>
+                <h4 class="page-title">구매 관리</h4>
             </div>
             <div class="col-7 align-self-center">
                 <div class="d-flex align-items-center justify-content-end">
@@ -47,7 +47,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">전체 신청 조회</h4>
+                                    <h4 class="card-title">구매 신청 조회</h4>
                                     <h6 class="card-subtitle"></h6>
                                 </div>
                                 <div class="table-responsive">
