@@ -71,6 +71,7 @@
                                             <c:forEach var="rentList" items="${rentList}">
                                                 <tr>
                                                     <th scope="row">${rentList.id}</th>
+
                                                     <td>${rentList.username}</td>
                                                     <td>${rentList.productId }</td>
                                                     <td>${rentList.productName}</td>
@@ -112,6 +113,7 @@
                                                         </td>
                                                     </c:when>
                                                     </c:choose>
+
                                                 </tr>
                                             </c:forEach>
                                         </c:when>

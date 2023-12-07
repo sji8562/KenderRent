@@ -249,8 +249,10 @@ public class MngController {
     public String productModify(Model model, @PathVariable Integer pId) {
         FirstCategory fCategory = mngService.findCategoryAll();
         Product product = mngService.findProductById(pId);
+
 //        FirstCategory fCategory = mngService.findCategoryAll();
 //        model.addAttribute("category", fCategory);
+
 
         model.addAttribute("product",product);
         model.addAttribute("fCategory",fCategory);

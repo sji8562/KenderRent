@@ -1,8 +1,8 @@
-package com.tenco.toyproject._core.handler.exception;
-
-import org.springframework.http.HttpStatus;
+package com.tenco.toyproject.handler.exception;
 
 import lombok.Getter;
+import org.springframework.http.HttpStatus;
+
 @Getter
 public class CustomRestfullException extends RuntimeException {
 	private HttpStatus status;
