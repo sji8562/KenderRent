@@ -4,10 +4,18 @@ package com.tenco.toyproject.controller;
 import java.util.List;
 import java.util.Map;
 
+
+
+import com.tenco.toyproject.dto.MngRentDTO;
+
+
 import com.tenco.toyproject.dto.MngCategoryDto;
 import com.tenco.toyproject.repository.entity.FirstCategory;
 import com.tenco.toyproject.repository.entity.SecondCategory;
+
 import jdk.jfr.Category;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -32,6 +40,7 @@ import com.tenco.toyproject.vo.PageVO;
 
 @Controller
 @RequestMapping("/mng")
+@Slf4j
 public class MngController {
 
     @Autowired
@@ -50,10 +59,28 @@ public class MngController {
 
     @GetMapping("/apply/list")
     public String applyList() {
+
         return "mng/apply/list";
     }
     @GetMapping("/apply/rental-list")
-    public String rentalList() {
+    public String rentalList(Model model,PageVO pageVO, @RequestParam(value = "nowPage",required = false) String nowPage,@RequestParam(value = "cntPerPage",required = false) String cntPerPage) {
+        int total = mngService.countRentList();
+        if (nowPage == null && cntPerPage == null) {
+            nowPage = "1";
+            cntPerPage = "5";
+        } else if (nowPage == null) {
+            nowPage = "1";
+        } else if (cntPerPage == null) {
+            cntPerPage = "5";
+        }
+        pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+        model.addAttribute("paging", pageVO);
+        System.out.println(cntPerPage);
+
+        List<MngRentDTO.RentListDTO> rentList = mngService.findrentAll(pageVO);
+        System.out.println(rentList.stream().toList());
+        model.addAttribute("rentList", rentList);
+
         return "mng/apply/rental/rentalList";
     }
     @GetMapping("/apply/sale-list")
@@ -220,13 +247,17 @@ public class MngController {
 
     @GetMapping("/product/modify/{pId}")
     public String productModify(Model model, @PathVariable Integer pId) {
-
+        FirstCategory fCategory = mngService.findCategoryAll();
         Product product = mngService.findProductById(pId);
+
         model.addAttribute("product", product);
 
 //        FirstCategory fCategory = mngService.findCategoryAll();
 //        model.addAttribute("category", fCategory);
 
+
+        model.addAttribute("product",product);
+        model.addAttribute("fCategory",fCategory);
         return "mng/product/modifyForm";
     }
 
@@ -238,6 +269,7 @@ public class MngController {
 
 //        SecondCategory sCategory = mngService.findSecondCategory(categoryDto.getId());
 //        model.addAttribute("sCategory", sCategory);
+
 
         return "mng/product/submitForm";
     }

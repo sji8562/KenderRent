@@ -65,23 +65,22 @@
                                         </thead>
                                         <tbody>
                                         <c:choose>
-                                        <c:when test="${userList != null }">
+                                        <c:when test="${rentList != null }">
 
-                                            <c:forEach var="userList" items="${userList}">
+                                            <c:forEach var="rentList" items="${rentList}">
                                                 <tr>
-                                                    <th scope="row">${userList.id}</th>
-                                                    <td>${userList.email }</td>
-                                                    <td>${userList.userName}</td>
-                                                    <td>${userList.phoneNumber }</td>
-                                                    <td>${userList.createdAt}</td>
+                                                    <th scope="row">${rentList.id}</th>
+<%--                                                    <td>${rentList.userName}</td>--%>
+<%--                                                    <td>${rentList.phoneNumber }</td>--%>
+<%--                                                    <td>${rentList.createdAt}</td>--%>
                                                     <td>
                                                         <div>
                                                             <button class="btn btn-success"
                                                                     style="border: 1px solid black"
-                                                                    onclick="location.href='/mng/user/${userList.id}/update'">수정</button>
+                                                                    onclick="location.href='/mng/user/${rentList.id}/update'">수정</button>
                                                             &nbsp;&nbsp;
                                                             <button class="btn-danger btn"
-                                                                    onclick="location.href='/mng/user/${userList.id}/delete'">삭제</button>
+                                                                    onclick="location.href='/mng/user/${rentList.id}/delete'">삭제</button>
                                                         </div>
                                                     </td>
 
