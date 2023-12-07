@@ -13,6 +13,9 @@
 		select * from user_tb where id = #{id} </select> <select id="findByUsernameAndPassword" 
 		resultType = "com.tenco.toyproject.repository.entity.User"> select * from 
 		user_tb where username = #{username} and password = #{password} </select> -->
+	<select id="findByRentId">
+		select * from rent where id = #{id}
+	</select>
 	<select id="findRentAllCount">
 		select count(*) from rent
 	</select>
