@@ -1,0 +1,118 @@
+/* 전우진 style.css */
+@charset "UTF-8";
+
+/* 기본 컨테이너 스타일 */
+.col-sm-8 {
+    width: 66.66667%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* 로그인 관련 헤딩 스타일 */
+h2, h5 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* 선택 탭 영역 스타일 */
+.select_area {
+    margin-bottom: 20px;
+}
+
+/* 체크박스 영역 스타일 */
+.check_w {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* 체크박스 및 라벨 스타일 */
+.check_w input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.check_w .ico {
+    cursor: pointer;
+}
+
+/* 이메일 입력 영역 스타일 */
+.email_area .input_wrap {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.email_area .input_box {
+    position: relative;
+}
+
+/* 비밀번호 입력 영역 스타일 */
+.pwd_area .input_wrap {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.pwd_area .input_box {
+    position: relative;
+}
+
+/* 일반 입력 필드 스타일 */
+.input_box input.int {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* 로그인 버튼 스타일 */
+.btn_signIn {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn_signIn:hover {
+    background-color: #0056b3;
+}
+
+/* 소셜 로그인 영역 스타일 */
+.social_area .box__social {
+    margin-bottom: 10px;
+}
+
+.link_social_btn {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.link__social--naver {
+    background-color: #2DB400;
+    color: white;
+}
+
+.link__social--kakao {
+    background-color: #FEE500;
+    color: #3C1E1E;
+}
+
+/* 도움말 영역 스타일 */
+.signIn_info .help_w {
+    margin-bottom: 10px;
+}
+
+.signIn_info a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signIn_info a:hover {
+    text-decoration: underline;
+}
+
