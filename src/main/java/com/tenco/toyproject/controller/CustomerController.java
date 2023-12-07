@@ -15,6 +15,7 @@ import com.tenco.toyproject.service.CustomerService;
 
 @Controller
 @RequestMapping("/customer")
+
 public class CustomerController {
 	
 	@Autowired // DI 처리
