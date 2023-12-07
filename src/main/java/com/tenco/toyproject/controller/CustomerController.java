@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tenco.toyproject._core.handler.MyRestfullExceptionHandler;
+import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import com.tenco.toyproject.service.CustomerService;
 import com.tenco.toyproject.vo.PageVO;
 
@@ -46,12 +49,13 @@ public class CustomerController {
 			cntPerPage = "10";
 		}
 	    pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-	    System.out.println(pageVO.getStart());
+
 	    model.addAttribute("paging",pageVO);
 	    
 		List<Map<String, Object>> customerList = customerService.selectCustomer(code, pageVO.getStart());
 		System.out.println(customerList);
 		model.addAttribute("customerList", customerList);
+		
 		return "customer/contact";
 	}
 	
@@ -76,10 +80,16 @@ public class CustomerController {
 	@GetMapping("/detail")
 	public String detail(Model model, int id) {
 		Map inquiryDetail = customerService.selectInquiryDetail(id);
+		if(inquiryDetail.get("secret") == (Object)1 && !inquiryDetail.get("user_id").equals(1)) { // session user id 들어가야함 2는 테스트
+				throw new CustomRestfullException("권한이 없습니다.", HttpStatus.BAD_REQUEST);
+
+		}
+		
 		String content = org.springframework.web.util.HtmlUtils.htmlEscape(String.valueOf(inquiryDetail.get("content")));
 		content = content.replaceAll("\n","<br/>");
 		inquiryDetail.put("content", content);
 		model.addAttribute("inquiryDetail", inquiryDetail);
 		return "customer/inquiryDetail";
 	}
+
 }

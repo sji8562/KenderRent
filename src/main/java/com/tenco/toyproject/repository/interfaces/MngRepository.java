@@ -4,7 +4,11 @@ import java.util.List;
 
 import com.tenco.toyproject.dto.MngRentDTO;
 import com.tenco.toyproject.repository.entity.FirstCategory;
+
 import com.tenco.toyproject.repository.entity.Rent;
+
+import com.tenco.toyproject.repository.entity.SecondCategory;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.data.domain.Page;
 
@@ -62,7 +66,13 @@ public interface MngRepository {
 	// 카테고리 조회
 	FirstCategory findCategoryAll();
 
+
 	public int findRentAllCount();
+
+	FirstCategory findFirstCategory();
+
+	SecondCategory findSecondCategory(Integer id);
+
 }
 
 

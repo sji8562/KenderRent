@@ -14,8 +14,8 @@
 						</div>
 						<nav class="navbar">
 							<ul class="navbar_menu">
-								<li><a href="index.html">home</a></li>
-								<li><a href="#">shop</a></li>
+								<li><a href="/">home</a></li>
+								<li><a href="/product/categories">shop</a></li>
 								<li><a href="#">promotion</a></li>
 								<li><a href="#">pages</a></li>
 								<li><a href="#">blog</a></li>
@@ -81,7 +81,7 @@
 					</ul>
 				</li>
 				<li class="menu_item"><a href="#">home</a></li>
-				<li class="menu_item"><a href="#">shop</a></li>
+				<li class="menu_item"><a href="/product/categories">shop</a></li>
 				<li class="menu_item"><a href="#">promotion</a></li>
 				<li class="menu_item"><a href="#">pages</a></li>
 				<li class="menu_item"><a href="#">blog</a></li>

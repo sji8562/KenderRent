@@ -13,6 +13,7 @@ import com.tenco.toyproject.repository.entity.Cart;
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.interfaces.CustomerRepository;
 import com.tenco.toyproject.repository.interfaces.ProductRepository;
+import com.tenco.toyproject.vo.PageVO;
 
 @Service
 @Mapper
@@ -30,10 +31,11 @@ public class ProductService {
 	
 		return productEntity;
 	}
-	
-	public List<Map> selectCustomer(int code){
-//		return customerRepository.selectCustomer(code);
-		return null;
+
+
+	public List<Map<String, Object>> selectCustomer(int code, int start){
+		return customerRepository.selectCustomer(code, start);
+
 	}
 	
 	public List<Product> showCartById(Integer userId){
@@ -49,5 +51,8 @@ public class ProductService {
 			System.out.println("이미 장바구니에있는 물건");
 		}
 		return resultRowCount;
+	}
+	public int countProductCustomer(int productId) {
+		return productRepository.countProductCustomer(productId);
 	}
 }

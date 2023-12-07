@@ -5,9 +5,14 @@ import java.util.List;
 import java.util.Map;
 
 
+
 import com.tenco.toyproject.dto.MngRentDTO;
+
+
+import com.tenco.toyproject.dto.MngCategoryDto;
 import com.tenco.toyproject.repository.entity.FirstCategory;
-import com.tenco.toyproject.repository.entity.Rent;
+import com.tenco.toyproject.repository.entity.SecondCategory;
+
 import jdk.jfr.Category;
 import lombok.extern.slf4j.Slf4j;
 
@@ -245,16 +250,29 @@ public class MngController {
         FirstCategory fCategory = mngService.findCategoryAll();
         Product product = mngService.findProductById(pId);
 
+        model.addAttribute("product", product);
+
+//        FirstCategory fCategory = mngService.findCategoryAll();
+//        model.addAttribute("category", fCategory);
+
+
         model.addAttribute("product",product);
         model.addAttribute("fCategory",fCategory);
         return "mng/product/modifyForm";
     }
 
     @GetMapping("/product/register")
-    public String productRegister(Model model) {
+    public String productRegister(Model model, MngCategoryDto categoryDto) {
 
-        FirstCategory fCategory = mngService.findCategoryAll();
-        model.addAttribute("fCategory",fCategory);
+        FirstCategory fCategory = mngService.findFirstCategory();
+        model.addAttribute("fCategory", fCategory);
+
+
+        
+
+        SecondCategory sCategory = mngService.findSecondCategory(categoryDto.getId());
+        model.addAttribute("sCategory", sCategory);
+
 
         return "mng/product/submitForm";
     }

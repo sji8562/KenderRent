@@ -61,8 +61,22 @@
 		DELETE FROM product WHERE id = #{id}
 	</delete>
 
-	<!-- first category	-->
-	<select id="">
+	<!-- first & Second category	-->
+	<select id="findCategoryAll" resultType="com.tenco.toyproject.repository.entity.FirstCategory">
+		SELECT fc.id, fc.first_category_name, sc.id AS second_id, sc.second_category_name
+		FROM first_category AS fc
+	   	RIGHT JOIN second_category AS sc ON sc.first_category_id = fc.id
+	</select>
 
+	<!-- first Category -->
+	<select id="findFirstCategory" resultType="com.tenco.toyproject.repository.entity.FirstCategory">
+		SELECT *
+		FROM first_category
+	</select>
+
+	<!-- Second category -->
+	<select id="findSecondCategory" resultType="com.tenco.toyproject.repository.entity.SecondCategory">
+		SELECT *
+		FROM second_category WHERE first_category_id = #{id}
 	</select>
 </mapper>

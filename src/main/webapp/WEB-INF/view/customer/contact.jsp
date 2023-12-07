@@ -51,34 +51,58 @@
 			<div class="row align-items-center">
 				<div class="col text-center">
 					<table class="table">
-						<thead>
-							<tr>
-								<th>번호</th>
-								<th>제목</th>
-								<th>작성자</th>
-								<th>작성일</th>
-							</tr>
-						</thead>
-						<tbody>
+						
 						<c:choose>
 							<c:when test="${param.type == 1 or param.type == 2}">
+								<thead>
+								<tr>
+									<th>번호</th>
+									<th>제목</th>
+									<th>작성자</th>
+									<th>작성일</th>
+								</tr>
+							</thead>
+							<tbody>
 								<c:forEach items="${customerList }" var="customerList">
 								<tr>
 									<td>${customerList.id }</td>
 									<td><a href="/customer/detail?id=${customerList.id }">${customerList.title }</a></td>
 									<td>관리자</td>
 									<td><fmt:formatDate value="${customerList.create_at }" pattern="yyyy-MM-dd" /></td>
+									
 								</tr>	
 															
 							</c:forEach>
 							</c:when>
 							<c:otherwise>
+								<thead>
+								<tr>
+									<th>번호</th>
+									<th>제목</th>
+									<th>작성자</th>
+									<th>작성일</th>
+									<th>답변상태</th>
+								</tr>
+							</thead>
+							<tbody>
 								<c:forEach items="${customerList }" var="customerList">
 								<tr>
 									<td>${customerList.id }</td>
-									<td><a href="/customer/detail?id=${customerList.id }">${customerList.title }</a></td>
+										<c:if test="${customerList.secret eq 0 }">
+											<td><a href="/customer/detail?id=${customerList.id }">${customerList.title }</a></td>
+										</c:if>
+										<c:if test="${customerList.secret eq 1 }">
+											<td><a href="/customer/detail?id=${customerList.id }">🔒${customerList.title }</a></td>
+										</c:if>
 									<td>${customerList.username }</td>
 									<td><fmt:formatDate value="${customerList.create_at }" pattern="yyyy. MM. dd" /></td>
+									<c:if test="${customerList.status eq 1}">
+										<td>답변완료</td>
+									</c:if>
+									<c:if test="${customerList.status eq null}">
+										<td>답변미완료</td>
+									</c:if>
+									
 								</tr>	
 															
 							</c:forEach>
