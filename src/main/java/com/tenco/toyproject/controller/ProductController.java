@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.tenco.toyproject.dto.AddToCartDTO;
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.service.CustomerService;
 import com.tenco.toyproject.service.ProductService;
@@ -38,7 +37,6 @@ public class ProductController {
 		return "product/categories";
 	}
 
-	// 제품 상세페이지
 	@GetMapping("detail/{id}")
     public String detail(Model model, PageVO pageVO, @RequestParam(value="nowPage", required=false)String nowPage
             , @RequestParam(value="cntPerPage", required=false)String cntPerPage, @PathVariable int id) {
@@ -54,33 +52,20 @@ public class ProductController {
         }
         pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
         model.addAttribute("paging",pageVO);
-        List<Map<String, Object>> CustomerList = customerService.selectCustomer(4,pageVO.getStart()); // 상품문의
+        //상품별로 변경해야함
+        List<Map<String, Object>> CustomerList = customerService.selectCustomerById(4, pageVO.getStart(), id); // 상품문의
         model.addAttribute("customerList", CustomerList);
         //페이징 처리해서 상품문의 출력 끝
 
         Product product = productService.findById(id);
         model.addAttribute("product", product);
+        System.out.println(id);
         return "product/detail";
     }
-	
-	// 장바구니 목록
-	@GetMapping("cart")
-	public String cart( Model model, int id) {
-		List<Product> cartList = productService.showCartById(id);
-		model.addAttribute("cartList", cartList);
-		return "product/cart";
-	}
-	
-	@PostMapping("addToCart")
-	public String addToCart(@RequestParam int id, @RequestParam Integer productId) {
-		productService.addToCartById(id, productId);
-		return "redirect:/product/cart";	
-	}
-	
+
 	@GetMapping("order")
 	public String order(Model model) {
 		
 		return "product/order";
 	}
-
 }

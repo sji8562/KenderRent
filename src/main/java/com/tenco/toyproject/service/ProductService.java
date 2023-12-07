@@ -13,6 +13,7 @@ import com.tenco.toyproject.repository.entity.Cart;
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.interfaces.CustomerRepository;
 import com.tenco.toyproject.repository.interfaces.ProductRepository;
+import com.tenco.toyproject.vo.PageVO;
 
 @Service
 @Mapper
@@ -42,10 +43,16 @@ public class ProductService {
 	
 	@Transactional
 	public void addToCartById(int userId, int productId) {
-		productRepository.addToCartById(userId, productId);
+		productRepository.addToCartById(userId, productId);		
 	}
 	
 	public int countProductCustomer(int productId) {
         return productRepository.countProductCustomer(productId);
     }
+	
+	@Transactional
+	public int deleteCartItem(int userId, int productId) {
+		return productRepository.deleteCartItem(userId, productId);		
+	}
+ 
 }

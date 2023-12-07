@@ -25,29 +25,12 @@ public class Product {
 	private String picUrl;
 	private String content;
 	private int status;
-	private int grade;
+	private String grade;
 	private Timestamp createdAt;
 	
 	private String firstCategoryName;
 	private String secondCategoryName;
 
-
-	public String formatStatus(int grade) {
-		String condition = null;
-		if (grade == 1) {
-			condition = "최상";
-		} else if (grade == 2) {
-			condition = "상";
-		} else if (grade == 3) {
-			condition = "중";
-		} else if (grade == 4) {
-			condition = "하";
-		} else {
-			condition = "최하";
-		}
-		
-		return condition;
-	}
 
 	public String formatDecimal() {
 		return DecimalUtil.decimalToString(price);

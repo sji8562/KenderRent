@@ -20,6 +20,9 @@ public class CustomerService {
 	public List<Map<String, Object>> selectCustomer(int code, int start ){
 		return customerRepository.selectCustomer(code, start);
 	}
+	public List<Map<String, Object>> selectCustomerById(int code, int start, int id){
+		return customerRepository.selectCustomerById(code, start, id);
+	}
 	@Transactional
 	public int insertInquiry(int userId, int productId, int code, String title, String content) {
 		return customerRepository.insertInquiry(userId, productId, code, title, content);

@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Cart {
-	private Integer id;
-	private Integer userId;
-	private Integer productId;
+	private int id;
+	private int userId;
+	private int productId;
 	private Timestamp createdAt;
 	
 }

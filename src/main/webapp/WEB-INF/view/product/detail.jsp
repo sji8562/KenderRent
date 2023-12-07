@@ -26,18 +26,8 @@
 	href="/css/styles/single_styles.css">
 <link rel="stylesheet" type="text/css"
 	href="/css/styles/single_responsive.css">
-	
-<script>
-		function cart(){
-		alert('작동되는거니?');
-	    let f = document.createElement('a');
-        //폼태그로 감쌀 필요 없다.. 그냥 a태그 해도 됨..
-	    f.setAttribute('method', 'post');
-	    f.setAttribute('action', '/user/logout');
-	    document.body.appendChild(f);
-	    f.submit();
-	}
-</script>	
+
+
 </head>
 <body>
 	<div class="super_container">
@@ -152,7 +142,7 @@
 										<td class="price">${product.price}원</td>
 									<tr>
 										<th>등급</th>
-										<td>${product.formatStatus()}</td>
+										<td>${product.grade}</td>
 									</tr>
 									<tr>
 										<th>수량</th>
@@ -171,7 +161,9 @@
 								<a href="/product/order">구매하기</a>
 							</div>
 							<div class="white_button add_to_cart_button">
-								<a href="/product/cart/${product.id }?id=1">장바구니</a>
+								<form  action="/cart/add?id=${product.id }" method="post">
+									<button type="submit">장바구니</button>
+								</form>
 							</div>
 							<div
 								class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>
@@ -558,5 +550,11 @@
 	<script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 	<script src="/js/single_custom.js"></script>
 	<script src="/js/cart.js"></script>
+	<script>
+		
+		function submitForm() {
+			document.getElementById('addToCartForm').submit();
+		}
+	</script>
 </body>
 </html>

@@ -4,24 +4,44 @@
 <!--반드시 세미콜론 생략-->
 <mapper namespace="com.tenco.toyproject.repository.interfaces.CustomerRepository">
 	<select id="selectCustomer" resultType="map">
-		select * from 
-			customer c 
-			inner join user u on c.user_id = u.id 
+		select * , r.id as status from 
+			board c 
+			inner join user u on c.user_id = u.id
+			left join reply r on r.board_id = c.id 
 			where code = #{code}
 			order by c.id desc
 			LIMIT #{start}, 5
 			
 	</select>
+	
+	<select id="selectCustomerById" resultType="map">
+		select * , r.id as status from 
+			board c 
+			inner join user u on c.user_id = u.id
+			left join reply r on r.board_id = c.id 
+			where code = 4
+			and c.product_id = #{id} 
+			order by c.id desc
+			LIMIT #{start}, 5
+			
+	</select>
 	<insert id="insertInquiry">
-		insert into customer (user_id, product_id,  code, title, content) 
+		insert into board (user_id, product_id,  code, title, content) 
 		values(#{userId}, #{productId},#{code},#{title}, #{content});
 	</insert>
 	<select id="selectInquiryDetail" resultType="Map">
-		select * from customer where id = #{id}
+		select * 
+			from board 
+			where id = #{id}
 	</select>
 	<select id="countCustomer" resultType="Integer">
 		select count(*)
-		from customer
-		where code = #{code}
+			from board
+			where code = #{code}
+	</select>
+	<select id="selectReply" resultType="Map">
+		select * 
+			from reply
+			where board_id = #{boardId}
 	</select>
 </mapper>
