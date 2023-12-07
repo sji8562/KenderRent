@@ -2,6 +2,7 @@ package com.tenco.toyproject.service;
 
 import java.util.List;
 
+import com.tenco.toyproject.dto.MngProductDto;
 import com.tenco.toyproject.handler.exception.CustomRestfulException;
 import com.tenco.toyproject.repository.entity.FirstCategory;
 import com.tenco.toyproject.repository.entity.SecondCategory;
@@ -104,24 +105,38 @@ public class MngService {
 	}
 
 	// 상품 등록
-	public int createProduct() {
-		int resultSet = mngRepository.createProduct();
-		return resultSet;
+	public int createProduct(MngProductDto dto) {
+		Product product = Product.builder()
+				.name(dto.getName())
+				.price(dto.getPrice())
+				.picUrl(dto.getPicUrl())
+				.firstCategoryId(dto.getFirstCategoryId())
+				.secondCategoryId(dto.getSecondCategoryId())
+				.content(dto.getContent())
+				.status(dto.getStatus())
+				.grade(dto.getGrade())
+				.build();
+
+
+		int resultRowCount = mngRepository.createProduct(dto);
+
+		if(resultRowCount != 1) {
+			throw new Exception500("상품 등록 실패");
+		}
+
+		return resultRowCount;
 	}
 
 	// 카테고리 조회
-	public FirstCategory findCategoryAll() {
-		FirstCategory allCategory = mngRepository.findCategoryAll();
+	public List<FirstCategory> findCategoryAll() {
+
+		List<FirstCategory> allCategory = mngRepository.findFirstCategoryAll();
+
 		return allCategory;
 	}
 
-	public FirstCategory findFirstCategory() {
-		FirstCategory fCategory = mngRepository.findFirstCategory();
-		return fCategory;
-	}
-
-	public SecondCategory findSecondCategory(Integer id) {
-		SecondCategory sCategory = mngRepository.findSecondCategory(id);
+	public List<SecondCategory> findSecondCategoryForRent() {
+		List<SecondCategory> sCategory = mngRepository.findSecondCategoryForRent();
 		return sCategory;
 	}
 }

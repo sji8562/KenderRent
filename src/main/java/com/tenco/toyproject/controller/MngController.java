@@ -1,12 +1,18 @@
 package com.tenco.toyproject.controller;
 
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
+import com.tenco.toyproject._core.handler.exception.Exception404;
 import com.tenco.toyproject.dto.MngCategoryDto;
+import com.tenco.toyproject.dto.MngProductDto;
 import com.tenco.toyproject.repository.entity.FirstCategory;
 import com.tenco.toyproject.repository.entity.SecondCategory;
+import com.tenco.toyproject.utils.Define;
+import jakarta.mail.Multipart;
 import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -28,6 +34,7 @@ import com.tenco.toyproject.dto.MngUserDTO;
 import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.MngService;
 import com.tenco.toyproject.vo.PageVO;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
@@ -224,22 +231,92 @@ public class MngController {
         Product product = mngService.findProductById(pId);
         model.addAttribute("product", product);
 
-//        FirstCategory fCategory = mngService.findCategoryAll();
-//        model.addAttribute("category", fCategory);
+//        List<FirstCategory> fCategory = mngService.findCategoryAll();
+//        System.out.println(fCategory.toString());
+//        model.addAttribute("fCategory", fCategory);
+        List<SecondCategory> sCategory = mngService.findSecondCategoryForRent();
+        model.addAttribute("sCategory", sCategory);
 
         return "mng/product/modifyForm";
     }
 
     @GetMapping("/product/register")
-    public String productRegister(Model model, MngCategoryDto categoryDto) {
+    public String productRegister(Model model) {
 
-        FirstCategory fCategory = mngService.findFirstCategory();
-        model.addAttribute("fCategory", fCategory);
+//        List<FirstCategory> fCategory = mngService.findCategoryAll();
+//        model.addAttribute("fCategory", fCategory);
 
-//        SecondCategory sCategory = mngService.findSecondCategory(categoryDto.getId());
-//        model.addAttribute("sCategory", sCategory);
+        List<SecondCategory> sCategory = mngService.findSecondCategoryForRent();
+        model.addAttribute("sCategory", sCategory);
 
         return "mng/product/submitForm";
     }
 
+    @GetMapping("/product/second-category")
+    public List<SecondCategory> getScondCategory(Model model) {
+        List<SecondCategory> secondCategory = mngService.findSecondCategoryForRent();
+
+        return secondCategory;
+    }
+
+    @PostMapping("/product/register")
+    public String registerProduct(MngProductDto dto) {
+        System.out.println("========= 들어왔냐 =====" + dto.toString());
+
+        if(dto.getName() == null || dto.getName().isEmpty()) {
+            throw new Exception404("물품명을 입력해주세요");
+        }
+
+        if(dto.getPrice() <= 0) {
+            throw new Exception500("물품 가격은 0원 이하일 수 없습니다");
+        }
+
+        if(dto.getPrice() <= 0) {
+            throw new Exception500("물품 가격은 0원 이하일 수 없습니다");
+        }
+
+        if(dto.getContent() == null || dto.getContent().isEmpty()) {
+            throw new Exception500("제품 상세 설명을 입력해주세요");
+        }
+
+        // 상품 썸네일 등록
+        MultipartFile file = dto.getFile();
+        // 등록된 파일이 있으면
+        if(file.isEmpty() == false) {
+            // 파일 사이즈 체크
+            if(file.getSize() > Define.MAX_FILE_SIZE) {
+                throw new Exception500("파일 크기는 200MB 미만이어야 합니다");
+            }
+        }
+
+        try {
+            // 업로드 파일 경로
+            String saveDirectory = Define.UPLOAD_DIRECTORY;
+
+            // 폴더가 없다면
+            File dir = new File(saveDirectory);
+            if(dir.exists() == false) {
+                dir.mkdir();
+            }
+
+            // 파일 이름 중복 예방
+            UUID uuid = UUID.randomUUID();
+            // 새로운 파일 이름
+            String fileName = uuid + "_" + file.getOriginalFilename();
+            // 전체 경로 지정
+            String uploadPath = Define.UPLOAD_DIRECTORY + File.separator + fileName;
+            File destination = new File(uploadPath);
+
+            file.transferTo(destination); // 실제 생성
+
+            dto.setPicUrl(fileName);
+
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        mngService.createProduct(dto);
+
+        return "redirect:/mng/product/list";
+    }
 }

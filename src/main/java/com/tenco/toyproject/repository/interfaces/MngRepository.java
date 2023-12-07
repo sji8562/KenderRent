@@ -2,6 +2,7 @@ package com.tenco.toyproject.repository.interfaces;
 
 import java.util.List;
 
+import com.tenco.toyproject.dto.MngProductDto;
 import com.tenco.toyproject.repository.entity.FirstCategory;
 import com.tenco.toyproject.repository.entity.SecondCategory;
 import org.apache.ibatis.annotations.Mapper;
@@ -55,14 +56,13 @@ public interface MngRepository {
 	public int deleteByProductId(Integer id);
 	
 	// 물품 등록
-	public int createProduct();
+	public int createProduct(MngProductDto dto);
 
-	// 카테고리 조회
-	FirstCategory findCategoryAll();
+	// 1차 카테고리 조회
+	public List<FirstCategory> findFirstCategoryAll();
 
-	FirstCategory findFirstCategory();
-
-	SecondCategory findSecondCategory(Integer id);
+	// 2차 카테고리 조회
+	public List<SecondCategory> findSecondCategoryForRent();
 }
 
 
