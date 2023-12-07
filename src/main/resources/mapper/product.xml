@@ -12,7 +12,7 @@
 
 	<select id="selectCustomer" resultType="Map">
 		select * from
-		customer c
+		board c
 		inner join user u on c.user_id = u.id
 		where code = 4
 	</select>
@@ -31,6 +31,6 @@
 	</insert>
 	
 	<select id="countProductCustomer" resultType="int">
-		select count(*) from customer where product_id = #{productId}
+		select count(*) from board where product_id = #{productId}
 	</select>
 </mapper>
