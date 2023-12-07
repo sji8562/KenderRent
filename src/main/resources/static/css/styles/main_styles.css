@@ -1684,3 +1684,12 @@ section
 {
 	color: #fe4c50;
 }
+
+.cancel-button {
+    background: none;
+    border: none;
+    color: gray;
+    font-size: 24px;
+    cursor: pointer;
+}
+

@@ -41,23 +41,25 @@
 						</div>
 					</div>
 				</div>
+				<br>
+				<br>
 				<div class="product_details">
 					<div class="product_details_title">
 						<c:choose>
 							<c:when test="${empty cartList}">
 								<p>장바구니에 담긴 상품이 없습니다.</p>
-								<button onclick="window.location.href=''">쇼핑하러 가기</button>
+								<a href="/"><button>쇼핑하러 가기</button></a>
 							</c:when>
 							<c:otherwise>
+								<!-- 구매 목록 -->
 								<input type="checkbox" id="selectAll" onclick="selectAll()">
 								<label for="selectAll">전체 선택</label>
-								<!-- 개별 체크박스들 -->
-								<table class="table">
+								<table>
 									<thead>
 										<tr>
 											<th>선택</th>
-											<th>상품 이름</th>
-											<th>가격</th>
+											<th>상품이름</th>
+											<th>상품금액</th>
 											<th></th>
 										</tr>
 									</thead>
@@ -70,22 +72,29 @@
 												<td>${product.price}</td>
 												<td>
 													<form action="/cart/delete?id=${product.id }" method="post">
-														<button type="submit">취소</button>
+														<button type="submit" class="cancel-button "> x </button>
 													</form>
 												</td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
+								<br>
+								<br>
+								<hr>
+								<div class="row float-right">
+									<div class="col text-center float">
+											<p id="totalPrice">총 주문금액: 0</p>
+										</div>
+										<div class="red_button buy_button">
+											<a href="/product/order">구매하기</a>
+										</div>
+								</div>
 							</c:otherwise>
 						</c:choose>
 					</div>
 				</div>
-				<hr>
-				<p id="totalPrice">총 가격: 0</p>
-				<div class="red_button buy_button float-right">
-					<a href="/product/order">구매하기</a>
-				</div>
+
 			</div>
 		</div>
 		<jsp:include page="../layout/footer.jsp" />
