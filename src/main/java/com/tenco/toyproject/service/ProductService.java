@@ -31,9 +31,9 @@ public class ProductService {
 		return productEntity;
 	}
 	
-	public List<Map> selectCustomer(int code){
-		return customerRepository.selectCustomer(code);
-	}
+//	public List<Map> selectCustomer(int code){
+//		return customerRepository.selectCustomer(code);
+//	}
 	
 	public List<Product> showCartById(Integer userId){
 		List<Product> cartEntity = productRepository.showCartById(userId);

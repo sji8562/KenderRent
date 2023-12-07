@@ -220,7 +220,11 @@ public class MngController {
     public String productModify(Model model, @PathVariable Integer pId) {
 
         Product product = mngService.findProductById(pId);
-        model.addAttribute(product);
+        model.addAttribute("product", product);
+
+        FirstCategory fCategory = mngService.findCategoryAll();
+        System.out.println("카테고리 내놔" + fCategory);
+        model.addAttribute("category", fCategory);
 
         return "mng/product/modifyForm";
     }

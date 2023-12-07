@@ -56,7 +56,9 @@
 	</delete>
 
 	<!-- first category	-->
-	<select id="">
-
+	<select id="findCategoryAll">
+		SELECT fc.id, fc.first_category_name, sc.id AS second_id, sc.second_category_name
+		FROM first_category AS fc
+	   	RIGHT JOIN second_category AS sc ON sc.first_category_id = fc.id
 	</select>
 </mapper>
