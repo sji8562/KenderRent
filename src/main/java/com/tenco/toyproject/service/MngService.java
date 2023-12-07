@@ -4,18 +4,13 @@ import java.util.List;
 
 
 import com.tenco.toyproject.dto.MngProductDto;
-import com.tenco.toyproject.handler.exception.CustomRestfulException;
+
 
 import com.tenco.toyproject.dto.MngRentDTO;
 
-import com.tenco.toyproject.handler.exception.CustomRestfullException;
 
+import com.tenco.toyproject.repository.entity.*;
 
-import com.tenco.toyproject.repository.entity.FirstCategory;
-
-import com.tenco.toyproject.repository.entity.Rent;
-
-import com.tenco.toyproject.repository.entity.SecondCategory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,11 +25,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tenco.toyproject._core.handler.exception.Exception500;
 
 
-import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.dto.MngUserDTO;
 import com.tenco.toyproject.dto.MngUserDTO.UpdateDTO;
 
-import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.repository.interfaces.MngRepository;
 import com.tenco.toyproject.vo.PageVO;
 
@@ -155,12 +148,14 @@ public class MngService {
 
 	public List<MngRentDTO.RentListDTO> findrentAll(PageVO pageVO) {
 		List<MngRentDTO.RentListDTO> rent = mngRepository.findRentWithUserAll(pageVO);
-		System.out.println(rent.get(0).toString());
 		return rent;
 	}
 
 	public int countRentList() {
 		return mngRepository.findRentAllCount();
+	}
 
+	public Rent findByRentId(Integer id) {
+		return mngRepository.findByRentId(id);
 	}
 }
