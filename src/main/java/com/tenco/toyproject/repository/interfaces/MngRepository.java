@@ -65,7 +65,7 @@ public interface MngRepository {
 	public int deleteByProductId(Integer id);
 
 	// 물품 등록
-	public int createProduct(MngProductDto dto);
+	public int createProduct(Product product);
 
 	// 1차 카테고리 조회
 	public List<FirstCategory> findFirstCategoryAll();

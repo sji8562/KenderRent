@@ -35,7 +35,7 @@
                             <input type="text" class="form-control" id="price" name="price" placeholder="물품 가격을 입력하세요" required>
                         </div>
                         <div class="form-group">
-                            <label for="secondCategoryName">카테고리</label>
+                            <label>카테고리</label>
                             <div style="display: flex;">
                                 <span style="margin-right: 10px;">
                                     <select class="form-select" aria-label="Disabled select example" name="secondCategoryName" required>
@@ -52,9 +52,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="imageFile">썸네일</label>
+                            <label for="file">썸네일</label>
                             <div style="width: 500px;">
-                                <input type="file" id="imageFile" name="imageFile">
+                                <input type="file" id="file" name="file">
                             </div>
                         </div>
                         <div class="form-group">
@@ -71,8 +71,8 @@
                             <label>대여/판매여부</label>
                             <select class="form-select" aria-label="Disabled select example" id="status" name="status" required>
                                 <option value="1" selected>재고 있음</option>
-                                <option value="2" disabled>대여 중</option>
-                                <option value="3" disabled>반납 중</option>
+                                <option value="2" disabled style="color: grey">대여 중</option>
+                                <option value="3" disabled style="color: grey">반납 중</option>
                                 <option value="4">소독 중</option>
                             </select>
                         </div>
