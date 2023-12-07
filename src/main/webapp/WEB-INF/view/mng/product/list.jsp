@@ -26,6 +26,7 @@
                 </div>
             </div>
 
+
 	<div class="table-responsive">
 		<c:choose>
 			<c:when test="${ productList == null }">
@@ -49,12 +50,9 @@
 								<td scope="row">${product.id}</td>
 								<td>${product.firstCategoryName} > ${product.secondCategoryName}</td>
 								<td><a href="/mng/product/detail/${product.id}" style="text-decoration: none; color: black;">${product.name}</a></td>
-								<td>${product.formatStatus()}</td>
-<%--								<td>${product.status}</td>--%>
+								<td>${product.formatStatus(product.grade)}</td>
 								<td>${product.formatStatusToString()}</td>
-<%--								<td><a href="/mng/product/detail/${product.id}">상세</a>--%>
 									<td><a href="/mng/product/modify/${product.id}">수정</a>
-									<%--<a href="/mng/product/${product.id}/delete">삭제</a>--%>
 									<a onclick="confirmOpen('del', ${product.id})">삭제</a>
 								</td>
 							</tr>
@@ -87,24 +85,6 @@
 		</c:if>
 	</div>
 
-	<%-- 모달 --%>
-	<%--<div class="modal" tabindex="-1">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Modal title</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<p>삭제하시겠습니까?</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-					<button type="button" class="btn btn-primary">확인</button>
-				</div>
-			</div>
-		</div>
-	</div>--%>
 	<script>
 		function confirmOpen(type, id) {
 			console.log(type);

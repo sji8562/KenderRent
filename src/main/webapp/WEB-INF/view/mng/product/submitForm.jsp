@@ -30,25 +30,29 @@
                         <div class="form-group">
                             <label>물품명</label>
                             <input type="text" class="form-control"
-                                   placeholder="물품명을 입력하세요" id="pName" value="name" >
+                                   placeholder="물품명을 입력하세요" id="pName" name="name">
                         </div>
                         <div class="form-group">
                             <label>물품가격</label>
-                            <input type="text" class="form-control" value="price">
+                            <input type="text"
+                                   placeholder="물품가격을 입력하세요" class="form-control" name="price">
                         </div>
                         <div class="form-group">
                             <label for="example-email">카테고리</label>
+                            <div>${ fCategory }</div>
+                            <div>${ sCategory }</div>
+
                             <div style="display: flex;">
 									<span style="margin-right: 10px;">
-										<select class="form-select" aria-label="Disabled select example">
-											<option selected>Choose...</option>
+										<select class="form-select" aria-label="Disabled select example" name="firstCategory">
+											<option value="">Choose...</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
                                             <option value="3">Three</option>
 										</select>
 									</span>
                                 <span>
-										<select class="form-select" aria-label="Disabled select example">
+										<select class="form-select" aria-label="Disabled select example" name="secondCategory">
 											<option selected></option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
@@ -60,35 +64,30 @@
                         <div class="form-group">
                             <label>썸네일</label>
                             <div style="width: 500px;">
-                                <%--									<c:choose>--%>
-                                <%--										<c:when test="${product.picUrl != null}">--%>
-                                <%--											<img src="${product.picUrl}" alt="No Image">--%>
-                                <%--										</c:when>--%>
-                                <%--										<c:otherwise>--%>
-                                <%--											<img src="/assets/images/empty_img.jpg" alt="No Alter Image">--%>
-                                <%--										</c:otherwise>--%>
-                                <%--									</c:choose>--%>
-                                <img src="${product.formatImgUrl()}" />
-
+                                <p>여기에 file input</p>
+                                <input type="file" name="file">
                             </div>
                         </div>
                         <div class="form-group">
                             <label>물품등급</label>
-                            <select class="form-select" aria-label="Disabled select example" disabled>
-                                <option selected>${product.grade}</option>
+                            <select class="form-select" aria-label="Disabled select example" name="grade">
+                                <option value="최상" selected>최상</option>
+                                <option value="상">상</option>
+                                <option value="중">중</option>
+                                <option value="하">하</option>
+                                <option value="최하">최하</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>대여/판매여부</label>
-                            <select class="form-select" aria-label="Disabled select example">
-                                <option selected>${product.formatStatusToString()}</option>
-                                <option value="1">${product.formatStatusToString()}</option>
+                            <select class="form-select" aria-label="Disabled select example" name="status" disabled>
+                                <option selected value="1">재고 있음</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>제품 상세 설명</label>
                             <%-- TODO text editor --%>
-                            <textarea class="form-control" rows="5" disabled>${product.content}</textarea>
+                            <textarea class="form-control" rows="5" name="content"></textarea>
                         </div>
                     </form>
                 </div>

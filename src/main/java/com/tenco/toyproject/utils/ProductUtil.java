@@ -18,4 +18,21 @@ public class ProductUtil {
 
         return str;
     }
+
+    public static String gradeToString(int grade) {
+        String condition = null;
+        if (grade == 1) {
+            condition = "최상";
+        } else if (grade == 2) {
+            condition = "상";
+        } else if (grade == 3) {
+            condition = "중";
+        } else if (grade == 4) {
+            condition = "하";
+        } else {
+            condition = "최하";
+        }
+
+        return condition;
+    }
 }
