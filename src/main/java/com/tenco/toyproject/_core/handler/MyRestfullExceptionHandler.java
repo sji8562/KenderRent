@@ -1,5 +1,6 @@
 package com.tenco.toyproject._core.handler;
 
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -14,6 +15,7 @@ public class MyRestfullExceptionHandler {
 	
 	@ExceptionHandler(CustomRestfullException.class)
 	public String basicException(CustomRestfullException e) {
+		System.out.println("예외처리");
 		StringBuffer sb = new StringBuffer();
 		sb.append("<script>");
 		sb.append("alert('"+e.getMessage() +"');");

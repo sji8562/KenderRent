@@ -82,7 +82,6 @@ public class CustomerController {
 		Map inquiryDetail = customerService.selectInquiryDetail(id);
 		if(inquiryDetail.get("secret") == (Object)1 && !inquiryDetail.get("user_id").equals(1)) { // session user id 들어가야함 2는 테스트
 				throw new CustomRestfullException("권한이 없습니다.", HttpStatus.BAD_REQUEST);
-
 		}
 		
 		String content = org.springframework.web.util.HtmlUtils.htmlEscape(String.valueOf(inquiryDetail.get("content")));
