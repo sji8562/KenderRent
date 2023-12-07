@@ -16,6 +16,7 @@ import com.tenco.toyproject.vo.PageVO;
 
 @Controller
 @RequestMapping("/customer")
+
 public class CustomerController {
 	
 	@Autowired // DI 처리
