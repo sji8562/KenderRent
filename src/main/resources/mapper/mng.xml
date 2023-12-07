@@ -82,6 +82,8 @@
 	</select>
 
 	<insert id="createProduct">
-
+		INSERT INTO
+			product (first_category_id, second_category_id, price, name, picUrl, content, status, grade)
+		VALUES (#{firstCategoryId}, #{secondCategory}, #{price}, #{name}, #{picUrl}, #{content}, #{status}, #{grade} )
 	</insert>
 </mapper>

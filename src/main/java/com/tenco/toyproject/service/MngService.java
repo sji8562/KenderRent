@@ -2,22 +2,17 @@ package com.tenco.toyproject.service;
 
 import java.util.List;
 
-
 import com.tenco.toyproject.dto.MngProductDto;
+
+import com.tenco.toyproject.repository.entity.FirstCategory;
+import com.tenco.toyproject.repository.entity.SecondCategory;
 
 
 import com.tenco.toyproject.dto.MngRentDTO;
 
 
 import com.tenco.toyproject.repository.entity.*;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,7 +21,6 @@ import com.tenco.toyproject._core.handler.exception.Exception500;
 
 
 import com.tenco.toyproject.dto.MngUserDTO;
-import com.tenco.toyproject.dto.MngUserDTO.UpdateDTO;
 
 import com.tenco.toyproject.repository.interfaces.MngRepository;
 import com.tenco.toyproject.vo.PageVO;
@@ -58,7 +52,7 @@ public class MngService {
 	@Transactional
 	public int update(Integer id, MngUserDTO.UpdateDTO updateDTO) {
 		User userEntity = mngRepository.findById(id);
-		
+
 		userEntity.setEmail(updateDTO.getEmail());
 		userEntity.setUserName(updateDTO.getUsername());
 		userEntity.setPassword(updateDTO.getPassword());
@@ -74,9 +68,9 @@ public class MngService {
 		return resultSet;
 	}
 
-	
+
 	// KWON
-	// 상품 목록 with pagination	
+	// 상품 목록 with pagination
 	public List<Product> findProductAll(PageVO pageVo) {
 		return mngRepository.findAllProductWithPagination(pageVo);
 	}
@@ -109,20 +103,22 @@ public class MngService {
 	}
 
 	// 상품 등록
+	@Transactional
 	public int createProduct(MngProductDto dto) {
+
 		Product product = Product.builder()
 				.name(dto.getName())
 				.price(dto.getPrice())
 				.picUrl(dto.getPicUrl())
 				.firstCategoryId(dto.getFirstCategoryId())
-				.secondCategoryId(dto.getSecondCategoryId())
+//				.secondCategoryId(dto.getSecondCategoryId())
 				.content(dto.getContent())
 				.status(dto.getStatus())
 				.grade(dto.getGrade())
 				.build();
 
 
-		int resultRowCount = mngRepository.createProduct(dto);
+		int resultRowCount = mngRepository.createProduct(product);
 
 		if(resultRowCount != 1) {
 			throw new Exception500("상품 등록 실패");
@@ -139,11 +135,10 @@ public class MngService {
 		return allCategory;
 	}
 
-
 	public List<SecondCategory> findSecondCategoryForRent() {
 		List<SecondCategory> sCategory = mngRepository.findSecondCategoryForRent();
-
 		return sCategory;
+
   }
 
 	public List<MngRentDTO.RentListDTO> findrentAll(PageVO pageVO) {
@@ -157,5 +152,6 @@ public class MngService {
 
 	public Rent findByRentId(Integer id) {
 		return mngRepository.findByRentId(id);
+
 	}
 }

@@ -35,6 +35,7 @@ public class MngApplyController {
      * @param cntPerPage
      * @return http://localhost/mng/apply/rental-list
      */
+
     @GetMapping("rental-list")
     public String rentalList(Model model, PageVO pageVO, @RequestParam(value = "nowPage",required = false) String nowPage, @RequestParam(value = "cntPerPage",required = false) String cntPerPage) {
         int total = mngService.countRentList();
@@ -62,6 +63,7 @@ public class MngApplyController {
         mngService.findByRentId(id);
         return "mng/apply/rental/rentalDetail";
     }
+
     @GetMapping("sale-list")
     public String saleList() {
         return "mng/apply/sale/saleList";
