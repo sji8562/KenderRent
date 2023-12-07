@@ -267,11 +267,8 @@ public class MngController {
         FirstCategory fCategory = mngService.findFirstCategory();
         model.addAttribute("fCategory", fCategory);
 
-
-        
-
-        SecondCategory sCategory = mngService.findSecondCategory(categoryDto.getId());
-        model.addAttribute("sCategory", sCategory);
+//        SecondCategory sCategory = mngService.findSecondCategory(categoryDto.getId());
+//        model.addAttribute("sCategory", sCategory);
 
 
         return "mng/product/submitForm";

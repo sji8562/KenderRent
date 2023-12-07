@@ -39,8 +39,8 @@
                         </div>
                         <div class="form-group">
                             <label for="example-email">카테고리</label>
-                            <div>${ fCategory }</div>
-                            <div>${ sCategory }</div>
+                            <%--<div>${ fCategory }</div>--%>
+                            <%--<div>${ sCategory }</div>--%>
 
                             <div style="display: flex;">
 									<span style="margin-right: 10px;">
