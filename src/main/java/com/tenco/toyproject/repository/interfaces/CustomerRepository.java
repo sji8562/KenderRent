@@ -14,4 +14,5 @@ public interface CustomerRepository {
 	int insertInquiry(@Param("userId") int userId, @Param("productId") int productId, @Param("code") int code, @Param("title") String title, @Param("content") String content, @Param("secret") int secret );
 	Map selectInquiryDetail(int id);
 	int countCustomer(int code);
+	Map selectReply(int boardId);
 }

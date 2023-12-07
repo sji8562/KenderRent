@@ -96,7 +96,7 @@
 										</c:if>
 									<td>${customerList.username }</td>
 									<td><fmt:formatDate value="${customerList.create_at }" pattern="yyyy. MM. dd" /></td>
-									<c:if test="${customerList.status eq 1}">
+									<c:if test="${customerList.status != null}">
 										<td>답변완료</td>
 									</c:if>
 									<c:if test="${customerList.status eq null}">
