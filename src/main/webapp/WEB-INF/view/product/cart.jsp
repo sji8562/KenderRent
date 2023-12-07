@@ -41,37 +41,49 @@
 						</div>
 					</div>
 				</div>
-				<form id="cartForm">
-					<div class="product_details">
-						<div class="product_details_title">
-							<input type="checkbox" id="selectAll" onclick="selectAll()">
-							<label for="selectAll">전체 선택</label>
-							<!-- 개별 체크박스들 -->
-							<table class="table">
-								<thead>
-									<tr>
-										<th>선택</th>
-										<th>상품 이름</th>
-										<th>가격</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach var="product" items="${cartList}">
+				<div class="product_details">
+					<div class="product_details_title">
+						<c:choose>
+							<c:when test="${empty cartList}">
+								<p>장바구니에 담긴 상품이 없습니다.</p>
+								<button onclick="window.location.href=''">쇼핑하러 가기</button>
+							</c:when>
+							<c:otherwise>
+								<input type="checkbox" id="selectAll" onclick="selectAll()">
+								<label for="selectAll">전체 선택</label>
+								<!-- 개별 체크박스들 -->
+								<table class="table">
+									<thead>
 										<tr>
-											<td><input type="checkbox" name="selectedProduct"
-												value="${product.price}" onchange="calculateTotalPrice()"></td>
-											<td><a href="/product/detail/${product.id }">${product.name}</a></td>
-											<td>${product.price}</td>
+											<th>선택</th>
+											<th>상품 이름</th>
+											<th>가격</th>
+											<th></th>
 										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
+									</thead>
+									<tbody>
+										<c:forEach var="product" items="${cartList}">
+											<tr>
+												<td><input type="checkbox" name="selectedProduct"
+													value="${product.price}" onchange="calculateTotalPrice()"></td>
+												<td><a href="/product/detail/${product.id }">${product.name}</a></td>
+												<td>${product.price}</td>
+												<td>
+													<form action="/cart/delete?id=${product.id }" method="post">
+														<button type="submit">취소</button>
+													</form>
+												</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</c:otherwise>
+						</c:choose>
 					</div>
-				</form>
+				</div>
 				<hr>
 				<p id="totalPrice">총 가격: 0</p>
-				<div class="red_button buy_button">
+				<div class="red_button buy_button float-right">
 					<a href="/product/order">구매하기</a>
 				</div>
 			</div>

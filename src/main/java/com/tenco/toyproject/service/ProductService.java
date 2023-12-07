@@ -44,15 +44,17 @@ public class ProductService {
 	}
 	
 	@Transactional
-	public int addToCartById(int userId, int productId) {
-		
-		int resultRowCount = productRepository.addToCartById(userId, productId);
-		if(resultRowCount != 1) {
-			System.out.println("이미 장바구니에있는 물건");
-		}
-		return resultRowCount;
+	public void addToCartById(int userId, int productId) {
+		productRepository.addToCartById(userId, productId);		
 	}
+	
 	public int countProductCustomer(int productId) {
-		return productRepository.countProductCustomer(productId);
+        return productRepository.countProductCustomer(productId);
+    }
+	
+	@Transactional
+	public int deleteCartItem(int userId, int productId) {
+		return productRepository.deleteCartItem(userId, productId);		
 	}
+ 
 }

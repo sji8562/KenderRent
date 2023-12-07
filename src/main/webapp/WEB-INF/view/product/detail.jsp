@@ -26,7 +26,7 @@
 	href="/css/styles/single_styles.css">
 <link rel="stylesheet" type="text/css"
 	href="/css/styles/single_responsive.css">
-	
+
 
 </head>
 <body>
@@ -142,7 +142,7 @@
 										<td class="price">${product.price}원</td>
 									<tr>
 										<th>등급</th>
-										<td>${product.formatStatus()}</td>
+										<td>${product.grade}</td>
 									</tr>
 									<tr>
 										<th>수량</th>
@@ -160,8 +160,10 @@
 							<div class="red_button buy_button">
 								<a href="/product/order">구매하기</a>
 							</div>
-							<div onclick="cart()" id="btn_cart" class="white_button add_to_cart_button btn_cart">
-								<a >장바구니</a>
+							<div class="white_button add_to_cart_button">
+								<form  action="/cart/add?id=${product.id }" method="post">
+									<button type="submit">장바구니</button>
+								</form>
 							</div>
 							<div
 								class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>
@@ -548,35 +550,11 @@
 	<script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 	<script src="/js/single_custom.js"></script>
 	<script src="/js/cart.js"></script>
- 	<script> 
- 	function cart(productId){
- 		const form = {
- 				// userid
-				productId : productId
-		};
-	
-		$(".btn_cart").on("click", function(e){
-			$.ajax({
-				url: '/product/cartAdd',
-				type: 'POST',
-				data: form, 
-				success: function(result){
-					cartAlert(result);
-				}
-			})
-		});
-	}
-	function cartAlert(result){
-		if(result == '0'){
-			alert("장바구니에 추가를 하지 못하였습니다.");
-		} else if(result == '1'){
-			alert("장바구니에 추가되었습니다.");
-		} else if(result == '2'){
-			alert("장바구니에 이미 추가되어져 있습니다.");
-		} else if(result == '5'){
-			alert("로그인이 필요합니다.");	
+	<script>
+		
+		function submitForm() {
+			document.getElementById('addToCartForm').submit();
 		}
-	}
- </script>
+	</script>
 </body>
 </html>
