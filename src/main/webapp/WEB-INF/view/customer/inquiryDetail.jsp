@@ -74,8 +74,12 @@
 						</div>
 				</div>
 			</div>
-
 		</div>
+		<hr>
+		<c:if test="${inquiryDetail.code eq 3 or inquiryDetail.code eq 4 }">
+			<h3>답변내용</h3>
+			<p>${replyContent.content }</p>
+		</c:if>
 	</div>
 
 	<!-- Newsletter -->

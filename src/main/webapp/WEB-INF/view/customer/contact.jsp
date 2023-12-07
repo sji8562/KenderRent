@@ -88,10 +88,15 @@
 								<c:forEach items="${customerList }" var="customerList">
 								<tr>
 									<td>${customerList.id }</td>
-									<td><a href="/customer/detail?id=${customerList.id }">${customerList.title }</a></td>
+										<c:if test="${customerList.secret eq 0 }">
+											<td><a href="/customer/detail?id=${customerList.id }">${customerList.title }</a></td>
+										</c:if>
+										<c:if test="${customerList.secret eq 1 }">
+											<td><a href="/customer/detail?id=${customerList.id }">🔒${customerList.title }</a></td>
+										</c:if>
 									<td>${customerList.username }</td>
 									<td><fmt:formatDate value="${customerList.create_at }" pattern="yyyy. MM. dd" /></td>
-									<c:if test="${customerList.status eq 1}">
+									<c:if test="${customerList.status != null}">
 										<td>답변완료</td>
 									</c:if>
 									<c:if test="${customerList.status eq null}">

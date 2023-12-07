@@ -61,29 +61,57 @@
                                             <th scope="col">대여 시작일</th>
                                             <th scope="col">대여 종료일</th>
                                             <th scope="col">신청일</th>
+                                            <th scope="col">신청상태</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <c:choose>
-                                        <c:when test="${userList != null }">
+                                        <c:when test="${rentList != null }">
 
-                                            <c:forEach var="userList" items="${userList}">
+                                            <c:forEach var="rentList" items="${rentList}">
                                                 <tr>
-                                                    <th scope="row">${userList.id}</th>
-                                                    <td>${userList.email }</td>
-                                                    <td>${userList.userName}</td>
-                                                    <td>${userList.phoneNumber }</td>
-                                                    <td>${userList.createdAt}</td>
-                                                    <td>
-                                                        <div>
-                                                            <button class="btn btn-success"
-                                                                    style="border: 1px solid black"
-                                                                    onclick="location.href='/mng/user/${userList.id}/update'">수정</button>
-                                                            &nbsp;&nbsp;
-                                                            <button class="btn-danger btn"
-                                                                    onclick="location.href='/mng/user/${userList.id}/delete'">삭제</button>
-                                                        </div>
-                                                    </td>
+                                                    <th class="rentalDetail" scope="row"><a href="/mng/apply/rental/rentalDetail">${rentList.id}</a></th>
+                                                    <td class="rentalDetail"><a href="/mng/apply/rental/${rentList.id}/rentalDetail">${rentList.username}</a></td>
+                                                    <td class="rentalDetail"><a href="/mng/apply/rental/${rentList.id}/rentalDetail">${rentList.productId}</a></td>
+                                                    <td class="rentalDetail"><a href="/mng/apply/rental/${rentList.id}/rentalDetail">${rentList.productName}</a></td>
+                                                    <td class="rentalDetail"><a href="/mng/apply/rental/${rentList.id}/rentalDetail">${rentList.startDay}</a></td>
+                                                    <td class="rentalDetail"><a href="/mng/apply/rental/${rentList.id}/rentalDetail">${rentList.endDay}</a></td>
+                                                    <td class="rentalDetail"><a href="/mng/apply/rental/${rentList.id}/rentalDetail">${rentList.createdAt}</a></td>
+                                                    <c:choose>
+                                                        <c:when test="${rentList.status == 1}">
+                                                            <td>
+                                                                <div>
+                                                                    <button class="btn btn-success"
+                                                                            style="border: 1px solid black"
+                                                                            onclick="location.href='/mng/user/${rentList.id}/update'">신청 확인</button>
+                                                                    &nbsp;&nbsp;
+                                                                    <button class="btn-danger btn"
+                                                                            onclick="location.href='/mng/user/${rentList.id}/delete'">신청 취소</button>
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${rentList.status == 2}">
+                                                            <td>
+                                                                <div>
+                                                                    대여중
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${rentList.status == 3}">
+                                                            <td>
+                                                                <div>
+                                                                    반납중
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${rentList.status == 4}">
+                                                            <td>
+                                                                <div>
+                                                                    세척중
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                    </c:choose>
 
                                                 </tr>
                                             </c:forEach>
@@ -98,7 +126,7 @@
                                 <div style="display: block; text-align: center;">
                                     <c:if test="${paging.startPage != 1 }">
                                         <a
-                                                href="user?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+                                                href="/mng/apply/rental-list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
                                     </c:if>
                                     <c:forEach begin="${paging.startPage }"
                                                end="${paging.endPage }" var="p">
@@ -107,13 +135,13 @@
                                                 <b>${p }</b>
                                             </c:when>
                                             <c:when test="${p != paging.nowPage }">
-                                                <a href="user?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+                                                <a href="/mng/apply/rental-list?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
                                             </c:when>
                                         </c:choose>
                                     </c:forEach>
                                     <c:if test="${paging.endPage != paging.lastPage}">
                                         <a
-                                                href="user?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+                                                href="/mng/apply/rental-list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
                                     </c:if>
                                 </div>
 
