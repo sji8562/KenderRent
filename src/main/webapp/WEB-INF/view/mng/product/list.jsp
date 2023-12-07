@@ -50,7 +50,7 @@
 								<td scope="row">${product.id}</td>
 								<td>${product.firstCategoryName} > ${product.secondCategoryName}</td>
 								<td><a href="/mng/product/detail/${product.id}" style="text-decoration: none; color: black;">${product.name}</a></td>
-								<td>${product.formatStatus(product.grade)}</td>
+								<td>${product.grade}</td>
 								<td>${product.formatStatusToString()}</td>
 									<td><a href="/mng/product/modify/${product.id}">수정</a>
 									<a onclick="confirmOpen('del', ${product.id})">삭제</a>
