@@ -12,6 +12,7 @@ public class MngRentDTO {
         private String username;
         private String productId;
         private String productName;
+        private Integer status;
         private Timestamp startDay;
         private Timestamp endDay;
         private Timestamp createdAt;

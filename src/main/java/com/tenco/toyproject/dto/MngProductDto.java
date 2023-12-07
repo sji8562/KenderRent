@@ -16,9 +16,7 @@ public class MngProductDto {
         private int secondCategoryId;
         private int price;
         private String name;
-
-        private MultipartFile file; // name 속성 "file"과 일치시켜야 함
-
+//        private Multipart file; // name 속성 "file"과 일치시켜야 함
         private String picUrl;
         private String content;
         private int status;

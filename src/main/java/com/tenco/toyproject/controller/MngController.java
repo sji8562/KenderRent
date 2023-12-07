@@ -250,8 +250,6 @@ public class MngController {
         FirstCategory fCategory = mngService.findCategoryAll();
         Product product = mngService.findProductById(pId);
 
-        model.addAttribute("product", product);
-
 //        FirstCategory fCategory = mngService.findCategoryAll();
 //        model.addAttribute("category", fCategory);
 
