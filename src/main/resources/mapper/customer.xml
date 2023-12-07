@@ -14,8 +14,8 @@
 			
 	</select>
 	<insert id="insertInquiry">
-		insert into board (user_id, product_id,  code, title, content) 
-		values(#{userId}, #{productId},#{code},#{title}, #{content});
+		insert into board (user_id, product_id,  code, title, content, secret) 
+		values(#{userId}, #{productId},#{code},#{title}, #{content}, #{secret});
 	</insert>
 	<select id="selectInquiryDetail" resultType="Map">
 		select * 

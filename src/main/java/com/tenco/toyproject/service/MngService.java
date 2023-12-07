@@ -2,8 +2,14 @@ package com.tenco.toyproject.service;
 
 import java.util.List;
 
-import com.tenco.toyproject.handler.exception.CustomRestfulException;
+import com.tenco.toyproject.dto.MngRentDTO;
+import com.tenco.toyproject.handler.exception.CustomRestfullException;
 import com.tenco.toyproject.repository.entity.FirstCategory;
+
+import com.tenco.toyproject.repository.entity.Rent;
+
+import com.tenco.toyproject.repository.entity.SecondCategory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -110,7 +116,27 @@ public class MngService {
 
 	// 카테고리 조회
 	public FirstCategory findCategoryAll() {
-		FirstCategory fCategory = mngRepository.findCategoryAll();
+		FirstCategory allCategory = mngRepository.findCategoryAll();
+		return allCategory;
+	}
+
+	public FirstCategory findFirstCategory() {
+		FirstCategory fCategory = mngRepository.findFirstCategory();
 		return fCategory;
+	}
+	public SecondCategory findSecondCategory(Integer id) {
+		SecondCategory sCategory = mngRepository.findSecondCategory(id);
+		return sCategory;
+  }
+
+	public List<MngRentDTO.RentListDTO> findrentAll(PageVO pageVO) {
+		List<MngRentDTO.RentListDTO> rent = mngRepository.findRentWithUserAll(pageVO);
+		System.out.println(rent.get(0).toString());
+		return rent;
+	}
+
+	public int countRentList() {
+		return mngRepository.findRentAllCount();
+
 	}
 }

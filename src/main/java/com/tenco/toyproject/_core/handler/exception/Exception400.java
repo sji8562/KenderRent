@@ -12,7 +12,7 @@ import com.tenco.toyproject._core.utils.ApiUtils;
 public class Exception400 extends RuntimeException {
 
     public Exception400(String message) {
-        super(message);
+    	super(message);
     }
 
     public ApiUtils.ApiResult<?> body() {

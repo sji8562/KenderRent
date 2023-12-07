@@ -45,7 +45,7 @@ public class Product {
 		} else {
 			condition = "최하";
 		}
-		
+
 		return condition;
 	}
 
@@ -58,6 +58,7 @@ public class Product {
 		return ImageUtil.checkImageUrl(picUrl);
 	}
 
-	public String formatStatusToString() { return ProductUtil.statusToString(status);
-	}
+	public String formatStatusToString() { return ProductUtil.statusToString(status);}
+
+	public String formatGradeToString() { return ProductUtil.gradeToString(grade);}
 }

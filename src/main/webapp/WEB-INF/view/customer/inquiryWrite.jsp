@@ -59,7 +59,28 @@
 					<br><br>
 					<form action="/customer/write?type=${param.type}" method="post">
 						<div>
-							<input id="title" class="form_input input_website input_ph" type="text" name="title" placeholder="제목" required="required" data-error="Name is required.">
+						<div class="row">
+							<div class = "col-lg-8 ">
+								<input id="title" class="form_input input_website input_ph" type="text" name="title" placeholder="제목" required="required" data-error="Name is required.">
+							</div>
+							<div class="col-lg-1"></div>
+							<div class="col-lg-3" >
+								<div class="form-check" >
+								  
+								  <input name="isSecret" class="form-check-input " type="checkbox" value="1" id="flexCheckDefault" style="zoom:2.0;">
+								  <label class="form-check-label" for="flexCheckDefault" style="font-size: 1.2rem; padding-top:10px;">
+								    비밀글
+								  </label>
+								</div>
+							</div>
+						</div>
+<!-- 							<input id="title" class="form_input input_website input_ph" type="text" name="title" placeholder="제목" required="required" data-error="Name is required."> -->
+<!-- 							<div class="form-check"> -->
+<!-- 							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> -->
+<!-- 							  <label class="form-check-label" for="flexCheckDefault"> -->
+<!-- 							    Default checkbox -->
+<!-- 							  </label> -->
+<!-- 							</div> -->
 							<textarea id="content" class="input_ph input_message" name="content"  placeholder="내용" rows="10" required data-error="Please, write us a message."></textarea>
 						</div>
 						<div>
