@@ -4,7 +4,9 @@ package com.tenco.toyproject.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.tenco.toyproject.dto.MngCategoryDto;
 import com.tenco.toyproject.repository.entity.FirstCategory;
+import com.tenco.toyproject.repository.entity.SecondCategory;
 import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -223,17 +225,19 @@ public class MngController {
         model.addAttribute("product", product);
 
         FirstCategory fCategory = mngService.findCategoryAll();
-        System.out.println("카테고리 내놔" + fCategory);
         model.addAttribute("category", fCategory);
 
         return "mng/product/modifyForm";
     }
 
     @GetMapping("/product/register")
-    public String productRegister(Model model) {
+    public String productRegister(Model model, MngCategoryDto categoryDto) {
 
-        FirstCategory fCategory = mngService.findCategoryAll();
-        model.addAttribute(fCategory);
+        FirstCategory fCategory = mngService.findFirstCategory();
+        model.addAttribute("fCategory", fCategory);
+
+        SecondCategory sCategory = mngService.findSecondCategory(categoryDto.getId());
+        model.addAttribute("sCategory", sCategory);
 
         return "mng/product/submitForm";
     }

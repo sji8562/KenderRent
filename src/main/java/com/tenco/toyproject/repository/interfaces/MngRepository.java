@@ -3,6 +3,7 @@ package com.tenco.toyproject.repository.interfaces;
 import java.util.List;
 
 import com.tenco.toyproject.repository.entity.FirstCategory;
+import com.tenco.toyproject.repository.entity.SecondCategory;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.data.domain.Page;
 
@@ -58,6 +59,10 @@ public interface MngRepository {
 
 	// 카테고리 조회
 	FirstCategory findCategoryAll();
+
+	FirstCategory findFirstCategory();
+
+	SecondCategory findSecondCategory(Integer id);
 }
 
 

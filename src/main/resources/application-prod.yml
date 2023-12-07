@@ -15,15 +15,18 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: asd1234
-    h2:
-    console:
-      enabled: false  # H2 콘솔 비활성화
-# sql:
-#  init:
-#    schema-locations:
-#      classpath:db/table.sql
-#    data-locations:
-#      classpath:db/data.sql
+#  h2:
+#    console:
+#      enabled: true # H2 콘솔 비활성화
+#    output:
+#      ansi:
+#      enabled: always
+  sql:
+    init:
+      schema-locations:
+        classpath:db/table.sql
+      data-locations:
+        classpath:db/data.sql
   #h2: 
   #  console:
   #    enabled: true
