@@ -33,5 +33,8 @@ public class CustomerService {
 	public int countCustomer(int code) {
 		return customerRepository.countCustomer(code);
 	}
+	public Map selectReply(int board_id) {
+		return customerRepository.selectReply(board_id);
+	}
 	
 }
