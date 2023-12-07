@@ -84,10 +84,10 @@
                                                             <div>
                                                                 <button class="btn btn-success"
                                                                         style="border: 1px solid black"
-                                                                        onclick="location.href='/mng/user/${rentList.id}/update'">대여 확인</button>
+                                                                        onclick="location.href='/mng/user/${rentList.id}/update'">신청 확인</button>
                                                                 &nbsp;&nbsp;
                                                                 <button class="btn-danger btn"
-                                                                        onclick="location.href='/mng/user/${rentList.id}/delete'">대여 취소</button>
+                                                                        onclick="location.href='/mng/user/${rentList.id}/delete'">신청 취소</button>
                                                             </div>
                                                         </td>
                                                     </c:when>
@@ -127,7 +127,7 @@
                                 <div style="display: block; text-align: center;">
                                     <c:if test="${paging.startPage != 1 }">
                                         <a
-                                                href="user?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+                                                href="/mng/apply/rental-list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
                                     </c:if>
                                     <c:forEach begin="${paging.startPage }"
                                                end="${paging.endPage }" var="p">
@@ -136,13 +136,13 @@
                                                 <b>${p }</b>
                                             </c:when>
                                             <c:when test="${p != paging.nowPage }">
-                                                <a href="user?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+                                                <a href="/mng/apply/rental-list?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
                                             </c:when>
                                         </c:choose>
                                     </c:forEach>
                                     <c:if test="${paging.endPage != paging.lastPage}">
                                         <a
-                                                href="user?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+                                                href="/mng/apply/rental-list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
                                     </c:if>
                                 </div>
 
