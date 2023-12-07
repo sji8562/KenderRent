@@ -171,7 +171,7 @@
 								<a href="/product/order">구매하기</a>
 							</div>
 							<div class="white_button add_to_cart_button">
-								<a href="/product/addCart/${product.id }?id=1">장바구니</a>
+								<a href="/product/cart/${product.id }?id=1">장바구니</a>
 							</div>
 							<div
 								class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>

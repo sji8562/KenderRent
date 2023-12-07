@@ -31,8 +31,8 @@ public class ProductService {
 		return productEntity;
 	}
 	
-	public List<Map> selectCustomer(int code){
-		return customerRepository.selectCustomer(code);
+	public List<Map<String, Object>> selectCustomer(int code, int start){
+		return customerRepository.selectCustomer(code, start);
 	}
 	
 	public List<Product> showCartById(Integer userId){
@@ -41,12 +41,11 @@ public class ProductService {
 	}
 	
 	@Transactional
-	public int addToCartById(int userId, int productId) {
-		
-		int resultRowCount = productRepository.addToCartById(userId, productId);
-		if(resultRowCount != 1) {
-			System.out.println("이미 장바구니에있는 물건");
-		}
-		return resultRowCount;
+	public void addToCartById(int userId, int productId) {
+		productRepository.addToCartById(userId, productId);
 	}
+	
+	public int countProductCustomer(int productId) {
+        return productRepository.countProductCustomer(productId);
+    }
 }

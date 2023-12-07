@@ -25,9 +25,13 @@
 		WHERE c.user_id = #{userId}
 	</select>
 
-	<insert id="addToCartById">
+	<insert id="addToCartById" parameterType="int">
 		INSERT INTO cart (user_id, product_id) 
 		VALUES (#{userId}, #{productId})
 	</insert>
+	
+	<select id="countProductCustomer" resultType="int">
+        select count(*) from customer where product_id = #{productId}
+    </select>
 
 </mapper>
