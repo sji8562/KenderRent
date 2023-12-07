@@ -61,7 +61,7 @@
 		DELETE FROM product WHERE id = #{id}
 	</delete>
 
-	<!-- first & Second category	-->
+	<!-- first & Second category -->
 	<select id="findCategoryAll" resultType="com.tenco.toyproject.repository.entity.FirstCategory">
 		SELECT fc.id, fc.first_category_name, sc.id AS second_id, sc.second_category_name
 		FROM first_category AS fc
@@ -69,14 +69,16 @@
 	</select>
 
 	<!-- first Category -->
-	<select id="findFirstCategory" resultType="com.tenco.toyproject.repository.entity.FirstCategory">
-		SELECT *
-		FROM first_category
+	<select id="findFirstCategoryAll" resultType="com.tenco.toyproject.repository.entity.FirstCategory">
+		SELECT * FROM first_category
 	</select>
 
 	<!-- Second category -->
-	<select id="findSecondCategory" resultType="com.tenco.toyproject.repository.entity.SecondCategory">
-		SELECT *
-		FROM second_category WHERE first_category_id = #{id}
+	<select id="findSecondCategoryForRent" resultType="com.tenco.toyproject.repository.entity.SecondCategory">
+		SELECT * FROM second_category WHERE first_category_id BETWEEN 0 AND 10
 	</select>
+
+	<insert id="createProduct">
+
+	</insert>
 </mapper>

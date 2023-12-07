@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FirstCategory {
 	private int id;
-	private String first_category_name;
+	private String firstCategoryName;
 }

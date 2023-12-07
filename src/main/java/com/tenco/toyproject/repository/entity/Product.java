@@ -20,7 +20,7 @@ public class Product {
 	private int id;
 	private int firstCategoryId;
 	private int secondCategoryId;
-	private int price;
+	private Long price;
 	private String name;
 	private String picUrl;
 	private String content;
@@ -30,8 +30,6 @@ public class Product {
 	
 	private String firstCategoryName;
 	private String secondCategoryName;
-
-
 	public String formatDecimal() {
 		return DecimalUtil.decimalToString(price);
 	}
@@ -42,5 +40,4 @@ public class Product {
 	}
 
 	public String formatStatusToString() { return ProductUtil.statusToString(status);}
-	
 }
