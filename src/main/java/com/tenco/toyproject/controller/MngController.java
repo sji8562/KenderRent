@@ -224,8 +224,8 @@ public class MngController {
         Product product = mngService.findProductById(pId);
         model.addAttribute("product", product);
 
-        FirstCategory fCategory = mngService.findCategoryAll();
-        model.addAttribute("category", fCategory);
+//        FirstCategory fCategory = mngService.findCategoryAll();
+//        model.addAttribute("category", fCategory);
 
         return "mng/product/modifyForm";
     }
