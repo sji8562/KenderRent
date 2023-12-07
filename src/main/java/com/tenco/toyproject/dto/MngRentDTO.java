@@ -18,5 +18,4 @@ public class MngRentDTO {
         private Timestamp createdAt;
     }
 
-
 }

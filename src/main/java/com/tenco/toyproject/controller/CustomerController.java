@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.tenco.toyproject._core.handler.MyRestfullExceptionHandler;
-import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
+import com.tenco.toyproject.handler.exception.CustomRestfullException;
 import com.tenco.toyproject.service.CustomerService;
 import com.tenco.toyproject.vo.PageVO;
 
@@ -66,15 +65,25 @@ public class CustomerController {
 		return "customer/inquiryWrite";
 	}
 	@PostMapping("/write")
-	public String inquiryPro(String title, String content, @RequestParam("type") String type) {
+	public String inquiryPro(String title, String content, @RequestParam("type") String type,
+			@RequestParam(value = "isSecret", required = false) String isSecret) {
 		//접근제한 해야함
 		//로그인 다 되면 session값으로 user_id 넣기
 		//상품문의할때 id값 받아오기
-		if(type.equals("inquiry")) {
-			customerService.insertInquiry(2, 0, 3, title, content);
-			return "redirect:/customer/contact";
-		}
-		customerService.insertInquiry(2, 0, 4, title, content);
+		if (isSecret != null && isSecret.equals("1")) {
+			if(type.equals("inquiry")) {
+				customerService.insertInquiry(2, 0, 3, title,content,1);
+				return "redirect:/customer/contact";
+			}
+			customerService.insertInquiry(2, 0, 4, title, content, 1);
+        } else {
+        	if(type.equals("inquiry")) {
+    			customerService.insertInquiry(2, 0, 3, title,content, 0);
+    			return "redirect:/customer/contact";
+    		}
+    		customerService.insertInquiry(2, 0, 4, title, content, 0);
+        }
+		
 		return "redirect:/customer/contact";
 	}
 	@GetMapping("/detail")
@@ -82,14 +91,18 @@ public class CustomerController {
 		Map inquiryDetail = customerService.selectInquiryDetail(id);
 		if(inquiryDetail.get("secret") == (Object)1 && !inquiryDetail.get("user_id").equals(1)) { // session user id 들어가야함 2는 테스트
 				throw new CustomRestfullException("권한이 없습니다.", HttpStatus.BAD_REQUEST);
-
 		}
-		
 		String content = org.springframework.web.util.HtmlUtils.htmlEscape(String.valueOf(inquiryDetail.get("content")));
 		content = content.replaceAll("\n","<br/>");
 		inquiryDetail.put("content", content);
 		model.addAttribute("inquiryDetail", inquiryDetail);
+		
+		Map replyContent = customerService.selectReply(id);
+		if(replyContent != null) {
+			model.addAttribute("replyContent", replyContent);
+		}
 		return "customer/inquiryDetail";
 	}
+	
 
 }

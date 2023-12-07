@@ -97,7 +97,7 @@
 								<div style="display: block; text-align: center;">
 									<c:if test="${paging.startPage != 1 }">
 										<a
-											href="user?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+											href="/mng/user/list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
 									</c:if>
 									<c:forEach begin="${paging.startPage }"
 										end="${paging.endPage }" var="p">
@@ -106,13 +106,13 @@
 												<b>${p }</b>
 											</c:when>
 											<c:when test="${p != paging.nowPage }">
-												<a href="user?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+												<a href="/mng/user/list?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
 											</c:when>
 										</c:choose>
 									</c:forEach>
 									<c:if test="${paging.endPage != paging.lastPage}">
 										<a
-											href="user?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+											href="/mng/user/list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
 									</c:if>
 								</div>
 

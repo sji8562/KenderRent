@@ -70,48 +70,49 @@
 
                                             <c:forEach var="rentList" items="${rentList}">
                                                 <tr>
-                                                    <th scope="row">${rentList.id}</th>
-                                                    <td>${rentList.username}</td>
-                                                    <td>${rentList.productId }</td>
-                                                    <td>${rentList.productName}</td>
-                                                    <td>${rentList.startDay}</td>
-                                                    <td>${rentList.endDay}</td>
-                                                    <td>${rentList.createdAt}</td>
+                                                    <th class="rentalDetail" scope="row"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.id}</a></th>
+                                                    <td class="rentalDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.username}</a></td>
+                                                    <td class="rentalDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.productId}</a></td>
+                                                    <td class="rentalDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.productName}</a></td>
+                                                    <td class="rentalDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.startDay}</a></td>
+                                                    <td class="rentalDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.endDay}</a></td>
+                                                    <td class="rentalDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.createdAt}</a></td>
                                                     <c:choose>
-                                                    <c:when test="${rentList.status == 1}">
-                                                        <td>
-                                                            <div>
-                                                                <button class="btn btn-success"
-                                                                        style="border: 1px solid black"
-                                                                        onclick="location.href='/mng/user/${rentList.id}/update'">대여 확인</button>
-                                                                &nbsp;&nbsp;
-                                                                <button class="btn-danger btn"
-                                                                        onclick="location.href='/mng/user/${rentList.id}/delete'">대여 취소</button>
-                                                            </div>
-                                                        </td>
-                                                    </c:when>
-                                                    <c:when test="${rentList.status == 2}">
-                                                        <td>
-                                                            <div>
-                                                                대여중
-                                                            </div>
-                                                        </td>
-                                                    </c:when>
-                                                    <c:when test="${rentList.status == 3}">
-                                                        <td>
-                                                            <div>
-                                                                반납중
-                                                            </div>
-                                                        </td>
-                                                    </c:when>
-                                                    <c:when test="${rentList.status == 4}">
-                                                        <td>
-                                                            <div>
-                                                                세척중
-                                                            </div>
-                                                        </td>
-                                                    </c:when>
+                                                        <c:when test="${rentList.status == 1}">
+                                                            <td>
+                                                                <div>
+                                                                    <button class="btn btn-success"
+                                                                            style="border: 1px solid black"
+                                                                            onclick="location.href='/mng/user/${rentList.id}/update'">신청 확인</button>
+                                                                    &nbsp;&nbsp;
+                                                                    <button class="btn-danger btn"
+                                                                            onclick="location.href='/mng/user/${rentList.id}/delete'">신청 취소</button>
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${rentList.status == 2}">
+                                                            <td>
+                                                                <div>
+                                                                    대여중
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${rentList.status == 3}">
+                                                            <td>
+                                                                <div>
+                                                                    반납중
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${rentList.status == 4}">
+                                                            <td>
+                                                                <div>
+                                                                    세척중
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
                                                     </c:choose>
+
                                                 </tr>
                                             </c:forEach>
                                         </c:when>
@@ -125,7 +126,7 @@
                                 <div style="display: block; text-align: center;">
                                     <c:if test="${paging.startPage != 1 }">
                                         <a
-                                                href="user?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+                                                href="/mng/apply/rental-list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
                                     </c:if>
                                     <c:forEach begin="${paging.startPage }"
                                                end="${paging.endPage }" var="p">
@@ -134,13 +135,13 @@
                                                 <b>${p }</b>
                                             </c:when>
                                             <c:when test="${p != paging.nowPage }">
-                                                <a href="user?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+                                                <a href="/mng/apply/rental-list?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
                                             </c:when>
                                         </c:choose>
                                     </c:forEach>
                                     <c:if test="${paging.endPage != paging.lastPage}">
                                         <a
-                                                href="user?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+                                                href="/mng/apply/rental-list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
                                     </c:if>
                                 </div>
 

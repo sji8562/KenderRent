@@ -2,9 +2,9 @@
          pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <link rel="stylesheet" href="/css/style.css">
-
 <div class="page-wrapper">
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
@@ -38,53 +38,44 @@
                         <div class="form-group">
                             <label for="example-email">카테고리</label>
                             <div style="display: flex;">
-									<span style="margin-right: 10px;">
-
-										<select class="form-select" aria-label="Disabled select example">
-
-                                            <%--<c:forEach var="item" items="category">--%>
-                                                <option value="1">${product.firstCategoryName}</option>
-                                            <%--</c:forEach>--%>
-										</select>
-									</span>
-                                <span>
-										<select class="form-select" aria-label="Disabled select example">
-											<option selected>${product.secondCategoryName}</option>
-										</select>
-									</span>
+                                <span style="margin-right: 10px;">
+                                    <select class="form-select" aria-label="Disabled select example" name="first_category_name">
+                                        <c:forEach var="sCategory" items="${sCategory}">
+                                            <option value="${sCategory.id}" ${sCategory.id == product.secondCategoryId ? 'selected' : ''}>${sCategory.secondCategoryName}</option>
+                                        </c:forEach>
+                                    </select>
+                                </span>
+                                <%--<span>
+                                    <select class="form-select" aria-label="Disabled select example">
+                                        <option selected>${product.secondCategoryName}</option>
+                                    </select>
+                                </span>--%>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>썸네일</label>
                             <div style="width: 500px;">
-                                <%--									<c:choose>--%>
-                                <%--										<c:when test="${product.picUrl != null}">--%>
-                                <%--											<img src="${product.picUrl}" alt="No Image">--%>
-                                <%--										</c:when>--%>
-                                <%--										<c:otherwise>--%>
-                                <%--											<img src="/assets/images/empty_img.jpg" alt="No Alter Image">--%>
-                                <%--										</c:otherwise>--%>
-                                <%--									</c:choose>--%>
                                 <img src="${product.formatImgUrl()}" />
-
+                                <input type="file" id="imageFile" name="imageFile">
                             </div>
                         </div>
                         <div class="form-group">
                             <label>물품등급</label>
                             <select class="form-select" aria-label="Disabled select example" name="grade">
-                                <option value="최상">최상</option>
-                                <option value="상">상</option>
-                                <option value="중">중</option>
-                                <option value="최하">최하</option>
+                                <option value="1" ${product.grade == 1 ? 'selected' : ''}>최상</option>
+                                <option value="2" ${product.grade == 2 ? 'selected' : ''}>상</option>
+                                <option value="3" ${product.grade == 3 ? 'selected' : ''}>중</option>
+                                <option value="4" ${product.grade == 4 ? 'selected' : ''}">하</option>
+                                <option value="5" ${product.grade == 5 ? 'selected' : ''}">최하</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>대여/판매여부</label>
                             <select class="form-select" aria-label="Disabled select example" id="status" name="status">
-                                <option value="1">재고 있음</option>
-                                <option value="2">대여 중</option>
-                                <option value="3">소독 중</option>
-                                <option value="4">판매 완료</option>
+                                <option value="1" ${product.status == 1 ? 'selected' : ''}>재고 있음</option>
+                                <option value="2" ${product.status == 1 ? 'selected' : ''}>대여 중</option>
+                                <option value="3" ${product.status == 1 ? 'selected' : ''}>소독 중</option>
+                                <option value="4" ${product.status == 1 ? 'selected' : ''}>판매 완료</option>
                             </select>
                         </div>
                         <div class="form-group">

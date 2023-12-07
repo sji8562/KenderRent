@@ -11,28 +11,11 @@ public class ProductUtil {
                 str = "대여 중";
                 break;
             case 3:
-                str = "소독 중";
+                str = "반납 중";
             case 4:
-                str = "판매 완료";
+                str = "소독 중";
         }
 
         return str;
-    }
-
-    public static String gradeToString(int grade) {
-        String condition = null;
-        if (grade == 1) {
-            condition = "최상";
-        } else if (grade == 2) {
-            condition = "상";
-        } else if (grade == 3) {
-            condition = "중";
-        } else if (grade == 4) {
-            condition = "하";
-        } else {
-            condition = "최하";
-        }
-
-        return condition;
     }
 }

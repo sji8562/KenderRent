@@ -24,14 +24,17 @@ public class CustomerService {
 		return customerRepository.selectCustomerById(code, start, id);
 	}
 	@Transactional
-	public int insertInquiry(int userId, int productId, int code, String title, String content) {
-		return customerRepository.insertInquiry(userId, productId, code, title, content);
+	public int insertInquiry(int userId, int productId, int code, String title, String content, int secret) {
+		return customerRepository.insertInquiry(userId, productId, code, title, content, secret);
 	}
 	public Map selectInquiryDetail(int id) {
 		return customerRepository.selectInquiryDetail(id);
 	}
 	public int countCustomer(int code) {
 		return customerRepository.countCustomer(code);
+	}
+	public Map selectReply(int board_id) {
+		return customerRepository.selectReply(board_id);
 	}
 	
 }
