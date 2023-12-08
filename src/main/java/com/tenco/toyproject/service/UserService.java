@@ -1,3 +1,4 @@
+
 package com.tenco.toyproject.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class UserService {
 	// 보통은 생성자 의존성 주입을 씀
 	@Autowired
 	private UserRepository userRepository;
-
+	
 
 
 	@Transactional
@@ -72,3 +73,4 @@ public class UserService {
 	}
 
 }
+
