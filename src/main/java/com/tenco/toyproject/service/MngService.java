@@ -3,6 +3,7 @@ package com.tenco.toyproject.service;
 import java.util.List;
 
 import com.tenco.toyproject.dto.MngProductDto;
+import com.tenco.toyproject.dto.MngProductUpdateDto;
 import com.tenco.toyproject.repository.entity.FirstCategory;
 import com.tenco.toyproject.repository.entity.SecondCategory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,12 +102,15 @@ public class MngService {
 	@Transactional
 	public int createProduct(MngProductDto dto) {
 
+		int firstCategoryId = mngRepository.findFirstCategoryByfId(dto.getSecondCategoryId());
+		dto.setFirstCategoryId(firstCategoryId);
+
 		Product product = Product.builder()
 				.name(dto.getName())
 				.price(dto.getPrice())
 				.picUrl(dto.getPicUrl())
 				.firstCategoryId(dto.getFirstCategoryId())
-//				.secondCategoryId(dto.getSecondCategoryId())
+				.secondCategoryId(dto.getSecondCategoryId())
 				.content(dto.getContent())
 				.status(dto.getStatus())
 				.grade(dto.getGrade())
@@ -117,6 +121,39 @@ public class MngService {
 
 		if(resultRowCount != 1) {
 			throw new Exception500("상품 등록 실패");
+		}
+
+		return resultRowCount;
+	}
+
+	@Transactional
+	public int updateProduct(MngProductUpdateDto dto) {
+
+		System.out.println("GET FILE" + dto.getFile());
+		System.out.println("GET PIC URL" + dto.getPicUrl());
+
+		int firstCategoryId = mngRepository.findFirstCategoryByfId(dto.getSecondCategoryId());
+		dto.setFirstCategoryId(firstCategoryId);
+
+		Product product = Product
+				.builder()
+				.id(dto.getId())
+				.name(dto.getName())
+				.price(dto.getPrice())
+				.picUrl(dto.getPicUrl())
+				.firstCategoryId(dto.getFirstCategoryId())
+				.secondCategoryId(dto.getSecondCategoryId())
+				.content(dto.getContent())
+				.status(dto.getStatus())
+				.grade(dto.getGrade())
+				.build();
+
+		int resultRowCount = mngRepository.updateProduct(product);
+
+		System.out.println(resultRowCount);
+
+		if(resultRowCount != 1) {
+			throw new Exception500("상품 수정 실패");
 		}
 
 		return resultRowCount;

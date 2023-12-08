@@ -3,23 +3,16 @@ package com.tenco.toyproject.repository.interfaces;
 import java.util.List;
 
 
-import com.tenco.toyproject.dto.MngProductDto;
-
 import com.tenco.toyproject.dto.MngRentDTO;
 
 import com.tenco.toyproject.repository.entity.FirstCategory;
 
-import com.tenco.toyproject.repository.entity.Rent;
-
 import com.tenco.toyproject.repository.entity.SecondCategory;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.data.domain.Page;
 
 
 import com.tenco.toyproject.repository.entity.Product;
-
-import com.tenco.toyproject.dto.MngUserDTO;
 
 import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.vo.PageVO;
@@ -74,6 +67,11 @@ public interface MngRepository {
 	// 2차 카테고리 조회
 	public List<SecondCategory> findSecondCategoryForRent();
 
+	// 2차 카테고리 id로 1차 카테고리 조회
+//	public int findFirstCategoryByfId(int sId);
+	public Integer findFirstCategoryByfId(Integer sId);
+
+    public Integer updateProduct(Product dto);
 }
 
 
