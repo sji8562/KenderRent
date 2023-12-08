@@ -72,6 +72,9 @@ public interface MngRepository {
 	public Integer findFirstCategoryByfId(Integer sId);
 
     public Integer updateProduct(Product dto);
+	int findRentAllCount();
+
+	Rent findByRentId(Integer id);
 }
 
 
