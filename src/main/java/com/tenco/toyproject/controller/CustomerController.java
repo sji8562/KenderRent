@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.tenco.toyproject.handler.exception.CustomRestfullException;
+import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import com.tenco.toyproject.service.CustomerService;
 import com.tenco.toyproject.vo.PageVO;
 

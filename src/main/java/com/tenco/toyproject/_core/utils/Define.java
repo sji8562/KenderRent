@@ -1,4 +1,4 @@
-package com.tenco.toyproject.utils;
+package com.tenco.toyproject._core.utils;
 
 public class Define {
     // 파일 크기 제한
