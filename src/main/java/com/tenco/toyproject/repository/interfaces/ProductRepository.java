@@ -15,4 +15,6 @@ public interface ProductRepository {
 	public void addToCartById(@Param("userId") int userId, @Param("productId") int productId);
 	public int countProductCustomer(int productId);
 	public int deleteCartItem(@Param("userId") int userId, @Param("productId") int productId);
+	public int isItemInCart(@Param("userId") int userId, @Param("productId") int productId);
+	public int countItemInCart(@Param("userId") int userId);
 }
