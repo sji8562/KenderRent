@@ -6,6 +6,7 @@ public class ImageUtil {
 
         if (image != null) {
             imageUrl = Define.UPLOAD_DIRECTORY + "/" + image;
+//            imageUrl = image;
         }
 
         return imageUrl;

@@ -187,7 +187,7 @@ public class MngService {
 		return mngRepository.findRentAllCount();
 	}
 
-	public Rent findByRentId(Integer id) {
-		return mngRepository.findByRentId(id);
-	}
+//	public Rent findByRentId(Integer id) {
+//		return mngRepository.findByRentId(id);
+//	}
 }

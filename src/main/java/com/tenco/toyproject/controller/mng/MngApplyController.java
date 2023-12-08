@@ -60,7 +60,7 @@ public class MngApplyController {
     @GetMapping("{id}/rental-detail")
     public String rentalDetail(@PathVariable Integer id){
         System.out.println("여긴 오는감");
-        mngService.findByRentId(id);
+//        mngService.findByRentId(id);
         return "mng/apply/rental/rentalDetail";
     }
 

@@ -144,7 +144,9 @@ public class MngProductController {
 
         try {
             // 업로드 파일 경로
-            String saveDirectory = Define.UPLOAD_DIRECTORY;
+//            String saveDirectory = Define.UPLOAD_DIRECTORY;
+
+            String saveDirectory = "/";
 
             // 폴더가 없다면
             File dir = new File(saveDirectory);
@@ -159,7 +161,8 @@ public class MngProductController {
 
             if(file.getOriginalFilename() != null || file.getOriginalFilename().isEmpty() != true) {
                 fileName = uuid + "_" + file.getOriginalFilename();
-                String uploadPath = Define.UPLOAD_DIRECTORY + File.separator + fileName;
+//                String uploadPath = Define.UPLOAD_DIRECTORY + File.separator + fileName;
+                String uploadPath = "/" + File.separator + fileName;
                 File destination = new File(uploadPath);
 
                 file.transferTo(destination); // 실제 생성
@@ -215,7 +218,8 @@ public class MngProductController {
         if(file!= null && !file.isEmpty()){
             try {
                 // 업로드 파일 경로
-                String saveDirectory = Define.UPLOAD_DIRECTORY;
+//                String saveDirectory = Define.UPLOAD_DIRECTORY;
+                String saveDirectory = "/";
 
                 // 폴더가 없다면
                 File dir = new File(saveDirectory);
@@ -230,8 +234,10 @@ public class MngProductController {
 
                 if(file.getOriginalFilename() != null || !file.getOriginalFilename().isEmpty()){
                     fileName = uuid + "_" + file.getOriginalFilename();
-                    String uploadPath = Define.UPLOAD_DIRECTORY + File.separator + fileName;
+//                    String uploadPath = Define.UPLOAD_DIRECTORY + File.separator + fileName;
+                    String uploadPath = "/" + File.separator + fileName;
                     File destination = new File(uploadPath);
+
 
                     file.transferTo(destination); // 실제 생성
                 }else {

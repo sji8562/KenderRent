@@ -74,7 +74,7 @@ public interface MngRepository {
     public Integer updateProduct(Product dto);
 	int findRentAllCount();
 
-	Rent findByRentId(Integer id);
+//	Rent findByRentId(Integer id);
 }
 
 
