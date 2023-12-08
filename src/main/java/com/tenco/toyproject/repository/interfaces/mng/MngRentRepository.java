@@ -14,4 +14,7 @@ public interface MngRentRepository {
     public int findRentAllCount();
 
     public Rent findByRentId(Integer id);
+    public int updateByStatus (Integer id);
+
+    public int deleteByStatus(Integer id);
 }
