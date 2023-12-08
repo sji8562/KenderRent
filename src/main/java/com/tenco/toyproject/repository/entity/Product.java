@@ -40,4 +40,11 @@ public class Product {
 	}
 
 	public String formatStatusToString() { return ProductUtil.statusToString(status);}
+	
+	// 대여, 판매 구분
+	public String formatItemForSale() {
+		if (firstCategoryId < 10) {
+			return "대여";
+		} else return "판매";
+	}
 }
