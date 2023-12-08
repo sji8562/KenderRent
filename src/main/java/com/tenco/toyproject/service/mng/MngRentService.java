@@ -7,6 +7,7 @@ import com.tenco.toyproject.repository.entity.Rent;
 import com.tenco.toyproject.repository.interfaces.mng.MngRentRepository;
 import com.tenco.toyproject.vo.PageVO;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,13 @@ public class MngRentService {
     public Rent findByRentId(Integer id) {
         return mngRepository.findByRentId(id);
 
+    }
+    @Transactional
+    public int updateStatus(Integer id){
+        return mngRepository.updateByStatus(id);
+    }
+
+    public int deleteStatus(Integer id) {
+        return mngRepository.deleteByStatus(id);
     }
 }

@@ -15,5 +15,10 @@
     <select id="findRentWithUserAll">
         select r.id, u.username, p.id as productId,p.name as productName, r.status, r.start_day, r.end_day,r.created_at from rent r left outer join user u on r.user_id = u.id left outer join product p on r.product_id = p.id LIMIT #{start}, 5
     </select>
-
+    <update id="updateByStatus">
+        update rent set status = 2 where id = #{id}
+    </update>
+    <delete id="deleteByStatus">
+        delete from rent where id =${id}
+    </delete>
 </mapper>
