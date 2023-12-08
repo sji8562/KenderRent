@@ -1,7 +1,7 @@
 package com.tenco.toyproject.dto;
 
 
-import jakarta.mail.Multipart;
+
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 

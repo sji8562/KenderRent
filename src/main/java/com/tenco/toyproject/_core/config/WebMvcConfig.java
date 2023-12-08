@@ -1,6 +1,7 @@
 package com.tenco.toyproject._core.config;
 
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,10 +33,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
 //	}
 	
 
-	// @Bean // Ioc 관리 대상 처리 - 싱글톤 
-//	 public PasswordEncoder passwordEnCoder() {
-//		 return new BCryptPasswordEncoder();
-//	 }
+	 @Bean // Ioc 관리 대상 처리 - 싱글톤 
+	 public PasswordEncoder passwordEnCoder() {
+		 return new BCryptPasswordEncoder();
+	 }
 	
 	
 }

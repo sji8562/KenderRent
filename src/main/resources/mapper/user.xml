@@ -1,29 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!--반드시 세미콜론 생략-->
-<mapper namespace="com.tenco.mybankapp.repository.interfaces.UserRepository">
-		
-		 <!-- <insert id ="insert">
-			insert into user_tb(username,password,fullname,created_at)values(#{username},#{password},#{fullname},now() )
-		</insert>
-		<update id = 'updateById'>
-			update user_tb set username =#{username},password=#{password},fullname =#{fullname},where id =#{id}
-		</update>
-		<delete id="deleteById">
-			delete from user_tb where id = #{id} 
-		</delete>
-		
-		<select id="findById" resultType = "com.tenco.mybankapp.repository.entity.User">
-			select * from user_tb where id = #{id}
-		</select>
-		<select id="findByUsernameAndPassword" resultType = "com.tenco.mybankapp.repository.entity.User">
-			select * from user_tb where username = #{username} and password = #{password}
-		</select>
-		
-		<select id="findAll" resultType = "com.tenco.mybankapp.repository.entity.User">
-			select * from user_tb
-			</select>
-			 -->
+
+<mapper
+	namespace="com.tenco.toyproject.repository.interfaces.UserRepository">
+
+	<!--  -->
+	<insert id="insert">
+		insert into user
+		(email, password, username,
+		post_number, address, address_detail, phone_number, level, created_at)
+		values
+		(#{email}, #{password}, #{username}, #{postNumber}, #{address},
+		#{addressDetail}, 1, now())
+	</insert>
+
+	<!--  -->
+	<update id="updateById">
+		update user set email = #{email},
+		password =
+		#{password},
+		username = #{username}
+		where id = #{id}
+	</update>
+
+	<!--  -->
+	<delete id="deleteById">
+		delete from user_tb where id = #{id}
+	</delete>
+
+	<!-- 로그인 입력 정보로 정보 확인 -->
+	<select id="findByEmailAndPassword"
+		resultType="com.tenco.toyproject.repository.entity.User">
+		select *
+		from user
+		where email = #{email}
+		and
+		password = #{password}
+	</select>
+
+	<!-- 사용자 단일 조회 -->
+	<select id="findById"
+		resultType="com.tenco.toyproject.repository.entity.User">
+		select *
+		from user
+		where id = #{id}
+	</select>
+
+	<!-- 사용자 전체 조회 -->
+	<select id="findAll"
+		resultType="com.tenco.toyproject.repository.entity.User">
+		select *
+		from user
+	</select>
+
+	<!-- Email으로 사용자 조회 -->
+	<select id="findByEmail"
+		resultType="com.tenco.toyproject.repository.entity.User">
+		select *
+		from user
+		where email = #{email}
+	</select>
 
 </mapper>

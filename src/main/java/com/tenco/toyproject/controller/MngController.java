@@ -15,10 +15,8 @@ public class MngController {
 //    @Autowired
 //    private MngService mngService;
 
-    @GetMapping("/login")
-    public String mngLogin() {
-        return "mng/login";
-    }
+
+    
 
     @GetMapping("/test")
     public String test() {
