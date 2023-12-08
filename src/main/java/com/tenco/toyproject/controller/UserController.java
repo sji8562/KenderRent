@@ -20,7 +20,7 @@ import com.tenco.toyproject.dto.UserSignInFormDto;
 import com.tenco.toyproject.dto.UserSignUpFormDto;
 import com.tenco.toyproject.dto.response.KakaoProfile;
 import com.tenco.toyproject.dto.response.OAuthToken;
-import com.tenco.toyproject.handler.exception.CustomRestfulException;
+import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
 import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.UserService;
 
@@ -35,7 +35,8 @@ public class UserController {
 
 	@Autowired
 	private HttpSession session;
-
+	
+	//	아직 선언 안됌
 	@Value("${tenco.key}")
 	private String tencoKey;
 
@@ -55,9 +56,9 @@ public class UserController {
 
 	/**
 	 * 회원가입처리
-	 * 
+	 *
 	 * @param dto
-	 * 
+	 *
 	 * @return 리다이렉트 로그인 페이지
 	 */
 
@@ -83,17 +84,15 @@ public class UserController {
 
 	@PostMapping("/sign-in")
 	public String signInProc(UserSignInFormDto dto) throws CustomRestfulException {
-
 		if (dto.getEmail() == null || dto.getEmail().isEmpty()) {
 			throw new CustomRestfulException("이메일을 입력해주세요.", HttpStatus.BAD_REQUEST);
 		}
 		if (dto.getPassword() == null || dto.getPassword().isEmpty()) {
 			throw new CustomRestfulException("비밀번호를 입력해주세요.", HttpStatus.BAD_REQUEST);
 		}
-
 		User principal = userService.userSignIn(dto);
-
-		return "redirect:/account/list";
+		session.setAttribute("principal", principal);
+		return "redirect:/";
 	}
 
 	@GetMapping("/logout")

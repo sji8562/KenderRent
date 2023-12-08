@@ -42,8 +42,25 @@
 }
 
 #applyManagement.show .collapse li.sidebar-item {
-/*     padding: 8px 12px; /* 기본 크기로 유지 */ */
-/*     font-size: 14px; /* 기본 폰트 크기로 유지 */ */
+/*     padding: 8px 12px; /* 기본 크기로 유지 */
+/*     font-size: 14px; /* 기본 폰트 크기로 유지 */
+}
+/* Style for the links with class "rentalDetail" */
+.rentalDetail a {
+	color: black;
+	text-decoration: none; /* Remove underline */
+}
+
+/* Style for visited links with class "rentalDetail" */
+.rentalDetail a:visited {
+	color: black;
+}
+
+/* Style for links with class "rentalDetail" on hover */
+.rentalDetail a:hover {
+	color: gray;
+	/* Change the color on hover if needed */
+	/* You can add additional styles for hover if needed */
 }
 </style>
 

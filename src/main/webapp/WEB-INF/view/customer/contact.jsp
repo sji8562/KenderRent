@@ -51,34 +51,58 @@
 			<div class="row align-items-center">
 				<div class="col text-center">
 					<table class="table">
-						<thead>
-							<tr>
-								<th>번호</th>
-								<th>제목</th>
-								<th>작성자</th>
-								<th>작성일</th>
-							</tr>
-						</thead>
-						<tbody>
+						
 						<c:choose>
 							<c:when test="${param.type == 1 or param.type == 2}">
+								<thead>
+								<tr>
+									<th>번호</th>
+									<th>제목</th>
+									<th>작성자</th>
+									<th>작성일</th>
+								</tr>
+							</thead>
+							<tbody>
 								<c:forEach items="${customerList }" var="customerList">
 								<tr>
 									<td>${customerList.id }</td>
-									<td>${customerList.title }</td>
+									<td><a href="/customer/detail?id=${customerList.id }">${customerList.title }</a></td>
 									<td>관리자</td>
 									<td><fmt:formatDate value="${customerList.create_at }" pattern="yyyy-MM-dd" /></td>
+									
 								</tr>	
 															
 							</c:forEach>
 							</c:when>
 							<c:otherwise>
+								<thead>
+								<tr>
+									<th>번호</th>
+									<th>제목</th>
+									<th>작성자</th>
+									<th>작성일</th>
+									<th>답변상태</th>
+								</tr>
+							</thead>
+							<tbody>
 								<c:forEach items="${customerList }" var="customerList">
 								<tr>
 									<td>${customerList.id }</td>
-									<td>${customerList.title }</td>
+										<c:if test="${customerList.secret eq 0 }">
+											<td><a href="/customer/detail?id=${customerList.id }">${customerList.title }</a></td>
+										</c:if>
+										<c:if test="${customerList.secret eq 1 }">
+											<td><a href="/customer/detail?id=${customerList.id }">🔒${customerList.title }</a></td>
+										</c:if>
 									<td>${customerList.username }</td>
 									<td><fmt:formatDate value="${customerList.create_at }" pattern="yyyy. MM. dd" /></td>
+									<c:if test="${customerList.status != null}">
+										<td>답변완료</td>
+									</c:if>
+									<c:if test="${customerList.status eq null}">
+										<td>답변미완료</td>
+									</c:if>
+									
 								</tr>	
 															
 							</c:forEach>
@@ -97,6 +121,25 @@
 				</div>
 				
 			</div>
+		</div>	
+		
+		<div style="display: block; text-align: center;">		
+			<c:if test="${paging.startPage != 1 }">
+				<a href="/customer/contact?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+			</c:if>
+			<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+				<c:choose>
+					<c:when test="${p == paging.nowPage }">
+						<b>${p }</b>
+					</c:when>
+					<c:when test="${p != paging.nowPage }">
+						<a href="/customer/contact?type=${param.type }&nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+					</c:when>
+				</c:choose>
+			</c:forEach>
+			<c:if test="${paging.endPage != paging.lastPage}">
+				<a href="/customer/contact?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+			</c:if>
 		</div>
 	<jsp:include page="../layout/footer.jsp" />
 

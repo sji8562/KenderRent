@@ -1,4 +1,4 @@
-package com.tenco.toyproject.handler.exception;
+package com.tenco.toyproject._core.handler.exception;
 
 import org.springframework.http.HttpStatus;
 

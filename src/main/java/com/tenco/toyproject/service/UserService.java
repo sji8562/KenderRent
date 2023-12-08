@@ -6,9 +6,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import com.tenco.toyproject.dto.UserSignInFormDto;
 import com.tenco.toyproject.dto.UserSignUpFormDto;
-import com.tenco.toyproject.handler.exception.CustomRestfulException;
 import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.repository.interfaces.UserRepository;
 
@@ -24,7 +24,7 @@ public class UserService {
 	private PasswordEncoder passwordEncoder;
 
 	@Transactional
-	public int userSignUp(UserSignUpFormDto dto) throws CustomRestfulException {
+	public int userSignUp(UserSignUpFormDto dto)  {
 
 		String rawPwd = dto.getPassword();
 		String hashPwd = passwordEncoder.encode(rawPwd);
@@ -33,32 +33,32 @@ public class UserService {
 
 		// User
 		// SignUpFormDto
-		User user = User.builder().email(dto.getEmail()).password(hashPwd).username(dto.getUsername())
+		User user = User.builder().email(dto.getEmail()).password(hashPwd).userName(dto.getUsername())
 				.phoneNumber(dto.getPhoneNumber()).build(); // build() 반드시 호출
 
 		int resultRowCount = userRepository.insert(user);
 		if (resultRowCount != 1) {
-			throw new CustomRestfulException("회원 가입 실패", HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new CustomRestfullException("회원 가입 실패", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 		return resultRowCount;
 
 	}
 
-	public User userSignIn(UserSignInFormDto dto) throws CustomRestfulException {
+	public User userSignIn(UserSignInFormDto dto)  {
 
 		// 1. 유저 이메일 존재 여부 확인
 		User userEntity = userRepository.findByEmail(dto.getEmail());
 		if (userEntity == null) {
-			throw new CustomRestfulException("존재하지 않는 계정입니다.", HttpStatus.BAD_REQUEST);
+			throw new CustomRestfullException("존재하지 않는 계정입니다.", HttpStatus.BAD_REQUEST);
 		}
 		// 2. 객체 상태값의 비밀번호와 암호화된 비밀번호의 일치 여부 확인
 
-		boolean isPwdMatched = passwordEncoder.matches(dto.getPassword(), userEntity.getPassword());
+//		boolean isPwdMatched = passwordEncoder.matches(dto.getPassword(), userEntity.getPassword());
 
-		if (isPwdMatched == false) {
-			throw new CustomRestfulException("비밀번호가 잘못되었습니다.", HttpStatus.BAD_REQUEST);
-		}
+//		if (isPwdMatched == false) {
+//			throw new CustomRestfullException("비밀번호가 잘못되었습니다.", HttpStatus.BAD_REQUEST);
+//		}
 
 		// User userEntity = userRepository
 		// .findByUsernameAndPassword(dto);

@@ -1,49 +1,92 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact Us</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Colo Shop Template">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/css/styles/bootstrap4/bootstrap.min.css">
+<link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css">
+<link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
+<link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
+</head>
+<body>
+	<div class="super_container">
 
-<%@ include file="/WEB-INF/view/layout/header.jsp"%>
+	<!-- Header -->
 
-<div class="col-sm-8">
-	<h2>로그인</h2>
-	<h5>현명한 육아 준비는 Kindlend와 함께</h5>
-	<div>
-		<form action="/user/sign-in" method="post">
-			<div class="form-group">
-				<label for="email">이메일</label> <input type="text"
-					class="form-control" placeholder="전체 주소를 입력해주세요" id="email"
-					name="email" value="test@test.com">
+	<jsp:include page="../layout/header.jsp" />
+
+	<div class="fs_menu_overlay"></div>
+
+	
+
+	<div class="container contact_container">
+		<div class="row">
+			<div class="col">
+
+				<!-- Breadcrumbs -->
+
+				<div class="breadcrumbs d-flex flex-row align-items-center">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>
+					</ul>
+				</div>
+
 			</div>
-			<div class="form-group">
-				<label for="pwd">비밀번호</label> <input type="password"
-					class="form-control" placeholder="비밀번호를 입력하세요." id="pwd"
-					name="password" value="123456">
-			</div>
-			<button type="submit" class="btn btn-primary">로그인</button>
-			<!-- 로그인 부가기능 및 회원가입 페이지 링크 연결 -->
-			<div class="">
-				<div class="">
-					<div class="">
-						<a href="/findEmail?url=" onclick="" id="">이메일 찾기</a>
-					</div>
-					<div class="">
-						<a href="/findPassword?url=" onclick="" id="">비밀번호 찾기</a>
-					</div>
-					<div class="">
-						<a href="/signUp?url=" onclick="" id="">회원 가입</a>
-					</div>
+		</div>
+		<!-- Contact Us -->
+
+		<div class="row">
+		<div class="col-lg-4 "></div>
+			<div class="col-lg-4 get_in_touch_col">
+				<div class="get_in_touch_contents">
+						<h1>로그인</h1>
+					<br><br>
+					<form action="/user/sign-in" method="post">
+						<div>
+							<input id="email" class="form_input input_website input_ph" type="email" name="email" placeholder="email" required="required" data-error="email is required.">
+							<input id="password" class="form_input input_website input_ph" type="password" name="password" placeholder="password" required="required" data-error="password is required.">
+						</div>
+						<div>
+							<button type="submit" class="red_button message_submit_btn trans_300" value="Submit">로그인</button>
+						</div>
+					</form>
+					<br>
+					<a href="">아이디 찾기 | </a><a href="">비밀번호 찾기 | </a><a href="">회원가입</a>
 				</div>
 			</div>
-
-			<!-- 소셜 로그인 -->
-			<a
-				href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=9c1f13e7e8b25dc2a7a6985ffce3cabb&redirect_uri=http://localhost:80/user/kakao-callback">
-				<img alt="" src="/images/kakao_login_small.png" width="75"
-				height="40">
-			</a>
-		</form>
-
+			<div class="col-lg-4 "></div>
+		</div>
 	</div>
+
+	<!-- Newsletter -->
+
+	
+	<!-- Footer -->
+
+	<jsp:include page="../layout/footer.jsp" />
 
 </div>
 
-<%@ include file="/WEB-INF/view/layout/footer.jsp"%>
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/css/styles/bootstrap4/popper.js"></script>
+<script src="/css/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="/plugins/easing/easing.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+<script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="/js/contact_custom.js"></script>
+</body>
+</html>

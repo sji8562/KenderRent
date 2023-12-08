@@ -17,7 +17,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item active" aria-current="page">
-                                    	<a href="/mng/product/productForm" style="text-decoration: none"><button>상품 등록</button></a>
+                                    	<a href="/mng/product/register" style="text-decoration: none"><button>상품 등록</button></a>
                                     </li>
                                 </ol>
                             </nav>
@@ -25,6 +25,7 @@
                     </div>
                 </div>
             </div>
+
 
 	<div class="table-responsive">
 		<c:choose>
@@ -48,11 +49,11 @@
 							<tr>
 								<td scope="row">${product.id}</td>
 								<td>${product.firstCategoryName} > ${product.secondCategoryName}</td>
-								<td>${product.name}</td>
+								<td><a href="/mng/product/detail/${product.id}" style="text-decoration: none; color: black;">${product.name}</a></td>
 								<td>${product.grade}</td>
-								<td>${product.status}</td>
-								<td><a href="/mng/product/detail/${product.id}">상세</a>
-									<a href="/mng/product/${product.id}/delete">삭제</a>
+								<td>${product.formatStatusToString()}</td>
+									<td><a href="/mng/product/modify/${product.id}">수정</a>
+									<a onclick="confirmOpen('del', ${product.id})">삭제</a>
 								</td>
 							</tr>
 						</c:forEach>
@@ -61,7 +62,43 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-	
+	<%-- 페이징 --%>
+	<div style="display: block; text-align: center;">
+		<c:if test="${paging.startPage != 1 }">
+			<a
+					href="user?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+		</c:if>
+		<c:forEach begin="${paging.startPage }"
+				   end="${paging.endPage }" var="p">
+			<c:choose>
+				<c:when test="${p == paging.nowPage }">
+					<b>${p }</b>
+				</c:when>
+				<c:when test="${p != paging.nowPage }">
+					<a href="user?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${paging.endPage != paging.lastPage}">
+			<a
+					href="user?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+		</c:if>
+	</div>
+
+	<script>
+		function confirmOpen(type, id) {
+			console.log(type);
+			console.log(id);
+
+			if(type == 'del') {
+				if(confirm('삭제하시겠습니까?')) {
+					fetch('/mng/product/' + id + '/delete')
+							.then((response) => console.log("response", response)) //성공했을때
+							.catch((error) => console.log("error:", error)) //실패했을때
+				}
+			}
+		}
+	</script>
 </body>
 </html>
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>
