@@ -7,7 +7,7 @@ import com.tenco.toyproject.repository.entity.FirstCategory;
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.entity.SecondCategory;
 import com.tenco.toyproject.service.MngService;
-import com.tenco.toyproject.utils.Define;
+import com.tenco.toyproject._core.utils.Define;
 import com.tenco.toyproject.vo.PageVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

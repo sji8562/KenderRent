@@ -1,6 +1,6 @@
-package com.tenco.toyproject.handler;
+package com.tenco.toyproject._core.handler;
 
-import com.tenco.toyproject.handler.exception.CustomRestfullException;
+import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 

@@ -43,3 +43,6 @@ mybatis:
 logging:
  level:
   org.mybatis: DEBUG
+
+tenco:
+  key: 1234567890!
