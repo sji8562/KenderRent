@@ -3,9 +3,9 @@ package com.tenco.toyproject.repository.entity;
 
 import java.security.Timestamp;
 
-import com.tenco.toyproject.utils.DecimalUtil;
-import com.tenco.toyproject.utils.ImageUtil;
-import com.tenco.toyproject.utils.ProductUtil;
+import com.tenco.toyproject._core.utils.DecimalUtil;
+import com.tenco.toyproject._core.utils.ImageUtil;
+import com.tenco.toyproject._core.utils.ProductUtil;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -41,4 +41,11 @@ public class Product {
 	}
 
 	public String formatStatusToString() { return ProductUtil.statusToString(status);}
+	
+	// 대여, 판매 구분
+	public String formatItemForSale() {
+		if (firstCategoryId < 10) {
+			return "대여";
+		} else return "판매";
+	}
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--반드시 세미콜론 생략 -->
+<mapper
+        namespace="com.tenco.toyproject.repository.interfaces.mng.MngRentRepository">
+    
+    <select id="findByRentId">
+        select * from rent where id = #{id}
+    </select>
+    <select id="findRentAllCount">
+        select count(*) from rent
+    </select>
+    <select id="findRentWithUserAll">
+        select r.id, u.username, p.id as productId,p.name as productName, r.status, r.start_day, r.end_day,r.created_at from rent r left outer join user u on r.user_id = u.id left outer join product p on r.product_id = p.id LIMIT #{start}, 5
+    </select>
+
+</mapper>

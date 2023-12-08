@@ -7,8 +7,8 @@ import com.tenco.toyproject.dto.MngProductUpdateDto;
 import com.tenco.toyproject.repository.entity.FirstCategory;
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.entity.SecondCategory;
-import com.tenco.toyproject.service.MngService;
-import com.tenco.toyproject.utils.Define;
+import com.tenco.toyproject._core.utils.Define;
+import com.tenco.toyproject.service.mng.MngProductService;
 import com.tenco.toyproject.vo.PageVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ import java.util.UUID;
 public class MngProductController {
 
     @Autowired
-    private MngService mngService;
+    private MngProductService mngService;
     @GetMapping("list")
     public String productList(Model model, PageVO pageVO, @RequestParam(value = "nowPage", required = false) String nowPage
             , @RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
@@ -144,9 +144,9 @@ public class MngProductController {
 
         try {
             // 업로드 파일 경로
-//            String saveDirectory = Define.UPLOAD_DIRECTORY;
+            String saveDirectory = Define.UPLOAD_DIRECTORY;
 
-            String saveDirectory = "/";
+//            String saveDirectory = "/";
 
             // 폴더가 없다면
             File dir = new File(saveDirectory);
@@ -161,8 +161,8 @@ public class MngProductController {
 
             if(file.getOriginalFilename() != null || file.getOriginalFilename().isEmpty() != true) {
                 fileName = uuid + "_" + file.getOriginalFilename();
-//                String uploadPath = Define.UPLOAD_DIRECTORY + File.separator + fileName;
-                String uploadPath = "/" + File.separator + fileName;
+                String uploadPath = Define.UPLOAD_DIRECTORY + File.separator + fileName;
+//                String uploadPath = "/" + File.separator + fileName;
                 File destination = new File(uploadPath);
 
                 file.transferTo(destination); // 실제 생성
@@ -218,8 +218,8 @@ public class MngProductController {
         if(file!= null && !file.isEmpty()){
             try {
                 // 업로드 파일 경로
-//                String saveDirectory = Define.UPLOAD_DIRECTORY;
-                String saveDirectory = "/";
+                String saveDirectory = Define.UPLOAD_DIRECTORY;
+//                String saveDirectory = "/";
 
                 // 폴더가 없다면
                 File dir = new File(saveDirectory);
@@ -234,8 +234,8 @@ public class MngProductController {
 
                 if(file.getOriginalFilename() != null || !file.getOriginalFilename().isEmpty()){
                     fileName = uuid + "_" + file.getOriginalFilename();
-//                    String uploadPath = Define.UPLOAD_DIRECTORY + File.separator + fileName;
-                    String uploadPath = "/" + File.separator + fileName;
+                    String uploadPath = Define.UPLOAD_DIRECTORY + File.separator + fileName;
+//                    String uploadPath = "/" + File.separator + fileName;
                     File destination = new File(uploadPath);
 
 

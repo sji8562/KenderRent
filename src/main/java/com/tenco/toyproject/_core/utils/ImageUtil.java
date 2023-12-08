@@ -1,4 +1,4 @@
-package com.tenco.toyproject.utils;
+package com.tenco.toyproject._core.utils;
 
 public class ImageUtil {
     public static String checkImageUrl(String image) {
