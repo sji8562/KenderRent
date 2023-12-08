@@ -54,7 +54,7 @@
     <insert id="createProduct">
         INSERT INTO
             product (first_category_id, second_category_id, price, name, pic_url, content, status, grade)
-        VALUES (#{firstCategoryId}, #{secondCategory}, #{price}, #{name}, #{picUrl}, #{content}, #{status}, #{grade} )
+        VALUES (#{firstCategoryId}, #{secondCategoryId}, #{price}, #{name}, #{picUrl}, #{content}, #{status}, #{grade} )
     </insert>
 
     <!-- 상품 정보 수정 -->
