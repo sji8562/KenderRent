@@ -20,7 +20,7 @@ import com.tenco.toyproject.dto.UserSignInFormDto;
 import com.tenco.toyproject.dto.UserSignUpFormDto;
 import com.tenco.toyproject.dto.response.KakaoProfile;
 import com.tenco.toyproject.dto.response.OAuthToken;
-import com.tenco.toyproject.handler.exception.CustomRestfulException;
+import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
 import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.UserService;
 
@@ -36,6 +36,7 @@ public class UserController {
 	@Autowired
 	private HttpSession session;
 
+	//	아직 선언 안됌
 	@Value("${tenco.key}")
 	private String tencoKey;
 
@@ -55,9 +56,9 @@ public class UserController {
 
 	/**
 	 * 회원가입처리
-	 * 
+	 *
 	 * @param dto
-	 * 
+	 *
 	 * @return 리다이렉트 로그인 페이지
 	 */
 

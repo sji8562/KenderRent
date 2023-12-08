@@ -1,4 +1,4 @@
-package com.tenco.toyproject.utils;
+package com.tenco.toyproject._core.utils;
 
 import java.text.DecimalFormat;
 
