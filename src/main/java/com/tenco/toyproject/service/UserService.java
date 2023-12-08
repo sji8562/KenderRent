@@ -33,7 +33,7 @@ public class UserService {
 
 		// User
 		// SignUpFormDto
-		User user = User.builder().email(dto.getEmail()).password(hashPwd).userName(dto.getUserName())
+		User user = User.builder().email(dto.getEmail()).password(hashPwd).username(dto.getUsername())
 				.phoneNumber(dto.getPhoneNumber()).build(); // build() 반드시 호출
 
 		int resultRowCount = userRepository.insert(user);
@@ -47,7 +47,7 @@ public class UserService {
 
 	public User userSignIn(UserSignInFormDto dto) throws CustomRestfulException {
 
-		// 1. username 아이디 존재 여부 확인
+		// 1. 유저 이메일 존재 여부 확인
 		User userEntity = userRepository.findByEmail(dto.getEmail());
 		if (userEntity == null) {
 			throw new CustomRestfulException("존재하지 않는 계정입니다.", HttpStatus.BAD_REQUEST);

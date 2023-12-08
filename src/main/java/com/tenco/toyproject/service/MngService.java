@@ -51,7 +51,7 @@ public class MngService {
 		User userEntity = mngRepository.findById(id);
 		
 		userEntity.setEmail(updateDTO.getEmail());
-		userEntity.setUserName(updateDTO.getUsername());
+		userEntity.setUsername(updateDTO.getUsername());
 		userEntity.setPassword(updateDTO.getPassword());
 		userEntity.setPhoneNumber(updateDTO.getPhoneNumber());
 

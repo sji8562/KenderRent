@@ -119,7 +119,7 @@ public class MngController {
 		try {
 			User user = mngService.findById(id);
 			model.addAttribute("user",user);
-			System.out.println(user.getUserName()+"님을 불러왔습니다.");
+			System.out.println(user.getUsername()+"님을 불러왔습니다.");
 			return "mng/user/update";	
 		} catch (Exception e) {
 			throw new Exception500("너 무슨짓 했어");
