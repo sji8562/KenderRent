@@ -6,8 +6,8 @@ import com.tenco.toyproject.dto.MngProductDto;
 import com.tenco.toyproject.repository.entity.FirstCategory;
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.entity.SecondCategory;
-import com.tenco.toyproject.service.MngService;
 import com.tenco.toyproject._core.utils.Define;
+import com.tenco.toyproject.service.mng.MngProductService;
 import com.tenco.toyproject.vo.PageVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ import java.util.UUID;
 public class MngProductController {
 
     @Autowired
-    private MngService mngService;
+    private MngProductService mngService;
     @GetMapping("list")
     public String productList(Model model, PageVO pageVO, @RequestParam(value = "nowPage", required = false) String nowPage
             , @RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
