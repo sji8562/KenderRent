@@ -36,12 +36,11 @@
 			<div class="container">
 				<div class="row">
 					<div class="col text-center">
-						<div class="section_title new_arrivals_title">
+						<div class="section_title new_arrivals_title" style="margin-bottom: 100px;">
 							<h2>장바구니</h2>
 						</div>
 					</div>
-				</div>
-				<br> <br>
+				</div>				
 				<div class="product_details">
 					<div class="product_details_title">
 						<c:choose>
@@ -60,8 +59,8 @@
 									<table class="table">
 										<thead>
 											<tr>
-												<th class="column1"><input type="checkbox"
-													id="selectAll" onclick="selectAll()"></th>
+												<th class="column1">
+												<input type="checkbox" id="selectAll" onclick="selectAll()"></th>
 												<th class="column2">구분</th>
 												<th>상품이름</th>
 												<th>상품금액</th>
@@ -79,7 +78,7 @@
 													<td>
 														<form action="/cart/delete?id=${product.id }"
 															method="post">
-															<button type="submit" class="cancel-button ">x</button>
+															<button type="submit" class="cancel-button">x</button>
 														</form>
 													</td>
 

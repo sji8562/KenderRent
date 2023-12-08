@@ -24,6 +24,13 @@
 							</ul>
 							<ul class="navbar_user">
 								<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+								<li class="checkout">
+									<a href="/cart">
+										<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+										<span id="checkout_items" class="checkout_items">${countItemInCart}</span>
+									</a>
+								</li>
 								<c:choose>
 									<c:when test="${sessionScope.principal != null }">
 										<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
@@ -39,8 +46,6 @@
 										<li><a href="#">회원가입</a></li>
 									</c:otherwise>
 								</c:choose>
-								
-								
 							</ul>
 							<div class="hamburger_container">
 								<i class="fa fa-bars" aria-hidden="true"></i>
