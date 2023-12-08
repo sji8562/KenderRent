@@ -36,6 +36,7 @@ public class Product {
 
 	// KWON
 	public String formatImgUrl() {
+
 		return ImageUtil.checkImageUrl(picUrl);
 	}
 

@@ -80,14 +80,14 @@
 <%--											<img src="/assets/images/empty_img.jpg" alt="No Alter Image">--%>
 <%--										</c:otherwise>--%>
 <%--									</c:choose>--%>
-									<img src="${product.formatImgUrl()}" />
+									<img src="<c:url value="${product.formatImgUrl()}"/>" >
 
 								</div>
 							</div>
 							<div class="form-group">
 								<label>물품등급</label>
 								<select class="form-select" aria-label="Disabled select example" disabled>
-									<option selected>${product.formatStatus()}</option>
+									<option selected>${product.grade}</option>
 								</select>
 							</div>
 							<div class="form-group">
