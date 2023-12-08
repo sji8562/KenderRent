@@ -1,7 +1,7 @@
 package com.tenco.toyproject.controller.mng;
 
 import com.tenco.toyproject.dto.MngRentDTO;
-import com.tenco.toyproject.service.MngService;
+import com.tenco.toyproject.service.mng.MngRentService;
 import com.tenco.toyproject.vo.PageVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import java.util.List;
 public class MngApplyController {
 
     @Autowired
-    private MngService mngService;
+    private MngRentService mngService;
     @GetMapping("list")
     public String applyList() {
 

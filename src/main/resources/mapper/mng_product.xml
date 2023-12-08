@@ -4,7 +4,7 @@
 
 <!--반드시 세미콜론 생략 -->
 <mapper
-        namespace="com.tenco.toyproject.repository.interfaces.MngRepository">
+        namespace="com.tenco.toyproject.repository.interfaces.mng.MngProductRepository">
 
     
 
