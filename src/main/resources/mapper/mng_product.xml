@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--반드시 세미콜론 생략 -->
+<mapper
+        namespace="com.tenco.toyproject.repository.interfaces.MngRepository">
+
+    
+
+    <select id="findAllProductWithPagination" resultType="com.tenco.toyproject.repository.entity.Product">
+        SELECT p.id, p.first_category_id, p.second_category_id, p.price, p.name, p.picUrl, p.content, p.status, p.created_at, p.grade, fc.first_category_name, sc.second_category_name FROM product AS p
+                                                                                                                                                                                                JOIN first_category AS fc ON fc.id = p.first_category_id
+                                                                                                                                                                                                JOIN second_category AS sc ON sc.id = p.second_category_id
+            LIMIT #{start}, 5
+    </select>
+    <!-- 물품 상세 -->
+    <select id="findProductById" resultType="com.tenco.toyproject.repository.entity.Product">
+        SELECT p.id, p.first_category_id, p.second_category_id, p.price, p.name, p.picUrl, p.content, p.status, p.created_at, p.grade, fc.first_category_name, sc.second_category_name FROM product AS p
+                                                                                                                                                                                                JOIN first_category AS fc ON fc.id = p.first_category_id
+                                                                                                                                                                                                JOIN second_category AS sc ON sc.id = p.second_category_id
+        WHERE p.id = #{pId}
+    </select>
+    <!-- 물품 건수 -->
+    <select id="findProductCount" resultType="int">
+        SELECT count(*) FROM product
+    </select>
+    <delete id="deleteByProductId">
+        DELETE FROM product WHERE id = #{id}
+    </delete>
+
+    <!-- first & Second category -->
+    <select id="findCategoryAll" resultType="com.tenco.toyproject.repository.entity.FirstCategory">
+        SELECT fc.id, fc.first_category_name, sc.id AS second_id, sc.second_category_name
+        FROM first_category AS fc
+                 RIGHT JOIN second_category AS sc ON sc.first_category_id = fc.id
+    </select>
+
+    <!-- first Category -->
+    <select id="findFirstCategoryAll" resultType="com.tenco.toyproject.repository.entity.FirstCategory">
+        SELECT * FROM first_category
+    </select>
+
+    <!-- Second category -->
+    <select id="findSecondCategoryForRent" resultType="com.tenco.toyproject.repository.entity.SecondCategory">
+        SELECT * FROM second_category WHERE first_category_id BETWEEN 0 AND 10
+    </select>
+
+    <insert id="createProduct">
+        INSERT INTO
+            product (first_category_id, second_category_id, price, name, picUrl, content, status, grade)
+        VALUES (#{firstCategoryId}, #{secondCategory}, #{price}, #{name}, #{picUrl}, #{content}, #{status}, #{grade} )
+    </insert>
+</mapper>
