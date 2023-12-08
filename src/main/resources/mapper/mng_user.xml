@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--반드시 세미콜론 생략 -->
+<mapper
+        namespace="com.tenco.toyproject.repository.interfaces.MngRepository">
+
+    <delete id="deleteById"> delete from user where id = #{id} </delete>
+    <update id='updateById'>
+        update user set
+                        email = #{email},
+                        username = #{userName},
+                        password = #{password},
+                        phone_number = #{phoneNumber}
+        where id = #{id}
+    </update>
+    <select id="findById"
+            resultType="com.tenco.toyproject.repository.entity.User">
+        SELECT * FROM user where id = #{id}
+    </select>
+    <select id="findAllWithPagination"
+            resultType="com.tenco.toyproject.repository.entity.User">
+        SELECT * FROM user LIMIT #{start}, 5
+    </select>
+    <select id="findAllCount" resultType="Integer">
+        SELECT count(*) FROM user
+    </select>
+
+</mapper>

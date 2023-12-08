@@ -2,6 +2,8 @@ package com.tenco.toyproject._core.config;
 
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -15,10 +17,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	
 //	@Override
 //	public void addInterceptors(InterceptorRegistry registry) {
-		
-		// registry.addInterceptor(authInterceptor)
-				// .addPathPatterns("/account/**")
-				// .addPathPatterns("/auth/**"); // 추가하는 방법 
+//
+//		 registry.addInterceptor(authInterceptor)
+//				 .addPathPatterns("/account/**")
+//				 .addPathPatterns("/auth/**"); // 추가하는 방법
 //	}
 	
 	// 리소스 등록 처리 
@@ -31,9 +33,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	
 
 	// @Bean // Ioc 관리 대상 처리 - 싱글톤 
-	// public PasswordEncoder passwordEnCoder() {
-		// return new BCryptPasswordEncoder();
-	// }
+//	 public PasswordEncoder passwordEnCoder() {
+//		 return new BCryptPasswordEncoder();
+//	 }
 	
 	
 }
