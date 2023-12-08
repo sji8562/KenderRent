@@ -35,7 +35,7 @@ public class UserController {
 
 	@Autowired
 	private HttpSession session;
-
+	
 	//	아직 선언 안됌
 	@Value("${tenco.key}")
 	private String tencoKey;
@@ -72,8 +72,8 @@ public class UserController {
 		if (dto.getPassword() == null || dto.getPassword().isEmpty()) {
 			throw new CustomRestfulException("비밀번호를 입력해주세요.", HttpStatus.BAD_REQUEST);
 		}
-		if (dto.getUserName() == null || dto.getUserName().isEmpty()) {
-			throw new CustomRestfulException("이메일을 입력해주세요.", HttpStatus.BAD_REQUEST);
+		if (dto.getUsername() == null || dto.getUsername().isEmpty()) {
+			throw new CustomRestfulException("사용자명을 입력해주세요.", HttpStatus.BAD_REQUEST);
 		}
 
 		userService.userSignUp(dto);
@@ -84,17 +84,15 @@ public class UserController {
 
 	@PostMapping("/sign-in")
 	public String signInProc(UserSignInFormDto dto) throws CustomRestfulException {
-
 		if (dto.getEmail() == null || dto.getEmail().isEmpty()) {
 			throw new CustomRestfulException("이메일을 입력해주세요.", HttpStatus.BAD_REQUEST);
 		}
 		if (dto.getPassword() == null || dto.getPassword().isEmpty()) {
 			throw new CustomRestfulException("비밀번호를 입력해주세요.", HttpStatus.BAD_REQUEST);
 		}
-
 		User principal = userService.userSignIn(dto);
-
-		return "redirect:/account/list";
+		session.setAttribute("principal", principal);
+		return "redirect:/";
 	}
 
 	@GetMapping("/logout")
@@ -151,7 +149,7 @@ public class UserController {
 		System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
 
 		// 카카오 서버에 존재하는 정보를 요청 처리
-		System.out.println("----카카카카카오 서버 정보 받기 완료----");
+		System.out.println("----카카오 서버 정보 받기 완료----");
 
 		// 1. 회원 가입 여부 확인
 		KakaoProfile kakaoProfile = response2.getBody();
@@ -159,7 +157,7 @@ public class UserController {
 		// 소셜 회원 가입자는 전부 비밀번호가 동일하게 된다.
 		UserSignUpFormDto userSignUpFormDto = UserSignUpFormDto.builder().email("OAuth_" + kakaoProfile.getId() + "_님")
 //				.fullname("OAuth_" + kakaoProfile.getId() + "_님")
-				.password(tencoKey).userName("Kakao").build();
+				.password(tencoKey).username("Kakao").build();
 
 		System.out.println("tencoKey: " + tencoKey);
 
@@ -180,7 +178,7 @@ public class UserController {
 
 		// 만약 소셜 로그인 사용자가 회원 가입 처리 완료된
 		// 사용자라면, 바로 세션 처리 및 로그인 처리
-		return "redirect:/account/list";
+		return "redirect:/메인화면";
 
 	}
 

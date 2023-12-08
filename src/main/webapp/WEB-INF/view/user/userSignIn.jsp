@@ -1,143 +1,92 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact Us</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Colo Shop Template">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/css/styles/bootstrap4/bootstrap.min.css">
+<link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css">
+<link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
+<link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
+</head>
+<body>
+	<div class="super_container">
 
-<%@ include file="/WEB-INF/view/layout/header.jsp"%>
+	<!-- Header -->
 
-<body class="body__signIn">
-	<!-- signIn_wrap -->
-	<div id="wrap" class="signIn_wrap">
-		<!-- container -->
-		<div id="container" class="container content__login">
-			<!-- signIn_form -->
-			<form class="signIn_form" action="/user/userSignIn"
-				id="user-signIn-signInForm" method="post"
-				data-gtm-form-interact-email="0">
-				<!--  
-				<input type="hidden" id="user-signIn-redirectUrl" name="redirectUrl" value="https://?src=">
-				<input type="hidden" id="user-signIn-dm" name="dm" value>
-				  -->
-				<!-- Status 선택 탭: 로그인 상태 유지, 유저/관리자 선택 -->
-				<div class="select_area">
-					<span class="check_w"> <input type="checkbox"
-						name="autoSignIn" id="user-signIn-autoSignIn" value="true">
-						<label for="user-signIn-autoSignIn" class="ico"> 로그인 상태 유지
-					</label>
-					</span>
-					<!-- 유저/관리자 선택 기능 필요한지? -->
-					<!-- 
-				<ul class="radio_list">
-					<li id="user-signIn-signInType-general-check" class="check">
-					<input type="radio" id="user-signIn-signInType-general" 
-					name="signInUserType" value="general" 
-					data-gtm-form-interact-field-id="1" checked="checked"> 
-					<label for="user-signIn-signInType-general"> 
-					<i class="ico i_radio"></i>
-					일반회원
-					</label>
-					<li id="user-signIn-signInType-manager-check" class="check">
-					<input type="radio" id="user-signIn-signInType-manager"
-					name="signInUserType" value="manager" 
-					data-gtm-form-interact-field-id="0" checked="checked"> 
-					<label for="user-signIn-signInType-manager"> 
-					<i class="ico i_radio"></i>
-					관리자
-					</label>
-				</ul>
-				-->
+	<jsp:include page="../layout/header.jsp" />
+
+	<div class="fs_menu_overlay"></div>
+
+	
+
+	<div class="container contact_container">
+		<div class="row">
+			<div class="col">
+
+				<!-- Breadcrumbs -->
+
+				<div class="breadcrumbs d-flex flex-row align-items-center">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>
+					</ul>
 				</div>
-				<div class="email_area">
-					<div class="input_wrap" id="user-signIn-signInInputArea">
-						<span class="input_box"> <label
-							for="user-signIn-input-email" class="lb" style="display: block;">이메일</label>
-							<!-- input 입력시 display:none; --> <input type="text"
-							class="user-signIn-input-email" maxlength="40" name="email"
-							class="int" placeholder="이메일을 입력해주세요" value style="z-index: 8;">
-							<button type="button" id="user-signIn-input-email-del"
-								class="btn_del">
-								<span class="ico i_del"></span>
-							</button> <!-- 입력시 on 클래스 추가 -->
-						</span>
-						<button type="button" class="btn_pwniew btn_emailsave on"
-							id="user-signIn-saveEmail">"저장"</button>
-						<input type="hidden" name="isSaveEmail"
-							id="user-signIn-input-saveEmail" value="true">
-					</div>
-				</div>
-				<div class="pwd_area">
-					<div class="input_wrap" id="user-signIn-signInPwdInputArea">
-						<span class="input_box"> <label for="user-signIn-input-pwd"
-							class="lb" style="display: block;"> 비밀번호 </label> <!-- input 입력시 display:none; -->
-							<input type="password" maxlength="20" id="user-signIn-input-pwd"
-							name="password" class="int" placeholder="비밀번호를 입력해주세요"> <!-- 표시 버튼 체크하면 input type="text" 로 변경 -->
-							<button type="button" id="user-signIn-input-pwd-del"
-								class="btn_del">
-								<span class="ico i_del"></span>
-							</button> <!-- 입력시 on 클래스 추가 -->
-						</span>
-					</div>
-				</div>
-				<button class="btn_signIn" id="user-signIn-signInButton"
-					onclick="return false;">로그인</button>
-				<!-- 아이디 찾기, 비밀번호 찾기, 회원가입 기능 -->
-				<div class="menu_area clear">
-					<div class="signIn_info">
-						<div class="help_w">
-							<a href="/searchEmail?url=http"
-								onclick="setGtagEven('로그인_이메일찾기');"
-								id="user-signIn-helpMenu-searchEmail"> 이메일 찾기 </a>
-						</div>
-						<div class="help_w">
-							<a href="/searchPwd?url=http"
-								onclick="setGtagEven('로그인_비밀번호찾기');"
-								id="user-signIn-helpMenu-searchPwd"> 비밀번호 찾기 </a>
-						</div>
-						<div class="help_w">
-							<a href="/signUp?url=http" onclick="setGtagEven('로그인_회원가입');"
-								id="user-signIn-helpMenu-signUp"> 회원가입 </a>
-						</div>
-					</div>
-				</div>
-				<div class="social_area content__social"
-					id="user-signIn-signInSocialArea">
-					<div class="box__social">
-						<a href="javascript:;"
-							class="link_social_btn link__social link__social--naver"
-							id="user-signIn-socialButton-naver"
-							onclick="setGtagEvent('로그인_네이버로그인');">
-							<div class="thumb__social"></div> <span class="title__social">네이버
-								로그인</span>
-						</a>
-						<!-- 마지막에 사용한 로그인 툴팁 표시 기능 -->
-						<div class="box__tooltip " id="box__tooltip-naver">
-							<span class="text__history">마지막 로그인</span>
-							<button type="button" class="button__close"
-								onclick="closeTooltip();">
-								<span class="blind">닫기</span>
-							</button>
-						</div>
-					</div>
-					<div class="box__social">
-						<a href="javascript:;"
-							class="link_social_btn link__social link__social--kakao"
-							id="user-signIn-socialButton-kakao"
-							onclick="setGtagEvent('로그인_카카오로그인');">
-							<div class="thumb__social"></div> <span class="title__social">카카오
-								로그인</span>
-						</a>
-						<div class="box__tooltip " id="box__tooltip-kakao">
-							<span class="text__history">마지막 로그인</span>
-							<button type="button" class="button__close"
-								onclick="closeTooltip();">
-								<span class="blind">닫기</span>
-							</button>
-						</div>
-					</div>
-				</div>
-			</form>
-			<!-- //signIn_form -->
+
+			</div>
 		</div>
-		<!-- //container -->
+		<!-- Contact Us -->
+
+		<div class="row">
+		<div class="col-lg-4 "></div>
+			<div class="col-lg-4 get_in_touch_col">
+				<div class="get_in_touch_contents">
+						<h1>로그인</h1>
+					<br><br>
+					<form action="/user/sign-in" method="post">
+						<div>
+							<input id="email" class="form_input input_website input_ph" type="email" name="email" placeholder="email" required="required" data-error="email is required.">
+							<input id="password" class="form_input input_website input_ph" type="password" name="password" placeholder="password" required="required" data-error="password is required.">
+						</div>
+						<div>
+							<button type="submit" class="red_button message_submit_btn trans_300" value="Submit">로그인</button>
+						</div>
+					</form>
+					<br>
+					<a href="">아이디 찾기 | </a><a href="">비밀번호 찾기 | </a><a href="">회원가입</a>
+				</div>
+			</div>
+			<div class="col-lg-4 "></div>
+		</div>
 	</div>
-	<!-- //signIn_wrap -->
+
+	<!-- Newsletter -->
+
+	
+	<!-- Footer -->
+
+	<jsp:include page="../layout/footer.jsp" />
+
+</div>
+
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/css/styles/bootstrap4/popper.js"></script>
+<script src="/css/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="/plugins/easing/easing.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+<script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="/js/contact_custom.js"></script>
 </body>
-<%@ include file="/WEB-INF/view/layout/footer.jsp"%>
+</html>

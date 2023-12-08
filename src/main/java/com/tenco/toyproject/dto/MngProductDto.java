@@ -1,7 +1,7 @@
 package com.tenco.toyproject.dto;
 
 
-import jakarta.mail.Multipart;
+
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,8 +13,6 @@ import lombok.Data;
 
 @Data
 public class MngProductDto {
-
-        private int id;
         private int firstCategoryId;
         private int secondCategoryId;
         private Long price;

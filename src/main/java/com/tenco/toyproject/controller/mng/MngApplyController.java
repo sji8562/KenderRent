@@ -1,16 +1,13 @@
 package com.tenco.toyproject.controller.mng;
 
 import com.tenco.toyproject.dto.MngRentDTO;
-import com.tenco.toyproject.service.MngService;
+import com.tenco.toyproject.service.mng.MngRentService;
 import com.tenco.toyproject.vo.PageVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,7 +17,7 @@ import java.util.List;
 public class MngApplyController {
 
     @Autowired
-    private MngService mngService;
+    private MngRentService mngService;
     @GetMapping("list")
     public String applyList() {
 
@@ -60,8 +57,18 @@ public class MngApplyController {
     @GetMapping("{id}/rental-detail")
     public String rentalDetail(@PathVariable Integer id){
         System.out.println("여긴 오는감");
-        mngService.findByRentId(id);
+//        mngService.findByRentId(id);
         return "mng/apply/rental/rentalDetail";
+    }
+    @GetMapping("{id}/rental-update")
+    public String updateRentalStatus(@PathVariable Integer id){
+        mngService.updateStatus(id);
+        return "redirect:/mng/apply/rental-list";
+    }
+    @GetMapping("{id}/rental-delete")
+    public String deleteRentalStatus(@PathVariable Integer id){
+        mngService.deleteStatus(id);
+        return "redirect:/mng/apply/rental-list";
     }
 
     @GetMapping("sale-list")

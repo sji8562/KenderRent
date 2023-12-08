@@ -32,13 +32,13 @@
                         </div>
                         <div class="form-group">
                             <label for="price">물품가격</label>
-                            <input type="text" class="form-control" id="price" name="price" placeholder="물품 가격을 입력하세요" required>
+                            <input type="number" class="form-control" id="price" name="price" placeholder="물품 가격을 입력하세요" required>
                         </div>
                         <div class="form-group">
                             <label>카테고리</label>
                             <div style="display: flex;">
                                 <span style="margin-right: 10px;">
-                                    <select class="form-select" aria-label="Disabled select example" name="secondCategoryName" required>
+                                    <select class="form-select" aria-label="Disabled select example" id="secondCategoryId" name="secondCategoryId" required>
                                         <c:forEach var="sCategory" items="${sCategory}">
                                             <option value="${sCategory.id}">${sCategory.secondCategoryName}</option>
                                         </c:forEach>
@@ -60,11 +60,11 @@
                         <div class="form-group">
                             <label>물품등급</label>
                             <select class="form-select" aria-label="Disabled select example" name="grade" required>
-                                <option value="1">최상</option>
-                                <option value="2">상</option>
-                                <option value="3">중</option>
-                                <option value="4">하</option>
-                                <option value="5">최하</option>
+                                <option value="최상">최상</option>
+                                <option value="상">상</option>
+                                <option value="중">중</option>
+                                <option value="하">하</option>
+                                <option value="최하">최하</option>
                             </select>
                         </div>
                         <div class="form-group">

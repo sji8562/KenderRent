@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.tenco.toyproject.service.MngService;
-
 
 
 @Controller
@@ -14,17 +12,15 @@ import com.tenco.toyproject.service.MngService;
 @Slf4j
 public class MngController {
 
-    @Autowired
-    private MngService mngService;
+//    @Autowired
+//    private MngService mngService;
 
-    @GetMapping("/login")
-    public String mngLogin() {
-        return "mng/login";
-    }
+
+    
 
     @GetMapping("/test")
     public String test() {
-        return "mng/pagesProfile";
+        return "mng/apply/test";
     }
 
     @GetMapping("/form-basic")

@@ -83,10 +83,10 @@
                                                                 <div>
                                                                     <button class="btn btn-success"
                                                                             style="border: 1px solid black"
-                                                                            onclick="location.href='/mng/user/${rentList.id}/update'">신청 확인</button>
+                                                                            onclick="location.href='/mng/apply/${rentList.id}/rental-update'">신청 확인</button>
                                                                     &nbsp;&nbsp;
                                                                     <button class="btn-danger btn"
-                                                                            onclick="location.href='/mng/user/${rentList.id}/delete'">신청 취소</button>
+                                                                            onclick="location.href='/mng/apply/${rentList.id}/rental-delete'">신청 취소</button>
                                                                 </div>
                                                             </td>
                                                         </c:when>

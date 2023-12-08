@@ -59,7 +59,7 @@
 						</div>
 						<div class="box__row">
 							<a
-								href="https://auth.danawa.com/signUpStep2?url=https%3A%2F%2Fwww.danawa.com%2F%3Fsrc%3Dadwords%26kw%3D%25EC%2597%25AC%25EC%2584%25B1%2520%25EC%2598%25B7%2520%25EC%2587%25BC%25ED%2595%2591%26utm_source%3Dgoogle%26utm_medium%3Dcpc%26utm_campaign%3Dkeyword%26gad_source%3D1%26gclid%3DCjwKCAiA1MCrBhAoEiwAC2d64cgOYodeaqONvAi3vJuRCNE-e987EdMHxFIriifDF7Q0SbsmTQombxoCflwQAvD_BwE"
+								href="https://auth.?url="
 								class="link__signUp link__signUp-email">
 								<div class="left">
 									<span class="blind">이메일 아이콘</span>

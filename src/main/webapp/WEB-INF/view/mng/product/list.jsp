@@ -49,7 +49,7 @@
 							<tr>
 								<td scope="row">${product.id}</td>
 								<td>${product.firstCategoryName} > ${product.secondCategoryName}</td>
-								<td><a href="/mng/product/detail/${product.id}" style="text-decoration: none; color: black;">${product.name}</a></td>
+								<td><a href="/mng/product/${product.id}/detail" style="text-decoration: none; color: black;">${product.name}</a></td>
 								<td>${product.grade}</td>
 								<td>${product.formatStatusToString()}</td>
 									<td><a href="/mng/product/modify/${product.id}">수정</a>
@@ -65,8 +65,7 @@
 	<%-- 페이징 --%>
 	<div style="display: block; text-align: center;">
 		<c:if test="${paging.startPage != 1 }">
-			<a
-					href="user?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+			<a href="/mng/product/list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
 		</c:if>
 		<c:forEach begin="${paging.startPage }"
 				   end="${paging.endPage }" var="p">
@@ -75,13 +74,12 @@
 					<b>${p }</b>
 				</c:when>
 				<c:when test="${p != paging.nowPage }">
-					<a href="user?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+					<a href="/mng/product/list?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
 				</c:when>
 			</c:choose>
 		</c:forEach>
 		<c:if test="${paging.endPage != paging.lastPage}">
-			<a
-					href="user?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+			<a href="/mng/product/list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
 		</c:if>
 	</div>
 

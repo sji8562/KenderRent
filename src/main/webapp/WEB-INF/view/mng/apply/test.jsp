@@ -15,7 +15,7 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-5 align-self-center">
-                <h4 class="page-title">판매 관리</h4>
+                <h4 class="page-title">신청 관리</h4>
             </div>
             <div class="col-7 align-self-center">
                 <div class="d-flex align-items-center justify-content-end">
@@ -47,50 +47,47 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">판매 신청 조회</h4>
+                                    <h4 class="card-title">전체 신청 조회</h4>
                                     <h6 class="card-subtitle"></h6>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead class="table-light">
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">이메일</th>
                                             <th scope="col">이름</th>
                                             <th scope="col">전화번호</th>
-                                            <th scope="col">생성날짜</th>
-                                            <th scope="col">회원관리</th>
+                                            <th scope="col">제품</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-<%--                                        <c:choose>--%>
-<%--                                        <c:when test="${userList != null }">--%>
+                                        <c:choose>
+                                        <c:when test="${userList != null }">
 
-<%--                                            <c:forEach var="userList" items="${userList}">--%>
-<%--                                                <tr>--%>
-<%--                                                    <th scope="row">${userList.id}</th>--%>
-<%--                                                    <td>${userList.email }</td>--%>
-<%--                                                    <td>${userList.userName}</td>--%>
-<%--                                                    <td>${userList.phoneNumber }</td>--%>
-<%--                                                    <td>${userList.createdAt}</td>--%>
-<%--                                                    <td>--%>
-<%--                                                        <div>--%>
-<%--                                                            <button class="btn btn-success"--%>
-<%--                                                                    style="border: 1px solid black"--%>
-<%--                                                                    onclick="location.href='/mng/user/${userList.id}/update'">수정</button>--%>
-<%--                                                            &nbsp;&nbsp;--%>
-<%--                                                            <button class="btn-danger btn"--%>
-<%--                                                                    onclick="location.href='/mng/user/${userList.id}/delete'">삭제</button>--%>
-<%--                                                        </div>--%>
-<%--                                                    </td>--%>
+                                            <c:forEach var="userList" items="${userList}">
+                                                <tr>
+                                                    <th scope="row">${userList.id}</th>
+                                                    <td>${userList.email }</td>
+                                                    <td>${userList.userName}</td>
+                                                    <td>${userList.phoneNumber }</td>
+                                                    <td>${userList.createdAt}</td>
+                                                    <td>
+                                                        <div>
+                                                            <button class="btn btn-success"
+                                                                    style="border: 1px solid black"
+                                                                    onclick="location.href='/mng/user/${userList.id}/update'">수정</button>
+                                                            &nbsp;&nbsp;
+                                                            <button class="btn-danger btn"
+                                                                    onclick="location.href='/mng/user/${userList.id}/delete'">삭제</button>
+                                                        </div>
+                                                    </td>
 
-<%--                                                </tr>--%>
-<%--                                            </c:forEach>--%>
-<%--                                        </c:when>--%>
-<%--                                        <c:otherwise>--%>
-<%--                                        <p>아직 생성된 계정이 없습니다.--%>
-<%--                                            </c:otherwise>--%>
-<%--                                            </c:choose>--%>
+                                                </tr>
+                                            </c:forEach>
+                                        </c:when>
+                                        <c:otherwise>
+                                        <p>아직 생성된 계정이 없습니다.
+                                            </c:otherwise>
+                                            </c:choose>
                                         </tbody>
                                     </table>
                                 </div>
