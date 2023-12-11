@@ -93,7 +93,7 @@
 								<c:choose>
 									<c:when test="${sessionScope.principal != null }">
 <!-- 									유저 아이콘 -->
-										<li ><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+										<li ><a href="/mypage/main"><i class="fa fa-user" aria-hidden="true"></i></a></li>
 										
 <!-- 										장바구니아이콘 -->
 										<li class="checkout ">
