@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <link rel="stylesheet" href="/css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="page-wrapper">
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
@@ -79,7 +82,10 @@
                         <div class="form-group">
                             <label>제품 상세 설명</label>
                             <%-- TODO text editor --%>
-                            <textarea class="form-control" rows="5" id="content" name="content" required></textarea>
+                            <%--<textarea class="form-control" rows="5" id="content" name="content" required></textarea>--%>
+                            <div>
+                                <textarea id="summernote" rows="5" name="concent"></textarea>
+                            </div>
                         </div>
                         <button class="btn btn-secondary" onclick="history.back()">뒤로가기</button>
                         <button type="submit" class="btn btn-primary">등록하기</button>
@@ -87,44 +93,18 @@
                 </div>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- End PAge Content -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Right sidebar -->
-        <!-- ============================================================== -->
-        <!-- .right-sidebar -->
-        <!-- ============================================================== -->
-        <!-- End Right sidebar -->
-        <!-- ============================================================== -->
+
     </div>
-    <!-- ============================================================== -->
-    <!-- End Container fluid  -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
+</div>
 
 </div>
-<!-- ============================================================== -->
-<!-- End Page wrapper  -->
-<!-- ============================================================== -->
-</div>
-<!-- ============================================================== -->
-<!-- End Wrapper -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- All Jquery -->
-<!-- ============================================================== -->
-<script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap tether Core JavaScript -->
-<script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<!-- slimscrollbar scrollbar JavaScript -->
-<script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
-<!--Wave Effects -->
-<script src="../../dist/js/waves.js"></script>
-<!--Menu sidebar -->
-<script src="../../dist/js/sidebarmenu.js"></script>
-<!--Custom JavaScript -->
-<script src="../../dist/js/custom.min.js"></script>
+
+<script>
+    $('.summernote').summernote({
+        tabsize: 2,
+        height: 300
+    });
+</script>
 
 </body>
 </html>
