@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--&lt;!&ndash;반드시 세미콜론 생략 &ndash;&gt;-->
+<mapper
+        namespace="com.tenco.toyproject.repository.interfaces.mng.MngPurchaseRepository">
+
+<!--    <select id="findByRentId">-->
+<!--        select * from rent where id = #{id}-->
+<!--    </select>-->
+    <select id="findPurchaseAllCount">
+        select count(*) from purchase
+    </select>
+    <select id="findPurchaseWithUserAll">
+        select pc.id, u.username, p.id as productId,p.name as productName, pc.status,pc.created_at from purchase pc left outer join user u on pc.user_id = u.id left outer join product p on pc.product_id = p.id LIMIT #{start}, 5
+    </select>
+    <update id="updateByPurchaseStatus">
+        update purchase set status = 2 where id = #{id}
+    </update>
+    <delete id="deleteByPurchaseStatus">
+        delete from purchase where id =${id}
+    </delete>
+</mapper>

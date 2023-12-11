@@ -142,7 +142,7 @@
 			</c:if>
 		</div>
 	<jsp:include page="../layout/footer.jsp" />
-
+	</div>
 </div>
 
 <script src="/js/jquery-3.2.1.min.js"></script>

@@ -24,12 +24,14 @@ public class CartIntercepter implements HandlerInterceptor {
 
 	// 컨트롤러에 들어오기 전에 동작하는 메서드
 	// controller --> true(들어감), false(안들어감)
+
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		// 세션에 사용자 정보 확인
 		HttpSession session = request.getSession();
 		User principal = (User) session.getAttribute("principal");
+
 //		if(principal == null) {
 //			response.sendRedirect("/user/sign-in");
 //			throw new UnAuthorizedException("로그인 먼저 해주세요", HttpStatus.UNAUTHORIZED);
@@ -44,6 +46,7 @@ public class CartIntercepter implements HandlerInterceptor {
 			ModelAndView modelAndView) throws Exception {
 		HttpSession session = request.getSession();
 		User principal = (User) session.getAttribute("principal");
+
 
 		// 장바구니에 담긴 물품의 갯수(header.jsp)
 		if (modelAndView == null) {
@@ -64,4 +67,5 @@ public class CartIntercepter implements HandlerInterceptor {
 			throws Exception {
 //		HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
 	}
+
 }
