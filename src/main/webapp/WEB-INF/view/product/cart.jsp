@@ -36,11 +36,12 @@
 			<div class="container">
 				<div class="row">
 					<div class="col text-center">
-						<div class="section_title new_arrivals_title" style="margin-bottom: 100px;">
+						<div class="section_title new_arrivals_title"
+							style="margin-bottom: 100px;">
 							<h2>장바구니</h2>
 						</div>
 					</div>
-				</div>				
+				</div>
 				<div class="product_details">
 					<div class="product_details_title">
 						<c:choose>
@@ -59,8 +60,8 @@
 									<table class="table">
 										<thead>
 											<tr>
-												<th class="column1">
-												<input type="checkbox" id="selectAll" onclick="selectAll()"></th>
+												<th class="column1"><input type="checkbox"
+													id="selectAll" onclick="selectAll()"></th>
 												<th class="column2">구분</th>
 												<th>상품이름</th>
 												<th>상품금액</th>
@@ -70,8 +71,17 @@
 										<tbody>
 											<c:forEach var="product" items="${cartList}">
 												<tr>
-													<td><input type="checkbox" name="selectedProduct"
-														value="${product.price}" onchange="calculateTotalPrice()"></td>
+													<c:choose>
+														<c:when test="${product.status == 1}">
+															<td><input type="checkbox" name="selectedProduct"
+																value="${product.price}"
+																onchange="calculateTotalPrice()"></td>
+														</c:when>
+														<c:otherwise>
+															<td><input type="checkbox" disabled></td>
+														</c:otherwise>
+													</c:choose>
+
 													<td>${product.formatItemForSale()}</td>
 													<td><a href="/product/detail/${product.id }">${product.name}</a></td>
 													<td>${product.price}</td>
@@ -89,7 +99,8 @@
 								</div>
 								<br>
 								<div class="row justify-content-end">
-									<div class="col d-flex flex-row text-center justify-content-center"
+									<div
+										class="col d-flex flex-row text-center justify-content-center"
 										style="border: solid 1px lightgray; padding-top: 10px;">
 										<p id="selectedProductPrice" class="price">선택 상품금액: 0원</p>
 										<p class="price">+</p>
@@ -98,11 +109,12 @@
 										<p class="price">
 											총 주문금액: <span id="totalPrice" style="color: red;">0원</span>
 										</p>
-											<div class="red_button buy_button" style="width: 140px; position: absolute; margin-left: 900px;">
-												<a href="/product/order">구매하기</a>
-											</div>
+										<div class="red_button buy_button"
+											style="width: 140px; position: absolute; margin-left: 900px;">
+											<a href="/product/order">구매하기</a>
+										</div>
 									</div>
-								</div>							
+								</div>
 							</c:otherwise>
 						</c:choose>
 					</div>
