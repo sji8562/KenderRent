@@ -24,9 +24,9 @@ public class CartIntercepter implements HandlerInterceptor {
 
 	// 컨트롤러에 들어오기 전에 동작하는 메서드
 	// controller --> true(들어감), false(안들어감)
-//	@Override
-//	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-//			throws Exception {
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
 //		// 세션에 사용자 정보 확인
 //		System.out.println("동작확인");
 //		HttpSession session = request.getSession();

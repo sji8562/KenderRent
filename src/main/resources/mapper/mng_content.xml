@@ -4,16 +4,24 @@
 <mapper
         namespace="com.tenco.toyproject.repository.interfaces.mng.MngContentRepository">
 
-    <!--<select id="findByRentId" resultType="Map">
-        select * from rent where id = #{id}
-    </select>-->
-    <!--<select id="findSaleAllCount" resultType="int">
-        select count(*) from sale
-    </select>-->
-    <!--<select id="findSaleWithUserAll" resultType="Map">
-        select s.id, u.username, p.id as productId,p.name as productName, s.status ,s.created_at from sale s left outer join user u on s.user_id = u.id left outer join product p on s.product_id = p.id LIMIT #{start}, 5
-    </select>-->
-    <update id="createContent" resultType="int">
-        INSERT INTO information (content, type, created_at) VALUES (#{content}, 0, now())
+    <!-- 회사 소개 조회 -->
+    <select id="getCompanyInfo" resultType="com.tenco.toyproject.repository.entity.Content">
+        select * FROM information WHERE TYPE = 0
+    </select>
+
+    <!-- 이용 수칙 조회 -->
+    <select id="getRulesOfUse" resultType="com.tenco.toyproject.repository.entity.Content">
+        select * FROM information WHERE TYPE = 1
+    </select>
+
+    <!-- 소독 과정 조회 -->
+    <select id="getDisinfectionProcess" resultType="com.tenco.toyproject.repository.entity.Content">
+        select * FROM information WHERE TYPE = 2
+    </select>
+
+    <!-- 없으면 INSERT 있으면 UPDATE -->
+    <update id="createContent">
+        INSERT INTO information (id, content, TYPE, created_at) VALUES (#{id}, #{content}, #{TYPE}, NOW())
+            ON DUPLICATE KEY UPDATE content = #{content}, TYPE = #{TYPE}, created_at = NOW()
     </update>
 </mapper>

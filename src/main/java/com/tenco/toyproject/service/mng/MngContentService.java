@@ -14,25 +14,29 @@ public class MngContentService {
 
     public int createMngContent(MngContentDto dto) {
         int resultSet = mngContentRepository.createContent(dto);
-        if(resultSet != 1) {
+        System.out.println("여기여기여기" + resultSet);
+        if(resultSet < 1) {
             throw new Exception500("등록에 실패했습니다");
         }
         return resultSet;
     }
 
-    // 상세 내용 조회
-//    public Content findContentByType(Integer type) {
-//        return mngContentRepository.findContentByType(type);
-//    }
+    public Content getCompanyInfo() {
+        Content content = mngContentRepository.getCompanyInfo();
 
-//    // 등록
-//    public int createContent(MngContentDto dto) {
-//
-//    }
-//
-//    // 수정
-//
-//    // 삭제
+        return content;
+    }
 
+    public Content getDisinfectionProcess() {
+        Content content = mngContentRepository.getDisinfectionProcess();
+
+        return content;
+    }
+
+    public Content getRulesOfUse() {
+        Content content = mngContentRepository.getRulesOfUse();
+
+        return content;
+    }
 
 }

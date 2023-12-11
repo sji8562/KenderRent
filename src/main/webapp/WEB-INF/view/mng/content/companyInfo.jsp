@@ -24,11 +24,12 @@
                 <div class="col-12">
                     <form action="/mng/content/register" method="post">
                         <%-- CK Editor --%>
-                        <input type="number" name="type" value="0" hidden />
+                        <input type="number" name="id" value="${content.id}" hidden />
+                        <input type="number" name="TYPE" value="0" hidden />
                         <div id="container">
-                            <textarea id="editor" name="content"></textarea>
+                            <textarea id="editor" name="content">${content.content}</textarea>
                         </div>
-                        <button onclick="location.href='/mng/company/info'" class="btn btn-secondary">취소</button>
+                        <button onclick="location.href='/mng/content/info'" class="btn btn-secondary">취소</button>
                         <button class="btn btn-primary" type="submit">등록</button>
                     </form>
                 </div>
@@ -45,6 +46,10 @@
 <style>
     #container {
         width: 100%;
+    }
+    .ck-editor__editable[role="textbox"] {
+        /* editing area */
+        min-height: 500px;
     }
 </style>
 </body>

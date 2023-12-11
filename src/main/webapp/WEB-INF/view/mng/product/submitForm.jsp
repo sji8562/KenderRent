@@ -3,6 +3,7 @@
 <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
 
 
 <link rel="stylesheet" href="/css/style.css">
@@ -81,10 +82,8 @@
                         </div>
                         <div class="form-group">
                             <label>제품 상세 설명</label>
-                            <%-- TODO text editor --%>
-                            <%--<textarea class="form-control" rows="5" id="content" name="content" required></textarea>--%>
-                            <div>
-                                <textarea id="summernote" rows="5" name="concent"></textarea>
+                            <div id="container">
+                                <textarea id="editor" name="content"></textarea>
                             </div>
                         </div>
                         <button class="btn btn-secondary" onclick="history.back()">뒤로가기</button>
@@ -100,12 +99,21 @@
 </div>
 
 <script>
-    $('.summernote').summernote({
-        tabsize: 2,
-        height: 300
-    });
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
 </script>
-
+<style>
+    #container {
+        width: 100%;
+    }
+    .ck-editor__editable[role="textbox"] {
+        /* editing area */
+        min-height: 500px;
+    }
+</style>
 </body>
 </html>
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>

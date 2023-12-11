@@ -8,4 +8,6 @@ public class MngContentDto {
     private Integer id;
     @Lob
     private String content;
+
+    private Integer TYPE;
 }
