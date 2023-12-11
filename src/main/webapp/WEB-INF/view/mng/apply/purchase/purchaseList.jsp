@@ -55,35 +55,60 @@
                                         <thead class="table-light">
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">이메일</th>
                                             <th scope="col">이름</th>
-                                            <th scope="col">전화번호</th>
+                                            <th scope="col">제품번호</th>
+                                            <th scope="col">제품이름</th>
                                             <th scope="col">생성날짜</th>
-                                            <th scope="col">회원관리</th>
+                                            <th scope="col">신청관리</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <c:choose>
-                                        <c:when test="${userList != null }">
+                                        <c:when test="${purchaseList != null }">
 
-                                            <c:forEach var="userList" items="${userList}">
+                                            <c:forEach var="purchaseList" items="${purchaseList}">
                                                 <tr>
-                                                    <th scope="row">${userList.id}</th>
-                                                    <td>${userList.email }</td>
-                                                    <td>${userList.userName}</td>
-                                                    <td>${userList.phoneNumber }</td>
-                                                    <td>${userList.createdAt}</td>
-                                                    <td>
-                                                        <div>
-                                                            <button class="btn btn-success"
-                                                                    style="border: 1px solid black"
-                                                                    onclick="location.href='/mng/user/${userList.id}/update'">수정</button>
-                                                            &nbsp;&nbsp;
-                                                            <button class="btn-danger btn"
-                                                                    onclick="location.href='/mng/user/${userList.id}/delete'">삭제</button>
-                                                        </div>
-                                                    </td>
-
+                                                    <th scope="row">${purchaseList.id}</th>
+                                                    <td>${purchaseList.username }</td>
+                                                    <td>${purchaseList.productId}</td>
+                                                    <td>${purchaseList.productName }</td>
+                                                    <td>${purchaseList.createdAt}</td>
+                                                    <c:choose>
+                                                        <c:when test="${purchaseList.status == 1}">
+                                                            <td>
+                                                                <div>
+                                                                    <button class="btn btn-success"
+                                                                            style="border: 1px solid black"
+                                                                            onclick="location.href='/mng/apply/${purchaseList.id}/rental-update'">신청 확인</button>
+                                                                    &nbsp;&nbsp;
+                                                                    <button class="btn-danger btn"
+                                                                            onclick="location.href='/mng/apply/${purchaseList.id}/rental-delete'">신청 취소</button>
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${purchaseList.status == 2}">
+                                                            <td>
+                                                                <div>
+                                                                    대여중
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${purchaseList.status == 3}">
+                                                            <td>
+                                                                <div>
+                                                                    반납중
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${purchaseList.status == 4}">
+                                                            <td>
+                                                                <div>
+                                                                    세척중
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                    </c:choose>
+                                                        <%----%>
                                                 </tr>
                                             </c:forEach>
                                         </c:when>

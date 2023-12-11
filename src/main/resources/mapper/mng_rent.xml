@@ -5,11 +5,11 @@
 <!--반드시 세미콜론 생략 -->
 <mapper
         namespace="com.tenco.toyproject.repository.interfaces.mng.MngRentRepository">
-    
+
     <select id="findByRentId">
         select * from rent where id = #{id}
     </select>
-    <select id="findRentAllCount">
+    <select id="findRentAllCount" resultType="com.tenco.toyproject.repository.entity.Rent">
         select count(*) from rent
     </select>
     <select id="findRentWithUserAll">

@@ -1,7 +1,9 @@
 package com.tenco.toyproject.controller.mng;
 
-import com.tenco.toyproject.dto.MngRentDTO;
+import com.tenco.toyproject.dto.MngApplyDTO;
+import com.tenco.toyproject.service.mng.MngPurchaseService;
 import com.tenco.toyproject.service.mng.MngRentService;
+import com.tenco.toyproject.service.mng.MngSaleService;
 import com.tenco.toyproject.vo.PageVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,14 @@ import java.util.List;
 public class MngApplyController {
 
     @Autowired
-    private MngRentService mngService;
+    private MngRentService mngRentService;
+
+    @Autowired
+    private MngSaleService mngSaleService;
+
+    @Autowired
+    private MngPurchaseService mngPurchaseService;
+
     @GetMapping("list")
     public String applyList() {
 
@@ -32,10 +41,10 @@ public class MngApplyController {
      * @param cntPerPage
      * @return http://localhost/mng/apply/rental-list
      */
-
+    //대여 시작
     @GetMapping("rental-list")
     public String rentalList(Model model, PageVO pageVO, @RequestParam(value = "nowPage",required = false) String nowPage, @RequestParam(value = "cntPerPage",required = false) String cntPerPage) {
-        int total = mngService.countRentList();
+        int total = mngRentService.countRentList();
         if (nowPage == null && cntPerPage == null) {
             nowPage = "1";
             cntPerPage = "5";
@@ -48,7 +57,7 @@ public class MngApplyController {
         model.addAttribute("paging", pageVO);
         System.out.println(cntPerPage);
 
-        List<MngRentDTO.RentListDTO> rentList = mngService.findrentAll(pageVO);
+        List<MngApplyDTO.RentListDTO> rentList = mngRentService.findrentAll(pageVO);
 
         model.addAttribute("rentList", rentList);
 
@@ -62,21 +71,58 @@ public class MngApplyController {
     }
     @GetMapping("{id}/rental-update")
     public String updateRentalStatus(@PathVariable Integer id){
-        mngService.updateStatus(id);
+        mngRentService.updateStatus(id);
         return "redirect:/mng/apply/rental-list";
     }
     @GetMapping("{id}/rental-delete")
     public String deleteRentalStatus(@PathVariable Integer id){
-        mngService.deleteStatus(id);
+        mngRentService.deleteStatus(id);
         return "redirect:/mng/apply/rental-list";
     }
 
+
+    //판매 시작
     @GetMapping("sale-list")
-    public String saleList() {
+    public String saleList(Model model, PageVO pageVO, @RequestParam(value = "nowPage",required = false) String nowPage, @RequestParam(value = "cntPerPage",required = false) String cntPerPage) {
+
+        int total = mngSaleService.countSaleList();
+        if (nowPage == null && cntPerPage == null) {
+            nowPage = "1";
+            cntPerPage = "5";
+        } else if (nowPage == null) {
+            nowPage = "1";
+        } else if (cntPerPage == null) {
+            cntPerPage = "5";
+        }
+        pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+        model.addAttribute("paging", pageVO);
+        System.out.println(cntPerPage);
+
+        List<MngApplyDTO.SaleListDTO> saleList = mngSaleService.findAllBySale(pageVO);
+
+        model.addAttribute("saleList", saleList);
         return "mng/apply/sale/saleList";
     }
+
+    //구매 시작
     @GetMapping("purchase-list")
-    public String purchaseList() {
+    public String purchaseList(Model model, PageVO pageVO, @RequestParam(value = "nowPage",required = false) String nowPage, @RequestParam(value = "cntPerPage",required = false) String cntPerPage) {
+        int total = mngPurchaseService.countPurchaseList();
+        if (nowPage == null && cntPerPage == null) {
+            nowPage = "1";
+            cntPerPage = "5";
+        } else if (nowPage == null) {
+            nowPage = "1";
+        } else if (cntPerPage == null) {
+            cntPerPage = "5";
+        }
+        pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+        model.addAttribute("paging", pageVO);
+        System.out.println(cntPerPage);
+
+        List<MngApplyDTO.PurchaseListDTO> purchaseList = mngPurchaseService.findAllByPurchase(pageVO);
+
+        model.addAttribute("purchaseList", purchaseList);
         return "mng/apply/purchase/purchaseList";
     }
 }
