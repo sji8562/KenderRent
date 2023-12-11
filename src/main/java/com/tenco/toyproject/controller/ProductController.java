@@ -16,6 +16,7 @@ import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.CustomerService;
 import com.tenco.toyproject.service.ProductService;
+import com.tenco.toyproject.service.UserService;
 import com.tenco.toyproject.vo.PageVO;
 
 import jakarta.servlet.http.HttpSession;
@@ -31,6 +32,8 @@ public class ProductController {
 	private ProductService productService;
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private UserService userService;
 	
 	@GetMapping("categories")
 	public String categories() {
@@ -65,7 +68,9 @@ public class ProductController {
 
 	@GetMapping("order")
 	public String order(Model model) {
-		
+		User principal = (User) session.getAttribute("principal");
+		User userInfo = userService.findById(principal.getId());
+		model.addAttribute("userInfo", userInfo);
 		return "product/order";
 	}
 }
