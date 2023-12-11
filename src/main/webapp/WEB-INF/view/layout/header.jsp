@@ -90,6 +90,7 @@
 					
 							<ul class="navbar_user">
 								<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+
 								<c:choose>
 									<c:when test="${sessionScope.principal != null }">
 <!-- 									유저 아이콘 -->

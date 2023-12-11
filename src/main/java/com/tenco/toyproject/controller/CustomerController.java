@@ -18,13 +18,10 @@ import com.tenco.toyproject.vo.PageVO;
 
 @Controller
 @RequestMapping("/customer")
-
 public class CustomerController {
 	
 	@Autowired // DI 처리
 	private CustomerService customerService;
-
-	
 
 	//사용자 회원가입 페이지 요청
 	//주소설계 http://localhost/customer/custSignUp

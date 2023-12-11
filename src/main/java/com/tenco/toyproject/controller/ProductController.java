@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tenco.toyproject.repository.entity.Product;
+import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.CustomerService;
 import com.tenco.toyproject.service.ProductService;
 import com.tenco.toyproject.vo.PageVO;
@@ -56,9 +57,9 @@ public class ProductController {
         model.addAttribute("customerList", CustomerList);
         //페이징 처리해서 상품문의 출력 끝
 
+        // 상품 정보
         Product product = productService.findById(id);
         model.addAttribute("product", product);
-        System.out.println(id);
         return "product/detail";
     }
 

@@ -6,4 +6,5 @@ public class Define {
 
     // 파일 저장 경로
     public static final String UPLOAD_DIRECTORY = "C:\\spring_upload\\kender_rent\\upload";
+//    public static final String UPLOAD_DIRECTORY = "images/";
 }

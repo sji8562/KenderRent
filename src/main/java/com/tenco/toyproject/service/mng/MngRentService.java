@@ -1,6 +1,6 @@
 package com.tenco.toyproject.service.mng;
 
-import com.tenco.toyproject.dto.MngRentDTO;
+import com.tenco.toyproject.dto.MngApplyDTO;
 import com.tenco.toyproject.repository.entity.Rent;
 
 
@@ -17,27 +17,29 @@ import java.util.List;
 public class MngRentService {
 
     @Autowired
-    private MngRentRepository mngRepository;
+    private MngRentRepository mngRentRepository;
 
-    public List<MngRentDTO.RentListDTO> findrentAll(PageVO pageVO) {
-        List<MngRentDTO.RentListDTO> rent = mngRepository.findRentWithUserAll(pageVO);
+    public List<MngApplyDTO.RentListDTO> findrentAll(PageVO pageVO) {
+        List<MngApplyDTO.RentListDTO> rent = mngRentRepository.findRentWithUserAll(pageVO);
         return rent;
     }
 
     public int countRentList() {
-        return mngRepository.findRentAllCount();
+        return mngRentRepository.findRentAllCount();
     }
 
     public Rent findByRentId(Integer id) {
-        return mngRepository.findByRentId(id);
+        return mngRentRepository.findByRentId(id);
 
     }
     @Transactional
     public int updateStatus(Integer id){
-        return mngRepository.updateByStatus(id);
+        return mngRentRepository.updateByRentStatus(id);
     }
 
     public int deleteStatus(Integer id) {
-        return mngRepository.deleteByStatus(id);
+        return mngRentRepository.deleteByRentStatus(id);
     }
+
+
 }
