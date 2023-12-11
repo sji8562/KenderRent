@@ -5,26 +5,26 @@
 <mapper
 	namespace="com.tenco.toyproject.repository.interfaces.UserRepository">
 
-	<!--  -->
+	<!-- -->
 	<insert id="insert">
 		insert into user
-		(email, password, username,
+		(email, password, user_name,
 		post_number, address, address_detail, phone_number, level, created_at)
 		values
-		(#{email}, #{password}, #{username}, #{postNumber}, #{address},
-		#{addressDetail}, 1, now())
+		(#{email}, #{password}, #{userName}, #{postNumber}, #{address},
+		#{addressDetail}, #{phoneNumber}, 1, now())
 	</insert>
 
-	<!--  -->
+	<!-- -->
 	<update id="updateById">
 		update user set email = #{email},
 		password =
 		#{password},
-		username = #{username}
+		userName = #{userName}
 		where id = #{id}
 	</update>
 
-	<!--  -->
+	<!-- -->
 	<delete id="deleteById">
 		delete from user_tb where id = #{id}
 	</delete>
@@ -36,7 +36,8 @@
 		from user
 		where email = #{email}
 		and
-		password = #{password}
+		password =
+		#{password}
 	</select>
 
 	<!-- 사용자 단일 조회 -->

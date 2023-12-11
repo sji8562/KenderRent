@@ -14,7 +14,7 @@ public class UserSignUpFormDto {
 	
 	private String email;
 	private String password;
-	private String username;
+	private String userName;
 	private String postNumber;
 	private String address;
 	private String addressDetail;

@@ -33,6 +33,7 @@
 												<span id="checkout_items" class="checkout_items">2</span>
 											</a>
 										</li>
+										<li><a href="/user/logout">로그아웃</a></li>
 									</c:when>
 									<c:otherwise>
 										<li><a href="/user/sign-in">로그인</a></li>
