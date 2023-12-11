@@ -13,6 +13,8 @@ public interface MngPurchaseRepository {
     public List<MngApplyDTO.PurchaseListDTO> findPurchaseWithUserAll(PageVO pageVO);
 
     public int findPurchaseAllCount();
+    public int updateByPurchaseStatus (Integer id);
 
+    public int deleteByPurchaseStatus(Integer id);
 
 }
