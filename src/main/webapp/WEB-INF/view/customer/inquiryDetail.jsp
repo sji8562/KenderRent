@@ -46,7 +46,7 @@
 			</div>
 		</div>
 		<!-- Contact Us -->
-
+		
 		<div class="row">
 			<div class="col-lg-12 get_in_touch_col">
 				<div class="get_in_touch_contents">
@@ -100,5 +100,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
 <script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 <script src="/js/contact_custom.js"></script>
+<script src="/js/dropdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
