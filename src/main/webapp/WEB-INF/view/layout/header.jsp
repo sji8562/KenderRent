@@ -135,7 +135,7 @@
 								<i class="fa fa-angle-down"></i>
 							</a>
 							<ul class="menu_selection">
-								<li><a href="#"><i class="fa fa-columns" ></i>마이페이지</a></li>
+								<li><a href="/mypage/main"><i class="fa fa-columns" ></i>마이페이지</a></li>
 								<li><a href="/user/logout"><i class="fa fa-sign-out" ></i>로그아웃</a></li>
 							</ul>
 						</c:when>
