@@ -1,101 +1,95 @@
- <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <meta charset="UTF-8"> 
+
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<meta charset="UTF-8">
 <header class="header trans_300">
 
-		<!-- Main Navigation -->
+	<!-- Main Navigation -->
 
-		<div class="main_nav_container">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 text-right">
-						<div class="logo_container">
-							<a href="#">colo<span>shop</span></a>
-						</div>
-						<nav class="navbar">
-							<ul class="navbar_menu">
-								<li><a href="/">home</a></li>
-								<li><a href="/product/categories">shop</a></li>
-								<li><a href="#">promotion</a></li>
-								<li><a href="#">pages</a></li>
-								<li><a href="#">blog</a></li>
-								<li><a href="/customer/contact">고객센터</a></li>
-							</ul>
-							<ul class="navbar_user">
-								<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-								
-								<c:choose>
-									<c:when test="${sessionScope.principal != null }">
-										<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-										<li class="checkout">
-											<a href="/cart">
-												<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-												<span id="checkout_items" class="checkout_items">${countItemInCart}</span>
-											</a>
-										</li>
-									</c:when>
+	<div class="main_nav_container">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-right">
+					<div class="logo_container">
+						<a href="#">colo<span>shop</span></a>
+					</div>
+					<nav class="navbar">
+						<ul class="navbar_menu">
+							<li><a href="/">home</a></li>
+							<li><a href="/product/categories">shop</a></li>
+							<li><a href="#">promotion</a></li>
+							<li><a href="#">pages</a></li>
+							<li><a href="#">blog</a></li>
+							<li><a href="/customer/contact">고객센터</a></li>
+						</ul>
+						<ul class="navbar_user">
+							<li><a href="#"><i class="fa fa-search"
+									aria-hidden="true"></i></a></li>
+
+							<c:choose>
+								<c:when test="${sessionScope.principal != null }">
+									<li><a href="#"><i class="fa fa-user"
+											aria-hidden="true"></i></a></li>
+									<li class="checkout"><a href="/cart"> <i
+											class="fa fa-shopping-cart" aria-hidden="true"></i> <span
+											id="checkout_items" class="checkout_items">${countItemInCart}</span>
+									</a></li>
+								</c:when>
 									<c:otherwise>
 										<li><a href="/user/sign-in">로그인</a></li>
 										<li><a href="#">회원가입</a></li>
 									</c:otherwise>
-								</c:choose>
-							</ul>
-							<div class="hamburger_container">
-								<i class="fa fa-bars" aria-hidden="true"></i>
-							</div>
-						</nav>
-					</div>
+							</c:choose>
+						</ul>
+						<div class="hamburger_container">
+							<i class="fa fa-bars" aria-hidden="true"></i>
+						</div>
+					</nav>
 				</div>
 			</div>
 		</div>
-
-	</header>
-	<div class="fs_menu_overlay"></div>
-	<div class="hamburger_menu">
-		<div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
-		<div class="hamburger_menu_content text-right">
-			<ul class="menu_top_nav">
-				<li class="menu_item has-children">
-					<a href="#">
-						usd
-						<i class="fa fa-angle-down"></i>
-					</a>
-					<ul class="menu_selection">
-						<li><a href="#">cad</a></li>
-						<li><a href="#">aud</a></li>
-						<li><a href="#">eur</a></li>
-						<li><a href="#">gbp</a></li>
-					</ul>
-				</li>
-				<li class="menu_item has-children">
-					<a href="#">
-						English
-						<i class="fa fa-angle-down"></i>
-					</a>
-					<ul class="menu_selection">
-						<li><a href="#">French</a></li>
-						<li><a href="#">Italian</a></li>
-						<li><a href="#">German</a></li>
-						<li><a href="#">Spanish</a></li>
-					</ul>
-				</li>
-				<li class="menu_item has-children">
-					<a href="#">
-						My Account
-						<i class="fa fa-angle-down"></i>
-					</a>
-					<ul class="menu_selection">
-						<li><a href="#"><i class="fa fa-sign-in" ></i>Sign In</a></li>
-						<li><a href="#"><i class="fa fa-user-plus" ></i>Register</a></li>
-					</ul>
-				</li>
-				<li class="menu_item"><a href="#">home</a></li>
-				<li class="menu_item"><a href="/product/categories">shop</a></li>
-				<li class="menu_item"><a href="#">promotion</a></li>
-				<li class="menu_item"><a href="#">pages</a></li>
-				<li class="menu_item"><a href="#">blog</a></li>
-				<li class="menu_item"><a href="/customer/contact">고객센터</a></li>
-			</ul>
-		</div>
 	</div>
+
+</header>
+<div class="fs_menu_overlay"></div>
+<div class="hamburger_menu">
+	<div class="hamburger_close">
+		<i class="fa fa-times" aria-hidden="true"></i>
+	</div>
+	<div class="hamburger_menu_content text-right">
+		<ul class="menu_top_nav">
+			<li class="menu_item has-children"><a href="#"> usd <i
+					class="fa fa-angle-down"></i>
+			</a>
+				<ul class="menu_selection">
+					<li><a href="#">cad</a></li>
+					<li><a href="#">aud</a></li>
+					<li><a href="#">eur</a></li>
+					<li><a href="#">gbp</a></li>
+				</ul></li>
+			<li class="menu_item has-children"><a href="#"> English <i
+					class="fa fa-angle-down"></i>
+			</a>
+				<ul class="menu_selection">
+					<li><a href="#">French</a></li>
+					<li><a href="#">Italian</a></li>
+					<li><a href="#">German</a></li>
+					<li><a href="#">Spanish</a></li>
+				</ul></li>
+			<li class="menu_item has-children"><a href="#"> My Account <i
+					class="fa fa-angle-down"></i>
+			</a>
+				<ul class="menu_selection">
+					<li><a href="#"><i class="fa fa-sign-in"></i>Sign In</a></li>
+					<li><a href="#"><i class="fa fa-user-plus"></i>Register</a></li>
+				</ul></li>
+			<li class="menu_item"><a href="#">home</a></li>
+			<li class="menu_item"><a href="/product/categories">shop</a></li>
+			<li class="menu_item"><a href="#">promotion</a></li>
+			<li class="menu_item"><a href="#">pages</a></li>
+			<li class="menu_item"><a href="#">blog</a></li>
+			<li class="menu_item"><a href="/customer/contact">고객센터</a></li>
+		</ul>
+	</div>
+</div>
