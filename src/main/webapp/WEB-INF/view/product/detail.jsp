@@ -156,10 +156,16 @@
 						</div>
 						<div
 							class="quantity d-flex flex-column flex-sm-row align-items-sm-left">
-
-							<div class="red_button buy_button">
-								<a href="/product/order">구매하기</a>
-							</div>
+							<c:choose>
+								<c:when test="${product.status == 1}">
+									<div class="red_button buy_button">
+										<a href="/product/order">구매하기</a>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<p>품절</p>
+								</c:otherwise>
+							</c:choose>
 							<form action="/cart/add?id=${product.id }" method="post">
 								<button type="submit" class="white_button add_to_cart_button">장바구니</button>
 							</form>
