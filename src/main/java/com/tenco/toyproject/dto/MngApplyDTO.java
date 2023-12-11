@@ -17,6 +17,20 @@ public class MngApplyDTO {
         private Timestamp endDay;
         private Timestamp createdAt;
     }
+    @Data
+    public static class RentalDetailDTO{
+        private Integer id;
+        private String username;
+        private String productId;
+        private String productName;
+        private String productPicUrl;
+        private Timestamp startDay;
+        private Timestamp endDay;
+        private String address;
+        private String addressDetail;
+        private String postNumber;
+        private Integer status;
+    }
 
     @Data
     public static class SaleListDTO {

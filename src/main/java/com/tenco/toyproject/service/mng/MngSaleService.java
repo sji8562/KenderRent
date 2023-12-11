@@ -25,10 +25,10 @@ public class MngSaleService {
 
     @Transactional
     public int updateStatus(Integer id){
-        return mngSaleRepository.updateByStatus(id);
+        return mngSaleRepository.updateBySaleStatus(id);
     }
 
     public int deleteStatus(Integer id) {
-        return mngSaleRepository.deleteByStatus(id);
+        return mngSaleRepository.deleteBySaleStatus(id);
     }
 }

@@ -34,11 +34,11 @@ public class MngRentService {
     }
     @Transactional
     public int updateStatus(Integer id){
-        return mngRentRepository.updateByStatus(id);
+        return mngRentRepository.updateByRentStatus(id);
     }
 
     public int deleteStatus(Integer id) {
-        return mngRentRepository.deleteByStatus(id);
+        return mngRentRepository.deleteByRentStatus(id);
     }
 
 

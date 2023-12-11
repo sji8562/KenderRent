@@ -48,18 +48,18 @@
 /*     font-size: 14px; /* 기본 폰트 크기로 유지 */
 }
 /* Style for the links with class "rentalDetail" */
-.rentalDetail a {
+.applyDetail a {
 	color: black;
 	text-decoration: none; /* Remove underline */
 }
 
 /* Style for visited links with class "rentalDetail" */
-.rentalDetail a:visited {
+.applyDetail a:visited {
 	color: black;
 }
 
 /* Style for links with class "rentalDetail" on hover */
-.rentalDetail a:hover {
+.applyDetail a:hover {
 	color: gray;
 	/* Change the color on hover if needed */
 	/* You can add additional styles for hover if needed */
