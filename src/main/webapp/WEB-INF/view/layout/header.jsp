@@ -1,3 +1,4 @@
+
  <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -105,10 +106,12 @@
 										</li>&nbsp;&nbsp;
 										<a class="size" href="/user/logout" style="color:black">로그아웃</a>
 									</c:when>
+
 									<c:otherwise>
 										<a class="size" href="/user/sign-in" style="color:black">로그인</a>&nbsp;&nbsp;
 										<a class="size" href="/user/sign-up" style="color:black">회원가입</a>
 									</c:otherwise>
+
 								</c:choose>
 							</ul>
 							<div class="hamburger_container" id="hambuerBtn">
@@ -237,3 +240,4 @@
 		</div>
 	</div>
 	
+
