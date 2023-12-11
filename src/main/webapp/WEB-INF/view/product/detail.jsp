@@ -550,6 +550,8 @@
 	<script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 	<script src="/js/single_custom.js"></script>
 	<script src="/js/cart.js"></script>
+	<script src="/js/dropdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
 		function submitForm() {
 			document.getElementById('addToCartForm').submit();

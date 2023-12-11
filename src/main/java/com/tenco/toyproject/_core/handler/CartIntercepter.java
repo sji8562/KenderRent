@@ -25,37 +25,37 @@ public class CartIntercepter implements HandlerInterceptor{
 	private ProductService productService;
 	// 컨트롤러에 들어오기 전에 동작하는 메서드
 	// controller --> true(들어감), false(안들어감)
-	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
-		// 세션에 사용자 정보 확인
+//	@Override
+//	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+//			throws Exception {
+//		// 세션에 사용자 정보 확인
 //		System.out.println("동작확인");
 //		HttpSession session = request.getSession();
 //		User principal = (User)session.getAttribute("principal");
 //		if(principal == null) {
-////			response.sendRedirect("/user/sign-in");
+//			response.sendRedirect("/user/sign-in");
 //			throw new UnAuthorizedException("로그인 먼저 해주세요", HttpStatus.UNAUTHORIZED);
 //		}
-//		
-		return true;
-	}
+//
+//		return true;
+//	}
 	
 	
 	//뷰가 렌더링 되기 전에 호출 되는 메서드
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-		int countItemInCart = productService.countItemInCart(1);
-		System.out.println(countItemInCart);
-		modelAndView.addObject("countItemInCart", countItemInCart);
+//	@Override
+//	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+//			ModelAndView modelAndView) throws Exception {
+//		int countItemInCart = productService.countItemInCart(1);
+//		System.out.println(countItemInCart);
+//		modelAndView.addObject("countItemInCart", countItemInCart);
 //		HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
-	}
+//	}
 	
 	
 	// 요청 처리가 완료된 후(뷰 렌더링이 완료된 후) 호출 되는 메서드
-	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
-		HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
-	}
+//	@Override
+//	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+//			throws Exception {
+//		HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
+//	}
 }
