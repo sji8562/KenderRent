@@ -28,7 +28,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">회사 소개</h5>
                                         <a href="#" class="btn btn-secondary">미리보기</a>
-                                        <a href="#" class="btn btn-primary">수정</a>
+                                        <a href="/mng/company/company-info" class="btn btn-primary">수정</a>
                                     </div>
                                 </div>
                                 <div class="card" style="width: 18rem;">

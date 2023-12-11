@@ -6,13 +6,13 @@
 <mapper
         namespace="com.tenco.toyproject.repository.interfaces.mng.MngSaleRepository">
 
-<!--    <select id="findByRentId">-->
-<!--        select * from rent where id = #{id}-->
-<!--    </select>-->
-    <select id="findSaleAllCount">
+    <select id="findByRentId" resultType="Map">
+        select * from rent where id = #{id}
+    </select>
+    <select id="findSaleAllCount" resultType="int">
         select count(*) from sale
     </select>
-    <select id="findSaleWithUserAll" resultType="">
+    <select id="findSaleWithUserAll" resultType="Map">
         select s.id, u.username, p.id as productId,p.name as productName, s.status ,s.created_at from sale s left outer join user u on s.user_id = u.id left outer join product p on s.product_id = p.id LIMIT #{start}, 5
     </select>
     <update id="updateByStatus">
