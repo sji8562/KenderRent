@@ -1,19 +1,18 @@
 package com.tenco.toyproject.repository.interfaces.mng;
 
 import com.tenco.toyproject.dto.MngApplyDTO;
-import com.tenco.toyproject.repository.entity.Rent;
 import com.tenco.toyproject.vo.PageVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
-public interface MngRentRepository {
+public interface MngSaleRepository {
 
-    public List<MngApplyDTO.RentListDTO> findRentWithUserAll(PageVO pageVO);
-    public int findRentAllCount();
+    public List<MngApplyDTO.SaleListDTO> findSaleWithUserAll(PageVO pageVO);
 
-    public Rent findByRentId(Integer id);
+    public int findSaleAllCount();
+
     public int updateByStatus (Integer id);
 
     public int deleteByStatus(Integer id);

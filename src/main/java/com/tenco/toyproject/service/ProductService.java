@@ -13,7 +13,6 @@ import com.tenco.toyproject.repository.interfaces.CustomerRepository;
 import com.tenco.toyproject.repository.interfaces.ProductRepository;
 
 @Service
-@Mapper
 public class ProductService {
 	
 	@Autowired
