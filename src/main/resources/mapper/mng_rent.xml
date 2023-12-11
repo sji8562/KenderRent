@@ -7,14 +7,15 @@
         namespace="com.tenco.toyproject.repository.interfaces.mng.MngRentRepository">
 
     <select id="findByRentId">
-        select * from rent inner join  where id = #{id}
+        SELECT r.id ,u.user_name,u.email,u.phone_number as phoneNumber,p.id AS productId, p.name AS productName , p.pic_url AS productPicUrl, r.start_day, r.end_day,r.post_number, r.address, r.address_detail,r.`STATUS` FROM rent r INNER JOIN user u ON r.user_id = u.id INNER JOIN product p ON r.product_id = p.id WHERE r.id = #{id}
     </select>
     <select id="findRentAllCount">
         select count(*) from rent
     </select>
     <select id="findRentWithUserAll">
-        select r.id, u.username, p.id as productId,p.name as productName, r.status, r.start_day, r.end_day,r.created_at from rent r left outer join user u on r.user_id = u.id left outer join product p on r.product_id = p.id LIMIT #{start}, 5
+        select r.id, u.user_name, p.id as productId,p.name as productName, r.status, r.start_day, r.end_day,r.created_at from rent r left outer join user u on r.user_id = u.id left outer join product p on r.product_id = p.id LIMIT #{start}, 5
     </select>
+
     <update id="updateByRentStatus">
         update rent set status = 2 where id = #{id}
     </update>

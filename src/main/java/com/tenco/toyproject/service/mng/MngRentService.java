@@ -18,6 +18,10 @@ public class MngRentService {
 
     @Autowired
     private MngRentRepository mngRentRepository;
+    public List<MngApplyDTO.RentListDTO> findrentAll() {
+        List<MngApplyDTO.RentListDTO> rent = mngRentRepository.findRentAll();
+        return rent;
+    }
 
     public List<MngApplyDTO.RentListDTO> findrentAll(PageVO pageVO) {
         List<MngApplyDTO.RentListDTO> rent = mngRentRepository.findRentWithUserAll(pageVO);
@@ -28,7 +32,7 @@ public class MngRentService {
         return mngRentRepository.findRentAllCount();
     }
 
-    public Rent findByRentId(Integer id) {
+    public MngApplyDTO.RentalDetailDTO findByRentId(Integer id) {
         return mngRentRepository.findByRentId(id);
 
     }

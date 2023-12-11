@@ -13,8 +13,9 @@
         select count(*) from sale
     </select>
     <select id="findSaleWithUserAll">
-        select s.id, u.username, p.id as productId,p.name as productName, s.status ,s.created_at from sale s left outer join user u on s.user_id = u.id left outer join product p on s.product_id = p.id LIMIT #{start}, 5
+        select s.id, u.user_name, p.id as productId,p.name as productName, s.status ,s.created_at from sale s left outer join user u on s.user_id = u.id left outer join product p on s.product_id = p.id LIMIT #{start}, 5
     </select>
+
     <update id="updateBySaleStatus">
         update sale set status = 2 where id = #{id}
     </update>
