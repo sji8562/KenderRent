@@ -18,6 +18,10 @@ public class MngPurchaseService {
         List<MngApplyDTO.PurchaseListDTO> dto =  mngPurchaseRepository.findPurchaseWithUserAll(pageVO);
         return dto;
     }
+    public List<MngApplyDTO.PurchaseListDTO> findAllByPurchase() {
+        List<MngApplyDTO.PurchaseListDTO> dto =  mngPurchaseRepository.findPurchaseAll();
+        return dto;
+    }
 
     public int countPurchaseList() {
         return mngPurchaseRepository.findPurchaseAllCount();

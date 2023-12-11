@@ -11,6 +11,7 @@ import java.util.List;
 public interface MngPurchaseRepository {
 
     public List<MngApplyDTO.PurchaseListDTO> findPurchaseWithUserAll(PageVO pageVO);
+    public List<MngApplyDTO.PurchaseListDTO> findPurchaseAll();
 
     public int findPurchaseAllCount();
     public int updateByPurchaseStatus (Integer id);

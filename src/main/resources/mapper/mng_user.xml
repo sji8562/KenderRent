@@ -10,7 +10,7 @@
     <update id='updateById'>
         update user set
                         email = #{email},
-                        username = #{userName},
+                        user_name = #{userName},
                         password = #{password},
                         phone_number = #{phoneNumber}
         where id = #{id}

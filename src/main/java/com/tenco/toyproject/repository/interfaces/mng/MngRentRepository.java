@@ -10,10 +10,11 @@ import java.util.List;
 @Mapper
 public interface MngRentRepository {
 
+    public List<MngApplyDTO.RentListDTO> findRentAll();
     public List<MngApplyDTO.RentListDTO> findRentWithUserAll(PageVO pageVO);
     public int findRentAllCount();
 
-    public Rent findByRentId(Integer id);
+    public MngApplyDTO.RentalDetailDTO findByRentId(Integer id);
     public int updateByRentStatus (Integer id);
 
     public int deleteByRentStatus(Integer id);
