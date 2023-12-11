@@ -13,7 +13,7 @@ public interface MngSaleRepository {
 
     public int findSaleAllCount();
 
-    public int updateByStatus (Integer id);
+    public int updateBySaleStatus (Integer id);
 
-    public int deleteByStatus(Integer id);
+    public int deleteBySaleStatus(Integer id);
 }

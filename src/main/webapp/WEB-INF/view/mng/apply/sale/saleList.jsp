@@ -68,42 +68,42 @@
 
                                             <c:forEach var="saleList" items="${saleList}">
                                                 <tr>
-                                                    <th scope="row">${saleList.id}</th>
-                                                    <td>${saleList.username }</td>
-                                                    <td>${saleList.productId}</td>
-                                                    <td>${saleList.productName }</td>
-                                                    <td>${saleList.createdAt}</td>
+                                                    <th class="applyDetail" scope="row"><a href="/mng/apply/${saleList.id}/sale-detail">${saleList.id}</a></th>
+                                                    <td class="applyDetail"><a href="/mng/apply/${saleList.id}/sale-detail">${saleList.username}</a></td>
+                                                    <td class="applyDetail"><a href="/mng/apply/${saleList.id}/sale-detail">${saleList.productId}</a></td>
+                                                    <td class="applyDetail"><a href="/mng/apply/${saleList.id}/sale-detail">${saleList.productName}</a></td>
+                                                    <td class="applyDetail"><a href="/mng/apply/${saleList.id}/sale-detail">${saleList.createdAt}</a></td>
                                                     <c:choose>
                                                         <c:when test="${saleList.status == 1}">
                                                             <td>
                                                                 <div>
                                                                     <button class="btn btn-success"
                                                                             style="border: 1px solid black"
-                                                                            onclick="location.href='/mng/apply/${saleList.id}/rental-update'">신청 확인</button>
+                                                                            onclick="location.href='/mng/apply/${saleList.id}/sale-update'">신청 확인</button>
                                                                     &nbsp;&nbsp;
                                                                     <button class="btn-danger btn"
-                                                                            onclick="location.href='/mng/apply/${saleList.id}/rental-delete'">신청 취소</button>
+                                                                            onclick="location.href='/mng/apply/${saleList.id}/sale-delete'">신청 취소</button>
                                                                 </div>
                                                             </td>
                                                         </c:when>
                                                         <c:when test="${saleList.status == 2}">
                                                             <td>
                                                                 <div>
-                                                                    대여중
+                                                                    거래진행중
                                                                 </div>
                                                             </td>
                                                         </c:when>
                                                         <c:when test="${saleList.status == 3}">
                                                             <td>
                                                                 <div>
-                                                                    반납중
+                                                                    세척중
                                                                 </div>
                                                             </td>
                                                         </c:when>
                                                         <c:when test="${saleList.status == 4}">
                                                             <td>
                                                                 <div>
-                                                                    세척중
+                                                                    홈페이지 등록
                                                                 </div>
                                                             </td>
                                                         </c:when>

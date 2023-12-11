@@ -66,7 +66,7 @@ public class MngApplyController {
     @GetMapping("{id}/rental-detail")
     public String rentalDetail(@PathVariable Integer id){
         System.out.println("여긴 오는감");
-//        mngService.findByRentId(id);
+//        MngApplyDTO.RentalDetailDTO dto = mngRentService.findByRentId(id);
         return "mng/apply/rental/rentalDetail";
     }
     @GetMapping("{id}/rental-update")
@@ -103,6 +103,17 @@ public class MngApplyController {
         model.addAttribute("saleList", saleList);
         return "mng/apply/sale/saleList";
     }
+    @GetMapping("{id}/sale-update")
+    public String updateSaleStatus(@PathVariable Integer id){
+        mngSaleService.updateStatus(id);
+        return "redirect:/mng/apply/sale-list";
+    }
+    @GetMapping("{id}/sale-delete")
+    public String deleteSaleStatus(@PathVariable Integer id){
+        mngSaleService.deleteStatus(id);
+        return "redirect:/mng/apply/sale-list";
+    }
+
 
     //구매 시작
     @GetMapping("purchase-list")
@@ -124,5 +135,17 @@ public class MngApplyController {
 
         model.addAttribute("purchaseList", purchaseList);
         return "mng/apply/purchase/purchaseList";
+    }
+
+
+    @GetMapping("{id}/purchase-update")
+    public String updatePurchaseStatus(@PathVariable Integer id){
+        mngPurchaseService.updateStatus(id);
+        return "redirect:/mng/apply/purchase-list";
+    }
+    @GetMapping("{id}/purchase-delete")
+    public String deletePurchaseStatus(@PathVariable Integer id){
+        mngPurchaseService.deleteStatus(id);
+        return "redirect:/mng/apply/purchase-list";
     }
 }
