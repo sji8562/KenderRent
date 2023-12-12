@@ -103,12 +103,12 @@
         .create( document.querySelector( '#editor' ), {
             language: "ko",
             ckfinder: {
-                uploadUrl: "/image/upload",
+                uploadUrl: "/upload/image",
                 withCredentials: true
             }
         } )
         .catch( error => {
-            console.error( error );
+            console.error( "CK EDITOR ERROR == ", error );
         } );
 </script>
 <style>
