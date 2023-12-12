@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -277,7 +279,7 @@
 							<%-- 회사 소개 게시판 --%>
 							<li class="sidebar-item" id="boardManagement"><a
 									class="sidebar-link waves-effect waves-dark sidebar-link"
-									href="/mng/company/info" aria-expanded="false"> <i
+									href="/mng/content/info" aria-expanded="false"> <i
 									class="mdi mdi-alert-outline"></i> <span class="hide-menu">회사 소개 게시판</span>
 							</a>
 					</ul>

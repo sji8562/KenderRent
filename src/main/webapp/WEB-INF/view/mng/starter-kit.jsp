@@ -54,7 +54,7 @@
                     <div class="col-12">
                         <form method="post">
                             <textarea id="summernote" name="editordata"></textarea>
-                            <a href="/mng/company/info"><button>뒤로가기</button></a>
+                            <a href="/mng/content/info"><button>뒤로가기</button></a>
                             <button type="submit">등록하기</button>
                         </form>
                         Run summernote

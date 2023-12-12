@@ -2,7 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
 
 <link rel="stylesheet" href="/css/style.css">
 <div class="page-wrapper">
@@ -80,8 +80,9 @@
                         </div>
                         <div class="form-group">
                             <label>제품 상세 설명</label>
-                            <%-- TODO text editor --%>
-                            <textarea class="form-control" rows="5" name="content">${product.content}</textarea>
+                            <div id="container">
+                                <textarea id="editor" name="content">${product.content}</textarea>
+                            </div>
                         </div>
                         <button class="btn btn-secondary" onclick="history.back()">뒤로가기</button>
                         <button type="submit" class="btn btn-primary">수정하기</button>
@@ -110,23 +111,22 @@
 <!-- End Page wrapper  -->
 <!-- ============================================================== -->
 </div>
-<!-- ============================================================== -->
-<!-- End Wrapper -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- All Jquery -->
-<!-- ============================================================== -->
-<script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap tether Core JavaScript -->
-<script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<!-- slimscrollbar scrollbar JavaScript -->
-<script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
-<!--Wave Effects -->
-<script src="../../dist/js/waves.js"></script>
-<!--Menu sidebar -->
-<script src="../../dist/js/sidebarmenu.js"></script>
-<!--Custom JavaScript -->
-<script src="../../dist/js/custom.min.js"></script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<style>
+    #container {
+        width: 100%;
+    }
+    .ck-editor__editable[role="textbox"] {
+        /* editing area */
+        min-height: 500px;
+    }
+</style>
 
 </body>
 </html>
