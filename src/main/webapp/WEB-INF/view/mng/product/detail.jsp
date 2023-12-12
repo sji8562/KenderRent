@@ -19,9 +19,9 @@
 
 	<%--<div class="m--margin">
 		물품 상세 페이지
-		
+
 		<div>${product}</div>
-		
+
 		<div>상품번호 ${product.id}</div>
 		<div>카테고리 ${product.firstCategoryName} > ${product.secondCategoryName}</div>
 		<div>물품명 ${product.name}</div>
@@ -72,7 +72,12 @@
 							<div class="form-group">
 								<label>썸네일</label>
 								<div style="width: 500px;">
-									<img src="<c:url value="${product.formatImgUrl()}"/>" >
+									<script>
+										console.log("${product.formatImgUrl()}");
+									</script>
+<%--									<img src="<c:url value="${product.formatImgUrl()}"/>" >--%>
+									<img src="${product.formatImgUrl()}" >
+
 								</div>
 							</div>
 							<div class="form-group">
@@ -151,7 +156,7 @@
 		min-height: 500px;
 	}
 </style>
-	
+
 </body>
 </html>
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>

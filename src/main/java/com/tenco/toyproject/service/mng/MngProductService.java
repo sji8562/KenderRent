@@ -103,12 +103,20 @@ public class MngProductService {
         int firstCategoryId = mngRepository.findFirstCategoryByfId(dto.getSecondCategoryId());
         dto.setFirstCategoryId(firstCategoryId);
 
+        Product originalProduct = findProductById(dto.getId());
+
+        String imgUrl = originalProduct.getPicUrl();
+
+        if(dto.getPicUrl() != null) {
+            imgUrl = dto.getPicUrl();
+        }
+
         Product product = Product
                 .builder()
                 .id(dto.getId())
                 .name(dto.getName())
                 .price(dto.getPrice())
-                .picUrl(dto.getPicUrl())
+                .picUrl(imgUrl)
                 .firstCategoryId(dto.getFirstCategoryId())
                 .secondCategoryId(dto.getSecondCategoryId())
                 .content(dto.getContent())
