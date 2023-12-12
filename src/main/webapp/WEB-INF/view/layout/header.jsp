@@ -101,7 +101,7 @@
 										<li class="checkout ">
 											<a  href="/cart">
 												<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-												<span id="checkout_items" class="checkout_items">${countItemInCart}</span>
+												<span id="checkout_items" class="checkout_items">${countItemCart}</span>
 											</a>
 
 										</li>
