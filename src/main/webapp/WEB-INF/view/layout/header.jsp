@@ -2,7 +2,7 @@
  <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <meta charset="UTF-8"> 
+ <meta charset="UTF-8">
  <style>
  	@media(min-width: 800px){
  		#hambuerBtn
@@ -10,7 +10,7 @@
  			display: none;
 			font-size: 24px;
  		}
- 		
+
  	}
  	@media(max-width: 800px){
  		.size{
@@ -88,7 +88,7 @@
 			                        </div>
 			                    </li>
 							</ul>
-					
+
 							<ul class="navbar_user">
 								<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
 
@@ -96,7 +96,7 @@
 									<c:when test="${sessionScope.principal != null }">
 <!-- 									유저 아이콘 -->
 										<li ><a href="/mypage/main"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-										
+
 <!-- 										장바구니아이콘 -->
 										<li class="checkout ">
 											<a  href="/cart">
@@ -124,7 +124,7 @@
 				</div>
 			</div>
 		</div>
-	
+
 	</header>
 	<div class="fs_menu_overlay"></div>
 	<div class="hamburger_menu">
@@ -153,9 +153,9 @@
 							</ul>
 						</c:otherwise>
 					</c:choose>
-						
+
 					</li>
-				
+
 				<li class="menu_item has-children">
 					<a href="#">
 						빅사이즈 장난감
@@ -237,7 +237,7 @@
 						<li><a href="/customer/contact?type=4">상품문의</a></li>
 					</ul>
 				</li>
-				
+
 			</ul>
 		</div>
 	</div>

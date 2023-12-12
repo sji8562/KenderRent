@@ -33,6 +33,15 @@ public class MngApplyDTO {
         private String postNumber;
         private Integer status;
     }
+    @Data
+    public static class RentalDetailUpdateDTO{
+        private int id;
+        private String username;
+        private String email;
+        private String phoneNumber;
+//        private
+
+    }
 
     @Data
     public static class SaleListDTO {

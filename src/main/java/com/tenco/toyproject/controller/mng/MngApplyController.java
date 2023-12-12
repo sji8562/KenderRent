@@ -96,6 +96,11 @@ public class MngApplyController {
         mngRentService.updateStatus(id);
         return "redirect:/mng/apply/rental-list";
     }
+    @PostMapping("rent-update")
+    public String updateRent(@PathVariable Integer id){
+        return null;
+    }
+
     @GetMapping("{id}/rental-delete")
     public String deleteRentalStatus(@PathVariable Integer id){
         mngRentService.deleteStatus(id);
