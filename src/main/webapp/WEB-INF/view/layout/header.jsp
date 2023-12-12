@@ -103,8 +103,10 @@
 												<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 												<span id="checkout_items" class="checkout_items">${countItemInCart}</span>
 											</a>
-										</li>&nbsp;&nbsp;
-										<a class="size" href="/user/logout" style="color:black">로그아웃</a>
+
+										</li>
+										<li><a href="/user/logout">로그아웃</a></li>
+
 									</c:when>
 
 									<c:otherwise>

@@ -7,6 +7,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -16,11 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
+import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
 import com.tenco.toyproject.dto.UserSignInFormDto;
 import com.tenco.toyproject.dto.UserSignUpFormDto;
 import com.tenco.toyproject.dto.response.KakaoProfile;
+import com.tenco.toyproject.dto.response.NaverProfile;
 import com.tenco.toyproject.dto.response.OAuthToken;
-import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
 import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.UserService;
 
@@ -35,6 +37,12 @@ public class UserController {
 
 	@Autowired
 	private HttpSession session;
+	
+//	private final JavaMailSender javaMailSender;
+//	MailBodyUtil mailBodyUtil = new MailBodyUtil();
+	
+//	@Value("${spring.mail.username}")
+//	private String from;
 	
 	//	아직 선언 안됌
 	@Value("${tenco.key}")
@@ -72,7 +80,7 @@ public class UserController {
 		if (dto.getPassword() == null || dto.getPassword().isEmpty()) {
 			throw new CustomRestfulException("비밀번호를 입력해주세요.", HttpStatus.BAD_REQUEST);
 		}
-		if (dto.getUsername() == null || dto.getUsername().isEmpty()) {
+		if (dto.getUserName() == null || dto.getUserName().isEmpty()) {
 			throw new CustomRestfulException("사용자명을 입력해주세요.", HttpStatus.BAD_REQUEST);
 		}
 
@@ -100,6 +108,11 @@ public class UserController {
 		session.invalidate();
 		return "redirect:/user/sign-in";
 	}
+	
+	@GetMapping("/findPwdByEmail")
+	public String findPwdByEmail() {
+		return "redirect:/user/sign-in";
+	}
 
 	// http://localhost:80/user/kakao-callback?code=
 	@GetMapping("/kakao-callback")
@@ -113,7 +126,7 @@ public class UserController {
 
 		MultiValueMap<String, String> params1 = new LinkedMultiValueMap<>();
 		params1.add("grant_type", "authorization_code");
-		params1.add("client_id", "9c1f13e7e8b25dc2a7a6985ffce3cabb");
+		params1.add("client_id", "271d310fa59cc2d79b4807e9b895349d");
 		params1.add("redirect_uri", "http://localhost:80/user/kakao-callback");
 		params1.add("code", code);
 
@@ -157,7 +170,7 @@ public class UserController {
 		// 소셜 회원 가입자는 전부 비밀번호가 동일하게 된다.
 		UserSignUpFormDto userSignUpFormDto = UserSignUpFormDto.builder().email("OAuth_" + kakaoProfile.getId() + "_님")
 //				.fullname("OAuth_" + kakaoProfile.getId() + "_님")
-				.password(tencoKey).username("Kakao").build();
+				.password(tencoKey).userName("Kakao").build();
 
 		System.out.println("tencoKey: " + tencoKey);
 
@@ -178,8 +191,91 @@ public class UserController {
 
 		// 만약 소셜 로그인 사용자가 회원 가입 처리 완료된
 		// 사용자라면, 바로 세션 처리 및 로그인 처리
-		return "redirect:/메인화면";
+		return "redirect:/customer/contact";
 
 	}
+	
+	// http://localhost:80/user/naver-callback?code=
+	// 네이버
+	@GetMapping("/naver-callback")
+	public String naverCallBack(@RequestParam String code) throws CustomRestfulException {
+		
+		// 액세스 토큰 요청 --> Server2Server
+		RestTemplate rt1 = new RestTemplate();
+		
+		HttpHeaders headers1 = new HttpHeaders();
+		headers1.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+		
+		MultiValueMap<String, String> params1 = new LinkedMultiValueMap<>();
+		params1.add("grant_type", "authorization_code");
+		params1.add("client_id", "bxQuRgVT_baVA8Siz5vc");
+		params1.add("redirect_uri", "http://localhost:80/user/naver-callback");
+		params1.add("code", code);
+		
+		HttpEntity<MultiValueMap<String, String>> requestMsg1 = new HttpEntity<>(params1, headers1);
+		
+		// 요청 처리
+		ResponseEntity<OAuthToken> response1 = rt1.exchange("https://nid.naver.com/oauth2.0/token", HttpMethod.POST,
+				requestMsg1, OAuthToken.class);
+		
+		System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+		System.out.println(response1.getHeaders());
+		System.out.println(response1.getBody());
+		System.out.println(response1.getBody().getAccessToken());
+		System.out.println(response1.getBody().getRefreshToken());
+		System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+		
+		// 이상 토큰을 받기 위한 처리
+		
+		RestTemplate rt2 = new RestTemplate();
+		// Header 구성
+		HttpHeaders headers2 = new HttpHeaders();
+		headers2.add("Authorization", "Bearer " + response1.getBody().getAccessToken());
+		
+		headers2.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+		// Header + Body 결합
+		HttpEntity<MultiValueMap<String, String>> requestMsg2 = new HttpEntity<>(headers2);
+		// 요청 처리
+		ResponseEntity<NaverProfile> response2 = rt2.exchange("https://openapi.naver.com/v1/nid/me", HttpMethod.POST,
+				requestMsg2, NaverProfile.class);
+		
+		System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+		System.out.println(response2.getBody().getProperties().getNickname());
+		System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+		
+		// 카카오 서버에 존재하는 정보를 요청 처리
+		System.out.println("----네이버 서버 정보 받기 완료----");
+		
+		// 1. 회원 가입 여부 확인
+		NaverProfile naverProfile = response2.getBody();
+		
+		// 소셜 회원 가입자는 전부 비밀번호가 동일하게 된다.
+		UserSignUpFormDto userSignUpFormDto = UserSignUpFormDto.builder().email("OAuth_" + naverProfile.getId() + "_님")
+//				.fullname("OAuth_" + kakaoProfile.getId() + "_님")
+				.password(tencoKey).userName("Naver").build();
+		
+		System.out.println("tencoKey: " + tencoKey);
+		
+		// --> null 일때는 세션에 로그인을 하기위해 값을 할당해주어야 한다.
+		User oldUser = userService.searchEmail(userSignUpFormDto.getEmail());
+		if (oldUser == null) {
+			// oldUser가 null이라면 회원 가입 최초 처리를 해줘야함
+			// 최초 처리 =회원가입 자동 처리
+			userService.userSignUp(userSignUpFormDto); // 회원가입이 됨
+			
+			oldUser = userService.searchEmail(userSignUpFormDto.getEmail());
+			
+		}
+		// null이 아닌 경우, 즉 이미 있는 정보일 경우
+		// 로그인 처리
+		
+		oldUser.setPassword(null);
+		
+		// 만약 소셜 로그인 사용자가 회원 가입 처리 완료된
+		// 사용자라면, 바로 세션 처리 및 로그인 처리
+		return "redirect:/메인화면";
+		
+	}
+	
 
 }
