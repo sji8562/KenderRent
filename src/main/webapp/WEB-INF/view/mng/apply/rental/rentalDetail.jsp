@@ -80,12 +80,13 @@
             <div class="col-lg-8 col-xlg-9">
                 <div class="card">
                     <div class="card-body">
-                        <form class="form-horizontal form-material mx-2">
+                        <form class="form-horizontal form-material mx-2" method="post" action="/mng/apply/rent-update">
+                            <input type="hidden" name="rentId" id="rentId" value="${dto.id}">
                             <div class="form-group">
                                 <label class="col-md-12">신청자 이름</label>
                                 <div class="col-md-12">
                                     <input type="text"
-                                           class="form-control form-control-line" id="username" name="username" value="${dto.username}">
+                                           class="form-control form-control-line" id="username" name="username" value="${dto.username}" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -93,20 +94,20 @@
                                 <div class="col-md-12">
                                     <input type="email"
                                            class="form-control form-control-line" name="email"
-                                           id="email" value="${dto.email}">
+                                           id="email" value="${dto.email}" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-12">전화번호</label>
                                 <div class="col-md-12">
                                     <input type="text"
-                                           class="form-control form-control-line" name="phoneNumber" id="phoneNumber" value="${dto.phoneNumber}" }>
+                                           class="form-control form-control-line" name="phoneNumber" id="phoneNumber" value="${dto.phoneNumber}" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-12">Select Country</label>
+                                <label class="col-sm-12">상태</label>
                                 <div class="col-sm-12">
-                                    <select class="form-select shadow-none form-control-line status">
+                                    <select class="form-select shadow-none form-control-line status" id="status" name="status">
                                         <option value="1">재고있음</option>
                                         <option value="2">대여중</option>
                                         <option value="3">소독중</option>
@@ -115,8 +116,18 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="col-sm-12">대여 날짜</label>
                                 <div class="col-sm-12">
-                                    <button class="btn btn-success text-white">Update Profile</button>
+                                    <input type="date" name="startDay" id="startDay" value=${dto.startDay}>
+                                    <input type="date" name="endDay" id="endDay" value=${dto.endDay}>
+                                </div>
+                            </div>
+                            <div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-success text-white">상태 변경</button>
                                 </div>
                             </div>
                         </form>
@@ -154,7 +165,7 @@
 
         var mapContainer = document.getElementById('mngKakaoMap'), // 지도를 표시할 div
             mapOption = {
-                center: new kakao.maps.LatLng(37.213404, 127.061913), // 지도의 중심좌표
+                center: new kakao.maps.LatLng(37.35883233527734, 127.10797856487766), // 지도의 중심좌표
                 level: 3 // 지도의 확대 레벨
             };
 
