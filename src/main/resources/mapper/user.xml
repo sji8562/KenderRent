@@ -62,5 +62,11 @@
 		from user
 		where email = #{email}
 	</select>
+	
+	<select id="findEmailByUserName" resultType="com.tenco.toyproject.repository.entity.User">
+		select email
+		from user
+		where user_name = #{userName}
+	</select>
 
 </mapper>

@@ -63,13 +63,13 @@
 						</div>
 					</form>
 					<br>
-					<a href="/user/findEmail">이메일 찾기 | </a>
-					<a href="/user/findPwd">비밀번호 찾기 | </a>
-					<a href="/user/sign-up">회원가입</a>
+					<a href="/user/find-email-by-user-name">이메일 찾기 | </a>
+					<a href="/user/find-pwd-by-email">비밀번호 찾기 | </a>
+					<a href="/user/sign-up-page">회원가입</a>
 					<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=271d310fa59cc2d79b4807e9b895349d&redirect_uri=http://localhost:80/user/kakao-callback">
 					<img alt="" src="/images/kakao_login_large_wide.png" width="100%" height="60"></a>
 					<a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=bxQuRgVT_baVA8Siz5vc&redirect_uri=http://localhost:80/user/naver-callback">
-					<img alt="" src="/images/naver_login_medium_narrow.png" width="100%" height="60"></a>
+					<img alt="" src="/images/naver_login_large_wide.png" width="100%" height="60"></a>
 				</div>
 			</div>
 			<div class="col-lg-4 "></div>
