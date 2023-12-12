@@ -100,7 +100,13 @@
 
 <script>
     ClassicEditor
-        .create( document.querySelector( '#editor' ) )
+        .create( document.querySelector( '#editor' ), {
+            language: "ko",
+            ckfinder: {
+                uploadUrl: "/image/upload",
+                withCredentials: true
+            }
+        } )
         .catch( error => {
             console.error( error );
         } );

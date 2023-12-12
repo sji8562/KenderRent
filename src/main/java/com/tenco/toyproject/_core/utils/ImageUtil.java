@@ -5,8 +5,8 @@ public class ImageUtil {
         String imageUrl = "/assets/images/empty_img.jpg";
 
         if (image != null) {
-            imageUrl = Define.UPLOAD_DIRECTORY + "/" + image;
-//            imageUrl = image;
+//            imageUrl = Define.UPLOAD_DIRECTORY + image;
+              imageUrl = "/images/" + image;
         }
 
         return imageUrl;

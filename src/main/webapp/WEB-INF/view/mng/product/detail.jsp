@@ -72,16 +72,7 @@
 							<div class="form-group">
 								<label>썸네일</label>
 								<div style="width: 500px;">
-<%--									<c:choose>--%>
-<%--										<c:when test="${product.picUrl != null}">--%>
-<%--											<img src="${product.picUrl}" alt="No Image">--%>
-<%--										</c:when>--%>
-<%--										<c:otherwise>--%>
-<%--											<img src="/assets/images/empty_img.jpg" alt="No Alter Image">--%>
-<%--										</c:otherwise>--%>
-<%--									</c:choose>--%>
 									<img src="<c:url value="${product.formatImgUrl()}"/>" >
-
 								</div>
 							</div>
 							<div class="form-group">
@@ -98,7 +89,6 @@
 							</div>
 							<div class="form-group">
 								<label>제품 상세 설명</label>
-								<%-- TODO text editor --%>
 								<div id="container">
 									<textarea id="editor" name="content">${product.content}</textarea>
 								</div>
