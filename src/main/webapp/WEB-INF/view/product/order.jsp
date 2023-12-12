@@ -80,10 +80,9 @@
 							</div>
 							<!-- 배송지 정보 -->
 							<div class="box_content" style="margin-top: 16px">
-								<div class="box_title">배송지 정보
-								</div>
-								<br>
-								<input type="checkbox"> <label>주문자 정보와 동일</label>
+								<div class="box_title">배송지 정보</div>
+								<br> <input type="checkbox"> <label>주문자 정보와
+									동일</label>
 								<div class="box_form">
 									<div class="box_label">
 										<label for="user_name">이름</label>
@@ -102,8 +101,8 @@
 									<div class="box_label">
 										<label for="user_name">주소</label>
 									</div>
-									<input type="text" id="sample4_postcode" class="box_input" style="width: 350px;"
-										title="우편번호" placeholder="우편번호"> 
+									<input type="text" id="sample4_postcode" class="box_input"
+										style="width: 350px;" title="우편번호" placeholder="우편번호">
 									<input type="button" class="btn_address"
 										onclick="sample4_execDaumPostcode()" value="주소찾기"><br>
 									<div class="box_label">
@@ -120,8 +119,8 @@
 										<label for="user_name"></label>
 									</div>
 									<input type="text" id="sample4_jibunAddress" class="box_input"
-										placeholder="지번주소">
-									<span id="guide" style="color: #999; display: none"></span> 
+										placeholder="지번주소"> <span id="guide"
+										style="color: #999; display: none"></span>
 									<div class="box_label">
 										<label for="user_name"></label>
 									</div>
@@ -132,25 +131,33 @@
 							<!-- 결제 수단 -->
 							<div class="box_content" style="margin-top: 16px">
 								<div class="box_title">결제 수단</div>
+								<br>
 								<div style="flex: 1 1; position: relative;">
-									<input type="radio" name="payment" id="payment_select" 
-										checked>
-									<img src="/images/payment_icon_yellow_small.png" width="62" height="28">
-									<label class="payment_label">카카오페이 결제</label>
+									<div class="payment_box">
+										<input type="radio" name="payment" id="payment_select"
+											class="payment_radio" checked> <label
+											class="payment_label">카카오페이 결제 <img
+											src="/images/payment_icon_yellow_small.png" width="60"
+											height="25">
+										</label>
+										<form method="post" action="/kakaoPay">
+											<button style="width: 250px; height: 50px">카카오페이로 결제하기</button>
+										</form>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-6">
-					<div>
-						<p>오른쪽</p>
-						<div style="float: right; width: 472px;">
+						<div>
+							<p>오른쪽</p>
+							<div style="float: right; width: 472px;">
 								<div style="border: 1px solid; border-radius: 8px;"></div>
+							</div>
 						</div>
 					</div>
 				</div>
-				</div>
-				
+
 			</div>
 		</div>
 	</div>
@@ -158,5 +165,9 @@
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="/js/order.js"></script>
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript"
+		src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </body>
 </html>
