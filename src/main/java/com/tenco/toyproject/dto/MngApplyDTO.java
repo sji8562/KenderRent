@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 public class MngApplyDTO {
 
     @Data
-    public static class RentListDTO{
+    public static class RentListDTO {
         private Integer id;
         private String username;
         private String productId;
@@ -17,8 +17,9 @@ public class MngApplyDTO {
         private Timestamp endDay;
         private Timestamp createdAt;
     }
+
     @Data
-    public static class RentalDetailDTO{
+    public static class RentalDetailDTO {
         private Integer id;
         private String username;
         private String email;
@@ -33,14 +34,16 @@ public class MngApplyDTO {
         private String postNumber;
         private Integer status;
     }
-    @Data
-    public static class RentalDetailUpdateDTO{
-        private int id;
-        private String username;
-        private String email;
-        private String phoneNumber;
-//        private
 
+    @Data
+    public static class RentalDetailUpdateDTO {
+        private Integer id;
+        private String postNumber;
+        private String address;
+        private String addressDetail;
+        private Integer status;
+        private String startDay;
+        private String endDay;
     }
 
     @Data
@@ -53,8 +56,9 @@ public class MngApplyDTO {
         private Integer status;
 
     }
+
     @Data
-    public static class PurchaseListDTO{
+    public static class PurchaseListDTO {
         private int id;
         private String username;
         private int productId;

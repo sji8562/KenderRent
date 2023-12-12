@@ -11,6 +11,12 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -46,4 +52,22 @@ public class MngRentService {
     }
 
 
+    @Transactional
+    public int updateById(MngApplyDTO.RentalDetailUpdateDTO rentalDetailUpdateDTO) throws ParseException {
+        Rent rent = mngRentRepository.findByRent(rentalDetailUpdateDTO.getId());
+        System.out.println(rent);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localStartDate = LocalDate.parse(rentalDetailUpdateDTO.getStartDay(), formatter);
+        LocalDate localEndDate = LocalDate.parse(rentalDetailUpdateDTO.getEndDay(), formatter);
+        Timestamp startDay = Timestamp.valueOf(localStartDate.atStartOfDay());
+        Timestamp endDay = Timestamp.valueOf(localEndDate.atStartOfDay());
+        rent.setAddress(rentalDetailUpdateDTO.getAddress());
+        rent.setAddressDetail(rentalDetailUpdateDTO.getAddressDetail());
+        rent.setPostNumber(rentalDetailUpdateDTO.getPostNumber());
+        rent.setStatus(rentalDetailUpdateDTO.getStatus());
+        rent.setStartDay(startDay);
+        rent.setEndDay(endDay);
+        return mngRentRepository.updateById(rent);
+    }
 }
