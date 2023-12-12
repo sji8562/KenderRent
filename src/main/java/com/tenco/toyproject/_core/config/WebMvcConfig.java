@@ -11,11 +11,10 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.tenco.toyproject._core.handler.CartIntercepter;
+import org.springframework.web.servlet.resource.PathResourceResolver;
 
 
-
-
-@Configuration // Ioc 등록 --> 2개 이상 Ioc 등록 처리 
+@Configuration // Ioc 등록 --> 2개 이상 Ioc 등록 처리
 public class WebMvcConfig implements WebMvcConfigurer {
 
 //	@Autowired
@@ -33,9 +32,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/images/uploads/**")
-			.addResourceLocations("file:///c:\\spring_upload\\bank\\upload/");
+		registry.addResourceHandler("/images/**") //중요
+				.addResourceLocations("file:"+"./images/") //중요
+				.setCachePeriod(60*60)// 1시간 중요
+				.resourceChain(true)
+				.addResolver(new PathResourceResolver());
 	}
+
+
 	
 //	@Override
 //	public void addInterceptors(InterceptorRegistry registry) {

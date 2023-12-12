@@ -67,6 +67,7 @@ public class MngProductController {
         System.out.println(pId + "번");
 
         Product product = mngService.findProductById(pId);
+        System.out.println("1512345343484531423dsadasdasdasdsads"+product.toString());
         model.addAttribute(product);
 
         return "mng/product/detail";
@@ -198,6 +199,7 @@ public class MngProductController {
         if(dto.getContent() == null || dto.getContent().isEmpty()) {
             throw new Exception500("제품 상세 설명을 입력해주세요");
         }
+
         // 상품 썸네일 등록
         MultipartFile file = null;
         if(dto.getFile() != null || !dto.getFile().isEmpty()){
@@ -206,7 +208,6 @@ public class MngProductController {
 
 
         // 등록된 파일이 있으면
-
         if(!file.isEmpty()) {
             // 파일 사이즈 체크
             if(file.getSize() > Define.MAX_FILE_SIZE) {
@@ -249,7 +250,6 @@ public class MngProductController {
                 dto.setPicUrl(fileName);
 
             } catch(Exception e) {
-                System.out.println("아직 여기겠지?");
                 System.out.println(e.getMessage());
             }
         }

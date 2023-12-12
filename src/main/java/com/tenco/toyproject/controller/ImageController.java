@@ -2,10 +2,9 @@ package com.tenco.toyproject.controller;
 
 import com.tenco.toyproject.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.MultipartRequest;
@@ -17,11 +16,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-@Controller
+@RestController
 @RequestMapping("/image")
 public class ImageController {
 
-    private ImageService imageService;
+//    private ImageService imageService;
 
 //    @Autowired
 //    public ImageController(ImageService imageService) {
@@ -54,34 +53,43 @@ public class ImageController {
 
 
 
-    @PostMapping("upload")
-    public ModelAndView image(MultipartHttpServletRequest request) throws Exception {
+    @PostMapping("/upload")
+    public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
+        System.out.println("==== CKEDITOR 이미지 CONTORLLER ======");
 
-        ModelAndView mav = new ModelAndView("jsonView");
+        System.out.println("FILE이 왔따 === " + file);
 
-        MultipartFile uploadFile = request.getFile("upload");
+        // 이미지를 저장하고 저장된 파일의 경로를 반환
+//        String filePath = saveImage(file);
 
-        String originalFileName = uploadFile.getOriginalFilename();
+        // 클라이언트에게 파일 경로를 응답
+//        return ResponseEntity.ok().body(filePath);
+        return ResponseEntity.ok().body("temp");
 
-        String ext = originalFileName.substring(originalFileName.indexOf("."));
-
-        String newFileName = UUID.randomUUID() + ext;
-
-        String realPath = request.getServletContext().getRealPath("/");
-
-        String savePath = realPath + "upload/" + newFileName;
-
-        String uploadPath = "./upload/" + newFileName;
-
-        File file = new File(savePath);
-
-        uploadFile.transferTo(file);
-
-        mav.addObject("uploaded", true);
-        mav.addObject("url", uploadPath);
-
-        return mav;
+//        ModelAndView mav = new ModelAndView("jsonView");
+//
+//        MultipartFile uploadFile = request.getFile("upload");
+//
+//        String originalFileName = uploadFile.getOriginalFilename();
+//
+//        String ext = originalFileName.substring(originalFileName.indexOf("."));
+//
+//        String newFileName = UUID.randomUUID() + ext;
+//
+//        String realPath = request.getServletContext().getRealPath("/");
+//
+//        String savePath = realPath + "upload/" + newFileName;
+//
+//        String uploadPath = "./upload/" + newFileName;
+//
+//        File file = new File(savePath);
+//
+//        uploadFile.transferTo(file);
+//
+//        mav.addObject("uploaded", true);
+//        mav.addObject("url", uploadPath);
+//
+//        return mav;
 
     }
-
 }
