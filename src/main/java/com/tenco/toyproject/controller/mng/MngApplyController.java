@@ -97,8 +97,11 @@ public class MngApplyController {
         return "redirect:/mng/apply/rental-list";
     }
     @PostMapping("rent-update")
-    public String updateRent(@PathVariable Integer id){
-        return null;
+    public String updateRent(MngApplyDTO.RentalDetailUpdateDTO rentalDetailUpdateDTO) throws Exception{
+        System.out.println("1111111111111111"+rentalDetailUpdateDTO.toString());
+
+        mngRentService.updateById(rentalDetailUpdateDTO);
+        return "redirect:/mng/apply/"+rentalDetailUpdateDTO.getId() +"/rental-detail";
     }
 
     @GetMapping("{id}/rental-delete")

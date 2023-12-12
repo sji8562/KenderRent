@@ -22,4 +22,11 @@
     <delete id="deleteByRentStatus">
         delete from rent where id =${id}
     </delete>
+    <update id="updateById">
+        update rent set post_number = ${postNumber}, address = #{address}, address_detail = #{addressDetail}, status = #{status} , start_day = #{startDay} , end_day = #{endDay} where id = #{id}
+    </update>
+    <select id="findByRent" resultType="com.tenco.toyproject.repository.entity.Rent">
+        select * from rent where id = #{id}
+    </select>
+
 </mapper>

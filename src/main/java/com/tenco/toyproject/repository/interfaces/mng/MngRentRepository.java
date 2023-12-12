@@ -18,4 +18,8 @@ public interface MngRentRepository {
     public int updateByRentStatus (Integer id);
 
     public int deleteByRentStatus(Integer id);
+
+    public int updateById(Rent rent);
+
+    public Rent findByRent(Integer id);
 }
