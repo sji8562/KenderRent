@@ -14,6 +14,11 @@ public class MngSaleService {
 
     @Autowired
     MngSaleRepository mngSaleRepository;
+
+    public List<MngApplyDTO.SaleListDTO> findAllBySale() {
+        List<MngApplyDTO.SaleListDTO> dto =  mngSaleRepository.findSaleAll();
+        return dto;
+    }
     public List<MngApplyDTO.SaleListDTO> findAllBySale(PageVO pageVO) {
         List<MngApplyDTO.SaleListDTO> dto =  mngSaleRepository.findSaleWithUserAll(pageVO);
         return dto;

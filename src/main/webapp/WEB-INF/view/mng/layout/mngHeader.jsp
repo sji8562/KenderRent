@@ -27,6 +27,7 @@
 	rel="stylesheet">
 <!-- Custom CSS -->
 <link href="/dist/css/style.min.css" rel="stylesheet">
+
 <style>
 /* 초기에는 숨겨진 상태 */
 #applyManagement .collapse {

@@ -21,6 +21,8 @@ public class MngApplyDTO {
     public static class RentalDetailDTO{
         private Integer id;
         private String username;
+        private String email;
+        private String phoneNumber;
         private String productId;
         private String productName;
         private String productPicUrl;
@@ -30,6 +32,15 @@ public class MngApplyDTO {
         private String addressDetail;
         private String postNumber;
         private Integer status;
+    }
+    @Data
+    public static class RentalDetailUpdateDTO{
+        private int id;
+        private String username;
+        private String email;
+        private String phoneNumber;
+//        private
+
     }
 
     @Data

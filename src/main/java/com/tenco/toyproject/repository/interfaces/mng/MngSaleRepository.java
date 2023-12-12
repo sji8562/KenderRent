@@ -11,6 +11,7 @@ import java.util.Map;
 public interface MngSaleRepository {
 
     public List<MngApplyDTO.SaleListDTO> findSaleWithUserAll(PageVO pageVO);
+    public List<MngApplyDTO.SaleListDTO> findSaleAll();
 
     public int findSaleAllCount();
 

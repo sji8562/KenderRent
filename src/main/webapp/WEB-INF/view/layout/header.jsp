@@ -1,7 +1,8 @@
+
  <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <meta charset="UTF-8"> 
+ <meta charset="UTF-8">
  <style>
  	@media(min-width: 800px){
  		#hambuerBtn
@@ -9,7 +10,7 @@
  			display: none;
 			font-size: 24px;
  		}
- 		
+
  	}
  	@media(max-width: 800px){
  		.size{
@@ -87,28 +88,32 @@
 			                        </div>
 			                    </li>
 							</ul>
-					
+
 							<ul class="navbar_user">
 								<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
 
 								<c:choose>
 									<c:when test="${sessionScope.principal != null }">
 <!-- 									유저 아이콘 -->
-										<li ><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-										
+										<li ><a href="/mypage/main"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+
 <!-- 										장바구니아이콘 -->
 										<li class="checkout ">
 											<a  href="/cart">
 												<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-												<span id="checkout_items" class="checkout_items">${countItemInCart}</span>
+												<span id="checkout_items" class="checkout_items">${countItemCart}</span>
 											</a>
-										</li>&nbsp;&nbsp;
-										<a class="size" href="/user/logout" style="color:black">로그아웃</a>
+
+										</li>
+										<li><a href="/user/logout">로그아웃</a></li>
+
 									</c:when>
+
 									<c:otherwise>
 										<a class="size" href="/user/sign-in" style="color:black">로그인</a>&nbsp;&nbsp;
 										<a class="size" href="/user/sign-up" style="color:black">회원가입</a>
 									</c:otherwise>
+
 								</c:choose>
 							</ul>
 							<div class="hamburger_container" id="hambuerBtn">
@@ -119,7 +124,7 @@
 				</div>
 			</div>
 		</div>
-	
+
 	</header>
 	<div class="fs_menu_overlay"></div>
 	<div class="hamburger_menu">
@@ -135,7 +140,7 @@
 								<i class="fa fa-angle-down"></i>
 							</a>
 							<ul class="menu_selection">
-								<li><a href="#"><i class="fa fa-columns" ></i>마이페이지</a></li>
+								<li><a href="/mypage/main"><i class="fa fa-columns" ></i>마이페이지</a></li>
 								<li><a href="/user/logout"><i class="fa fa-sign-out" ></i>로그아웃</a></li>
 							</ul>
 						</c:when>
@@ -148,9 +153,9 @@
 							</ul>
 						</c:otherwise>
 					</c:choose>
-						
+
 					</li>
-				
+
 				<li class="menu_item has-children">
 					<a href="#">
 						빅사이즈 장난감
@@ -232,8 +237,9 @@
 						<li><a href="/customer/contact?type=4">상품문의</a></li>
 					</ul>
 				</li>
-				
+
 			</ul>
 		</div>
 	</div>
 	
+

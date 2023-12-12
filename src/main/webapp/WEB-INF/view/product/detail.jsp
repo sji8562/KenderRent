@@ -26,7 +26,8 @@
 	href="/css/styles/single_styles.css">
 <link rel="stylesheet" type="text/css"
 	href="/css/styles/single_responsive.css">
-
+<link rel="stylesheet" type="text/css"
+	href="/css/styles/main_styles.css">
 
 </head>
 <body>
@@ -35,8 +36,6 @@
 		<!-- Header -->
 
 		<jsp:include page="../layout/header.jsp" />
-
-		<div class="fs_menu_overlay"></div>
 
 		<!-- Hamburger Menu -->
 

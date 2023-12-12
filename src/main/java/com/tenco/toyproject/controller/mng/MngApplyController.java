@@ -28,8 +28,28 @@ public class MngApplyController {
     private MngPurchaseService mngPurchaseService;
 
     @GetMapping("list")
-    public String applyList() {
+    public String applyList(Model model,PageVO rentPage, PageVO salePage, PageVO purchasePage, @RequestParam(value = "nowPage",required = false) String nowPage, @RequestParam(value = "cntPerPage",required = false) String cntPerPage) {
+        int rentTotal = mngRentService.countRentList();
+        int saleTotal = mngSaleService.countSaleList();
+        int purchaseTotal = mngPurchaseService.countPurchaseList();
+        if (nowPage == null && cntPerPage == null) {
+            nowPage = "1";
+            cntPerPage = "5";
+        } else if (nowPage == null) {
+            nowPage = "1";
+        } else if (cntPerPage == null) {
+            cntPerPage = "5";
+        }
+        rentPage = new PageVO(rentTotal, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+        salePage = new PageVO(saleTotal, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+        purchasePage = new PageVO(purchaseTotal, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+        List<MngApplyDTO.RentListDTO> rentList = mngRentService.findrentAll(rentPage);
+        List<MngApplyDTO.SaleListDTO> saleList = mngSaleService.findAllBySale(salePage);
+        List<MngApplyDTO.PurchaseListDTO> purchaseList = mngPurchaseService.findAllByPurchase(purchasePage);
 
+        model.addAttribute("rentList",rentList);
+        model.addAttribute("saleList",saleList);
+        model.addAttribute("purchaseList",purchaseList);
         return "mng/apply/list";
     }
 
@@ -64,9 +84,11 @@ public class MngApplyController {
         return "mng/apply/rental/rentalList";
     }
     @GetMapping("{id}/rental-detail")
-    public String rentalDetail(@PathVariable Integer id){
+    public String rentalDetail(@PathVariable Integer id, Model model){
         System.out.println("여긴 오는감");
-//        MngApplyDTO.RentalDetailDTO dto = mngRentService.findByRentId(id);
+        MngApplyDTO.RentalDetailDTO dto = mngRentService.findByRentId(id);
+        System.out.println(dto);
+        model.addAttribute("dto",dto);
         return "mng/apply/rental/rentalDetail";
     }
     @GetMapping("{id}/rental-update")
@@ -74,6 +96,11 @@ public class MngApplyController {
         mngRentService.updateStatus(id);
         return "redirect:/mng/apply/rental-list";
     }
+    @PostMapping("rent-update")
+    public String updateRent(@PathVariable Integer id){
+        return null;
+    }
+
     @GetMapping("{id}/rental-delete")
     public String deleteRentalStatus(@PathVariable Integer id){
         mngRentService.deleteStatus(id);

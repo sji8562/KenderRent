@@ -59,11 +59,17 @@
 							<input id="password" class="form_input input_website input_ph" type="password" name="password" placeholder="password" required="required" data-error="password is required.">
 						</div>
 						<div>
-							<button type="submit" class="red_button message_submit_btn trans_300" value="Submit">로그인</button>
+							<button type="submit" class="red_button message_submit_btn trans_300" value="Submit">이메일로 로그인</button>
 						</div>
 					</form>
 					<br>
-					<a href="">아이디 찾기 | </a><a href="">비밀번호 찾기 | </a><a href="">회원가입</a>
+					<a href="/user/findEmail">이메일 찾기 | </a>
+					<a href="/user/findPwd">비밀번호 찾기 | </a>
+					<a href="/user/sign-up">회원가입</a>
+					<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=271d310fa59cc2d79b4807e9b895349d&redirect_uri=http://localhost:80/user/kakao-callback">
+					<img alt="" src="/images/kakao_login_large_wide.png" width="100%" height="60"></a>
+					<a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=bxQuRgVT_baVA8Siz5vc&redirect_uri=http://localhost:80/user/naver-callback">
+					<img alt="" src="/images/naver_login_medium_narrow.png" width="100%" height="60"></a>
 				</div>
 			</div>
 			<div class="col-lg-4 "></div>

@@ -5,17 +5,26 @@ import java.util.Map;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
+import com.tenco.toyproject.dto.response.KakaoPayResponse;
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.CustomerService;
 import com.tenco.toyproject.service.ProductService;
+import com.tenco.toyproject.service.UserService;
 import com.tenco.toyproject.vo.PageVO;
 
 import jakarta.servlet.http.HttpSession;
@@ -31,6 +40,8 @@ public class ProductController {
 	private ProductService productService;
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private UserService userService;
 	
 	@GetMapping("categories")
 	public String categories() {
@@ -65,7 +76,44 @@ public class ProductController {
 
 	@GetMapping("order")
 	public String order(Model model) {
-		
+		User principal = (User) session.getAttribute("principal");
+		User userInfo = userService.findById(principal.getId());
+		model.addAttribute("userInfo", userInfo);
 		return "product/order";
+	}
+	
+	@PostMapping("order/kakao-pay/ready")
+	public String kakaoPay() {
+		User principal = (User) session.getAttribute("principal");
+		
+		HttpHeaders headers = new HttpHeaders();
+		
+		headers.add("Authorization", "KakaoAK " + "bd58a402485edbfc26668cfb00914ee0");
+		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+		
+		
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+		params.add("cid", "TC0ONETIME");
+		params.add("tid", "TC0ONETIME");
+		params.add("partner_order_id", "TC0ONETIME");
+		params.add("partner_user_id", "TC0ONETIME");
+	    params.add("item_name", "상품명");
+	    params.add("quantity", "주문 수량");
+	    params.add("total_amount", "총 금액");
+	    params.add("vat_amount", "부가세");
+	    params.add("tax_free_amount", "상품 비과세 금액");
+	    params.add("approval_url", "http://localhost/product/order/success"); // 성공 시 redirect url
+	    params.add("cancel_url", "http://localhost/product/order/cancel"); // 취소 시 redirect url
+	    params.add("fail_url", "http://localhost/product/order/fail"); // 실패 시 redirect url
+
+	    HttpEntity<MultiValueMap<String, String>> requestEntity
+	     = new HttpEntity<>(params, headers);
+	    
+		RestTemplate rt = new RestTemplate();
+		
+		KakaoPayResponse response = rt.postForObject("https://kapi.kakao.com/v1/payment/ready", 
+				requestEntity,
+				KakaoPayResponse.class);		
+		return "product/order/list";
 	}
 }

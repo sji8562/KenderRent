@@ -14,16 +14,18 @@ import com.tenco.toyproject._core.handler.CartIntercepter;
 
 
 
+
 @Configuration // Ioc 등록 --> 2개 이상 Ioc 등록 처리 
 public class WebMvcConfig implements WebMvcConfigurer {
 
+//	@Autowired
+//	private AuthIntercepter authIntercepter;
+	
 	@Autowired
-	CartIntercepter cartIntercepter;
+	private CartIntercepter cartIntercepter;
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		
-		
 		registry.addInterceptor(cartIntercepter);
 //				.addPathPatterns("/");
 //				.addPathPatterns("/auth/**"); // 추가하는 방법
@@ -57,5 +59,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		 return new BCryptPasswordEncoder();
 	 }
 	
+//	 @Bean
+//	 public CartIntercepter cartIntercepter() {
+//		 return new CartIntercepter();
+//	 }
 	
 }

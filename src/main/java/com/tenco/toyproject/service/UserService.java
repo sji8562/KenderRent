@@ -33,7 +33,7 @@ public class UserService {
 
 		// User
 		// SignUpFormDto
-		User user = User.builder().email(dto.getEmail()).password(hashPwd).userName(dto.getUsername())
+		User user = User.builder().email(dto.getEmail()).password(hashPwd).userName(dto.getUserName())
 				.phoneNumber(dto.getPhoneNumber()).build(); // build() 반드시 호출
 
 		int resultRowCount = userRepository.insert(user);
@@ -62,6 +62,7 @@ public class UserService {
 
 		// User userEntity = userRepository
 		// .findByUsernameAndPassword(dto);
+		
 
 		return userEntity;
 
@@ -70,6 +71,10 @@ public class UserService {
 	public User searchEmail(String email) {
 
 		return userRepository.findByEmail(email);
+	}
+	
+	public User findById(Integer id) {
+		return userRepository.findById(id);
 	}
 
 }

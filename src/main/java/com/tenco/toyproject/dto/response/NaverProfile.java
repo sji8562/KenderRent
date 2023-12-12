@@ -29,7 +29,7 @@ import lombok.Data;
 
 @Data
 @JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class KakaoProfile {
+public class NaverProfile {
 
 	private Long id;
 	private String connectedAt;
