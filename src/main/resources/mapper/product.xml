@@ -32,5 +32,18 @@
 		delete from 
 		cart where user_id = #{userId} and  product_id = #{productId}
 	</delete>
+	
+	<select id="isItemInCart" resultType="int">
+		select count(*)
+		from cart
+		where user_id = #{userId} 
+		and product_id = #{productId}
+	</select>
+	
+	<select id="countItemInCart" resultType="int">
+		select count(*)
+		from cart
+		where user_id = #{userId}
+	</select>
 
 </mapper>

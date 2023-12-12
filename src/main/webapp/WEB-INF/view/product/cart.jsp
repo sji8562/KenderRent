@@ -36,12 +36,12 @@
 			<div class="container">
 				<div class="row">
 					<div class="col text-center">
-						<div class="section_title new_arrivals_title">
+						<div class="section_title new_arrivals_title"
+							style="margin-bottom: 100px;">
 							<h2>장바구니</h2>
 						</div>
 					</div>
 				</div>
-				<br> <br>
 				<div class="product_details">
 					<div class="product_details_title">
 						<c:choose>
@@ -71,15 +71,24 @@
 										<tbody>
 											<c:forEach var="product" items="${cartList}">
 												<tr>
-													<td><input type="checkbox" name="selectedProduct"
-														value="${product.price}" onchange="calculateTotalPrice()"></td>
+													<c:choose>
+														<c:when test="${product.status == 1}">
+															<td><input type="checkbox" name="selectedProduct"
+																value="${product.price}"
+																onchange="calculateTotalPrice()"></td>
+														</c:when>
+														<c:otherwise>
+															<td><input type="checkbox" disabled></td>
+														</c:otherwise>
+													</c:choose>
+
 													<td>${product.formatItemForSale()}</td>
 													<td><a href="/product/detail/${product.id }">${product.name}</a></td>
 													<td>${product.price}</td>
 													<td>
 														<form action="/cart/delete?id=${product.id }"
 															method="post">
-															<button type="submit" class="cancel-button ">x</button>
+															<button type="submit" class="cancel-button">x</button>
 														</form>
 													</td>
 
@@ -90,7 +99,8 @@
 								</div>
 								<br>
 								<div class="row justify-content-end">
-									<div class="col d-flex flex-row text-center justify-content-center"
+									<div
+										class="col d-flex flex-row text-center justify-content-center"
 										style="border: solid 1px lightgray; padding-top: 10px;">
 										<p id="selectedProductPrice" class="price">선택 상품금액: 0원</p>
 										<p class="price">+</p>
@@ -99,11 +109,12 @@
 										<p class="price">
 											총 주문금액: <span id="totalPrice" style="color: red;">0원</span>
 										</p>
-											<div class="red_button buy_button" style="width: 140px; position: absolute; margin-left: 900px;">
-												<a href="/product/order">구매하기</a>
-											</div>
+										<div class="red_button buy_button"
+											style="width: 140px; position: absolute; margin-left: 900px;">
+											<a href="/product/order">구매하기</a>
+										</div>
 									</div>
-								</div>							
+								</div>
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -123,5 +134,7 @@
 	<script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 	<script src="/js/single_custom.js"></script>
 	<script src="/js/cart.js"></script>
+	<script src="/js/dropdown.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

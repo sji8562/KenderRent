@@ -72,5 +72,9 @@ public class UserService {
 
 		return userRepository.findByEmail(email);
 	}
+	
+	public User findById(Integer id) {
+		return userRepository.findById(id);
+	}
 
 }
