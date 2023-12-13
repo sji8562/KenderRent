@@ -70,23 +70,23 @@
 
                                             <c:forEach var="rentList" items="${rentList}">
                                                 <tr>
-                                                    <th class="rentalDetail" scope="row"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.id}</a></th>
-                                                    <td class="rentalDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.username}</a></td>
-                                                    <td class="rentalDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.productId}</a></td>
-                                                    <td class="rentalDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.productName}</a></td>
-                                                    <td class="rentalDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.startDay}</a></td>
-                                                    <td class="rentalDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.endDay}</a></td>
-                                                    <td class="rentalDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.createdAt}</a></td>
+                                                    <th class="applyDetail" scope="row"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.id}</a></th>
+                                                    <td class="applyDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.username}</a></td>
+                                                    <td class="applyDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.productId}</a></td>
+                                                    <td class="applyDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.productName}</a></td>
+                                                    <td class="applyDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.startDay}</a></td>
+                                                    <td class="applyDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.endDay}</a></td>
+                                                    <td class="applyDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.createdAt}</a></td>
                                                     <c:choose>
                                                         <c:when test="${rentList.status == 1}">
                                                             <td>
                                                                 <div>
                                                                     <button class="btn btn-success"
                                                                             style="border: 1px solid black"
-                                                                            onclick="location.href='/mng/apply/${rentList.id}/update'">신청 확인</button>
+                                                                            onclick="location.href='/mng/apply/${rentList.id}/rental-update'">신청 확인</button>
                                                                     &nbsp;&nbsp;
                                                                     <button class="btn-danger btn"
-                                                                            onclick="location.href='/mng/apply/${rentList.id}/delete'">신청 취소</button>
+                                                                            onclick="location.href='/mng/apply/${rentList.id}/rental-delete'">신청 취소</button>
                                                                 </div>
                                                             </td>
                                                         </c:when>

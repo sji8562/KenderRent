@@ -32,5 +32,32 @@
 		delete from 
 		cart where user_id = #{userId} and  product_id = #{productId}
 	</delete>
+	
+	<select id="isItemInCart" resultType="int">
+		select count(*)
+		from cart
+		where user_id = #{userId} 
+		and product_id = #{productId}
+	</select>
+	
+	<select id="countItemInCart" resultType="int">
+		select count(*)
+		from cart
+		where user_id = #{userId}
+	</select>
+	
+	<insert id="payForCart" parameterType="int">
+		insert into order(user_id, product_id)
+		select user_id, product_id
+		from cart
+		where user_id = #{userId}
+	</insert>
+	
+	<insert id="payForProduct" parameterType="int">
+		insert into order(user_id, product_id)
+		values(#{userId}, #{productId})
+	</insert>
+	
+	
 
 </mapper>

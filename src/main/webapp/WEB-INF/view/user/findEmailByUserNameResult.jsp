@@ -71,7 +71,9 @@
 								id="phoneNumber" name="phonenumber" value="${user.phoneNumber}"
 								required> <input type="submit" value="이메일 찾기">
 						</form>
-						<br> <a href="/user/findPwd">비밀번호 찾기</a>
+						<br>
+						<a href="/user/sign-in">이메일로 로그인하기</a> 
+						<a href="/user/find-pwd-by-email">비밀번호 찾기</a>
 
 						<script>
 							function validateForm() {

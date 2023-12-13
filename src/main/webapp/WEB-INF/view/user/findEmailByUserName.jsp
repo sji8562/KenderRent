@@ -61,9 +61,8 @@
 				<div class="col-lg-4 get_in_touch_col">
 					<div class="get_in_touch_contents">
 						<h1>가입된 이메일 찾기</h1>
-						<br>
-						<br>
-						<form action="/user/findEmailByUserName" method="post"
+						<br> <br>
+						<form action="/user/find-email-by-user-name" method="post"
 							onsubmit="return validateForm()">
 							<label for="userName">사용자 이름</label> <input type="text"
 								id="username" name="username" value="${user.userName}" required>

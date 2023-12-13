@@ -10,6 +10,7 @@ spring:
     view:
       prefix: /WEB-INF/view/
       suffix: .jsp
+#    static-path-pattern: /static/**
   datasource:
     url: jdbc:mysql://localhost:3306/kender_rent?serverTimeZone=Asia/Seoul 
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -101,3 +102,23 @@ logging:
 #초기 파라미터 설정
 tenco:
   key: 1234567890!
+kakao:
+  key: 85a9fbeacd6dee03b7157c7360812509
+
+# static 폴더
+
+# S3
+cloud:
+  aws:
+    s3:
+      bucket: kinder-rent
+    stack:
+      auto: false
+    region:
+      static: ap-northeast-2
+    credentials:
+      access-key: AKIAWQNL7AUQACCSLTTB
+      secret-key: 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
+      
+
+

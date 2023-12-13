@@ -26,7 +26,8 @@
 	href="/css/styles/single_styles.css">
 <link rel="stylesheet" type="text/css"
 	href="/css/styles/single_responsive.css">
-
+<link rel="stylesheet" type="text/css"
+	href="/css/styles/main_styles.css">
 
 </head>
 <body>
@@ -35,8 +36,6 @@
 		<!-- Header -->
 
 		<jsp:include page="../layout/header.jsp" />
-
-		<div class="fs_menu_overlay"></div>
 
 		<!-- Hamburger Menu -->
 
@@ -156,10 +155,16 @@
 						</div>
 						<div
 							class="quantity d-flex flex-column flex-sm-row align-items-sm-left">
-
-							<div class="red_button buy_button">
-								<a href="/product/order">구매하기</a>
-							</div>
+							<c:choose>
+								<c:when test="${product.status == 1}">
+									<div class="red_button buy_button">
+										<a href="/product/order">구매하기</a>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<p>품절</p>
+								</c:otherwise>
+							</c:choose>
 							<form action="/cart/add?id=${product.id }" method="post">
 								<button type="submit" class="white_button add_to_cart_button">장바구니</button>
 							</form>
@@ -550,6 +555,8 @@
 	<script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 	<script src="/js/single_custom.js"></script>
 	<script src="/js/cart.js"></script>
+	<script src="/js/dropdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
 		function submitForm() {
 			document.getElementById('addToCartForm').submit();

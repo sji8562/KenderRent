@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+         pageEncoding="UTF-8" %>
+<%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- ============================================================== -->
-<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+<!-- End Left Sidebar - style you can find in sidebar.scss -->
 <!-- ============================================================== -->
 <!-- ============================================================== -->
-<!-- Page wrapper  -->
+<!-- Page wrapper -->
 <!-- ============================================================== -->
 <div class="page-wrapper">
     <!-- ============================================================== -->
@@ -23,7 +23,8 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Basic
-                                Table</li>
+                                Table
+                            </li>
                         </ol>
                     </nav>
                 </div>
@@ -55,35 +56,73 @@
                                         <thead class="table-light">
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">이메일</th>
                                             <th scope="col">이름</th>
-                                            <th scope="col">전화번호</th>
+                                            <th scope="col">제품번호</th>
+                                            <th scope="col">제품이름</th>
                                             <th scope="col">생성날짜</th>
-                                            <th scope="col">회원관리</th>
+                                            <th scope="col">신청관리</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <c:choose>
-                                        <c:when test="${userList != null }">
+                                        <c:when test="${purchaseList != null }">
 
-                                            <c:forEach var="userList" items="${userList}">
+                                            <c:forEach var="purchaseList" items="${purchaseList}">
                                                 <tr>
-                                                    <th scope="row">${userList.id}</th>
-                                                    <td>${userList.email }</td>
-                                                    <td>${userList.userName}</td>
-                                                    <td>${userList.phoneNumber }</td>
-                                                    <td>${userList.createdAt}</td>
-                                                    <td>
-                                                        <div>
-                                                            <button class="btn btn-success"
-                                                                    style="border: 1px solid black"
-                                                                    onclick="location.href='/mng/user/${userList.id}/update'">수정</button>
-                                                            &nbsp;&nbsp;
-                                                            <button class="btn-danger btn"
-                                                                    onclick="location.href='/mng/user/${userList.id}/delete'">삭제</button>
-                                                        </div>
+                                                    <th class="applyDetail" scope="row"><a
+                                                            href="/mng/apply/${purchaseList.id}/purchase-detail">${purchaseList.id}</a>
+                                                    </th>
+                                                    <td class="applyDetail"><a
+                                                            href="/mng/apply/${purchaseList.id}/purchase-detail">${purchaseList.username}</a>
                                                     </td>
-
+                                                    <td class="applyDetail"><a
+                                                            href="/mng/apply/${purchaseList.id}/purchase-detail">${purchaseList.productId}</a>
+                                                    </td>
+                                                    <td class="applyDetail"><a
+                                                            href="/mng/apply/${purchaseList.id}/purchase-detail">${purchaseList.productName}</a>
+                                                    </td>
+                                                    <td class="applyDetail"><a
+                                                            href="/mng/apply/${purchaseList.id}/purchase-detail">${purchaseList.createdAt}</a>
+                                                    </td>
+                                                    <c:choose>
+                                                        <c:when test="${purchaseList.status == 1}">
+                                                            <td>
+                                                                <div>
+                                                                    <button class="btn btn-success"
+                                                                            style="border: 1px solid black"
+                                                                            onclick="location.href='/mng/apply/${purchaseList.id}/purchase-update'">
+                                                                        신청 확인
+                                                                    </button>
+                                                                    &nbsp;&nbsp;
+                                                                    <button class="btn-danger btn"
+                                                                            onclick="location.href='/mng/apply/${purchaseList.id}/purchase-delete'">
+                                                                        신청 취소
+                                                                    </button>
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${purchaseList.status == 2}">
+                                                            <td>
+                                                                <div>
+                                                                    세척중
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${purchaseList.status == 3}">
+                                                            <td>
+                                                                <div>
+                                                                    거래 진행중
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${purchaseList.status == 4}">
+                                                            <td>
+                                                                <div>
+                                                                    홈페이지에서 삭제 해야함
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                    </c:choose>
                                                 </tr>
                                             </c:forEach>
                                         </c:when>
@@ -134,4 +173,4 @@
         <!-- End Right sidebar -->
         <!-- ============================================================== -->
     </div>
-<%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp"%>
+<%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>

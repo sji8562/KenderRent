@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -25,6 +27,7 @@
 	rel="stylesheet">
 <!-- Custom CSS -->
 <link href="/dist/css/style.min.css" rel="stylesheet">
+
 <style>
 /* 초기에는 숨겨진 상태 */
 #applyManagement .collapse {
@@ -46,18 +49,18 @@
 /*     font-size: 14px; /* 기본 폰트 크기로 유지 */
 }
 /* Style for the links with class "rentalDetail" */
-.rentalDetail a {
+.applyDetail a {
 	color: black;
 	text-decoration: none; /* Remove underline */
 }
 
 /* Style for visited links with class "rentalDetail" */
-.rentalDetail a:visited {
+.applyDetail a:visited {
 	color: black;
 }
 
 /* Style for links with class "rentalDetail" on hover */
-.rentalDetail a:hover {
+.applyDetail a:hover {
 	color: gray;
 	/* Change the color on hover if needed */
 	/* You can add additional styles for hover if needed */
@@ -272,6 +275,13 @@
 								</a></li>
 							</ul></li>
 
+
+							<%-- 회사 소개 게시판 --%>
+							<li class="sidebar-item" id="boardManagement"><a
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/content/info" aria-expanded="false"> <i
+									class="mdi mdi-alert-outline"></i> <span class="hide-menu">회사 소개 게시판</span>
+							</a>
 					</ul>
 				</nav>
 				<!-- End Sidebar navigation -->
