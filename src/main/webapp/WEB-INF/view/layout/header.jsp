@@ -110,8 +110,10 @@
 									</c:when>
 
 									<c:otherwise>
+
 										<a class="size" href="/user/sign-in" style="color:black">로그인</a>&nbsp;&nbsp;
 										<a class="size" href="/user/sign-up" style="color:black">회원가입</a>
+
 									</c:otherwise>
 
 								</c:choose>
