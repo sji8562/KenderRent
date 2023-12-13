@@ -48,15 +48,15 @@ logging:
 tenco:
   key: 1234567890!
 
-# S3
-cloud:
-  aws:
-    s3:
-      bucket: kinder-rent
-    stack:
-      auto: false
-    region:
-      static: ap-northeast-2
-    credentials:
-      access-key: AKIAWQNL7AUQACCSLTTB
-      secret-key: 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
+## S3
+#cloud:
+#  aws:
+#    s3:
+#      bucket: kinder-rent
+#    stack:
+#      auto: false
+#    region:
+#      static: ap-northeast-2
+#    credentials:
+#      access-key: AKIAWQNL7AUQACCSLTTB
+#      secret-key: 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
