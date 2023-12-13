@@ -222,6 +222,12 @@
 								class="hide-menu">물품 관리</span>
 						</a></li>
 						<li class="sidebar-item"><a
+								class="sidebar-link waves-effect waves-dark sidebar-link"
+								href="/mng/product/categories" aria-expanded="false"> <i
+								class="mdi mdi-arrange-bring-forward"></i> <span
+								class="hide-menu">카테고리 관리</span>
+						</a></li>
+						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
 							href="/mng/table" aria-expanded="false"> <i
 								class="mdi mdi-border-none"></i> <span class="hide-menu">Table</span>

@@ -3,9 +3,9 @@ server:
   servlet:
     encoding: 
       charset: utf-8
-      force: true 
+      force: true
 
-spring: 
+spring:
   mvc:
     view:
       prefix: /WEB-INF/view/
@@ -85,7 +85,7 @@ spring:
     password: t1prjKinderlend
     properties:
       mail.smtp.auth: true
-      mail.smtp.ssl.enable: true           
+      mail.smtp.ssl.enable: true
 file:
   path: ./images/
   
@@ -119,6 +119,3 @@ kakao:
 #    credentials:
 #      access-key: AKIAWQNL7AUQACCSLTTB
 #      secret-key: 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
-      
-
-

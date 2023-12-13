@@ -70,4 +70,20 @@
         WHERE id = #{id}
     </update>
 
+    <select id="findSecondCategoryForFirstCategory" resultType="com.tenco.toyproject.repository.entity.SecondCategory">
+        SELECT * FROM second_category WHERE first_category_id = #{fId}
+    </select>
+
+    <select id="findFirstCategoryByName" resultType="int">
+        SELECT COUNT(*) AS count FROM first_category WHERE first_category_name = #{fCategoryName}
+    </select>
+
+    <select id="createFirstCategory">
+        INSERT INTO first_category (first_category_name) VALUES (#{fCategoryName})
+    </select>
+
+    <delete id="deleteFirstCategoryById">
+        DELETE FROM first_category WHERE id = #{fId}
+    </delete>
+
 </mapper>

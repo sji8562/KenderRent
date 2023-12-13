@@ -1,6 +1,7 @@
 package com.tenco.toyproject.service.mng;
 
 import com.tenco.toyproject._core.handler.exception.Exception500;
+import com.tenco.toyproject.controller.mng.MngProductController;
 import com.tenco.toyproject.dto.MngProductDto;
 import com.tenco.toyproject.dto.MngProductUpdateDto;
 import com.tenco.toyproject.repository.entity.FirstCategory;
@@ -8,14 +9,21 @@ import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.entity.SecondCategory;
 import com.tenco.toyproject.repository.interfaces.mng.MngProductRepository;
 import com.tenco.toyproject.vo.PageVO;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Slf4j
 @Service
 public class MngProductService {
+
+    private static final Logger logger = LoggerFactory.getLogger(MngProductService.class);
+
     @Autowired
     private MngProductRepository mngRepository;
 
@@ -133,5 +141,30 @@ public class MngProductService {
         }
 
         return resultRowCount;
+    }
+
+    public List<FirstCategory> getFirstCategories() {
+        List<FirstCategory> firstCategoryList = mngRepository.findFirstCategoryAll();
+
+        return firstCategoryList;
+    }
+
+    public List<SecondCategory> findSecondCategoryByFirstCategoryId(Integer fId) {
+        List<SecondCategory> secondCategory = mngRepository.findSecondCategoryForFirstCategory(fId);
+        return secondCategory;
+    }
+
+    public int findFirstCategoryByName(String fCategoryName) {
+        int resultRowCount = mngRepository.findFirstCategoryByName(fCategoryName);
+
+        return resultRowCount;
+    }
+
+    public void addFirstCategory(String fCategoryName) {
+        mngRepository.createFirstCategory(fCategoryName);
+    }
+
+    public void deleteFirstCategoryById(int fId) {
+        mngRepository.deleteFirstCategoryById(fId);
     }
 }
