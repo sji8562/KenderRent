@@ -1,13 +1,9 @@
 package com.tenco.toyproject.service;
 
-import com.amazonaws.services.s3.model.CannedAccessControlList;
-import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.tenco.toyproject._core.config.S3Config;
 import com.tenco.toyproject._core.utils.Define;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
 
@@ -17,16 +13,6 @@ import java.util.UUID;
 
 @Service
 public class ImageService {
-
-    private S3Config s3Config;
-
-    @Autowired
-    public ImageService(S3Config s3Config) {
-        this.s3Config = s3Config;
-    }
-
-    @Value("${cloud.aws.s3.bucket}")
-    private String bucket;
 
     private String localLocation = Define.UPLOAD_DIRECTORY;
 
