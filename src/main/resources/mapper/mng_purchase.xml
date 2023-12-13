@@ -22,4 +22,11 @@
     <delete id="deleteByPurchaseStatus">
         delete from purchase where id =${id}
     </delete>
+
+    <select id="findByPurchaseId">
+        select pc.id,u.user_name,u.email, u.phone_number, p.id as productId, p.name as productName, p.pic_url as productPicUrl, p.price as productPrice,pc.post_number, pc.address,pc.address_detail,pc.status  from purchase pc inner join user u on pc.user_id = u.id inner join product p on pc.product_id = p.id where pc.id = #{id};
+    </select>
+    <update id="updateByPurchase">
+        update purchase set post_number = #{postNumber},address = #{address},address_detail = #{addressDetail},status = #{status} where id = #{id}
+    </update>
 </mapper>

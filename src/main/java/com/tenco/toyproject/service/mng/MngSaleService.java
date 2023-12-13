@@ -36,4 +36,12 @@ public class MngSaleService {
     public int deleteStatus(Integer id) {
         return mngSaleRepository.deleteBySaleStatus(id);
     }
+
+    public MngApplyDTO.SaleDetailDTO findBySaleId(Integer id) {
+        return mngSaleRepository.findBySaleId(id);
+    }
+
+    public int updateBySale(MngApplyDTO.SaleDetailUpdateDTO saleDetailUpdateDTO) {
+        return mngSaleRepository.updateBySale(saleDetailUpdateDTO);
+    }
 }

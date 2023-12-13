@@ -98,7 +98,7 @@ public class MngApplyController {
     }
     @PostMapping("rent-update")
     public String updateRent(MngApplyDTO.RentalDetailUpdateDTO rentalDetailUpdateDTO) throws Exception{
-        System.out.println("1111111111111111"+rentalDetailUpdateDTO.toString());
+
 
         mngRentService.updateById(rentalDetailUpdateDTO);
         return "redirect:/mng/apply/"+rentalDetailUpdateDTO.getId() +"/rental-detail";
@@ -146,6 +146,14 @@ public class MngApplyController {
         mngSaleService.updateStatus(id);
         return "redirect:/mng/apply/sale-list";
     }
+
+    @PostMapping("sale-update")
+    public String updateSale(MngApplyDTO.SaleDetailUpdateDTO saleDetailUpdateDTO) throws Exception{
+
+        System.out.println("1111111111111111"+saleDetailUpdateDTO);
+        mngSaleService.updateBySale(saleDetailUpdateDTO);
+        return "redirect:/mng/apply/"+saleDetailUpdateDTO.getId() +"/sale-detail";
+    }
     @GetMapping("{id}/sale-delete")
     public String deleteSaleStatus(@PathVariable Integer id){
         mngSaleService.deleteStatus(id);
@@ -153,12 +161,12 @@ public class MngApplyController {
     }
     @GetMapping("{id}/sale-detail")
     public String saleDetail(@PathVariable Integer id, Model model){
-        System.out.println("여긴 오는감");
-        MngApplyDTO.RentalDetailDTO dto = mngRentService.findByRentId(id);
-        System.out.println(dto);
+        MngApplyDTO.SaleDetailDTO dto = mngSaleService.findBySaleId(id);
+        System.out.println(dto.toString());
         model.addAttribute("dto",dto);
-        return "mng/apply/rental/rentalDetail";
+        return "mng/apply/sale/saleDetail";
     }
+
 
 
     //구매 시작
@@ -193,5 +201,19 @@ public class MngApplyController {
     public String deletePurchaseStatus(@PathVariable Integer id){
         mngPurchaseService.deleteStatus(id);
         return "redirect:/mng/apply/purchase-list";
+    }
+    @GetMapping("{id}/purchase-detail")
+    public String purchaseDetail(@PathVariable Integer id, Model model){
+        MngApplyDTO.PurchaseDetailDTO dto = mngPurchaseService.findByPurchaseId(id);
+        System.out.println(dto.toString());
+        model.addAttribute("dto",dto);
+        return "mng/apply/purchase/purchaseDetail";
+    }
+    @PostMapping("purchase-update")
+    public String updateSale(MngApplyDTO.PurchaseDetailUpdateDTO purchaseDetailUpdateDTO) throws Exception{
+
+        System.out.println("1111111111111111"+purchaseDetailUpdateDTO);
+        mngPurchaseService.updateByPurchase(purchaseDetailUpdateDTO);
+        return "redirect:/mng/apply/"+purchaseDetailUpdateDTO.getId() +"/purchase-detail";
     }
 }
