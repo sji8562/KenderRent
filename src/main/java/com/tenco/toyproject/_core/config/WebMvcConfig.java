@@ -32,9 +32,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/images/**") // URL에서 사용할 경로
-				.addResourceLocations("file:src/main/resources/static/images/") // 실제 파일 시스템 경로
-				.setCachePeriod(6060)
+
+		registry.addResourceHandler("/images/**") //중요
+				.addResourceLocations("file:"+"./images/") //중요
+				.addResourceLocations("file:"+"./static/images")
+				.setCachePeriod(60*60)// 1시간 중요
 				.resourceChain(true)
 				.addResolver(new PathResourceResolver());
 	}
