@@ -108,6 +108,7 @@ public class MngApplyController {
     public String deleteRentalStatus(@PathVariable Integer id){
         mngRentService.deleteStatus(id);
         return "redirect:/mng/apply/rental-list";
+//        return null;
     }
 
 
