@@ -1,7 +1,6 @@
 package com.tenco.toyproject.controller;
 
 import com.tenco.toyproject._core.utils.Define;
-import com.tenco.toyproject.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
