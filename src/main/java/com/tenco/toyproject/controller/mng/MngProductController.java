@@ -10,6 +10,8 @@ import com.tenco.toyproject.repository.entity.SecondCategory;
 import com.tenco.toyproject._core.utils.Define;
 import com.tenco.toyproject.service.mng.MngProductService;
 import com.tenco.toyproject.vo.PageVO;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
@@ -62,6 +67,7 @@ public class MngProductController {
         System.out.println(pId + "번");
 
         Product product = mngService.findProductById(pId);
+        System.out.println("1512345343484531423dsadasdasdasdsads"+product.toString());
         model.addAttribute(product);
 
         return "mng/product/detail";
@@ -129,54 +135,49 @@ public class MngProductController {
         }
 
         // 상품 썸네일 등록
+        MultipartFile file = null;
 
-        MultipartFile file = dto.getFile();
-
-        System.out.println("=== 등록된 파일 ===" + file);
+        if(dto.getFile() != null || !dto.getFile().isEmpty()) {
+            file = dto.getFile();
+        }
 
         // 등록된 파일이 있으면
-        if(file.isEmpty() == false) {
+        if(!file.isEmpty()) {
             // 파일 사이즈 체크
             if(file.getSize() > Define.MAX_FILE_SIZE) {
                 throw new Exception500("파일 크기는 200MB 미만이어야 합니다");
             }
         }
 
-        try {
-            // 업로드 파일 경로
-            String saveDirectory = Define.UPLOAD_DIRECTORY;
+        if(file != null && !file.isEmpty()) {
+            try {
+                // 업로드 파일 경로
+                String saveDirectory = Define.UPLOAD_DIRECTORY;
 
-//            String saveDirectory = "/";
+                // 폴더가 없다면
+                File dir = new File(saveDirectory);
+                if(dir.exists() == false) {
+                    dir.mkdirs();
+                }
 
-            // 폴더가 없다면
-            File dir = new File(saveDirectory);
-            if(dir.exists() == false) {
-                dir.mkdir();
+                // 파일 이름 중복 예방
+                UUID uuid = UUID.randomUUID();
+                // 새로운 파일 이름
+                String fileName = "";
+
+                if(file.getOriginalFilename() != null && !file.getOriginalFilename().isEmpty()) {
+                    fileName = uuid + "_" + file.getOriginalFilename();
+                    Path uploadPath = Paths.get(Define.UPLOAD_DIRECTORY + fileName);
+                    Files.write(uploadPath, file.getBytes());
+                }else {
+                    fileName = null;
+                }
+                // 전체 경로 지정
+                dto.setPicUrl(fileName);
+
+            } catch(Exception e) {
+                System.out.println(e.getMessage());
             }
-
-            // 파일 이름 중복 예방
-            UUID uuid = UUID.randomUUID();
-            // 새로운 파일 이름
-            String fileName = "";
-
-            if(file.getOriginalFilename() != null || file.getOriginalFilename().isEmpty() != true) {
-                fileName = uuid + "_" + file.getOriginalFilename();
-                String uploadPath = Define.UPLOAD_DIRECTORY + File.separator + fileName;
-//                String uploadPath = "/" + File.separator + fileName;
-                File destination = new File(uploadPath);
-
-                file.transferTo(destination); // 실제 생성
-            }else {
-                fileName = null;
-            }
-            // 전체 경로 지정
-
-            System.out.println(" 파. 일. 이. 름 " + fileName);
-
-            dto.setPicUrl(fileName);
-
-        } catch(Exception e) {
-            System.out.println(e.getMessage());
         }
 
         mngService.createProduct(dto);
@@ -198,17 +199,15 @@ public class MngProductController {
         if(dto.getContent() == null || dto.getContent().isEmpty()) {
             throw new Exception500("제품 상세 설명을 입력해주세요");
         }
+
         // 상품 썸네일 등록
         MultipartFile file = null;
-        System.out.println("222222222222222222222222"+file);
-        System.out.println("111111111111111111111111"+dto.getFile());
         if(dto.getFile() != null || !dto.getFile().isEmpty()){
             file = dto.getFile();
         }
-        System.out.println("null 패버릴순 없잖니??=== 등록된 파일 ===" + file);
+
 
         // 등록된 파일이 있으면
-
         if(!file.isEmpty()) {
             // 파일 사이즈 체크
             if(file.getSize() > Define.MAX_FILE_SIZE) {
@@ -224,7 +223,7 @@ public class MngProductController {
                 // 폴더가 없다면
                 File dir = new File(saveDirectory);
                 if(dir.exists() == false) {
-                    dir.mkdir();
+                    dir.mkdirs();
                 }
 
                 // 파일 이름 중복 예방
@@ -232,19 +231,18 @@ public class MngProductController {
                 // 새로운 파일 이름
                 String fileName = "";
 
-                if(file.getOriginalFilename() != null || !file.getOriginalFilename().isEmpty()){
+                if(file.getOriginalFilename() != null && !file.getOriginalFilename().isEmpty()){
                     fileName = uuid + "_" + file.getOriginalFilename();
-                    String uploadPath = Define.UPLOAD_DIRECTORY + File.separator + fileName;
-//                    String uploadPath = "/" + File.separator + fileName;
-                    File destination = new File(uploadPath);
+                    Path uploadPath = Paths.get(Define.UPLOAD_DIRECTORY + fileName);
+                    Files.write(uploadPath, file.getBytes());
 
-
-                    file.transferTo(destination); // 실제 생성
                 }else {
                     if(dto.getPicUrl() != null) {
+
                         fileName = dto.getPicUrl();
                     } else {
                         fileName = null;
+
                     }
                 }
                 // 전체 경로 지정

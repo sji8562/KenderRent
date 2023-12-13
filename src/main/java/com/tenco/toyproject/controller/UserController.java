@@ -49,7 +49,14 @@ public class UserController {
 	private String tencoKey;
 
 	// 회원가입 페이지 요청
-	// 주소설계 http://localhost/
+	// 주소설계 http://localhost/user/sign-up
+	@GetMapping("/sign-up-page")
+	public String userSignUpPage() {
+		return "user/userSignUpPage";
+	}
+	
+	// 이메일로 회원가입 페이지 요청
+	// 주소설계 http://localhost/user/sign-up
 	@GetMapping("/sign-up")
 	public String userSignUp() {
 		return "user/userSignUp";
@@ -61,7 +68,21 @@ public class UserController {
 	public String userSignIn() {
 		return "user/userSignIn";
 	}
+	
+	// 이메일 찾기 페이지 요청
+	// 주소설계 http://localhost/user/findEmailByUserName
+	@GetMapping("/find-email-by-user-name")
+	public String findEmailByUserName() {
+		return "user/findEmailByUserName";
+	}
 
+	// 비밀번호 찾기 페이지 요청
+	// 주소설계 http://localhost/user/findPwdByEmail
+	@GetMapping("/find-pwd-by-email")
+	public String findPwdByEmail() {
+		return "user/findPwdByEmail";
+	}
+	
 	/**
 	 * 회원가입처리
 	 *
@@ -106,11 +127,6 @@ public class UserController {
 	@GetMapping("/logout")
 	public String logout() {
 		session.invalidate();
-		return "redirect:/user/sign-in";
-	}
-	
-	@GetMapping("/findPwdByEmail")
-	public String findPwdByEmail() {
 		return "redirect:/user/sign-in";
 	}
 

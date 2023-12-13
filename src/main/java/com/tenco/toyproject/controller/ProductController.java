@@ -30,6 +30,8 @@ import com.tenco.toyproject.service.ProductService;
 import com.tenco.toyproject.service.UserService;
 import com.tenco.toyproject.vo.PageVO;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 
@@ -55,7 +57,7 @@ public class ProductController {
 
 	@GetMapping("detail/{id}")
     public String detail(Model model, PageVO pageVO, @RequestParam(value="nowPage", required=false)String nowPage
-            , @RequestParam(value="cntPerPage", required=false)String cntPerPage, @PathVariable int id) {
+            , @RequestParam(value="cntPerPage", required=false)String cntPerPage, @PathVariable int id,  HttpServletResponse response) {
         // 페이징처리
         int total = productService.countProductCustomer(id);
         if (nowPage == null && cntPerPage == null) {
@@ -72,7 +74,12 @@ public class ProductController {
         List<Map<String, Object>> CustomerList = customerService.selectCustomerById(4, pageVO.getStart(), id); // 상품문의
         model.addAttribute("customerList", CustomerList);
         //페이징 처리해서 상품문의 출력 끝
-
+//		최근본 프로젝트 관련
+		Cookie cookie = new Cookie("goods"+id,String.valueOf(id));
+		cookie.setPath("/");
+		cookie.setMaxAge(60 * 60 * 24);
+		response.addCookie(cookie);
+//		최근본 프로젝트 관련 끝
         // 상품 정보
         Product product = productService.findById(id);
         model.addAttribute("product", product);

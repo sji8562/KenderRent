@@ -30,6 +30,7 @@ public class CartIntercepter implements HandlerInterceptor {
 //	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 //			throws Exception {
 		// 세션에 사용자 정보 확인
+
 //		System.out.println("동작확인");
 //		HttpSession session = request.getSession();
 //		User principal = (User)session.getAttribute("principal");
@@ -45,6 +46,7 @@ public class CartIntercepter implements HandlerInterceptor {
 	}
 
 	// 뷰가 렌더링 되기 전에 호출 되는 메서드
+
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			@Nullable ModelAndView modelAndView) throws Exception {
@@ -61,6 +63,7 @@ public class CartIntercepter implements HandlerInterceptor {
 			}
 		}
 	}
+
 
 
 	// 요청 처리가 완료된 후(뷰 렌더링이 완료된 후) 호출 되는 메서드
