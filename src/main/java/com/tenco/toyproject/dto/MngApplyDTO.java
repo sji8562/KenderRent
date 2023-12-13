@@ -58,6 +58,21 @@ public class MngApplyDTO {
     }
 
     @Data
+    public static class SaleDetailDTO {
+        private Integer id;
+        private String username;
+        private String email;
+        private String phoneNumber;
+        private String productId;
+        private String productName;
+        private String productPicUrl;
+        private String address;
+        private String addressDetail;
+        private String postNumber;
+        private Integer status;
+    }
+
+    @Data
     public static class PurchaseListDTO {
         private int id;
         private String username;
