@@ -54,7 +54,7 @@
 	</insert>
 	
 	<insert id="payForProduct" parameterType="int">
-		insert into order(user_id, product_id)
+		insert into orderlist(user_id, product_id)
 		values(#{userId}, #{productId})
 	</insert>
 	

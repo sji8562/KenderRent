@@ -71,4 +71,9 @@ public class MypageController {
 		System.out.println(goodsProduct.get(0).toString());
 		return "mypage/main";
 	}
+	
+	@GetMapping("/order-list")
+	public String orderList() {
+		return "mypage/orderList";
+	}
 }

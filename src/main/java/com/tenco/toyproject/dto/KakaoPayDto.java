@@ -5,9 +5,11 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.tenco.toyproject.repository.entity.Amount;
 
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
+@ToString
 public class KakaoPayDto {
 	   private String aid; // 요청 고유 번호
 	    private String tid; // 결제 고유 번호
