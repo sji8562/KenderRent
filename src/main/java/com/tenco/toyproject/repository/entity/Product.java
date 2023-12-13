@@ -7,6 +7,7 @@ import com.tenco.toyproject._core.utils.DecimalUtil;
 import com.tenco.toyproject._core.utils.ImageUtil;
 import com.tenco.toyproject._core.utils.ProductUtil;
 
+import jakarta.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class Product {
 	private Long price;
 	private String name;
 	private String picUrl;
+	@Lob
 	private String content;
 	private int status;
 	private String grade;
