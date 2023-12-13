@@ -18,4 +18,8 @@ public interface MngPurchaseRepository {
 
     public int deleteByPurchaseStatus(Integer id);
 
+    public MngApplyDTO.PurchaseDetailDTO findByPurchaseId(Integer id);
+
+
+    public int updateByPurchase(MngApplyDTO.PurchaseDetailUpdateDTO purchaseDetailUpdateDTO);
 }
