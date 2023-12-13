@@ -98,6 +98,7 @@
 
 </div>
 
+<script src="/webjars/ckeditor5-build-classic/29.2.0/build/ckeditor.js"></script>
 <script>
     ClassicEditor
         .create( document.querySelector( '#editor' ), {
@@ -107,6 +108,14 @@
                 withCredentials: true
             }
         } )
+        .then(editor => {
+            console.log('Editor was initialized', editor);
+
+            editor.model.document.on('change:data', () => {
+                const data = editor.getData();
+                console.log('Data updated', data);
+            })
+        })
         .catch( error => {
             console.error( "CK EDITOR ERROR == ", error );
         } );

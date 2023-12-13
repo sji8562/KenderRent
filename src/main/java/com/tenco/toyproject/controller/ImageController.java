@@ -21,51 +21,48 @@ import java.util.Map;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("image")
+@RequestMapping("/image")
 public class ImageController {
 
-    @PostMapping("upload")
+    @PostMapping("/upload")
+    @ResponseBody
     public String image(MultipartHttpServletRequest request) throws Exception {
 
-        MultipartFile uploadFile = request.getFile("upload");
+        try {
+            MultipartFile uploadFile = request.getFile("upload");
 
-        System.out.println("upload file" + uploadFile);
+            if (uploadFile == null || uploadFile.isEmpty()) {
+                return "NO file uploaded";
+            }
 
-        String originalFileName = uploadFile.getOriginalFilename();
+            String originalFileName = uploadFile.getOriginalFilename();
+            String ext = originalFileName.substring(originalFileName.indexOf("."));
+            String newFileName = UUID.randomUUID() + ext;
 
-        System.out.println("ORIGINAL NAME ===" + originalFileName);
+            String saveDirectory = Define.UPLOAD_DIRECTORY;
 
-        String ext = originalFileName.substring(originalFileName.indexOf("."));
+            File dir = new File(saveDirectory);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
 
-        String newFileName = UUID.randomUUID() + ext;
-
-        System.out.println("new file name" + newFileName);
-
-        String saveDirectory = Define.UPLOAD_DIRECTORY;
-
-        // 폴더가 없다면
-        File dir = new File(saveDirectory);
-        if(dir.exists() == false) {
-            dir.mkdirs();
-        }
-
-        Path savePath = Paths.get(Define.UPLOAD_DIRECTORY + newFileName);
-        Files.write(savePath, uploadFile.getBytes());
-
-
-//        String realPath = request.getServletContext().getRealPath("/");
+            Path savePath = Paths.get(saveDirectory, newFileName);
+            Files.write(savePath, uploadFile.getBytes());
 //
-//        String savePath = realPath + "images/" + newFileName;
-//
-        String uploadPath = "./images/" + newFileName;
+            String uploadPath = "/images/" + newFileName;
 
 //        File file = new File(savePath);
 
 //        uploadFile.transferTo(file);
 
-        System.out.println("uploadPath" + uploadPath);
+            System.out.println("Uploaded file path: " + uploadPath);
 
-        return uploadPath;
+            return uploadPath;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Upload failed: " + e.getMessage();
+        }
+
 
     }
 
