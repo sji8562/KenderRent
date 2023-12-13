@@ -103,7 +103,7 @@
         .create( document.querySelector( '#editor' ), {
             language: "ko",
             ckfinder: {
-                uploadUrl: "/upload/image",
+                uploadUrl: "/image/upload",
                 withCredentials: true
             }
         } )

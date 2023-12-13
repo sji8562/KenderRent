@@ -108,10 +108,18 @@ public class MngApplyController {
     public String deleteRentalStatus(@PathVariable Integer id){
         mngRentService.deleteStatus(id);
         return "redirect:/mng/apply/rental-list";
+//        return null;
     }
 
 
-    //판매 시작
+    /**
+     * 판매 시작
+     * @param model
+     * @param pageVO
+     * @param nowPage
+     * @param cntPerPage
+     * @return
+     */
     @GetMapping("sale-list")
     public String saleList(Model model, PageVO pageVO, @RequestParam(value = "nowPage",required = false) String nowPage, @RequestParam(value = "cntPerPage",required = false) String cntPerPage) {
 
@@ -142,6 +150,14 @@ public class MngApplyController {
     public String deleteSaleStatus(@PathVariable Integer id){
         mngSaleService.deleteStatus(id);
         return "redirect:/mng/apply/sale-list";
+    }
+    @GetMapping("{id}/sale-detail")
+    public String saleDetail(@PathVariable Integer id, Model model){
+        System.out.println("여긴 오는감");
+        MngApplyDTO.RentalDetailDTO dto = mngRentService.findByRentId(id);
+        System.out.println(dto);
+        model.addAttribute("dto",dto);
+        return "mng/apply/rental/rentalDetail";
     }
 
 

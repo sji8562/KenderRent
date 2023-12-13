@@ -148,7 +148,7 @@
                                     <div class="form-group">
                                         <div class="col-sm-12">
                                             <button type="submit" class="btn btn-success text-white">신청 상태 변경</button>
-                                            <button type="button" class="btn-danger btn" onclick="location.href='/mng/apply/${dto.id}/rental-delete'" >신청 삭제</button>
+                                            <button class="btn-danger btn" onclick="location.href='/mng/apply/${dto.id}/rental-delete'">신청 삭제</button>
                                         </div>
                                     </div>
                                 </form>
