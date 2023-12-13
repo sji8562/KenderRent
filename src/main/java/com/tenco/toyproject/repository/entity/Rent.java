@@ -19,7 +19,11 @@ public class Rent {
     private Integer id;
     private Timestamp startDay;
     private Timestamp endDay;
+    private Integer status;
     private Timestamp createdAt;
     private Integer userId;
     private Integer productId;
+    private String postNumber;
+    private String address;
+    private String addressDetail;
 }

@@ -34,4 +34,11 @@ public interface MngProductRepository {
 
     // 2차 카테고리 조회
     public List<SecondCategory> findSecondCategoryForRent();
+
+    // 2차 카테고리 id로 1차 카테고리 조회
+    public Integer findFirstCategoryByfId(Integer sId);
+
+    // 물품 정보 수정
+    public Integer updateProduct(Product dto);
+    int findRentAllCount();
 }

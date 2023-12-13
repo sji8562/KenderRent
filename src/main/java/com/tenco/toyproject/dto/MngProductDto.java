@@ -13,8 +13,6 @@ import lombok.Data;
 
 @Data
 public class MngProductDto {
-
-        private int id;
         private int firstCategoryId;
         private int secondCategoryId;
         private Long price;

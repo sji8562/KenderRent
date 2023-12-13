@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
  <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
 <link rel="stylesheet" href="/css/style.css">
 
 <div class="page-wrapper">
@@ -19,9 +19,9 @@
 
 	<%--<div class="m--margin">
 		물품 상세 페이지
-		
+
 		<div>${product}</div>
-		
+
 		<div>상품번호 ${product.id}</div>
 		<div>카테고리 ${product.firstCategoryName} > ${product.secondCategoryName}</div>
 		<div>물품명 ${product.name}</div>
@@ -72,22 +72,18 @@
 							<div class="form-group">
 								<label>썸네일</label>
 								<div style="width: 500px;">
-<%--									<c:choose>--%>
-<%--										<c:when test="${product.picUrl != null}">--%>
-<%--											<img src="${product.picUrl}" alt="No Image">--%>
-<%--										</c:when>--%>
-<%--										<c:otherwise>--%>
-<%--											<img src="/assets/images/empty_img.jpg" alt="No Alter Image">--%>
-<%--										</c:otherwise>--%>
-<%--									</c:choose>--%>
-									<img src="${product.formatImgUrl()}" />
+									<script>
+										console.log("${product.formatImgUrl()}");
+									</script>
+<%--									<img src="<c:url value="${product.formatImgUrl()}"/>" >--%>
+									<img src="${product.formatImgUrl()}" >
 
 								</div>
 							</div>
 							<div class="form-group">
 								<label>물품등급</label>
 								<select class="form-select" aria-label="Disabled select example" disabled>
-									<option selected>${product.formatStatus()}</option>
+									<option selected>${product.grade}</option>
 								</select>
 							</div>
 							<div class="form-group">
@@ -98,8 +94,10 @@
 							</div>
 							<div class="form-group">
 								<label>제품 상세 설명</label>
-								<%-- TODO text editor --%>
-								<textarea class="form-control" rows="5" disabled>${product.content}</textarea>
+								<div id="container">
+									<textarea id="editor" name="content">${product.content}</textarea>
+								</div>
+								<%--<textarea class="form-control" rows="5" disabled>${product.content}</textarea>--%>
 							</div>
 						</form>
 					</div>
@@ -135,24 +133,30 @@
 	<!-- End Page wrapper  -->
 	<!-- ============================================================== -->
 </div>
-<!-- ============================================================== -->
-<!-- End Wrapper -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- All Jquery -->
-<!-- ============================================================== -->
-<script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap tether Core JavaScript -->
-<script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<!-- slimscrollbar scrollbar JavaScript -->
-<script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
-<!--Wave Effects -->
-<script src="../../dist/js/waves.js"></script>
-<!--Menu sidebar -->
-<script src="../../dist/js/sidebarmenu.js"></script>
-<!--Custom JavaScript -->
-<script src="../../dist/js/custom.min.js"></script>
-	
+<script>
+	ClassicEditor
+			.create( document.querySelector( '#editor' ))
+			.then(editor => {
+				console.log("------------------------------", editor);
+				const toolbarElement = editor.ui.view.toolbar.element;
+				toolbarElement.style.display = 'none';
+				editor.enableReadOnlyMode( 'editor' );
+				console.log('Editor was initialized', editor);
+			})
+			.catch( error => {
+				console.error( error );
+			} );
+</script>
+<style>
+	#container {
+		width: 100%;
+	}
+	.ck-editor__editable[role="textbox"] {
+		/* editing area */
+		min-height: 500px;
+	}
+</style>
+
 </body>
 </html>
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>

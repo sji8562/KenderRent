@@ -20,7 +20,7 @@ public class MngController {
 
     @GetMapping("/test")
     public String test() {
-        return "mng/pagesProfile";
+        return "mng/apply/test";
     }
 
     @GetMapping("/form-basic")
