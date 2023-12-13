@@ -12,4 +12,9 @@ public class MypageController {
 	public String main() {
 		return "mypage/main";
 	}
+	
+	@GetMapping("/order-list")
+	public String orderList() {
+		return "mypage/orderList";
+	}
 }

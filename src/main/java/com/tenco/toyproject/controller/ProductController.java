@@ -19,10 +19,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+import com.tenco.toyproject.dto.KakaoPayDto;
 import com.tenco.toyproject.dto.response.KakaoPayResponse;
+import com.tenco.toyproject.repository.entity.Order;
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.CustomerService;
+import com.tenco.toyproject.service.KakaoPayService;
 import com.tenco.toyproject.service.ProductService;
 import com.tenco.toyproject.service.UserService;
 import com.tenco.toyproject.vo.PageVO;
@@ -42,6 +45,8 @@ public class ProductController {
 	private CustomerService customerService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private KakaoPayService kakaoPayService;
 	
 	@GetMapping("categories")
 	public String categories() {
@@ -74,46 +79,50 @@ public class ProductController {
         return "product/detail";
     }
 
-	@GetMapping("order")
-	public String order(Model model) {
+	@PostMapping("order")
+	public String order(Model model, @RequestParam("id") int productId) {
 		User principal = (User) session.getAttribute("principal");
 		User userInfo = userService.findById(principal.getId());
+		Product orderList = productService.findById(productId);
+		model.addAttribute("orderList", orderList);
 		model.addAttribute("userInfo", userInfo);
 		return "product/order";
 	}
-	
-	@PostMapping("order/kakao-pay/ready")
-	public String kakaoPay() {
-		User principal = (User) session.getAttribute("principal");
+	@GetMapping("order/kakao-pay")
+	public void kakaoPayGet() {
 		
-		HttpHeaders headers = new HttpHeaders();
-		
-		headers.add("Authorization", "KakaoAK " + "bd58a402485edbfc26668cfb00914ee0");
-		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
-		
-		
-		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-		params.add("cid", "TC0ONETIME");
-		params.add("tid", "TC0ONETIME");
-		params.add("partner_order_id", "TC0ONETIME");
-		params.add("partner_user_id", "TC0ONETIME");
-	    params.add("item_name", "상품명");
-	    params.add("quantity", "주문 수량");
-	    params.add("total_amount", "총 금액");
-	    params.add("vat_amount", "부가세");
-	    params.add("tax_free_amount", "상품 비과세 금액");
-	    params.add("approval_url", "http://localhost/product/order/success"); // 성공 시 redirect url
-	    params.add("cancel_url", "http://localhost/product/order/cancel"); // 취소 시 redirect url
-	    params.add("fail_url", "http://localhost/product/order/fail"); // 실패 시 redirect url
-
-	    HttpEntity<MultiValueMap<String, String>> requestEntity
-	     = new HttpEntity<>(params, headers);
-	    
-		RestTemplate rt = new RestTemplate();
-		
-		KakaoPayResponse response = rt.postForObject("https://kapi.kakao.com/v1/payment/ready", 
-				requestEntity,
-				KakaoPayResponse.class);		
-		return "product/order/list";
 	}
+	
+	
+	@PostMapping("order/kakao-pay")
+	public String kakaoPayReady(@RequestParam("id") int productId) {
+		User principal = (User) session.getAttribute("principal");
+		int userId = principal.getId();
+			return "redirect:" + kakaoPayService.KakaoPayReady(productId, userId);
+	}
+	// http://localhost/product/kakao-pay/success?pg_token=T5794b2c3ad74821dd21
+	@GetMapping("order/kakao-pay/success")
+	public String kakaoPaySuccess(Model model, @RequestParam("pg_token") String pg_token) {
+		User principal = (User) session.getAttribute("principal");
+		int userId = principal.getId();
+		// 단일 주문 성공시 order 테이블에 저장
+		KakaoPayDto kakao = kakaoPayService.kakaoPayInfo(pg_token, userId);
+		int productId = Integer.valueOf(kakao.getItemCode());
+		System.out.println(productId);
+		productService.payForProduct(userId, productId);
+		model.addAttribute("info", kakao);
+		
+		return "redirect:/mypage/order-list";
+	}
+	
+	@GetMapping("order/kakao-pay/cancel")
+	public String kakaoPayCancel() {
+		System.out.println("결제취소");
+		
+		return "redirect:/product/order";
+	}
+	
+	
+
+	
 }

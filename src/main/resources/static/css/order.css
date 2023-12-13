@@ -68,7 +68,7 @@
     margin: 0;
     font-weight: bold;
     vertical-align: top;
-    margin-left: 5px;
+    margin-left: 7px;
 }
 .payment_box {
 	position: relative;
@@ -77,4 +77,74 @@
     font-size: 0;
     font-weight: normal;
     box-sizing: border-box;
+}
+.box_goods {
+	position: relative;
+	padding-left: 99px;
+	padding-bottom: 100px;
+	min-height: 100px;
+}
+.box_picture {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100px;
+	height: 100px;
+}
+.box_product_info {
+	position: relative;
+	height: 24px;
+	margin-top: 4px;
+	vertical-align: top;
+	padding-top: 24px;
+	padding-left: 10px;
+}
+.text_product_name {
+	font-size: 24px;
+	font-weight: bold;
+	line-height: 22px;
+}
+
+.text_product_price {
+	font-size: 17px;
+	line-height: 24px;
+	font-weight: bold;
+	padding-top: 13px;
+}
+.text_price {
+	float: left;
+	padding-top: 13px;
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: bold;
+	color: dimgray;
+}
+.text_number {
+	float: right;
+	font-size: 17px;
+	line-height: 24px;
+	font-weight: bold;
+	padding-top: 13px;
+	text-align: right;
+}
+a {
+	color: black;
+}
+a:hover {
+	color: black;
+}
+span {
+	display: inline-block;
+	vertical-align: bottom;
+}
+.botton_pay {
+	width: 35%;
+	font-size: 22px;
+	font-weight: 500;
+	line-height: 55px;
+	color: white;
+	background-color: #fe4c50;
+	text-align: center;
+	border-radius: 8px;
+	border: none;
 }

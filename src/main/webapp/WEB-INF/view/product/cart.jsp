@@ -73,22 +73,34 @@
 												<tr>
 													<c:choose>
 														<c:when test="${product.status == 1}">
-															<td><input type="checkbox" name="selectedProduct"
+															<td class="vertical-center"><input type="checkbox" name="selectedProduct"
 																value="${product.price}"
 																onchange="calculateTotalPrice()"></td>
 														</c:when>
 														<c:otherwise>
-															<td><input type="checkbox" disabled></td>
+															<td class="vertical-center"><input type="checkbox" disabled></td>
 														</c:otherwise>
 													</c:choose>
 
-													<td>${product.formatItemForSale()}</td>
-													<td><a href="/product/detail/${product.id }">${product.name}</a></td>
-													<td>${product.price}</td>
+													<td class="vertical-center">${product.formatItemForSale()}</td>
+													<td>
+														<div>
+															<a href="/product/detail/${product.id}" target="_blank"> 
+																<img src="/images/product_${product.id}.png" 
+																	class="product_picture" style="vertical-align: top;"></a>
+														</div>
+														<div >
+															<a href="/product/detail/${product.id }" target="_blank" 
+															style="font-size: 15px" class="cart_table_name">
+																${product.name}</a>
+															<div class="cart_table_option">옵션설명</div>
+														</div>
+													</td>
+													<td class="vertical-center">${product.formatPrice()}</td>
 													<td>
 														<form action="/cart/delete?id=${product.id }"
 															method="post">
-															<button type="submit" class="cancel-button">x</button>
+															<button type="submit" class="cancel-button">×</button>
 														</form>
 													</td>
 
@@ -110,7 +122,7 @@
 											총 주문금액: <span id="totalPrice" style="color: red;">0원</span>
 										</p>
 										<div class="red_button buy_button"
-											style="width: 140px; position: absolute; margin-left: 900px;">
+											style="width: 140px; float: right;">
 											<a href="/product/order">구매하기</a>
 										</div>
 									</div>

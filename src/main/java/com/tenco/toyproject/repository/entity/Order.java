@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Purchase {
+public class Order {
 	private int id;
 	private int userId;
 	private int productId;
