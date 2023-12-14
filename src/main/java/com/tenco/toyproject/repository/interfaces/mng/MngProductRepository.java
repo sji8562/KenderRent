@@ -60,5 +60,5 @@ public interface MngProductRepository {
 
     int findProductBySecondCategoryId(int sId);
 
-    int findProducCounttByFirstCategoryId(int fId);
+    int findProducCountByFirstCategoryId(int fId);
 }

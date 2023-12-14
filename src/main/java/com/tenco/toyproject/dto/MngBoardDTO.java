@@ -12,4 +12,12 @@ public class MngBoardDTO {
         private String userName;
         private Timestamp createdAt;
     }
+
+    @Data
+    public static class FaqSubmitDto {
+        private int id;
+        private String title;
+        private String content;
+        private int code;
+    }
 }

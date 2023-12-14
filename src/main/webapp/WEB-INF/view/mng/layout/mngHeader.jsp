@@ -331,7 +331,7 @@
 								<li class="sidebar-item"><a
 										class="sidebar-link waves-effect waves-dark sidebar-link"
 
-										href="/mng/board/qnaList"> <i class="mdi mdi-view-dashboard"></i>
+										href="/mng/board/faq-list"> <i class="mdi mdi-view-dashboard"></i>
 
 									<span class="hide-menu">자주 묻는 질문</span>
 								</a></li>
