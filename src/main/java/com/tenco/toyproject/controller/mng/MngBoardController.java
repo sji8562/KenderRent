@@ -1,6 +1,7 @@
 package com.tenco.toyproject.controller.mng;
 
-import com.tenco.toyproject.dto.MngApplyDTO;
+
+
 import com.tenco.toyproject.dto.MngBoardDTO;
 import com.tenco.toyproject.service.mng.MngNoticeService;
 import com.tenco.toyproject.vo.PageVO;
@@ -8,15 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+
+
+
 @Controller
 @RequestMapping("/mng/board")
 public class MngBoardController {
+
 
     @Autowired
     private MngNoticeService mngNoticeService;

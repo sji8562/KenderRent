@@ -18,4 +18,8 @@ public interface MngSaleRepository {
     public int updateBySaleStatus (Integer id);
 
     public int deleteBySaleStatus(Integer id);
+
+    public MngApplyDTO.SaleDetailDTO findBySaleId(Integer id);
+
+    public int updateBySale(MngApplyDTO.SaleDetailUpdateDTO saleDetailUpdateDTO);
 }

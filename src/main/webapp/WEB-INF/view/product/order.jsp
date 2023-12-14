@@ -29,7 +29,6 @@
 	<div class="super_container">
 		<!-- Header -->
 		<jsp:include page="../layout/header.jsp" />
-		<br> <br> <br> <br> <br> <br> <br>
 		<div id="container" style="padding: 150px;">
 			<div class="col text-center">
 				<div class="section_title new_arrivals_title"
@@ -37,127 +36,147 @@
 					<h2 style="text-align: center; font-size: 30px;">주문 및 결제</h2>
 				</div>
 			</div>
-
-			<div id="content" style="">
-				<div class="row">
-					<div class="col-lg-6">
-						<div style="float: left; width: 710px">
-							<!-- 주문자 정보 -->
-							<div class="box_content">
-								<div class="box_title">주문자 정보</div>
-								<div class="box_form">
-									<div class="box_label">
-										<label for="user_name">주문자</label>
-									</div>
-									<div class="box_info">
-										<label>${userInfo.userName}</label>
-									</div>
-								</div>
-								<div class="box_form">
-									<div class="box_label">
-										<label for="user_phoneNumber">연락처</label>
-									</div>
-									<div class="box_info">
-										<label>${userInfo.phoneNumber}</label>
-									</div>
-								</div>
-								<div class="box_form">
-									<div class="box_label">
-										<label for="user_adress">주소</label>
-									</div>
-									<div class="box_info">
-										<label>${userInfo.address}</label>
-									</div>
-								</div>
-								<div class="box_form">
-									<div class="box_label">
-										<label for="user_email">이메일</label>
-									</div>
-									<div class="box_info">
-										<label>${userInfo.email}</label>
-									</div>
-								</div>
+			<div id="content" style="display: flex; justify-content: center;">
+				<div style="width: 710px">
+					<!-- 주문자 정보 -->
+					<div class="box_content">
+						<div class="box_title">주문자 정보</div>
+						<div class="box_form">
+							<div class="box_label">
+								<label for="user_name">주문자</label>
 							</div>
-							<!-- 배송지 정보 -->
-							<div class="box_content" style="margin-top: 16px">
-								<div class="box_title">배송지 정보</div>
-								<br> <input type="checkbox"> <label>주문자 정보와
-									동일</label>
-								<div class="box_form">
-									<div class="box_label">
-										<label for="user_name">이름</label>
-									</div>
-									<input type="text" id="info_name" class="box_input" title="이름"
-										placeholder="이름을 입력해 주세요">
-								</div>
-								<div class="box_form">
-									<div class="box_label">
-										<label for="user_name">연락처</label>
-									</div>
-									<input type="text" id="info_phoneNumber" class="box_input"
-										title="번호" placeholder="연락처를 입력해주세요">
-								</div>
-								<div class="box_form">
-									<div class="box_label">
-										<label for="user_name">주소</label>
-									</div>
-									<input type="text" id="sample4_postcode" class="box_input"
-										style="width: 350px;" title="우편번호" placeholder="우편번호">
-									<input type="button" class="btn_address"
-										onclick="sample4_execDaumPostcode()" value="주소찾기"><br>
-									<div class="box_label">
-										<label for="user_name"></label>
-									</div>
-									<input type="text" id="sample4_roadAddress" class="box_input"
-										placeholder="도로명주소">
-									<div class="box_label">
-										<label for="user_name"></label>
-									</div>
-									<input type="text" id="sample4_extraAddress" class="box_input"
-										placeholder="참고항목">
-									<div class="box_label">
-										<label for="user_name"></label>
-									</div>
-									<input type="text" id="sample4_jibunAddress" class="box_input"
-										placeholder="지번주소"> <span id="guide"
-										style="color: #999; display: none"></span>
-									<div class="box_label">
-										<label for="user_name"></label>
-									</div>
-									<input type="text" id="sample4_detailAddress" class="box_input"
-										placeholder="상세주소">
-								</div>
+							<div class="box_info" id="nameInfo">
+								<label>${userInfo.userName}</label>
 							</div>
-							<!-- 결제 수단 -->
-							<div class="box_content" style="margin-top: 16px">
-								<div class="box_title">결제 수단</div>
-								<br>
-								<div style="flex: 1 1; position: relative;">
-									<div class="payment_box">
-										<input type="radio" name="payment" id="payment_select"
-											class="payment_radio" checked> <label
-											class="payment_label">카카오페이 결제 <img
-											src="/images/payment_icon_yellow_small.png" width="60"
-											height="25">
-										</label>
-										<form method="post" action="/kakaoPay">
-											<button style="width: 250px; height: 50px">카카오페이로 결제하기</button>
-										</form>
-									</div>
-								</div>
+						</div>
+						<div class="box_form">
+							<div class="box_label">
+								<label for="user_phoneNumber">연락처</label>
+							</div>
+							<div class="box_info" id="phoneInfo">
+								<label>${userInfo.phoneNumber}</label>
+							</div>
+						</div>
+						<div class="box_form">
+							<div class="box_label">
+								<label for="user_adress">주소</label>
+							</div>
+							<div class="box_info">
+								<label>${userInfo.address}</label>
+							</div>
+						</div>
+						<div class="box_form">
+							<div class="box_label">
+								<label for="user_email">이메일</label>
+							</div>
+							<div class="box_info">
+								<label>${userInfo.email}</label>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-6">
-						<div>
-							<p>오른쪽</p>
-							<div style="float: right; width: 472px;">
-								<div style="border: 1px solid; border-radius: 8px;"></div>
+					<!-- 배송지 정보 -->
+					<div class="box_content" style="margin-top: 16px">
+						<div class="box_title">배송지 정보</div>
+						<br> <input type="checkbox" id="useCheckbox"
+							name="useCheckbox"> <label>주문자 정보와 동일</label>
+						<div class="box_form">
+							<div class="box_label">
+								<label for="user_name">이름</label>
+							</div>
+							<input type="text" id="name" name="name" class="box_input"
+								title="이름" placeholder="이름을 입력해 주세요" required>
+						</div>
+						<div class="box_form">
+							<div class="box_label">
+								<label for="user_name">연락처</label>
+							</div>
+							<input type="text" id="phoneNumber" name="phoneNumber"
+								class="box_input" title="번호" placeholder="연락처를 입력해주세요">
+						</div>
+						<div class="box_form">
+							<div class="box_label">
+								<label for="user_name">주소</label>
+							</div>
+							<input type="text" id="sample4_postcode" class="box_input"
+								style="width: 350px;" title="우편번호" placeholder="우편번호"> <input
+								type="button" class="btn_address"
+								onclick="sample4_execDaumPostcode()" value="주소찾기"><br>
+							<div class="box_label">
+								<label for="user_name"></label>
+							</div>
+							<input type="text" id="sample4_roadAddress" class="box_input"
+								placeholder="도로명주소">
+							<div class="box_label">
+								<label for="user_name"></label>
+							</div>
+							<input type="text" id="sample4_extraAddress" class="box_input"
+								placeholder="참고항목">
+							<div class="box_label">
+								<label for="user_name"></label>
+							</div>
+							<input type="text" id="sample4_jibunAddress" class="box_input"
+								placeholder="지번주소"> <span id="guide"
+								style="color: #999; display: none"></span>
+							<div class="box_label">
+								<label for="user_name"></label>
+							</div>
+							<input type="text" id="sample4_detailAddress" class="box_input"
+								placeholder="상세주소">
+						</div>
+					</div>
+					<!-- 주문 정보 -->
+					<div class="box_content" style="margin-top: 16px">
+						<div class="box_title">주문 상품</div>
+						<div class="box_goods">
+							<div class="box_picture">
+								<a href="/product/detail/${orderList.id}" target="_blank"> <img
+									src="/images/product_${orderList.id}.png" width="100" height="100"></a>
+							</div>
+							<div class="box_product_info">
+								<a href="/product/detail/${orderList.id}" target="_blank"  class="text_product_name">
+									${orderList.name}</a>
+								<div></div>
+								<span class="text_product_price">${orderList.formatPrice()}</span>
+							</div>	
+						</div>
+						<div style="height: 20px; border-bottom: 1px solid gray;"></div>
+						<div style="padding: 16px 30px 40px ;">
+							<div>
+								<span class="text_price">상품금액</span>
+								<span class="text_number">${orderList.formatPrice()}</span>
+							</div>
+							<div style="display: block; clear: both; content: '';"></div>
+							<div>
+								<span class="text_price">배송비</span>
+								<span class="text_number">${orderList.getDeliveryFee()}</span> 
+							</div>
+						</div>
+						<div style="height: 20px; border-bottom: 1px solid gray;"></div>
+						<div style="padding: 16px 30px 40px ;">
+							<span class="text_price" style="font-size: 18px;">총 결제 금액</span>
+							<span class="text_number" style="font-size: 30px; font-weight: 700;">${orderList.totalPriceForOne()}</span>
+						</div>
+					</div>
+					<!-- 결제 수단 -->
+					<div class="box_content" style="margin-top: 16px">
+						<div class="box_title">결제 수단</div>
+						<br>
+						<div style="flex: 1 1; position: relative;">
+							<div class="payment_box">
+								<input type="radio" name="payment" id="payment_select" class="payment_radio" checked> 
+								<label class="payment_label">카카오페이 결제 
+									<img src="/images/payment_icon_yellow_small.png" width="60" height="25">
+								</label>
+								<form method="post" action="order/kakao-pay">
+									<div style="text-align: center; padding: 70px 0 0 0;">
+										<input type="hidden" name="id" value="${orderList.id}" />
+										<button type="submit" class="botton_pay">결제하기</button>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>

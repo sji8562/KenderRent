@@ -138,7 +138,7 @@
 								<tbody>
 									<tr>
 										<th scope="row">가격</th>
-										<td class="price">${product.price}원</td>
+										<td class="price">${product.formatPrice()}</td>
 									<tr>
 										<th>등급</th>
 										<td>${product.grade}</td>
@@ -157,16 +157,18 @@
 							class="quantity d-flex flex-column flex-sm-row align-items-sm-left">
 							<c:choose>
 								<c:when test="${product.status == 1}">
-									<div class="red_button buy_button">
-										<a href="/product/order">구매하기</a>
-									</div>
+									<form action="/product/order" method="post">
+										<input type="hidden" name="id" value="${product.id }" />
+										<button type="submit" class="red_button2 buy_button">구매하기</button>
+									</form>
 								</c:when>
 								<c:otherwise>
-									<p>품절</p>
+									<div class="white_button buy_button"
+										style="pointer-events: none;">품절</div>
 								</c:otherwise>
 							</c:choose>
 							<form action="/cart/add?id=${product.id }" method="post">
-								<button type="submit" class="white_button add_to_cart_button">장바구니</button>
+								<button type="submit" class="white_button buy_button">장바구니</button>
 							</form>
 
 							<div
@@ -556,7 +558,8 @@
 	<script src="/js/single_custom.js"></script>
 	<script src="/js/cart.js"></script>
 	<script src="/js/dropdown.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
 		function submitForm() {
 			document.getElementById('addToCartForm').submit();
