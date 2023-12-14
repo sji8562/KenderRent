@@ -77,4 +77,9 @@ public class UserService {
 		return userRepository.findById(id);
 	}
 
+	public void add(User user) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

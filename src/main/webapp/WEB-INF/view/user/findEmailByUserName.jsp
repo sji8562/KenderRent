@@ -62,15 +62,18 @@
 					<div class="get_in_touch_contents">
 						<h1>가입된 이메일 찾기</h1>
 						<br> <br>
-						<form action="/user/find-email-by-user-name" method="post"
-							onsubmit="return validateForm()">
-							<label for="userName">사용자 이름</label> <input type="text"
-								id="username" name="username" value="${user.userName}" required>
-							<label for="phonenumber">휴대폰 번호</label> <input type="text"
-								id="phoneNumber" name="phonenumber" value="${user.phoneNumber}"
-								required> <input type="submit" value="이메일 찾기">
+						<form action="/user/find-email-by-user-name" 
+						method="post" onsubmit="return validateForm()">
+							<label for="userName">사용자 이름</label> 
+							<input type="text" id="username" name="username" 
+							value="${user.userName}" required>
+							<label for="phonenumber">휴대폰 번호</label> 
+							<input type="text" id="phoneNumber" name="phonenumber" 
+							value="${user.phoneNumber}"required> 
+							<!-- <button type="submit" class="btn btn-primary">이메일 찾기</button>  -->
+							<input type="submit" value="">
 						</form>
-						<br> <a href="/user/findPwd">비밀번호 찾기</a>
+						<br> <a href="/user/find-pwd-by-email">비밀번호 찾기</a>
 
 						<script>
 							function validateForm() {

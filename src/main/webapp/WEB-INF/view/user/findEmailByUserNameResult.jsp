@@ -56,21 +56,14 @@
 			</div>
 			<!-- Contact Us -->
 
-			<div class="row">
+			<!-- <div class="row">
 				<div class="col-lg-4 "></div>
 				<div class="col-lg-4 get_in_touch_col">
 					<div class="get_in_touch_contents">
-						<h1>가입된 이메일 찾기</h1>
+						<h1>귀하께서 가입하신 이메일 주소는</h1>
 						<br>
 						<br>
-						<form action="/user/findEmailByUserName" method="post"
-							onsubmit="return validateForm()">
-							<label for="userName">사용자 이름</label> <input type="text"
-								id="username" name="username" value="${user.userName}" required>
-							<label for="phonenumber">휴대폰 번호</label> <input type="text"
-								id="phoneNumber" name="phonenumber" value="${user.phoneNumber}"
-								required> <input type="submit" value="이메일 찾기">
-						</form>
+						
 						<br>
 						<a href="/user/sign-in">이메일로 로그인하기</a> 
 						<a href="/user/find-pwd-by-email">비밀번호 찾기</a>
@@ -85,7 +78,8 @@
 									alert("사용자 이름과 연락처를 입력해주세요.");
 									return false;
 								}
-								var phoneRe = /^[0-9]{10,11}$/; // 간단한 전화번호 형식 검증 예시
+								var phoneRe = /^[0-9]{10,11}$/; 
+								// 간단한 전화번호 형식 검증 예시
 								if (!phoneRe.test(phoneNumber)) {
 									alert("올바른 연락처 형식이 아닙니다.");
 									return false;
@@ -96,7 +90,23 @@
 					</div>
 				</div>
 				<div class="col-lg-4 "></div>
+			</div> -->
+
+			<div class="popup-container">
+				<div class="popup">
+					<h2>귀하의 이메일을 찾았습니다.</h2>
+					<c:if test="${invalidInputs}">
+						<div class="message">입력하신 정보가 일치하지 않습니다.</div>
+					</c:if>
+					<c:if test="${!invalidInputs}">
+						<div class="result">귀하의 이메일은 ${email}</div>
+					</c:if>
+					<div class="link">
+						<a href="/">로그인 페이지로 돌아가기</a>
+					</div>
+				</div>
 			</div>
+
 		</div>
 
 		<!-- Newsletter -->
