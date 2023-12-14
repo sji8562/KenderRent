@@ -34,4 +34,13 @@ public class MngPurchaseService {
     public int deleteStatus(Integer id) {
         return mngPurchaseRepository.deleteByPurchaseStatus(id);
     }
+
+    public MngApplyDTO.PurchaseDetailDTO findByPurchaseId(Integer id) {
+        return mngPurchaseRepository.findByPurchaseId(id);
+    }
+
+    public int updateByPurchase(MngApplyDTO.PurchaseDetailUpdateDTO purchaseDetailUpdateDTO) {
+        return mngPurchaseRepository.updateByPurchase(purchaseDetailUpdateDTO);
+    }
+
 }

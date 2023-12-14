@@ -59,13 +59,11 @@
                                     <h6 class="card-subtitle">${dto.productName}</h6>
                                 </center>
                             </div>
-                            <div>
-                                <hr>
+                            <div class="card-body">
+                                <small class="text-muted pt-4 db">가격</small>
+                                <h6>${dto.productPrice}</h6>
                             </div>
-                            <div class="card-body"><small class="text-muted">대여 시작날짜 </small>
-                                <h6>${dto.startDay}</h6>
-                                <small class="text-muted pt-4 db">대여 종료날짜</small>
-                                <h6>${dto.endDay}</h6>
+                            <div class="card-body">
                                 <small class="text-muted pt-4 db">신청 주소</small>
                                 <h6>${dto.address} ${dto.addressDetail} ${dto.postNumber}</h6>
                                 <div id="mngKakaoMap" style="width:100%;height:150px;"></div>
@@ -81,7 +79,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <form class="form-horizontal form-material mx-2" method="post"
-                                      action="/mng/apply/rent-update">
+                                      action="/mng/apply/purchase-update">
 
                                     <div class="form-group">
                                         <label class="col-md-12">신청자 이름</label>
@@ -121,17 +119,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-12">대여 날짜</label>
-                                        <div class="col-sm-12">
-                                            <input type="date" class="startDay" name="startDay" id="startDay"
-                                                   value=${dto.startDay}>
-
-                                            <input type="date" class="endDay" name="endDay" id="endDay"
-                                                   value=${dto.endDay}>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-12">대여 날짜</label>
+                                        <label class="col-sm-12">주소</label>
                                         <div class="col-sm-12">
                                             <input type="text" id="postNumber" name="postNumber" placeholder="우편번호"
                                                    value=${dto.postNumber} readonly>
@@ -148,7 +136,7 @@
                                     <div class="form-group">
                                         <div class="col-sm-12">
                                             <button type="submit" class="btn btn-success text-white">신청 상태 변경</button>
-                                            <button type="button" class="btn-danger btn" onclick="location.href='/mng/apply/${dto.id}/rental-delete'" >신청 삭제</button>
+                                            <button type="button" class="btn-danger btn" onclick="location.href='/mng/apply/${dto.id}/purchase-delete'">신청 삭제</button>
                                         </div>
                                     </div>
                                 </form>
