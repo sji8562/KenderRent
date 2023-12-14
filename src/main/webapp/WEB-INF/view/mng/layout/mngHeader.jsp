@@ -27,8 +27,19 @@
 	rel="stylesheet">
 <!-- Custom CSS -->
 <link href="/dist/css/style.min.css" rel="stylesheet">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+		  integrity="sha256-7ZWbZUAi97rkirk4DcEp4GWDPkWpRMcNaEyXGsNXjLg=" crossorigin="anonymous">
 
-<style>
+	<!-- Summernote CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
+		  integrity="sha256-IKhQVXDfwbVELwiR0ke6dX+pJt0RSmWky3WB2pNx9Hg=" crossorigin="anonymous">
+
+	<!-- Your Custom CSS -->
+	<link rel="stylesheet" href="/css/style.css">
+
+
+	<style>
 /* 초기에는 숨겨진 상태 */
 #applyManagement .collapse {
 	display: none;

@@ -8,6 +8,16 @@
 <!-- ============================================================== -->
 <!-- Page wrapper -->
 <!-- ============================================================== -->
+<style>
+    /*.ellipsis {*/
+    /*    overflow: hidden;*/
+    /*    text-overflow: ellipsis;*/
+    /*    display: -webkit-box;*/
+    /*    -webkit-line-clamp: 1;*/
+    /*    -webkit-box-orient: vertical;*/
+    /*}*/
+</style>
+
 <div class="page-wrapper">
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->

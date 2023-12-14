@@ -57,7 +57,7 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">제목</th>
-                                            <th scope="col">내용</th>
+
                                             <th scope="col">작성자</th>
                                             <th scope="col">생성날짜</th>
                                             <th scope="col">공지사항 관리</th>
@@ -73,27 +73,25 @@
                                                             href="/mng/board/${noticeList.id}/notice-detail">${noticeList.id}</a>
                                                     </th>
                                                     <td class="applyDetail"><a
-                                                            href="/mng/board/${noticeList.id}/notice-detail">${noticeList.id}</a>
+                                                            href="/mng/board/${noticeList.id}/notice-detail">${noticeList.title}</a>
+                                                    </td>
+
+                                                    <td class="applyDetail"><a
+                                                            href="/mng/board/${noticeList.id}/notice-detail">${noticeList.userName}</a>
                                                     </td>
                                                     <td class="applyDetail"><a
-                                                            href="/mng/board/${noticeList.id}/notice-detail">${noticeList.id}</a>
-                                                    </td>
-                                                    <td class="applyDetail"><a
-                                                            href="/mng/board/${noticeList.id}/notice-detail">${noticeList.id}</a>
-                                                    </td>
-                                                    <td class="applyDetail"><a
-                                                            href="/mng/board/${noticeList.id}/notice-detail">${noticeList.id}</a>
+                                                            href="/mng/board/${noticeList.id}/notice-detail">${noticeList.createdAt}</a>
                                                     </td>
                                                     <td>
                                                         <div>
                                                             <button class="btn btn-success"
                                                                     style="border: 1px solid black"
-                                                                    onclick="location.href='/mng/apply/${noticeList.id}/purchase-update'">
+                                                                    onclick="location.href='/mng/board/${noticeList.id}/notice-update'">
                                                                 신청 확인
                                                             </button>
                                                             &nbsp;&nbsp;
                                                             <button class="btn-danger btn"
-                                                                    onclick="location.href='/mng/apply/${noticeList.id}/purchase-delete'">
+                                                                    onclick="location.href='/mng/board/${noticeList.id}/notice-delete'">
                                                                 신청 취소
                                                             </button>
                                                         </div>
@@ -112,7 +110,7 @@
                                 <div style="display: block; text-align: center;">
                                     <c:if test="${paging.startPage != 1 }">
                                         <a
-                                                href="user?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+                                                href="noticeList?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
                                     </c:if>
                                     <c:forEach begin="${paging.startPage }"
                                                end="${paging.endPage }" var="p">
@@ -121,13 +119,13 @@
                                                 <b>${p }</b>
                                             </c:when>
                                             <c:when test="${p != paging.nowPage }">
-                                                <a href="user?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+                                                <a href="noticeList?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
                                             </c:when>
                                         </c:choose>
                                     </c:forEach>
                                     <c:if test="${paging.endPage != paging.lastPage}">
                                         <a
-                                                href="user?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+                                                href="noticeList?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
                                     </c:if>
                                 </div>
 
