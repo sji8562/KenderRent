@@ -3,9 +3,9 @@ server:
   servlet:
     encoding: 
       charset: utf-8
-      force: true 
+      force: true
 
-spring: 
+spring:
   mvc:
     view:
       prefix: /WEB-INF/view/
@@ -85,7 +85,7 @@ spring:
     password: t1prjKinderlend
     properties:
       mail.smtp.auth: true
-      mail.smtp.ssl.enable: true           
+      mail.smtp.ssl.enable: true
 file:
   path: ./images/
   
@@ -106,6 +106,5 @@ kakao:
   key: 85a9fbeacd6dee03b7157c7360812509
 
 # static 폴더
-
 
 
