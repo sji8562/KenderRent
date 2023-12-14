@@ -1,41 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <footer class="footer text-center">
-                All Rights Reserved by Nice admin. Designed and Developed by
-                <a href="https://www.wrappixel.com">WrapPixel</a>.
-            </footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="/assets/extra-libs/sparkline/sparkline.js"></script>
-    <!--Wave Effects -->
-    <script src="/dist/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="/dist/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="/dist/js/custom.min.js"></script>
-    <!--This page JavaScript -->
-    <!--chartis chart-->
-    <script src="/assets/libs/chartist/dist/chartist.min.js"></script>
-    <script src="/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="/dist/js/pages/dashboards/dashboard1.js"></script>
+         pageEncoding="UTF-8"%>
+<footer class="footer text-center">
+    All Rights Reserved by Nice admin. Designed and Developed by
+    <a href="https://www.wrappixel.com">WrapPixel</a>.
+</footer>
+<!-- ============================================================== -->
+<!-- End footer -->
+<!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+<!--Wave Effects -->
+<script src="/dist/js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="/dist/js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="/dist/js/custom.min.js"></script>
+<!--This page JavaScript -->
+<!--chartis chart-->
+<script src="/assets/libs/chartist/dist/chartist.min.js"></script>
+<script src="/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+<script src="/dist/js/pages/dashboards/dashboard1.js"></script>
+<%--썸머노트--%>
+
+<!-- Bootstrap JS (with Popper.js) -->
+<%--<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"--%>
+<%--        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>--%>
+<%--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"--%>
+<%--        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"--%>
+<%--        crossorigin="anonymous"></script>--%>
+
+<!-- Summernote JS -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"
+        integrity="sha256-5slxYrL5Ct3mhMAp/dgnb5JSnTYMtkr4dHby34N10qw=" crossorigin="anonymous"></script>
+
+<%--카카오 맵--%>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+    $('#summernote').summernote({
+        placeholder: '내용을 입력해주세요.',
+        tabsize: 2,
+        height: 400,
+        lang: 'ko-KR', // default: 'en-US'
+    });
 
     document.getElementById('applyManagement').addEventListener('mouseenter', function() {
         // 마우스가 올라갈 때 이벤트 발생
@@ -96,6 +116,8 @@
                     document.getElementById("extraAddress").value = '';
                 }
 
+                // 주문번호/ 환불신청시간 / 환불상태(신청/처리/완료) / 환불완료 시간 / 환불금액 이정도 생각하고있는데
+
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('postNumber').value = data.zonecode;
                 document.getElementById("address").value = addr;
@@ -107,7 +129,7 @@
 
 
 </script>
-    
+
 </body>
 
 </html>

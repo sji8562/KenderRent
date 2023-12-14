@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -46,6 +47,12 @@ public class MngBoardController {
         System.out.println(noticeList.toString());
         model.addAttribute("noticeList", noticeList);
         return "mng/board/notice/list";
+    }
+    @GetMapping("{id}/notice-detail")
+    public String noticeDetail(@PathVariable Integer id){
+        System.out.println("들어왔다");
+//        mngNoticeService
+        return "mng/board/notice/detail";
     }
     @GetMapping("qna")
     public String qna(){

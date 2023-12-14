@@ -9,7 +9,6 @@ public class MngBoardDTO {
     public static class NoticeListDTO {
         private Integer id;
         private String title;
-        private String content;
         private String userName;
         private Timestamp createdAt;
     }
