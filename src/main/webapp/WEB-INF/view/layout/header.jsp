@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <meta charset="UTF-8">
  <style>
- 	@media(min-width: 800px){
+ 	@media(min-width: 990px){
  		#hambuerBtn
  		{
  			display: none;

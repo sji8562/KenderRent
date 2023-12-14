@@ -69,6 +69,12 @@ public class MypageController {
 		Collections.reverse(goodsProduct);
 		model.addAttribute("goodsProduct", goodsProduct);
 		System.out.println(goodsProduct.get(0).toString());
+		
 		return "mypage/main";
+	}
+	
+	@GetMapping("/inquiry")
+	public String inquiryList() {
+		return "mypage/inquiry";
 	}
 }
