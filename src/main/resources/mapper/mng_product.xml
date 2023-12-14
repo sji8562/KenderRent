@@ -110,4 +110,6 @@
         SELECT COUNT(*) AS count FROM product WHERE first_category_id = #{fId}
     </select>
 
+
+
 </mapper>
