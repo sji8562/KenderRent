@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
+
 <div class="page-wrapper">
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
@@ -101,4 +102,5 @@
         <!-- End Right sidebar -->
         <!-- ============================================================== -->
     </div>
+
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>
