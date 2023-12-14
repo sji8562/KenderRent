@@ -43,7 +43,7 @@ public class MngBoardController {
         System.out.println(cntPerPage);
 
         List<MngBoardDTO.NoticeListDTO> noticeList = mngNoticeService.findAllByNotice(pageVO);
-        System.out.println();
+        System.out.println(noticeList.toString());
         model.addAttribute("noticeList", noticeList);
         return "mng/board/notice/list";
     }
