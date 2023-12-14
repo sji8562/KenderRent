@@ -79,7 +79,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <form class="form-horizontal form-material mx-2" method="post"
-                                      action="/mng/apply/sale-update">
+                                      action="/mng/apply/purchase-update">
 
                                     <div class="form-group">
                                         <label class="col-md-12">신청자 이름</label>
@@ -136,7 +136,7 @@
                                     <div class="form-group">
                                         <div class="col-sm-12">
                                             <button type="submit" class="btn btn-success text-white">신청 상태 변경</button>
-                                            <button type="button" class="btn-danger btn" onclick="location.href='/mng/apply/${dto.id}/sale-delete'">신청 삭제</button>
+                                            <button type="button" class="btn-danger btn" onclick="location.href='/mng/apply/${dto.id}/purchase-delete'">신청 삭제</button>
                                         </div>
                                     </div>
                                 </form>

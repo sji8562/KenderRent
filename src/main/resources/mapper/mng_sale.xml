@@ -22,6 +22,12 @@
         update sale set status = 2 where id = #{id}
     </update>
     <delete id="deleteBySaleStatus">
-        delete from sale where id =${id}
+        delete from sale where id =#{id}
     </delete>
+    <select id="findBySaleId">
+        select s.id,u.user_name,u.email, u.phone_number, p.id as productId, p.name as productName, p.pic_url as productPicUrl, p.price as productPrice,s.post_number, s.address,s.address_detail,s.status  from sale s inner join user u on s.user_id = u.id inner join product p on s.product_id = p.id where s.id = #{id};
+    </select>
+    <update id="updateBySale">
+        update sale set post_number = #{postNumber},address = #{address},address_detail = #{addressDetail},status = #{status} where id = #{id}
+    </update>
 </mapper>

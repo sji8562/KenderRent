@@ -60,3 +60,23 @@ function sample4_execDaumPostcode() {
 			}
 		}).open();
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+	var nameInput = document.getElementById('name');
+	var nameInfo = document.getElementById('nameInfo');
+	var phoneInput = document.getElementById('phoneNumber');
+	var phoneInfo = document.getElementById('phoneInfo');
+	var useCheckbox = document.getElementById('useCheckbox');
+
+	useCheckbox.addEventListener('change', function() {
+		if (this.checked) {
+			nameInput.value = nameInfo.innerText;
+			phoneInput.value = phoneInfo.innerText;
+			nameInput.disabled = true;
+			phoneInput.disabled = true;
+		} else {
+			nameInput.value = "";
+			phoneInput.value = "";
+		}
+	});
+});

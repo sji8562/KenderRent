@@ -1696,7 +1696,7 @@ section
     background: none;
     border: none;
     color: gray;
-    font-size: 20px;
+    font-size: 25px;
     cursor: pointer;
 }
 table a {
@@ -1745,5 +1745,28 @@ table a:hover {
 	margin-top: 10px;
 	margin-right: 20px;
 }
+.product_picture {
+	display : block;
+	max-width: 80px;
+	width: 80px;
+	height: 80px;
+	margin-left: 12px;
+	float: left;
+	position: relative;
+}
+.cart_table_name {
+	display : flex; 
+	align-items : center; 
+}
+.cart_table_option {
+	float: left;
+    display: block;
+    font-weight: 400;
+}
 
-
+.vertical-center {
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    line-height: 80px;
+}
