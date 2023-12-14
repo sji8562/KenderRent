@@ -38,7 +38,6 @@ dependencies {
 	implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
-	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	// <이메일인증용 DL
 	implementation 'org.springframework.boot:spring-boot-starter-mail:3.0.5'
 	implementation 'org.springframework:spring-context:6.0.7'
