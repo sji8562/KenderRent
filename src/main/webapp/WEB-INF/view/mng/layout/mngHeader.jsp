@@ -27,6 +27,7 @@
 	rel="stylesheet">
 <!-- Custom CSS -->
 <link href="/dist/css/style.min.css" rel="stylesheet">
+	<link href="/dist/css/mng.css" rel="stylesheet">
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
 		  integrity="sha256-7ZWbZUAi97rkirk4DcEp4GWDPkWpRMcNaEyXGsNXjLg=" crossorigin="anonymous">
@@ -40,52 +41,7 @@
 
 
 	<style>
-/* 초기에는 숨겨진 상태 */
-#applyManagement .collapse {
-	display: none;
-}
 
-/* 마우스를 올릴 때 나타나게 함 */
-#applyManagement.show .collapse {
-	display: block;
-}
-
-#applyManagement.show .collapse li.sidebar-item {
-	margin-left: 10px; /* 서브 메뉴 오른쪽으로 10px 이동 */
-	font-size: 12px;
-}
-#noticeManagement .collapse {
-	display: none;
-}
-
-/* 마우스를 올릴 때 나타나게 함 */
-#noticeManagement.show .collapse {
-	display: block;
-}
-
-#noticeManagement.show .collapse li.sidebar-item {
-	margin-left: 10px; /* 서브 메뉴 오른쪽으로 10px 이동 */
-	font-size: 12px;
-}
-
-
-/* Style for the links with class "rentalDetail" */
-.applyDetail a {
-	color: black;
-	text-decoration: none; /* Remove underline */
-}
-
-/* Style for visited links with class "rentalDetail" */
-.applyDetail a:visited {
-	color: black;
-}
-
-/* Style for links with class "rentalDetail" on hover */
-.applyDetail a:hover {
-	color: gray;
-	/* Change the color on hover if needed */
-	/* You can add additional styles for hover if needed */
-}
 </style>
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

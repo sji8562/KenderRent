@@ -1,3 +1,201 @@
+
+function confirmOpen(type, id) {
+    console.log(type);
+    console.log(id);
+
+    if(type == 'del') {
+        if(confirm('삭제하시겠습니까?')) {
+            fetch('/mng/product/' + id + '/delete')
+                .then((response) => {
+                    history.go(0);
+                    console.log("response", response)
+                }) //성공했을때
+                .catch((error) => console.log("error:", error)) //실패했을때
+        }
+    }
+}
+
+function displayFirstCategoryData(data) {
+    // fetch('/mng/product/first-category-all')
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         console.log("뭔데 이거?" + data);
+
+    var firstCategorySelect = document.getElementById("firstCategory");
+    firstCategorySelect.innerHTML = '<option disabled>1차 카테고리</option>';
+
+    data.forEach((firstCategory) => {
+        var option = document.createElement('option');
+        option.value = firstCategory.id;
+        option.text = firstCategory.firstCategoryName;
+
+        firstCategorySelect.add(option);
+    });
+    // })
+    // .catch(error => {
+    //     console.error('Error fetching data:', error);
+    // })
+}
+
+function displaySecondCategoryData(data) {
+    console.log("DATA 감사해요", data)
+
+    var secondCategorySelect = document.getElementById("secondCategorySelect");
+    secondCategorySelect.innerHTML = '<option disabled>2차 카테고리</option>';
+
+    data.forEach((secondCategory) => {
+        var option = document.createElement('option');
+        option.value = secondCategory.id;
+        option.text = secondCategory.secondCategoryName;
+
+        secondCategorySelect.add(option);
+    });
+}
+
+function fCategoryChange() {
+    // 선택된 값 가져오기
+    var selectedValue = document.querySelector('select[name="firstCategory"]').value;
+
+    fetch('/mng/product/second-category-find-by-first-category/' + selectedValue)
+        .then(response => response.json())
+        .then(data => {
+            displaySecondCategoryData(data);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        })
+
+    // 선택된 값을 콘솔에 출력
+    console.log("Selected Value:", selectedValue);
+}
+
+function addFirstCategory() {
+    var addFirstCategory = document.querySelector('input[id="addFirstCategory"]').value;
+
+    if(addFirstCategory.toString().trim() == '') {
+        return alert('카테고리명을 입력해주세요');
+    }
+
+    addFirstCategoryApi(addFirstCategory);
+}
+
+function addFirstCategoryApi(categoryName) {
+    var url = '/mng/product/addFirstCategory';
+
+    fetch(url, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ "categoryName": categoryName }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log("POST 요청 성공", data);
+            if(data.length > 0) {
+                displayFirstCategoryData(data);
+                document.querySelector('input[id="addFirstCategory"]').value = '';
+            }
+
+        })
+        .catch(error => {
+            console.error("POST 요청 실패", error);
+        })
+}
+
+function delFirstCategory() {
+    var selectedValue = document.querySelector('select[name="firstCategory"]').value;
+    console.log('선택된 first category 값', selectedValue);
+    if(!selectedValue) {
+        return alert('삭제할 카테고리를 선택해주세요');
+    }
+
+    fetch('/mng/product/delete-first-category-by-id/' + selectedValue)
+        .then(response => {
+            console.log(response.json());
+
+            history.go(0);
+            return response.json();
+        })
+        .then(data => {
+
+            console.log("이건 뭐죠~~?", data);
+
+            if (data && data.message) {
+                alert(data.message);
+            }
+            // if(data && data.message) {
+            //     return alert(data.message);
+            // }
+            // history.go(0);
+            // displaySecondCategoryData(data);
+        })
+        .catch(error => {
+            // alert(error.message);
+            console.error('Error fetching data:', error);
+        })
+}
+
+function addSecondCategory() {
+
+    console.log("선택된 1차 카테고리값 확인");
+    var selectedFirstCategory = document.querySelector('select[id="firstCategory"]').value;
+    console.log('SELECTED FIRST CATEGORY', selectedFirstCategory);
+    if(!selectedFirstCategory) {
+        return alert('1차 카테고리를 선택해주세요');
+    }
+
+    var addSecondCategory = document.querySelector('input[id="addSecondCategory"]').value;
+    if(addSecondCategory.trim() == "") {
+        return alert('카테고리명을 입력해주세요');
+    }
+
+    addSecondCategoryApi(selectedFirstCategory, addSecondCategory);
+}
+
+function addSecondCategoryApi(selectedFirstCategory, categoryName) {
+    var url = '/mng/product/addSecondCategory';
+
+    fetch(url, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ "selectedFirstCategory": selectedFirstCategory, "categoryName": categoryName }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            displaySecondCategoryData(data);
+            document.querySelector('input[id="addSecondCategory"]').value = '';
+            console.log("POST 요청 성공", data);
+
+        })
+        .catch(error => {
+            console.error("POST 요청 실패", error);
+        })
+}
+
+function delSecondCategory() {
+
+
+    var selectedValue = document.querySelector('select[id="secondCategorySelect"]').value;
+
+    console.log('선택된 second category 값', selectedValue);
+    if(!selectedValue) {
+        return alert('삭제할 2차 카테고리를 선택해주세요');
+    }
+
+    fetch('/mng/product/delete-second-category-by-id/' + selectedValue)
+        .then(response => response.json())
+        .then(data => {
+
+            fCategoryChange();
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        })
+}
+
 $('#summernote').summernote({
     placeholder: '내용을 입력해주세요.',
     tabsize: 2,
@@ -92,6 +290,8 @@ var mapContainer = document.getElementById('mngKakaoMap'), // 지도를 표시�
         level: 3 // 지도의 확대 레벨
     };
 
+var dtoAddress = document.getElementById("address");
+
 
 // 지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption);
@@ -99,8 +299,10 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 
+
 // 주소로 좌표를 검색합니다
-geocoder.addressSearch("${dto.address}", function (result, status) {
+geocoder.addressSearch(dtoAddress.value, function (result, status) {
+
 
     // 정상적으로 검색이 완료됐으면
     if (status === kakao.maps.services.Status.OK) {
@@ -117,13 +319,11 @@ geocoder.addressSearch("${dto.address}", function (result, status) {
         var infowindow = new kakao.maps.InfoWindow({
             content: '<div style="width:150px;text-align:center;padding:6px 0;">위치를 확인해주세요</div>'
         });
-        infowindow.open(map, marker);
 
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         map.setCenter(coords);
         relayout();
-        var position = map.getCenter();
-        console.log(position);
+
     }
 });
 
@@ -134,4 +334,3 @@ function relayout() {
     // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
     map.relayout();
 }
-// JavaScript 코드
