@@ -319,7 +319,7 @@ public class MngProductController {
         }
 
         // 해당 카테고리에 등록된 물품이 있는지 확인
-        int resultRows = mngService.findProducCounttByFirstCategoryId(fId);
+        int resultRows = mngService.findProducCountByFirstCategoryId(fId);
         if(resultRows > 0) {
             throw new Exception500("해당 카테고리에 등록된 물품이 있습니다");
         }

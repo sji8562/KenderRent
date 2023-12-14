@@ -189,7 +189,7 @@ public class MngProductService {
         return mngRepository.findProductBySecondCategoryId(sId);
     }
 
-    public int findProducCounttByFirstCategoryId(int fId) {
-        return mngRepository.findProducCounttByFirstCategoryId(fId);
+    public int findProducCountByFirstCategoryId(int fId) {
+        return mngRepository.findProducCountByFirstCategoryId(fId);
     }
 }
