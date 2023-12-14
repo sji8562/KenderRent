@@ -86,4 +86,30 @@
         DELETE FROM first_category WHERE id = #{fId}
     </delete>
 
+    <select id="findSecondCategoryByName" resultType="int">
+        SELECT COUNT(id) AS count FROM second_category WHERE first_category_id = #{fCategory} AND second_category_name = #{sCategoryName}
+    </select>
+
+    <insert id="addSecondCategory">
+        INSERT INTO second_category (second_category_name, first_category_id) VALUES (#{sCategoryName}, #{fCategory})
+    </insert>
+
+    <select id="findFirstCategoryIdBySecondCategoryId" resultType="com.tenco.toyproject.repository.entity.SecondCategory">
+        SELECT * FROM second_category WHERE id = #{sId}
+    </select>
+
+    <delete id="deleteSecondCategoryById">
+        DELETE FROM second_category WHERE id = #{sId}
+    </delete>
+
+    <select id="findProductBySecondCategoryId" resultType="int">
+        SELECT COUNT(*) AS count FROM product WHERE second_category_id = #{sId}
+    </select>
+
+    <select id="findProducCounttByFirstCategoryId" resultType="int">
+        SELECT COUNT(*) AS count FROM product WHERE first_category_id = #{fId}
+    </select>
+
+
+
 </mapper>

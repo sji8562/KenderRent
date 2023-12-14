@@ -88,4 +88,5 @@ public class MngUserController {
         mngService.delete(id);
         return "redirect:/mng/user/list";
     }
+
 }
