@@ -113,10 +113,10 @@
                                         <div class="col-sm-12">
                                             <select class="form-select shadow-none form-control-line status" id="status"
                                                     name="status">
-                                                <option value="1">재고있음</option>
-                                                <option value="2">대여중</option>
-                                                <option value="3">소독중</option>
-                                                <option value="4">판매완료</option>
+                                                <option value="1" ${dto.status == "1" ? 'selected' : ''}>재고있음</option>
+                                                <option value="2" ${dto.status == "1" ? 'selected' : ''}>대여중</option>
+                                                <option value="3" ${dto.status == "1" ? 'selected' : ''}>소독중</option>
+                                                <option value="4" ${dto.status == "1" ? 'selected' : ''}>판매완료</option>
                                             </select>
                                         </div>
                                     </div>
@@ -181,14 +181,4 @@
     <!-- footer -->
     <!-- ============================================================== -->
 
-    <script>
-
-        document.addEventListener("DOMContentLoaded", function(data) {
-            // 서버에서 받아온 status 값 (예: 2)
-            var receivedStatus = data;
-
-            // 해당 값과 일치하는 option을 선택
-            document.getElementById("status").value = receivedStatus.toString();
-        });
-    </script>
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>

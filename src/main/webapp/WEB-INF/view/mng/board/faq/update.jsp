@@ -42,11 +42,5 @@
 
 </div>
 
-<script>
 
-</script>
-<style>
-</style>
-</body>
-</html>
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>
