@@ -7,7 +7,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
@@ -24,6 +24,7 @@ import com.tenco.toyproject.dto.response.KakaoProfile;
 import com.tenco.toyproject.dto.response.NaverProfile;
 import com.tenco.toyproject.dto.response.OAuthToken;
 import com.tenco.toyproject.repository.entity.User;
+import com.tenco.toyproject.service.RegisterMail;
 import com.tenco.toyproject.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -37,6 +38,9 @@ public class UserController {
 
 	@Autowired
 	private HttpSession session;
+	
+	@Autowired
+	private RegisterMail registerMail;
 	
 //	private final JavaMailSender javaMailSender;
 //	MailBodyUtil mailBodyUtil = new MailBodyUtil();
@@ -291,6 +295,16 @@ public class UserController {
 		// 사용자라면, 바로 세션 처리 및 로그인 처리
 		return "redirect:/메인화면";
 		
+	}
+	// 이메일 인증
+	@PostMapping("find-pwd-by-email/mailAuthorize")
+	@ResponseBody
+	String mailAuthorize(@RequestParam("email") String email) throws Exception {
+		
+		String code = registerMail.sendSimpleMessage(email);
+		System.out.println("인증코드: " + code);
+		
+		return code;
 	}
 	
 

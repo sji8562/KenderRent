@@ -56,17 +56,13 @@
 				</div>
 			</div>
 			<!-- Contact Us -->
-			<!-- container -->
-			<!-- 회원가입용 --signUp -->
-			<div id="container" class="container content__signIn">
-				<input type="hidden" id="user-signUpStep-encodedRedirectUrl"
-					value="">
-				<!-- simple-signUp -->
-				<div class="simple-signUp">
-					<div class="box__text">
-						<p class="text__title">간편 회원가입</p>
-						<p class="text__cont">자주 사용하는 정보로 간편하게 가입할 수 있어요.</p>
-					</div>
+			
+		<div class="row">
+		<div class="col-lg-4 "></div>
+			<div class="col-lg-4 get_in_touch_col">
+				<div class="get_in_touch_contents">
+						<h1>간편 회원가입</h1>
+					<br><br>
 					<div class="box__simple-way">
 						<div class="box__personal">
 							<div class="box__row">
