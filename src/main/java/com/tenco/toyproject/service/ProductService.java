@@ -60,5 +60,11 @@ public class ProductService {
 	public int countItemInCart(int userId) {
 		return productRepository.countItemInCart(userId);
 	}
+	
+	public void payForProduct(int userId, int productId) {
+		productRepository.payForProduct(userId, productId);
+	}
+	
+	
 
 }

@@ -36,9 +36,7 @@
     <script src="/dist/js/pages/dashboards/dashboard1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-    function address(address){
 
-    }
     document.getElementById('applyManagement').addEventListener('mouseenter', function() {
         // 마우스가 올라갈 때 이벤트 발생
         document.getElementById('applyManagement').classList.add('show');
@@ -47,6 +45,15 @@
     document.getElementById('applyManagement').addEventListener('mouseleave', function() {
         // 마우스가 벗어날 때 이벤트 발생
         document.getElementById('applyManagement').classList.remove('show');
+    });
+    document.getElementById('noticeManagement').addEventListener('mouseenter', function() {
+        // 마우스가 올라갈 때 이벤트 발생
+        document.getElementById('noticeManagement').classList.add('show');
+    });
+
+    document.getElementById('noticeManagement').addEventListener('mouseleave', function() {
+        // 마우스가 벗어날 때 이벤트 발생
+        document.getElementById('noticeManagement').classList.remove('show');
     });
 
 

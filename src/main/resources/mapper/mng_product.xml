@@ -6,19 +6,19 @@
 <mapper
         namespace="com.tenco.toyproject.repository.interfaces.mng.MngProductRepository">
 
-    
+
 
     <select id="findAllProductWithPagination" resultType="com.tenco.toyproject.repository.entity.Product">
         SELECT p.id, p.first_category_id, p.second_category_id, p.price, p.name, p.pic_url, p.content, p.status, p.created_at, p.grade, fc.first_category_name, sc.second_category_name FROM product AS p
-                                                                                                                                                                                                JOIN first_category AS fc ON fc.id = p.first_category_id
-                                                                                                                                                                                                JOIN second_category AS sc ON sc.id = p.second_category_id
+                                                                                                                                                                                                 JOIN first_category AS fc ON fc.id = p.first_category_id
+                                                                                                                                                                                                 JOIN second_category AS sc ON sc.id = p.second_category_id
             LIMIT #{start}, 5
     </select>
     <!-- 물품 상세 -->
     <select id="findProductById" resultType="com.tenco.toyproject.repository.entity.Product">
         SELECT p.id, p.first_category_id, p.second_category_id, p.price, p.name, p.pic_url, p.content, p.status, p.created_at, p.grade, fc.first_category_name, sc.second_category_name FROM product AS p
-                                                                                                                                                                                                JOIN first_category AS fc ON fc.id = p.first_category_id
-                                                                                                                                                                                                JOIN second_category AS sc ON sc.id = p.second_category_id
+                                                                                                                                                                                                 JOIN first_category AS fc ON fc.id = p.first_category_id
+                                                                                                                                                                                                 JOIN second_category AS sc ON sc.id = p.second_category_id
         WHERE p.id = #{pId}
     </select>
     <!-- 물품 건수 -->

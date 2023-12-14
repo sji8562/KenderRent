@@ -15,7 +15,7 @@
 <meta name="description"
 	content="Nice Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
 <meta name="robots" content="noindex,nofollow">
-<title>Nice Admin Lite Template by WrapPixel</title>
+<title>Kender-Rent</title>
 <!-- Custom CSS -->
 <link rel="canonical"
 	href="https://www.wrappixel.com/templates/niceadmin-lite/" />
@@ -31,23 +31,33 @@
 <style>
 /* 초기에는 숨겨진 상태 */
 #applyManagement .collapse {
-    display: none;
+	display: none;
 }
 
 /* 마우스를 올릴 때 나타나게 함 */
 #applyManagement.show .collapse {
-    display: block;
+	display: block;
 }
 
 #applyManagement.show .collapse li.sidebar-item {
-    margin-left: 10px; /* 서브 메뉴 오른쪽으로 10px 이동 */
-    font-size: 12px;
+	margin-left: 10px; /* 서브 메뉴 오른쪽으로 10px 이동 */
+	font-size: 12px;
+}
+#noticeManagement .collapse {
+	display: none;
 }
 
-#applyManagement.show .collapse li.sidebar-item {
-/*     padding: 8px 12px; /* 기본 크기로 유지 */
-/*     font-size: 14px; /* 기본 폰트 크기로 유지 */
+/* 마우스를 올릴 때 나타나게 함 */
+#noticeManagement.show .collapse {
+	display: block;
 }
+
+#noticeManagement.show .collapse li.sidebar-item {
+	margin-left: 10px; /* 서브 메뉴 오른쪽으로 10px 이동 */
+	font-size: 12px;
+}
+
+
 /* Style for the links with class "rentalDetail" */
 .applyDetail a {
 	color: black;
@@ -287,7 +297,49 @@
 									class="sidebar-link waves-effect waves-dark sidebar-link"
 									href="/mng/content/info" aria-expanded="false"> <i
 									class="mdi mdi-alert-outline"></i> <span class="hide-menu">회사 소개 게시판</span>
+
 							</a>
+
+							</a></li>
+
+<%--						문의--%>
+						<li class="sidebar-item" id="noticeManagement"><a
+								class="sidebar-link waves-effect waves-dark sidebar-link"
+								href="/mng/board/noticeList" aria-expanded="false"> <i
+								class="mdi mdi-alert-outline"></i> <span class="hide-menu">게시판 관리</span>
+						</a>
+							<ul aria-expanded="false" class="collapse first-level">
+								<!-- 대여신청 -->
+								<li class="sidebar-item"><a
+										class="sidebar-link waves-effect waves-dark sidebar-link"
+										href="/mng/board/noticeList"> <i class="mdi mdi-view-dashboard"></i>
+									<span class="hide-menu">공지사항</span>
+
+								</a></li>
+								<!-- 판매신청 -->
+								<li class="sidebar-item"><a
+										class="sidebar-link waves-effect waves-dark sidebar-link"
+
+										href="/mng/board/qnaList"> <i class="mdi mdi-view-dashboard"></i>
+
+									<span class="hide-menu">자주 묻는 질문</span>
+								</a></li>
+								<!-- 구매신청 -->
+								<li class="sidebar-item"><a
+										class="sidebar-link waves-effect waves-dark sidebar-link"
+
+										href="/mng/board/mantomanList"> <i
+
+										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">1:1질문</span>
+								</a></li>
+								<li class="sidebar-item"><a
+										class="sidebar-link waves-effect waves-dark sidebar-link"
+
+										href="/mng/board/productqnaList"> <i
+										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">상품질문</span>
+								</a></li>
+							</ul></li>
+
 					</ul>
 				</nav>
 				<!-- End Sidebar navigation -->
