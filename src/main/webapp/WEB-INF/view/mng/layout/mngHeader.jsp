@@ -27,8 +27,19 @@
 	rel="stylesheet">
 <!-- Custom CSS -->
 <link href="/dist/css/style.min.css" rel="stylesheet">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+		  integrity="sha256-7ZWbZUAi97rkirk4DcEp4GWDPkWpRMcNaEyXGsNXjLg=" crossorigin="anonymous">
 
-<style>
+	<!-- Summernote CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
+		  integrity="sha256-IKhQVXDfwbVELwiR0ke6dX+pJt0RSmWky3WB2pNx9Hg=" crossorigin="anonymous">
+
+	<!-- Your Custom CSS -->
+	<link rel="stylesheet" href="/css/style.css">
+
+
+	<style>
 /* 초기에는 숨겨진 상태 */
 #applyManagement .collapse {
 	display: none;
@@ -50,6 +61,7 @@
 /* 마우스를 올릴 때 나타나게 함 */
 #noticeManagement.show .collapse {
 	display: block;
+
 }
 
 #noticeManagement.show .collapse li.sidebar-item {
@@ -297,39 +309,60 @@
 									class="sidebar-link waves-effect waves-dark sidebar-link"
 									href="/mng/content/info" aria-expanded="false"> <i
 									class="mdi mdi-alert-outline"></i> <span class="hide-menu">회사 소개 게시판</span>
+
+							</a>
+
+
 							</a></li>
 
 <%--						문의--%>
 						<li class="sidebar-item" id="noticeManagement"><a
 								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/apply/list" aria-expanded="false"> <i
+
+								href="/mng/board/noticeList" aria-expanded="false"> <i
+
 								class="mdi mdi-alert-outline"></i> <span class="hide-menu">게시판 관리</span>
 						</a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<!-- 대여신청 -->
 								<li class="sidebar-item"><a
 										class="sidebar-link waves-effect waves-dark sidebar-link"
-										href="/mng/apply/rental-list"> <i class="mdi mdi-view-dashboard"></i>
-									<span class="hide-menu">공지</span>
+
+										href="/mng/board/noticeList"> <i class="mdi mdi-view-dashboard"></i>
+									<span class="hide-menu">공지사항</span>
+
+
 								</a></li>
 								<!-- 판매신청 -->
 								<li class="sidebar-item"><a
 										class="sidebar-link waves-effect waves-dark sidebar-link"
-										href="/mng/apply/sale-list"> <i class="mdi mdi-view-dashboard"></i>
+
+
+										href="/mng/board/faq-list"> <i class="mdi mdi-view-dashboard"></i>
+
+
 									<span class="hide-menu">자주 묻는 질문</span>
 								</a></li>
 								<!-- 구매신청 -->
 								<li class="sidebar-item"><a
 										class="sidebar-link waves-effect waves-dark sidebar-link"
-										href="/mng/apply/purchase-list"> <i
+
+
+										href="/mng/board/mantomanList"> <i
+
+
 										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">1:1질문</span>
 								</a></li>
 								<li class="sidebar-item"><a
 										class="sidebar-link waves-effect waves-dark sidebar-link"
-										href="/mng/apply/purchase-list"> <i
+
+
+										href="/mng/board/productqnaList"> <i
 										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">상품질문</span>
 								</a></li>
 							</ul></li>
+
+
 					</ul>
 				</nav>
 				<!-- End Sidebar navigation -->

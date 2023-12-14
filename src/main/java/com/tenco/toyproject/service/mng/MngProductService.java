@@ -149,7 +149,8 @@ public class MngProductService {
         return firstCategoryList;
     }
 
-    public List<SecondCategory> findSecondCategoryByFirstCategoryId(Integer fId) {
+    public List<SecondCategory> findSecondCategoryByFirstCategoryId(String fId) {
+
         List<SecondCategory> secondCategory = mngRepository.findSecondCategoryForFirstCategory(fId);
         return secondCategory;
     }
@@ -167,4 +168,31 @@ public class MngProductService {
     public void deleteFirstCategoryById(int fId) {
         mngRepository.deleteFirstCategoryById(fId);
     }
+
+
+    public int findSecondCategoryByName(String fCategory, String sCategoryName) {
+        int resultRowCount = mngRepository.findSecondCategoryByName(fCategory, sCategoryName);
+        return resultRowCount;
+    }
+
+    public void addSecondCategory(String fCategory, String sCategoryName) {
+        mngRepository.addSecondCategory(fCategory, sCategoryName);
+    }
+
+    public SecondCategory findFirstCategoryIdBySecondCategoryId(int sId) {
+        return mngRepository.findFirstCategoryIdBySecondCategoryId(sId);
+    }
+
+    public void deleteSecondCategoryById(int sId) {
+        mngRepository.deleteSecondCategoryById(sId);
+    }
+
+    public int findProductBySecondCategoryId(int sId) {
+        return mngRepository.findProductBySecondCategoryId(sId);
+    }
+
+    public int findProducCountByFirstCategoryId(int fId) {
+        return mngRepository.findProducCountByFirstCategoryId(fId);
+    }
+
 }
