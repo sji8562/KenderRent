@@ -96,16 +96,4 @@
 
 </div>
 
-<script>
-    $('#summernote').summernote({
-        placeholder: 'Summernote for Bootstrap 5',
-        tabsize: 2,
-        height: 400,
-        lang: 'ko-KR', // default: 'en-US'
-    });
-</script>
-<style>
-</style>
-</body>
-</html>
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>
