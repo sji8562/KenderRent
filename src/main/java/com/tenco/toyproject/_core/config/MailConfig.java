@@ -2,36 +2,26 @@ package com.tenco.toyproject._core.config;
 
 import java.util.Properties;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
-import lombok.Data;
-import lombok.ToString;
-
 @Configuration
-//@PropertySource("classpath:mailAuth.properties")
-//@ConfigurationProperties(prefix="mail")
-//@Data
-//@ToString
+
 public class MailConfig {
-	
-//	private String username;
-//	private String password;
-	
 	@Bean
 	public JavaMailSender javaMailService() {
 		JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
 		
 		javaMailSender.setHost("smtp.naver.com"); 
 		// 메인 도메인(여기서는 smtp) 서버주소
+
 		javaMailSender.setUsername("m40ro1988");
 		// 네이버 아이디
 		javaMailSender.setPassword("t1prjKinderlend");
 		//네이버 비밀번호
+
 		javaMailSender.setPort(465); 
 		// 메일 인증 서버 포트넘버
 		javaMailSender.setJavaMailProperties(getMailProperties()); 

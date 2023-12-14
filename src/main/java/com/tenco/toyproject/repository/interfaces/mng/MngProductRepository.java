@@ -42,13 +42,16 @@ public interface MngProductRepository {
     public Integer updateProduct(Product dto);
     int findRentAllCount();
 
+
     List<SecondCategory> findSecondCategoryForFirstCategory(String fId);
+
 
     int findFirstCategoryByName(String fCategoryName);
 
     void createFirstCategory(String fCategoryName);
 
     void deleteFirstCategoryById(int fId);
+
 
     int findSecondCategoryByName(String fCategory, String sCategoryName);
 
@@ -61,4 +64,5 @@ public interface MngProductRepository {
     int findProductBySecondCategoryId(int sId);
 
     int findProducCountByFirstCategoryId(int fId);
+
 }

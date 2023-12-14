@@ -3,6 +3,7 @@
          pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
 
+
 <style>
     .m--category-section {
         width: 100%;
@@ -36,7 +37,9 @@
             <div class="col-12">
                 <div class="card card-body" style="height: 600px; display: flex; flex-direction: row;">
                     <div class="m--category-section">
+
                         <select class="form-select" size="3" aria-label="Size 3 select example" style="height: 300px;" onchange="fCategoryChange()" id="firstCategory" name="firstCategory">
+
                             <option disabled>1차 카테고리</option>
                             <c:forEach var="fCategory" items="${firstCategoryList}">
                                 <option value="${fCategory.id}">${fCategory.firstCategoryName}</option>
@@ -53,7 +56,9 @@
                             <option disabled>2차 카테고리</option>
                         </select>
                         <div>
+
                             <input type="text" class="m--category-input" id="addSecondCategory" name="secondCategory">
+
                             <button class="btn btn-primary" onclick="addSecondCategory()">추가</button>
                             <button class="btn btn-danger" onclick="delSecondCategory()">삭제</button>
                         </div>
@@ -92,6 +97,7 @@
 <!-- ============================================================== -->
 </div>
 <script>
+
     function displayFirstCategoryData(data) {
         // fetch('/mng/product/first-category-all')
         //     .then(response => response.json())
@@ -121,6 +127,8 @@
         secondCategorySelect.innerHTML = '<option disabled>2차 카테고리</option>';
 
         data.forEach((secondCategory) => {
+
+
             var option = document.createElement('option');
             option.value = secondCategory.id;
             option.text = secondCategory.secondCategoryName;
@@ -136,6 +144,7 @@
         fetch('/mng/product/second-category-find-by-first-category/' + selectedValue)
             .then(response => response.json())
             .then(data => {
+
                 displaySecondCategoryData(data);
             })
             .catch(error => {
@@ -150,6 +159,7 @@
         var addFirstCategory = document.querySelector('input[id="addFirstCategory"]').value;
 
         if(addFirstCategory.toString().trim() == '') {
+
             return alert('카테고리명을 입력해주세요');
         }
 
@@ -169,10 +179,12 @@
             .then(response => response.json())
             .then(data => {
                 console.log("POST 요청 성공", data);
+
                 if(data.length > 0) {
                     displayFirstCategoryData(data);
                     document.querySelector('input[id="addFirstCategory"]').value = '';
                 }
+
 
             })
             .catch(error => {
@@ -184,6 +196,7 @@
         var selectedValue = document.querySelector('select[name="firstCategory"]').value;
         console.log('선택된 first category 값', selectedValue);
         if(!selectedValue) {
+
             return alert('삭제할 카테고리를 선택해주세요');
         }
 
@@ -209,11 +222,13 @@
             })
             .catch(error => {
                 // alert(error.message);
+
                 console.error('Error fetching data:', error);
             })
     }
 
     function addSecondCategory() {
+
 
         console.log("선택된 1차 카테고리값 확인");
         var selectedFirstCategory = document.querySelector('select[id="firstCategory"]').value;
@@ -271,13 +286,8 @@
             .catch(error => {
                 console.error('Error fetching data:', error);
             })
+
     }
 
-</script>
-<style>
 
-</style>
-
-</body>
-</html>
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>

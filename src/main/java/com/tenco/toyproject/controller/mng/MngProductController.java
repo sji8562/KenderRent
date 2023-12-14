@@ -282,7 +282,9 @@ public class MngProductController {
 
     @GetMapping("second-category-find-by-first-category/{fId}")
     @ResponseBody
+
     public List<SecondCategory> getScondCategoryfindByFirstCategoryId(@PathVariable String fId) {
+
 
         List<SecondCategory> secondCategory = mngService.findSecondCategoryByFirstCategoryId(fId);
 
@@ -324,10 +326,12 @@ public class MngProductController {
             throw new Exception500("해당 카테고리에 등록된 물품이 있습니다");
         }
 
+
         mngService.deleteFirstCategoryById(fId);
 
         return mngService.getFirstCategories();
     }
+
 
     @PostMapping("addSecondCategory")
     @ResponseBody
@@ -376,4 +380,5 @@ public class MngProductController {
         logger.info("===============================");
         return mngService.getFirstCategories();
     }
+
 }

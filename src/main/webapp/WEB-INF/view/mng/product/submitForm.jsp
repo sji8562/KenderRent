@@ -4,6 +4,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <div class="page-wrapper">
 
     <!-- ============================================================== -->
@@ -95,5 +96,6 @@
 </div>
 
 </div>
+
 
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>

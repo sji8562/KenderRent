@@ -150,6 +150,7 @@ public class MngProductService {
     }
 
     public List<SecondCategory> findSecondCategoryByFirstCategoryId(String fId) {
+
         List<SecondCategory> secondCategory = mngRepository.findSecondCategoryForFirstCategory(fId);
         return secondCategory;
     }
@@ -167,6 +168,7 @@ public class MngProductService {
     public void deleteFirstCategoryById(int fId) {
         mngRepository.deleteFirstCategoryById(fId);
     }
+
 
     public int findSecondCategoryByName(String fCategory, String sCategoryName) {
         int resultRowCount = mngRepository.findSecondCategoryByName(fCategory, sCategoryName);
@@ -192,4 +194,5 @@ public class MngProductService {
     public int findProducCountByFirstCategoryId(int fId) {
         return mngRepository.findProducCountByFirstCategoryId(fId);
     }
+
 }

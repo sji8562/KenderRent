@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
  <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <style>
 	#container {
 		width: 100%;
@@ -11,6 +12,7 @@
 		min-height: 500px;
 	}
 </style>
+
 
 <div class="page-wrapper">
 	<!-- ============================================================== -->
@@ -143,6 +145,5 @@
 </div>
 
 
-</body>
-</html>
+
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>

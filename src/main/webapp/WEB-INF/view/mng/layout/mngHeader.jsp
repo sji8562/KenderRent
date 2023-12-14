@@ -61,6 +61,7 @@
 /* 마우스를 올릴 때 나타나게 함 */
 #noticeManagement.show .collapse {
 	display: block;
+
 }
 
 #noticeManagement.show .collapse li.sidebar-item {
@@ -311,27 +312,34 @@
 
 							</a>
 
+
 							</a></li>
 
 <%--						문의--%>
 						<li class="sidebar-item" id="noticeManagement"><a
 								class="sidebar-link waves-effect waves-dark sidebar-link"
+
 								href="/mng/board/noticeList" aria-expanded="false"> <i
+
 								class="mdi mdi-alert-outline"></i> <span class="hide-menu">게시판 관리</span>
 						</a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<!-- 대여신청 -->
 								<li class="sidebar-item"><a
 										class="sidebar-link waves-effect waves-dark sidebar-link"
+
 										href="/mng/board/noticeList"> <i class="mdi mdi-view-dashboard"></i>
 									<span class="hide-menu">공지사항</span>
+
 
 								</a></li>
 								<!-- 판매신청 -->
 								<li class="sidebar-item"><a
 										class="sidebar-link waves-effect waves-dark sidebar-link"
 
+
 										href="/mng/board/faq-list"> <i class="mdi mdi-view-dashboard"></i>
+
 
 									<span class="hide-menu">자주 묻는 질문</span>
 								</a></li>
@@ -339,17 +347,21 @@
 								<li class="sidebar-item"><a
 										class="sidebar-link waves-effect waves-dark sidebar-link"
 
+
 										href="/mng/board/mantomanList"> <i
+
 
 										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">1:1질문</span>
 								</a></li>
 								<li class="sidebar-item"><a
 										class="sidebar-link waves-effect waves-dark sidebar-link"
 
+
 										href="/mng/board/productqnaList"> <i
 										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">상품질문</span>
 								</a></li>
 							</ul></li>
+
 
 					</ul>
 				</nav>

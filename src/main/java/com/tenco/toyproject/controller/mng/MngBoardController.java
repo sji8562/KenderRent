@@ -1,7 +1,5 @@
 package com.tenco.toyproject.controller.mng;
 
-
-
 import com.tenco.toyproject._core.handler.exception.Exception500;
 import com.tenco.toyproject.dto.MngBoardDTO;
 import com.tenco.toyproject.repository.entity.Board;
@@ -148,4 +146,5 @@ public class MngBoardController {
         return "redirect:/mng/board/faq-list";
     }
 }
+
 
