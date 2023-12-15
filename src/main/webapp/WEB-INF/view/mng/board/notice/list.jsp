@@ -87,12 +87,12 @@
                                                             <button class="btn btn-success"
                                                                     style="border: 1px solid black"
                                                                     onclick="location.href='/mng/board/${noticeList.id}/notice-update'">
-                                                                신청 확인
+                                                                수정
                                                             </button>
                                                             &nbsp;&nbsp;
                                                             <button class="btn-danger btn"
                                                                     onclick="location.href='/mng/board/${noticeList.id}/notice-delete'">
-                                                                신청 취소
+                                                                삭제
                                                             </button>
                                                         </div>
                                                     </td>

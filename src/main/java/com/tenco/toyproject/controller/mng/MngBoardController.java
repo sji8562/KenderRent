@@ -3,19 +3,16 @@ package com.tenco.toyproject.controller.mng;
 import com.tenco.toyproject._core.handler.exception.Exception500;
 import com.tenco.toyproject.dto.MngBoardDTO;
 import com.tenco.toyproject.repository.entity.Board;
-import com.tenco.toyproject.service.mng.MngNoticeService;
-import com.tenco.toyproject.service.mng.MngProductService;
+import com.tenco.toyproject.service.mng.board.MngNoticeService;
 import com.tenco.toyproject.vo.PageVO;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 
 @Controller
@@ -27,6 +24,8 @@ public class MngBoardController {
 
     @Autowired
     private MngNoticeService mngNoticeService;
+
+    //공지사항 리스트
     @GetMapping("noticeList")
     public String notice( Model model, PageVO pageVO, @RequestParam(value = "nowPage",required = false) String nowPage, @RequestParam(value = "cntPerPage",required = false) String cntPerPage) {
 
@@ -48,6 +47,11 @@ public class MngBoardController {
         System.out.println(noticeList.toString());
         model.addAttribute("noticeList", noticeList);
         return "mng/board/notice/list";
+    }
+    @GetMapping("{id}/notice-detail")
+    public String noticeDetail(@PathVariable Integer id){
+//        mngNoticeService.notice
+        return "mng/board/notice/detail";
     }
 
     // 자주 묻는 질문
