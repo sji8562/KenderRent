@@ -102,6 +102,14 @@ public class ProductController {
 	}
 	
 	
+
+	
+	@GetMapping("search")
+	public String search() {
+		return "product/search";
+	}
+	
+
 	@PostMapping("order/kakao-pay")
 	public String kakaoPayReady(@RequestParam("id") int productId) {
 		User principal = (User) session.getAttribute("principal");
@@ -133,7 +141,7 @@ public class ProductController {
 		model.addAttribute("userInfo", userInfo);
 		return "product/order";
 	}
-	
+
 	@PostMapping("order/kakao-pay/cancel")
 	public String kakaoPayCancel(Model model, @RequestParam("id") int productId) {
 		User principal = (User) session.getAttribute("principal");
