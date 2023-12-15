@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.entity.User;
+
 import com.tenco.toyproject.service.MypageService;
+
 import com.tenco.toyproject.service.ProductService;
 
 import jakarta.servlet.http.Cookie;
@@ -79,7 +81,6 @@ public class MypageController {
 		
 		return "mypage/main";
 	}
-	
 	@GetMapping("/inquiry")
 	public String inquiryList(Model model,  @RequestParam(name = "type", defaultValue = "3" , required = false) int code) {
 		User principal = (User)session.getAttribute("principal"); 
@@ -88,7 +89,16 @@ public class MypageController {
 		return "mypage/inquiry";
 	}
 	@GetMapping("/order-list")
-	public String orderList() {
+	public String orderList(Model model) {
+		User principal = (User) session.getAttribute("principal");
+		List<Map> orderList = productService.showCustomerOrderList(principal.getId());
+		model.addAttribute("orderList", orderList);
 		return "mypage/orderList";
+
+	}
+	
+	@GetMapping("/order-list/detail")
+	public String orderListDetailInfo() {
+		return "mypage/orderListDetailInfo";
 	}
 }

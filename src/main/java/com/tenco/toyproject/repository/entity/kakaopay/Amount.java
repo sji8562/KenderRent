@@ -1,4 +1,4 @@
-package com.tenco.toyproject.repository.entity;
+package com.tenco.toyproject.repository.entity.kakaopay;
 
 import lombok.Data;
 

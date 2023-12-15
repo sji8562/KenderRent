@@ -30,7 +30,6 @@ public class CartContoller {
 	@GetMapping
 	public String cart(Model model) {
 		User principal = (User) session.getAttribute("principal");
-		System.out.println(principal.getId());
 		List<Product> cartList = productService.showCartById(principal.getId());
 		model.addAttribute("cartList", cartList);
 		return "product/cart";
