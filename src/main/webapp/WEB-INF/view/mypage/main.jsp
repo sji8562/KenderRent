@@ -44,7 +44,9 @@
 					<div class="breadcrumbs d-flex flex-row align-items-center">
 						<ul>
 							<li><a href="/">Home</a></li>
-							<li class="active"><i class="fa fa-angle-right" aria-hidden="true"></i>mypage</li>
+							<li class="active">
+								<i class="fa fa-angle-right" aria-hidden="true"></i>
+								<a href="/mypage/main" style="color: black">마이페이지</a></li>
 						</ul>
 					</div>
 				</div>
@@ -61,7 +63,7 @@
 							<br>
 							<ul class="sidebar_categories">
 								<li><h5>주문내역</h5></li>
-								<li ><a href="#">전체 주문 내역</a></li>
+								<li ><a href="order-list">전체 주문 내역</a></li>
 								<li class="active"><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>취소/반품/교환 내역</a></li>
 								<li><a href="#">환불/입금 내역</a></li>
 								<li><a href="/mypage/inquiry">문의내역</a></li>

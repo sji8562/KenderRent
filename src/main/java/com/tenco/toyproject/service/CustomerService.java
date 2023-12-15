@@ -36,5 +36,4 @@ public class CustomerService {
 	public Map selectReply(int board_id) {
 		return customerRepository.selectReply(board_id);
 	}
-	
 }

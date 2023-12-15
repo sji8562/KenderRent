@@ -2,7 +2,7 @@ package com.tenco.toyproject.dto;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.tenco.toyproject.repository.entity.Amount;
+import com.tenco.toyproject.repository.entity.kakaopay.Amount;
 
 import lombok.Data;
 import lombok.ToString;
