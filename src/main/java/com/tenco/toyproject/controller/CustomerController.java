@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
+import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.CustomerService;
 import com.tenco.toyproject.vo.PageVO;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/customer")
@@ -22,7 +25,8 @@ public class CustomerController {
 	
 	@Autowired // DI 처리
 	private CustomerService customerService;
-
+	@Autowired
+	private HttpSession session;
 	//사용자 회원가입 페이지 요청
 	//주소설계 http://localhost/customer/custSignUp
 	@GetMapping("/custSignUp")
@@ -66,19 +70,21 @@ public class CustomerController {
 			@RequestParam(value = "isSecret", required = false) String isSecret) {
 		//접근제한 해야함
 		//로그인 다 되면 session값으로 user_id 넣기
-		//상품문의할때 id값 받아오기
+		//상품문의할때 id값 받아오기#{userId}, #{productId},#{code},#{title}, #{content}, #{secret}
+		
+		User principal = (User)session.getAttribute("principal");
 		if (isSecret != null && isSecret.equals("1")) {
 			if(type.equals("inquiry")) {
-				customerService.insertInquiry(2, 0, 3, title,content,1);
+				customerService.insertInquiry(principal.getId(), 0, 3, title,content,1);
 				return "redirect:/customer/contact";
 			}
-			customerService.insertInquiry(2, 0, 4, title, content, 1);
+			customerService.insertInquiry(principal.getId(), 0, 4, title, content, 1);
         } else {
         	if(type.equals("inquiry")) {
-    			customerService.insertInquiry(2, 0, 3, title,content, 0);
+    			customerService.insertInquiry(principal.getId(), 0, 3, title,content, 0);
     			return "redirect:/customer/contact";
     		}
-    		customerService.insertInquiry(2, 0, 4, title, content, 0);
+    		customerService.insertInquiry(principal.getId(), 0, 4, title, content, 0);
         }
 		
 		return "redirect:/customer/contact";

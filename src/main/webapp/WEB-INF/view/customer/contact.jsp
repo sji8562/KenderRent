@@ -94,7 +94,7 @@
 										<c:if test="${customerList.secret eq 1 }">
 											<td><a href="/customer/detail?id=${customerList.id }">🔒${customerList.title }</a></td>
 										</c:if>
-									<td>${customerList.username }</td>
+									<td>${customerList.user_name }</td>
 									<td><fmt:formatDate value="${customerList.create_at }" pattern="yyyy. MM. dd" /></td>
 									<c:if test="${customerList.status != null}">
 										<td>답변완료</td>

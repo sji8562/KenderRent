@@ -19,7 +19,7 @@
 <style type="text/css">
 	.mypage_order_info_cont{margin:0 0 30px 0; padding:35px 0 35px 0; font-size:0; border:1px solid #e3e3e3; border-top:1px solid #999999; text-align:center;}
 	.mypage_order_info_cont ol{display:inline-block; width:80%; font-size:0; border-right:1px solid #e3e3e3; vertical-align:middle;}
- .mypage_order_info_cont ol li{display:inline-block; width:16%; min-width:66px; padding:0 2px 10px 10px; font-size:13px; background:url('/images/mypgae_ing_next_bg.png') no-repeat left 50px; text-align:center;}  
+ .mypage_order_info_cont ol li{display:inline-block; width:16%; min-width:66px;  padding:0 2px 10px 10px; font-size:13px; background:url('/images/mypgae_ing_next_bg.png') no-repeat left 50px ; text-align:center;}  
  .mypage_order_info_cont ol li:first-child{padding-left:10px; background:none 0;}  
 .mypage_order_info_cont ol li b{display:block; padding:0 0 15px 0;}  
   .mypage_order_info_cont ol li strong{display:inline-block; width:52px; height:52px; padding:13px 0 0 0; color:#ffffff; font-size:18px; background:url('/images/mypgae_ing_list_bg.png') no-repeat 0 0; text-align:center;vertical-align:middle;}  */
@@ -44,7 +44,9 @@
 					<div class="breadcrumbs d-flex flex-row align-items-center">
 						<ul>
 							<li><a href="/">Home</a></li>
-							<li class="active"><i class="fa fa-angle-right" aria-hidden="true"></i>mypage</li>
+							<li class="active">
+								<i class="fa fa-angle-right" aria-hidden="true"></i>
+								<a href="/mypage/main" style="color: black">마이페이지</a></li>
 						</ul>
 					</div>
 				</div>
@@ -61,10 +63,10 @@
 							<br>
 							<ul class="sidebar_categories">
 								<li><h5>주문내역</h5></li>
-								<li ><a href="#">전체 주문 내역</a></li>
+								<li ><a href="order-list">전체 주문 내역</a></li>
 								<li class="active"><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>취소/반품/교환 내역</a></li>
 								<li><a href="#">환불/입금 내역</a></li>
-								<li><a href="#">문의내역</a></li>
+								<li><a href="/mypage/inquiry">문의내역</a></li>
 								<li><a href="#">회원정보 변경</a></li>
 								<li><a href="#">배송지 관리</a></li>
 							</ul>
@@ -72,7 +74,7 @@
 					</div>
 				</div>
 				<div class="col-lg-9">
-						<p><b>진행 중인 주문</b>최근 30일 내에 진행중인 주문정보입니다.</p>
+						<p><b>진행 중인 주문 | </b>최근 30일 내에 진행중인 주문정보입니다.</p>
 							<div class="mypage_order_info_cont">
 			                <ol>
 			                    <li class="">
@@ -118,7 +120,7 @@
 			                </div>
 			            </div>
 					
-						<p><b>진행 중인 주문</b>최근 30일 내에 진행중인 주문정보입니다.</p>
+						<p><b>진행 중인 주문 | </b>최근 30일 내에 진행중인 주문정보입니다.</p>
 						<div class="mypage_lately_info_cont">
 						                <!-- 주문상품 리스트 -->
 						  <div class="mypage_table_type" style="border:1px solid #e3e3e3; border-top:1px solid #999999;">
@@ -152,7 +154,7 @@
 					</div>
 					<br><br>
 <!-- 				유저네임 가져와서 넣기 -->
-					<p><b>최근 본 상품</b>고객님께서 본 최근 상품입니다.</p>
+					<p><b>최근 본 상품 | </b>${sessionScope.principal.userName }님께서 최근 본 상품입니다.</p>
 					<hr style="background:black;">
 					<div class="goods_list_cont">
 				    <ul>

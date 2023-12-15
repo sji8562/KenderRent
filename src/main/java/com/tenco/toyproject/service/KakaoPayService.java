@@ -9,6 +9,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import com.tenco.toyproject.dto.KakaoPayDto;
+import com.tenco.toyproject.dto.response.KakaoPayCancelResponse;
 import com.tenco.toyproject.dto.response.KakaoPayResponse;
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.entity.User;
@@ -20,6 +21,7 @@ public class KakaoPayService {
 
 	private KakaoPayResponse kakaoPayResponse;
 	private KakaoPayDto kakaoPayDto;
+	private KakaoPayCancelResponse kakaoPayCancelResponse;
 	
 	@Autowired
 	private ProductService productService;
@@ -41,16 +43,17 @@ public class KakaoPayService {
 		params.add("item_code", String.valueOf(product.getId()));
 		params.add("quantity", "1");
 		params.add("total_amount", String.valueOf(product.getPrice()));
-		params.add("tax_free_amount", "100");
+		params.add("tax_free_amount", "0");
 		params.add("approval_url", "http://localhost/product/order/kakao-pay/success"); // 성공 시 redirect url
-		params.add("cancel_url", "http://localhost/product/order/kakao-pay/cancel"); // 취소 시 redirect url
+		params.add("cancel_url", "http://localhost/product/order/kakao-pay/cancel?id=" + product.getId()); // 취소 시 redirect url
 		params.add("fail_url", "http://localhost/product/order/kakao-pay/fail"); // 실패 시 redirect url
 
 		HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(params, headers);
 
 		RestTemplate rt = new RestTemplate();
 		try {
-			kakaoPayResponse = rt.postForObject("https://kapi.kakao.com/v1/payment/ready", requestEntity,
+			kakaoPayResponse = rt.postForObject("https://kapi.kakao.com/v1/payment/ready", 
+					requestEntity,
 					KakaoPayResponse.class);
 			System.out.println(kakaoPayResponse.toString());
 			
@@ -76,12 +79,34 @@ public class KakaoPayService {
 		params.add("partner_order_id", "KENDERENT");
 		params.add("partner_user_id", String.valueOf(userId));
 		params.add("pg_token", pg_token);
-		params.add("total_amount", String.valueOf(product.getPrice())); // String.valueOf(orderList.getPrice())
+		params.add("total_amount", String.valueOf(product.getPrice()));
 
-		HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<MultiValueMap<String, String>>(params,
-				headers);
+		HttpEntity<MultiValueMap<String, String>> httpEntity 
+			= new HttpEntity<MultiValueMap<String, String>>(params, headers);
 
-		kakaoPayDto = rt.postForObject("https://kapi.kakao.com/v1/payment/approve", httpEntity, KakaoPayDto.class);
+		kakaoPayDto = rt.postForObject("https://kapi.kakao.com/v1/payment/approve", 
+				httpEntity, KakaoPayDto.class);
 		return kakaoPayDto;
+	}
+	
+	public KakaoPayCancelResponse kakaoPayCancel(int userId, int cancelPrice, String tid) {
+		RestTemplate rt = new RestTemplate();
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Authorization", "KakaoAK " + "bd58a402485edbfc26668cfb00914ee0");
+		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+		
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+		params.add("cid", "TC0ONETIME");
+		params.add("tid", tid);
+		params.add("cancel_amount", String.valueOf(cancelPrice));
+		params.add("cancel_tax_free_amount", "0");
+
+		HttpEntity<MultiValueMap<String, String>> httpEntity 
+			= new HttpEntity<MultiValueMap<String, String>>(params, headers);
+
+		kakaoPayCancelResponse = rt.postForObject("https://kapi.kakao.com/v1/payment/cancel", 
+				httpEntity, KakaoPayCancelResponse.class);
+		return kakaoPayCancelResponse;
 	}
 }
