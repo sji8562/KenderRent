@@ -13,4 +13,5 @@ public interface MngNoticeRepository {
 
     public List<MngBoardDTO.NoticeListDTO> findAllNoticeWithPagenaition(PageVO pageVO);
 
+
 }
