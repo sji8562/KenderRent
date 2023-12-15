@@ -1,6 +1,7 @@
 package com.tenco.toyproject.dto;
 
 import lombok.Data;
+import org.springframework.data.relational.core.sql.In;
 
 import java.sql.Timestamp;
 
@@ -28,5 +29,6 @@ public class MngBoardDTO {
         private String content; // 답변
         private Integer userId; // 질문 작성자
         private Timestamp createdAt;
+        private Integer reply; // 답변 여부
     }
 }

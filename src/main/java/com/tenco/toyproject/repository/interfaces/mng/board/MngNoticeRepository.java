@@ -13,19 +13,5 @@ public interface MngNoticeRepository {
 
     public List<MngBoardDTO.NoticeListDTO> findAllNoticeWithPagenaition(PageVO pageVO);
 
-    public int countFaq();
 
-    public List<MngBoardDTO.NoticeListDTO> findAllFaqWithPagenation(PageVO pageVO);
-
-    void deleteBoardById(int id);
-
-    void createFaq(MngBoardDTO.FaqSubmitDto dto);
-
-    Board findBoardById(int id);
-
-    void updateFaqById(MngBoardDTO.FaqSubmitDto dto);
-
-    List<MngBoardDTO.QnaListDto> findQnaByCodeWithPagenation(int code);
-
-    Board findByNotice(Integer id);
 }
