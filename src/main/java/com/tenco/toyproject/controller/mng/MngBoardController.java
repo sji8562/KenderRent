@@ -57,8 +57,10 @@ public class MngBoardController {
         return "mng/board/notice/list";
     }
     @GetMapping("{id}/notice-detail")
-    public String noticeDetail(@PathVariable Integer id){
-//        mngNoticeService.notice
+    public String noticeDetail(@PathVariable Integer id, Model model){
+        Board board = mngNoticeService.findByNotice(id);
+        System.out.println(board.toString());
+        model.addAttribute("board",board);
         return "mng/board/notice/detail";
     }
 
