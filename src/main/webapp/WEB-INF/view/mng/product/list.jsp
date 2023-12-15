@@ -35,7 +35,7 @@
 						<div class="col-12">
 							<div class="card">
 								<div class="card-body m--search-inline">
-									<h4 class="card-title">물품 조회</h4>
+									<h4 class="card-title">물품 관리</h4>
 									<form class="row g-3">
 										<div class="col-auto">
 											<input type="text" class="form-control" id="keyword" placeholder="제목을 입력해주세요">
