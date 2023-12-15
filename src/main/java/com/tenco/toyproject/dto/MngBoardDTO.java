@@ -13,6 +13,18 @@ public class MngBoardDTO {
         private String userName;
         private Timestamp createdAt;
     }
+    @Data
+    public static class NoticeSubmitDTO{
+        private String title;
+        private String content;
+
+    }
+    @Data
+    public static class NoticeUpdateDTO{
+        private Integer id;
+        private String title;
+        private String content;
+    }
 
     @Data
     public static class FaqSubmitDto {

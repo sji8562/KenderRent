@@ -6,6 +6,7 @@ import com.tenco.toyproject.repository.interfaces.mng.board.MngNoticeRepository;
 import com.tenco.toyproject.vo.PageVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,4 +23,24 @@ public class MngNoticeService {
         return mngNoticeRepository.findAllNoticeWithPagenaition(pageVO);
     }
 
+    public Board findByNotice(Integer id) {
+        return mngNoticeRepository.findByNoticeId(id);
+    }
+
+    @Transactional
+    public int noticeSubmit(MngBoardDTO.NoticeSubmitDTO dto) {
+        Board board = Board.builder().title(dto.getTitle()).content(dto.getContent()).build();
+
+        mngNoticeRepository.noticeSubmit(board);
+        return 1; 
+    }
+
+    @Transactional
+    public int noticeUpdate(MngBoardDTO.NoticeUpdateDTO dto) {
+        return mngNoticeRepository.UpdateByNoticeId(dto);
+    }
+
+    public int deleteByNotice(Integer id) {
+        return mngNoticeRepository.deleteByNotice(id);
+    }
 }

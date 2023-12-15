@@ -36,7 +36,6 @@ public class MngBoardController {
     //공지사항 리스트
     @GetMapping("noticeList")
     public String notice( Model model, PageVO pageVO, @RequestParam(value = "nowPage",required = false) String nowPage, @RequestParam(value = "cntPerPage",required = false) String cntPerPage) {
-
         int total = mngNoticeService.countNoticeList();
 
         if (nowPage == null && cntPerPage == null) {
@@ -56,12 +55,39 @@ public class MngBoardController {
         model.addAttribute("noticeList", noticeList);
         return "mng/board/notice/list";
     }
+    @GetMapping("notice-submit")
+    public String noticeSubmit(){
+
+        return "mng/board/notice/submit";
+    }
+    @PostMapping("notice-submit-proc")
+    public String noticeSubmit(MngBoardDTO.NoticeSubmitDTO noticeSubmitDTO){
+        mngNoticeService.noticeSubmit(noticeSubmitDTO);
+        return "redirect:/mng/board/noticeList";
+    }
     @GetMapping("{id}/notice-detail")
     public String noticeDetail(@PathVariable Integer id, Model model){
-        Board board = mngNoticeService.findByNotice(id);
-        System.out.println(board.toString());
-        model.addAttribute("board",board);
+        Board notice = mngNoticeService.findByNotice(id);
+        System.out.println(notice.toString());
+        model.addAttribute("notice",notice);
         return "mng/board/notice/detail";
+    }
+    @GetMapping("{id}/notice-update")
+    public String noticeUpdate(@PathVariable Integer id, Model model){
+        Board notice = mngNoticeService.findByNotice(id);
+        model.addAttribute("notice",notice);
+        return "mng/board/notice/update";
+    }
+    @PostMapping("notice-update-proc")
+    public String noticeUpdateProc(MngBoardDTO.NoticeUpdateDTO dto){
+        mngNoticeService.noticeUpdate(dto);
+        return "redirect:/mng/board/"+dto.getId()+"/notice-detail";
+    }
+    @GetMapping("{id}/notice-delete")
+    public String noticeDelete(@PathVariable Integer id){
+        mngNoticeService.deleteByNotice(id);
+
+        return "redirect:/mng/board/noticeList";
     }
 
     // 자주 묻는 질문

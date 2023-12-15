@@ -47,16 +47,18 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-body">
-                    <h4 class="card-title">공지사항 수정</h4>
+                    <h4 class="card-title">공지사항 등록</h4>
                     <h5 class="card-subtitle"> All bootstrap element classies </h5>
-                    <form class="form-horizontal mt-4">
+                    <form class="form-horizontal mt-4" method="post" action="/mng/board/notice-submit-proc">
                         <div class="form-group">
                             <label>Default Text <span class="help"> 제목</span></label>
-                            <input type="text" class="form-control" name="title" value="타이틀">
+                            <input type="text" class="form-control" name="title">
                         </div>
                         <div id="container">
-                            <textarea id="summernote" name="content">내용</textarea>
+                            <textarea id="summernote" name="content"></textarea>
                         </div>
+                        <button class="btn btn-secondary" onclick="history.back()">뒤로가기</button>
+                        <button type="submit" class="btn btn-primary">등록하기</button>
                     </form>
                 </div>
             </div>

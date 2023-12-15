@@ -14,4 +14,11 @@ public interface MngNoticeRepository {
     public List<MngBoardDTO.NoticeListDTO> findAllNoticeWithPagenaition(PageVO pageVO);
 
 
+    public Board findByNoticeId(Integer id);
+
+    public int noticeSubmit(Board board);
+
+    public int UpdateByNoticeId(MngBoardDTO.NoticeUpdateDTO dto);
+
+    public int deleteByNotice(Integer id);
 }
