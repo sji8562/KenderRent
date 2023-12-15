@@ -3,12 +3,10 @@
 <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
 
 
-<link rel="stylesheet" href="/css/style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="page-wrapper">
+
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
@@ -83,7 +81,8 @@
                         <div class="form-group">
                             <label>제품 상세 설명</label>
                             <div id="container">
-                                <textarea id="editor" name="content"></textarea>
+                                <%--<textarea id="editor" name="content"></textarea>--%>
+                                <textarea id="summernote" name="content"></textarea>
                             </div>
                         </div>
                         <button class="btn btn-secondary" onclick="history.back()">뒤로가기</button>
@@ -98,28 +97,5 @@
 
 </div>
 
-<script>
-    ClassicEditor
-        .create( document.querySelector( '#editor' ), {
-            language: "ko",
-            ckfinder: {
-                uploadUrl: "/image/upload",
-                withCredentials: true
-            }
-        } )
-        .catch( error => {
-            console.error( "CK EDITOR ERROR == ", error );
-        } );
-</script>
-<style>
-    #container {
-        width: 100%;
-    }
-    .ck-editor__editable[role="textbox"] {
-        /* editing area */
-        min-height: 500px;
-    }
-</style>
-</body>
-</html>
+
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>

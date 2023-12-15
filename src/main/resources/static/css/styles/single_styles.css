@@ -835,6 +835,44 @@ section
 	-ms-transition: all 0.3s ease;
 	-o-transition: all 0.3s ease;
 	transition: all 0.3s ease;
+	border: none;
+}
+.red_button2
+{
+	display: -webkit-inline-box;
+	display: -moz-inline-box;
+	display: -ms-inline-flexbox;
+	display: -webkit-inline-flex;
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: auto;
+	height: 40px;
+	background: #fe4c50;
+	border-radius: 3px;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+	color: white;
+	border: none;
+}
+.red_button2:hover
+{
+	background: #FE7C7F !important;
+}
+.red_button2_text
+{
+	display: block;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	font-size: 14px; 
+	font-weight: 500;
+	text-align: center;
+	line-height: 40px;
+	width: 100%;
 }
 .red_button:hover
 {
@@ -871,8 +909,6 @@ section
 	-o-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 	border: solid 1px #e5e5e5;
-	border-radius: 2px;
-
 }
 .white_button:hover
 {
@@ -1191,7 +1227,7 @@ section
 {
 	width: 160px;
 	margin-left: 19px;
-	font-size: 12px !important;
+	font-size: 14px !important;
 }
 .add_to_cart_button
 {

@@ -13,7 +13,10 @@ import com.tenco.toyproject.vo.PageVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,12 +27,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+
 
 @Controller
 @RequestMapping("/mng/product")
 @Slf4j
 public class MngProductController {
+
+    private static final Logger logger = LoggerFactory.getLogger(MngProductController.class);
 
     @Autowired
     private MngProductService mngService;
@@ -262,4 +269,116 @@ public class MngProductController {
         return "redirect:/mng/product/"+dto.getId()+"/detail";
 
     }
+
+    @GetMapping("categories")
+    public String categoriesPage(Model model) {
+
+        // 1차 카테고리 불러오기
+        List<FirstCategory> firstCategoryList = mngService.getFirstCategories();
+        model.addAttribute("firstCategoryList", firstCategoryList);
+
+        return "/mng/product/categories";
+    }
+
+    @GetMapping("second-category-find-by-first-category/{fId}")
+    @ResponseBody
+
+    public List<SecondCategory> getScondCategoryfindByFirstCategoryId(@PathVariable String fId) {
+
+
+        List<SecondCategory> secondCategory = mngService.findSecondCategoryByFirstCategoryId(fId);
+
+        return secondCategory;
+    }
+
+    @PostMapping("addFirstCategory")
+    @ResponseBody
+    public List<FirstCategory> addFirstCategory(@RequestBody Map<String, String> categoryName) {
+
+        String fCategoryName = categoryName.get("categoryName");
+
+
+        // 같은 이름의 카테고리가 있는지 확인
+        logger.info("같은 이름의 카테고리가 있는지 먼저 확인", fCategoryName);
+        int resultRowCount = mngService.findFirstCategoryByName(fCategoryName);
+
+        if(resultRowCount > 0) {
+            throw new Exception500("이미 존재하는 카테고리입니다");
+        }
+
+        mngService.addFirstCategory(fCategoryName);
+
+        return mngService.getFirstCategories();
+    }
+
+    // 1차 카테고리 삭제
+    @GetMapping("/delete-first-category-by-id/{fId}")
+    public List<FirstCategory> deleteFirstCategory(@PathVariable int fId) {
+        // 해당 카테고리의 하위 항목이 있는지 확인
+        List<SecondCategory> secondCategories = mngService.findSecondCategoryByFirstCategoryId(Integer.toString(fId));
+        if(!secondCategories.isEmpty()) {
+            throw new Exception500("하위 카테고리가 존재합니다");
+        }
+
+        // 해당 카테고리에 등록된 물품이 있는지 확인
+        int resultRows = mngService.findProducCountByFirstCategoryId(fId);
+        if(resultRows > 0) {
+            throw new Exception500("해당 카테고리에 등록된 물품이 있습니다");
+        }
+
+
+        mngService.deleteFirstCategoryById(fId);
+
+        return mngService.getFirstCategories();
+    }
+
+
+    @PostMapping("addSecondCategory")
+    @ResponseBody
+    public List<SecondCategory> addSecondCategory(@RequestBody Map<String, String> postData) {
+
+        System.out.println("--왜 여기로 안와?--");
+        logger.info("왜 여기로 안오지?");
+
+        String sCategoryName = postData.get("categoryName");
+        String fCategory = postData.get("selectedFirstCategory");
+
+        // 같은 이름의 카테고리가 있는지 확인
+        logger.info("같은 이름의 카테고리가 있는지 먼저 확인", sCategoryName);
+        int resultRowCount = mngService.findSecondCategoryByName(fCategory, sCategoryName);
+
+        if(resultRowCount > 0) {
+            throw new Exception500("이미 존재하는 카테고리입니다");
+        }
+
+        mngService.addSecondCategory(fCategory, sCategoryName);
+
+        return mngService.findSecondCategoryByFirstCategoryId(fCategory);
+    }
+
+    //    List<FirstCategory>
+    @GetMapping("/delete-second-category-by-id/{sId}")
+    public void deleteSecondCategoryById(@PathVariable int sId) {
+        System.out.println("--- 2차 카테고리 삭제할거야 ---" + sId);
+        // 해당 카테고리가 존재하는지 확인
+        SecondCategory secondCategory = mngService.findFirstCategoryIdBySecondCategoryId(sId);
+
+        // 해당 카테고리에 등록된 상품이 있는지 확인
+        int resultRows = mngService.findProductBySecondCategoryId(sId);
+
+        if(resultRows > 0) {
+            throw new Exception500("해당 카테고리에 등록된 상품이 있습니다.");
+        }
+
+        System.out.println("--- 찾았따!!! ---" + secondCategory);
+
+        mngService.deleteSecondCategoryById(secondCategory.getId());
+    }
+
+    @GetMapping("/first-category-all")
+    public List<FirstCategory> findFirstCategoryAll() {
+        logger.info("===============================");
+        return mngService.getFirstCategories();
+    }
+
 }

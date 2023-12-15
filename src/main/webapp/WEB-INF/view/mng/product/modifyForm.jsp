@@ -2,9 +2,9 @@
          pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
 
-<link rel="stylesheet" href="/css/style.css">
+
+
 <div class="page-wrapper">
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
@@ -81,7 +81,8 @@
                         <div class="form-group">
                             <label>제품 상세 설명</label>
                             <div id="container">
-                                <textarea id="editor" name="content">${product.content}</textarea>
+                                <%--<textarea id="editor" name="content">${product.content}</textarea>--%>
+                                <textarea id="summernote" name="content">${product.content}</textarea>
                             </div>
                         </div>
                         <button class="btn btn-secondary" onclick="history.back()">뒤로가기</button>
@@ -101,33 +102,5 @@
         <!-- End Right sidebar -->
         <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- End Container fluid  -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
 
-</div>
-<!-- ============================================================== -->
-<!-- End Page wrapper  -->
-<!-- ============================================================== -->
-</div>
-<script>
-    ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-</script>
-<style>
-    #container {
-        width: 100%;
-    }
-    .ck-editor__editable[role="textbox"] {
-        /* editing area */
-        min-height: 500px;
-    }
-</style>
-
-</body>
-</html>
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>

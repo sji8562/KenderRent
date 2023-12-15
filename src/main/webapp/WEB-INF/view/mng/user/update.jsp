@@ -84,15 +84,15 @@
 									<div class="form-group">
 										<label class="col-md-12">우편번호</label>
 										<div class="col-md-12">
-											<input type="text" value="${user.phoneNumber}"
-												name="address" id="address"
+											<input type="text" value="${user.postNumber}"
+												name="postNumber" id="postNumber"
 												class="form-control form-control-line">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-12">주소</label>
 										<div class="col-md-12">
-											<input type="text" value="${user.phoneNumber}"
+											<input type="text" value="${user.address}"
 												name="address" id="address"
 												class="form-control form-control-line">
 										</div>
@@ -100,8 +100,8 @@
 									<div class="form-group">
 										<label class="col-md-12">상세주소</label>
 										<div class="col-md-12">
-											<input type="text" value="${user.phoneNumber}"
-												name="address" id="address"
+											<input type="text" value="${user.addressDetail}"
+												name="addressDetail" id="addressDetail"
 												class="form-control form-control-line">
 										</div>
 									</div>

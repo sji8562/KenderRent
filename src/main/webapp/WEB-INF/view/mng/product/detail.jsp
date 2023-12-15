@@ -2,8 +2,17 @@
 	pageEncoding="UTF-8"%>
  <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
-<link rel="stylesheet" href="/css/style.css">
+
+<style>
+	#container {
+		width: 100%;
+	}
+	.ck-editor__editable[role="textbox"] {
+		/* editing area */
+		min-height: 500px;
+	}
+</style>
+
 
 <div class="page-wrapper">
 	<!-- ============================================================== -->
@@ -96,6 +105,7 @@
 								<label>제품 상세 설명</label>
 								<div id="container">
 									<textarea id="editor" name="content">${product.content}</textarea>
+										<%--<textarea id="summernote" name="content">${product.content}</textarea>--%>
 								</div>
 								<%--<textarea class="form-control" rows="5" disabled>${product.content}</textarea>--%>
 							</div>
@@ -115,48 +125,6 @@
 			<!-- End Right sidebar -->
 			<!-- ============================================================== -->
 		</div>
-		<!-- ============================================================== -->
-		<!-- End Container fluid  -->
-		<!-- ============================================================== -->
-		<!-- ============================================================== -->
-		<!-- footer -->
-		<!-- ============================================================== -->
-		<footer class="footer text-center">
-			All Rights Reserved by Nice admin. Designed and Developed by
-			<a href="https://www.wrappixel.com">WrapPixel</a>.
-		</footer>
-		<!-- ============================================================== -->
-		<!-- End footer -->
-		<!-- ============================================================== -->
-	</div>
-	<!-- ============================================================== -->
-	<!-- End Page wrapper  -->
-	<!-- ============================================================== -->
-</div>
-<script>
-	ClassicEditor
-			.create( document.querySelector( '#editor' ))
-			.then(editor => {
-				console.log("------------------------------", editor);
-				const toolbarElement = editor.ui.view.toolbar.element;
-				toolbarElement.style.display = 'none';
-				editor.enableReadOnlyMode( 'editor' );
-				console.log('Editor was initialized', editor);
-			})
-			.catch( error => {
-				console.error( error );
-			} );
-</script>
-<style>
-	#container {
-		width: 100%;
-	}
-	.ck-editor__editable[role="textbox"] {
-		/* editing area */
-		min-height: 500px;
-	}
-</style>
 
-</body>
-</html>
+
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>

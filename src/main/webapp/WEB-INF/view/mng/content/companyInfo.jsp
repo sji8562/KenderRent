@@ -2,7 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+
 
     <div class="page-wrapper">
         <!-- ============================================================== -->
@@ -25,10 +25,11 @@
                     <form action="/mng/content/register" method="post">
                         <%-- CK Editor --%>
                         <input type="number" name="id" value="${content.id}" hidden />
-                        <input type="number" name="TYPE" value="0" hidden />
-                        <div id="container">
-                            <textarea id="editor" name="content">${content.content}</textarea>
-                        </div>
+
+                            <div id="container">
+                                <textarea id="summernote" name="content">${content.content}</textarea>
+                            </div>
+
                         <button onclick="location.href='/mng/content/info'" class="btn btn-secondary">취소</button>
                         <button class="btn btn-primary" type="submit">등록</button>
                     </form>
@@ -36,22 +37,8 @@
             </div>
         </div>
     </div>
-<script>
-    ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-</script>
-<style>
-    #container {
-        width: 100%;
-    }
-    .ck-editor__editable[role="textbox"] {
-        /* editing area */
-        min-height: 500px;
-    }
-</style>
-</body>
-</html>
+
+
+
+
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>
