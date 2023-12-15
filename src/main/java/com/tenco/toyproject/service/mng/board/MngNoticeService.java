@@ -22,31 +22,4 @@ public class MngNoticeService {
         return mngNoticeRepository.findAllNoticeWithPagenaition(pageVO);
     }
 
-    public int countFaqList() {
-        return mngNoticeRepository.countFaq();
-    }
-
-    public List<MngBoardDTO.NoticeListDTO> findAllByFaq(PageVO pageVO) {
-        return mngNoticeRepository.findAllFaqWithPagenation(pageVO);
-    }
-
-    public void deleteBoardById(int id) {
-        mngNoticeRepository.deleteBoardById(id);
-    }
-
-    public void createFaq(MngBoardDTO.FaqSubmitDto dto) {
-        mngNoticeRepository.createFaq(dto);
-    }
-
-    public Board findBoardById(int id) {
-        return mngNoticeRepository.findBoardById(id);
-    }
-
-    public void updateFaqById(MngBoardDTO.FaqSubmitDto dto) {
-        mngNoticeRepository.updateFaqById(dto);
-    }
-
-    public List<MngBoardDTO.QnaListDto> findAllBoardByCode(PageVO pageVO) {
-        return mngNoticeRepository.findQnaByCodeWithPagenation(pageVO);
-    }
 }

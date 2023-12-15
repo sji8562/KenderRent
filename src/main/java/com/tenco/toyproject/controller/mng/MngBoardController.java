@@ -3,7 +3,9 @@ package com.tenco.toyproject.controller.mng;
 import com.tenco.toyproject._core.handler.exception.Exception500;
 import com.tenco.toyproject.dto.MngBoardDTO;
 import com.tenco.toyproject.repository.entity.Board;
+import com.tenco.toyproject.service.mng.board.MngFaqService;
 import com.tenco.toyproject.service.mng.board.MngNoticeService;
+import com.tenco.toyproject.service.mng.board.MngQnaService;
 import com.tenco.toyproject.vo.PageVO;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.LoggerFactory;
@@ -24,6 +26,12 @@ public class MngBoardController {
 
     @Autowired
     private MngNoticeService mngNoticeService;
+
+    @Autowired
+    private MngFaqService mngFaqService;
+
+    @Autowired
+    private MngQnaService mngQnaService;
 
     //공지사항 리스트
     @GetMapping("noticeList")
@@ -57,7 +65,7 @@ public class MngBoardController {
     // 자주 묻는 질문
     @GetMapping("faq-list")
     public String qna(Model model, PageVO pageVO, @RequestParam(value = "nowPage",required = false) String nowPage, @RequestParam(value = "cntPerPage",required = false) String cntPerPage){
-        int total = mngNoticeService.countFaqList();
+        int total = mngFaqService.countFaqList();
 
         if (nowPage == null && cntPerPage == null) {
             nowPage = "1";
@@ -72,7 +80,7 @@ public class MngBoardController {
         model.addAttribute("paging", pageVO);
         System.out.println(cntPerPage);
 
-        List<MngBoardDTO.NoticeListDTO> noticeList = mngNoticeService.findAllByFaq(pageVO);
+        List<MngBoardDTO.NoticeListDTO> noticeList = mngFaqService.findAllByFaq(pageVO);
         System.out.println(noticeList.toString());
         model.addAttribute("noticeList", noticeList);
 
@@ -81,7 +89,7 @@ public class MngBoardController {
     @GetMapping("qna")
     public String qnaPage(Model model, PageVO pageVO, @RequestParam(value = "nowPage",required = false) String nowPage, @RequestParam(value = "cntPerPage",required = false) String cntPerPage){
 
-        int total = mngNoticeService.countFaqList();
+        int total = mngQnaService.countQnaList();
 
         if (nowPage == null && cntPerPage == null) {
             nowPage = "1";
@@ -97,7 +105,7 @@ public class MngBoardController {
         System.out.println(cntPerPage);
 
         // 1:1문의 조회
-        List<MngBoardDTO.QnaListDto> boardList = mngNoticeService.findAllBoardByCode(pageVO);
+        List<MngBoardDTO.QnaListDto> boardList = mngQnaService.findQnaByCodeWithPagenation(pageVO);
         model.addAttribute("boardList", boardList);
 
         logger.info("여기 왔나???????????????" + boardList);
@@ -114,7 +122,7 @@ public class MngBoardController {
     @GetMapping("{id}/faq-delete")
     public String deleteFaq(@PathVariable int id) {
 
-        mngNoticeService.deleteBoardById(id);
+        mngFaqService.deleteBoardById(id);
         return "redirect:/mng/board/faq-list";
     }
 
@@ -139,7 +147,7 @@ public class MngBoardController {
 
         dto.setCode(2);
 
-        mngNoticeService.createFaq(dto);
+        mngFaqService.createFaq(dto);
 
         return "redirect:/mng/board/faq-list";
     }
@@ -149,7 +157,7 @@ public class MngBoardController {
     public String updatePage(Model model, @PathVariable int id) {
         logger.info("이 글좀 찾아줘요~" + id);
         // 글 조회
-        Board board = mngNoticeService.findBoardById(id);
+        Board board = mngFaqService.findBoardById(id);
         model.addAttribute(board);
 
         return "/mng/board/faq/update";
@@ -168,7 +176,7 @@ public class MngBoardController {
             throw new Exception500("내용을 입력하세요");
         }
 
-        mngNoticeService.updateFaqById(dto);
+        mngFaqService.updateFaqById(dto);
 
         return "redirect:/mng/board/faq-list";
     }

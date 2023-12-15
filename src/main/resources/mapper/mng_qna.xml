@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--반드시 세미콜론 생략 -->
+<mapper
+        namespace="com.tenco.toyproject.repository.interfaces.mng.board.MngQnaRepository">
+
+    <!-- QNA 총 개수 -->
+    <select id="countQnaList" resultType="int">
+        SELECT COUNT(*) AS count FROM board WHERE code = 3
+    </select>
+
+    <!-- QnA 조회 -->
+    <select id="findQnaByCodeWithPagenation" resultType="com.tenco.toyproject.repository.entity.Board">
+        SELECT b.id, b.title, b.code, b.user_id, b.created_at, (r.id IS NOT NULL) AS reply  FROM board AS b
+        LEFT JOIN reply AS r ON r.board_id = b.id
+        WHERE b.code = 3
+        LIMIT #{start}, 5
+    </select>
+
+</mapper>
