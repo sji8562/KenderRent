@@ -130,31 +130,31 @@
 						<div class="box_goods">
 							<div class="box_picture">
 								<a href="/product/detail/${orderList.id}" target="_blank"> <img
-									src="/images/product_${orderList.id}.png" width="100" height="100"></a>
+									src="/images/product_${orderList.id}.png" width="100"
+									height="100"></a>
 							</div>
 							<div class="box_product_info">
-								<a href="/product/detail/${orderList.id}" target="_blank"  class="text_product_name">
-									${orderList.name}</a>
+								<a href="/product/detail/${orderList.id}" target="_blank"
+									class="text_product_name"> ${orderList.name}</a>
 								<div></div>
 								<span class="text_product_price">${orderList.formatPrice()}</span>
-							</div>	
+							</div>
 						</div>
 						<div style="height: 20px; border-bottom: 1px solid gray;"></div>
-						<div style="padding: 16px 30px 40px ;">
+						<div style="padding: 16px 30px 40px;">
 							<div>
-								<span class="text_price">상품금액</span>
-								<span class="text_number">${orderList.formatPrice()}</span>
+								<span class="text_price">상품금액</span> <span class="text_number">${orderList.formatPrice()}</span>
 							</div>
 							<div style="display: block; clear: both; content: '';"></div>
 							<div>
-								<span class="text_price">배송비</span>
-								<span class="text_number">${orderList.getDeliveryFee()}</span> 
+								<span class="text_price">배송비</span> <span class="text_number">${orderList.getDeliveryFee()}</span>
 							</div>
 						</div>
 						<div style="height: 20px; border-bottom: 1px solid gray;"></div>
-						<div style="padding: 16px 30px 40px ;">
+						<div style="padding: 16px 30px 40px;">
 							<span class="text_price" style="font-size: 18px;">총 결제 금액</span>
-							<span class="text_number" style="font-size: 30px; font-weight: 700;">${orderList.totalPriceForOne()}</span>
+							<span class="text_number"
+								style="font-size: 30px; font-weight: 700;">${orderList.totalPriceForOne()}</span>
 						</div>
 					</div>
 					<!-- 결제 수단 -->
@@ -163,19 +163,21 @@
 						<br>
 						<div style="flex: 1 1; position: relative;">
 							<div class="payment_box">
-								<input type="radio" name="payment" id="payment_select" class="payment_radio" checked> 
-								<label class="payment_label">카카오페이 결제 
-									<img src="/images/payment_icon_yellow_small.png" width="60" height="25">
+								<input type="radio" name="payment" id="payment_select"
+									class="payment_radio" checked> <label
+									class="payment_label">카카오페이 결제 <img
+									src="/images/payment_icon_yellow_small.png" width="60"
+									height="25">
 								</label>
-								<form method="post" action="order/kakao-pay">
-									<div style="text-align: center; padding: 70px 0 0 0;">
-										<input type="hidden" name="id" value="${orderList.id}" />
-										<button type="submit" class="botton_pay">결제하기</button>
-									</div>
-								</form>
 							</div>
 						</div>
 					</div>
+					<form method="post" action="order/kakao-pay">
+							<div style="text-align: center; padding: 20px 0 0 0;">
+								<input type="hidden" name="id" value="${orderList.id}" />
+								<button type="submit" class="botton_pay">결제하기</button>
+							</div>
+						</form>
 				</div>
 			</div>
 		</div>

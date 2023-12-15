@@ -16,4 +16,5 @@ public class Order {
 	private int userId;
 	private int productId;
 	private Timestamp createdAt;
+	private String tid;
 }

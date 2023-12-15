@@ -59,7 +59,7 @@
 							<input id="password" class="form_input input_website input_ph" type="password" name="password" placeholder="password" required="required" data-error="password is required.">
 						</div>
 						<div>
-							<button type="submit" class="red_button message_submit_btn trans_300" value="Submit">이메일로 로그인</button>
+							<button type="submit" onclick="history.back()" class="red_button message_submit_btn trans_300" value="Submit" >이메일로 로그인</button>
 						</div>
 					</form>
 					<br>

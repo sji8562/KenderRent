@@ -19,4 +19,6 @@ public interface CustomerRepository {
 	Map selectInquiryDetail(int id);
 	int countCustomer(int code);
 	Map selectReply(int boardId);
+	
+	
 }
