@@ -123,4 +123,13 @@ public class ProductController {
 				KakaoPayResponse.class);		
 		return "product/order/list";
 	}
+	
+	
+	
+	@GetMapping("search")
+	public String search() {
+		return "product/search";
+	}
+	
+	
 }

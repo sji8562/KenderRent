@@ -24,6 +24,8 @@
 /*  		display: none; */
 /*  	} */
  </style>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script> -->
+<!-- <script src="/js/wow.min.js"></script> -->
 <header class="header trans_300">
 		<!-- Main Navigation -->
 		<div class="main_nav_container">
@@ -33,6 +35,7 @@
 						<div class="logo_container">
 							<a href="/">Kender<span>Rent</span></a>
 						</div>
+						
 						<nav class="navbar">
 							<ul class="navbar_menu">
 								<li class="nav-item dropdown">
@@ -47,7 +50,7 @@
 			                        </div>
 			                    </li>
 								<li class="nav-item dropdown">
-			                        <a href="/product/categories" class="nav-link dropdown-toggle">스몰자이즈 장난감</a>
+			                        <a href="/product/categories" class="nav-link dropdown-toggle">스몰사이즈 장난감</a>
 			                        <div class="dropdown-menu m-0">
 			                            <a href="price.html" class="dropdown-item">3~6개월</a>
 			                            <a href="feature.html" class="dropdown-item">6~12개월</a>
@@ -90,7 +93,14 @@
 							</ul>
 
 							<ul class="navbar_user">
-								<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+							
+<!-- 								모달창 -->
+								<li>
+								<butaton type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat" style="cursor:pointer">
+										<i class="fa fa-search" aria-hidden="true"></i>
+								</butaton>
+		                        	
+		                        </li>
 
 								<c:choose>
 									<c:when test="${sessionScope.principal != null }">
@@ -243,5 +253,25 @@
 			</ul>
 		</div>
 	</div>
-	
+<!-- 모달창 -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="cursor:pointer">닫기</button>
+        <button type="button" class="btn btn-primary" style="cursor:pointer">검색하기</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 모달창 끝 -->
 
