@@ -15,18 +15,17 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-5 align-self-center">
-                <h4 class="page-title">공지사항 관리</h4>
+                <h4 class="page-title">공지사항 관리
+
+                </h4>
             </div>
+
             <div class="col-7 align-self-center">
                 <div class="d-flex align-items-center justify-content-end">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Basic
-                                Table
-                            </li>
-                        </ol>
-                    </nav>
+                    <button class="btn btn-primary btn-sm ml-2"
+                            onclick="location.href='/mng/board/notice-submit'">
+                        등록하기
+                    </button>
                 </div>
             </div>
         </div>
@@ -87,12 +86,12 @@
                                                             <button class="btn btn-success"
                                                                     style="border: 1px solid black"
                                                                     onclick="location.href='/mng/board/${noticeList.id}/notice-update'">
-                                                                신청 확인
+                                                                수정
                                                             </button>
                                                             &nbsp;&nbsp;
                                                             <button class="btn-danger btn"
                                                                     onclick="location.href='/mng/board/${noticeList.id}/notice-delete'">
-                                                                신청 취소
+                                                                삭제
                                                             </button>
                                                         </div>
                                                     </td>

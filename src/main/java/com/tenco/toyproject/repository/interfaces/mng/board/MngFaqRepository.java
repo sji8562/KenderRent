@@ -1,4 +1,4 @@
-package com.tenco.toyproject.repository.interfaces.mng;
+package com.tenco.toyproject.repository.interfaces.mng.board;
 
 import com.tenco.toyproject.dto.MngBoardDTO;
 import com.tenco.toyproject.repository.entity.Board;
@@ -8,11 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
 @Mapper
-public interface MngNoticeRepository {
-    public int countNotice();
-
-    public List<MngBoardDTO.NoticeListDTO> findAllNoticeWithPagenaition(PageVO pageVO);
-
+public interface MngFaqRepository {
     public int countFaq();
 
     public List<MngBoardDTO.NoticeListDTO> findAllFaqWithPagenation(PageVO pageVO);
