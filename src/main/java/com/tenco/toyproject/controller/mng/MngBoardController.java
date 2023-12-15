@@ -27,6 +27,8 @@ public class MngBoardController {
 
     @Autowired
     private MngNoticeService mngNoticeService;
+
+    //공지사항 리스트
     @GetMapping("noticeList")
     public String notice( Model model, PageVO pageVO, @RequestParam(value = "nowPage",required = false) String nowPage, @RequestParam(value = "cntPerPage",required = false) String cntPerPage) {
 
@@ -48,6 +50,11 @@ public class MngBoardController {
         System.out.println(noticeList.toString());
         model.addAttribute("noticeList", noticeList);
         return "mng/board/notice/list";
+    }
+    @GetMapping("{id}/notice-detail")
+    public String noticeDetail(@PathVariable Integer id){
+//        mngNoticeService.notice
+        return "mng/board/notice/detail";
     }
 
     // 자주 묻는 질문
