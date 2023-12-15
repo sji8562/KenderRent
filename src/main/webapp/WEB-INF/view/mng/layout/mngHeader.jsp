@@ -299,7 +299,7 @@
 										class="sidebar-link waves-effect waves-dark sidebar-link"
 
 
-										href="/mng/board/mantomanList"> <i
+										href="/mng/board/qna"> <i
 
 
 										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">1:1질문</span>

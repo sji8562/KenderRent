@@ -25,13 +25,13 @@
                         <div class="form-group">
                             <label for="title">질문 내용</label>
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="질문 내용을 입력하세요" id="title" name="title" style="height: 100px"></textarea>
+                                <textarea class="form-control" placeholder="질문 내용을 입력하세요" id="title" name="title" maxlength="250" style="height: 100px"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="content">답변 내용</label>
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="답변 내용을 입력하세요" id="content" name="content" style="height: 100px"></textarea>
+                                <textarea class="form-control" placeholder="답변 내용을 입력하세요" id="content" name="content" maxlength="250" style="height: 100px"></textarea>
                             </div>
                         </div>
                         <button class="btn btn-secondary" onclick="history.back()">뒤로가기</button>

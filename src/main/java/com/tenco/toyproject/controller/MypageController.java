@@ -85,10 +85,11 @@ public class MypageController {
 
 	@GetMapping("/inquiry")
 	public String inquiryList(Model model,  @RequestParam(name = "type", defaultValue = "3" , required = false) int code) {
-		User principal = (User)session.getAttribute("principal"); 
+		User principal = (User) session.getAttribute("principal");
 		List<Map> userCustomerList = mypageService.selectUserCustomer(principal.getId(), code);
 		model.addAttribute("userCustomerList", userCustomerList);
 		return "mypage/inquiry";
+	}
 
 	@GetMapping("/order-list")
 	public String orderList(Model model) {

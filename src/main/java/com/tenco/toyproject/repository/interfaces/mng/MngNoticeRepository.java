@@ -24,4 +24,6 @@ public interface MngNoticeRepository {
     Board findBoardById(int id);
 
     void updateFaqById(MngBoardDTO.FaqSubmitDto dto);
+
+    List<MngBoardDTO.QnaListDto> findQnaByCodeWithPagenation(int code);
 }

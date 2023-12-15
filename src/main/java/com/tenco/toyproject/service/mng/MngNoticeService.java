@@ -45,4 +45,8 @@ public class MngNoticeService {
     public void updateFaqById(MngBoardDTO.FaqSubmitDto dto) {
         mngNoticeRepository.updateFaqById(dto);
     }
+
+    public List<MngBoardDTO.QnaListDto> findAllBoardByCode(int code) { mngNoticeRepository.findQnaByCodeWithPagenation(code);
+        return mngNoticeRepository.findQnaByCodeWithPagenation(code);
+    }
 }

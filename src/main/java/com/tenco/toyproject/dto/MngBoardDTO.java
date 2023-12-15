@@ -20,4 +20,13 @@ public class MngBoardDTO {
         private String content;
         private int code;
     }
+
+    @Data
+    public static class QnaListDto {
+        private Integer id;
+        private String title; // 질문
+        private String content; // 답변
+        private Integer userId; // 질문 작성자
+        private Timestamp createdAt;
+    }
 }
