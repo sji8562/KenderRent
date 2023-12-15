@@ -100,16 +100,6 @@ public class ProductController {
 		
 	}
 	
-	
-<<<<<<< HEAD
-	
-	@GetMapping("search")
-	public String search() {
-		return "product/search";
-	}
-	
-	
-=======
 	@PostMapping("order/kakao-pay")
 	public String kakaoPayReady(@RequestParam("id") int productId) {
 		User principal = (User) session.getAttribute("principal");
@@ -137,9 +127,9 @@ public class ProductController {
 		
 		return "redirect:/product/order";
 	}
+	@GetMapping("search")
+	public String search() {
+		return "product/search";
+	}
 	
-	
-
-	
->>>>>>> 2ae7850c0be7d15a8dfee69b30aa52a53fe54f25
 }
