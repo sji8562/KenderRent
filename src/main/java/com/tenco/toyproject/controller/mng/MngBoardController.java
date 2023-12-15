@@ -3,19 +3,16 @@ package com.tenco.toyproject.controller.mng;
 import com.tenco.toyproject._core.handler.exception.Exception500;
 import com.tenco.toyproject.dto.MngBoardDTO;
 import com.tenco.toyproject.repository.entity.Board;
-import com.tenco.toyproject.service.mng.MngNoticeService;
-import com.tenco.toyproject.service.mng.MngProductService;
+import com.tenco.toyproject.service.mng.board.MngNoticeService;
 import com.tenco.toyproject.vo.PageVO;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 
 @Controller

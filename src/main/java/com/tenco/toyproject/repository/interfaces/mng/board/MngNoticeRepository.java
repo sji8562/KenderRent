@@ -1,4 +1,4 @@
-package com.tenco.toyproject.repository.interfaces.mng;
+package com.tenco.toyproject.repository.interfaces.mng.board;
 
 import com.tenco.toyproject.dto.MngBoardDTO;
 import com.tenco.toyproject.repository.entity.Board;
