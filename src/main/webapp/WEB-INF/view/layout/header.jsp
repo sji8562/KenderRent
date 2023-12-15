@@ -259,16 +259,18 @@
       <div class="modal-header">
       </div>
       <div class="modal-body">
-        <form>
+        <form action="/product/search">
           <div class="mb-3">
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" class="form-control" name="keyword">
           </div>
+      		<div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="cursor:pointer">닫기</button>
+	        <button type="submit" class="btn btn-primary" style="cursor:pointer">검색하기</button>
+	      </div>    
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="cursor:pointer">닫기</button>
-        <button type="button" class="btn btn-primary" style="cursor:pointer">검색하기</button>
-      </div>
+      
+      
     </div>
   </div>
 </div>

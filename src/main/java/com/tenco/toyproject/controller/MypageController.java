@@ -81,8 +81,6 @@ public class MypageController {
 		
 		return "mypage/main";
 	}
-	
-
 	@GetMapping("/inquiry")
 	public String inquiryList(Model model,  @RequestParam(name = "type", defaultValue = "3" , required = false) int code) {
 		User principal = (User) session.getAttribute("principal");

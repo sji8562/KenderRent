@@ -76,4 +76,7 @@ public class ProductService {
 	public Order findTid(int userId, int productId) {
 		return productRepository.findTid(userId, productId);
 	}
+	public List<Map> searchProduct(String keyword){
+		return productRepository.searchProduct(keyword);
+	}
 }
