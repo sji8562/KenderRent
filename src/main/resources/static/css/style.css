@@ -10470,3 +10470,7 @@ File: scss
 	margin: 100px 300px 100px 300px;
 }
 
+.m--search-inline {
+  display: flex;
+  justify-content: space-between;
+}
