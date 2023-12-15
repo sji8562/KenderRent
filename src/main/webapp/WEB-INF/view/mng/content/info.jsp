@@ -2,7 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="/css/style.css">
+
     <div class="page-wrapper">
         <!-- ============================================================== -->
         <!-- Bread crumb and right sidebar toggle -->
@@ -67,7 +67,5 @@
             <!-- ============================================================== -->
         </div>
     </div>
-</body>
 
-</html>
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>

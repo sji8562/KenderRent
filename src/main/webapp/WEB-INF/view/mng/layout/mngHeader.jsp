@@ -27,45 +27,18 @@
 	rel="stylesheet">
 <!-- Custom CSS -->
 <link href="/dist/css/style.min.css" rel="stylesheet">
+	<link href="/dist/css/mng.css" rel="stylesheet">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+		  integrity="sha256-7ZWbZUAi97rkirk4DcEp4GWDPkWpRMcNaEyXGsNXjLg=" crossorigin="anonymous">
 
-<style>
-/* 초기에는 숨겨진 상태 */
-#applyManagement .collapse {
-    display: none;
-}
+	<!-- Summernote CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
+		  integrity="sha256-IKhQVXDfwbVELwiR0ke6dX+pJt0RSmWky3WB2pNx9Hg=" crossorigin="anonymous">
 
-/* 마우스를 올릴 때 나타나게 함 */
-#applyManagement.show .collapse {
-    display: block;
-}
+	<!-- Your Custom CSS -->
+	<link rel="stylesheet" href="/css/style.css">
 
-#applyManagement.show .collapse li.sidebar-item {
-    margin-left: 10px; /* 서브 메뉴 오른쪽으로 10px 이동 */
-    font-size: 12px;
-}
-
-#applyManagement.show .collapse li.sidebar-item {
-/*     padding: 8px 12px; /* 기본 크기로 유지 */
-/*     font-size: 14px; /* 기본 폰트 크기로 유지 */
-}
-/* Style for the links with class "rentalDetail" */
-.applyDetail a {
-	color: black;
-	text-decoration: none; /* Remove underline */
-}
-
-/* Style for visited links with class "rentalDetail" */
-.applyDetail a:visited {
-	color: black;
-}
-
-/* Style for links with class "rentalDetail" on hover */
-.applyDetail a:hover {
-	color: gray;
-	/* Change the color on hover if needed */
-	/* You can add additional styles for hover if needed */
-}
-</style>
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -222,6 +195,12 @@
 								class="hide-menu">물품 관리</span>
 						</a></li>
 						<li class="sidebar-item"><a
+								class="sidebar-link waves-effect waves-dark sidebar-link"
+								href="/mng/product/categories" aria-expanded="false"> <i
+								class="mdi mdi-arrange-bring-forward"></i> <span
+								class="hide-menu">카테고리 관리</span>
+						</a></li>
+						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
 							href="/mng/table" aria-expanded="false"> <i
 								class="mdi mdi-border-none"></i> <span class="hide-menu">Table</span>
@@ -281,7 +260,60 @@
 									class="sidebar-link waves-effect waves-dark sidebar-link"
 									href="/mng/content/info" aria-expanded="false"> <i
 									class="mdi mdi-alert-outline"></i> <span class="hide-menu">회사 소개 게시판</span>
+
 							</a>
+
+
+							</a></li>
+
+<%--						문의--%>
+						<li class="sidebar-item" id="noticeManagement"><a
+								class="sidebar-link waves-effect waves-dark sidebar-link"
+
+								href="/mng/board/noticeList" aria-expanded="false"> <i
+
+								class="mdi mdi-alert-outline"></i> <span class="hide-menu">게시판 관리</span>
+						</a>
+							<ul aria-expanded="false" class="collapse first-level">
+								<!-- 대여신청 -->
+								<li class="sidebar-item"><a
+										class="sidebar-link waves-effect waves-dark sidebar-link"
+
+										href="/mng/board/noticeList"> <i class="mdi mdi-view-dashboard"></i>
+									<span class="hide-menu">공지사항</span>
+
+
+								</a></li>
+								<!-- 판매신청 -->
+								<li class="sidebar-item"><a
+										class="sidebar-link waves-effect waves-dark sidebar-link"
+
+
+										href="/mng/board/faq-list"> <i class="mdi mdi-view-dashboard"></i>
+
+
+									<span class="hide-menu">자주 묻는 질문</span>
+								</a></li>
+								<!-- 구매신청 -->
+								<li class="sidebar-item"><a
+										class="sidebar-link waves-effect waves-dark sidebar-link"
+
+
+										href="/mng/board/mantomanList"> <i
+
+
+										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">1:1질문</span>
+								</a></li>
+								<li class="sidebar-item"><a
+										class="sidebar-link waves-effect waves-dark sidebar-link"
+
+
+										href="/mng/board/productqnaList"> <i
+										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">상품질문</span>
+								</a></li>
+							</ul></li>
+
+
 					</ul>
 				</nav>
 				<!-- End Sidebar navigation -->

@@ -41,4 +41,28 @@ public interface MngProductRepository {
     // 물품 정보 수정
     public Integer updateProduct(Product dto);
     int findRentAllCount();
+
+
+    List<SecondCategory> findSecondCategoryForFirstCategory(String fId);
+
+
+    int findFirstCategoryByName(String fCategoryName);
+
+    void createFirstCategory(String fCategoryName);
+
+    void deleteFirstCategoryById(int fId);
+
+
+    int findSecondCategoryByName(String fCategory, String sCategoryName);
+
+    void addSecondCategory(String fCategory, String sCategoryName);
+
+    SecondCategory findFirstCategoryIdBySecondCategoryId(int sId);
+
+    void deleteSecondCategoryById(int sId);
+
+    int findProductBySecondCategoryId(int sId);
+
+    int findProducCountByFirstCategoryId(int fId);
+
 }

@@ -39,4 +39,10 @@ public class User {
 
     }
 
+
+	public void setToken(String token) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--반드시 세미콜론 생략 -->
+<mapper
+        namespace="com.tenco.toyproject.repository.interfaces.mng.MngNoticeRepository">
+
+
+
+    <select id="findAllNoticeWithPagenaition">
+        SELECT * FROM board b JOIN user u ON b.user_id = u.id where code = 1 LIMIT #{start}, 5
+    </select>
+<!--    &lt;!&ndash; 물품 상세 &ndash;&gt;-->
+<!--    <select id="findProductById" resultType="com.tenco.toyproject.repository.entity.Product">-->
+<!--        SELECT p.id, p.first_category_id, p.second_category_id, p.price, p.name, p.pic_url, p.content, p.status, p.created_at, p.grade, fc.first_category_name, sc.second_category_name FROM product AS p-->
+<!--                                                                                                                                                                                                 JOIN first_category AS fc ON fc.id = p.first_category_id-->
+<!--                                                                                                                                                                                                 JOIN second_category AS sc ON sc.id = p.second_category_id-->
+<!--        WHERE p.id = #{pId}-->
+<!--    </select>-->
+    <!-- 물품 건수 -->
+    <select id="countNotice" resultType="int">
+        SELECT count(*) FROM product
+    </select>
+
+    <!-- FAQ LIST -->
+    <select id="countFaq" resultType="int">
+        SELECT COUNT(*) AS count FROM board WHERE code = 2
+    </select>
+
+    <!-- FAQ 조회 -->
+    <select id="findAllFaqWithPagenation" resultType="com.tenco.toyproject.repository.entity.Board">
+        SELECT * FROM board where code = 2 LIMIT #{start}, 5
+    </select>
+
+    <!-- 게시글 삭제 -->
+    <delete id="deleteBoardById">
+        DELETE FROM board WHERE id = #{id}
+    </delete>
+
+    <!-- FAQ 등록 -->
+    <insert id="createFaq">
+        INSERT INTO board (title, content, code, created_at) VALUES (#{title}, #{content}, #{code}, NOW())
+    </insert>
+
+    <!-- id로 게시글 조회 -->
+    <select id="findBoardById" resultType="com.tenco.toyproject.repository.entity.Board">
+        SELECT * FROM board WHERE id = #{id}
+    </select>
+
+    <!-- id로 게시글 수정 -->
+    <update id="updateFaqById">
+        UPDATE board SET title = #{title}, content = #{content} WHERE id = #{id}
+    </update>
+
+<!--    <delete id="deleteByProductId">-->
+<!--        DELETE FROM product WHERE id = #{id}-->
+<!--    </delete>-->
+
+<!--    &lt;!&ndash; first & Second category &ndash;&gt;-->
+<!--    <select id="findCategoryAll" resultType="com.tenco.toyproject.repository.entity.FirstCategory">-->
+<!--        SELECT fc.id, fc.first_category_name, sc.id AS second_id, sc.second_category_name-->
+<!--        FROM first_category AS fc-->
+<!--                 RIGHT JOIN second_category AS sc ON sc.first_category_id = fc.id-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash; first Category &ndash;&gt;-->
+<!--    <select id="findFirstCategoryAll" resultType="com.tenco.toyproject.repository.entity.FirstCategory">-->
+<!--        SELECT * FROM first_category-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash; first Category Using Second Category Id &ndash;&gt;-->
+<!--    <select id="findFirstCategoryByfId" resultType="Integer">-->
+<!--        SELECT first_category_id FROM second_category WHERE id = #{sId}-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash; Second category &ndash;&gt;-->
+<!--    <select id="findSecondCategoryForRent" resultType="com.tenco.toyproject.repository.entity.SecondCategory">-->
+<!--        SELECT * FROM second_category WHERE first_category_id BETWEEN 0 AND 10-->
+<!--    </select>-->
+
+<!--    <insert id="createProduct">-->
+<!--        INSERT INTO-->
+<!--            product (first_category_id, second_category_id, price, name, pic_url, content, status, grade)-->
+<!--        VALUES (#{firstCategoryId}, #{secondCategoryId}, #{price}, #{name}, #{picUrl}, #{content}, #{status}, #{grade} )-->
+<!--    </insert>-->
+
+<!--    &lt;!&ndash; 상품 정보 수정 &ndash;&gt;-->
+<!--    <update id="updateProduct">-->
+<!--        UPDATE product SET-->
+<!--                           first_category_id = #{firstCategoryId},-->
+<!--                           second_category_id = #{secondCategoryId},			price = #{price},-->
+<!--                           name = #{name},-->
+<!--                           pic_url = #{picUrl},-->
+<!--                           content = #{content},-->
+<!--                           status = #{status},-->
+<!--                           grade = #{grade}-->
+<!--        WHERE id = #{id}-->
+<!--    </update>-->
+
+<!--    <select id="findSecondCategoryForFirstCategory" resultType="com.tenco.toyproject.repository.entity.SecondCategory">-->
+<!--        SELECT * FROM second_category WHERE first_category_id = #{fId}-->
+<!--    </select>-->
+
+<!--    <select id="findFirstCategoryByName" resultType="int">-->
+<!--        SELECT COUNT(*) AS count FROM first_category WHERE first_category_name = #{fCategoryName}-->
+<!--    </select>-->
+
+<!--    <select id="createFirstCategory">-->
+<!--        INSERT INTO first_category (first_category_name) VALUES (#{fCategoryName})-->
+<!--    </select>-->
+
+<!--    <delete id="deleteFirstCategoryById">-->
+<!--        DELETE FROM first_category WHERE id = #{fId}-->
+<!--    </delete>-->
+
+</mapper>

@@ -2,8 +2,9 @@
 	pageEncoding="UTF-8"%>
  <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="/css/style.css">
+
 	<div class="page-wrapper">
+
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
@@ -25,7 +26,6 @@
                     </div>
                 </div>
             </div>
-
 
 	<div class="table-responsive">
 		<c:choose>
@@ -83,20 +83,6 @@
 		</c:if>
 	</div>
 
-	<script>
-		function confirmOpen(type, id) {
-			console.log(type);
-			console.log(id);
 
-			if(type == 'del') {
-				if(confirm('삭제하시겠습니까?')) {
-					fetch('/mng/product/' + id + '/delete')
-							.then((response) => console.log("response", response)) //성공했을때
-							.catch((error) => console.log("error:", error)) //실패했을때
-				}
-			}
-		}
-	</script>
-</body>
-</html>
+
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>
