@@ -61,9 +61,9 @@ public class MngBoardController {
     }
     @GetMapping("{id}/notice-detail")
     public String noticeDetail(@PathVariable Integer id, Model model){
-        Board board = mngNoticeService.findByNotice(id);
-        System.out.println(board.toString());
-        model.addAttribute("board",board);
+//        Board board = mngNoticeService.findByNotice(id);
+//        System.out.println(board.toString());
+//        model.addAttribute("board",board);
         return "mng/board/notice/detail";
     }
 
