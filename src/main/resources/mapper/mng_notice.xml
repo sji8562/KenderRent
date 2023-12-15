@@ -33,6 +33,14 @@
         SELECT * FROM board where code = 2 LIMIT #{start}, 5
     </select>
 
+    <!-- QnA 조회 -->
+    <select id="findQnaByCodeWithPagenation" resultType="com.tenco.toyproject.repository.entity.Board">
+        SELECT b.id, b.title, b.code, b.user_id, b.created_at, (r.id IS NOT NULL) AS reply  FROM board AS b
+        LEFT JOIN reply AS r ON r.board_id = b.id
+        WHERE b.code = #{code}
+            LIMIT #{start}, 5
+    </select>
+
     <!-- 게시글 삭제 -->
     <delete id="deleteBoardById">
         DELETE FROM board WHERE id = #{id}
@@ -53,65 +61,6 @@
         UPDATE board SET title = #{title}, content = #{content} WHERE id = #{id}
     </update>
 
-<!--    <delete id="deleteByProductId">-->
-<!--        DELETE FROM product WHERE id = #{id}-->
-<!--    </delete>-->
 
-<!--    &lt;!&ndash; first & Second category &ndash;&gt;-->
-<!--    <select id="findCategoryAll" resultType="com.tenco.toyproject.repository.entity.FirstCategory">-->
-<!--        SELECT fc.id, fc.first_category_name, sc.id AS second_id, sc.second_category_name-->
-<!--        FROM first_category AS fc-->
-<!--                 RIGHT JOIN second_category AS sc ON sc.first_category_id = fc.id-->
-<!--    </select>-->
-
-<!--    &lt;!&ndash; first Category &ndash;&gt;-->
-<!--    <select id="findFirstCategoryAll" resultType="com.tenco.toyproject.repository.entity.FirstCategory">-->
-<!--        SELECT * FROM first_category-->
-<!--    </select>-->
-
-<!--    &lt;!&ndash; first Category Using Second Category Id &ndash;&gt;-->
-<!--    <select id="findFirstCategoryByfId" resultType="Integer">-->
-<!--        SELECT first_category_id FROM second_category WHERE id = #{sId}-->
-<!--    </select>-->
-
-<!--    &lt;!&ndash; Second category &ndash;&gt;-->
-<!--    <select id="findSecondCategoryForRent" resultType="com.tenco.toyproject.repository.entity.SecondCategory">-->
-<!--        SELECT * FROM second_category WHERE first_category_id BETWEEN 0 AND 10-->
-<!--    </select>-->
-
-<!--    <insert id="createProduct">-->
-<!--        INSERT INTO-->
-<!--            product (first_category_id, second_category_id, price, name, pic_url, content, status, grade)-->
-<!--        VALUES (#{firstCategoryId}, #{secondCategoryId}, #{price}, #{name}, #{picUrl}, #{content}, #{status}, #{grade} )-->
-<!--    </insert>-->
-
-<!--    &lt;!&ndash; 상품 정보 수정 &ndash;&gt;-->
-<!--    <update id="updateProduct">-->
-<!--        UPDATE product SET-->
-<!--                           first_category_id = #{firstCategoryId},-->
-<!--                           second_category_id = #{secondCategoryId},			price = #{price},-->
-<!--                           name = #{name},-->
-<!--                           pic_url = #{picUrl},-->
-<!--                           content = #{content},-->
-<!--                           status = #{status},-->
-<!--                           grade = #{grade}-->
-<!--        WHERE id = #{id}-->
-<!--    </update>-->
-
-<!--    <select id="findSecondCategoryForFirstCategory" resultType="com.tenco.toyproject.repository.entity.SecondCategory">-->
-<!--        SELECT * FROM second_category WHERE first_category_id = #{fId}-->
-<!--    </select>-->
-
-<!--    <select id="findFirstCategoryByName" resultType="int">-->
-<!--        SELECT COUNT(*) AS count FROM first_category WHERE first_category_name = #{fCategoryName}-->
-<!--    </select>-->
-
-<!--    <select id="createFirstCategory">-->
-<!--        INSERT INTO first_category (first_category_name) VALUES (#{fCategoryName})-->
-<!--    </select>-->
-
-<!--    <delete id="deleteFirstCategoryById">-->
-<!--        DELETE FROM first_category WHERE id = #{fId}-->
-<!--    </delete>-->
 
 </mapper>

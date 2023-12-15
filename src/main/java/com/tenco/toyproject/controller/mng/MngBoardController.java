@@ -74,9 +74,30 @@ public class MngBoardController {
 
         return "mng/board/faq/list";
     }
-    @GetMapping("mantoman")
-    public String mantoman(){
-        return "mng/board/mantoman/list";
+    @GetMapping("qna")
+    public String qnaPage(Model model, PageVO pageVO, @RequestParam(value = "nowPage",required = false) String nowPage, @RequestParam(value = "cntPerPage",required = false) String cntPerPage){
+
+        int total = mngNoticeService.countFaqList();
+
+        if (nowPage == null && cntPerPage == null) {
+            nowPage = "1";
+            cntPerPage = "5";
+        } else if (nowPage == null) {
+            nowPage = "1";
+        } else if (cntPerPage == null) {
+            cntPerPage = "5";
+        }
+
+        pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+        model.addAttribute("paging", pageVO);
+        System.out.println(cntPerPage);
+
+        // 1:1문의 조회(code 3번)
+        List<MngBoardDTO.QnaListDto> boardList = mngNoticeService.findAllBoardByCode(3);
+        model.addAttribute("boardList", boardList);
+
+        return "mng/board/qna/list";
+
     }
     @GetMapping("productqna")
     public String productqna(){
