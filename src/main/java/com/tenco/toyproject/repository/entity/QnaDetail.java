@@ -6,25 +6,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.text.DateFormat;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Board {
-    private int id;
-    private String title;
-    private String content;
-    private int userId;
-    private int productId;
-    private Timestamp createdAt;
+public class QnaDetail {
+    private Integer id;
+    private String title; // 질문
+    private String content; // 질문 내용
+    private Integer userId; // 질문 작성자
+    private String email; // 질문 작성자
+    private Timestamp createdAt; // 질문 작성일
 
-    private int reply; // 답변 여부
-    private String email; // 작성자 이메일
-    private Timestamp replyCreatedAt; // 답변 일시
+    private Integer replyId; // 답변 고유번호
+    private String replyContent; // 답변 내용
+    private Timestamp replyCreatedAt; // 답변일
 
     public String formatCreatedAtToString() {
         return DateUtil.dateToString(createdAt);

@@ -3,9 +3,11 @@ package com.tenco.toyproject.dto;
 import lombok.Data;
 import org.springframework.data.relational.core.sql.In;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 
 public class MngBoardDTO {
+
     @Data
     public static class NoticeListDTO {
         private Integer id;
@@ -26,8 +28,8 @@ public class MngBoardDTO {
     public static class QnaListDto {
         private Integer id;
         private String title; // 질문
-        private String content; // 답변
         private Integer userId; // 질문 작성자
+        private String email; // 질문 작성자
         private Timestamp createdAt;
         private Integer reply; // 답변 여부
     }

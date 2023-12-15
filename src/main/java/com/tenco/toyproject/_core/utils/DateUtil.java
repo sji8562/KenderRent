@@ -5,7 +5,12 @@ import java.text.SimpleDateFormat;
 
 public class DateUtil {
     public static String dateToString(Timestamp date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return sdf.format(date);
+        if(date != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            return sdf.format(date);
+        } else {
+            return "-";
+        }
+
     }
 }
