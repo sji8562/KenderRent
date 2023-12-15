@@ -49,4 +49,8 @@ public class MngNoticeService {
     public List<MngBoardDTO.QnaListDto> findAllBoardByCode(int code) { mngNoticeRepository.findQnaByCodeWithPagenation(code);
         return mngNoticeRepository.findQnaByCodeWithPagenation(code);
     }
+
+    public Board findByNotice(Integer id) {
+        return mngNoticeRepository.findByNotice(id);
+    }
 }

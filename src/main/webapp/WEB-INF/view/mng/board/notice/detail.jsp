@@ -46,10 +46,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-body">
-                    <h4 class="card-title">공지사항 수정</h4>
-                    </form>
+                    <h4 class="card-title">${board.title}</h4>
+                    <h4 class="card-title">${board.content}</h4>
                 </div>
             </div>
+
         </div>
         <!-- ============================================================== -->
         <!-- End PAge Content -->

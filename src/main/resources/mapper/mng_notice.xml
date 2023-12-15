@@ -7,9 +7,12 @@
         namespace="com.tenco.toyproject.repository.interfaces.mng.board.MngNoticeRepository">
 
 
-
+<!--    공지사항 List-->
     <select id="findAllNoticeWithPagenaition">
         SELECT * FROM board b JOIN user u ON b.user_id = u.id where code = 1 LIMIT #{start}, 5
+    </select>
+    <select id="findByNotice">
+        select * from board where code = 1 and id = #{id}
     </select>
 <!--    &lt;!&ndash; 물품 상세 &ndash;&gt;-->
 <!--    <select id="findProductById" resultType="com.tenco.toyproject.repository.entity.Product">-->
