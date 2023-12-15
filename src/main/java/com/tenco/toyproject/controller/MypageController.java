@@ -89,6 +89,7 @@ public class MypageController {
 		List<Map> userCustomerList = mypageService.selectUserCustomer(principal.getId(), code);
 		model.addAttribute("userCustomerList", userCustomerList);
 		return "mypage/inquiry";
+	}
 
 	@GetMapping("/order-list")
 	public String orderList(Model model) {
