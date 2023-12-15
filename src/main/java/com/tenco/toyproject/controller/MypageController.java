@@ -2,6 +2,7 @@ package com.tenco.toyproject.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tenco.toyproject.repository.entity.Product;
+import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.ProductService;
 
 import jakarta.servlet.http.Cookie;
@@ -73,7 +75,15 @@ public class MypageController {
 	}
 	
 	@GetMapping("/order-list")
-	public String orderList() {
+	public String orderList(Model model) {
+		User principal = (User) session.getAttribute("principal");
+		List<Map> orderList = productService.showCustomerOrderList(principal.getId());
+		model.addAttribute("orderList", orderList);
 		return "mypage/orderList";
+	}
+	
+	@GetMapping("/order-list/detail")
+	public String orderListDetailInfo() {
+		return "mypage/orderListDetailInfo";
 	}
 }

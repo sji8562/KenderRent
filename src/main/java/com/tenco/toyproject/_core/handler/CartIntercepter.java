@@ -42,7 +42,12 @@ public class CartIntercepter implements HandlerInterceptor {
 		// 세션에 사용자 정보 확인
 		HttpSession session = request.getSession();
 		User principal = (User) session.getAttribute("principal");
-		return true;
+//		if (principal == null) {
+//	        response.sendRedirect("/user/sign-in");
+//	        return false;
+//	    }
+
+	    return true;
 	}
 
 	// 뷰가 렌더링 되기 전에 호출 되는 메서드

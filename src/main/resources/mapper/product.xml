@@ -53,11 +53,31 @@
 		where user_id = #{userId}
 	</insert>
 	
-	<insert id="payForProduct" parameterType="int">
-		insert into orderlist(user_id, product_id)
-		values(#{userId}, #{productId})
+	<insert id="payForProduct" parameterType="com.tenco.toyproject.dto.PayForProductDTO">
+		insert into orderlist(user_id, product_id, tid)
+		values(#{userId}, #{productId}, #{tid})
 	</insert>
 	
+	<!-- 주문 완료 목록 보기 -->
+	<select id="showCustomerOrderList" resultType="map">
+		select * from orderlist as o
+			join product as p
+			on o.product_id = p.id
+			where user_id = #{userId};
+	</select>
+	
+	<!-- 환불 신청 테스트 -->
+	<delete id="applyForRefund">
+		delete from orderlist
+			where user_id = #{userId}
+			and product_id = #{productId};
+	</delete>
+	
+	<select id="findTid" resultType="com.tenco.toyproject.repository.entity.Order">
+		select * from orderlist 
+			where user_id = #{userId}
+			and product_id = #{productId};
+	</select>
 	
 
 </mapper>

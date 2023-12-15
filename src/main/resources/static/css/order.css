@@ -4,6 +4,8 @@
 	box-sizing: border-box;
 	border-radius: 8px;
 	border: 1px solid #e0e0e0;
+	width: 710px; 
+	margin-bottom: 20px;
 }
 .box_title {
 	padding-bottom: 20px; 
@@ -81,7 +83,6 @@
 .box_goods {
 	position: relative;
 	padding-left: 99px;
-	padding-bottom: 100px;
 	min-height: 100px;
 }
 .box_picture {
@@ -133,13 +134,10 @@ a {
 a:hover {
 	color: black;
 }
-span {
-	display: inline-block;
-	vertical-align: bottom;
-}
+
 .botton_pay {
-	width: 35%;
-	font-size: 22px;
+	width: 25%;
+	font-size: 20px;
 	font-weight: 500;
 	line-height: 55px;
 	color: white;
@@ -147,4 +145,55 @@ span {
 	text-align: center;
 	border-radius: 8px;
 	border: none;
+}
+.box_button
+{
+	display: -webkit-inline-box;
+	display: -moz-inline-box;
+	display: -ms-inline-flexbox;
+	display: -webkit-inline-flex;
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 400px;
+	height: 40px;
+	background: white;
+	border-radius: 3px;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+	border: solid 1px #e5e5e5;
+	padding: 10px;
+}
+.box_button:hover
+{
+	background: #F2F2F2 !important;
+}
+.box_button a
+{
+	display: block;
+	color: black;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 500;
+	text-align: center;
+	line-height: 40px;
+	width: 100%;
+}
+.continue_button {
+	background: #fe4c50;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 500;
+	text-align: center;
+	line-height: 40px;
+	width: 150px;
+	border-radius: 3px;
 }
