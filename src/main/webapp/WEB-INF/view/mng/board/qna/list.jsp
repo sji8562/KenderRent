@@ -59,7 +59,7 @@
                                     <h6 class="card-subtitle"></h6>
                                 </div>
                                 <c:choose>
-                                    <c:when test="${noticeList != null }">
+                                    <c:when test="${boardList != null }">
                                         <div class="table-responsive">
                                             <table class="table" style="width: 100%;">
                                                 <thead class="table-light">
@@ -68,9 +68,10 @@
                                                     <th scope="col">제목</th>
                                                         <%--<th scope="col">내용</th>--%>
                                                     <th scope="col">작성자</th>
-                                                    <th scope="col">생성날짜</th>
+                                                    <th scope="col">문의일시</th>
                                                     <th scope="col">답변여부</th>
-                                                    <th scope="col">공지사항 관리</th>
+                                                    <th scope="col">답변일시</th>
+                                                    <th scope="col">관리</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -82,22 +83,33 @@
                                                             <%--<td class="ellipsis" style="width: 60%; white-space: nowrap; overflow:hidden; text-overflow:ellipsis;">${noticeList.title}</td>--%>
                                                         <td class="ellipsis">${boardList.title}</td>
                                                             <%--<td>${noticeList.content}</td>--%>
-                                                        <td>관리자</td>
+                                                        <td>${boardList.email}</td>
                                                         <td>${boardList.formatCreatedAtToString()}</td>
                                                         <%-- 답변 여부 --%>
-                                                        <td>${boardList.reply}</td>
+                                                        <c:choose>
+                                                            <c:when test="${boardList.reply == 1}">
+                                                                <td style="color: green">답변완료</td>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <td style="color: red">미답변</td>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                        <td>${boardList.formatReplyCreatedAtToString()}</td>
                                                         <td>
                                                             <div>
                                                                 <button class="btn btn-success"
                                                                         style="border: 1px solid black"
-                                                                        onclick="location.href='/mng/board/${boardList.id}/faq-update'">
-                                                                    수정
+                                                                        onclick="location.href='/mng/board/${boardList.id}/qna-detail'">
+                                                                    조회
                                                                 </button>
-                                                                &nbsp;&nbsp;
-                                                                <button class="btn-danger btn"
-                                                                        onclick="location.href='/mng/board/${boardList.id}/faq-delete'">
-                                                                    삭제
-                                                                </button>
+                                                            &nbsp;&nbsp;<c:choose>
+                                                                <c:when test="${boardList.reply == 0}">
+                                                                    <button class="btn-danger btn"
+                                                                            onclick="location.href='/mng/board/${boardList.id}/qna-delete'">
+                                                                        삭제
+                                                                    </button>
+                                                                </c:when>
+                                                            </c:choose>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -149,4 +161,7 @@
         <!-- End Right sidebar -->
         <!-- ============================================================== -->
     </div>
+    <script>
+
+    </script>
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>

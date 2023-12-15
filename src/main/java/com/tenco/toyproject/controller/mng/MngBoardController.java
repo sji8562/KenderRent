@@ -1,8 +1,11 @@
 package com.tenco.toyproject.controller.mng;
 
+import com.oracle.wls.shaded.org.apache.xpath.operations.Mod;
 import com.tenco.toyproject._core.handler.exception.Exception500;
 import com.tenco.toyproject.dto.MngBoardDTO;
+import com.tenco.toyproject.dto.MngReplyDTO;
 import com.tenco.toyproject.repository.entity.Board;
+import com.tenco.toyproject.repository.entity.QnaDetail;
 import com.tenco.toyproject.service.mng.board.MngFaqService;
 import com.tenco.toyproject.service.mng.board.MngNoticeService;
 import com.tenco.toyproject.service.mng.board.MngQnaService;
@@ -180,6 +183,43 @@ public class MngBoardController {
 
         return "redirect:/mng/board/faq-list";
     }
+
+    /**
+     * 1:1 문의
+    * */
+    // 1:1 문의 상세
+    @GetMapping("{id}/qna-detail")
+    public String QnaDetail(Model model, @PathVariable int id) {
+        logger.info("상세 보기" + id);
+
+        QnaDetail qnaDetail = mngQnaService.findQnaByIdWithReply(id);
+        model.addAttribute("board", qnaDetail);
+
+        return "/mng/board/qna/detail";
+    }
+
+    // 1:1 문의 답변 등록
+    @PostMapping("{id}/qna-answer")
+    public String submitQnaAnswer(@PathVariable int id, MngReplyDTO.QnaReplyDto dto) {
+
+        if(dto.getReplyContent() == null || dto.getReplyContent().isEmpty()) {
+            throw new Exception500("답변 내용을 입력하세요");
+        }
+
+        dto.setBoardId(id);
+
+        mngQnaService.submitQnaAnswer(dto);
+
+        return "redirect:/mng/board/" + id + "/qna-detail";
+    }
+
+    // 1:1 문의 삭제
+    @GetMapping("{id}/qna-delete")
+    public String deleteQna(@PathVariable int id) {
+        mngQnaService.deleteQna(id);
+        return "redirect:/mng/board/qna";
+    }
+
 }
 
 

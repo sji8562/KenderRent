@@ -18,7 +18,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item active" aria-current="page">
-                                    	<a href="/mng/product/register" style="text-decoration: none"><button>상품 등록</button></a>
+                                    	<a href="/mng/product/register" style="text-decoration: none"><button class="btn btn-primary">상품 등록</button></a>
                                     </li>
                                 </ol>
                             </nav>
@@ -27,62 +27,79 @@
                 </div>
             </div>
 
-	<div class="table-responsive">
-		<c:choose>
-			<c:when test="${ productList == null }">
-				<p>등록된 상품이 존재하지 않습니다</p>
-			</c:when>
-			<c:otherwise>
-				<table class="table">
-					<thead class="table-light">
-						<tr>
-							<th scope="col">고유번호</th>
-							<th scope="col">카테고리</th>
-							<th scope="col">물품명</th>
-							<th scope="col">물품 등급</th>
-							<th scope="col">상태</th>
-							<th scope="col">기능</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="product" items="${ productList }">
-							<tr>
-								<td scope="row">${product.id}</td>
-								<td>${product.firstCategoryName} > ${product.secondCategoryName}</td>
-								<td><a href="/mng/product/${product.id}/detail" style="text-decoration: none; color: black;">${product.name}</a></td>
-								<td>${product.grade}</td>
-								<td>${product.formatStatusToString()}</td>
-									<td><a href="/mng/product/modify/${product.id}">수정</a>
-									<a onclick="confirmOpen('del', ${product.id})">삭제</a>
-								</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</c:otherwise>
-		</c:choose>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-body">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-title">1:1 문의 조회</h4>
+									<h6 class="card-subtitle"></h6>
+								</div>
+								<div class="table-responsive">
+									<c:choose>
+										<c:when test="${ productList == null }">
+											<p>등록된 상품이 존재하지 않습니다</p>
+										</c:when>
+										<c:otherwise>
+											<table class="table">
+												<thead class="table-light">
+													<tr>
+														<th scope="col">고유번호</th>
+														<th scope="col">카테고리</th>
+														<th scope="col">물품명</th>
+														<th scope="col">물품 등급</th>
+														<th scope="col">상태</th>
+														<th scope="col">기능</th>
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach var="product" items="${ productList }">
+														<tr>
+															<td scope="row">${product.id}</td>
+															<td>${product.firstCategoryName} > ${product.secondCategoryName}</td>
+															<td><a href="/mng/product/${product.id}/detail" style="text-decoration: none; color: black;">${product.name}</a></td>
+															<td>${product.grade}</td>
+															<td>${product.formatStatusToString()}</td>
+																<td><a href="/mng/product/modify/${product.id}">수정</a>
+																<a onclick="confirmOpen('del', ${product.id})">삭제</a>
+															</td>
+														</tr>
+													</c:forEach>
+												</tbody>
+											</table>
+										</c:otherwise>
+									</c:choose>
+								</div>
+								<%-- 페이징 --%>
+								<div style="display: block; text-align: center;">
+									<c:if test="${paging.startPage != 1 }">
+										<a href="/mng/product/list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+									</c:if>
+									<c:forEach begin="${paging.startPage }"
+											   end="${paging.endPage }" var="p">
+										<c:choose>
+											<c:when test="${p == paging.nowPage }">
+												<b>${p }</b>
+											</c:when>
+											<c:when test="${p != paging.nowPage }">
+												<a href="/mng/product/list?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+											</c:when>
+										</c:choose>
+									</c:forEach>
+									<c:if test="${paging.endPage != paging.lastPage}">
+										<a href="/mng/product/list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+									</c:if>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<%-- 페이징 --%>
-	<div style="display: block; text-align: center;">
-		<c:if test="${paging.startPage != 1 }">
-			<a href="/mng/product/list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
-		</c:if>
-		<c:forEach begin="${paging.startPage }"
-				   end="${paging.endPage }" var="p">
-			<c:choose>
-				<c:when test="${p == paging.nowPage }">
-					<b>${p }</b>
-				</c:when>
-				<c:when test="${p != paging.nowPage }">
-					<a href="/mng/product/list?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
-				</c:when>
-			</c:choose>
-		</c:forEach>
-		<c:if test="${paging.endPage != paging.lastPage}">
-			<a href="/mng/product/list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
-		</c:if>
-	</div>
-
 
 
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>
