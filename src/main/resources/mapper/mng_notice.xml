@@ -37,7 +37,7 @@
     <select id="findQnaByCodeWithPagenation" resultType="com.tenco.toyproject.repository.entity.Board">
         SELECT b.id, b.title, b.code, b.user_id, b.created_at, (r.id IS NOT NULL) AS reply  FROM board AS b
         LEFT JOIN reply AS r ON r.board_id = b.id
-        WHERE b.code = #{code}
+        WHERE b.code = 3
             LIMIT #{start}, 5
     </select>
 

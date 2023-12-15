@@ -92,9 +92,11 @@ public class MngBoardController {
         model.addAttribute("paging", pageVO);
         System.out.println(cntPerPage);
 
-        // 1:1문의 조회(code 3번)
-        List<MngBoardDTO.QnaListDto> boardList = mngNoticeService.findAllBoardByCode(3);
+        // 1:1문의 조회
+        List<MngBoardDTO.QnaListDto> boardList = mngNoticeService.findAllBoardByCode(pageVO);
         model.addAttribute("boardList", boardList);
+
+        logger.info("여기 왔나???????????????" + boardList);
 
         return "mng/board/qna/list";
 

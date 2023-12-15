@@ -84,7 +84,8 @@
                                                             <%--<td>${noticeList.content}</td>--%>
                                                         <td>관리자</td>
                                                         <td>${boardList.formatCreatedAtToString()}</td>
-                                                        <td>TODO 답변여부 받아오기</td>
+                                                        <%-- 답변 여부 --%>
+                                                        <td>${boardList.reply}</td>
                                                         <td>
                                                             <div>
                                                                 <button class="btn btn-success"
