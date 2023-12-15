@@ -46,9 +46,22 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-body">
-                    <h4 class="card-title">${board.title}</h4>
-                    <h4 class="card-title">${board.content}</h4>
+                    <c:choose>
+                        <c:when test="${notice != null}">
+                        <h4 class="card-title">${notice.title}</h4>
+                        <h4 class="card-title">${notice.content}</h4>
+
                 </div>
+                <div>
+                    <button type="button" class="btn btn-success" onclick="location.href='/mng/board/${notice.id}/notice-update'">수정</button>
+                    <button type="button" class="btn btn-danger" onclick="location.href='/mng/board/${notice.id}/notice-delete'">삭제</button>
+                </div>
+                        </c:when>
+                <c:otherwise>
+                    없습니다 없었어요 없어요
+                </c:otherwise>
+                    </c:choose>
+
             </div>
 
         </div>
