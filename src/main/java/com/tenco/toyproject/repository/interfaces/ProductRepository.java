@@ -25,4 +25,5 @@ public interface ProductRepository {
 	public List<Map> showCustomerOrderList(int userId);
 	public int applyForRefund(int productId);
 	public Order findTid(@Param("userId") int userId, @Param("productId") int productId);
+	public List<Map> searchProduct(String keyword);
 }

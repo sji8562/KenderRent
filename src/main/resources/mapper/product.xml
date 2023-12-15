@@ -78,6 +78,9 @@
 			where user_id = #{userId}
 			and product_id = #{productId};
 	</select>
-	
+	<select id="searchProduct" resultType="Map">
+		select * from product
+		where name Like CONCAT('%', #{keyword}, '%')
+	</select>
 
 </mapper>

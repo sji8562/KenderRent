@@ -32,6 +32,7 @@ import com.tenco.toyproject.service.UserService;
 import com.tenco.toyproject.vo.PageVO;
 
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
@@ -133,7 +134,19 @@ public class ProductController {
 		return "product/order";
 	}
 	@GetMapping("search")
-	public String search() {
+	public String search(Model model, HttpServletRequest request,@RequestParam(value="keyword", required=false) String keyword,
+			@RequestParam(value="price1", required=false) String price1, @RequestParam(value="price2", required=false) String price2){
+		// 한 페이지에 몇개씩 표시할지
+		final int PAGE_ROW_COUNT = 10;
+		int pageNum = 1;
+		String strPageNum = request.getParameter("pageNum");
+		if(strPageNum != null) {
+			pageNum = Integer.parseInt(strPageNum);
+		}
+		int startRowNum = 0 + (pageNum - 1) * PAGE_ROW_COUNT;
+		
+		List<Map> productList = productService.searchProduct(keyword);
+		model.addAttribute("productList", productList);
 		return "product/search";
 	}
 	
@@ -153,4 +166,5 @@ public class ProductController {
 		model.addAttribute("refund", cancelResponse);
 		return "redirect:/mypage/order-list";
 	}
+	
 }
