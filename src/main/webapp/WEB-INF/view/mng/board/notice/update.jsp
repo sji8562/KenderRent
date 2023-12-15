@@ -49,15 +49,29 @@
                 <div class="card card-body">
                     <h4 class="card-title">공지사항 수정</h4>
                     <h5 class="card-subtitle"> All bootstrap element classies </h5>
-                    <form class="form-horizontal mt-4">
-                        <div class="form-group">
-                            <label>Default Text <span class="help"> 제목</span></label>
-                            <input type="text" class="form-control" name="title" value="타이틀">
-                        </div>
-                        <div id="container">
-                            <textarea id="summernote" name="content">내용</textarea>
-                        </div>
+
+                        <c:choose>
+                            <c:when test="${notice != null}">
+                    <form class="form-horizontal mt-4" method="post" action="/mng/board/notice-update-proc">
+                        <input type="hidden" id="id" name="id" value="${notice.id}">
+                                <div class="form-group">
+                                    <label>Default Text <span class="help"> 제목</span></label>
+                                    <input type="text" class="form-control" name="title" value="${notice.title}">
+                                </div>
+                                <div id="container">
+                                    <textarea id="summernote" name="content">${notice.content}</textarea>
+                                </div>
+
+                        <button type="submit" class="btn btn-primary">수정하기</button>
+                        <button class="btn btn-secondary" onclick="location.href='/mng/board/${notice.id}/notice-delete'">삭제하기</button>
                     </form>
+                            </c:when>
+                            <c:otherwise>
+                                잘못 찾아오셨네요
+                            </c:otherwise>
+                        </c:choose>
+
+
                 </div>
             </div>
         </div>
