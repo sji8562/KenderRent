@@ -105,7 +105,7 @@
 				<!-- End Logo -->
 				<!-- ============================================================== -->
 				<div class="navbar-collapse collapse" id="navbarSupportedContent"
-					data-navbarbg="skin6">
+					data-navbarbg="skin6" style="justify-content: space-between;">
 					<!-- ============================================================== -->
 					<!-- toggle and nav items -->
 					<!-- ============================================================== -->
@@ -157,6 +157,8 @@
 						<!-- User profile and search -->
 						<!-- ============================================================== -->
 					</ul>
+					<%-- TODO 로그아웃 기능 --%>
+					<a><button type="button" class="btn">logout</button></a>
 				</div>
 			</nav>
 		</header>
@@ -190,7 +192,7 @@
 						</a></li>
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="/mng/product/list" aria-expanded="false"> <i
+							href="/mng/product/list?keyword=" aria-expanded="false"> <i
 								class="mdi mdi-arrange-bring-forward"></i> <span
 								class="hide-menu">물품 관리</span>
 						</a></li>
@@ -289,7 +291,7 @@
 										class="sidebar-link waves-effect waves-dark sidebar-link"
 
 
-										href="/mng/board/faq-list"> <i class="mdi mdi-view-dashboard"></i>
+										href="/mng/board/faq-list?keyword="> <i class="mdi mdi-view-dashboard"></i>
 
 
 									<span class="hide-menu">자주 묻는 질문</span>
@@ -299,7 +301,7 @@
 										class="sidebar-link waves-effect waves-dark sidebar-link"
 
 
-										href="/mng/board/qna"> <i
+										href="/mng/board/qna?keyword="> <i
 
 
 										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">1:1질문</span>

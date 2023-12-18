@@ -8,12 +8,19 @@
 
     <!-- FAQ LIST -->
     <select id="countFaq" resultType="int">
-        SELECT COUNT(*) AS count FROM board WHERE code = 2
+        SELECT COUNT(*) AS count FROM board WHERE code = 2 AND title LIKE CONCAT('%', #{keyword}, '%')
     </select>
 
     <!-- FAQ 조회 -->
     <select id="findAllFaqWithPagenation" resultType="com.tenco.toyproject.repository.entity.Board">
         SELECT * FROM board where code = 2 LIMIT #{start}, 5
+    </select>
+
+    <!-- FAQ 조회 with Keyword -->
+    <select id="findFaqWithPagenationAndKeyword" resultType="com.tenco.toyproject.repository.entity.Board">
+        SELECT * FROM board where code = 2
+            AND title LIKE CONCAT('%', #{keyword}, '%')
+            LIMIT #{pageVO.start}, 5
     </select>
 
     <!-- FAQ 등록 -->

@@ -40,8 +40,8 @@ public class MngProductService {
 
 
     // 전체 상품 개수 조회
-    public int countProductList() {
-        return mngRepository.findProductCount();
+    public int countProductList(String keyword) {
+        return mngRepository.findProductCount(keyword);
     }
 
     // 상품 삭제
@@ -195,4 +195,7 @@ public class MngProductService {
         return mngRepository.findProducCountByFirstCategoryId(fId);
     }
 
+    public List<Product> findProductByKeyword(PageVO pageVO, String keyword) {
+        return mngRepository.findProductByKeyword(pageVO, keyword);
+    }
 }

@@ -95,9 +95,12 @@ public class MngBoardController {
 
     // 자주 묻는 질문
     @GetMapping("faq-list")
-    public String qna(Model model, PageVO pageVO, @RequestParam(value = "nowPage",required = false) String nowPage, @RequestParam(value = "cntPerPage",required = false) String cntPerPage){
-        int total = mngFaqService.countFaqList();
+    public String qna(Model model, PageVO pageVO,
+                      @RequestParam(value = "nowPage",required = false) String nowPage,
+                      @RequestParam(value = "cntPerPage",required = false) String cntPerPage,
+                      @RequestParam(value = "keyword", required = false) String keyword){
 
+        int total = mngFaqService.countFaqList(keyword);
         if (nowPage == null && cntPerPage == null) {
             nowPage = "1";
             cntPerPage = "5";
@@ -109,18 +112,31 @@ public class MngBoardController {
 
         pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
         model.addAttribute("paging", pageVO);
+        model.addAttribute("keyword", keyword);
         System.out.println(cntPerPage);
 
-        List<MngBoardDTO.NoticeListDTO> noticeList = mngFaqService.findAllByFaq(pageVO);
-        System.out.println(noticeList.toString());
+        List<MngBoardDTO.NoticeListDTO> noticeList;
+
+        // 검색어가 있는 경우
+        if(keyword != null && !keyword.isEmpty()) {
+            // 검색어를 이용해 검색 쿼리 수행
+            noticeList = mngFaqService.findFaqByKeyword(pageVO, keyword);
+        } else {
+            // 검색어가 없을 때
+            noticeList = mngFaqService.findAllByFaq(pageVO);
+        }
+
         model.addAttribute("noticeList", noticeList);
 
         return "mng/board/faq/list";
     }
     @GetMapping("qna")
-    public String qnaPage(Model model, PageVO pageVO, @RequestParam(value = "nowPage",required = false) String nowPage, @RequestParam(value = "cntPerPage",required = false) String cntPerPage){
+    public String qnaPage(Model model, PageVO pageVO,
+                          @RequestParam(value = "nowPage",required = false) String nowPage,
+                          @RequestParam(value = "cntPerPage",required = false) String cntPerPage,
+                          @RequestParam(value = "keyword", required = false) String keyword){
 
-        int total = mngQnaService.countQnaList();
+        int total = mngQnaService.countQnaList(keyword);
 
         if (nowPage == null && cntPerPage == null) {
             nowPage = "1";
@@ -133,10 +149,20 @@ public class MngBoardController {
 
         pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
         model.addAttribute("paging", pageVO);
+        model.addAttribute("keyword", keyword);
         System.out.println(cntPerPage);
 
-        // 1:1문의 조회
-        List<MngBoardDTO.QnaListDto> boardList = mngQnaService.findQnaByCodeWithPagenation(pageVO);
+        List<MngBoardDTO.QnaListDto> boardList;
+
+        // 검색어가 있는 경우
+        if(keyword != null && !keyword.isEmpty()) {
+            // 검색어를 이용해 검색 쿼리 수행
+            boardList = mngQnaService.findQnaByCodeWithPagenationAndKeyword(pageVO, keyword);
+        } else {
+            // 검색어가 없을 때
+            boardList = mngQnaService.findQnaByCodeWithPagenation(pageVO);
+        }
+
         model.addAttribute("boardList", boardList);
 
         logger.info("여기 왔나???????????????" + boardList);
