@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
-        
+
         <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
@@ -41,6 +41,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Sales Ratio</h4>
                                 <div class="sales ct-charts mt-3"></div>
+
                             </div>
                         </div>
                     </div>
@@ -341,5 +342,32 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            
+            <script>
+                var chart = new Chartist.Line('.sales', {
+                    labels: [1, 2, 3, 4, 5, 6, 7 , 8 , 9 , 10 , 11 , 12],
+                    series: [
+                        [24.5, 28.3, 42.7, 32, 34.9, 48.6, 40,20,50,40,30,20,25],
+                        [8.9, 5.8, 21.9, 5.8, 16.5, 6.5, 14.5]
+                    ]
+                }, {
+                    low: 0,
+                    high: 48,
+                    showArea: true,
+                    fullWidth: true,
+                    plugins: [
+                        Chartist.plugins.tooltip()
+                    ],
+                    axisY: {
+                        onlyInteger: true,
+                        scaleMinSpace: 40,
+                        offset: 20,
+                        labelInterpolationFnc: function(value) {
+                            return (value / 10) + 'k';
+                        }
+                    },
+
+                });
+
+                var chart = [chart];
+            </script>
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>
