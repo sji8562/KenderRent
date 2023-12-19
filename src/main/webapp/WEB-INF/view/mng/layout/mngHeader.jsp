@@ -184,18 +184,32 @@
 								class="mdi mdi-arrange-bring-forward"></i> <span
 								class="hide-menu">Form Basic</span>
 						</a></li>
-						<li class="sidebar-item"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="/mng/product/list?keyword=" aria-expanded="false"> <i
-								class="mdi mdi-arrange-bring-forward"></i> <span
-								class="hide-menu">물품 관리</span>
-						</a></li>
-						<li class="sidebar-item"><a
+						<li class="sidebar-item" id="applyManagement"><a
 								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/product/categories" aria-expanded="false"> <i
-								class="mdi mdi-arrange-bring-forward"></i> <span
-								class="hide-menu">카테고리 관리</span>
-						</a></li>
+								href="/mng/product/list?keyword=" aria-expanded="false"> <i
+								class="mdi mdi-alert-outline"></i> <span class="hide-menu">물품 관리</span>
+						</a>
+							<ul aria-expanded="false" class="collapse first-level">
+								<!-- 대여신청 -->
+								<li class="sidebar-item"><a
+										class="sidebar-link waves-effect waves-dark sidebar-link"
+										href="/mng/product/list?keyword="> <i class="mdi mdi-view-dashboard"></i>
+									<span class="hide-menu">물품 관리</span>
+								</a></li>
+								<!-- 판매신청 -->
+								<li class="sidebar-item"><a
+										class="sidebar-link waves-effect waves-dark sidebar-link"
+										href="//mng/product/categories"> <i class="mdi mdi-view-dashboard"></i>
+									<span class="hide-menu">카테고리 관리</span>
+								</a></li>
+								<!-- 구매신청 -->
+								<li class="sidebar-item"><a
+										class="sidebar-link waves-effect waves-dark sidebar-link"
+										href="/mng/apply/purchase-list"> <i
+										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">후기 관리</span>
+								</a></li>
+							</ul></li>
+
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
 							href="/mng/table" aria-expanded="false"> <i
