@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--반드시 세미콜론 생략 -->
+<mapper
+        namespace="com.tenco.toyproject.repository.interfaces.mng.MngIndexRepository">
+
+
+    <select id="findByCreatedAt">
+            SELECT DATE_FORMAT(r.created_at,'%m') AS DATE ,COUNT(*) as count , sum(p.price) as price FROM rent r INNER JOIN product p ON r.product_id = p.id GROUP BY r.created_at
+    </select>
+
+</mapper>
+
+
+
+
