@@ -43,10 +43,12 @@ public class MngProductController {
     @Autowired
     private MngProductService mngService;
     @GetMapping("list")
-    public String productList(Model model, PageVO pageVO, @RequestParam(value = "nowPage", required = false) String nowPage
-            , @RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
+    public String productList(Model model, PageVO pageVO,
+              @RequestParam(value = "nowPage", required = false) String nowPage,
+              @RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+              @RequestParam(value = "keyword", required = false) String keyword) {
 
-        int total = mngService.countProductList();
+        int total = mngService.countProductList(keyword);
         if (nowPage == null && cntPerPage == null) {
             nowPage = "1";
             cntPerPage = "5";
@@ -59,11 +61,25 @@ public class MngProductController {
         pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
         model.addAttribute("paging", pageVO);
 
+        model.addAttribute("keyword", keyword);
+
+
         System.out.println("===============");
-        System.out.println(cntPerPage);
+        System.out.println(keyword);
         System.out.println("===============");
 
-        List<Product> productList = mngService.findProductAll(pageVO);
+        List<Product> productList;
+
+        // 검색어가 있는 경우
+        if(keyword != null && !keyword.isEmpty()) {
+            // 검색어를 이용해 검색 쿼리 수행
+            productList = mngService.findProductByKeyword(pageVO, keyword);
+        } else {
+            // 검색어가 없을 때
+            productList = mngService.findProductAll(pageVO);
+        }
+
+
         System.out.println("productList" + productList);
         model.addAttribute(productList);
 

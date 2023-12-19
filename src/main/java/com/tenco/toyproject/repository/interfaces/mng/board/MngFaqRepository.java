@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface MngFaqRepository {
-    public int countFaq();
+    public int countFaq(String keyword);
 
     public List<MngBoardDTO.NoticeListDTO> findAllFaqWithPagenation(PageVO pageVO);
 
@@ -20,4 +20,6 @@ public interface MngFaqRepository {
     Board findBoardById(int id);
 
     void updateFaqById(MngBoardDTO.FaqSubmitDto dto);
+
+    List<MngBoardDTO.NoticeListDTO> findFaqWithPagenationAndKeyword(PageVO pageVO, String keyword);
 }

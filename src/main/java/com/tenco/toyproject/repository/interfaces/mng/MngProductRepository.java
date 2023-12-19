@@ -20,7 +20,7 @@ public interface MngProductRepository {
     Product findProductById(Integer pId);
 
     // product 총 개수
-    public int findProductCount();
+    public int findProductCount(String keyword);
 
     // 특정 물품 삭제
     public int deleteByProductId(Integer id);
@@ -65,4 +65,5 @@ public interface MngProductRepository {
 
     int findProducCountByFirstCategoryId(int fId);
 
+    List<Product> findProductByKeyword(PageVO pageVO, String keyword);
 }

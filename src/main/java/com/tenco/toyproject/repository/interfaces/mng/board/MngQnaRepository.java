@@ -12,11 +12,13 @@ import java.util.List;
 public interface MngQnaRepository {
     List<MngBoardDTO.QnaListDto> findQnaByCodeWithPagenation(PageVO pageVO);
 
-    int countQnaList();
+    int countQnaList(String keyword);
 
     QnaDetail findQnaByIdWithReply(int id);
 
     void submitQnaAnswer(MngReplyDTO.QnaReplyDto dto);
 
     void deleteQna(int id);
+
+    List<MngBoardDTO.QnaListDto> findQnaByCodeWithPagenationAndKeyword(PageVO pageVO, String keyword);
 }
