@@ -23,8 +23,9 @@
 <link rel="icon" type="image/png" sizes="16x16"
 	href="/assets/images/favicon.png">
 <!-- Custom CSS -->
-<link href="/assets/libs/chartist/dist/chartist.min.css"
-	rel="stylesheet">
+	<link href="/assets/libs/chartist/dist/chartist.min.css"
+		  rel="stylesheet">
+
 <!-- Custom CSS -->
 <link href="/dist/css/style.min.css" rel="stylesheet">
 	<link href="/dist/css/mng.css" rel="stylesheet">
@@ -135,7 +136,7 @@
 						<!-- User profile and search -->
 						<!-- ============================================================== -->
 						<li class="nav-item dropdown"><a
-							href="/mng" id="navbarDropdown" aria-expanded="false"> <img
+							href="/mng/" id="navbarDropdown" aria-expanded="false"> <img
 								src="/images/Logo.png" alt="user" width="31">
 						</a>
 							<%--<ul class="dropdown-menu dropdown-menu-end user-dd animated"
@@ -170,7 +171,7 @@
 					<ul id="sidebarnav">
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="/mng" aria-expanded="false"> <i
+							href="/mng/" aria-expanded="false"> <i
 								class="mdi mdi-av-timer"></i> <span class="hide-menu">Dashboard</span>
 						</a></li>
 						<li class="sidebar-item"><a
@@ -184,7 +185,7 @@
 								class="mdi mdi-arrange-bring-forward"></i> <span
 								class="hide-menu">Form Basic</span>
 						</a></li>
-						<li class="sidebar-item" id="applyManagement"><a
+						<li class="sidebar-item" id="productManagement"><a
 								class="sidebar-link waves-effect waves-dark sidebar-link"
 								href="/mng/product/list?keyword=" aria-expanded="false"> <i
 								class="mdi mdi-alert-outline"></i> <span class="hide-menu">물품 관리</span>
