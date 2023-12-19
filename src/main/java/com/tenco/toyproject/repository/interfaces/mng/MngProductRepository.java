@@ -63,7 +63,7 @@ public interface MngProductRepository {
 
     int findProductBySecondCategoryId(int sId);
 
-    int findProducCountByFirstCategoryId(int fId);
+    int findProductCountByFirstCategoryId(int fId);
 
     List<Product> findProductByKeyword(PageVO pageVO, String keyword);
 }

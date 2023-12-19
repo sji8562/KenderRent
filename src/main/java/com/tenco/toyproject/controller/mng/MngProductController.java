@@ -402,6 +402,7 @@ public class MngProductController {
 //        }
         // 해당 카테고리의 하위 항목이 있는지 확인
         List<SecondCategory> secondCategories = mngService.findSecondCategoryByFirstCategoryId(Integer.toString(fId));
+
         try{
             if (!secondCategories.isEmpty()) {
                 throw new CustomRestfulException("하위 카테고리가 존재합니다", HttpStatus.BAD_REQUEST);
@@ -419,6 +420,7 @@ public class MngProductController {
         }catch (Exception e){
             e.printStackTrace();
             return null;
+
         }
     }
 
@@ -485,6 +487,16 @@ public class MngProductController {
     public List<FirstCategory> findFirstCategoryAll() {
         logger.info("===============================");
         return mngService.getFirstCategories();
+    }
+
+    // 상품 후기 관리 페이지
+    @GetMapping("/review")
+    public String productReview(Model model) {
+
+//        model.addAttribute("reviewList", )
+
+        return "/mng/product/review";
+
     }
 
 }
