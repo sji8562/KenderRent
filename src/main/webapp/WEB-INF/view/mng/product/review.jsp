@@ -76,6 +76,7 @@
 																<td><a href="/mng/product/review/${review.id}/detail">조회</a>
 																<a onclick="reviewConfirmOpen('del', ${review.id})">삭제</a>
 																</td>
+
 															</tr>
 														</c:forEach>
 													</tbody>
