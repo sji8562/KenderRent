@@ -199,13 +199,13 @@
 								<!-- 판매신청 -->
 								<li class="sidebar-item"><a
 										class="sidebar-link waves-effect waves-dark sidebar-link"
-										href="//mng/product/categories"> <i class="mdi mdi-view-dashboard"></i>
+										href="/mng/product/categories"> <i class="mdi mdi-view-dashboard"></i>
 									<span class="hide-menu">카테고리 관리</span>
 								</a></li>
 								<!-- 구매신청 -->
 								<li class="sidebar-item"><a
 										class="sidebar-link waves-effect waves-dark sidebar-link"
-										href="/mng/product/review"> <i
+										href="/mng/product/review?keyword="> <i
 										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">후기 관리</span>
 								</a></li>
 							</ul></li>

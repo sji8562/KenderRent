@@ -15,6 +15,22 @@ function confirmOpen(type, id) {
     }
 }
 
+function reviewConfirmOpen(type, id) {
+    console.log(type);
+    console.log(id);
+
+    if(type == 'del') {
+        if(confirm('후기를 삭제하시겠습니까?')) {
+            fetch('/mng/product/review/' + id + '/delete')
+                .then((response) => {
+                    history.go(0);
+                    console.log("response", response)
+                }) //성공했을때
+                .catch((error) => console.log("error:", error)) //실패했을때
+        }
+    }
+}
+
 function displayFirstCategoryData(data) {
     // fetch('/mng/product/first-category-all')
     //     .then(response => response.json())
