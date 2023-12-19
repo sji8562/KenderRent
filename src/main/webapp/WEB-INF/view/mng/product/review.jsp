@@ -34,7 +34,7 @@
 					<div class="card-body">
 						<div class="col-12">
 							<div class="card">
-								<form class="row g-3" action="/mng/product/list" method="get">
+								<form class="row g-3" action="/mng/product/review" method="get">
 									<div class="card-body m--search-inline">
 										<h4 class="card-title">상품 후기 조회</h4>
 											<div class="m--search-inline">
@@ -48,7 +48,7 @@
 									</div>
 									<div class="table-responsive">
 										<c:choose>
-											<c:when test="${ productList == null }">
+											<c:when test="${ reviewList == null }">
 												<p>등록된 상품 후기가 없습니다</p>
 											</c:when>
 											<c:otherwise>
@@ -60,20 +60,23 @@
 															<th scope="col">물품명</th>
 															<th scope="col">후기내용</th>
 															<th scope="col">작성자</th>
+															<th scope="col">작성일</th>
 															<th scope="col">기능</th>
 														</tr>
 													</thead>
 													<tbody>
-														<c:forEach var="product" items="${ productList }">
+														<c:forEach var="review" items="${ reviewList }">
 															<tr>
-																<td scope="row">${product.id}</td>
-																<td>${product.firstCategoryName} > ${product.secondCategoryName}</td>
-																<td><a href="/mng/product/${product.id}/detail" style="text-decoration: none; color: black;">${product.name}</a></td>
-																<td>${product.grade}</td>
-																<td>${product.formatStatusToString()}</td>
-																	<td><a href="/mng/product/modify/${product.id}">수정</a>
-																	<a onclick="confirmOpen('del', ${product.id})">삭제</a>
+																<td scope="row">${review.id}</td>
+																<td>${review.firstCategoryName} > ${review.secondCategoryName}</td>
+																<td><a href="/mng/product/review/${review.id}/detail" style="text-decoration: none; color: black;">${review.name}</a></td>
+																<td>${review.content}</td>
+																<td>${review.email}</td>
+																<td>${review.formatCreatedAtToString()}</td>
+																<td><a href="/mng/product/review/${review.id}/detail">조회</a>
+																<a onclick="reviewConfirmOpen('del', ${review.id})">삭제</a>
 																</td>
+
 															</tr>
 														</c:forEach>
 													</tbody>
@@ -84,7 +87,7 @@
 									<%-- 페이징 --%>
 									<div style="display: block; text-align: center;">
 										<c:if test="${paging.startPage != 1 }">
-											<a href="/mng/product/list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">&lt;</a>
+											<a href="/mng/review/list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">&lt;</a>
 										</c:if>
 										<c:forEach begin="${paging.startPage }"
 												   end="${paging.endPage }" var="p">
@@ -93,12 +96,12 @@
 													<b>${p }</b>
 												</c:when>
 												<c:when test="${p != paging.nowPage }">
-													<a href="/mng/product/list?nowPage=${p }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">${p }</a>
+													<a href="/mng/review/list?nowPage=${p }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">${p }</a>
 												</c:when>
 											</c:choose>
 										</c:forEach>
 										<c:if test="${paging.endPage != paging.lastPage}">
-											<a href="/mng/product/list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">&gt;</a>
+											<a href="/mng/review/list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}"></a>
 										</c:if>
 									</div>
 								</form>

@@ -6,6 +6,7 @@ import com.tenco.toyproject.dto.MngProductDto;
 import com.tenco.toyproject.dto.MngProductUpdateDto;
 import com.tenco.toyproject.repository.entity.FirstCategory;
 import com.tenco.toyproject.repository.entity.Product;
+import com.tenco.toyproject.repository.entity.Review;
 import com.tenco.toyproject.repository.entity.SecondCategory;
 import com.tenco.toyproject.repository.interfaces.mng.MngProductRepository;
 import com.tenco.toyproject.vo.PageVO;
@@ -200,5 +201,22 @@ public class MngProductService {
     }
 
 
+    public List<Review> findAllReviewWithPaginationAndKeyword(PageVO pageVO, String keyword) {
+        return mngRepository.findAllReviewWithPaginationAndKeyword(pageVO, keyword);
+    }
 
+    public List<Review> findAllReviewWithPagination(PageVO pageVO) {
+        return mngRepository.findAllReviewWithPagination(pageVO);
+    }
+
+    public int countReviewList(String keyword) {
+        return mngRepository.countReviewList(keyword);
+    }
+
+    public Review findProductReviewById(Integer pId) {
+        return mngRepository.findProductReviewById(pId);    }
+
+    public int deleteProductReview(Integer id) {
+        return mngRepository.deleteProductReview(id);
+    }
 }
