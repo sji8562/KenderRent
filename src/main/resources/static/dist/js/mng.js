@@ -233,6 +233,15 @@ document.getElementById('noticeManagement').addEventListener('mouseleave', funct
     document.getElementById('noticeManagement').classList.remove('show');
 });
 
+document.getElementById('productManagement').addEventListener('mouseenter', function() {
+    // 마우스가 올라갈 때 이벤트 발생
+    document.getElementById('productManagement').classList.add('show');
+});
+
+document.getElementById('productManagement').addEventListener('mouseleave', function() {
+    // 마우스가 벗어날 때 이벤트 발생
+    document.getElementById('productManagement').classList.remove('show');
+});
 
 function DaumPostcode() {
     new daum.Postcode({

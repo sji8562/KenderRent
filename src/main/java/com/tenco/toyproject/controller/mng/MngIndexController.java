@@ -13,4 +13,10 @@ public class MngIndexController {
     public String goLoginPage() {
         return "mng/login";
     }
+    @GetMapping({"/","/index"})
+    public String manager() {
+        System.out.println("매니저 페이지로 들어갑니다.");
+        return "/mng/index";
+    }
 }
+
