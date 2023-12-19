@@ -55,6 +55,14 @@ public class MngContentController {
             e.printStackTrace();
             return null;
         }
+
+
+        // 이미 등록된 회사 소개가 있는지 확인
+
+        mngContentService.createMngContent(dto);
+
+        return "redirect:/mng/content/info";
+
     }
 
     @GetMapping("disinfection-process")

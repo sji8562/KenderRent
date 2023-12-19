@@ -440,6 +440,7 @@ public class MngProductController {
             logger.info("같은 이름의 카테고리가 있는지 먼저 확인", sCategoryName);
             int resultRowCount = mngService.findSecondCategoryByName(fCategory, sCategoryName);
 
+
             if (resultRowCount > 0) {
                 throw new CustomRestfulException("이미 존재하는 카테고리입니다", HttpStatus.BAD_REQUEST);
             }
@@ -494,6 +495,8 @@ public class MngProductController {
     @GetMapping("/review")
     public String productReview(Model model) {
 
+        // 후기 조회
+//        mngService.findAllReviewWithPagination();
 //        model.addAttribute("reviewList", )
 
         return "/mng/product/review";

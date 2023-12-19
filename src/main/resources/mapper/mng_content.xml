@@ -21,7 +21,7 @@
 
     <!-- 없으면 INSERT 있으면 UPDATE -->
     <update id="createContent">
-        INSERT INTO information (id, content, TYPE, created_at) VALUES (#{id}, #{content}, #{TYPE}, NOW())
+        INSERT INTO information (content, TYPE, created_at) VALUES (#{content}, #{TYPE}, NOW())
             ON DUPLICATE KEY UPDATE content = #{content}, TYPE = #{TYPE}, created_at = NOW()
     </update>
 </mapper>

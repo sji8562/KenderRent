@@ -25,7 +25,7 @@
                 <form action="/mng/content/register" method="post">
                     <%-- CK Editor --%>
 
-                    <input type="number" name="id" value="${content.id}" hidden />
+                    <%--<input type="number" name="id" value="${content.id}" hidden />--%>
                     <input type="number" name="TYPE" value="2" hidden />
                     <div id="container">
                         <textarea id="summernote" name="content">${content.content}</textarea>
