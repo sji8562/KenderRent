@@ -408,7 +408,7 @@ public class MngProductController {
                 throw new CustomRestfulException("하위 카테고리가 존재합니다", HttpStatus.BAD_REQUEST);
             }
             // 해당 카테고리에 등록된 물품이 있는지 확인
-            int resultRows = mngService.findProducCountByFirstCategoryId(fId);
+            int resultRows = mngService.findProductCountByFirstCategoryId(fId);
             if (resultRows > 0) {
                 throw new CustomRestfulException("해당 카테고리에 등록된 물품이 있습니다", HttpStatus.BAD_REQUEST);
             }
@@ -422,6 +422,7 @@ public class MngProductController {
             return null;
 
         }
+
     }
 
 
