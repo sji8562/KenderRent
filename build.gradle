@@ -39,11 +39,21 @@ dependencies {
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
 	// <이메일인증용 DL
-	implementation 'org.springframework.boot:spring-boot-starter-mail:3.0.5'
-	implementation 'org.springframework:spring-context:6.0.7'
-	implementation 'org.springframework:spring-context-support:6.0.7'
-	implementation 'com.sun.mail:jakarta.mail:2.0.1'
+	implementation 'com.sun.mail:jakarta.mail:2.0.0'
+	// spring security
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+	implementation 'org.springframework.boot:spring-boot-starter-security:3.1.6'
+	// spring oauth2
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-oauth2-client
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.1.6'
+	// spring Security taglib
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs
+	implementation 'org.springframework.security:spring-security-taglibs:5.7.2'
+	// spring mail
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail
+	implementation 'org.springframework.boot:spring-boot-starter-mail:3.1.6'
 	// 이메일인증용 DL>
+	
 	implementation group: 'com.auth0', name: 'java-jwt', version: '4.4.0'
 
 
