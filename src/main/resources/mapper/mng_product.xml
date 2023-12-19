@@ -116,7 +116,7 @@
         SELECT COUNT(*) AS count FROM product WHERE second_category_id = #{sId}
     </select>
 
-    <select id="findProducCounttByFirstCategoryId" resultType="int">
+    <select id="findProductCountByFirstCategoryId" resultType="int">
         SELECT COUNT(*) AS count FROM product WHERE first_category_id = #{fId}
     </select>
 
