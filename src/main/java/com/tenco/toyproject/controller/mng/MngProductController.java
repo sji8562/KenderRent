@@ -407,7 +407,7 @@ public class MngProductController {
                 throw new CustomRestfulException("하위 카테고리가 존재합니다", HttpStatus.BAD_REQUEST);
             }
             // 해당 카테고리에 등록된 물품이 있는지 확인
-            int resultRows = mngService.findProducCountByFirstCategoryId(fId);
+            int resultRows = mngService.findProductCountByFirstCategoryId(fId);
             if (resultRows > 0) {
                 throw new CustomRestfulException("해당 카테고리에 등록된 물품이 있습니다", HttpStatus.BAD_REQUEST);
             }
@@ -420,6 +420,7 @@ public class MngProductController {
             e.printStackTrace();
             return null;
         }
+
     }
 
 
@@ -485,6 +486,16 @@ public class MngProductController {
     public List<FirstCategory> findFirstCategoryAll() {
         logger.info("===============================");
         return mngService.getFirstCategories();
+    }
+
+    // 상품 후기 관리 페이지
+    @GetMapping("/review")
+    public String productReview(Model model) {
+
+//        model.addAttribute("reviewList", )
+
+        return "/mng/product/review";
+
     }
 
 }

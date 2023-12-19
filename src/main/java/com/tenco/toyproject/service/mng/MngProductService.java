@@ -191,11 +191,14 @@ public class MngProductService {
         return mngRepository.findProductBySecondCategoryId(sId);
     }
 
-    public int findProducCountByFirstCategoryId(int fId) {
-        return mngRepository.findProducCountByFirstCategoryId(fId);
+    public int findProductCountByFirstCategoryId(int fId) {
+        return mngRepository.findProductCountByFirstCategoryId(fId);
     }
 
     public List<Product> findProductByKeyword(PageVO pageVO, String keyword) {
         return mngRepository.findProductByKeyword(pageVO, keyword);
     }
+
+
+
 }
