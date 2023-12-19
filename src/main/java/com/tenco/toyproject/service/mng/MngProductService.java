@@ -161,12 +161,12 @@ public class MngProductService {
         return resultRowCount;
     }
 
-    public void addFirstCategory(String fCategoryName) {
-        mngRepository.createFirstCategory(fCategoryName);
+    public int addFirstCategory(String fCategoryName) {
+        return mngRepository.createFirstCategory(fCategoryName);
     }
 
-    public void deleteFirstCategoryById(int fId) {
-        mngRepository.deleteFirstCategoryById(fId);
+    public int deleteFirstCategoryById(int fId) {
+        return mngRepository.deleteFirstCategoryById(fId);
     }
 
 
@@ -175,16 +175,16 @@ public class MngProductService {
         return resultRowCount;
     }
 
-    public void addSecondCategory(String fCategory, String sCategoryName) {
-        mngRepository.addSecondCategory(fCategory, sCategoryName);
+    public int addSecondCategory(String fCategory, String sCategoryName) {
+        return mngRepository.addSecondCategory(fCategory, sCategoryName);
     }
 
     public SecondCategory findFirstCategoryIdBySecondCategoryId(int sId) {
         return mngRepository.findFirstCategoryIdBySecondCategoryId(sId);
     }
 
-    public void deleteSecondCategoryById(int sId) {
-        mngRepository.deleteSecondCategoryById(sId);
+    public int deleteSecondCategoryById(int sId) {
+        return mngRepository.deleteSecondCategoryById(sId);
     }
 
     public int findProductBySecondCategoryId(int sId) {
@@ -198,4 +198,7 @@ public class MngProductService {
     public List<Product> findProductByKeyword(PageVO pageVO, String keyword) {
         return mngRepository.findProductByKeyword(pageVO, keyword);
     }
+
+
+
 }

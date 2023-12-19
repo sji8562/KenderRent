@@ -47,7 +47,10 @@ public class MngUserController {
         model.addAttribute("paging", pageVO);
         System.out.println(cntPerPage);
         List<User> userList = mngService.findAll(pageVO);
-        model.addAttribute("userList", userList);
+        if(userList != null || !userList.isEmpty()){
+            model.addAttribute("userList", userList);
+        }
+
         return "mng/user/list";
     }
     @PostMapping("{id}/update")
@@ -68,17 +71,17 @@ public class MngUserController {
             if (updateDTO.getPhoneNumber() == null || updateDTO.getPhoneNumber().isEmpty()) {
                 throw new CustomRestfulException("전화번호를 입력해주세요", HttpStatus.BAD_REQUEST);
             }
-            mngService.update(id, updateDTO);
+            int result = mngService.update(id, updateDTO);
+            if(result != 1){
+                throw new CustomRestfulException("수정이 되지 않았습니다", HttpStatus.BAD_REQUEST);
+            }
             return "redirect:/mng/user";
         }catch (Exception e){
             e.printStackTrace();
+            return null;
         }
-
-
 //		ResponseEntity.ok().body(ApiUtils.success(null))
 
-
-        return null;
     }
 
     @GetMapping("{id}/update")
@@ -93,8 +96,9 @@ public class MngUserController {
             return "mng/user/update";
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
+
     }
     @GetMapping("{id}/delete")
     public String userDelete(@PathVariable Integer id) {
@@ -103,7 +107,10 @@ public class MngUserController {
             if (user == null){
                 throw new CustomRestfulException("없는 회원입니다",HttpStatus.BAD_REQUEST);
             }
-            mngService.delete(id);
+            int result = mngService.delete(id);
+            if(result != 1){
+                throw new CustomRestfulException("수정이 되지 않았습니다", HttpStatus.BAD_REQUEST);
+            }
             return "redirect:/mng/user/list";
         }catch (Exception e){
             e.printStackTrace();
