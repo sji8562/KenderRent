@@ -412,9 +412,6 @@ public class MngProductController {
     @ResponseBody
     public List<SecondCategory> addSecondCategory(@RequestBody Map<String, String> postData) {
 
-        System.out.println("--왜 여기로 안와?--");
-        logger.info("왜 여기로 안오지?");
-
         String sCategoryName = postData.get("categoryName");
         String fCategory = postData.get("selectedFirstCategory");
 
@@ -460,6 +457,8 @@ public class MngProductController {
     @GetMapping("/review")
     public String productReview(Model model) {
 
+        // 후기 조회
+//        mngService.findAllReviewWithPagination();
 //        model.addAttribute("reviewList", )
 
         return "/mng/product/review";

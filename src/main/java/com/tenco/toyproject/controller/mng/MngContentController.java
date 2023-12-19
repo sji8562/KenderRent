@@ -42,6 +42,8 @@ public class MngContentController {
             throw new Exception500("내용을 입력해주세요");
         }
 
+        // 이미 등록된 회사 소개가 있는지 확인
+
         mngContentService.createMngContent(dto);
 
         return "redirect:/mng/content/info";
