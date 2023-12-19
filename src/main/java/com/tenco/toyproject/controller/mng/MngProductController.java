@@ -42,11 +42,12 @@ public class MngProductController {
 
     @Autowired
     private MngProductService mngService;
+
     @GetMapping("list")
     public String productList(Model model, PageVO pageVO,
-              @RequestParam(value = "nowPage", required = false) String nowPage,
-              @RequestParam(value = "cntPerPage", required = false) String cntPerPage,
-              @RequestParam(value = "keyword", required = false) String keyword) {
+                              @RequestParam(value = "nowPage", required = false) String nowPage,
+                              @RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+                              @RequestParam(value = "keyword", required = false) String keyword) {
 
         int total = mngService.countProductList(keyword);
         if (nowPage == null && cntPerPage == null) {
@@ -71,7 +72,7 @@ public class MngProductController {
         List<Product> productList;
 
         // 검색어가 있는 경우
-        if(keyword != null && !keyword.isEmpty()) {
+        if (keyword != null && !keyword.isEmpty()) {
             // 검색어를 이용해 검색 쿼리 수행
             productList = mngService.findProductByKeyword(pageVO, keyword);
         } else {
@@ -91,14 +92,14 @@ public class MngProductController {
     public String productDetail(Model model, @PathVariable Integer pId) {
         try {
             Product product = mngService.findProductById(pId);
-            if (product == null){
+            if (product == null) {
                 throw new CustomRestfulException("없는 상품입니다", HttpStatus.BAD_REQUEST);
             }
-            System.out.println("1512345343484531423dsadasdasdasdsads"+product.toString());
+            System.out.println("1512345343484531423dsadasdasdasdsads" + product.toString());
             model.addAttribute(product);
 
             return "mng/product/detail";
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -118,27 +119,27 @@ public class MngProductController {
 
     @GetMapping("modify/{pId}")
     public String productModify(Model model, @PathVariable Integer pId) {
-        try{
+        try {
             Product product = mngService.findProductById(pId);
             List<FirstCategory> fCategory = mngService.findCategoryAll();
             List<SecondCategory> sCategory = mngService.findSecondCategoryForRent();
-            if (product == null){
+            if (product == null) {
                 throw new CustomRestfulException("없는 상품입니다", HttpStatus.BAD_REQUEST);
             }
-            if (fCategory == null){
+            if (fCategory == null) {
                 throw new CustomRestfulException("없는 1차 카테고리입니다.", HttpStatus.BAD_REQUEST);
             }
-            if (sCategory == null){
+            if (sCategory == null) {
                 throw new CustomRestfulException("없는 2차 카테고리입니다.", HttpStatus.BAD_REQUEST);
             }
 //        System.out.println(fCategory.toString());
 //        model.addAttribute("fCategory", fCategory);
 
             model.addAttribute("sCategory", sCategory);
-            model.addAttribute("product",product);
-            model.addAttribute("fCategory",fCategory);
+            model.addAttribute("product", product);
+            model.addAttribute("fCategory", fCategory);
             return "mng/product/modifyForm";
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -149,9 +150,9 @@ public class MngProductController {
 
 //        List<FirstCategory> fCategory = mngService.findCategoryAll();
 //        model.addAttribute("fCategory", fCategory);
-        try{
+        try {
             List<SecondCategory> sCategory = mngService.findSecondCategoryForRent();
-            if(sCategory == null){
+            if (sCategory == null) {
                 throw new CustomRestfulException("없는 2차 카테고리입니다.", HttpStatus.BAD_REQUEST);
             }
 
@@ -159,7 +160,7 @@ public class MngProductController {
 
 
             return "mng/product/submitForm";
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -178,44 +179,45 @@ public class MngProductController {
     @PostMapping("register")
     public String registerProduct(MngProductDto dto) {
         try {
-            if(dto == null)
+            if (dto == null)
                 throw new CustomRestfulException("입력 받은 값이 없습니다.", HttpStatus.BAD_REQUEST);
-            if(dto.getName() == null || dto.getName().isEmpty()) {
+            if (dto.getName() == null || dto.getName().isEmpty()) {
                 throw new CustomRestfulException("물품 명을 입력해주세요.", HttpStatus.BAD_REQUEST);
 
             }
 
-            if(dto.getPrice() <= 0) {
-                throw new Exception500("물품 가격은 0원 이하일 수 없습니다");
+            if (dto.getPrice() <= 0) {
+                throw new CustomRestfulException("물품 가격은 0원 이하일 수 없습니다.", HttpStatus.BAD_REQUEST);
+
             }
 
-            if(dto.getContent() == null || dto.getContent().isEmpty()) {
-                throw new Exception500("제품 상세 설명을 입력해주세요");
+            if (dto.getContent() == null || dto.getContent().isEmpty()) {
+                throw new CustomRestfulException("제품 상세 설명을 입력해주세요.", HttpStatus.BAD_REQUEST);
             }
 
             // 상품 썸네일 등록
             MultipartFile file = null;
 
-            if(dto.getFile() != null || !dto.getFile().isEmpty()) {
+            if (dto.getFile() != null || !dto.getFile().isEmpty()) {
                 file = dto.getFile();
             }
 
             // 등록된 파일이 있으면
-            if(!file.isEmpty()) {
+            if (!file.isEmpty()) {
                 // 파일 사이즈 체크
-                if(file.getSize() > Define.MAX_FILE_SIZE) {
-                    throw new Exception500("파일 크기는 200MB 미만이어야 합니다");
+                if (file.getSize() > Define.MAX_FILE_SIZE) {
+                    throw new CustomRestfulException("파일 크기는 200MB 미만이어야 합니다.", HttpStatus.BAD_REQUEST);
                 }
             }
 
-            if(file != null && !file.isEmpty()) {
+            if (file != null && !file.isEmpty()) {
                 try {
                     // 업로드 파일 경로
                     String saveDirectory = Define.UPLOAD_DIRECTORY;
 
                     // 폴더가 없다면
                     File dir = new File(saveDirectory);
-                    if(dir.exists() == false) {
+                    if (dir.exists() == false) {
                         dir.mkdirs();
                     }
 
@@ -224,17 +226,17 @@ public class MngProductController {
                     // 새로운 파일 이름
                     String fileName = "";
 
-                    if(file.getOriginalFilename() != null && !file.getOriginalFilename().isEmpty()) {
+                    if (file.getOriginalFilename() != null && !file.getOriginalFilename().isEmpty()) {
                         fileName = uuid + "_" + file.getOriginalFilename();
                         Path uploadPath = Paths.get(Define.UPLOAD_DIRECTORY + fileName);
                         Files.write(uploadPath, file.getBytes());
-                    }else {
+                    } else {
                         fileName = null;
                     }
                     // 전체 경로 지정
                     dto.setPicUrl(fileName);
 
-                } catch(Exception e) {
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
             }
@@ -242,7 +244,7 @@ public class MngProductController {
             mngService.createProduct(dto);
 
             return "redirect:/mng/product/list";
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -251,80 +253,83 @@ public class MngProductController {
 
     @PostMapping("/{id}/modify")
     public String modifyProduct(MngProductUpdateDto dto, @PathVariable Integer id) {
-
-        if(dto.getName() == null || dto.getName().isEmpty()) {
-            throw new Exception404("물품명을 입력해주세요");
-        }
-
-        if(dto.getPrice() <= 0) {
-            throw new Exception500("물품 가격은 0원 이하일 수 없습니다");
-        }
-
-        if(dto.getContent() == null || dto.getContent().isEmpty()) {
-            throw new Exception500("제품 상세 설명을 입력해주세요");
-        }
-
-        // 상품 썸네일 등록
-        MultipartFile file = null;
-        if(dto.getFile() != null || !dto.getFile().isEmpty()){
-            file = dto.getFile();
-        }
-
-
-        // 등록된 파일이 있으면
-        if(!file.isEmpty()) {
-            // 파일 사이즈 체크
-            if(file.getSize() > Define.MAX_FILE_SIZE) {
-                throw new Exception500("파일 크기는 200MB 미만이어야 합니다");
+        try {
+            if (dto.getName() == null || dto.getName().isEmpty()) {
+                throw new CustomRestfulException("물품명을 입력해주세요.", HttpStatus.NOT_FOUND);
             }
-        }
-        if(file!= null && !file.isEmpty()){
-            try {
-                // 업로드 파일 경로
-                String saveDirectory = Define.UPLOAD_DIRECTORY;
+            if (dto.getPrice() <= 0) {
+                throw new CustomRestfulException("물품 가격은 0원 이하일 수 없습니다.", HttpStatus.BAD_REQUEST);
+            }
+
+            if (dto.getContent() == null || dto.getContent().isEmpty()) {
+                throw new CustomRestfulException("제품 상세 설명을 입력해주세요.", HttpStatus.BAD_REQUEST);
+            }
+            // 상품 썸네일 등록
+            MultipartFile file = null;
+            if (dto.getFile() != null || !dto.getFile().isEmpty()) {
+                file = dto.getFile();
+            }
+
+
+            // 등록된 파일이 있으면
+            if (!file.isEmpty()) {
+                // 파일 사이즈 체크
+                if (file.getSize() > Define.MAX_FILE_SIZE) {
+
+                    throw new CustomRestfulException("파일 크기는 200MB 미만이어야 합니다.", HttpStatus.BAD_REQUEST);
+
+                }
+            }
+            if (file != null && !file.isEmpty()) {
+                try {
+                    // 업로드 파일 경로
+                    String saveDirectory = Define.UPLOAD_DIRECTORY;
 //                String saveDirectory = "/";
 
-                // 폴더가 없다면
-                File dir = new File(saveDirectory);
-                if(dir.exists() == false) {
-                    dir.mkdirs();
-                }
-
-                // 파일 이름 중복 예방
-                UUID uuid = UUID.randomUUID();
-                // 새로운 파일 이름
-                String fileName = "";
-
-                if(file.getOriginalFilename() != null && !file.getOriginalFilename().isEmpty()){
-                    fileName = uuid + "_" + file.getOriginalFilename();
-                    Path uploadPath = Paths.get(Define.UPLOAD_DIRECTORY + fileName);
-                    Files.write(uploadPath, file.getBytes());
-
-                }else {
-                    if(dto.getPicUrl() != null) {
-
-                        fileName = dto.getPicUrl();
-                    } else {
-                        fileName = null;
-
+                    // 폴더가 없다면
+                    File dir = new File(saveDirectory);
+                    if (dir.exists() == false) {
+                        dir.mkdirs();
                     }
+
+                    // 파일 이름 중복 예방
+                    UUID uuid = UUID.randomUUID();
+                    // 새로운 파일 이름
+                    String fileName = "";
+
+                    if (file.getOriginalFilename() != null && !file.getOriginalFilename().isEmpty()) {
+                        fileName = uuid + "_" + file.getOriginalFilename();
+                        Path uploadPath = Paths.get(Define.UPLOAD_DIRECTORY + fileName);
+                        Files.write(uploadPath, file.getBytes());
+
+                    } else {
+                        if (dto.getPicUrl() != null) {
+
+                            fileName = dto.getPicUrl();
+                        } else {
+                            fileName = null;
+
+                        }
+                    }
+                    // 전체 경로 지정
+
+                    dto.setPicUrl(fileName);
+
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
                 }
-                // 전체 경로 지정
-
-                dto.setPicUrl(fileName);
-
-            } catch(Exception e) {
-                System.out.println(e.getMessage());
             }
+
+
+            System.out.println("CONTROLLER UPDATE 전" + dto.toString());
+
+            mngService.updateProduct(dto);
+
+            return "redirect:/mng/product/" + dto.getId() + "/detail";
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-
-        System.out.println("CONTROLLER UPDATE 전" + dto.toString());
-
-        mngService.updateProduct(dto);
-
-        return "redirect:/mng/product/"+dto.getId()+"/detail";
-
+        return null;
     }
 
     @GetMapping("categories")
@@ -342,44 +347,57 @@ public class MngProductController {
 
     public List<SecondCategory> getScondCategoryfindByFirstCategoryId(@PathVariable String fId) {
 
-
-        List<SecondCategory> secondCategory = mngService.findSecondCategoryByFirstCategoryId(fId);
-
-        return secondCategory;
+        try {
+            if(fId == null|| fId.isEmpty()){
+                throw new CustomRestfulException("id값이 없습니다", HttpStatus.BAD_REQUEST);
+            }
+            List<SecondCategory> secondCategory = mngService.findSecondCategoryByFirstCategoryId(fId);
+            return secondCategory;
+        }catch (Exception e){
+         e.printStackTrace();
+         return null;
+        }
     }
 
     @PostMapping("addFirstCategory")
     @ResponseBody
     public List<FirstCategory> addFirstCategory(@RequestBody Map<String, String> categoryName) {
+        try{
+            String fCategoryName = categoryName.get("categoryName");
 
-        String fCategoryName = categoryName.get("categoryName");
 
+            // 같은 이름의 카테고리가 있는지 확인
+            logger.info("같은 이름의 카테고리가 있는지 먼저 확인", fCategoryName);
+            int resultRowCount = mngService.findFirstCategoryByName(fCategoryName);
 
-        // 같은 이름의 카테고리가 있는지 확인
-        logger.info("같은 이름의 카테고리가 있는지 먼저 확인", fCategoryName);
-        int resultRowCount = mngService.findFirstCategoryByName(fCategoryName);
+            if (resultRowCount > 0) {
+                throw new Exception500("이미 존재하는 카테고리입니다");
+            }
 
-        if(resultRowCount > 0) {
-            throw new Exception500("이미 존재하는 카테고리입니다");
+            mngService.addFirstCategory(fCategoryName);
+
+            return mngService.getFirstCategories();
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
         }
-
-        mngService.addFirstCategory(fCategoryName);
-
-        return mngService.getFirstCategories();
     }
 
     // 1차 카테고리 삭제
     @GetMapping("/delete-first-category-by-id/{fId}")
     public List<FirstCategory> deleteFirstCategory(@PathVariable int fId) {
+//        if(fId == null){
+//            return
+//        }
         // 해당 카테고리의 하위 항목이 있는지 확인
         List<SecondCategory> secondCategories = mngService.findSecondCategoryByFirstCategoryId(Integer.toString(fId));
-        if(!secondCategories.isEmpty()) {
+        if (!secondCategories.isEmpty()) {
             throw new Exception500("하위 카테고리가 존재합니다");
         }
 
         // 해당 카테고리에 등록된 물품이 있는지 확인
         int resultRows = mngService.findProducCountByFirstCategoryId(fId);
-        if(resultRows > 0) {
+        if (resultRows > 0) {
             throw new Exception500("해당 카테고리에 등록된 물품이 있습니다");
         }
 
@@ -404,7 +422,7 @@ public class MngProductController {
         logger.info("같은 이름의 카테고리가 있는지 먼저 확인", sCategoryName);
         int resultRowCount = mngService.findSecondCategoryByName(fCategory, sCategoryName);
 
-        if(resultRowCount > 0) {
+        if (resultRowCount > 0) {
             throw new Exception500("이미 존재하는 카테고리입니다");
         }
 
@@ -423,7 +441,7 @@ public class MngProductController {
         // 해당 카테고리에 등록된 상품이 있는지 확인
         int resultRows = mngService.findProductBySecondCategoryId(sId);
 
-        if(resultRows > 0) {
+        if (resultRows > 0) {
             throw new Exception500("해당 카테고리에 등록된 상품이 있습니다.");
         }
 
