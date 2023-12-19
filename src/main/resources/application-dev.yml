@@ -92,15 +92,15 @@ file:
   path: ./images/
   
 mybatis:
- mapper-locations:
-  classpath:mapper/**.xml
- configuration:
-  map-underscore-to-camel-case: true
-  
-logging:
- level:
-  org.mybatis: DEBUG
+  mapper-locations:
+    - classpath:mapper/**.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+logging:
+  level:
+    org.mybatis: DEBUG
 #초기 파라미터 설정
 tenco:
   key: 1234567890!

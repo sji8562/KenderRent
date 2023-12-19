@@ -48,18 +48,18 @@ public interface MngProductRepository {
 
     int findFirstCategoryByName(String fCategoryName);
 
-    void createFirstCategory(String fCategoryName);
+    int createFirstCategory(String fCategoryName);
 
-    void deleteFirstCategoryById(int fId);
+    int deleteFirstCategoryById(int fId);
 
 
     int findSecondCategoryByName(String fCategory, String sCategoryName);
 
-    void addSecondCategory(String fCategory, String sCategoryName);
+    int addSecondCategory(String fCategory, String sCategoryName);
 
     SecondCategory findFirstCategoryIdBySecondCategoryId(int sId);
 
-    void deleteSecondCategoryById(int sId);
+    int deleteSecondCategoryById(int sId);
 
     int findProductBySecondCategoryId(int sId);
 

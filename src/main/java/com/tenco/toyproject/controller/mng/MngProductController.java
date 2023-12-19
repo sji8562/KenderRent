@@ -107,9 +107,16 @@ public class MngProductController {
 
     @GetMapping("{id}/delete")
     public String productDelete(@PathVariable Integer id) {
-
-        mngService.deleteProduct(id);
-        return "redirect:/mng/product/list";
+        try{
+            int result = mngService.deleteProduct(id);
+            if(result != 1){
+                throw new CustomRestfulException("수정이 되지 않았습니다", HttpStatus.BAD_REQUEST);
+            }
+            return "redirect:/mng/product/list";
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @GetMapping("productForm")
@@ -185,12 +192,9 @@ public class MngProductController {
                 throw new CustomRestfulException("물품 명을 입력해주세요.", HttpStatus.BAD_REQUEST);
 
             }
-
             if (dto.getPrice() <= 0) {
                 throw new CustomRestfulException("물품 가격은 0원 이하일 수 없습니다.", HttpStatus.BAD_REQUEST);
-
             }
-
             if (dto.getContent() == null || dto.getContent().isEmpty()) {
                 throw new CustomRestfulException("제품 상세 설명을 입력해주세요.", HttpStatus.BAD_REQUEST);
             }
@@ -241,7 +245,10 @@ public class MngProductController {
                 }
             }
 
-            mngService.createProduct(dto);
+            int result = mngService.createProduct(dto);
+            if(result != 1){
+                throw new CustomRestfulException("제품 등록이 실패했습니다.", HttpStatus.BAD_REQUEST);
+            }
 
             return "redirect:/mng/product/list";
         } catch (Exception e) {
@@ -275,9 +282,7 @@ public class MngProductController {
             if (!file.isEmpty()) {
                 // 파일 사이즈 체크
                 if (file.getSize() > Define.MAX_FILE_SIZE) {
-
                     throw new CustomRestfulException("파일 크기는 200MB 미만이어야 합니다.", HttpStatus.BAD_REQUEST);
-
                 }
             }
             if (file != null && !file.isEmpty()) {
@@ -323,13 +328,16 @@ public class MngProductController {
 
             System.out.println("CONTROLLER UPDATE 전" + dto.toString());
 
-            mngService.updateProduct(dto);
-
+            int result = mngService.updateProduct(dto);
+            if(result != 1){
+                throw new CustomRestfulException("제품 등록이 실패했습니다.", HttpStatus.BAD_REQUEST);
+            }
             return "redirect:/mng/product/" + dto.getId() + "/detail";
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
+
     }
 
     @GetMapping("categories")
@@ -337,8 +345,9 @@ public class MngProductController {
 
         // 1차 카테고리 불러오기
         List<FirstCategory> firstCategoryList = mngService.getFirstCategories();
-        model.addAttribute("firstCategoryList", firstCategoryList);
-
+        if(firstCategoryList != null || !firstCategoryList.isEmpty()){
+            model.addAttribute("firstCategoryList", firstCategoryList);
+        }
         return "/mng/product/categories";
     }
 
@@ -364,17 +373,19 @@ public class MngProductController {
     public List<FirstCategory> addFirstCategory(@RequestBody Map<String, String> categoryName) {
         try{
             String fCategoryName = categoryName.get("categoryName");
-
-
             // 같은 이름의 카테고리가 있는지 확인
             logger.info("같은 이름의 카테고리가 있는지 먼저 확인", fCategoryName);
             int resultRowCount = mngService.findFirstCategoryByName(fCategoryName);
 
             if (resultRowCount > 0) {
-                throw new Exception500("이미 존재하는 카테고리입니다");
+                throw new CustomRestfulException("이미 존재하는 카테고리입니다", HttpStatus.BAD_REQUEST);
+
             }
 
-            mngService.addFirstCategory(fCategoryName);
+            int result = mngService.addFirstCategory(fCategoryName);
+            if(result != 1){
+                throw new CustomRestfulException("카테고리 등록을 실패했습니다.", HttpStatus.BAD_REQUEST);
+            }
 
             return mngService.getFirstCategories();
         }catch (Exception e){
@@ -391,63 +402,85 @@ public class MngProductController {
 //        }
         // 해당 카테고리의 하위 항목이 있는지 확인
         List<SecondCategory> secondCategories = mngService.findSecondCategoryByFirstCategoryId(Integer.toString(fId));
-        if (!secondCategories.isEmpty()) {
-            throw new Exception500("하위 카테고리가 존재합니다");
+
+        try{
+            if (!secondCategories.isEmpty()) {
+                throw new CustomRestfulException("하위 카테고리가 존재합니다", HttpStatus.BAD_REQUEST);
+            }
+            // 해당 카테고리에 등록된 물품이 있는지 확인
+            int resultRows = mngService.findProducCountByFirstCategoryId(fId);
+            if (resultRows > 0) {
+                throw new CustomRestfulException("해당 카테고리에 등록된 물품이 있습니다", HttpStatus.BAD_REQUEST);
+            }
+            int result = mngService.deleteFirstCategoryById(fId);
+            if(result != 1){
+                throw new CustomRestfulException("카테고리 삭제를 실패했습니다.", HttpStatus.BAD_REQUEST);
+            }
+            return mngService.getFirstCategories();
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+
         }
-
-        // 해당 카테고리에 등록된 물품이 있는지 확인
-        int resultRows = mngService.findProductCountByFirstCategoryId(fId);
-        if(resultRows > 0) {
-            throw new Exception500("해당 카테고리에 등록된 물품이 있습니다");
-        }
-
-
-        mngService.deleteFirstCategoryById(fId);
-
-        return mngService.getFirstCategories();
     }
 
 
     @PostMapping("addSecondCategory")
     @ResponseBody
     public List<SecondCategory> addSecondCategory(@RequestBody Map<String, String> postData) {
+        try {
+            System.out.println("--왜 여기로 안와?--");
+            logger.info("왜 여기로 안오지?");
 
-        System.out.println("--왜 여기로 안와?--");
-        logger.info("왜 여기로 안오지?");
+            String sCategoryName = postData.get("categoryName");
+            String fCategory = postData.get("selectedFirstCategory");
 
-        String sCategoryName = postData.get("categoryName");
-        String fCategory = postData.get("selectedFirstCategory");
+            // 같은 이름의 카테고리가 있는지 확인
+            logger.info("같은 이름의 카테고리가 있는지 먼저 확인", sCategoryName);
+            int resultRowCount = mngService.findSecondCategoryByName(fCategory, sCategoryName);
 
-        // 같은 이름의 카테고리가 있는지 확인
-        logger.info("같은 이름의 카테고리가 있는지 먼저 확인", sCategoryName);
-        int resultRowCount = mngService.findSecondCategoryByName(fCategory, sCategoryName);
+            if (resultRowCount > 0) {
+                throw new CustomRestfulException("이미 존재하는 카테고리입니다", HttpStatus.BAD_REQUEST);
+            }
 
-        if (resultRowCount > 0) {
-            throw new Exception500("이미 존재하는 카테고리입니다");
+            int result = mngService.addSecondCategory(fCategory, sCategoryName);
+            if(result != 1){
+                throw new CustomRestfulException("카테고리 생성에 실패했습니다.", HttpStatus.BAD_REQUEST);
+            }
+
+            return mngService.findSecondCategoryByFirstCategoryId(fCategory);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
         }
 
-        mngService.addSecondCategory(fCategory, sCategoryName);
-
-        return mngService.findSecondCategoryByFirstCategoryId(fCategory);
     }
 
     //    List<FirstCategory>
     @GetMapping("/delete-second-category-by-id/{sId}")
     public void deleteSecondCategoryById(@PathVariable int sId) {
-        System.out.println("--- 2차 카테고리 삭제할거야 ---" + sId);
-        // 해당 카테고리가 존재하는지 확인
-        SecondCategory secondCategory = mngService.findFirstCategoryIdBySecondCategoryId(sId);
+        try {
+            System.out.println("--- 2차 카테고리 삭제할거야 ---" + sId);
+            // 해당 카테고리가 존재하는지 확인
+            SecondCategory secondCategory = mngService.findFirstCategoryIdBySecondCategoryId(sId);
 
-        // 해당 카테고리에 등록된 상품이 있는지 확인
-        int resultRows = mngService.findProductBySecondCategoryId(sId);
+            // 해당 카테고리에 등록된 상품이 있는지 확인
+            int resultRows = mngService.findProductBySecondCategoryId(sId);
 
-        if (resultRows > 0) {
-            throw new Exception500("해당 카테고리에 등록된 상품이 있습니다.");
+            if (resultRows > 0) {
+                throw new CustomRestfulException("해당 카테고리에 등록된 상품이 있습니다.", HttpStatus.BAD_REQUEST);
+            }
+
+            System.out.println("--- 찾았따!!! ---" + secondCategory);
+
+            int result = mngService.deleteSecondCategoryById(secondCategory.getId());
+            if(result != 1){
+                throw new CustomRestfulException("삭제하지 못했습니다.", HttpStatus.BAD_REQUEST);
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
         }
-
-        System.out.println("--- 찾았따!!! ---" + secondCategory);
-
-        mngService.deleteSecondCategoryById(secondCategory.getId());
     }
 
     @GetMapping("/first-category-all")
