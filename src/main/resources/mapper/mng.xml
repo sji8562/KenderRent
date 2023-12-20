@@ -11,6 +11,10 @@
             SELECT DATE_FORMAT(r.created_at,'%m') AS DATE ,COUNT(*) as count , sum(p.price) as price FROM rent r INNER JOIN product p ON r.product_id = p.id GROUP BY r.created_at
     </select>
 
+    <select id="findByUsernameAndLevel" resultType="com.tenco.toyproject.repository.entity.User">
+        SELECT * FROM user WHERE email = #{username} AND level = 2
+    </select>
+
 </mapper>
 
 
