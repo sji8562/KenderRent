@@ -123,6 +123,7 @@
 					</ul>
 					<a href="/mng/logout"><button type="button" class="btn">로그아웃</button></a>
 				</div>
+				</div>
 			</nav>
 		</header>
 

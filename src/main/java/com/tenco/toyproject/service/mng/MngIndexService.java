@@ -36,6 +36,10 @@ public class MngIndexService {
         MngIndexDTO.MngCountDTO countDTO = mngIndexRepository.countByAll();
         return countDTO;
     }
+    public List<MngIndexDTO.MngStatusDTO> findByStatus(){
+        List<MngIndexDTO.MngStatusDTO> mngStatusDTOS = mngIndexRepository.findByStatus();
+        return mngStatusDTOS;
+    }
 
     public User signIn(MngSignInFormDto dto) throws CustomRestfulException {
         // 1. username으로 admin id 존재 여부 확인

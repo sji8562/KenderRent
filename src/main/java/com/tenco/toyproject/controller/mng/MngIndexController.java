@@ -70,12 +70,15 @@ public class MngIndexController {
         System.out.println("매니저 페이지로 들어갑니다.");
         MngIndexDTO.MngTotalDTO totalDTO =mngIndexService.findByCreatedAt();
         MngIndexDTO.MngCountDTO countDTO = mngIndexService.findByAllCount();
-        System.out.println(totalDTO.getMngMonthDTO().toString());
-        System.out.println(totalDTO.getPayOff());
-        System.out.println(countDTO.toString());
+        List<MngIndexDTO.MngStatusDTO> statusDTO = mngIndexService.findByStatus();
+//        System.out.println(totalDTO.getMngMonthDTO().toString());
+//        System.out.println(totalDTO.getPayOff());
+//        System.out.println(countDTO.toString());
+        System.out.println(statusDTO.toString());
         model.addAttribute("dtos",totalDTO.getMngMonthDTO());
         model.addAttribute("payOff",totalDTO.getPayOff());
         model.addAttribute("countDTO",countDTO);
+        model.addAttribute("statusDTO",statusDTO);
         return "/mng/index";
     }
 }
