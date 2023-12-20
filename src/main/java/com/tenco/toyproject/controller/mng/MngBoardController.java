@@ -322,6 +322,8 @@ public class MngBoardController {
         QnaDetail qnaDetail = mngQnaService.findQnaByIdWithReply(id);
         model.addAttribute("board", qnaDetail);
 
+        System.out.println("상세보기 왜 안돼?" + qnaDetail);
+
         return "/mng/board/qna/detail";
     }
 

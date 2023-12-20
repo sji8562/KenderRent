@@ -95,11 +95,13 @@
                                                                                 <div>
                                                                                     <button class="btn btn-success"
                                                                                             style="border: 1px solid black"
+                                                                                            type="button"
                                                                                             onclick="location.href='/mng/board/${noticeList.id}/faq-update'">
                                                                                         수정
                                                                                     </button>
                                                                                     &nbsp;&nbsp;
                                                                                     <button class="btn-danger btn"
+                                                                                            type="button"
                                                                                             onclick="location.href='/mng/board/${noticeList.id}/faq-delete'">
                                                                                         삭제
                                                                                     </button>
