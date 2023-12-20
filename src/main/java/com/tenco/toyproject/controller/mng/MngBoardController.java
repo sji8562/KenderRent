@@ -205,6 +205,7 @@ public class MngBoardController {
 
     List<MngBoardDTO.NoticeListDTO> noticeList;
 
+<<<<<<< HEAD
     // 검색어가 있는 경우
     if (keyword != null && !keyword.isEmpty()) {
       // 검색어를 이용해 검색 쿼리 수행
@@ -212,6 +213,11 @@ public class MngBoardController {
     } else {
       // 검색어가 없을 때
       noticeList = mngFaqService.findAllByFaq(pageVO);
+=======
+        System.out.println("상세보기 왜 안돼?" + qnaDetail);
+
+        return "/mng/board/qna/detail";
+>>>>>>> d9eca105c74094afaeb1bf91f62a88a7f1d90b5c
     }
 
     model.addAttribute("noticeList", noticeList);

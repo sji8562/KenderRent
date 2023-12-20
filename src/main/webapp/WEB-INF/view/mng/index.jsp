@@ -44,7 +44,7 @@
                     <div class="col-lg-8">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Sales Ratio</h4>
+                                <h4 class="card-title">월별 실적</h4>
                                 <div class=""></div>
                                 <div class="sales ct-charts mt-3"></div>
                                 <input type="hidden" id="dtos" value="${dtos}">
@@ -54,8 +54,8 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title mb-1">Referral Earnings</h5>
-                                <h3 class="font-light">$769.08</h3>
+                                <h5 class="card-title mb-1">월별 건수</h5>
+                                <h3 class="font-light">총 ${payOff} 원</h3>
                                 <div class="mt-3 text-center">
                                     <div id="earnings"></div>
                                 </div>
@@ -63,18 +63,21 @@
                         </div>
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title mb-0">Users</h4>
-                                <h2 class="font-light">35,658 <span class="font-16 text-success font-medium">+23%</span>
-                                </h2>
+                                <h4 class="card-title mb-0">미해결 신청현황</h4>
+                                <h2 class="font-light">${countDTO.totalCount}건</h2>
                                 <div class="mt-4">
                                     <div class="row text-center">
-                                        <div class="col-6 border-right">
-                                            <h4 class="mb-0">58%</h4>
-                                            <span class="font-14 text-muted">New Users</span>
+                                        <div class="col-4 border-right">
+                                            <h4 class="mb-0">${countDTO.rentCount}</h4>
+                                            <span class="font-14 text-muted">대여 신청</span>
                                         </div>
-                                        <div class="col-6">
-                                            <h4 class="mb-0">42%</h4>
-                                            <span class="font-14 text-muted">Repeat Users</span>
+                                        <div class="col-4 border-right">
+                                            <h4 class="mb-0">${countDTO.saleCount}</h4>
+                                            <span class="font-14 text-muted">구매 신청</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <h4 class="mb-0">${countDTO.purchaseCount}</h4>
+                                            <span class="font-14 text-muted">판매 신청</span>
                                         </div>
                                     </div>
                                 </div>
