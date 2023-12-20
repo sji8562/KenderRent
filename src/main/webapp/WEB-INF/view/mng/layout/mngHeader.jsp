@@ -220,7 +220,6 @@
 								</a></li>
 								<!-- 판매신청 -->
 								<li class="sidebar-item"><a
-<<<<<<< HEAD
 									class="sidebar-link waves-effect waves-dark sidebar-link"
 									href="/mng/product/categories"> <i
 										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">카테고리
@@ -232,17 +231,6 @@
 									href="/mng/product/review?keyword="> <i
 										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">후기
 											관리</span>
-=======
-										class="sidebar-link waves-effect waves-dark sidebar-link"
-										href="/mng/product/categories"> <i class="mdi mdi-view-dashboard"></i>
-									<span class="hide-menu">카테고리 관리</span>
-								</a></li>
-								<!-- 구매신청 -->
-								<li class="sidebar-item"><a
-										class="sidebar-link waves-effect waves-dark sidebar-link"
-										href="/mng/product/review?keyword="> <i
-										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">후기 관리</span>
->>>>>>> 56614bf6aa3dabfeeb92adc5c3b9da93f825e4b4
 								</a></li>
 							</ul></li>
 
@@ -307,17 +295,9 @@
 							href="/mng/content/info" aria-expanded="false"> <i
 								class="mdi mdi-alert-outline"></i> <span class="hide-menu">회사
 									소개 게시판</span>
-
-<<<<<<< HEAD
 						</a></li>
 
 						<%--						문의--%>
-=======
-							</a>
-							</li>
-
-<%--						문의--%>
->>>>>>> 56614bf6aa3dabfeeb92adc5c3b9da93f825e4b4
 						<li class="sidebar-item" id="noticeManagement"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
 							href="/mng/board/noticeList" aria-expanded="false"> <i
