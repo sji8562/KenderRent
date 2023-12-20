@@ -15,7 +15,7 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-5 align-self-center">
-                <h4 class="page-title">대여용 카테고리 관리</h4>
+                <h4 class="page-title">판매용 카테고리 관리</h4>
             </div>
         </div>
     </div>

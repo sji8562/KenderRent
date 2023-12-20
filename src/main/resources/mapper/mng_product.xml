@@ -93,7 +93,7 @@
 
     <!-- first Category -->
     <select id="findFirstCategoryAll" resultType="com.tenco.toyproject.repository.entity.FirstCategory">
-        SELECT * FROM first_category
+        SELECT * FROM first_category WHERE code = #{code}
     </select>
 
     <!-- first Category Using Second Category Id -->
