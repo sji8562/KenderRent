@@ -155,13 +155,6 @@
 							</ul>
 						</li>
 
-							<%-- TODO 삭제--%>
-						<li class="sidebar-item"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="/mng/icon-material" aria-expanded="false"> <i
-								class="mdi mdi-face"></i> <span class="hide-menu">Icon</span>
-						</a></li>
-
 						<%-- 유저 관리 --%>
 						<li class="sidebar-item">
 							<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/user/list" aria-expanded="false">
