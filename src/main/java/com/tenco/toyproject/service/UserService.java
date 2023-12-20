@@ -25,29 +25,8 @@ public class UserService {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	private String anObject;
 
-	@Transactional
-	public int userSignUp(UserDTO dto) {
-
-		String rawPwd = dto.getPassword();
-		String hashPwd = passwordEncoder.encode(rawPwd);
-//		System.out.println("hashPwd : " + hashPwd);
-		// username 에 중복 여부 확인은 생략함
-
-		// User
-		// SignUpFormDto
-		User user = User.builder().email(dto.getEmail()).password(hashPwd).userName(dto.getUserName())
-				.phoneNumber(dto.getPhoneNumber()).build(); // build() 반드시 호출
-
-		int resultRowCount = userRepository.insert(user);
-		if (resultRowCount != 1) {
-			throw new CustomRestfullException("회원 가입 실패", HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-
-		return resultRowCount;
-
-	}
+	
 
 	public User userSignIn(UserSignInFormDto dto) {
 
@@ -108,6 +87,18 @@ public class UserService {
 			return 1;
 		}
 		return 2;
+	}
+	
+//	수정시작
+	public String selectPassword(String email) {
+		return userRepository.selectPassword(email);
+	}
+	public User selectUser(String email) {
+		return userRepository.selectUser(email);
+	}
+	@Transactional
+	public int insertUser(User user) {
+		return userRepository.insertUser(user);
 	}
 
 }

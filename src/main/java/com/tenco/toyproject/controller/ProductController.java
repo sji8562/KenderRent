@@ -156,7 +156,7 @@ public class ProductController {
         // 페이지 및 페이지 크기를 이용하여 데이터 조회
 		List<Map> productList= productService.searchProductInfinite(keyword, page, pageSize);
 //		model.addAttribute("productList", productList);
-		return productService.searchProductInfinite(keyword, page, pageSize);
+		  return productService.searchProductInfinite(keyword, page, pageSize);
     }
 
 
