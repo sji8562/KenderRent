@@ -78,9 +78,30 @@
 			where user_id = #{userId}
 			and product_id = #{productId};
 	</select>
+
+	
+	
+	
+<!-- 	검색기능 관련 -->
+<!-- 	검색한 상품 목록 -->
 	<select id="searchProduct" resultType="Map">
 		select * from product
+		where name Like CONCAT('%', #{keyword}, '%') 
+		limit 0, 5;
+	</select>
+	<select id="searchProductInfinite" resultType="Map">
+		select * from product
+		where name Like CONCAT('%', #{keyword}, '%') 
+		limit #{offset}, #{limit}
+	</select>
+<!-- 	검색한 상품 갯수 가져오기 -->
+	<select id="searchProductCount" resultType="int">
+		select count(*) from product
 		where name Like CONCAT('%', #{keyword}, '%')
 	</select>
+	<select id="searchMaxPrice" resultType="int">
+		select max(price) as MAX from product
+	</select>
+<!-- 	검색기능 관련 끝 -->
 
 </mapper>

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +18,8 @@
 <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/responsive.css">
+
+
 
 </head>
 
@@ -46,8 +51,10 @@
 											</div>
 											<div style="margin-bottom: 20px;">
 												<span>판매가격대</span>&nbsp;&nbsp;
-												<input id="input_price" class="form-control-sm input_ph " type="text" name="price1" placeholder="0" style="text-align: right; border: 1px solid darkgray;" > ~ 
-												<input id="input_price" class="form-control-sm input_ph" type="text" name="price2" placeholder="여긴최고금액만" style="text-align: right; border: 1px solid darkgray;">
+
+												<input id="input_price1" class="form-control-sm input_ph " type="text" name="price1" placeholder="0" style="text-align: right; border: 1px solid darkgray;" > ~ 
+												<input id="input_price2" class="form-control-sm input_ph" type="text" name="price2" placeholder="${MaxPrice }" style="text-align: right; border: 1px solid darkgray;">
+
 											</div>
 										</form>
 									</li>
@@ -67,11 +74,13 @@
 								<c:if test="${productList == null }">
 									조회하신 상품이 없습니다
 								</c:if>
+
 								<!-- Product -->
 								<c:if test="${productList != null }">
 								<c:forEach items="${productList }" var="productList">
 		
 								<div class="product-item">
+
 									<div class="product discount product_filter">
 										<div class="product_image">
 											<img src=${productList.pic_url } alt="">
@@ -84,12 +93,19 @@
 									</div>
 									<div class="red_button add_to_cart_button"><a href="/cart/add?id=${productList.id }">장바구니 담기</a></div>
 								</div>
-								</c:forEach>
-								</c:if>
 
-		
+								
+								</c:forEach>
+								
+								</c:if>
+								
+
 							</div>
 						</div>
+					</div>
+					
+					<div class="row" id="dataList">
+<!-- 						무한스크롤 카드 들어가는 자리 -->
 					</div>
 				</div>
 			</div>
@@ -107,5 +123,51 @@
 <script src="/js/custom.js"></script>
 <script src="/js/dropdown.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    let page = 2; // 초기 페이지
+    const pageSize = 5; // 한 페이지에 표시될 항목 수
+
+    // 스크롤 이벤트 리스너
+    $(window).scroll(function() {
+      if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+        // 스크롤이 맨 아래로 내려갔을 때
+        loadMoreData();
+      }
+    });
+
+    function loadMoreData() {
+      // 새로운 페이지 데이터 요청
+      $.ajax({
+        url: '/product/getData?keyword=${param.keyword}', // 서버에서 데이터를 가져올 엔드포인트
+        type: 'GET',
+        data: { page: page, pageSize: pageSize }, // 페이지 및 페이지 크기 전달
+        success: function(response) {
+          // 받은 데이터를 처리하여 화면에 추가
+          // 예시: 받은 데이터를 리스트에 추가하는 코드
+          for (let i = 0; i < response.length; i++) {
+//             $('#dataList').append('<li>' + response[i].name + '</li>');
+            $('#dataList').append("<div  class='product-item'>" + 
+										"<div class='product discount'>" +
+										"<div class='product_image'>"+
+											"<img src=" + response[i].pic_url + "alt=''>" +
+										"</div>" +
+										"<div class='favorite favorite_left'></div>" +
+										"<div class='product_info'>" +
+											"<h6 class='product_name'>" + "<a href='/product/detail/" +response[i].id +"'>" + response[i].name + "</a></h6>" +
+											"<div class='product_price'>" + response[i].price + "</div>" +
+										"</div>" +
+									"</div>" +
+									"<div class='red_button add_to_cart_button'><a href='/cart/add?id=" + response[i].id + "'>장바구니 담기</a></div>" +
+								"</div>"
+								);
+          }
+          page++; // 다음 페이지로 이동
+        },
+        error: function(xhr) {
+          console.log("Error:", xhr);
+        }
+      });
+    }
+  </script>
 </body>
 </html>

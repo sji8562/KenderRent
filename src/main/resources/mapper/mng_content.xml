@@ -19,9 +19,13 @@
         select * FROM information WHERE TYPE = 2
     </select>
 
-    <!-- 없으면 INSERT 있으면 UPDATE -->
-    <update id="createContent">
+    <!-- 최초 insert -->
+    <insert id="createContent">
         INSERT INTO information (content, TYPE, created_at) VALUES (#{content}, #{TYPE}, NOW())
-            ON DUPLICATE KEY UPDATE content = #{content}, TYPE = #{TYPE}, created_at = NOW()
+    </insert>
+
+    <!-- 회사 소개, 이용 수칙, 소동 과정 update -->
+    <update id="updateMngContent">
+        UPDATE information SET content = #{content} WHERE TYPE = #{TYPE} AND id = #{id}
     </update>
 </mapper>
