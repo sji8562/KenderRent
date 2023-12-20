@@ -17,18 +17,12 @@ public class MngIndexService {
 
     @Autowired
     MngIndexRepository mngIndexRepository;
-@Autowired
+    @Autowired
     private PasswordEncoder passwordEncoder;
+
 
     public MngIndexDTO.MngTotalDTO findByCreatedAt(){
         List<MngIndexDTO.MngMonthDTO> monthDTOS = mngIndexRepository.findByCreatedAt();
-
-    
-
-    public List<MngIndexDTO> findByCreatedAt(){
-        List<MngIndexDTO> dto = mngIndexRepository.findByCreatedAt();
-
-
         int payoff = monthDTOS.stream()
                 .mapToInt(MngIndexDTO.MngMonthDTO::getPrice)
                 .sum();
@@ -39,6 +33,7 @@ public class MngIndexService {
 
         return mngTotalDTO;
     }
+
     public MngIndexDTO.MngCountDTO findByAllCount(){
         MngIndexDTO.MngCountDTO countDTO = mngIndexRepository.countByAll();
         return countDTO;
