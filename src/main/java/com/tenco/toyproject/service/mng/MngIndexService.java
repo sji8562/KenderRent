@@ -14,10 +14,22 @@ public class MngIndexService {
     @Autowired
     MngIndexRepository mngIndexRepository;
 
-    public List<MngIndexDTO> findByCreatedAt(){
-        List<MngIndexDTO> dto = mngIndexRepository.findByCreatedAt();
+    public MngIndexDTO.MngTotalDTO findByCreatedAt(){
+        List<MngIndexDTO.MngMonthDTO> monthDTOS = mngIndexRepository.findByCreatedAt();
 
-        return dto;
+        int payoff = monthDTOS.stream()
+                .mapToInt(MngIndexDTO.MngMonthDTO::getPrice)
+                .sum();
+        System.out.println(payoff);
+        MngIndexDTO.MngTotalDTO mngTotalDTO = new MngIndexDTO.MngTotalDTO();;
+        mngTotalDTO.setMngMonthDTO(monthDTOS);
+        mngTotalDTO.setPayOff(payoff);
+
+        return mngTotalDTO;
+    }
+    public MngIndexDTO.MngCountDTO findByAllCount(){
+        MngIndexDTO.MngCountDTO countDTO = mngIndexRepository.countByAll();
+        return countDTO;
     }
 
 }

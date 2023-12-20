@@ -27,9 +27,14 @@ public class MngIndexController {
     public String manager(Model model) {
 
         System.out.println("매니저 페이지로 들어갑니다.");
-        List<MngIndexDTO> dtos =mngIndexService.findByCreatedAt();
-        System.out.println(dtos.toString());
-        model.addAttribute("dtos",dtos);
+        MngIndexDTO.MngTotalDTO totalDTO =mngIndexService.findByCreatedAt();
+        MngIndexDTO.MngCountDTO countDTO = mngIndexService.findByAllCount();
+        System.out.println(totalDTO.getMngMonthDTO().toString());
+        System.out.println(totalDTO.getPayOff());
+        System.out.println(countDTO.toString());
+        model.addAttribute("dtos",totalDTO.getMngMonthDTO());
+        model.addAttribute("payOff",totalDTO.getPayOff());
+        model.addAttribute("countDTO",countDTO);
         return "/mng/index";
     }
 }
