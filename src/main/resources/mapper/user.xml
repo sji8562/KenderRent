@@ -5,15 +5,7 @@
 <mapper
 	namespace="com.tenco.toyproject.repository.interfaces.UserRepository">
 
-	<!-- 유저 회원가입 -->
-	<insert id="insert">
-		insert into user
-		(email, password, user_name,
-		post_number, address, address_detail, phone_number, level, created_at)
-		values
-		(#{email}, #{password}, #{userName}, #{postNumber}, #{address},
-		#{addressDetail}, #{phoneNumber}, 1, now())
-	</insert>
+	
 
 	<!-- -->
 	<update id="updateById">
@@ -34,10 +26,8 @@
 		resultType="com.tenco.toyproject.repository.entity.User">
 		select *
 		from user
-		where email = #{email}
-		and
-		password =
-		#{password}
+		where email = #{email} and
+		password = #{password}
 	</select>
 
 	<!-- 사용자 단일 조회 -->
@@ -68,5 +58,25 @@
 		from user
 		where user_name = #{userName}
 	</select>
+<!-- 	수정시작 -->
 
+	<select id="selectPassword" resultType="String">
+		select password
+		from user
+		where email = #{email}
+	</select>
+	<select id="selectUser" resultType="com.tenco.toyproject.repository.entity.User">
+		select *
+		from user
+		where email = #{email}
+	</select>
+	<!-- 유저 회원가입 -->
+	<insert id="insertUser">
+		insert into user
+		(email, user_name, password,
+		post_number, address, address_detail, phone_number, level, created_at)
+		values
+		(#{email}, #{userName}, #{password}, #{postNumber}, #{address}, #{addressDetail},
+		#{phoneNumber}, 1, now())
+	</insert>
 </mapper>

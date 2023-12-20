@@ -20,7 +20,6 @@
 <link rel="stylesheet" type="text/css" href="/css/styles/responsive.css">
 
 
-
 </head>
 
 <body>
@@ -55,6 +54,7 @@
 												<input id="input_price1" class="form-control-sm input_ph " type="text" name="price1" placeholder="0" style="text-align: right; border: 1px solid darkgray;" > ~ 
 												<input id="input_price2" class="form-control-sm input_ph" type="text" name="price2" placeholder="${MaxPrice }" style="text-align: right; border: 1px solid darkgray;">
 
+
 											</div>
 										</form>
 									</li>
@@ -75,11 +75,11 @@
 									조회하신 상품이 없습니다
 								</c:if>
 
-								<!-- Product -->
+								Product
 								<c:if test="${productList != null }">
 								<c:forEach items="${productList }" var="productList">
-		
-								<div class="product-item">
+								
+								<div  class="product-item">
 
 									<div class="product discount product_filter">
 										<div class="product_image">
