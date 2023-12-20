@@ -76,6 +76,7 @@ public class ProductService {
 	public Order findTid(int userId, int productId) {
 		return productRepository.findTid(userId, productId);
 	}
+
 	// 무한 스크롤 관련
 //	public int searchProductCount(String keyword) {
 //		return productRepository.searchProductCount(keyword);
@@ -93,4 +94,5 @@ public class ProductService {
 	public int searchMaxPrice() {
 		return productRepository.searchMaxPrice();
 	}
+
 }
