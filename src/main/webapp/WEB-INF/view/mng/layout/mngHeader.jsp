@@ -84,7 +84,7 @@
 					<!-- Logo -->
 					<!-- ============================================================== -->
 					<div class="navbar-brand">
-						<a href="/mng" class="logo"> <!-- Logo icon -->
+						<a href="/mng/" class="logo"> <!-- Logo icon -->
 							<b class="logo-icon"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 								<img src="/assets/images/logo-icon.png" alt="homepage" class="dark-logo" /> <!-- Light Logo icon -->
 								<img src="/images/Logo.png" style="width: 40px;" alt="homepage" class="light-logo" />
@@ -116,6 +116,7 @@
 
 								src="/images/Logo.png" alt="user" width="31">
 						</a>
+					</li>
 						<!-- ============================================================== -->
 						<!-- User profile and search -->
 						<!-- ============================================================== -->
@@ -151,11 +152,6 @@
 									<span class="hide-menu">물품 관리</span>
 								</a></li>
 								<!-- 카테고리 관리 -->
-								<li class="sidebar-item"><a
-										class="sidebar-link waves-effect waves-dark sidebar-link"
-										href="/mng/product/categories"> <i class="mdi mdi-format-list-bulleted-type"></i>
-									<span class="hide-menu">카테고리 관리</span>
-								</a></li>
 								<!-- 구매신청 -->
 								<li class="sidebar-item"><a
 										class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -164,7 +160,27 @@
 								</a></li>
 							</ul>
 						</li>
+							<li class="sidebar-item" id="categoryManagement"><a
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/product/list?keyword=" aria-expanded="false"> <i
+									class="mdi mdi-dropbox"></i> <span class="hide-menu">카테고리 관리</span>
+							</a>
+								<ul aria-expanded="false" class="collapse first-level">
+<%--									code = 1--%>
+									<li class="sidebar-item"><a
+											class="sidebar-link waves-effect waves-dark sidebar-link"
+											href="/mng/product/list?keyword="> <i class="mdi mdi-archive"></i>
+										<span class="hide-menu">대여용 카테고리 관리</span>
+									</a></li>
+<%--									code = 2--%>
+									<li class="sidebar-item"><a
+											class="sidebar-link waves-effect waves-dark sidebar-link"
+											href="/mng/product/categories"> <i class="mdi mdi-format-list-bulleted-type"></i>
+										<span class="hide-menu">판매용 카테고리 관리</span>
+									</a></li>
 
+								</ul>
+							</li>
 							<%-- TODO 삭제--%>
 						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
