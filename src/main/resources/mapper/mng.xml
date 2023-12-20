@@ -8,7 +8,51 @@
 
 
     <select id="findByCreatedAt">
-            SELECT DATE_FORMAT(r.created_at,'%m') AS DATE ,COUNT(*) as count , sum(p.price) as price FROM rent r INNER JOIN product p ON r.product_id = p.id GROUP BY r.created_at
+        SELECT
+            'Total' AS type,
+            date,
+            SUM(count) AS count,
+            SUM(price) AS price
+        FROM (
+            SELECT
+            DATE_FORMAT(r.created_at, '%m') AS date,
+            COUNT(*) AS count,
+            SUM(p.price) AS price
+            FROM rent r
+            INNER JOIN product p ON r.product_id = p.id
+            GROUP BY date  -- Corrected: Use the alias 'date' instead of 'created_at'
+
+            UNION ALL
+
+            SELECT
+            DATE_FORMAT(s.created_at, '%m') AS date,
+            COUNT(*) AS count,
+            SUM(p.price) AS price
+            FROM sale s
+            INNER JOIN product p ON s.product_id = p.id
+            GROUP BY date  -- Corrected: Use the alias 'date' instead of 'created_at'
+
+            UNION ALL
+
+            SELECT
+            DATE_FORMAT(pc.created_at, '%m') AS date,
+            COUNT(*) AS count,
+            SUM(p.price) AS price
+            FROM purchase pc
+            INNER JOIN product p ON pc.product_id = p.id
+            GROUP BY date  -- Corrected: Use the alias 'date' instead of 'created_at'
+            ) AS combined_data
+        GROUP BY date;
+
+    </select>
+    <select id="countByAll">
+        SELECT
+                (SELECT COUNT(*) FROM rent WHERE STATUS = 1) AS rent_count,
+                (SELECT COUNT(*) FROM sale WHERE STATUS = 1) AS sale_count,
+                (SELECT COUNT(*) FROM purchase WHERE STATUS = 1) AS purchase_count,
+                (SELECT COUNT(*) FROM rent WHERE STATUS = 1)
+                    + (SELECT COUNT(*) FROM sale WHERE STATUS = 1)
+                    + (SELECT COUNT(*) FROM purchase WHERE STATUS = 1) AS total_count;
     </select>
 
     <select id="findByUsernameAndLevel" resultType="com.tenco.toyproject.repository.entity.User">
