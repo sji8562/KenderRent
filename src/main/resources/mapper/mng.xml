@@ -55,6 +55,10 @@
                     + (SELECT COUNT(*) FROM purchase WHERE STATUS = 1) AS total_count;
     </select>
 
+    <select id="findByUsernameAndLevel" resultType="com.tenco.toyproject.repository.entity.User">
+        SELECT * FROM user WHERE email = #{username} AND level = 2
+    </select>
+
 </mapper>
 
 

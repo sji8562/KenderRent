@@ -64,288 +64,201 @@
 </head>
 
 <body>
-
-<!-- ============================================================== -->
-<!-- Preloader - style you can find in spinners.css -->
-<!-- ============================================================== -->
-<div class="preloader">
-	<div class="lds-ripple">
-		<div class="lds-pos"></div>
-		<div class="lds-pos"></div>
+	<div class="preloader">
+		<div class="lds-ripple">
+			<div class="lds-pos"></div>
+			<div class="lds-pos"></div>
+		</div>
 	</div>
-</div>
-<!-- ============================================================== -->
-<!-- Main wrapper - style you can find in pages.scss -->
-<!-- ============================================================== -->
-<div id="main-wrapper" data-navbarbg="skin6" data-theme="light"
-	 data-layout="vertical" data-sidebartype="full"
-	 data-boxed-layout="full">
-	<!-- ============================================================== -->
-	<!-- Topbar header - style you can find in pages.scss -->
-	<!-- ============================================================== -->
-	<header class="topbar" data-navbarbg="skin6">
-		<nav class="navbar top-navbar navbar-expand-md navbar-light">
-			<div class="navbar-header" data-logobg="skin5">
-				<!-- This is for the sidebar toggle which is visible on mobile only -->
-				<a class="nav-toggler waves-effect waves-light d-block d-md-none"
-				   href="javascript:void(0)"> <i class="ti-menu ti-close"></i>
-				</a>
-				<!-- ============================================================== -->
-				<!-- Logo -->
-				<!-- ============================================================== -->
-				<div class="navbar-brand">
-					<a href="/mng/" class="logo"> <!-- Logo icon --> <b
-							class="logo-icon"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-						<!-- Dark Logo icon --> <img src="/assets/images/logo-icon.png"
-													 alt="homepage" class="dark-logo" /> <!-- Light Logo icon --> <img
-								src="/images/Logo.png" style="width: 40px;" alt="homepage"
-								class="light-logo" />
-					</b> <!--End Logo icon --> <!-- Logo text --> <span class="logo-text">
-								<!-- dark Logo text --> <!-- Light Logo text --> <span style="color: white">Kinder Lend Admin</span>
-						</span>
+	<div id="main-wrapper" data-navbarbg="skin6" data-theme="light"
+		data-layout="vertical" data-sidebartype="full"
+		data-boxed-layout="full">
+		<header class="topbar" data-navbarbg="skin6">
+			<nav class="navbar top-navbar navbar-expand-md navbar-light">
+				<div class="navbar-header" data-logobg="skin5">
+					<!-- This is for the sidebar toggle which is visible on mobile only -->
+					<a class="nav-toggler waves-effect waves-light d-block d-md-none"
+						href="javascript:void(0)"> <i class="ti-menu ti-close"></i>
 					</a>
-				</div>
-				<!-- ============================================================== -->
-				<!-- End Logo -->
-				<!-- ============================================================== -->
-				<!-- ============================================================== -->
-				<!-- Toggle which is visible on mobile only -->
-				<!-- ============================================================== -->
-
-			</div>
-			<!-- ============================================================== -->
-			<!-- End Logo -->
-			<!-- ============================================================== -->
-			<div class="navbar-collapse collapse" id="navbarSupportedContent"
-				 data-navbarbg="skin6" style="justify-content: space-between;">
-				<!-- ============================================================== -->
-				<!-- toggle and nav items -->
-				<!-- ============================================================== -->
-				<%--<ul class="navbar-nav float-start me-auto">
-                    <!-- ============================================================== -->
-                    <!-- Search -->
-                    <!-- ============================================================== -->
-                    <li class="nav-item search-box"><a
-                        class="nav-link waves-effect waves-dark"
-                        href="javascript:void(0)">
-                            <div class="d-flex align-items-center">
-                                <i class="mdi mdi-magnify font-20 me-1"></i>
-                                <div class="ms-1 d-none d-sm-block">
-                                    <span>Search</span>
-                                </div>
-                            </div>
-                    </a>
-                        <form class="app-search position-absolute">
-                            <input type="text" class="form-control"
-                                placeholder="Search &amp; enter"> <a class="srh-btn">
-                                <i class="ti-close"></i>
-                            </a>
-                        </form></li>
-                </ul>--%>
-				<!-- ============================================================== -->
-				<!-- Right side toggle and nav items -->
-				<!-- ============================================================== -->
-				<ul class="navbar-nav float-end">
 					<!-- ============================================================== -->
-					<!-- User profile and search -->
+					<!-- Logo -->
+					<!-- ============================================================== -->
+					<div class="navbar-brand">
+						<a href="/mng" class="logo"> <!-- Logo icon -->
+							<b class="logo-icon"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+								<img src="/assets/images/logo-icon.png" alt="homepage" class="dark-logo" /> <!-- Light Logo icon -->
+								<img src="/images/Logo.png" style="width: 40px;" alt="homepage" class="light-logo" />
+							</b> <!--End Logo icon --> <!-- Logo text -->
+							<span class="logo-text">
+								<!-- dark Logo text --> <!-- Light Logo text -->
+								<span style="color: white">Kinder Lend Admin</span>
+							</span>
+						</a>
+					</div>
+					<!-- ============================================================== -->
+					<!-- End Logo -->
+					<!-- ============================================================== -->
+					<!-- ============================================================== -->
+					<!-- Toggle which is visible on mobile only -->
+					<!-- ============================================================== -->
+
+
+
+				<div class="navbar-collapse collapse" id="navbarSupportedContent"
+					data-navbarbg="skin6" style="justify-content: space-between;">
+					<!-- ============================================================== -->
+					<!-- Right side toggle and nav items -->
+
 					<!-- ============================================================== -->
 					<li class="nav-item dropdown"><a
 							href="/mng/" id="navbarDropdown" aria-expanded="false"> <img
-							src="/images/Logo.png" alt="user" width="31">
-					</a>
-						<%--<ul class="dropdown-menu dropdown-menu-end user-dd animated"
-                            aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="javascript:void(0)"><i
-                                class="ti-user me-1 ms-1"></i> My Profile</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i
-                                class="ti-wallet me-1 ms-1"></i> My Balance</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i
-                                class="ti-email me-1 ms-1"></i> Inbox</a>
-                        </ul></li>--%>
+
+
+								src="/images/Logo.png" alt="user" width="31">
+						</a>
 						<!-- ============================================================== -->
 						<!-- User profile and search -->
 						<!-- ============================================================== -->
-				</ul>
-				<%-- TODO 로그아웃 기능 --%>
-				<a><button type="button" class="btn">logout</button></a>
-			</div>
-		</nav>
-	</header>
-	<!-- ============================================================== -->
-	<!-- End Topbar header -->
-	<!-- ============================================================== -->
-	<!-- ============================================================== -->
-	<!-- Left Sidebar - style you can find in sidebar.scss  -->
-	<!-- ============================================================== -->
-	<aside class="left-sidebar" data-sidebarbg="skin5">
-		<!-- Sidebar scroll-->
-		<div class="scroll-sidebar">
-			<!-- Sidebar navigation-->
-			<nav class="sidebar-nav">
-				<ul id="sidebarnav">
-					<li class="sidebar-item"><a
+					</ul>
+					<a href="/mng/logout"><button type="button" class="btn">로그아웃</button></a>
+				</div>
+			</nav>
+		</header>
+
+		<aside class="left-sidebar" data-sidebarbg="skin5">
+			<!-- Sidebar scroll-->
+			<div class="scroll-sidebar">
+				<!-- Sidebar navigation-->
+				<nav class="sidebar-nav">
+					<ul id="sidebarnav">
+						<%-- 대시보드 --%>
+						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
 							href="/mng/" aria-expanded="false"> <i
-							class="mdi mdi-av-timer"></i> <span class="hide-menu">Dashboard</span>
-					</a></li>
-					<li class="sidebar-item"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="/mng/pages-profile" aria-expanded="false"> <i
-							class="mdi mdi-account-network"></i> <span class="hide-menu">Profile</span>
-					</a></li>
-					<li class="sidebar-item"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="/mng/form-basic" aria-expanded="false"> <i
-							class="mdi mdi-arrange-bring-forward"></i> <span
-							class="hide-menu">Form Basic</span>
-					</a></li>
-					<li class="sidebar-item" id="productManagement"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="/mng/product/list?keyword=" aria-expanded="false"> <i
-							class="mdi mdi-alert-outline"></i> <span class="hide-menu">물품 관리</span>
-					</a>
-						<ul aria-expanded="false" class="collapse first-level">
-							<!-- 대여신청 -->
-							<li class="sidebar-item"><a
-									class="sidebar-link waves-effect waves-dark sidebar-link"
-									href="/mng/product/list?keyword="> <i class="mdi mdi-view-dashboard"></i>
-								<span class="hide-menu">물품 관리</span>
-							</a></li>
-							<!-- 판매신청 -->
-							<li class="sidebar-item"><a
-									class="sidebar-link waves-effect waves-dark sidebar-link"
-									href="/mng/product/categories"> <i class="mdi mdi-view-dashboard"></i>
-								<span class="hide-menu">카테고리 관리</span>
-							</a></li>
-							<!-- 구매신청 -->
-							<li class="sidebar-item"><a
-									class="sidebar-link waves-effect waves-dark sidebar-link"
-									href="/mng/product/review?keyword="> <i
-									class="mdi mdi-view-dashboard"></i> <span class="hide-menu">후기 관리</span>
-							</a></li>
-						</ul></li>
+								class="mdi mdi-view-dashboard"></i> <span class="hide-menu">Dashboard</span>
+						</a></li>
+						<%-- 물품관리 --%>
+						<li class="sidebar-item" id="productManagement"><a
+								class="sidebar-link waves-effect waves-dark sidebar-link"
+								href="/mng/product/list?keyword=" aria-expanded="false"> <i
+								class="mdi mdi-dropbox"></i> <span class="hide-menu">물품 관리</span>
+						</a>
+							<ul aria-expanded="false" class="collapse first-level">
+								<!-- 물품관리 -->
+								<li class="sidebar-item"><a
+										class="sidebar-link waves-effect waves-dark sidebar-link"
+										href="/mng/product/list?keyword="> <i class="mdi mdi-archive"></i>
+									<span class="hide-menu">물품 관리</span>
+								</a></li>
+								<!-- 카테고리 관리 -->
+								<li class="sidebar-item"><a
+										class="sidebar-link waves-effect waves-dark sidebar-link"
+										href="/mng/product/categories"> <i class="mdi mdi-format-list-bulleted-type"></i>
+									<span class="hide-menu">카테고리 관리</span>
+								</a></li>
+								<!-- 구매신청 -->
+								<li class="sidebar-item"><a
+										class="sidebar-link waves-effect waves-dark sidebar-link"
+										href="/mng/product/review?keyword="> <i
+										class="mdi mdi-thumb-up"></i> <span class="hide-menu">후기 관리</span>
+								</a></li>
+							</ul>
+						</li>
 
-					<li class="sidebar-item"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="/mng/table" aria-expanded="false"> <i
-							class="mdi mdi-border-none"></i> <span class="hide-menu">Table</span>
-					</a></li>
-					<li class="sidebar-item"><a
+							<%-- TODO 삭제--%>
+						<li class="sidebar-item"><a
 							class="sidebar-link waves-effect waves-dark sidebar-link"
 							href="/mng/icon-material" aria-expanded="false"> <i
-							class="mdi mdi-face"></i> <span class="hide-menu">Icon</span>
-					</a></li>
-					<li class="sidebar-item"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="/mng/blank" aria-expanded="false"> <i
-							class="mdi mdi-file"></i> <span class="hide-menu">Blank</span>
-					</a></li>
-					<li class="sidebar-item"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="/mng/error-404" aria-expanded="false"> <i
-							class="mdi mdi-alert-outline"></i> <span class="hide-menu">404</span>
-					</a></li>
+								class="mdi mdi-face"></i> <span class="hide-menu">Icon</span>
+						</a></li>
 
-					<li class="sidebar-item"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="/mng/user/list" aria-expanded="false"> <i
-							class="mdi mdi-alert-outline"></i> <span class="hide-menu">유저
-									관리</span>
-					</a></li>
-					<li class="sidebar-item" id="applyManagement"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="/mng/apply/list" aria-expanded="false"> <i
-							class="mdi mdi-alert-outline"></i> <span class="hide-menu">신청
-									관리</span>
-					</a>
-						<ul aria-expanded="false" class="collapse first-level">
-							<!-- 대여신청 -->
-							<li class="sidebar-item"><a
-									class="sidebar-link waves-effect waves-dark sidebar-link"
-									href="/mng/apply/rental-list"> <i class="mdi mdi-view-dashboard"></i>
-								<span class="hide-menu">대여신청</span>
-							</a></li>
-							<!-- 판매신청 -->
-							<li class="sidebar-item"><a
-									class="sidebar-link waves-effect waves-dark sidebar-link"
-									href="/mng/apply/sale-list"> <i class="mdi mdi-view-dashboard"></i>
-								<span class="hide-menu">판매신청</span>
-							</a></li>
-							<!-- 구매신청 -->
-							<li class="sidebar-item"><a
-									class="sidebar-link waves-effect waves-dark sidebar-link"
-									href="/mng/apply/purchase-list"> <i
-									class="mdi mdi-view-dashboard"></i> <span class="hide-menu">구매신청</span>
-							</a></li>
-						</ul></li>
+						<%-- 유저 관리 --%>
+						<li class="sidebar-item">
+							<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/user/list" aria-expanded="false">
+								<i class="mdi mdi-account"></i>
+								<span class="hide-menu">유저 관리</span>
+							</a>
+						</li>
+						<%-- 신청 관리 --%>
+						<li class="sidebar-item" id="applyManagement">
+							<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/apply/list" aria-expanded="false">
+							<i class="mdi mdi-tooltip-text"></i>
+							<span class="hide-menu">신청 관리</span>
+						</a>
+							<ul aria-expanded="false" class="collapse first-level">
+								<!-- 대여신청 -->
+								<li class="sidebar-item">
+									<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/apply/rental-list">
+										<i class="mdi mdi-timer"></i>
+										<span class="hide-menu">대여신청</span>
+									</a>
+								</li>
+								<!-- 판매신청 -->
+								<li class="sidebar-item">
+									<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/apply/sale-list">
+										<i class="mdi mdi-cash-multiple"></i>
+										<span class="hide-menu">판매신청</span>
+									</a>
+								</li>
+								<!-- 구매신청 -->
+								<li class="sidebar-item">
+									<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/apply/purchase-list">
+										<i class="mdi mdi-barcode-scan"></i>
+										<span class="hide-menu">구매신청</span>
+								</a>
+								</li>
+							</ul>
+						</li>
 
 
-					<%-- 회사 소개 게시판 --%>
-					<li class="sidebar-item" id="boardManagement"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="/mng/content/info" aria-expanded="false"> <i
-							class="mdi mdi-alert-outline"></i> <span class="hide-menu">회사 소개 게시판</span>
+						<%-- 회사 소개 게시판 --%>
+						<li class="sidebar-item" id="boardManagement">
+							<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/content/info" aria-expanded="false">
+								<i class="mdi mdi-information-variant"></i>
+								<span class="hide-menu">회사 소개 관리</span>
+							</a>
+						</li>
 
-					</a>
-					</li>
+						<%-- 게시판 관리 --%>
+						<li class="sidebar-item" id="noticeManagement">
+							<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/board/noticeList" aria-expanded="false">
+								<i class="mdi mdi-calendar-text"></i>
+								<span class="hide-menu">게시판 관리</span>
+							</a>
+							<ul aria-expanded="false" class="collapse first-level">
+								<!-- 대여신청 -->
+								<li class="sidebar-item">
+									<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/board/noticeList">
+										<i class="mdi mdi-information-outline"></i>
+										<span class="hide-menu">공지사항</span>
+									</a>
+								</li>
+								<!-- 자주 묻는 질문 -->
+								<li class="sidebar-item">
+									<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/board/faq-list?keyword=">
+										<i class="mdi mdi-comment-question-outline"></i>
+										<span class="hide-menu">자주 묻는 질문</span>
+									</a>
+								</li>
+								<!-- 1:1 문의 -->
+								<li class="sidebar-item">
+									<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/board/qna?keyword=">
+										<i class="mdi mdi-forum"></i>
+										<span class="hide-menu">1:1 문의</span>
+									</a>
+								</li>
+								<li class="sidebar-item">
+									<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/board/productqnaList">
+										<i class="mdi mdi-note-text"></i>
+										<span class="hide-menu">상품질문</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+				<!-- End Sidebar navigation -->
+			</div>
+			<!-- End Sidebar scroll-->
+		</aside>
 
-					<%--						문의--%>
-					<li class="sidebar-item" id="noticeManagement"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-
-							href="/mng/board/noticeList" aria-expanded="false"> <i
-
-							class="mdi mdi-alert-outline"></i> <span class="hide-menu">게시판 관리</span>
-					</a>
-						<ul aria-expanded="false" class="collapse first-level">
-							<!-- 대여신청 -->
-							<li class="sidebar-item"><a
-									class="sidebar-link waves-effect waves-dark sidebar-link"
-
-									href="/mng/board/noticeList"> <i class="mdi mdi-view-dashboard"></i>
-								<span class="hide-menu">공지사항</span>
-
-
-							</a></li>
-							<!-- 판매신청 -->
-							<li class="sidebar-item"><a
-									class="sidebar-link waves-effect waves-dark sidebar-link"
-
-
-									href="/mng/board/faq-list?keyword="> <i class="mdi mdi-view-dashboard"></i>
-
-
-								<span class="hide-menu">자주 묻는 질문</span>
-							</a></li>
-							<!-- 구매신청 -->
-							<li class="sidebar-item"><a
-									class="sidebar-link waves-effect waves-dark sidebar-link"
-
-
-									href="/mng/board/qna?keyword="> <i
-
-
-									class="mdi mdi-view-dashboard"></i> <span class="hide-menu">1:1질문</span>
-							</a></li>
-							<li class="sidebar-item"><a
-									class="sidebar-link waves-effect waves-dark sidebar-link"
-
-
-									href="/mng/board/productqnaList"> <i
-									class="mdi mdi-view-dashboard"></i> <span class="hide-menu">상품질문</span>
-							</a></li>
-						</ul></li>
-
-
-				</ul>
-			</nav>
-			<!-- End Sidebar navigation -->
-		</div>
-		<!-- End Sidebar scroll-->
-	</aside>
-	<!-- ============================================================== -->
-	<!-- End Left Sidebar - style you can find in sidebar.scss  -->
-	<!-- ============================================================== -->
-	<!-- ============================================================== -->
-	<!-- Page wrapper  -->
-	<!-- ============================================================== -->
