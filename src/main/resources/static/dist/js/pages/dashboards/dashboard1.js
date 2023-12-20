@@ -6,16 +6,29 @@ File: js
 */
 $(function() {
     "use strict";
-
+    var dtosString = document.getElementById("dtos").value;
+    dtosString = dtosString.replace(/MngIndexDTO/g, '');
+    dtosString = dtosString.replace(/\(/g, '\{');
+    dtosString = dtosString.replace(/\)/g, '\}');
+    dtosString = dtosString.replace(/date=(\w+)/g, '"date":"$1"');
+    dtosString = dtosString.replace(/count=/g, '"count":');
+    dtosString = dtosString.replace(/price=/g, '"price":');
+    var dtos = JSON.parse(dtosString);
+    console.log(dtos);
+    var labels = dtos.map(function(item) {
+        return item.date;
+    });
+    var series = dtos.map(function(item) {
+        return item.price;
+    });
+    console.log(labels);
+    console.log(series);
     // ============================================================== 
     // sales ratio
     // ============================================================== 
     var chart = new Chartist.Line('.sales', {
-        labels: [1, 2, 3, 4, 5, 6, 7],
-        series: [
-            [24.5, 28.3, 42.7, 32, 34.9, 48.6, 40],
-            [8.9, 5.8, 21.9, 5.8, 16.5, 6.5, 14.5]
-        ]
+        labels: labels,
+        series: series
     }, {
         low: 0,
         high: 48,

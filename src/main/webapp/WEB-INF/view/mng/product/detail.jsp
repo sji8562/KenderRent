@@ -64,7 +64,7 @@
 								<input type="text" class="form-control" value="${product.price}" disabled>
 							</div>
 							<div class="form-group">
-								<label for="example-email">카테고리</label>
+								<label>카테고리</label>
 								<div style="display: flex;">
 									<span style="margin-right: 10px;">
 										<select class="form-select" aria-label="Disabled select example" disabled>

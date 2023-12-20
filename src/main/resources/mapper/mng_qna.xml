@@ -8,7 +8,7 @@
 
     <!-- QNA 총 개수 -->
     <select id="countQnaList" resultType="int">
-        SELECT COUNT(*) AS count FROM board WHERE code = 3
+        SELECT COUNT(*) AS count FROM board WHERE code = 3 AND title LIKE CONCAT('%', #{keyword}, '%')
     </select>
 
     <!-- QnA 리스트 조회 -->
@@ -18,6 +18,16 @@
         JOIN user AS u ON u.id = b.user_id
         WHERE b.code = 3
         LIMIT #{start}, 5
+    </select>
+
+    <!-- QNA 리스트 조회 with 검색-->
+    <select id="findQnaByCodeWithPagenationAndKeyword" resultType="com.tenco.toyproject.repository.entity.Board">
+        SELECT b.id, b.title, b.code, b.user_id, u.email, b.created_at, (r.id IS NOT NULL) AS reply, r.created_at AS reply_created_at FROM board AS b
+                                                                                                                                               LEFT JOIN reply AS r ON r.board_id = b.id
+                                                                                                                                               JOIN user AS u ON u.id = b.user_id
+        WHERE b.code = 3
+          AND b.title LIKE CONCAT('%', #{keyword}, '%')
+            LIMIT #{pageVO.start}, 5
     </select>
 
     <!-- QnA 상세조회 with 답변 -->

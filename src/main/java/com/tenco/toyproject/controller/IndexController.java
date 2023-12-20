@@ -19,11 +19,7 @@ public class IndexController {
     	
         return "index";
     }
-    @GetMapping({"mng"})
-    public String manager() {
-    	System.out.println("매니저 페이지로 들어갑니다.");
-    	return "mng/index";
-    }
+
 
     @GetMapping("/mng/pages-profile")
     public String profile() {

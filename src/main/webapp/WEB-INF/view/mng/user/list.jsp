@@ -46,9 +46,16 @@
 					<div class="card-body">
 						<div class="col-12">
 							<div class="card">
-								<div class="card-body">
+								<div class="card-body m--search-inline">
 									<h4 class="card-title">유저 조회</h4>
-									<h6 class="card-subtitle"></h6>
+									<form class="row g-3">
+										<div class="col-auto">
+											<input type="text" class="form-control" id="keyword" placeholder="__을 입력해주세요">
+										</div>
+										<div class="col-auto">
+											<button type="submit" class="btn btn-primary mb-3">검색</button>
+										</div>
+									</form>
 								</div>
 								<div class="table-responsive">
 									<table class="table">

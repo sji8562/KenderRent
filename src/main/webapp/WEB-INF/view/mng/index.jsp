@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
-        
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<link href="/assets/libs/chartist/dist/chartist.min.css"--%>
+<%--      rel="stylesheet">--%>
+<%--<script src="/assets/libs/chartist/dist/chartist.min.js"></script>--%>
+<%--<script src="/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>--%>
+<%--<script src="/dist/js/pages/dashboards/dashboard1.js"></script>--%>
         <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
@@ -40,7 +45,9 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Sales Ratio</h4>
+                                <div class=""></div>
                                 <div class="sales ct-charts mt-3"></div>
+                                <input type="hidden" id="dtos" value="${dtos}">
                             </div>
                         </div>
                     </div>
@@ -341,5 +348,33 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            
+<%--            <script>--%>
+
+
+
+<%--                var chart = new Chartist.Line('.sales', {--%>
+<%--                    labels: labels,--%>
+<%--                    series: series--%>
+
+<%--                }, {--%>
+<%--                    low: 0,--%>
+<%--                    high: 48,--%>
+<%--                    showArea: true,--%>
+<%--                    fullWidth: true,--%>
+<%--                    plugins: [--%>
+<%--                        Chartist.plugins.tooltip()--%>
+<%--                    ],--%>
+<%--                    axisY: {--%>
+<%--                        onlyInteger: true,--%>
+<%--                        scaleMinSpace: 40,--%>
+<%--                        offset: 20,--%>
+<%--                        labelInterpolationFnc: function(value) {--%>
+<%--                            return (value/10 ) + "원";--%>
+<%--                        }--%>
+<%--                    },--%>
+
+<%--                });--%>
+
+<%--                var chart = [chart];--%>
+<%--            </script>--%>
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>
