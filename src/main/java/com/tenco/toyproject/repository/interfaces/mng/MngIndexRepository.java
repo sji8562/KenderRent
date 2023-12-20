@@ -8,7 +8,11 @@ import java.util.List;
 
 @Mapper
 public interface MngIndexRepository {
-    List<MngIndexDTO> findByCreatedAt();
+
+    public List<MngIndexDTO.MngMonthDTO> findByCreatedAt();
+    public MngIndexDTO.MngCountDTO countByAll();
+
 
     User findByUsernameAndLevel(String username);
+
 }
