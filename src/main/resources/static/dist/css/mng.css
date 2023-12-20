@@ -40,6 +40,19 @@
 }
 
 
+#categoryManagement .collapse {
+    display: none;
+}
+
+/* 마우스를 올릴 때 나타나게 함 */
+#categoryManagement.show .collapse {
+    display: block;
+}
+
+#categoryManagement.show .collapse li.sidebar-item {
+    margin-left: 10px; /* 서브 메뉴 오른쪽으로 10px 이동 */
+    font-size: 12px;
+}
 /* Style for the links with class "rentalDetail" */
 .applyDetail a {
     color: black;
