@@ -59,6 +59,7 @@
 															<th scope="col">카테고리</th>
 															<th scope="col">물품명</th>
 															<th scope="col">후기내용</th>
+															<th scope="col">별점</th>
 															<th scope="col">작성자</th>
 															<th scope="col">작성일</th>
 															<th scope="col">기능</th>
@@ -71,10 +72,11 @@
 																<td>${review.firstCategoryName} > ${review.secondCategoryName}</td>
 																<td><a href="/mng/product/review/${review.id}/detail" style="text-decoration: none; color: black;">${review.name}</a></td>
 																<td>${review.content}</td>
+																<td>${review.rate}</td>
 																<td>${review.email}</td>
 																<td>${review.formatCreatedAtToString()}</td>
-																<td><a href="/mng/product/review/${review.id}/detail">조회</a>
-																<a onclick="reviewConfirmOpen('del', ${review.id})">삭제</a>
+																<td><a href="/mng/product/review/${review.id}/detail"><button class="btn btn-success" type="button">조회</button></a>
+																	<a onclick="reviewConfirmOpen('del', ${review.id})"><button class="btn btn-danger" type="button">삭제</button></a>
 																</td>
 
 															</tr>

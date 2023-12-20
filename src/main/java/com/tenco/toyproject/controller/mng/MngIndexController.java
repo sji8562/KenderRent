@@ -6,6 +6,7 @@ import com.tenco.toyproject.dto.MngIndexDTO;
 import com.tenco.toyproject.dto.MngSignInFormDto;
 import com.tenco.toyproject.dto.MngUserDTO;
 import com.tenco.toyproject.repository.entity.User;
+import com.tenco.toyproject.repository.interfaces.mng.MngIndexRepository;
 import com.tenco.toyproject.service.mng.MngIndexService;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,22 @@ public class MngIndexController {
 
     @Autowired
     private MngIndexService mngIndexService;
+
+    @Autowired
+    private MngIndexRepository mngIndexRepository;
+
+    public MngIndexDTO.MngTotalDTO findByCreatedAt(){
+        List<MngIndexDTO.MngMonthDTO> monthDTOS = mngIndexRepository.findByCreatedAt();
+        int payoff = monthDTOS.stream()
+                .mapToInt(MngIndexDTO.MngMonthDTO::getPrice)
+                .sum();
+        System.out.println(payoff);
+        MngIndexDTO.MngTotalDTO mngTotalDTO = new MngIndexDTO.MngTotalDTO();;
+        mngTotalDTO.setMngMonthDTO(monthDTOS);
+        mngTotalDTO.setPayOff(payoff);
+
+        return mngTotalDTO;
+    }
 
     @GetMapping("/login")
     public String goLoginPage() {

@@ -20,6 +20,7 @@ public class MngIndexService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+
     public MngIndexDTO.MngTotalDTO findByCreatedAt(){
         List<MngIndexDTO.MngMonthDTO> monthDTOS = mngIndexRepository.findByCreatedAt();
         int payoff = monthDTOS.stream()
@@ -32,6 +33,7 @@ public class MngIndexService {
 
         return mngTotalDTO;
     }
+
     public MngIndexDTO.MngCountDTO findByAllCount(){
         MngIndexDTO.MngCountDTO countDTO = mngIndexRepository.countByAll();
         return countDTO;

@@ -104,7 +104,7 @@
 
 
 
-				<div class="navbar-collapse collapse" id="navbarSupportedContent"
+				<%--<div class="navbar-collapse collapse" id="navbarSupportedContent"
 					data-navbarbg="skin6" style="justify-content: space-between;">
 					<!-- ============================================================== -->
 					<!-- Right side toggle and nav items -->
@@ -120,8 +120,9 @@
 						<!-- ============================================================== -->
 						<!-- User profile and search -->
 						<!-- ============================================================== -->
-					</ul>
+
 					<a href="/mng/logout"><button type="button" class="btn">로그아웃</button></a>
+				</div>--%>
 				</div>
 			</nav>
 		</header>
@@ -139,9 +140,9 @@
 								class="mdi mdi-view-dashboard"></i> <span class="hide-menu">Dashboard</span>
 						</a></li>
 						<%-- 물품관리 --%>
-						<li class="sidebar-item" id="productManagement"><a
+						<li class="sidebar-item" id="productManagement"><a style="cursor: default"
 								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/product/list?keyword=" aria-expanded="false"> <i
+								aria-expanded="false"> <i
 								class="mdi mdi-dropbox"></i> <span class="hide-menu">물품 관리</span>
 						</a>
 							<ul aria-expanded="false" class="collapse first-level">
@@ -149,9 +150,14 @@
 								<li class="sidebar-item"><a
 										class="sidebar-link waves-effect waves-dark sidebar-link"
 										href="/mng/product/list?keyword="> <i class="mdi mdi-archive"></i>
-									<span class="hide-menu">물품 관리</span>
+									<span class="hide-menu">대여용 물품 관리</span>
 								</a></li>
-								<!-- 카테고리 관리 -->
+								<!-- 물품관리 -->
+								<li class="sidebar-item"><a
+										class="sidebar-link waves-effect waves-dark sidebar-link"
+										href="/mng/product/list?keyword="> <i class="mdi mdi-archive"></i>
+									<span class="hide-menu">판매용 물품 관리</span>
+								</a></li>
 								<!-- 구매신청 -->
 								<li class="sidebar-item"><a
 										class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -162,32 +168,23 @@
 						</li>
 							<li class="sidebar-item" id="categoryManagement"><a
 									class="sidebar-link waves-effect waves-dark sidebar-link"
-									href="/mng/product/list?keyword=" aria-expanded="false"> <i
-									class="mdi mdi-dropbox"></i> <span class="hide-menu">카테고리 관리</span>
+									href="#" aria-expanded="false" style="cursor: default"> <i
+									class="mdi mdi-format-list-bulleted-type"></i> <span class="hide-menu">카테고리 관리</span>
 							</a>
 								<ul aria-expanded="false" class="collapse first-level">
 <%--									code = 1--%>
 									<li class="sidebar-item"><a
 											class="sidebar-link waves-effect waves-dark sidebar-link"
-											href="/mng/product/list?keyword="> <i class="mdi mdi-archive"></i>
+											href="/mng/product/categories"> <i class="mdi mdi-format-list-bulleted"></i>
 										<span class="hide-menu">대여용 카테고리 관리</span>
 									</a></li>
 <%--									code = 2--%>
 									<li class="sidebar-item"><a
 											class="sidebar-link waves-effect waves-dark sidebar-link"
-											href="/mng/product/categories"> <i class="mdi mdi-format-list-bulleted-type"></i>
+											href="/mng/product/categoriesForSale"> <i class="mdi mdi-format-list-numbers"></i>
 										<span class="hide-menu">판매용 카테고리 관리</span>
 									</a></li>
-
 								</ul>
-							</li>
-							<%-- TODO 삭제--%>
-						<li class="sidebar-item"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="/mng/icon-material" aria-expanded="false"> <i
-								class="mdi mdi-face"></i> <span class="hide-menu">Icon</span>
-						</a></li>
-
 						<%-- 유저 관리 --%>
 						<li class="sidebar-item">
 							<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/user/list" aria-expanded="false">
@@ -238,7 +235,7 @@
 						<%-- 게시판 관리 --%>
 						<li class="sidebar-item" id="noticeManagement">
 							<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/board/noticeList" aria-expanded="false">
-								<i class="mdi mdi-calendar-text"></i>
+								<i class="mdi mdi-file-document-box"></i>
 								<span class="hide-menu">게시판 관리</span>
 							</a>
 							<ul aria-expanded="false" class="collapse first-level">
@@ -270,6 +267,14 @@
 									</a>
 								</li>
 							</ul>
+						</li>
+					</ul>
+					<ul style="position: fixed; bottom: 0px;">
+						<li class="sidebar-item">
+							<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/mng/logout">
+								<i class="mdi mdi-power"></i>
+								<span class="hide-menu">로그아웃</span>
+							</a>
 						</li>
 					</ul>
 				</nav>
