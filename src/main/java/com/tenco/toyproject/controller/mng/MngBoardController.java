@@ -16,9 +16,11 @@ import com.tenco.toyproject._core.handler.exception.Exception500;
 import com.tenco.toyproject.dto.MngBoardDTO;
 import com.tenco.toyproject.dto.MngReplyDTO;
 import com.tenco.toyproject.repository.entity.Board;
+import com.tenco.toyproject.repository.entity.ProductQnaDetail;
 import com.tenco.toyproject.repository.entity.QnaDetail;
 import com.tenco.toyproject.service.mng.board.MngFaqService;
 import com.tenco.toyproject.service.mng.board.MngNoticeService;
+import com.tenco.toyproject.service.mng.board.MngProductQnaService;
 import com.tenco.toyproject.service.mng.board.MngQnaService;
 import com.tenco.toyproject.vo.PageVO;
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +41,9 @@ public class MngBoardController {
 
   @Autowired
   private MngQnaService mngQnaService;
+
+  @Autowired
+  private MngProductQnaService mngProductQnaService;
 
   // 공지사항 리스트
   @GetMapping("noticeList")
@@ -254,11 +259,6 @@ public class MngBoardController {
     return "mng/board/qna/list";
 
   }
-  
-  @GetMapping("productqna")
-  public String productqna() {
-    return "mng/board/productqna/list";
-  }
 
   // faq 삭제
   @GetMapping("{id}/faq-delete")
@@ -357,6 +357,95 @@ public class MngBoardController {
   public String deleteQna(@PathVariable int id) {
     mngQnaService.deleteQna(id);
     return "redirect:/mng/board/qna";
+  }
+
+  // ======================================= //
+  // 231220 전우진
+
+  // 제품 문의 리스트
+  @GetMapping("productqna")
+  public String productQnaPage(Model model, PageVO pageVO,
+      @RequestParam(value = "nowPage", required = false) String nowPage,
+      @RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+      @RequestParam(value = "keyword", required = false) String keyword) {
+
+    int total = mngProductQnaService.countProductQnaList(keyword);
+
+    if (nowPage == null && cntPerPage == null) {
+      nowPage = "1";
+      cntPerPage = "5";
+    } else if (nowPage == null) {
+      nowPage = "1";
+    } else if (cntPerPage == null) {
+      cntPerPage = "5";
+    }
+
+    pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+    model.addAttribute("paging", pageVO);
+    model.addAttribute("keyword", keyword);
+    System.out.println(cntPerPage);
+
+    List<MngBoardDTO.ProductQnaListDto> productQnaList;
+
+    // 검색어가 있는 경우
+    if (keyword != null && !keyword.isEmpty()) {
+      // 검색어를 이용해 검색 쿼리 수행
+      productQnaList =
+          mngProductQnaService.findProductQnaByCodeWithPagenationAndKeyword(pageVO, keyword);
+    } else {
+      // 검색어가 없을 때
+      productQnaList = mngProductQnaService.findProductQnaByCodeWithPagenation(pageVO);
+    }
+
+    model.addAttribute("productQnaList", productQnaList);
+
+    return "mng/board/productqna/list";
+
+  }
+
+  // 제품 문의 상세
+  @GetMapping("{id}/productqna-detail")
+  public String productqnaDetail(@PathVariable Integer id, Model model) {
+    try {
+      if (id == null) {
+        throw new CustomRestfulException("잘못된 입력입니다.", HttpStatus.BAD_REQUEST);
+      }
+      ProductQnaDetail productQna = mngProductQnaService.findProductQnaByIdWithReply(id);
+      if (productQna == null) {
+        throw new CustomRestfulException("없는 공지사항입니다.", HttpStatus.BAD_REQUEST);
+      }
+      System.out.println(productQna.toString());
+      logger.info(productQna.toString());
+
+      model.addAttribute("productQna", productQna);
+      return "mng/board/productQna/detail";
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+
+  }
+
+  // 제품 문의 답변 등록
+  @PostMapping("{id}/productqna-answer")
+  public String submitProductQnaAnswer(@PathVariable int id, MngReplyDTO.ProductQnaReplyDto dto) {
+
+    if (dto.getReplyContent() == null || dto.getReplyContent().isEmpty()) {
+      throw new Exception500("답변 내용을 입력하세요");
+    }
+
+    dto.setBoardId(id);
+
+    mngProductQnaService.submitProductQnaAnswer(dto);
+
+    return "redirect:/mng/board/" + id + "/productqna-detail";
+  }
+
+  // 제품 문의 삭제
+  @GetMapping("{id}/productqna-delete")
+  public String deleteProductQna(@PathVariable int id) {
+    mngProductQnaService.deleteProductQna(id);
+    return "redirect:/mng/board/productqna";
   }
 
 }

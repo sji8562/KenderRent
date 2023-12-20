@@ -16,37 +16,31 @@
 	<!-- QnA 리스트 조회 -->
 	<select id="findProductQnaByCodeWithPagenation"
 		resultType="com.tenco.toyproject.repository.entity.Board">
-		SELECT b.id, b.title, b.code, b.user_id, u.email,
-		b.created_at, (r.id IS NOT
-		NULL) AS reply, r.created_at AS
+		SELECT b.id, b.product_id, b.title, b.code, b.user_id, u.email,
+		b.created_at, (r.id IS NOT NULL) AS reply, r.created_at AS
 		reply_created_at FROM board AS b
-		LEFT JOIN reply AS r ON r.board_id =
-		b.id
+		LEFT JOIN reply AS r ON r.board_id = b.id
 		JOIN user AS u ON u.id = b.user_id
 		WHERE b.code = 4
-		LIMIT #{start},
-		5
+		LIMIT #{start}, 5
 	</select>
 
 	<!-- QNA 리스트 조회 with 검색 -->
 	<select id="findProductQnaByCodeWithPagenationAndKeyword"
 		resultType="com.tenco.toyproject.repository.entity.Board">
-		SELECT b.id, b.title, b.code, b.user_id, u.email,
-		b.created_at, (r.id IS NOT
-		NULL) AS reply, r.created_at AS
-		reply_created_at FROM board AS b
-		LEFT JOIN reply AS r ON r.board_id =
-		b.id
+		SELECT b.id, b.title, b.code, b.user_id, u.email, b.created_at, 
+		(r.id IS NOT NULL) AS reply, r.created_at AS reply_created_at 
+		FROM board AS b
+		LEFT JOIN reply AS r ON r.board_id = b.id
 		JOIN user AS u ON u.id = b.user_id
 		WHERE b.code = 4
-		AND b.title LIKE
-		CONCAT('%', #{keyword}, '%')
+		AND b.title LIKE CONCAT('%', #{keyword}, '%')
 		LIMIT #{pageVO.start}, 5
 	</select>
 
 	<!-- QnA 상세조회 with 답변 -->
 	<select id="findProductQnaByIdWithReply"
-		resultType="com.tenco.toyproject.repository.entity.QnaDetail">
+		resultType="com.tenco.toyproject.repository.entity.ProductQnaDetail">
 		SELECT b.id, b.title, b.content, b.code, b.user_id,
 		u.email, b.created_at,
 		r.id AS replyId, r.content AS reply_content,

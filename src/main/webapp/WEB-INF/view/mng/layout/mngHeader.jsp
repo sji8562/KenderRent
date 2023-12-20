@@ -101,7 +101,7 @@
 					<!-- Logo -->
 					<!-- ============================================================== -->
 					<div class="navbar-brand">
-						<a href="/mng" class="logo"> <!-- Logo icon --> <b
+						<a href="/mng/" class="logo"> <!-- Logo icon --> <b
 							class="logo-icon"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 								<!-- Dark Logo icon --> <img src="/assets/images/logo-icon.png"
 								alt="homepage" class="dark-logo" /> <!-- Light Logo icon --> <img
@@ -328,8 +328,8 @@
 								</a></li>
 								<li class="sidebar-item"><a
 									class="sidebar-link waves-effect waves-dark sidebar-link"
-									href="/mng/board/productqnaList"> <i
-										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">상품질문</span>
+									href="/mng/board/productqna?keyword="> <i
+										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">제품 문의</span>
 								</a></li>
 							</ul></li>
 
