@@ -1,6 +1,7 @@
 package com.tenco.toyproject._core.config;
 
 
+import com.tenco.toyproject._core.handler.MngAuthInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,12 +23,20 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	
 	@Autowired
 	private CartIntercepter cartIntercepter;
+
+	@Autowired
+	private MngAuthInterceptor mngAuthInterceptor;
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(cartIntercepter);
 //				.addPathPatterns("/");
 //				.addPathPatterns("/auth/**"); // 추가하는 방법
+
+		// 관리자 로그인 체크
+		registry.addInterceptor(mngAuthInterceptor)
+				.addPathPatterns("/mng/**")
+				.excludePathPatterns("/mng/login", "/mng/sign-in");
 	}
 
 //	@Override
