@@ -25,5 +25,9 @@ public interface ProductRepository {
 	public List<Map> showCustomerOrderList(int userId);
 	public int applyForRefund(int productId);
 	public Order findTid(@Param("userId") int userId, @Param("productId") int productId);
+	
+	//무한스크롤 관련
 	public List<Map> searchProduct(String keyword);
+	public List<Map> searchProductInfinite(@Param("keyword") String keyword, @Param("offset") int offset,@Param("limit") int limit);
+	public int searchMaxPrice();
 }
