@@ -11,9 +11,24 @@
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="keywords"
-	content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Nice lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Nice admin lite design, Nice admin lite dashboard bootstrap 5 dashboard template">
+	content="
+	wrappixel, 
+	admin dashboard, 
+	html css dashboard, 
+	web dashboard, 
+	bootstrap 5 admin, 
+	bootstrap 5, 
+	css3 dashboard, 
+	bootstrap 5 dashboard, 
+	Nice lite admin bootstrap 5 dashboard, 
+	frontend, 
+	responsive bootstrap 5 admin template, 
+	Nice admin lite design, 
+	Nice admin lite dashboard bootstrap 5 dashboard template">
 <meta name="description"
-	content="Nice Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+	content="
+	Nice Admin Lite is powerful and clean admin dashboard template, 
+	inpired from Bootstrap Framework">
 <meta name="robots" content="noindex,nofollow">
 <title>Kender-Rent</title>
 <!-- Custom CSS -->
@@ -23,22 +38,27 @@
 <link rel="icon" type="image/png" sizes="16x16"
 	href="/assets/images/favicon.png">
 <!-- Custom CSS -->
-	<link href="/assets/libs/chartist/dist/chartist.min.css"
-		  rel="stylesheet">
+<link href="/assets/libs/chartist/dist/chartist.min.css"
+	rel="stylesheet">
+
 
 <!-- Custom CSS -->
 <link href="/dist/css/style.min.css" rel="stylesheet">
-	<link href="/dist/css/mng.css" rel="stylesheet">
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-		  integrity="sha256-7ZWbZUAi97rkirk4DcEp4GWDPkWpRMcNaEyXGsNXjLg=" crossorigin="anonymous">
+<link href="/dist/css/mng.css" rel="stylesheet">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+	integrity="sha256-7ZWbZUAi97rkirk4DcEp4GWDPkWpRMcNaEyXGsNXjLg="
+	crossorigin="anonymous">
 
-	<!-- Summernote CSS -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
-		  integrity="sha256-IKhQVXDfwbVELwiR0ke6dX+pJt0RSmWky3WB2pNx9Hg=" crossorigin="anonymous">
+<!-- Summernote CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
+	integrity="sha256-IKhQVXDfwbVELwiR0ke6dX+pJt0RSmWky3WB2pNx9Hg="
+	crossorigin="anonymous">
 
-	<!-- Your Custom CSS -->
-	<link rel="stylesheet" href="/css/style.css">
+<!-- Your Custom CSS -->
+<link rel="stylesheet" href="/css/style.css">
 
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -87,7 +107,8 @@
 								src="/images/Logo.png" style="width: 40px;" alt="homepage"
 								class="light-logo" />
 						</b> <!--End Logo icon --> <!-- Logo text --> <span class="logo-text">
-								<!-- dark Logo text --> <!-- Light Logo text --> <span style="color: white">Kinder Lend Admin</span>
+								<!-- dark Logo text --> <!-- Light Logo text --> <span
+								style="color: white">Kinder Lend Admin</span>
 						</span>
 						</a>
 					</div>
@@ -135,11 +156,10 @@
 						<!-- ============================================================== -->
 						<!-- User profile and search -->
 						<!-- ============================================================== -->
-						<li class="nav-item dropdown"><a
-							href="/mng/" id="navbarDropdown" aria-expanded="false"> <img
+						<li class="nav-item dropdown"><a href="/mng/"
+							id="navbarDropdown" aria-expanded="false"> <img
 								src="/images/Logo.png" alt="user" width="31">
-						</a>
-							<%--<ul class="dropdown-menu dropdown-menu-end user-dd animated"
+						</a> <%--<ul class="dropdown-menu dropdown-menu-end user-dd animated"
 								aria-labelledby="navbarDropdown">
 								<a class="dropdown-item" href="javascript:void(0)"><i
 									class="ti-user me-1 ms-1"></i> My Profile</a>
@@ -147,13 +167,11 @@
 									class="ti-wallet me-1 ms-1"></i> My Balance</a>
 								<a class="dropdown-item" href="javascript:void(0)"><i
 									class="ti-email me-1 ms-1"></i> Inbox</a>
-							</ul></li>--%>
-						<!-- ============================================================== -->
-						<!-- User profile and search -->
-						<!-- ============================================================== -->
+							</ul></li>--%> <!-- ===================================== --> <!-- User profile and search -->
+							<!-- ===================================== -->
 					</ul>
 					<%-- TODO 로그아웃 기능 --%>
-					<a><button type="button" class="btn">logout</button></a>
+					<a><button type="button" class="btn">Logout</button></a>
 				</div>
 			</nav>
 		</header>
@@ -186,28 +204,32 @@
 								class="hide-menu">Form Basic</span>
 						</a></li>
 						<li class="sidebar-item" id="productManagement"><a
-								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/product/list?keyword=" aria-expanded="false"> <i
-								class="mdi mdi-alert-outline"></i> <span class="hide-menu">물품 관리</span>
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="/mng/product/list?keyword=" aria-expanded="false"> <i
+								class="mdi mdi-alert-outline"></i> <span class="hide-menu">물품
+									관리</span>
 						</a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<!-- 대여신청 -->
 								<li class="sidebar-item"><a
-										class="sidebar-link waves-effect waves-dark sidebar-link"
-										href="/mng/product/list?keyword="> <i class="mdi mdi-view-dashboard"></i>
-									<span class="hide-menu">물품 관리</span>
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/product/list?keyword="> <i
+										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">물품
+											관리</span>
 								</a></li>
 								<!-- 판매신청 -->
 								<li class="sidebar-item"><a
-										class="sidebar-link waves-effect waves-dark sidebar-link"
-										href="//mng/product/categories"> <i class="mdi mdi-view-dashboard"></i>
-									<span class="hide-menu">카테고리 관리</span>
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/product/categories"> <i
+										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">카테고리
+											관리</span>
 								</a></li>
 								<!-- 구매신청 -->
 								<li class="sidebar-item"><a
-										class="sidebar-link waves-effect waves-dark sidebar-link"
-										href="/mng/apply/purchase-list"> <i
-										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">후기 관리</span>
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/product/review?keyword="> <i
+										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">후기
+											관리</span>
 								</a></li>
 							</ul></li>
 
@@ -248,14 +270,14 @@
 								<!-- 대여신청 -->
 								<li class="sidebar-item"><a
 									class="sidebar-link waves-effect waves-dark sidebar-link"
-									href="/mng/apply/rental-list"> <i class="mdi mdi-view-dashboard"></i>
-										<span class="hide-menu">대여신청</span>
+									href="/mng/apply/rental-list"> <i
+										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">대여신청</span>
 								</a></li>
 								<!-- 판매신청 -->
 								<li class="sidebar-item"><a
 									class="sidebar-link waves-effect waves-dark sidebar-link"
-									href="/mng/apply/sale-list"> <i class="mdi mdi-view-dashboard"></i>
-										<span class="hide-menu">판매신청</span>
+									href="/mng/apply/sale-list"> <i
+										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">판매신청</span>
 								</a></li>
 								<!-- 구매신청 -->
 								<li class="sidebar-item"><a
@@ -266,60 +288,47 @@
 							</ul></li>
 
 
-							<%-- 회사 소개 게시판 --%>
-							<li class="sidebar-item" id="boardManagement"><a
-									class="sidebar-link waves-effect waves-dark sidebar-link"
-									href="/mng/content/info" aria-expanded="false"> <i
-									class="mdi mdi-alert-outline"></i> <span class="hide-menu">회사 소개 게시판</span>
+						<%-- 회사 소개 게시판 --%>
+						<li class="sidebar-item" id="boardManagement"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="/mng/content/info" aria-expanded="false"> <i
+								class="mdi mdi-alert-outline"></i> <span class="hide-menu">회사
+									소개 게시판</span>
 
-							</a>
+						</a></li>
 
-
-							</a></li>
-
-<%--						문의--%>
+						<%--						문의--%>
 						<li class="sidebar-item" id="noticeManagement"><a
-								class="sidebar-link waves-effect waves-dark sidebar-link"
-
-								href="/mng/board/noticeList" aria-expanded="false"> <i
-
-								class="mdi mdi-alert-outline"></i> <span class="hide-menu">게시판 관리</span>
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="/mng/board/noticeList" aria-expanded="false"> <i
+								class="mdi mdi-alert-outline"></i> <span class="hide-menu">게시판
+									관리</span>
 						</a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<!-- 대여신청 -->
 								<li class="sidebar-item"><a
-										class="sidebar-link waves-effect waves-dark sidebar-link"
-
-										href="/mng/board/noticeList"> <i class="mdi mdi-view-dashboard"></i>
-									<span class="hide-menu">공지사항</span>
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/board/noticeList"> <i
+										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">공지사항</span>
 
 
 								</a></li>
 								<!-- 판매신청 -->
 								<li class="sidebar-item"><a
-										class="sidebar-link waves-effect waves-dark sidebar-link"
-
-
-										href="/mng/board/faq-list?keyword="> <i class="mdi mdi-view-dashboard"></i>
-
-
-									<span class="hide-menu">자주 묻는 질문</span>
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/board/faq-list?keyword="> <i
+										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">자주
+											묻는 질문</span>
 								</a></li>
 								<!-- 구매신청 -->
 								<li class="sidebar-item"><a
-										class="sidebar-link waves-effect waves-dark sidebar-link"
-
-
-										href="/mng/board/qna?keyword="> <i
-
-
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/board/qna?keyword="> <i
 										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">1:1질문</span>
 								</a></li>
 								<li class="sidebar-item"><a
-										class="sidebar-link waves-effect waves-dark sidebar-link"
-
-
-										href="/mng/board/productqnaList"> <i
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/board/productqnaList"> <i
 										class="mdi mdi-view-dashboard"></i> <span class="hide-menu">상품질문</span>
 								</a></li>
 							</ul></li>

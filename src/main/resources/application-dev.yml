@@ -15,7 +15,7 @@ spring:
     url: jdbc:mysql://localhost:3306/kender_rent?serverTimeZone=Asia/Seoul 
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: asd1234
+    password: root1234
   h2:
     console:
       enabled: false
@@ -108,5 +108,3 @@ kakao:
   key: 85a9fbeacd6dee03b7157c7360812509
 
 # static 폴더
-
-

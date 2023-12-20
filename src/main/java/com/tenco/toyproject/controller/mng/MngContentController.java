@@ -1,11 +1,5 @@
 package com.tenco.toyproject.controller.mng;
 
-import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
-import com.tenco.toyproject._core.handler.exception.Exception500;
-import com.tenco.toyproject.dto.MngContentDto;
-import com.tenco.toyproject.repository.entity.Content;
-import com.tenco.toyproject.service.mng.MngContentService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -13,6 +7,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
+import com.tenco.toyproject.dto.MngContentDto;
+import com.tenco.toyproject.repository.entity.Content;
+import com.tenco.toyproject.service.mng.MngContentService;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("/mng/content")
@@ -55,13 +54,6 @@ public class MngContentController {
             e.printStackTrace();
             return null;
         }
-
-
-        // 이미 등록된 회사 소개가 있는지 확인
-
-        mngContentService.createMngContent(dto);
-
-        return "redirect:/mng/content/info";
 
     }
 

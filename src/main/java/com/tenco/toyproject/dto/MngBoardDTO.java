@@ -45,4 +45,16 @@ public class MngBoardDTO {
         private Timestamp createdAt;
         private Integer reply; // 답변 여부
     }
+    
+    // 231219 전우진
+    @Data
+    public static class ProductQnaListDto {
+      private Integer id; // 문의데이터ID
+      private Integer productId; // 제품ID
+      private String title; // 질문
+      private Integer userId; // 질문 작성자
+      private String email; // 질문 작성자
+      private Timestamp createdAt;
+      private Integer reply; // 답변 여부
+    }
 }
