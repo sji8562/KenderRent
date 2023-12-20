@@ -154,7 +154,7 @@
 						<!-- ============================================================== -->
 					</ul>
 					<%-- TODO 로그아웃 기능 --%>
-					<a><button type="button" class="btn">logout</button></a>
+					<a><button type="button" class="btn">Logout</button></a>
 				</div>
 			</nav>
 		</header>

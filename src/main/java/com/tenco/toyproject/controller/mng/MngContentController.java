@@ -45,7 +45,20 @@ public class MngContentController {
             if(dto.getContent() == null || dto.getContent().isEmpty()) {
                 throw new CustomRestfulException("내용을 입력해주세요", HttpStatus.BAD_REQUEST);
             }
-            int result = mngContentService.createMngContent(dto);
+
+            int result;
+
+            System.out.println("=========== DTO getID ============" + dto.getId());
+
+            if(dto.getId() != null) {
+                System.out.println("=========== 이미 존재. 업데이트 할게요 ============");
+                // 이미 존재
+                result = mngContentService.updateMngContent(dto);
+            } else {
+                System.out.println("=========== 없네요. 새로 만들게요 ============");
+                result = mngContentService.createMngContent(dto);
+            }
+
             if(result != 1){
                 throw new CustomRestfulException("회사소개 등록을 하지 못했습니다.", HttpStatus.BAD_REQUEST);
             }
