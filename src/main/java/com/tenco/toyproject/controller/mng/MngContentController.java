@@ -1,11 +1,13 @@
 package com.tenco.toyproject.controller.mng;
 
+import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
 import com.tenco.toyproject._core.handler.exception.Exception500;
 import com.tenco.toyproject.dto.MngContentDto;
 import com.tenco.toyproject.repository.entity.Content;
 import com.tenco.toyproject.service.mng.MngContentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,21 +32,29 @@ public class MngContentController {
     public String companyInfoPage(Model model) {
 
         Content content = mngContentService.getCompanyInfo();
-        model.addAttribute("content", content);
-
+        if(content != null){
+            model.addAttribute("content", content);
+        }
         return "/mng/content/companyInfo";
 
     }
 
     @PostMapping("register")
     public String companyInfoRegister(MngContentDto dto) {
-        if(dto.getContent() == null || dto.getContent().isEmpty()) {
-            throw new Exception500("내용을 입력해주세요");
+        try{
+            if(dto.getContent() == null || dto.getContent().isEmpty()) {
+                throw new CustomRestfulException("내용을 입력해주세요", HttpStatus.BAD_REQUEST);
+            }
+            int result = mngContentService.createMngContent(dto);
+            if(result != 1){
+                throw new CustomRestfulException("회사소개 등록을 하지 못했습니다.", HttpStatus.BAD_REQUEST);
+            }
+
+            return "redirect:/mng/content/info";
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
         }
-
-        mngContentService.createMngContent(dto);
-
-        return "redirect:/mng/content/info";
 
     }
 
@@ -52,8 +62,9 @@ public class MngContentController {
     public String goToDisinfectionProcess(Model model) {
         // 등록된 소독 과정 조회
         Content content = mngContentService.getDisinfectionProcess();
-        model.addAttribute("content", content);
-
+        if (content != null){
+            model.addAttribute("content", content);
+        }
         return "/mng/content/disinfectionProcess";
     }
 
@@ -61,7 +72,10 @@ public class MngContentController {
     public String goToRulesOfUse(Model model) {
         // 등록된 이용 수칙 조회
         Content content = mngContentService.getRulesOfUse();
-        model.addAttribute("content", content);
+        if (content != null){
+            model.addAttribute("content", content);
+        }
+
         return "/mng/content/rulesOfUse";
     }
 

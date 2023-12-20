@@ -15,8 +15,8 @@ public class MngFaqService {
     @Autowired
     private MngFaqRepository mngFaqRepository;
 
-    public int countFaqList() {
-        return mngFaqRepository.countFaq();
+    public int countFaqList(String keyword) {
+        return mngFaqRepository.countFaq(keyword);
     }
 
     public List<MngBoardDTO.NoticeListDTO> findAllByFaq(PageVO pageVO) {
@@ -37,5 +37,9 @@ public class MngFaqService {
 
     public void updateFaqById(MngBoardDTO.FaqSubmitDto dto) {
         mngFaqRepository.updateFaqById(dto);
+    }
+
+    public List<MngBoardDTO.NoticeListDTO> findFaqByKeyword(PageVO pageVO, String keyword) {
+        return mngFaqRepository.findFaqWithPagenationAndKeyword(pageVO, keyword);
     }
 }

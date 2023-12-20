@@ -5,7 +5,7 @@
 <mapper
 	namespace="com.tenco.toyproject.repository.interfaces.UserRepository">
 
-	<!-- -->
+	<!-- 유저 회원가입 -->
 	<insert id="insert">
 		insert into user
 		(email, password, user_name,
@@ -24,7 +24,7 @@
 		where id = #{id}
 	</update>
 
-	<!-- -->
+	<!-- 회원 삭제 -->
 	<delete id="deleteById">
 		delete from user_tb where id = #{id}
 	</delete>

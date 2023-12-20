@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +19,8 @@
 <link rel="stylesheet" type="text/css" href="/css/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/responsive.css">
 
- 
+
+
 </head>
 
 <body>
@@ -48,8 +51,10 @@
 											</div>
 											<div style="margin-bottom: 20px;">
 												<span>판매가격대</span>&nbsp;&nbsp;
+
 												<input id="input_price1" class="form-control-sm input_ph " type="text" name="price1" placeholder="0" style="text-align: right; border: 1px solid darkgray;" > ~ 
 												<input id="input_price2" class="form-control-sm input_ph" type="text" name="price2" placeholder="${MaxPrice }" style="text-align: right; border: 1px solid darkgray;">
+
 											</div>
 										</form>
 									</li>
@@ -69,11 +74,13 @@
 								<c:if test="${productList == null }">
 									조회하신 상품이 없습니다
 								</c:if>
-								Product
+
+								<!-- Product -->
 								<c:if test="${productList != null }">
 								<c:forEach items="${productList }" var="productList">
-								
-								<div  class="product-item">
+		
+								<div class="product-item">
+
 									<div class="product discount product_filter">
 										<div class="product_image">
 											<img src=${productList.pic_url } alt="">
@@ -86,11 +93,13 @@
 									</div>
 									<div class="red_button add_to_cart_button"><a href="/cart/add?id=${productList.id }">장바구니 담기</a></div>
 								</div>
+
 								
 								</c:forEach>
 								
 								</c:if>
 								
+
 							</div>
 						</div>
 					</div>

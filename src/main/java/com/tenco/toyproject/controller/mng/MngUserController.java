@@ -1,5 +1,6 @@
 package com.tenco.toyproject.controller.mng;
 
+import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
 import com.tenco.toyproject._core.handler.exception.Exception500;
 import com.tenco.toyproject.dto.MngUserDTO;
 import com.tenco.toyproject.repository.entity.User;
@@ -7,6 +8,7 @@ import com.tenco.toyproject.service.mng.MngUserService;
 import com.tenco.toyproject.vo.PageVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -45,29 +47,40 @@ public class MngUserController {
         model.addAttribute("paging", pageVO);
         System.out.println(cntPerPage);
         List<User> userList = mngService.findAll(pageVO);
-        model.addAttribute("userList", userList);
+        if(userList != null || !userList.isEmpty()){
+            model.addAttribute("userList", userList);
+        }
+
         return "mng/user/list";
     }
     @PostMapping("{id}/update")
     public String userUpdated(@PathVariable Integer id, MngUserDTO.UpdateDTO updateDTO) {
-        if (updateDTO == null) {
-            throw new Exception500("다시 한번 확인해주세요");
+        try {
+            if (updateDTO == null) {
+                throw new CustomRestfulException("다시 한번 확인해주세요", HttpStatus.BAD_REQUEST);
+            }
+            if (updateDTO.getEmail() == null || updateDTO.getEmail().isEmpty()) {
+                throw new CustomRestfulException("이메일을 입력해주세요", HttpStatus.BAD_REQUEST);
+            }
+            if (updateDTO.getUsername() == null || updateDTO.getUsername().isEmpty()) {
+                throw new CustomRestfulException("이름을 입력해주세요", HttpStatus.BAD_REQUEST);
+            }
+            if (updateDTO.getPassword() == null || updateDTO.getPassword().isEmpty()) {
+                throw new CustomRestfulException("비밀번호를 입력해주세요", HttpStatus.BAD_REQUEST);
+            }
+            if (updateDTO.getPhoneNumber() == null || updateDTO.getPhoneNumber().isEmpty()) {
+                throw new CustomRestfulException("전화번호를 입력해주세요", HttpStatus.BAD_REQUEST);
+            }
+            int result = mngService.update(id, updateDTO);
+            if(result != 1){
+                throw new CustomRestfulException("수정이 되지 않았습니다", HttpStatus.BAD_REQUEST);
+            }
+            return "redirect:/mng/user";
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
         }
-        if (updateDTO.getEmail() == null || updateDTO.getEmail().isEmpty()) {
-            throw new Exception500("이메일을 입력해주세요");
-        }
-        if (updateDTO.getUsername() == null || updateDTO.getUsername().isEmpty()) {
-            throw new Exception500("이름을 입력해주세요");
-        }
-        if (updateDTO.getPassword() == null || updateDTO.getPassword().isEmpty()) {
-            throw new Exception500("비밀번호를 입력해주세요");
-        }
-        if (updateDTO.getPhoneNumber() == null || updateDTO.getPhoneNumber().isEmpty()) {
-            throw new Exception500("전화번호를 입력해주세요");
-        }
-        mngService.update(id, updateDTO);
 //		ResponseEntity.ok().body(ApiUtils.success(null))
-        return "redirect:/mng/user";
 
     }
 
@@ -75,18 +88,34 @@ public class MngUserController {
     public String userUpdate(@PathVariable Integer id, Model model) {
         try {
             User user = mngService.findById(id);
+            if(user == null){
+                throw new CustomRestfulException("없는 회원입니다",HttpStatus.BAD_REQUEST);
+            }
             model.addAttribute("user", user);
             System.out.println(user.getUserName() + "님을 불러왔습니다.");
             return "mng/user/update";
         } catch (Exception e) {
-            throw new Exception500("너 무슨짓 했어");
+            e.printStackTrace();
+            return null;
         }
 
     }
     @GetMapping("{id}/delete")
     public String userDelete(@PathVariable Integer id) {
-        mngService.delete(id);
-        return "redirect:/mng/user/list";
+        try {
+            User user = mngService.findById(id);
+            if (user == null){
+                throw new CustomRestfulException("없는 회원입니다",HttpStatus.BAD_REQUEST);
+            }
+            int result = mngService.delete(id);
+            if(result != 1){
+                throw new CustomRestfulException("수정이 되지 않았습니다", HttpStatus.BAD_REQUEST);
+            }
+            return "redirect:/mng/user/list";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

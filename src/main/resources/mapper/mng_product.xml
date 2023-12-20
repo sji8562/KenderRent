@@ -6,14 +6,64 @@
 <mapper
         namespace="com.tenco.toyproject.repository.interfaces.mng.MngProductRepository">
 
+    <!-- 물품 리뷰 개수 조회 -->
+    <select id="countReviewList" resultType="int">
+        SELECT COUNT(p.name) AS count
+        FROM review AS r
+            JOIN product AS p ON r.product_id = p.id
+        WHERE p.name LIKE CONCAT('%', #{keyword}, '%')
+    </select>
 
-
-    <select id="findAllProductWithPagination" resultType="com.tenco.toyproject.repository.entity.Product">
-        SELECT p.id, p.first_category_id, p.second_category_id, p.price, p.name, p.pic_url, p.content, p.status, p.created_at, p.grade, fc.first_category_name, sc.second_category_name FROM product AS p
-                                                                                                                                                                                                 JOIN first_category AS fc ON fc.id = p.first_category_id
-                                                                                                                                                                                                 JOIN second_category AS sc ON sc.id = p.second_category_id
+    <!-- 물품 리뷰 조회 with 페이징 -->
+    <select id="findAllReviewWithPagination" resultType="com.tenco.toyproject.repository.entity.Review">
+        SELECT r.id, r.user_id, u.email, r.product_id, r.content, r.created_at, p.first_category_id, fc.first_category_name, p.second_category_id, sc.second_category_name, p.name, p.pic_url
+        FROM review AS r
+                 JOIN user AS u ON u.id = r.user_id
+                 JOIN product AS p ON r.product_id = p.id
+                 JOIN first_category AS fc ON p.first_category_id = fc.id
+                 JOIN second_category AS sc ON p.second_category_id = sc.id
             LIMIT #{start}, 5
     </select>
+
+    <!-- 물품 리뷰 검색 with 페이징 & keyword -->
+    <select id="findAllReviewWithPaginationAndKeyword" resultType="com.tenco.toyproject.repository.entity.Review">
+        SELECT r.id, r.user_id, u.email, r.product_id, r.content, r.created_at, p.first_category_id, fc.first_category_name, p.second_category_id, sc.second_category_name, p.name, p.pic_url
+        FROM review AS r
+                 JOIN user AS u ON u.id = r.user_id
+                 JOIN product AS p ON r.product_id = p.id
+                 JOIN first_category AS fc ON p.first_category_id = fc.id
+                 JOIN second_category AS sc ON p.second_category_id = sc.id
+        WHERE p.name LIKE CONCAT('%', #{keyword}, '%')
+        LIMIT #{pageVO.start}, 5
+    </select>
+
+    <!-- 물품 리뷰 상세 조회 -->
+    <select id="findProductReviewById" resultType="com.tenco.toyproject.repository.entity.Review">
+        SELECT r.id, r.user_id, u.email, r.product_id, r.content, r.rate, r.created_at, p.first_category_id, fc.first_category_name, p.second_category_id, sc.second_category_name, p.name, p.pic_url, p.price
+        FROM review AS r
+                 JOIN user AS u ON u.id = r.user_id
+                 JOIN product AS p ON r.product_id = p.id
+                 JOIN first_category AS fc ON p.first_category_id = fc.id
+                 JOIN second_category AS sc ON p.second_category_id = sc.id
+        WHERE r.id = #{pId}
+    </select>
+
+    <!-- 물품 조회 with 페이징 -->
+    <select id="findAllProductWithPagination" resultType="com.tenco.toyproject.repository.entity.Product">
+        SELECT p.id, p.first_category_id, p.second_category_id, p.price, p.name, p.pic_url, p.content, p.status, p.created_at, p.grade, fc.first_category_name, sc.second_category_name FROM product AS p
+         JOIN first_category AS fc ON fc.id = p.first_category_id
+         JOIN second_category AS sc ON sc.id = p.second_category_id
+        LIMIT #{start}, 5
+    </select>
+    <!-- 물품 검색 with 페이징 & keyword -->
+    <select id="findProductByKeyword" resultType="com.tenco.toyproject.repository.entity.Product">
+        SELECT p.id, p.first_category_id, p.second_category_id, p.price, p.name, p.pic_url, p.content, p.status, p.created_at, p.grade, fc.first_category_name, sc.second_category_name FROM product AS p
+         JOIN first_category AS fc ON fc.id = p.first_category_id
+         JOIN second_category AS sc ON sc.id = p.second_category_id
+        WHERE p.name LIKE CONCAT('%', #{keyword}, '%')
+        LIMIT #{pageVO.start}, 5
+    </select>
+
     <!-- 물품 상세 -->
     <select id="findProductById" resultType="com.tenco.toyproject.repository.entity.Product">
         SELECT p.id, p.first_category_id, p.second_category_id, p.price, p.name, p.pic_url, p.content, p.status, p.created_at, p.grade, fc.first_category_name, sc.second_category_name FROM product AS p
@@ -23,10 +73,15 @@
     </select>
     <!-- 물품 건수 -->
     <select id="findProductCount" resultType="int">
-        SELECT count(*) FROM product
+        SELECT count(*) FROM product WHERE name LIKE CONCAT('%', #{keyword}, '%')
     </select>
+
     <delete id="deleteByProductId">
         DELETE FROM product WHERE id = #{id}
+    </delete>
+
+    <delete id="deleteProductReview">
+        DELETE FROM review WHERE id = #{id}
     </delete>
 
     <!-- first & Second category -->
@@ -106,7 +161,7 @@
         SELECT COUNT(*) AS count FROM product WHERE second_category_id = #{sId}
     </select>
 
-    <select id="findProducCounttByFirstCategoryId" resultType="int">
+    <select id="findProductCountByFirstCategoryId" resultType="int">
         SELECT COUNT(*) AS count FROM product WHERE first_category_id = #{fId}
     </select>
 

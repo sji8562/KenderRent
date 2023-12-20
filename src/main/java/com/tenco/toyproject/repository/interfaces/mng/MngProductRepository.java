@@ -2,6 +2,7 @@ package com.tenco.toyproject.repository.interfaces.mng;
 
 import com.tenco.toyproject.repository.entity.FirstCategory;
 import com.tenco.toyproject.repository.entity.Product;
+import com.tenco.toyproject.repository.entity.Review;
 import com.tenco.toyproject.repository.entity.SecondCategory;
 import com.tenco.toyproject.vo.PageVO;
 import org.apache.ibatis.annotations.Mapper;
@@ -20,7 +21,7 @@ public interface MngProductRepository {
     Product findProductById(Integer pId);
 
     // product 총 개수
-    public int findProductCount();
+    public int findProductCount(String keyword);
 
     // 특정 물품 삭제
     public int deleteByProductId(Integer id);
@@ -48,21 +49,32 @@ public interface MngProductRepository {
 
     int findFirstCategoryByName(String fCategoryName);
 
-    void createFirstCategory(String fCategoryName);
+    int createFirstCategory(String fCategoryName);
 
-    void deleteFirstCategoryById(int fId);
+    int deleteFirstCategoryById(int fId);
 
 
     int findSecondCategoryByName(String fCategory, String sCategoryName);
 
-    void addSecondCategory(String fCategory, String sCategoryName);
+    int addSecondCategory(String fCategory, String sCategoryName);
 
     SecondCategory findFirstCategoryIdBySecondCategoryId(int sId);
 
-    void deleteSecondCategoryById(int sId);
+    int deleteSecondCategoryById(int sId);
 
     int findProductBySecondCategoryId(int sId);
 
-    int findProducCountByFirstCategoryId(int fId);
+    int findProductCountByFirstCategoryId(int fId);
 
+    List<Product> findProductByKeyword(PageVO pageVO, String keyword);
+
+    List<Review> findAllReviewWithPaginationAndKeyword(PageVO pageVO, String keyword);
+
+    List<Review> findAllReviewWithPagination(PageVO pageVO);
+
+    int countReviewList(String keyword);
+
+    Review findProductReviewById(Integer pId);
+
+    int deleteProductReview(Integer id);
 }

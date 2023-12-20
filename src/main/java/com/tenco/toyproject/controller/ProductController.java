@@ -136,6 +136,7 @@ public class ProductController {
 	@GetMapping("search")
 	public String search(Model model, HttpServletRequest request,@RequestParam(value="keyword", required=false) String keyword,
 			@RequestParam(value="price1", required=false) String price1, @RequestParam(value="price2", required=false) String price2){
+
 		if(keyword == "" || keyword.equals("")) {
 			List<Map> productList = null;
 			return "product/search";
@@ -157,6 +158,7 @@ public class ProductController {
 //		model.addAttribute("productList", productList);
 		return productService.searchProductInfinite(keyword, page, pageSize);
     }
+
 
 	@PostMapping("order/kakao-pay/cancel")
 	public String kakaoPayCancel(Model model, @RequestParam("id") int productId) {

@@ -16,8 +16,8 @@ public class MngQnaService {
     @Autowired
     private MngQnaRepository mngQnaRepository;
 
-    public int countQnaList() {
-        return mngQnaRepository.countQnaList();
+    public int countQnaList(String keyword) {
+        return mngQnaRepository.countQnaList(keyword);
     }
 
     public List<MngBoardDTO.QnaListDto> findQnaByCodeWithPagenation(PageVO pageVO) {
@@ -34,5 +34,9 @@ public class MngQnaService {
 
     public void deleteQna(int id) {
         mngQnaRepository.deleteQna(id);
+    }
+
+    public List<MngBoardDTO.QnaListDto> findQnaByCodeWithPagenationAndKeyword(PageVO pageVO, String keyword) {
+        return mngQnaRepository.findQnaByCodeWithPagenationAndKeyword(pageVO, keyword);
     }
 }

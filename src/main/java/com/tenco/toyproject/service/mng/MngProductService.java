@@ -6,6 +6,7 @@ import com.tenco.toyproject.dto.MngProductDto;
 import com.tenco.toyproject.dto.MngProductUpdateDto;
 import com.tenco.toyproject.repository.entity.FirstCategory;
 import com.tenco.toyproject.repository.entity.Product;
+import com.tenco.toyproject.repository.entity.Review;
 import com.tenco.toyproject.repository.entity.SecondCategory;
 import com.tenco.toyproject.repository.interfaces.mng.MngProductRepository;
 import com.tenco.toyproject.vo.PageVO;
@@ -40,8 +41,8 @@ public class MngProductService {
 
 
     // 전체 상품 개수 조회
-    public int countProductList() {
-        return mngRepository.findProductCount();
+    public int countProductList(String keyword) {
+        return mngRepository.findProductCount(keyword);
     }
 
     // 상품 삭제
@@ -161,12 +162,12 @@ public class MngProductService {
         return resultRowCount;
     }
 
-    public void addFirstCategory(String fCategoryName) {
-        mngRepository.createFirstCategory(fCategoryName);
+    public int addFirstCategory(String fCategoryName) {
+        return mngRepository.createFirstCategory(fCategoryName);
     }
 
-    public void deleteFirstCategoryById(int fId) {
-        mngRepository.deleteFirstCategoryById(fId);
+    public int deleteFirstCategoryById(int fId) {
+        return mngRepository.deleteFirstCategoryById(fId);
     }
 
 
@@ -175,24 +176,47 @@ public class MngProductService {
         return resultRowCount;
     }
 
-    public void addSecondCategory(String fCategory, String sCategoryName) {
-        mngRepository.addSecondCategory(fCategory, sCategoryName);
+    public int addSecondCategory(String fCategory, String sCategoryName) {
+        return mngRepository.addSecondCategory(fCategory, sCategoryName);
     }
 
     public SecondCategory findFirstCategoryIdBySecondCategoryId(int sId) {
         return mngRepository.findFirstCategoryIdBySecondCategoryId(sId);
     }
 
-    public void deleteSecondCategoryById(int sId) {
-        mngRepository.deleteSecondCategoryById(sId);
+    public int deleteSecondCategoryById(int sId) {
+        return mngRepository.deleteSecondCategoryById(sId);
     }
 
     public int findProductBySecondCategoryId(int sId) {
         return mngRepository.findProductBySecondCategoryId(sId);
     }
 
-    public int findProducCountByFirstCategoryId(int fId) {
-        return mngRepository.findProducCountByFirstCategoryId(fId);
+    public int findProductCountByFirstCategoryId(int fId) {
+        return mngRepository.findProductCountByFirstCategoryId(fId);
     }
 
+    public List<Product> findProductByKeyword(PageVO pageVO, String keyword) {
+        return mngRepository.findProductByKeyword(pageVO, keyword);
+    }
+
+
+    public List<Review> findAllReviewWithPaginationAndKeyword(PageVO pageVO, String keyword) {
+        return mngRepository.findAllReviewWithPaginationAndKeyword(pageVO, keyword);
+    }
+
+    public List<Review> findAllReviewWithPagination(PageVO pageVO) {
+        return mngRepository.findAllReviewWithPagination(pageVO);
+    }
+
+    public int countReviewList(String keyword) {
+        return mngRepository.countReviewList(keyword);
+    }
+
+    public Review findProductReviewById(Integer pId) {
+        return mngRepository.findProductReviewById(pId);    }
+
+    public int deleteProductReview(Integer id) {
+        return mngRepository.deleteProductReview(id);
+    }
 }
