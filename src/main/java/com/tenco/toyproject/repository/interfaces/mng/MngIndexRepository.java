@@ -12,7 +12,7 @@ public interface MngIndexRepository {
     public List<MngIndexDTO.MngMonthDTO> findByCreatedAt();
     public MngIndexDTO.MngCountDTO countByAll();
 
-
+    public List<MngIndexDTO.MngStatusDTO> findByStatus();
     User findByUsernameAndLevel(String username);
 
 }
