@@ -109,48 +109,60 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                    <c:choose>
+                                        <c:when test="${statusDTO != null }">
+                                            <c:forEach var="statusDTO" items="${statusDTO}">
+                                                    <tr>
+                                                        <td class="txt-oflo">${statusDTO.userName}</td>
+                                                        <c:choose>
+                                                            <c:when test="${statusDTO.transactionType == 'Rent' }">
+                                                                <c:choose>
+                                                                    <c:when test="${statusDTO.status == 1 }">
+                                                                        <td><span class="label label-success label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <td><span class="label label-danger label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                            </c:when>
+                                                            <c:when test="${statusDTO.transactionType == 'Sale' }">
+                                                                <c:choose>
+                                                                    <c:when test="${statusDTO.status == 1 }">
+                                                                        <td><span class="label label-info label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <td><span class="label label-danger label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                            </c:when>
+                                                            <c:when test="${statusDTO.transactionType == 'Purchase' }">
+                                                                <c:choose>
+                                                                    <c:when test="${statusDTO.status == 1 }">
+                                                                        <td><span class="label label-purple label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <td><span class="label label-danger label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                그런 종류는 없습니다.
+                                                            </c:otherwise>
+                                                        </c:choose>
 
-                                            <td class="txt-oflo">Elite admin</td>
-                                            <td><span class="label label-success label-rounded">SALE</span> </td>
-                                            <td class="txt-oflo">April 18, 2021</td>
-                                            <td><span class="font-medium">$24</span></td>
-                                        </tr>
-                                        <tr>
 
-                                            <td class="txt-oflo">Real Homes WP Theme</td>
-                                            <td><span class="label label-info label-rounded">EXTENDED</span></td>
-                                            <td class="txt-oflo">April 19, 2021</td>
-                                            <td><span class="font-medium">$1250</span></td>
-                                        </tr>
-                                        <tr>
+                                                        <td class="txt-oflo">${statusDTO.createdAt}</td>
+                                                        <td><span class="font-medium">${statusDTO.price}</span></td>
+                                                    </tr>
 
-                                            <td class="txt-oflo">Ample Admin</td>
-                                            <td><span class="label label-purple label-rounded">Tax</span></td>
-                                            <td class="txt-oflo">April 19, 2021</td>
-                                            <td><span class="font-medium">$1250</span></td>
-                                        </tr>
-                                        <tr>
+                                            </c:forEach>
 
-                                            <td class="txt-oflo">Medical Pro WP Theme</td>
-                                            <td><span class="label label-success label-rounded">Sale</span></td>
-                                            <td class="txt-oflo">April 20, 2021</td>
-                                            <td><span class="font-medium">-$24</span></td>
-                                        </tr>
-                                        <tr>
+                                        </c:when>
+                                        <c:otherwise>
+                                            내역이 없습니다.
+                                        </c:otherwise>
+                                    </c:choose>
 
-                                            <td class="txt-oflo">Hosting press html</td>
-                                            <td><span class="label label-success label-rounded">SALE</span></td>
-                                            <td class="txt-oflo">April 21, 2021</td>
-                                            <td><span class="font-medium">$24</span></td>
-                                        </tr>
-                                        <tr>
-
-                                            <td class="txt-oflo">Digital Agency PSD</td>
-                                            <td><span class="label label-danger label-rounded">Tax</span> </td>
-                                            <td class="txt-oflo">April 23, 2021</td>
-                                            <td><span class="font-medium">-$14</span></td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

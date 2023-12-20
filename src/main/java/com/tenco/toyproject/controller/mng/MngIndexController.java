@@ -6,6 +6,7 @@ import com.tenco.toyproject.dto.MngIndexDTO;
 import com.tenco.toyproject.dto.MngSignInFormDto;
 import com.tenco.toyproject.dto.MngUserDTO;
 import com.tenco.toyproject.repository.entity.User;
+import com.tenco.toyproject.repository.interfaces.mng.MngIndexRepository;
 import com.tenco.toyproject.service.mng.MngIndexService;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,22 @@ public class MngIndexController {
 
     @Autowired
     private MngIndexService mngIndexService;
+
+    @Autowired
+    private MngIndexRepository mngIndexRepository;
+
+    public MngIndexDTO.MngTotalDTO findByCreatedAt(){
+        List<MngIndexDTO.MngMonthDTO> monthDTOS = mngIndexRepository.findByCreatedAt();
+        int payoff = monthDTOS.stream()
+                .mapToInt(MngIndexDTO.MngMonthDTO::getPrice)
+                .sum();
+        System.out.println(payoff);
+        MngIndexDTO.MngTotalDTO mngTotalDTO = new MngIndexDTO.MngTotalDTO();;
+        mngTotalDTO.setMngMonthDTO(monthDTOS);
+        mngTotalDTO.setPayOff(payoff);
+
+        return mngTotalDTO;
+    }
 
     @GetMapping("/login")
     public String goLoginPage() {
@@ -70,12 +87,15 @@ public class MngIndexController {
         System.out.println("매니저 페이지로 들어갑니다.");
         MngIndexDTO.MngTotalDTO totalDTO =mngIndexService.findByCreatedAt();
         MngIndexDTO.MngCountDTO countDTO = mngIndexService.findByAllCount();
-        System.out.println(totalDTO.getMngMonthDTO().toString());
-        System.out.println(totalDTO.getPayOff());
-        System.out.println(countDTO.toString());
+        List<MngIndexDTO.MngStatusDTO> statusDTO = mngIndexService.findByStatus();
+//        System.out.println(totalDTO.getMngMonthDTO().toString());
+//        System.out.println(totalDTO.getPayOff());
+//        System.out.println(countDTO.toString());
+        System.out.println(statusDTO.toString());
         model.addAttribute("dtos",totalDTO.getMngMonthDTO());
         model.addAttribute("payOff",totalDTO.getPayOff());
         model.addAttribute("countDTO",countDTO);
+        model.addAttribute("statusDTO",statusDTO);
         return "/mng/index";
     }
 }

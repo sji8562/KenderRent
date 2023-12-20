@@ -83,30 +83,30 @@
                                                             <tbody>
                                                                 <c:forEach var="noticeList" items="${noticeList}">
                                                                     <tr>
-                                                                            <th class="applyDetail" scope="row">
-                                                                                <a href="/mng/board/${noticeList.id}/notice-detail">${noticeList.id}</a>
-                                                                            </th>
-                                                                            <%--<td class="ellipsis" style="width: 60%; white-space: nowrap; overflow:hidden; text-overflow:ellipsis;">${noticeList.title}</td>--%>
-                                                                            <td class="ellipsis">${noticeList.title}</td>
-                                                                            <%--<td>${noticeList.content}</td>--%>
-                                                                            <td>관리자</td>
-                                                                            <td>${noticeList.formatCreatedAtToString()}</td>
-                                                                            <td>
-                                                                                <div>
-                                                                                    <button class="btn btn-success"
-                                                                                            style="border: 1px solid black"
-                                                                                            type="button"
-                                                                                            onclick="location.href='/mng/board/${noticeList.id}/faq-update'">
-                                                                                        수정
-                                                                                    </button>
-                                                                                    &nbsp;&nbsp;
-                                                                                    <button class="btn-danger btn"
-                                                                                            type="button"
-                                                                                            onclick="location.href='/mng/board/${noticeList.id}/faq-delete'">
-                                                                                        삭제
-                                                                                    </button>
-                                                                                </div>
-                                                                            </td>
+                                                                        <th class="applyDetail" scope="row">
+                                                                            <a href="/mng/board/${noticeList.id}/notice-detail">${noticeList.id}</a>
+                                                                        </th>
+                                                                        <%--<td class="ellipsis" style="width: 60%; white-space: nowrap; overflow:hidden; text-overflow:ellipsis;">${noticeList.title}</td>--%>
+                                                                        <td class="ellipsis">${noticeList.title}</td>
+                                                                        <%--<td>${noticeList.content}</td>--%>
+                                                                        <td>관리자</td>
+                                                                        <td>${noticeList.formatCreatedAtToString()}</td>
+                                                                        <td>
+                                                                            <div>
+                                                                                <button class="btn btn-success"
+                                                                                        style="border: 1px solid black"
+                                                                                        type="button"
+                                                                                        onclick="location.href='/mng/board/${noticeList.id}/faq-update'">
+                                                                                    수정
+                                                                                </button>
+                                                                                &nbsp;&nbsp;
+                                                                                <button class="btn-danger btn"
+                                                                                        type="button"
+                                                                                        onclick="location.href='/mng/board/${noticeList.id}/faq-delete'">
+                                                                                    삭제
+                                                                                </button>
+                                                                            </div>
+                                                                        </td>
                                                                     </tr>
                                                                 </c:forEach>
                                                             </tbody>

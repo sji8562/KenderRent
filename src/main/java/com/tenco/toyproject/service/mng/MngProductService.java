@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -90,9 +91,9 @@ public class MngProductService {
     }
 
     // 카테고리 조회
-    public List<FirstCategory> findCategoryAll() {
+    public List<FirstCategory> findCategoryAll(Integer code) {
 
-        List<FirstCategory> allCategory = mngRepository.findFirstCategoryAll();
+        List<FirstCategory> allCategory = mngRepository.findFirstCategoryAll(code);
 
         return allCategory;
     }
@@ -144,8 +145,8 @@ public class MngProductService {
         return resultRowCount;
     }
 
-    public List<FirstCategory> getFirstCategories() {
-        List<FirstCategory> firstCategoryList = mngRepository.findFirstCategoryAll();
+    public List<FirstCategory> getFirstCategories(Integer code) {
+        List<FirstCategory> firstCategoryList = mngRepository.findFirstCategoryAll(code);
 
         return firstCategoryList;
     }
@@ -219,4 +220,5 @@ public class MngProductService {
     public int deleteProductReview(Integer id) {
         return mngRepository.deleteProductReview(id);
     }
+
 }
