@@ -87,15 +87,16 @@ function fCategoryChange() {
 
 function addFirstCategory() {
     var addFirstCategory = document.querySelector('input[id="addFirstCategory"]').value;
+    var code = document.querySelector('input[id="code"]').value;
 
     if(addFirstCategory.toString().trim() == '') {
         return alert('카테고리명을 입력해주세요');
     }
 
-    addFirstCategoryApi(addFirstCategory);
+    addFirstCategoryApi(addFirstCategory, code);
 }
 
-function addFirstCategoryApi(categoryName) {
+function addFirstCategoryApi(categoryName, code) {
     var url = '/mng/product/addFirstCategory';
 
     fetch(url, {
@@ -103,7 +104,7 @@ function addFirstCategoryApi(categoryName) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ "categoryName": categoryName }),
+        body: JSON.stringify({ "categoryName": categoryName, "code": code }),
     })
         .then(response => response.json())
         .then(data => {

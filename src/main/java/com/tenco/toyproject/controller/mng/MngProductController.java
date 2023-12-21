@@ -403,27 +403,29 @@ public class MngProductController {
         }
     }
 
-    // 대여용
+    // 카테고리 등록(대여/판매)
     @PostMapping("addFirstCategory")
     @ResponseBody
     public List<FirstCategory> addFirstCategory(@RequestBody Map<String, String> categoryName) {
         try{
             String fCategoryName = categoryName.get("categoryName");
+            Integer fCode = Integer.valueOf(categoryName.get("code"));
+
             // 같은 이름의 카테고리가 있는지 확인
             logger.info("같은 이름의 카테고리가 있는지 먼저 확인", fCategoryName);
-            int resultRowCount = mngService.findFirstCategoryByName(fCategoryName);
+            int resultRowCount = mngService.findFirstCategoryByName(fCode, fCategoryName);
 
             if (resultRowCount > 0) {
                 throw new CustomRestfulException("이미 존재하는 카테고리입니다", HttpStatus.BAD_REQUEST);
 
             }
 
-            int result = mngService.addFirstCategory(fCategoryName);
+            int result = mngService.addFirstCategory(fCode, fCategoryName);
             if(result != 1){
                 throw new CustomRestfulException("카테고리 등록을 실패했습니다.", HttpStatus.BAD_REQUEST);
             }
 
-            return mngService.getFirstCategories(1);
+            return mngService.getFirstCategories(fCode);
         }catch (Exception e){
             e.printStackTrace();
             return null;

@@ -157,14 +157,16 @@ public class MngProductService {
         return secondCategory;
     }
 
-    public int findFirstCategoryByName(String fCategoryName) {
-        int resultRowCount = mngRepository.findFirstCategoryByName(fCategoryName);
+    public int findFirstCategoryByName(Integer code, String fCategoryName) {
+        int resultRowCount = mngRepository.findFirstCategoryByName(code, fCategoryName);
 
         return resultRowCount;
     }
 
-    public int addFirstCategory(String fCategoryName) {
-        return mngRepository.createFirstCategory(fCategoryName);
+    public int addFirstCategory(int code, String fCategoryName) {
+        mngRepository.createFirstCategory(code, fCategoryName);
+        int resultId = mngRepository.findFirstCategoryByName(code, fCategoryName);
+        return resultId;
     }
 
     public int deleteFirstCategoryById(int fId) {

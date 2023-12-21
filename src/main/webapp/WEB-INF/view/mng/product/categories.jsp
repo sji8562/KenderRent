@@ -36,6 +36,7 @@
                             </c:forEach>
                         </select>
                         <div>
+                            <input type="text" hidden id="code" name="code" value="1">
                             <input type="text" class="m--category-input" id="addFirstCategory" name="firstCategory">
                             <button onclick="addFirstCategory()" class="btn btn-primary">추가</button>
                             <button class="btn btn-danger" onclick="delFirstCategory()">삭제</button>
