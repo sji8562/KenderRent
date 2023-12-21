@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tenco.toyproject.repository.entity.Order;
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.interfaces.CustomerRepository;
 import com.tenco.toyproject.repository.interfaces.ProductRepository;
@@ -61,10 +63,36 @@ public class ProductService {
 		return productRepository.countItemInCart(userId);
 	}
 	
-	public void payForProduct(int userId, int productId) {
-		productRepository.payForProduct(userId, productId);
+	public void payForProduct(int userId, int productId, String tid) {
+		productRepository.payForProduct(userId, productId, tid);
 	}
-	
-	
+	public List<Map> showCustomerOrderList(int userId) {
+		return productRepository.showCustomerOrderList(userId);
+	}
+	@Transactional
+	public int applyForRefund(int productId) {
+		return productRepository.applyForRefund(productId);
+	}
+	public Order findTid(int userId, int productId) {
+		return productRepository.findTid(userId, productId);
+	}
+
+	// 무한 스크롤 관련
+//	public int searchProductCount(String keyword) {
+//		return productRepository.searchProductCount(keyword);
+//	}
+	public List<Map> searchProductInfinite(String keyword, int page, int pageSize){
+		int offset = (page - 1) * pageSize;
+		System.out.println(offset);
+		System.out.println(pageSize);
+		System.out.println( productRepository.searchProductInfinite(keyword, offset, pageSize).size());
+		return productRepository.searchProductInfinite(keyword, offset, pageSize);
+	}
+	public List<Map> searchProduct(String keyword){
+		return productRepository.searchProduct(keyword);
+	}
+	public int searchMaxPrice() {
+		return productRepository.searchMaxPrice();
+	}
 
 }

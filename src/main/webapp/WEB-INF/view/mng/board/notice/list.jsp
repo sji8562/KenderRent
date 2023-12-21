@@ -15,18 +15,17 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-5 align-self-center">
-                <h4 class="page-title">공지사항 관리</h4>
+                <h4 class="page-title">공지사항 관리
+
+                </h4>
             </div>
+
             <div class="col-7 align-self-center">
                 <div class="d-flex align-items-center justify-content-end">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Basic
-                                Table
-                            </li>
-                        </ol>
-                    </nav>
+                    <button class="btn btn-primary btn-sm ml-2"
+                            onclick="location.href='/mng/board/notice-submit'">
+                        등록하기
+                    </button>
                 </div>
             </div>
         </div>
@@ -57,7 +56,7 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">제목</th>
-                                            <th scope="col">내용</th>
+
                                             <th scope="col">작성자</th>
                                             <th scope="col">생성날짜</th>
                                             <th scope="col">공지사항 관리</th>
@@ -73,28 +72,26 @@
                                                             href="/mng/board/${noticeList.id}/notice-detail">${noticeList.id}</a>
                                                     </th>
                                                     <td class="applyDetail"><a
-                                                            href="/mng/board/${noticeList.id}/notice-detail">${noticeList.id}</a>
+                                                            href="/mng/board/${noticeList.id}/notice-detail">${noticeList.title}</a>
+                                                    </td>
+
+                                                    <td class="applyDetail"><a
+                                                            href="/mng/board/${noticeList.id}/notice-detail">${noticeList.userName}</a>
                                                     </td>
                                                     <td class="applyDetail"><a
-                                                            href="/mng/board/${noticeList.id}/notice-detail">${noticeList.id}</a>
-                                                    </td>
-                                                    <td class="applyDetail"><a
-                                                            href="/mng/board/${noticeList.id}/notice-detail">${noticeList.id}</a>
-                                                    </td>
-                                                    <td class="applyDetail"><a
-                                                            href="/mng/board/${noticeList.id}/notice-detail">${noticeList.id}</a>
+                                                            href="/mng/board/${noticeList.id}/notice-detail">${noticeList.createdAt}</a>
                                                     </td>
                                                     <td>
                                                         <div>
                                                             <button class="btn btn-success"
                                                                     style="border: 1px solid black"
-                                                                    onclick="location.href='/mng/apply/${noticeList.id}/purchase-update'">
-                                                                신청 확인
+                                                                    onclick="location.href='/mng/board/${noticeList.id}/notice-update'">
+                                                                수정
                                                             </button>
                                                             &nbsp;&nbsp;
                                                             <button class="btn-danger btn"
-                                                                    onclick="location.href='/mng/apply/${noticeList.id}/purchase-delete'">
-                                                                신청 취소
+                                                                    onclick="location.href='/mng/board/${noticeList.id}/notice-delete'">
+                                                                삭제
                                                             </button>
                                                         </div>
                                                     </td>
@@ -112,7 +109,7 @@
                                 <div style="display: block; text-align: center;">
                                     <c:if test="${paging.startPage != 1 }">
                                         <a
-                                                href="user?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+                                                href="noticeList?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
                                     </c:if>
                                     <c:forEach begin="${paging.startPage }"
                                                end="${paging.endPage }" var="p">
@@ -121,13 +118,13 @@
                                                 <b>${p }</b>
                                             </c:when>
                                             <c:when test="${p != paging.nowPage }">
-                                                <a href="user?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+                                                <a href="noticeList?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
                                             </c:when>
                                         </c:choose>
                                     </c:forEach>
                                     <c:if test="${paging.endPage != paging.lastPage}">
                                         <a
-                                                href="user?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+                                                href="noticeList?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
                                     </c:if>
                                 </div>
 

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import com.tenco.toyproject.dto.KakaoPayDto;
+import com.tenco.toyproject.dto.response.KakaoPayCancelResponse;
 import com.tenco.toyproject.dto.response.KakaoPayResponse;
 import com.tenco.toyproject.repository.entity.Order;
 import com.tenco.toyproject.repository.entity.Product;
@@ -31,6 +32,7 @@ import com.tenco.toyproject.service.UserService;
 import com.tenco.toyproject.vo.PageVO;
 
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
@@ -100,13 +102,13 @@ public class ProductController {
 		
 	}
 	
-	
 	@PostMapping("order/kakao-pay")
 	public String kakaoPayReady(@RequestParam("id") int productId) {
 		User principal = (User) session.getAttribute("principal");
 		int userId = principal.getId();
-			return "redirect:" + kakaoPayService.KakaoPayReady(productId, userId);
+			return "redirect:" + kakaoPayService.KakaoPayReady(productId, userId) + "?id=" + productId;
 	}
+	
 	// http://localhost/product/kakao-pay/success?pg_token=T5794b2c3ad74821dd21
 	@GetMapping("order/kakao-pay/success")
 	public String kakaoPaySuccess(Model model, @RequestParam("pg_token") String pg_token) {
@@ -115,21 +117,63 @@ public class ProductController {
 		// 단일 주문 성공시 order 테이블에 저장
 		KakaoPayDto kakao = kakaoPayService.kakaoPayInfo(pg_token, userId);
 		int productId = Integer.valueOf(kakao.getItemCode());
-		System.out.println(productId);
-		productService.payForProduct(userId, productId);
+		String tid = kakao.getTid();
+		productService.payForProduct(userId, productId, tid);
 		model.addAttribute("info", kakao);
 		
 		return "redirect:/mypage/order-list";
 	}
 	
-	@GetMapping("order/kakao-pay/cancel")
-	public String kakaoPayCancel() {
-		System.out.println("결제취소");
-		
-		return "redirect:/product/order";
+	@GetMapping("order/kakao-pay/fail")
+	public String kakaoPayFail(Model model, @RequestParam("id") int productId) {
+		User principal = (User) session.getAttribute("principal");
+		User userInfo = userService.findById(principal.getId());
+		Product orderList = productService.findById(productId);
+		model.addAttribute("orderList", orderList);
+		model.addAttribute("userInfo", userInfo);
+		return "product/order";
 	}
-	
-	
+	@GetMapping("search")
+	public String search(Model model, HttpServletRequest request,@RequestParam(value="keyword", required=false) String keyword,
+			@RequestParam(value="price1", required=false) String price1, @RequestParam(value="price2", required=false) String price2){
 
+		if(keyword == "" || keyword.equals("")) {
+			List<Map> productList = null;
+			return "product/search";
+		}
+		List<Map> productList = productService.searchProduct(keyword);
+//		System.out.println(productList.size());
+		model.addAttribute("productList", productList);
+		model.addAttribute("MaxPrice", productService.searchMaxPrice());
+		
+		return "product/search";
+	}
+
+	@GetMapping("/getData")
+	public @ResponseBody List<Map> getData(
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "10") int pageSize,@RequestParam String keyword, Model model) {
+        // 페이지 및 페이지 크기를 이용하여 데이터 조회
+		List<Map> productList= productService.searchProductInfinite(keyword, page, pageSize);
+//		model.addAttribute("productList", productList);
+		  return productService.searchProductInfinite(keyword, page, pageSize);
+    }
+
+
+	@PostMapping("order/kakao-pay/cancel")
+	public String kakaoPayCancel(Model model, @RequestParam("id") int productId) {
+		User principal = (User) session.getAttribute("principal");
+		int userId = principal.getId();
+		Order order = productService.findTid(userId, productId);
+		Product product = productService.findById(productId);
+		int cancelAmount = product.getPrice().intValue();
+		KakaoPayCancelResponse cancelResponse = kakaoPayService.kakaoPayCancel(userId, cancelAmount, 
+				order.getTid());
+		productService.applyForRefund(productId);
+		List<Map> orderList = productService.showCustomerOrderList(userId);
+		model.addAttribute("orderList", orderList);
+		model.addAttribute("refund", cancelResponse);
+		return "redirect:/mypage/order-list";
+	}
 	
 }

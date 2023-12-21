@@ -1,0 +1,97 @@
+/* 초기에는 숨겨진 상태 */
+#applyManagement .collapse {
+    display: none;
+}
+
+/* 마우스를 올릴 때 나타나게 함 */
+#applyManagement.show .collapse {
+    display: block;
+}
+
+#applyManagement.show .collapse li.sidebar-item {
+    margin-left: 10px; /* 서브 메뉴 오른쪽으로 10px 이동 */
+    font-size: 12px;
+}
+#productManagement .collapse {
+    display: none;
+}
+
+/* 마우스를 올릴 때 나타나게 함 */
+#productManagement.show .collapse {
+    display: block;
+}
+
+#productManagement.show .collapse li.sidebar-item {
+    margin-left: 10px; /* 서브 메뉴 오른쪽으로 10px 이동 */
+    font-size: 12px;
+}
+#noticeManagement .collapse {
+    display: none;
+}
+
+/* 마우스를 올릴 때 나타나게 함 */
+#noticeManagement.show .collapse {
+    display: block;
+}
+
+#noticeManagement.show .collapse li.sidebar-item {
+    margin-left: 10px; /* 서브 메뉴 오른쪽으로 10px 이동 */
+    font-size: 12px;
+}
+
+
+#categoryManagement .collapse {
+    display: none;
+}
+
+/* 마우스를 올릴 때 나타나게 함 */
+#categoryManagement.show .collapse {
+    display: block;
+}
+
+#categoryManagement.show .collapse li.sidebar-item {
+    margin-left: 10px; /* 서브 메뉴 오른쪽으로 10px 이동 */
+    font-size: 12px;
+}
+/* Style for the links with class "rentalDetail" */
+.applyDetail a {
+    color: black;
+    text-decoration: none; /* Remove underline */
+}
+
+/* Style for visited links with class "rentalDetail" */
+.applyDetail a:visited {
+    color: black;
+}
+
+/* Style for links with class "rentalDetail" on hover */
+.applyDetail a:hover {
+    color: gray;
+    /* Change the color on hover if needed */
+    /* You can add additional styles for hover if needed */
+}
+.m--category-section {
+    width: 100%;
+    margin: 5px;
+}
+.form-select {
+    /*margin-bottom: 10px;*/
+}
+.m--category-input {
+    height: 35px;
+    margin-top: 10px;
+}
+
+/* 추가된 스타일 */
+.navbar-brand {
+    display: block;
+    align-items: center;
+    margin: 0;
+    padding: 0 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: #233242;
+}
