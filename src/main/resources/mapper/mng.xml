@@ -113,7 +113,8 @@
              ) AS combined_results;
     </select>
     <select id="findByReview">
-        select * from review
+        select u.user_name, p.name as productName, r.content, r.rate,r.created_at
+        from review r left join user u on r.user_id = u.id left join product p on r.product_id = p.id order by r.id desc
     </select>
 </mapper>
 

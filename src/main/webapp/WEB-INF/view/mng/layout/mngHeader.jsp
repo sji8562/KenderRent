@@ -37,6 +37,7 @@
 		  integrity="sha256-7ZWbZUAi97rkirk4DcEp4GWDPkWpRMcNaEyXGsNXjLg=" crossorigin="anonymous">
 
 
+
 <!-- Summernote CSS -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
