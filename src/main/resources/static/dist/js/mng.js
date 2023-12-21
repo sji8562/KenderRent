@@ -70,7 +70,7 @@ function displaySecondCategoryData(data) {
 
 function fCategoryChange() {
     // 선택된 값 가져오기
-    var selectedValue = document.querySelector('select[name="firstCategory"]').value;
+    var selectedValue = document.querySelector('select[id="firstCategory"]').value;
 
     fetch('/mng/product/second-category-find-by-first-category/' + selectedValue)
         .then(response => response.json())
