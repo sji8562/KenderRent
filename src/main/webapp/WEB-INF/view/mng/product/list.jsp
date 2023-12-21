@@ -18,7 +18,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item active" aria-current="page">
-                                    	<a href="/mng/product/register" style="text-decoration: none"><button class="btn btn-primary">상품 등록</button></a>
+                                    	<a href="/mng/product/registerForRent" style="text-decoration: none"><button class="btn btn-primary">상품 등록</button></a>
                                     </li>
                                 </ol>
                             </nav>
@@ -38,7 +38,7 @@
 									<div class="card-body m--search-inline">
 										<h4 class="card-title">대여용 물품 관리</h4>
 											<div class="m--search-inline">
-												<input type="text" id="code" name="code" value="2" hidden />
+												<input type="text" id="code" name="code" value="1" hidden />
 												<div class="col-auto">
 													<input type="text" class="form-control" id="keyword" name="keyword" placeholder="상품명을 입력해주세요" value="${keyword}">
 												</div>
@@ -73,7 +73,7 @@
 																<td>${product.grade}</td>
 																<td>${product.formatStatusToString()}</td>
 																<td>
-																	<a href="/mng/product/modify/${product.id}"><button class="btn btn-success" type="button">수정</button></a>
+																	<a href="/mng/product/modifyForRent/${product.id}"><button class="btn btn-success" type="button">수정</button></a>
 																	<a onclick="confirmOpen('del', ${product.id})"><button class="btn btn-danger" type="button">삭제</button></a>
 																</td>
 															</tr>
@@ -86,7 +86,7 @@
 									<%-- 페이징 --%>
 									<div style="display: block; text-align: center;">
 										<c:if test="${paging.startPage != 1 }">
-											<a href="/mng/product/list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">&lt;</a>
+											<a href="/mng/product/list?code=1&nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">&lt;</a>
 										</c:if>
 										<c:forEach begin="${paging.startPage }"
 												   end="${paging.endPage }" var="p">
@@ -95,12 +95,12 @@
 													<b>${p }</b>
 												</c:when>
 												<c:when test="${p != paging.nowPage }">
-													<a href="/mng/product/list?nowPage=${p }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">${p }</a>
+													<a href="/mng/product/list?code=1&nowPage=${p }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">${p }</a>
 												</c:when>
 											</c:choose>
 										</c:forEach>
 										<c:if test="${paging.endPage != paging.lastPage}">
-											<a href="/mng/product/list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">&gt;</a>
+											<a href="/mng/product/list?code=1&nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">&gt;</a>
 										</c:if>
 									</div>
 								</form>

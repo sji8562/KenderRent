@@ -66,8 +66,8 @@ public class MngProductService {
     @Transactional
     public int createProduct(MngProductDto dto) {
 
-        int firstCategoryId = mngRepository.findFirstCategoryByfId(dto.getSecondCategoryId());
-        dto.setFirstCategoryId(firstCategoryId);
+//        int firstCategoryId = mngRepository.findFirstCategoryByfId(dto.getSecondCategoryId());
+//        dto.setFirstCategoryId(firstCategoryId);
 
         Product product = Product.builder()
                 .name(dto.getName())

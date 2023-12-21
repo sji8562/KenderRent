@@ -21,7 +21,7 @@
 	<div class="page-breadcrumb">
 		<div class="row">
 			<div class="col-5 align-self-center">
-				<h4 class="page-title">대여 물품 상세</h4>
+				<h4 class="page-title">판매 물품 상세</h4>
 			</div>
 		</div>
 	</div>
@@ -96,7 +96,7 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<label>대여여부</label>
+								<label>판매여부</label>
 								<select class="form-select" aria-label="Disabled select example" disabled>
 									<option value="${product.status}" selected>${product.formatStatusToString()}</option>
 								</select>
@@ -112,7 +112,7 @@
 						</form>
 					</div>
 					<%--<button class="btn btn-primary" onclick="history.back()">뒤로가기</button>--%>
-					<a href="/mng/product/list?code=1&keyword="><button class="btn btn-primary" type="button">목록으로</button></a>
+					<a href="/mng/product/listForSale?code=2&keyword="><button class="btn btn-primary" type="button">목록으로</button></a>
 				</div>
 			</div>
 			<!-- ============================================================== -->
