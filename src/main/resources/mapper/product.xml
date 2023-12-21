@@ -101,7 +101,6 @@
 		where user_id = #{userId}
 		order by create_at desc
 	</select>
-
 	
 
 	<insert id="addToBookmark" parameterType="com.tenco.toyproject.repository.entity.bookmark">

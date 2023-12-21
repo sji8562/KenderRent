@@ -7,7 +7,6 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.tenco.toyproject.repository.entity.Cart;
 import com.tenco.toyproject.repository.entity.PayBack;
 import com.tenco.toyproject.repository.entity.Sale;
 import com.tenco.toyproject.repository.entity.Product;
@@ -43,6 +42,7 @@ public interface ProductRepository {
 	public List<Map> searchProduct(String keyword);
 	public List<Map> searchProductInfinite(@Param("keyword") String keyword, @Param("offset") int offset,@Param("limit") int limit);
 	public int searchMaxPrice();
+
 
 
 }

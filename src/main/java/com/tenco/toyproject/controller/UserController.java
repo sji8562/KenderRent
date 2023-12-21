@@ -1,8 +1,6 @@
 package com.tenco.toyproject.controller;
 
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +26,6 @@ import org.springframework.web.client.RestTemplate;
 import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import com.tenco.toyproject.dto.UserSignInFormDto;
 import com.tenco.toyproject.dto.response.KakaoProfile;
-import com.tenco.toyproject.dto.response.KakaoProfile.Properties;
 import com.tenco.toyproject.dto.response.OAuthToken;
 import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.UserService;

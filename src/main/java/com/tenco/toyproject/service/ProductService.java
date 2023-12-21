@@ -4,8 +4,6 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,7 +41,6 @@ public class ProductService {
 		return cartEntity;
 	}
 	
-	@Transactional
 	public void addToCartById(int userId, int productId) {
 		productRepository.addToCartById(userId, productId);
 	}
@@ -52,7 +49,6 @@ public class ProductService {
         return productRepository.countProductCustomer(productId);
     }
 	
-	@Transactional
 	public int deleteCartItem(int userId, int productId) {
 		return productRepository.deleteCartItem(userId, productId);		
 	}
@@ -60,7 +56,6 @@ public class ProductService {
 	public boolean isItemInCart(int userId, int productId) {
 		return productRepository.isItemInCart(userId, productId) > 0;
 	}
-	
 	public int countItemInCart(int userId) {
 		return productRepository.countItemInCart(userId);
 	}

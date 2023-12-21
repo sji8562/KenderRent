@@ -44,6 +44,8 @@ public class ProductController {
 	private UserService userService;
 	@Autowired
 	private KakaoPayService kakaoPayService;
+	@Autowired
+	private MessageController message;
 	
 	@GetMapping("categories")
 	public String categories() {
@@ -149,8 +151,7 @@ public class ProductController {
 		for (int id : productIdArray) {
 			productService.deleteCartItem(userId, id);
 	    }
-		
-		
+		message.sendOne(principal.getUserName(), principal.getPhoneNumber());
 		return "redirect:/mypage/order-list";
 	}
 	
