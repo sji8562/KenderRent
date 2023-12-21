@@ -65,7 +65,7 @@ public class CartContoller {
 		return "redirect:/cart";
 	}
 
-<<<<<<< HEAD
+
 	// 장바구니 확인
 	public boolean checkCartItemExist(int productId) {
 		User principal = (User) session.getAttribute("principal");
@@ -82,6 +82,4 @@ public class CartContoller {
 	}
 
 }
-=======
-}
->>>>>>> 091ab240b160b8d81f561bb977f8b462b3acf2f0
+
