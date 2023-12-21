@@ -12,4 +12,12 @@ public class MngReplyDTO {
         private Integer replyId;
         private String replyContent;
     }
+    
+    // 231219 전우진
+    @Data
+    public static class ProductQnaReplyDto {
+      private Integer boardId;
+      private Integer replyId;
+      private String replyContent;
+    }
 }

@@ -87,15 +87,16 @@ function fCategoryChange() {
 
 function addFirstCategory() {
     var addFirstCategory = document.querySelector('input[id="addFirstCategory"]').value;
+    var code = document.querySelector('input[id="code"]').value;
 
     if(addFirstCategory.toString().trim() == '') {
         return alert('카테고리명을 입력해주세요');
     }
 
-    addFirstCategoryApi(addFirstCategory);
+    addFirstCategoryApi(addFirstCategory, code);
 }
 
-function addFirstCategoryApi(categoryName) {
+function addFirstCategoryApi(categoryName, code) {
     var url = '/mng/product/addFirstCategory';
 
     fetch(url, {
@@ -103,7 +104,7 @@ function addFirstCategoryApi(categoryName) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ "categoryName": categoryName }),
+        body: JSON.stringify({ "categoryName": categoryName, "code": code }),
     })
         .then(response => response.json())
         .then(data => {
@@ -257,6 +258,15 @@ document.getElementById('productManagement').addEventListener('mouseenter', func
 document.getElementById('productManagement').addEventListener('mouseleave', function() {
     // 마우스가 벗어날 때 이벤트 발생
     document.getElementById('productManagement').classList.remove('show');
+});
+document.getElementById('categoryManagement').addEventListener('mouseenter', function() {
+    // 마우스가 올라갈 때 이벤트 발생
+    document.getElementById('categoryManagement').classList.add('show');
+});
+
+document.getElementById('categoryManagement').addEventListener('mouseleave', function() {
+    // 마우스가 벗어날 때 이벤트 발생
+    document.getElementById('categoryManagement').classList.remove('show');
 });
 
 function DaumPostcode() {

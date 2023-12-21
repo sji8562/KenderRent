@@ -106,6 +106,7 @@
                                                             <td>
                                                                 <div>
                                                                     <button class="btn btn-success"
+                                                                            type="button"
                                                                             style="border: 1px solid black"
                                                                             onclick="location.href='/mng/board/${boardList.id}/qna-detail'">
                                                                         조회
@@ -113,6 +114,7 @@
                                                                 &nbsp;&nbsp;<c:choose>
                                                                     <c:when test="${boardList.reply == 0}">
                                                                         <button class="btn-danger btn"
+                                                                                type="button"
                                                                                 onclick="location.href='/mng/board/${boardList.id}/qna-delete'">
                                                                             삭제
                                                                         </button>

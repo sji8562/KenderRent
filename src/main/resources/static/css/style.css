@@ -6951,7 +6951,9 @@ html[dir="ltr"] body .p-l-0 {
 
 .page-wrapper > .container-fluid {
   padding: 20px;
-  min-height: calc(100vh - 180px); }
+  min-height: calc(100vh - 180px);
+  padding-left: 300px;
+}
 
 /*******************
  Footer
@@ -7558,7 +7560,7 @@ Table td vertical middle
  Breadcrumb and page title
 *******************/
 .page-breadcrumb {
-  padding: 20px 20px 0 20px; }
+  padding: 20px 20px 0 300px; }
   .page-breadcrumb .page-title {
     margin-bottom: 0px;
     font-weight: 500;

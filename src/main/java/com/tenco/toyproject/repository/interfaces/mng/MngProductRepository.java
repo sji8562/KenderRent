@@ -30,8 +30,7 @@ public interface MngProductRepository {
     public int createProduct(Product product);
 
     // 1차 카테고리 조회
-    public List<FirstCategory> findFirstCategoryAll();
-
+    public List<FirstCategory> findFirstCategoryAll(Integer code);
 
     // 2차 카테고리 조회
     public List<SecondCategory> findSecondCategoryForRent();
@@ -47,9 +46,9 @@ public interface MngProductRepository {
     List<SecondCategory> findSecondCategoryForFirstCategory(String fId);
 
 
-    int findFirstCategoryByName(String fCategoryName);
+    int findFirstCategoryByName(Integer code, String fCategoryName);
 
-    int createFirstCategory(String fCategoryName);
+    void createFirstCategory(int code, String fCategoryName);
 
     int deleteFirstCategoryById(int fId);
 
@@ -77,4 +76,5 @@ public interface MngProductRepository {
     Review findProductReviewById(Integer pId);
 
     int deleteProductReview(Integer id);
+
 }

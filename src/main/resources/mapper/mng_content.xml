@@ -6,22 +6,30 @@
 
     <!-- 회사 소개 조회 -->
     <select id="getCompanyInfo" resultType="com.tenco.toyproject.repository.entity.Content">
-        select * FROM information WHERE TYPE = 0
+        select * FROM information WHERE code = 0
     </select>
 
     <!-- 이용 수칙 조회 -->
     <select id="getRulesOfUse" resultType="com.tenco.toyproject.repository.entity.Content">
-        select * FROM information WHERE TYPE = 1
+        select * FROM information WHERE code = 1
     </select>
 
     <!-- 소독 과정 조회 -->
     <select id="getDisinfectionProcess" resultType="com.tenco.toyproject.repository.entity.Content">
-        select * FROM information WHERE TYPE = 2
+        select * FROM information WHERE code = 2
     </select>
 
-    <!-- 없으면 INSERT 있으면 UPDATE -->
-    <update id="createContent">
-        INSERT INTO information (content, TYPE, created_at) VALUES (#{content}, #{TYPE}, NOW())
-            ON DUPLICATE KEY UPDATE content = #{content}, TYPE = #{TYPE}, created_at = NOW()
+    <!-- 최초 insert -->
+    <insert id="createContent">
+
+        INSERT INTO information (content, code, created_at) VALUES (#{content}, #{code}, NOW())
+
+    </insert>
+
+    <!-- 회사 소개, 이용 수칙, 소동 과정 update -->
+    <update id="updateMngContent">
+
+        UPDATE information SET content = #{content} WHERE code = #{code} AND id = #{id}
+
     </update>
 </mapper>

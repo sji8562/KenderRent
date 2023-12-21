@@ -16,7 +16,7 @@
 
     <!-- 물품 리뷰 조회 with 페이징 -->
     <select id="findAllReviewWithPagination" resultType="com.tenco.toyproject.repository.entity.Review">
-        SELECT r.id, r.user_id, u.email, r.product_id, r.content, r.created_at, p.first_category_id, fc.first_category_name, p.second_category_id, sc.second_category_name, p.name, p.pic_url
+        SELECT r.id, r.user_id, u.email, r.product_id, r.content, r.rate, r.created_at, p.first_category_id, fc.first_category_name, p.second_category_id, sc.second_category_name, p.name, p.pic_url
         FROM review AS r
                  JOIN user AS u ON u.id = r.user_id
                  JOIN product AS p ON r.product_id = p.id
@@ -93,7 +93,7 @@
 
     <!-- first Category -->
     <select id="findFirstCategoryAll" resultType="com.tenco.toyproject.repository.entity.FirstCategory">
-        SELECT * FROM first_category
+        SELECT * FROM first_category WHERE code = #{code}
     </select>
 
     <!-- first Category Using Second Category Id -->
@@ -130,11 +130,11 @@
     </select>
 
     <select id="findFirstCategoryByName" resultType="int">
-        SELECT COUNT(*) AS count FROM first_category WHERE first_category_name = #{fCategoryName}
+        SELECT COUNT(*) AS count FROM first_category WHERE code = #{code} AND first_category_name = #{fCategoryName}
     </select>
 
     <select id="createFirstCategory">
-        INSERT INTO first_category (first_category_name) VALUES (#{fCategoryName})
+        INSERT INTO first_category (code, first_category_name) VALUES (#{code}, #{fCategoryName})
     </select>
 
     <delete id="deleteFirstCategoryById">

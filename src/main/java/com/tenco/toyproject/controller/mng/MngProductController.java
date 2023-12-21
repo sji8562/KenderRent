@@ -144,7 +144,7 @@ public class MngProductController {
     public String productModify(Model model, @PathVariable Integer pId) {
         try {
             Product product = mngService.findProductById(pId);
-            List<FirstCategory> fCategory = mngService.findCategoryAll();
+            List<FirstCategory> fCategory = mngService.findCategoryAll(product.getFirstCategoryCode());
             List<SecondCategory> sCategory = mngService.findSecondCategoryForRent();
             if (product == null) {
                 throw new CustomRestfulException("없는 상품입니다", HttpStatus.BAD_REQUEST);
@@ -356,11 +356,30 @@ public class MngProductController {
 
     }
 
-    @GetMapping("categories")
-    public String categoriesPage(Model model) {
+    /**
+     * 판매용 카테고리
+     * */
+    @GetMapping("categoriesForSale")
+    public String categoriesForSalePage(Model model) {
+        Integer categoryCode = 2;
 
         // 1차 카테고리 불러오기
-        List<FirstCategory> firstCategoryList = mngService.getFirstCategories();
+        List<FirstCategory> firstCategoryListForSale = mngService.getFirstCategories(categoryCode); // 2 판매용
+        if(firstCategoryListForSale != null || !firstCategoryListForSale.isEmpty()){
+            model.addAttribute("firstCategoryList", firstCategoryListForSale);
+        }
+        return "/mng/product/categoriesForSale";
+    }
+
+    /**
+     * 대여용 카테고리 조회
+     * */
+    @GetMapping("categories")
+    public String categoriesPage(Model model) {
+        Integer categoryCode = 1;
+
+        // 1차 카테고리 불러오기
+        List<FirstCategory> firstCategoryList = mngService.getFirstCategories(categoryCode); // 1 대여용
         if(firstCategoryList != null || !firstCategoryList.isEmpty()){
             model.addAttribute("firstCategoryList", firstCategoryList);
         }
@@ -384,32 +403,36 @@ public class MngProductController {
         }
     }
 
+    // 카테고리 등록(대여/판매)
     @PostMapping("addFirstCategory")
     @ResponseBody
     public List<FirstCategory> addFirstCategory(@RequestBody Map<String, String> categoryName) {
         try{
             String fCategoryName = categoryName.get("categoryName");
+            Integer fCode = Integer.valueOf(categoryName.get("code"));
+
             // 같은 이름의 카테고리가 있는지 확인
             logger.info("같은 이름의 카테고리가 있는지 먼저 확인", fCategoryName);
-            int resultRowCount = mngService.findFirstCategoryByName(fCategoryName);
+            int resultRowCount = mngService.findFirstCategoryByName(fCode, fCategoryName);
 
             if (resultRowCount > 0) {
                 throw new CustomRestfulException("이미 존재하는 카테고리입니다", HttpStatus.BAD_REQUEST);
 
             }
 
-            int result = mngService.addFirstCategory(fCategoryName);
+            int result = mngService.addFirstCategory(fCode, fCategoryName);
             if(result != 1){
                 throw new CustomRestfulException("카테고리 등록을 실패했습니다.", HttpStatus.BAD_REQUEST);
             }
 
-            return mngService.getFirstCategories();
+            return mngService.getFirstCategories(fCode);
         }catch (Exception e){
             e.printStackTrace();
             return null;
         }
     }
 
+    // 대여용
     // 1차 카테고리 삭제
     @GetMapping("/delete-first-category-by-id/{fId}")
     public List<FirstCategory> deleteFirstCategory(@PathVariable int fId) {
@@ -432,7 +455,7 @@ public class MngProductController {
             if(result != 1){
                 throw new CustomRestfulException("카테고리 삭제를 실패했습니다.", HttpStatus.BAD_REQUEST);
             }
-            return mngService.getFirstCategories();
+            return mngService.getFirstCategories(1);
         }catch (Exception e){
             e.printStackTrace();
             return null;
@@ -442,6 +465,9 @@ public class MngProductController {
     }
 
 
+    /**
+     * 대여용 카테고리
+    * */
     @PostMapping("addSecondCategory")
     @ResponseBody
     public List<SecondCategory> addSecondCategory(@RequestBody Map<String, String> postData) {
@@ -501,10 +527,11 @@ public class MngProductController {
         }
     }
 
+    // 대여
     @GetMapping("/first-category-all")
     public List<FirstCategory> findFirstCategoryAll() {
         logger.info("===============================");
-        return mngService.getFirstCategories();
+        return mngService.getFirstCategories(1);
     }
 
     // 상품 후기 관리 페이지

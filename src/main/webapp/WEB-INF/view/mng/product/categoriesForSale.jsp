@@ -15,7 +15,7 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-5 align-self-center">
-                <h4 class="page-title">대여용 카테고리 관리</h4>
+                <h4 class="page-title">판매용 카테고리 관리</h4>
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@
                             </c:forEach>
                         </select>
                         <div>
-                            <input type="text" hidden id="code" name="code" value="1">
+                            <input type="text" hidden id="code" name="code" value="2">
                             <input type="text" class="m--category-input" id="addFirstCategory" name="firstCategory">
                             <button onclick="addFirstCategory()" class="btn btn-primary">추가</button>
                             <button class="btn btn-danger" onclick="delFirstCategory()">삭제</button>

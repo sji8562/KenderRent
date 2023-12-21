@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class FirstCategory {
 	private int id;
 	private String firstCategoryName;
+	private  Integer code;
 }

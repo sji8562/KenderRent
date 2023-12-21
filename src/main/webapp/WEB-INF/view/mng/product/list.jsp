@@ -36,10 +36,11 @@
 							<div class="card">
 								<form class="row g-3" action="/mng/product/list" method="get">
 									<div class="card-body m--search-inline">
-										<h4 class="card-title">물품 관리</h4>
+										<h4 class="card-title">대여용 물품 관리</h4>
 											<div class="m--search-inline">
+												<input type="text" id="code" name="code" value="2" hidden />
 												<div class="col-auto">
-													<input type="text" class="form-control" id="keyword" name="keyword" placeholder="제목을 입력해주세요" value="${keyword}">
+													<input type="text" class="form-control" id="keyword" name="keyword" placeholder="상품명을 입력해주세요" value="${keyword}">
 												</div>
 												<div class="col-auto">
 													<button type="submit" class="btn btn-primary mb-3">검색</button>
@@ -71,8 +72,9 @@
 																<td><a href="/mng/product/${product.id}/detail" style="text-decoration: none; color: black;">${product.name}</a></td>
 																<td>${product.grade}</td>
 																<td>${product.formatStatusToString()}</td>
-																	<td><a href="/mng/product/modify/${product.id}">수정</a>
-																	<a onclick="confirmOpen('del', ${product.id})">삭제</a>
+																<td>
+																	<a href="/mng/product/modify/${product.id}"><button class="btn btn-success" type="button">수정</button></a>
+																	<a onclick="confirmOpen('del', ${product.id})"><button class="btn btn-danger" type="button">삭제</button></a>
 																</td>
 															</tr>
 														</c:forEach>

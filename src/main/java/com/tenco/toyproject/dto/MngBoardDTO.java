@@ -1,10 +1,7 @@
 package com.tenco.toyproject.dto;
 
-import lombok.Data;
-import org.springframework.data.relational.core.sql.In;
-
-import java.sql.Time;
 import java.sql.Timestamp;
+import lombok.Data;
 
 public class MngBoardDTO {
 
@@ -44,5 +41,18 @@ public class MngBoardDTO {
         private String email; // 질문 작성자
         private Timestamp createdAt;
         private Integer reply; // 답변 여부
+    }
+    
+    // 231219 전우진
+    @Data
+    public static class ProductQnaListDto {
+      private Integer id; // 문의데이터ID
+      private Integer productId; // 제품ID
+      private String title; // 문의제목
+      private String content; // 문의내용
+      private Integer userId; // 질문 작성자
+      private String email; // 질문 작성자
+      private Timestamp createdAt;
+      private Integer reply; // 답변 여부
     }
 }

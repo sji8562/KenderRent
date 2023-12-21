@@ -9,5 +9,5 @@ public class MngContentDto {
     @Lob
     private String content;
 
-    private Integer TYPE;
+    private Integer code;
 }

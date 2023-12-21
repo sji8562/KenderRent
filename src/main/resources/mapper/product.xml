@@ -78,6 +78,7 @@
 			where user_id = #{userId}
 			and product_id = #{productId};
 	</select>
+
 	
 	
 	
@@ -102,4 +103,5 @@
 		select max(price) as MAX from product
 	</select>
 <!-- 	검색기능 관련 끝 -->
+
 </mapper>
