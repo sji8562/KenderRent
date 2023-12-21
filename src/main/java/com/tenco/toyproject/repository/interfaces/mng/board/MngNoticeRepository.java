@@ -1,4 +1,4 @@
-package com.tenco.toyproject.repository.interfaces.mng;
+package com.tenco.toyproject.repository.interfaces.mng.board;
 
 import com.tenco.toyproject.dto.MngBoardDTO;
 import com.tenco.toyproject.repository.entity.Board;
@@ -13,15 +13,12 @@ public interface MngNoticeRepository {
 
     public List<MngBoardDTO.NoticeListDTO> findAllNoticeWithPagenaition(PageVO pageVO);
 
-    public int countFaq();
 
-    public List<MngBoardDTO.NoticeListDTO> findAllFaqWithPagenation(PageVO pageVO);
+    public Board findByNoticeId(Integer id);
 
-    void deleteBoardById(int id);
+    public int noticeSubmit(Board board);
 
-    void createFaq(MngBoardDTO.FaqSubmitDto dto);
+    public int UpdateByNoticeId(MngBoardDTO.NoticeUpdateDTO dto);
 
-    Board findBoardById(int id);
-
-    void updateFaqById(MngBoardDTO.FaqSubmitDto dto);
+    public int deleteByNotice(Integer id);
 }

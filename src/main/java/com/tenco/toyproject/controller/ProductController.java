@@ -29,6 +29,7 @@ import com.tenco.toyproject.service.UserService;
 import com.tenco.toyproject.vo.PageVO;
 
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
@@ -120,15 +121,6 @@ public class ProductController {
 	public void kakaoPayGet() {
 	}
 	
-	
-
-	
-	@GetMapping("search")
-	public String search() {
-		return "product/search";
-	}
-	
-
 	@PostMapping("order/kakao-pay")
 	public String kakaoPayReady(@RequestParam("orderIds") String[] orderIds,
 			String name, String phoneNumber, String postNumber, String address, String addressDetail) {
@@ -190,7 +182,36 @@ public class ProductController {
 		model.addAttribute("userInfo", userInfo);
 		return "product/order";
 	}
+<<<<<<< HEAD
 	
+=======
+	@GetMapping("search")
+	public String search(Model model, HttpServletRequest request,@RequestParam(value="keyword", required=false) String keyword,
+			@RequestParam(value="price1", required=false) String price1, @RequestParam(value="price2", required=false) String price2){
+
+		if(keyword == "" || keyword.equals("")) {
+			List<Map> productList = null;
+			return "product/search";
+		}
+		List<Map> productList = productService.searchProduct(keyword);
+//		System.out.println(productList.size());
+		model.addAttribute("productList", productList);
+		model.addAttribute("MaxPrice", productService.searchMaxPrice());
+		
+		return "product/search";
+	}
+
+	@GetMapping("/getData")
+	public @ResponseBody List<Map> getData(
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "10") int pageSize,@RequestParam String keyword, Model model) {
+        // 페이지 및 페이지 크기를 이용하여 데이터 조회
+		List<Map> productList= productService.searchProductInfinite(keyword, page, pageSize);
+//		model.addAttribute("productList", productList);
+		  return productService.searchProductInfinite(keyword, page, pageSize);
+    }
+
+>>>>>>> 091ab240b160b8d81f561bb977f8b462b3acf2f0
 
 	@PostMapping("order/kakao-pay/cancel")
 	public String kakaoPayCancel(Model model, @RequestParam("orderId") int orderId) {
@@ -209,5 +230,8 @@ public class ProductController {
 		return "redirect:/mypage/order-list";
 	}
 	
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 091ab240b160b8d81f561bb977f8b462b3acf2f0
 }

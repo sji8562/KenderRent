@@ -39,4 +39,14 @@ public class MngContentService {
         return content;
     }
 
+    public int updateMngContent(MngContentDto dto) {
+
+        int resultSet = mngContentRepository.updateMngContent(dto);
+        System.out.println("여기여기여기" + resultSet);
+        if(resultSet < 1) {
+            throw new Exception500("등록에 실패했습니다");
+        }
+        return resultSet;
+    }
+
 }

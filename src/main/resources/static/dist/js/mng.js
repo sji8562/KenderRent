@@ -15,6 +15,22 @@ function confirmOpen(type, id) {
     }
 }
 
+function reviewConfirmOpen(type, id) {
+    console.log(type);
+    console.log(id);
+
+    if(type == 'del') {
+        if(confirm('후기를 삭제하시겠습니까?')) {
+            fetch('/mng/product/review/' + id + '/delete')
+                .then((response) => {
+                    history.go(0);
+                    console.log("response", response)
+                }) //성공했을때
+                .catch((error) => console.log("error:", error)) //실패했을때
+        }
+    }
+}
+
 function displayFirstCategoryData(data) {
     // fetch('/mng/product/first-category-all')
     //     .then(response => response.json())
@@ -71,15 +87,16 @@ function fCategoryChange() {
 
 function addFirstCategory() {
     var addFirstCategory = document.querySelector('input[id="addFirstCategory"]').value;
+    var code = document.querySelector('input[id="code"]').value;
 
     if(addFirstCategory.toString().trim() == '') {
         return alert('카테고리명을 입력해주세요');
     }
 
-    addFirstCategoryApi(addFirstCategory);
+    addFirstCategoryApi(addFirstCategory, code);
 }
 
-function addFirstCategoryApi(categoryName) {
+function addFirstCategoryApi(categoryName, code) {
     var url = '/mng/product/addFirstCategory';
 
     fetch(url, {
@@ -87,7 +104,7 @@ function addFirstCategoryApi(categoryName) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ "categoryName": categoryName }),
+        body: JSON.stringify({ "categoryName": categoryName, "code": code }),
     })
         .then(response => response.json())
         .then(data => {
@@ -233,6 +250,24 @@ document.getElementById('noticeManagement').addEventListener('mouseleave', funct
     document.getElementById('noticeManagement').classList.remove('show');
 });
 
+document.getElementById('productManagement').addEventListener('mouseenter', function() {
+    // 마우스가 올라갈 때 이벤트 발생
+    document.getElementById('productManagement').classList.add('show');
+});
+
+document.getElementById('productManagement').addEventListener('mouseleave', function() {
+    // 마우스가 벗어날 때 이벤트 발생
+    document.getElementById('productManagement').classList.remove('show');
+});
+document.getElementById('categoryManagement').addEventListener('mouseenter', function() {
+    // 마우스가 올라갈 때 이벤트 발생
+    document.getElementById('categoryManagement').classList.add('show');
+});
+
+document.getElementById('categoryManagement').addEventListener('mouseleave', function() {
+    // 마우스가 벗어날 때 이벤트 발생
+    document.getElementById('categoryManagement').classList.remove('show');
+});
 
 function DaumPostcode() {
     new daum.Postcode({

@@ -38,19 +38,30 @@ dependencies {
 	implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
-	// <이메일인증용 DL
-	implementation 'org.springframework.boot:spring-boot-starter-mail:3.0.5'
-	implementation 'org.springframework:spring-context:6.0.7'
-	implementation 'org.springframework:spring-context-support:6.0.7'
-	implementation 'com.sun.mail:jakarta.mail:2.0.1'
-	// 이메일인증용 DL>
+	// spring security
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+	implementation 'org.springframework.boot:spring-boot-starter-security:3.1.6'
+	// spring oauth2
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-oauth2-client
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.1.6'
+	// spring Security taglib
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs
+	implementation 'org.springframework.security:spring-security-taglibs:5.7.2'
+	// spring mail
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail
 	implementation group: 'com.auth0', name: 'java-jwt', version: '4.4.0'
+<<<<<<< HEAD
 	// message전송
 	implementation 'net.nurigo:sdk:4.3.0'
 
 
 
+=======
+>>>>>>> 091ab240b160b8d81f561bb977f8b462b3acf2f0
 	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.1.RELEASE'
+	
+	
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
 }
 

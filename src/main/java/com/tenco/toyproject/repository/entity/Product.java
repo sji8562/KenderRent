@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
-	private int id;
+    private int id;
 	private int firstCategoryId;
 	private int secondCategoryId;
 	private Long price;
@@ -32,6 +32,7 @@ public class Product {
 	private Timestamp createdAt;
 	
 	private String firstCategoryName;
+	private Integer FirstCategoryCode;
 	private String secondCategoryName;
 	public String formatDecimal() {
 		return DecimalUtil.decimalToString(price);

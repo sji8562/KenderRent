@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 
@@ -21,7 +22,14 @@ public class Board {
     private int productId;
     private Timestamp createdAt;
 
+    private int reply; // 답변 여부
+    private String email; // 작성자 이메일
+    private Timestamp replyCreatedAt; // 답변 일시
+
     public String formatCreatedAtToString() {
         return DateUtil.dateToString(createdAt);
+    }
+    public String formatReplyCreatedAtToString() {
+        return DateUtil.dateToString(replyCreatedAt);
     }
 }

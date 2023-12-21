@@ -54,27 +54,35 @@
                     <div class="card-body">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">자주 묻는 질문 조회</h4>
-                                    <h6 class="card-subtitle"></h6>
-                                </div>
-                                <c:choose>
-                                    <c:when test="${noticeList != null }">
-                                            <div class="table-responsive">
-                                                    <table class="table" style="width: 100%;">
-                                                        <thead class="table-light">
-                                                        <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">제목</th>
-                                                            <%--<th scope="col">내용</th>--%>
-                                                            <th scope="col">작성자</th>
-                                                            <th scope="col">생성날짜</th>
-                                                            <th scope="col">공지사항 관리</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <c:forEach var="noticeList" items="${noticeList}">
-                                                                <tr>
+                                <form class="row g-3" action="/mng/board/faq-list" method="get">
+                                    <div class="card-body m--search-inline">
+                                        <h4 class="card-title">자주 묻는 질문 조회</h4>
+                                            <div class="m--search-inline">
+                                                <div class="col-auto">
+                                                    <input type="text" class="form-control" id="keyword" name="keyword" placeholder="제목을 입력해주세요" value="${keyword}">
+                                                </div>
+                                                <div class="col-auto">
+                                                    <button type="submit" class="btn btn-primary mb-3">검색</button>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <c:choose>
+                                        <c:when test="${noticeList != null }">
+                                                <div class="table-responsive">
+                                                        <table class="table" style="width: 100%;">
+                                                            <thead class="table-light">
+                                                            <tr>
+                                                                <th scope="col">#</th>
+                                                                <th scope="col">제목</th>
+                                                                <%--<th scope="col">내용</th>--%>
+                                                                <th scope="col">작성자</th>
+                                                                <th scope="col">생성날짜</th>
+                                                                <th scope="col">공지사항 관리</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <c:forEach var="noticeList" items="${noticeList}">
+                                                                    <tr>
                                                                         <th class="applyDetail" scope="row">
                                                                             <a href="/mng/board/${noticeList.id}/notice-detail">${noticeList.id}</a>
                                                                         </th>
@@ -87,47 +95,50 @@
                                                                             <div>
                                                                                 <button class="btn btn-success"
                                                                                         style="border: 1px solid black"
+                                                                                        type="button"
                                                                                         onclick="location.href='/mng/board/${noticeList.id}/faq-update'">
                                                                                     수정
                                                                                 </button>
                                                                                 &nbsp;&nbsp;
                                                                                 <button class="btn-danger btn"
+                                                                                        type="button"
                                                                                         onclick="location.href='/mng/board/${noticeList.id}/faq-delete'">
                                                                                     삭제
                                                                                 </button>
                                                                             </div>
                                                                         </td>
-                                                                </tr>
-                                                            </c:forEach>
-                                                        </tbody>
-                                                    </table>
-                                            </div>
-                                    <div style="display: block; text-align: center;">
-                                        <c:if test="${paging.startPage != 1 }">
-                                            <a
-                                                    href="faq-list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
-                                        </c:if>
-                                        <c:forEach begin="${paging.startPage }"
-                                                   end="${paging.endPage }" var="p">
-                                            <c:choose>
-                                                <c:when test="${p == paging.nowPage }">
-                                                    <b>${p }</b>
-                                                </c:when>
-                                                <c:when test="${p != paging.nowPage }">
-                                                    <a href="faq-list?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
-                                                </c:when>
-                                            </c:choose>
-                                        </c:forEach>
-                                        <c:if test="${paging.endPage != paging.lastPage}">
-                                            <a
-                                                    href="faq-list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
-                                        </c:if>
-                                    </div>
-                                </c:when>
-                                <c:otherwise>
-                                    <p>등록된 게시글이 없습니다</p>
-                                </c:otherwise>
-                                </c:choose>
+                                                                    </tr>
+                                                                </c:forEach>
+                                                            </tbody>
+                                                        </table>
+                                                </div>
+                                        <div style="display: block; text-align: center;">
+                                            <c:if test="${paging.startPage != 1 }">
+                                                <a
+                                                        href="faq-list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">&lt;</a>
+                                            </c:if>
+                                            <c:forEach begin="${paging.startPage }"
+                                                       end="${paging.endPage }" var="p">
+                                                <c:choose>
+                                                    <c:when test="${p == paging.nowPage }">
+                                                        <b>${p }</b>
+                                                    </c:when>
+                                                    <c:when test="${p != paging.nowPage }">
+                                                        <a href="faq-list?nowPage=${p }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">${p }</a>
+                                                    </c:when>
+                                                </c:choose>
+                                            </c:forEach>
+                                            <c:if test="${paging.endPage != paging.lastPage}">
+                                                <a
+                                                        href="faq-list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">&gt;</a>
+                                            </c:if>
+                                        </div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <p>등록된 게시글이 없습니다</p>
+                                        </c:otherwise>
+                                        </c:choose>
+                                </form>
                             </div>
                         </div>
 
