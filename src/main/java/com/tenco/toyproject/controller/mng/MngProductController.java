@@ -44,13 +44,16 @@ public class MngProductController {
     @Autowired
     private MngProductService mngService;
 
+    // 물품 리스트
     @GetMapping("list")
     public String productList(Model model, PageVO pageVO,
                               @RequestParam(value = "nowPage", required = false) String nowPage,
                               @RequestParam(value = "cntPerPage", required = false) String cntPerPage,
-                              @RequestParam(value = "keyword", required = false) String keyword) {
+                              @RequestParam(value = "keyword", required = false) String keyword,
+                              @RequestParam(value = "code", required = false) Integer code) {
 
-        int total = mngService.countProductList(keyword);
+        int total = mngService.countProductList(code, keyword);
+//        int total = mngService.countProductList(keyword);
 
         if (nowPage == null && cntPerPage == null) {
             nowPage = "1";
@@ -76,17 +79,70 @@ public class MngProductController {
         // 검색어가 있는 경우
         if (keyword != null && !keyword.isEmpty()) {
             // 검색어를 이용해 검색 쿼리 수행
-            productList = mngService.findProductByKeyword(pageVO, keyword);
+            productList = mngService.findProductByKeyword(pageVO, keyword, code);
         } else {
             // 검색어가 없을 때
-            productList = mngService.findProductAll(pageVO);
+            productList = mngService.findProductAll(pageVO, code);
         }
 
 
         System.out.println("productList" + productList);
         model.addAttribute(productList);
 
-        return "mng/product/list";
+        String returnUrl = "mng/product/list";
+        if(code == 2) {
+            returnUrl = "mng/product/listForSale";
+        }
+
+        return returnUrl;
+
+    }
+
+    @GetMapping("listForSale")
+    public String productListForSale(Model model, PageVO pageVO,
+                              @RequestParam(value = "nowPage", required = false) String nowPage,
+                              @RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+                              @RequestParam(value = "keyword", required = false) String keyword) {
+
+        Integer code = 2;
+
+        int total = mngService.countProductList(code, keyword);
+
+        if (nowPage == null && cntPerPage == null) {
+            nowPage = "1";
+            cntPerPage = "5";
+        } else if (nowPage == null) {
+            nowPage = "1";
+        } else if (cntPerPage == null) {
+            cntPerPage = "5";
+        }
+
+        pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+        model.addAttribute("paging", pageVO);
+
+        model.addAttribute("keyword", keyword);
+
+
+        System.out.println("===============");
+        System.out.println(keyword);
+        System.out.println("===============");
+
+        List<Product> productList;
+
+        // 검색어가 있는 경우
+        if (keyword != null && !keyword.isEmpty()) {
+            // 검색어를 이용해 검색 쿼리 수행
+            productList = mngService.findProductByKeyword(pageVO, keyword, code);
+        } else {
+            // 검색어가 없을 때
+            productList = mngService.findProductAll(pageVO, code);
+        }
+
+
+        System.out.println("productList" + productList);
+        model.addAttribute(productList);
+
+        return "mng/product/listForSale";
 
     }
 
