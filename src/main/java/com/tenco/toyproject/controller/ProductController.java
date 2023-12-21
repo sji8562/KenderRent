@@ -136,20 +136,29 @@ public class ProductController {
 	@GetMapping("search")
 	public String search(Model model, HttpServletRequest request,@RequestParam(value="keyword", required=false) String keyword,
 			@RequestParam(value="price1", required=false) String price1, @RequestParam(value="price2", required=false) String price2){
-		// 한 페이지에 몇개씩 표시할지
-		final int PAGE_ROW_COUNT = 10;
-		int pageNum = 1;
-		String strPageNum = request.getParameter("pageNum");
-		if(strPageNum != null) {
-			pageNum = Integer.parseInt(strPageNum);
+
+		if(keyword == "" || keyword.equals("")) {
+			List<Map> productList = null;
+			return "product/search";
 		}
-		int startRowNum = 0 + (pageNum - 1) * PAGE_ROW_COUNT;
-		
 		List<Map> productList = productService.searchProduct(keyword);
+//		System.out.println(productList.size());
 		model.addAttribute("productList", productList);
+		model.addAttribute("MaxPrice", productService.searchMaxPrice());
+		
 		return "product/search";
 	}
-	
+
+	@GetMapping("/getData")
+	public @ResponseBody List<Map> getData(
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "10") int pageSize,@RequestParam String keyword, Model model) {
+        // 페이지 및 페이지 크기를 이용하여 데이터 조회
+		List<Map> productList= productService.searchProductInfinite(keyword, page, pageSize);
+//		model.addAttribute("productList", productList);
+		  return productService.searchProductInfinite(keyword, page, pageSize);
+    }
+
 
 	@PostMapping("order/kakao-pay/cancel")
 	public String kakaoPayCancel(Model model, @RequestParam("id") int productId) {

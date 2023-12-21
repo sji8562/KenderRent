@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--반드시 세미콜론 생략 -->
+<mapper
+        namespace="com.tenco.toyproject.repository.interfaces.mng.MngIndexRepository">
+
+
+    <select id="findByCreatedAt">
+        SELECT
+            'Total' AS type,
+            date,
+            SUM(count) AS count,
+            SUM(price) AS price
+        FROM (
+            SELECT
+            DATE_FORMAT(r.created_at, '%m') AS date,
+            COUNT(*) AS count,
+            SUM(p.price) AS price
+            FROM rent r
+            INNER JOIN product p ON r.product_id = p.id
+            GROUP BY date  -- Corrected: Use the alias 'date' instead of 'created_at'
+
+            UNION ALL
+
+            SELECT
+            DATE_FORMAT(s.created_at, '%m') AS date,
+            COUNT(*) AS count,
+            SUM(p.price) AS price
+            FROM sale s
+            INNER JOIN product p ON s.product_id = p.id
+            GROUP BY date  -- Corrected: Use the alias 'date' instead of 'created_at'
+
+            UNION ALL
+
+            SELECT
+            DATE_FORMAT(pc.created_at, '%m') AS date,
+            COUNT(*) AS count,
+            SUM(p.price) AS price
+            FROM purchase pc
+            INNER JOIN product p ON pc.product_id = p.id
+            GROUP BY date  -- Corrected: Use the alias 'date' instead of 'created_at'
+            ) AS combined_data
+        GROUP BY date;
+
+    </select>
+    <select id="countByAll">
+        SELECT
+                (SELECT COUNT(*) FROM rent WHERE STATUS = 1) AS rent_count,
+                (SELECT COUNT(*) FROM sale WHERE STATUS = 1) AS sale_count,
+                (SELECT COUNT(*) FROM purchase WHERE STATUS = 1) AS purchase_count,
+                (SELECT COUNT(*) FROM rent WHERE STATUS = 1)
+                    + (SELECT COUNT(*) FROM sale WHERE STATUS = 1)
+                    + (SELECT COUNT(*) FROM purchase WHERE STATUS = 1) AS total_count;
+    </select>
+
+    <select id="findByUsernameAndLevel" resultType="com.tenco.toyproject.repository.entity.User">
+        SELECT * FROM user WHERE email = #{username} AND level = 2
+    </select>
+    <select id="findByStatus">
+        SELECT 'Rent' AS transaction_type, u.user_name, r.`STATUS`, r.created_at, p.price
+        FROM rent r
+                 LEFT JOIN user u ON r.user_id = u.id
+                 LEFT JOIN product p ON r.product_id = p.id
+        WHERE r.STATUS != 2
+
+        UNION ALL
+
+        SELECT 'Sale' AS transaction_type, u.user_name, s.`STATUS`, s.created_at, p.price
+        FROM sale s
+                 LEFT JOIN user u ON s.user_id = u.id
+                 LEFT JOIN product p ON s.product_id = p.id
+        WHERE s.STATUS != 2
+
+        UNION ALL
+
+        SELECT 'Purchase' AS transaction_type, u.user_name, pc.`STATUS`, pc.created_at, p.price
+        FROM purchase pc
+                 LEFT JOIN user u ON pc.user_id = u.id
+                 LEFT JOIN product p ON pc.product_id = p.id
+        WHERE pc.STATUS != 2
+
+        ORDER BY created_at
+    </select>
+</mapper>
+
+
+
+

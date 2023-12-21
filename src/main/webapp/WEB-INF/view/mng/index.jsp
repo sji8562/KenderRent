@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<link href="/assets/libs/chartist/dist/chartist.min.css"--%>
+<%--      rel="stylesheet">--%>
+<%--<script src="/assets/libs/chartist/dist/chartist.min.js"></script>--%>
+<%--<script src="/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>--%>
+<%--<script src="/dist/js/pages/dashboards/dashboard1.js"></script>--%>
         <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
@@ -39,17 +44,18 @@
                     <div class="col-lg-8">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Sales Ratio</h4>
+                                <h4 class="card-title">월별 실적</h4>
+                                <div class=""></div>
                                 <div class="sales ct-charts mt-3"></div>
-
+                                <input type="hidden" id="dtos" value="${dtos}">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title mb-1">Referral Earnings</h5>
-                                <h3 class="font-light">$769.08</h3>
+                                <h5 class="card-title mb-1">월별 건수</h5>
+                                <h3 class="font-light">총 ${payOff} 원</h3>
                                 <div class="mt-3 text-center">
                                     <div id="earnings"></div>
                                 </div>
@@ -57,18 +63,21 @@
                         </div>
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title mb-0">Users</h4>
-                                <h2 class="font-light">35,658 <span class="font-16 text-success font-medium">+23%</span>
-                                </h2>
+                                <h4 class="card-title mb-0">미해결 신청현황</h4>
+                                <h2 class="font-light">${countDTO.totalCount}건</h2>
                                 <div class="mt-4">
                                     <div class="row text-center">
-                                        <div class="col-6 border-right">
-                                            <h4 class="mb-0">58%</h4>
-                                            <span class="font-14 text-muted">New Users</span>
+                                        <div class="col-4 border-right">
+                                            <h4 class="mb-0">${countDTO.rentCount}</h4>
+                                            <span class="font-14 text-muted">대여 신청</span>
                                         </div>
-                                        <div class="col-6">
-                                            <h4 class="mb-0">42%</h4>
-                                            <span class="font-14 text-muted">Repeat Users</span>
+                                        <div class="col-4 border-right">
+                                            <h4 class="mb-0">${countDTO.saleCount}</h4>
+                                            <span class="font-14 text-muted">구매 신청</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <h4 class="mb-0">${countDTO.purchaseCount}</h4>
+                                            <span class="font-14 text-muted">판매 신청</span>
                                         </div>
                                     </div>
                                 </div>
@@ -100,48 +109,60 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                    <c:choose>
+                                        <c:when test="${statusDTO != null }">
+                                            <c:forEach var="statusDTO" items="${statusDTO}">
+                                                    <tr>
+                                                        <td class="txt-oflo">${statusDTO.userName}</td>
+                                                        <c:choose>
+                                                            <c:when test="${statusDTO.transactionType == 'Rent' }">
+                                                                <c:choose>
+                                                                    <c:when test="${statusDTO.status == 1 }">
+                                                                        <td><span class="label label-success label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <td><span class="label label-danger label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                            </c:when>
+                                                            <c:when test="${statusDTO.transactionType == 'Sale' }">
+                                                                <c:choose>
+                                                                    <c:when test="${statusDTO.status == 1 }">
+                                                                        <td><span class="label label-info label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <td><span class="label label-danger label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                            </c:when>
+                                                            <c:when test="${statusDTO.transactionType == 'Purchase' }">
+                                                                <c:choose>
+                                                                    <c:when test="${statusDTO.status == 1 }">
+                                                                        <td><span class="label label-purple label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <td><span class="label label-danger label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                그런 종류는 없습니다.
+                                                            </c:otherwise>
+                                                        </c:choose>
 
-                                            <td class="txt-oflo">Elite admin</td>
-                                            <td><span class="label label-success label-rounded">SALE</span> </td>
-                                            <td class="txt-oflo">April 18, 2021</td>
-                                            <td><span class="font-medium">$24</span></td>
-                                        </tr>
-                                        <tr>
 
-                                            <td class="txt-oflo">Real Homes WP Theme</td>
-                                            <td><span class="label label-info label-rounded">EXTENDED</span></td>
-                                            <td class="txt-oflo">April 19, 2021</td>
-                                            <td><span class="font-medium">$1250</span></td>
-                                        </tr>
-                                        <tr>
+                                                        <td class="txt-oflo">${statusDTO.createdAt}</td>
+                                                        <td><span class="font-medium">${statusDTO.price}</span></td>
+                                                    </tr>
 
-                                            <td class="txt-oflo">Ample Admin</td>
-                                            <td><span class="label label-purple label-rounded">Tax</span></td>
-                                            <td class="txt-oflo">April 19, 2021</td>
-                                            <td><span class="font-medium">$1250</span></td>
-                                        </tr>
-                                        <tr>
+                                            </c:forEach>
 
-                                            <td class="txt-oflo">Medical Pro WP Theme</td>
-                                            <td><span class="label label-success label-rounded">Sale</span></td>
-                                            <td class="txt-oflo">April 20, 2021</td>
-                                            <td><span class="font-medium">-$24</span></td>
-                                        </tr>
-                                        <tr>
+                                        </c:when>
+                                        <c:otherwise>
+                                            내역이 없습니다.
+                                        </c:otherwise>
+                                    </c:choose>
 
-                                            <td class="txt-oflo">Hosting press html</td>
-                                            <td><span class="label label-success label-rounded">SALE</span></td>
-                                            <td class="txt-oflo">April 21, 2021</td>
-                                            <td><span class="font-medium">$24</span></td>
-                                        </tr>
-                                        <tr>
-
-                                            <td class="txt-oflo">Digital Agency PSD</td>
-                                            <td><span class="label label-danger label-rounded">Tax</span> </td>
-                                            <td class="txt-oflo">April 23, 2021</td>
-                                            <td><span class="font-medium">-$14</span></td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -342,32 +363,33 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <script>
-                var chart = new Chartist.Line('.sales', {
-                    labels: [1, 2, 3, 4, 5, 6, 7 , 8 , 9 , 10 , 11 , 12],
-                    series: [
-                        [24.5, 28.3, 42.7, 32, 34.9, 48.6, 40,20,50,40,30,20,25],
-                        [8.9, 5.8, 21.9, 5.8, 16.5, 6.5, 14.5]
-                    ]
-                }, {
-                    low: 0,
-                    high: 48,
-                    showArea: true,
-                    fullWidth: true,
-                    plugins: [
-                        Chartist.plugins.tooltip()
-                    ],
-                    axisY: {
-                        onlyInteger: true,
-                        scaleMinSpace: 40,
-                        offset: 20,
-                        labelInterpolationFnc: function(value) {
-                            return (value / 10) + 'k';
-                        }
-                    },
+<%--            <script>--%>
 
-                });
 
-                var chart = [chart];
-            </script>
+
+<%--                var chart = new Chartist.Line('.sales', {--%>
+<%--                    labels: labels,--%>
+<%--                    series: series--%>
+
+<%--                }, {--%>
+<%--                    low: 0,--%>
+<%--                    high: 48,--%>
+<%--                    showArea: true,--%>
+<%--                    fullWidth: true,--%>
+<%--                    plugins: [--%>
+<%--                        Chartist.plugins.tooltip()--%>
+<%--                    ],--%>
+<%--                    axisY: {--%>
+<%--                        onlyInteger: true,--%>
+<%--                        scaleMinSpace: 40,--%>
+<%--                        offset: 20,--%>
+<%--                        labelInterpolationFnc: function(value) {--%>
+<%--                            return (value/10 ) + "원";--%>
+<%--                        }--%>
+<%--                    },--%>
+
+<%--                });--%>
+
+<%--                var chart = [chart];--%>
+<%--            </script>--%>
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>

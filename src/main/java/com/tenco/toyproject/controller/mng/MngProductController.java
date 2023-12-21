@@ -7,6 +7,7 @@ import com.tenco.toyproject.dto.MngProductDto;
 import com.tenco.toyproject.dto.MngProductUpdateDto;
 import com.tenco.toyproject.repository.entity.FirstCategory;
 import com.tenco.toyproject.repository.entity.Product;
+import com.tenco.toyproject.repository.entity.Review;
 import com.tenco.toyproject.repository.entity.SecondCategory;
 import com.tenco.toyproject._core.utils.Define;
 import com.tenco.toyproject.service.mng.MngProductService;
@@ -50,6 +51,7 @@ public class MngProductController {
                               @RequestParam(value = "keyword", required = false) String keyword) {
 
         int total = mngService.countProductList(keyword);
+
         if (nowPage == null && cntPerPage == null) {
             nowPage = "1";
             cntPerPage = "5";
@@ -110,9 +112,23 @@ public class MngProductController {
         try{
             int result = mngService.deleteProduct(id);
             if(result != 1){
-                throw new CustomRestfulException("수정이 되지 않았습니다", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfulException("삭제 되지 않았습니다", HttpStatus.BAD_REQUEST);
             }
             return "redirect:/mng/product/list";
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @GetMapping("review/{id}/delete")
+    public String reviewDelete(@PathVariable Integer id) {
+        try{
+            int result = mngService.deleteProductReview(id);
+            if(result != 1){
+                throw new CustomRestfulException("삭제 되지 않았습니다", HttpStatus.BAD_REQUEST);
+            }
+            return "redirect:/mng/product/review";
         }catch(Exception e){
             e.printStackTrace();
             return null;
@@ -128,7 +144,7 @@ public class MngProductController {
     public String productModify(Model model, @PathVariable Integer pId) {
         try {
             Product product = mngService.findProductById(pId);
-            List<FirstCategory> fCategory = mngService.findCategoryAll();
+            List<FirstCategory> fCategory = mngService.findCategoryAll(product.getFirstCategoryCode());
             List<SecondCategory> sCategory = mngService.findSecondCategoryForRent();
             if (product == null) {
                 throw new CustomRestfulException("없는 상품입니다", HttpStatus.BAD_REQUEST);
@@ -340,11 +356,30 @@ public class MngProductController {
 
     }
 
-    @GetMapping("categories")
-    public String categoriesPage(Model model) {
+    /**
+     * 판매용 카테고리
+     * */
+    @GetMapping("categoriesForSale")
+    public String categoriesForSalePage(Model model) {
+        Integer categoryCode = 2;
 
         // 1차 카테고리 불러오기
-        List<FirstCategory> firstCategoryList = mngService.getFirstCategories();
+        List<FirstCategory> firstCategoryListForSale = mngService.getFirstCategories(categoryCode); // 2 판매용
+        if(firstCategoryListForSale != null || !firstCategoryListForSale.isEmpty()){
+            model.addAttribute("firstCategoryList", firstCategoryListForSale);
+        }
+        return "/mng/product/categoriesForSale";
+    }
+
+    /**
+     * 대여용 카테고리 조회
+     * */
+    @GetMapping("categories")
+    public String categoriesPage(Model model) {
+        Integer categoryCode = 1;
+
+        // 1차 카테고리 불러오기
+        List<FirstCategory> firstCategoryList = mngService.getFirstCategories(categoryCode); // 1 대여용
         if(firstCategoryList != null || !firstCategoryList.isEmpty()){
             model.addAttribute("firstCategoryList", firstCategoryList);
         }
@@ -368,6 +403,7 @@ public class MngProductController {
         }
     }
 
+    // 대여용
     @PostMapping("addFirstCategory")
     @ResponseBody
     public List<FirstCategory> addFirstCategory(@RequestBody Map<String, String> categoryName) {
@@ -387,13 +423,14 @@ public class MngProductController {
                 throw new CustomRestfulException("카테고리 등록을 실패했습니다.", HttpStatus.BAD_REQUEST);
             }
 
-            return mngService.getFirstCategories();
+            return mngService.getFirstCategories(1);
         }catch (Exception e){
             e.printStackTrace();
             return null;
         }
     }
 
+    // 대여용
     // 1차 카테고리 삭제
     @GetMapping("/delete-first-category-by-id/{fId}")
     public List<FirstCategory> deleteFirstCategory(@PathVariable int fId) {
@@ -416,7 +453,7 @@ public class MngProductController {
             if(result != 1){
                 throw new CustomRestfulException("카테고리 삭제를 실패했습니다.", HttpStatus.BAD_REQUEST);
             }
-            return mngService.getFirstCategories();
+            return mngService.getFirstCategories(1);
         }catch (Exception e){
             e.printStackTrace();
             return null;
@@ -426,6 +463,9 @@ public class MngProductController {
     }
 
 
+    /**
+     * 대여용 카테고리
+    * */
     @PostMapping("addSecondCategory")
     @ResponseBody
     public List<SecondCategory> addSecondCategory(@RequestBody Map<String, String> postData) {
@@ -485,22 +525,73 @@ public class MngProductController {
         }
     }
 
+    // 대여
     @GetMapping("/first-category-all")
     public List<FirstCategory> findFirstCategoryAll() {
         logger.info("===============================");
-        return mngService.getFirstCategories();
+        return mngService.getFirstCategories(1);
     }
 
     // 상품 후기 관리 페이지
     @GetMapping("/review")
-    public String productReview(Model model) {
+    public String productReview(Model model, PageVO pageVO,
+                                @RequestParam(value = "nowPage", required = false) String nowPage,
+                                @RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+                                @RequestParam(value = "keyword", required = false) String keyword) {
+
+        System.out.println("=============================================");
+        System.out.println(pageVO.toString());
+
+        int total = mngService.countReviewList(keyword);
+        if (nowPage == null && cntPerPage == null) {
+            nowPage = "1";
+            cntPerPage = "5";
+        } else if (nowPage == null) {
+            nowPage = "1";
+        } else if (cntPerPage == null) {
+            cntPerPage = "5";
+        }
+
+        pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+        model.addAttribute("paging", pageVO);
+
+        model.addAttribute("keyword", keyword);
+
+        List<Review> reviewList;
 
         // 후기 조회
-//        mngService.findAllReviewWithPagination();
-//        model.addAttribute("reviewList", )
+        // 검색어가 있는 경우
+        if (keyword != null && !keyword.isEmpty()) {
+            System.out.println("==================111111111111111===========================");
+            // 검색어를 이용해 검색 쿼리 수행
+            reviewList = mngService.findAllReviewWithPaginationAndKeyword(pageVO, keyword);
+            System.out.println("=========================2222222222222222====================" + reviewList);
+        } else {
+            // 검색어가 없을 때
+            reviewList = mngService.findAllReviewWithPagination(pageVO);
+        }
+
+        model.addAttribute("reviewList", reviewList);
 
         return "/mng/product/review";
 
+    }
+
+    @GetMapping("review/{pId}/detail")
+    public String productReviewDetail(Model model, @PathVariable Integer pId) {
+        try {
+            Review review = mngService.findProductReviewById(pId);
+            if (review == null) {
+                throw new CustomRestfulException("없는 후기입니다", HttpStatus.BAD_REQUEST);
+            }
+            System.out.println("1512345343484531423dsadasdasdasdsads" + review.toString());
+            model.addAttribute(review);
+
+            return "mng/product/reviewDetail";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }

@@ -71,8 +71,9 @@
 																<td><a href="/mng/product/${product.id}/detail" style="text-decoration: none; color: black;">${product.name}</a></td>
 																<td>${product.grade}</td>
 																<td>${product.formatStatusToString()}</td>
-																	<td><a href="/mng/product/modify/${product.id}">수정</a>
-																	<a onclick="confirmOpen('del', ${product.id})">삭제</a>
+																<td>
+																	<a href="/mng/product/modify/${product.id}"><button class="btn btn-success" type="button">수정</button></a>
+																	<a onclick="confirmOpen('del', ${product.id})"><button class="btn btn-danger" type="button">삭제</button></a>
 																</td>
 															</tr>
 														</c:forEach>

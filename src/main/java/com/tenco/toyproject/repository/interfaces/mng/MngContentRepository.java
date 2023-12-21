@@ -22,9 +22,5 @@ public interface MngContentRepository {
     // 소독 과정 조회
     Content getDisinfectionProcess();
 
-    // 관리자 - 회사 소개, 이용 수칙, 소독 과정 조회
-//    public Content findContentByType(int type);
-//
-//    // 관리자 - 회사 소개, 이용 수칙, 소독 과정 수정
-//    public int modifyContent(Content content);
+    int updateMngContent(MngContentDto dto);
 }

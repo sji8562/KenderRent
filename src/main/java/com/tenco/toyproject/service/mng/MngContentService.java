@@ -39,4 +39,9 @@ public class MngContentService {
         return content;
     }
 
+    public int updateMngContent(MngContentDto dto) {
+      // TODO Auto-generated method stub
+      return 0;
+    }
+
 }
