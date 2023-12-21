@@ -73,26 +73,37 @@
 												<tr>
 													<c:choose>
 														<c:when test="${product.status == 1}">
-															<td class="vertical-center"><input type="checkbox" name="selectedProduct"
-																value="${product.price}"
-																onchange="calculateTotalPrice()"></td>
+															<td class="vertical-center"><input type="checkbox"
+																name="selectedProduct" value="${product.id}"
+																data-price="${product.price}"
+																onchange="calculateTotalPrice(); selectedProductId('${product.id}');">
+															</td>
 														</c:when>
 														<c:otherwise>
-															<td class="vertical-center"><input type="checkbox" disabled></td>
+															<td class="vertical-center"><input type="checkbox"
+																disabled></td>
 														</c:otherwise>
 													</c:choose>
 
 													<td class="vertical-center">${product.formatItemForSale()}</td>
 													<td>
 														<div>
-															<a href="/product/detail/${product.id}" target="_blank"> 
-																<img src=${product.picUrl}
-																	class="product_picture" style="vertical-align: top;"></a>
+															<a href="/product/detail/${product.id}" target="_blank">
+																<img src=${product.picUrl
+																}
+																	class="product_picture"
+																style="vertical-align: top;"></a>
 														</div>
-														<div >
-															<a href="/product/detail/${product.id }" target="_blank" 
-															style="font-size: 15px" class="cart_table_name">
-																${product.name}</a>
+														<div>
+															<a href="/product/detail/${product.id }" target="_blank"
+																style="font-size: 15px" class="cart_table_name">
+																${product.name} 
+															<c:choose>
+																<c:when test="${product.status != 1}">
+																	<label class="cart_table_name"
+																		style="font-size: 12px; padding-top: 8px; padding-left: 5px;">[품절]</label>
+																</c:when>
+															</c:choose></a>
 															<div class="cart_table_option">옵션설명</div>
 														</div>
 													</td>
@@ -121,10 +132,13 @@
 										<p class="price">
 											총 주문금액: <span id="totalPrice" style="color: red;">0원</span>
 										</p>
-										<div class="red_button buy_button"
-											style="width: 140px; float: right;">
-											<a href="/product/order">구매하기</a>
-										</div>
+										<form action="/product/order" method="post"
+											onsubmit="return validateOrder()">
+											<input type="hidden" name="id" id="selectedProductsInput"
+												value="">
+											<button type="submit" class="red_button buy_button"
+												style="width: 140px; float: right;">구매하기</button>
+										</form>
 									</div>
 								</div>
 							</c:otherwise>
@@ -147,6 +161,7 @@
 	<script src="/js/single_custom.js"></script>
 	<script src="/js/cart.js"></script>
 	<script src="/js/dropdown.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

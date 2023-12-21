@@ -40,6 +40,7 @@ public class MngContentService {
     }
 
     public int updateMngContent(MngContentDto dto) {
+
         int resultSet = mngContentRepository.updateMngContent(dto);
         System.out.println("여기여기여기" + resultSet);
         if(resultSet < 1) {
@@ -47,4 +48,5 @@ public class MngContentService {
         }
         return resultSet;
     }
+
 }

@@ -41,7 +41,7 @@
 								aria-hidden="true"></i> <a href="/mypage/main"
 								style="color: black">마이페이지</a></li>
 							<li class="active"><i class="fa fa-angle-right"
-								aria-hidden="true"></i>주문 내역</li>
+								aria-hidden="true"></i>취소 내역</li>
 						</ul>
 					</div>
 				</div>
@@ -52,15 +52,15 @@
 					<div class="sidebar">
 						<div class="sidebar_section">
 							<div class="sidebar_title">
-								<h4>마이페이지</h4>
+								<a href="/mypage/main" style="color: black; font-size: 24px;">마이페이지</a>
 							</div>
 							<br>
 							<ul class="sidebar_categories">
 								<li><a href="/mypage/main">MY 홈</a></li>
-								<li class="active"><a href="/mypage/order-list"><span>
+								<li><a href="/mypage/order-list">주문 내역</a></li>
+								<li class="active"><a href="/mypage/cancel-list"><span>
 											<i class="fa fa-angle-double-right" aria-hidden="true"></i>
-									</span>주문 내역</a></li>
-								<li><a href="/mypage/cancel-list">취소 내역</a></li>
+									</span>취소 내역</a></li>
 								<li><a href="/mypage/wish-list">위시리스트</a></li>
 								<li><a href="#">문의 내역</a></li>
 								<li><a href="#">회원정보 변경</a></li>
@@ -71,89 +71,49 @@
 
 				<div class="col-lg-9">
 					<div class="mypage_lately_info_cont">
-						<div class="box_title" style="margin-bottom: 10px; border-bottom: none; padding-left: 40px"> 
-						주문 내역</div>
-
-						<!-- 주문상품 리스트 -->
+					<div class="box_title" style="margin-bottom: 10px; border-bottom: none; padding-left: 40px"> 
+						취소 내역</div>
 						<div id="container"
 							style="margin-left: -30px; display: flex; justify-content: center;">
 							<div id="content"
 								style="display: relative; justify-content: center;">
-								<c:choose>
-									<c:when test="${empty orderList}">
-										<div style="text-align: center;">
-											<p style="font-size: 18px">주문하신 상품이 없습니다.</p>
-											<a href="/">
-												<button class="continue_button" style="align-items: center;">쇼핑하러
-													가기 ></button>
-											</a>
-										</div>
-									</c:when>
-									<c:otherwise>
-										<table>
-											<tbody>
-												<c:forEach var="orderList" items="${orderList}">
-													<tr>
-														<td class="vertical-center">
-															<div class="box_content">
-																<div class="box_title" style="margin-bottom: 10px">
-																	배송 완료
-																	<div style="float: right; padding-right: 5px;">
-																		<a href="/mypage/order-list/detail?id=${orderList.id}"
-																			class="text_product_name"
-																			style="font-size: 13px; color: gray;"> 주문 상세 보기 >
-																		</a>
-																	</div>
-																</div>
-
-																<div class="box_goods">
-																	<div class="box_picture">
-																		<a href="/product/detail/${orderList.product_id}"
-																			target="_blank"> <img src=${orderList.picUrl }
-																			width="100" height="100">
-																		</a>
-																	</div>
-																	<div class="box_product_info">
-																		<form action="/cart/delete?id=${product.id }"
-																			method="post">
-																			<a
-																				href="/mypage/order-list/detail?id=${orderList.id}"
-																				class="text_product_name"> ${orderList.name} </a>
-																		</form>
-																		<div></div>
-																		<span class="text_product_price"> <fmt:formatNumber
-																				value="${orderList.price}" pattern="#,###" />원
-																		</span>
-																	</div>
-																</div>
-																<div
-																	style="display: flex; justify-content: center; margin-top: 30px;">
-																	<form method="post"
-																		action="/product/order/kakao-pay/cancel"
-																		class="box_button" style="margin-right: 20px">
-																		<input type="hidden" name="orderId"
-																			value="${orderList.id}" />
-																		<button type="submit"
-																			onclick="alert('환불이 성공적으로 처리되었습니다.');"
-																			style="background: none; border: none;">환불
-																			신청</button>
-																	</form>
-																	<button type="submit" class="box_button">배송조회</button>
-																</div>
-															</div>
-														</td>
-													</tr>
-												</c:forEach>
-											</tbody>
-										</table>
-									</c:otherwise>
-								</c:choose>
+								<div class="col text-center">
+									<table class="table" style="width: 720px; border-bottom: 1px solid #ECECEC;">
+										<thead>
+											<tr>
+												<th class="column1">접수일자</th>
+												<th class="column2">진행상태</th>
+												<th>상품이름</th>
+												<th>상품금액</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach var="cancelList" items="${cancelList}">
+												<tr>
+													<td class="vertical-center">
+														<fmt:formatDate value="${cancelList.create_at}"
+															  pattern = "yyyy년 MM월 dd일"/></td>
+													<td>
+														<c:choose>
+															<c:when test="${cancelList.status == 1}">
+																처리중
+															</c:when>
+															<c:when test="${cancelList.status == 2}">
+																완료
+															</c:when>
+														</c:choose></td>
+													<td>${cancelList.name }</td>
+													<td class="vertical-center"><fmt:formatNumber value="${cancelList.money}" pattern="#,###" />원</span></td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
-
 					</div>
 				</div>
-				<br> <br>
+				<br> <br> <br> <br> <br> &nbsp;
 			</div>
 		</div>
 		<jsp:include page="../layout/footer.jsp" />
@@ -165,7 +125,8 @@
 	<script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 	<script src="/plugins/easing/easing.js"></script>
 	<script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-	<script src="/js/categories_custom.js"></script>
+	<script src="/js/single_custom.js"></script>
+	<script src="/js/cancel.js"></script>
 	<script src="/js/dropdown.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

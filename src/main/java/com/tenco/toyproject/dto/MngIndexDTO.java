@@ -29,11 +29,24 @@ public class MngIndexDTO {
         private Integer totalCount;
     }
     @Data
+
+
+
+
+
     public static class MngStatusDTO{
         private String transactionType;
         private String userName;
         private Integer status;
         private Integer price;
+        private Timestamp createdAt;
+    }
+    @Data
+    public static class MngReviewDTO{
+        private String userName;
+        private String productName;
+        private String content;
+        private Integer rate;
         private Timestamp createdAt;
     }
 }

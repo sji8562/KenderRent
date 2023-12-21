@@ -1,10 +1,7 @@
 package com.tenco.toyproject.dto;
 
-import lombok.Data;
-import org.springframework.data.relational.core.sql.In;
-
-import java.sql.Time;
 import java.sql.Timestamp;
+import lombok.Data;
 
 public class MngBoardDTO {
 
