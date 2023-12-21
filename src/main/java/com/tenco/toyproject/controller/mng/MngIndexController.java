@@ -96,6 +96,7 @@ public class MngIndexController {
         List<MngIndexDTO.MngReviewDTO> reviewList = mngIndexService.findByReview();
         System.out.println(reviewList.toString());
 
+
         model.addAttribute("dtos",totalDTO.getMngMonthDTO());
         model.addAttribute("payOff",totalDTO.getPayOff());
         model.addAttribute("countDTO",countDTO);

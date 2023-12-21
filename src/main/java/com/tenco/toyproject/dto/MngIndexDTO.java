@@ -49,4 +49,6 @@ public class MngIndexDTO {
         private Integer rate;
         private Timestamp createdAt;
     }
+
+
 }

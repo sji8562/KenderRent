@@ -39,7 +39,7 @@ $(function() {
     }, {
         low: 0,
         //가격조정 100  = 10만원까지 1000 = 100만원까지
-        high: 500000,
+        high: 5000000,
         showArea: true,
         fullWidth: true,
         plugins: [
