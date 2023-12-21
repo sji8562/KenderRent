@@ -1,6 +1,7 @@
 package com.tenco.toyproject.repository.interfaces;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -35,5 +36,6 @@ public interface UserRepository {
 	public String selectPassword(String email);
 	public User selectUser(String email);
 	public int insertUser(User user);
+	public User selectUserName(String userName);
 }
 

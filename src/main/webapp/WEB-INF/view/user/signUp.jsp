@@ -18,7 +18,7 @@
 <link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
-
+<script src="/js/jquery-3.2.1.min.js"></script>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -64,27 +64,132 @@ function addressFind() {
 				
 				var guideTextBox = document.getElementById("guide");
 				// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-				if (data.autoRoadAddress) {
-					var expRoadAddr = data.autoRoadAddress
-						+ extraRoadAddr;
-					guideTextBox.innerHTML = '(예상 도로명 주소 : '
-						+ expRoadAddr + ')';
-					guideTextBox.style.display = 'block';
-
-				} else if (data.autoJibunAddress) {
-					var expJibunAddr = data.autoJibunAddress;
-					guideTextBox.innerHTML = '(예상 지번 주소 : '
-						+ expJibunAddr + ')';
-					guideTextBox.style.display = 'block';
-				} else {
-					guideTextBox.innerHTML = '';
-					guideTextBox.style.display = 'none';
-				}
+				
 			}
 		}).open();
 }
 </script>
 
+<script type="text/javascript">
+//인증하기 버튼을 눌렀을 때 동작
+$(document).on("click", "#emailAuth", function() {
+	const email = $("#email").val(); //사용자가 입력한 이메일 값 얻어오기
+	//Ajax로 전송
+    $.ajax({
+    	url : '/user/EmailAuth',
+    	data : {
+    		email : email
+    	},
+    	type : 'POST',
+    	dataType : 'json',
+    	success : function(result) {
+    		$('#authCode').css('display', 'block');
+    		code = result;
+    		alert("인증 코드가 입력하신 이메일로 전송 되었습니다.");
+   		}
+    }); 
+});
+</script>
+<script type="text/javascript">
+	//인증 코드 비교
+	$(document).on("focusout", "#authCode", function() {
+    	const inputCode = $("#authCode").val(); //인증번호 입력 칸에 작성한 내용 가져오기
+
+    	if(Number(inputCode) === code){
+        	$("#emailAuthWarn").html('인증번호가 일치합니다.');
+        	$("#emailAuthWarn").css('color', 'green');
+    		$('#emailAuth').attr('disabled', true);
+    		$('#email').attr('readonly', true);
+    		$("#signUpButton").attr("disabled", false);
+    	}else{
+        	$("#emailAuthWarn").html('인증번호가 불일치 합니다. 다시 확인해주세요!');
+        	$("#emailAuthWarn").css('color', 'red');
+        	$("#signUpButton").attr("disabled", true);
+    	}
+    });
+</script>
+<script type="text/javascript">
+	
+	
+	$(function() {
+		// 이메일 규칙
+		let emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+		$("#email").on("change", function() {
+			if(!emailReg.exec($("#email").val())){
+				$("#emailResult").html("이메일 형식을 확인해주세요!<br>ex) kenderrent@naver.com").css("color", "red");
+			}else{
+				$("#emailResult").html("사용 가능한 이메일 형식 입니다!").css("color", "blue");
+			}
+		})
+		
+		//비밀번호 규칙 (숫자, 영어 대소문자, 특수문자 (!, @, #, $, %) 4~16자리 사용 가능)
+		let passwdReg = /^[a-zA-Z0-9!@#$%]{8,16}$/
+		$("#password").on("change", function() {
+			if(!passwdReg.exec($("#password").val())){
+				$("#passwd1Result").html("비밀번호 형식을 확인해주세요.<br> 영어, 숫자, 특수문자 (!, @, #, $, %) 8~16자리를 입력 가능").css("color", "red");
+			}else{
+				$("#passwd1Result").html("사용 가능한 비밀번호 형식 입니다!").css("color", "blue");
+			}
+		})
+		
+		// 비밀번호가 일치하는 지 확인
+		$("#password2").on("change", function() {
+			if(!passwdReg.exec($("#password2").val())){
+				$("#passwd2Result").html("비밀번호 형식을 확인해주세요.<br> 영어, 숫자, 특수문자 (!, @, #, $, %) 8~16자리를 입력 가능").css("color", "red");
+			}else{
+				if($("#password").val() != $("#password2").val()){
+					$("#passwd2Result").html("비밀번호가 일치하지 않습니다!").css("color", "red");
+				}else{
+					$("#passwd2Result").html("비밀번호가 일치합니다!").css("color", "blue");
+				}
+			}
+		})
+		
+		//이름 규칙
+		let nameReg = /^[가-힣]{2,5}$/;
+		$("#userName").on("change", function() {
+			if(!nameReg.exec($("#userName").val())){
+				$("#nameResult").html("이름 형식을 확인해주세요! <br> 한글 2~5자 입력 가능!").css("color", "red");
+			}else{
+				$("#nameResult").html("사용 가능한 이름 형식 입니다!").css("color", "blue");
+			}
+		})
+		
+	});
+	function checkForm() {
+		let emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+		if(!emailReg.exec($("#email").val())){
+			alert("이메일을 확인해주세요!");
+			return false;
+		}
+		let passwdReg = /^[a-zA-Z0-9!@#$%]{8,16}$/
+		if(!passwdReg.exec($("#password").val())){
+			alert("비밀번호 형식을 확인해주세요!");
+			return false;
+		}
+		if($("#password").val() != $("#password2").val()){
+			alert("비밀번호가 일치하는 지 확인해주세요!")
+			return false;
+		}
+		let nameReg = /^[가-힣]{2,5}$/;
+		if(!nameReg.exec($("#userName").val())){
+			alert("이름을 확인해주세요!")
+			return false;
+		}
+		if($("#address").val() == ""){
+			alert("주소를 입력해주세요!")
+			return false;
+		}
+		if($("#phoneNumber").val() == ""){
+			alert("휴대폰번호를 입력해주세요!")
+			return false;
+		}
+		if($("#addressDetail").val() == ""){
+			alert("상세주소를 입력해주세요!")
+			return false;
+		}
+	}
+</script>
 </head>
 
 <body>
@@ -124,21 +229,27 @@ function addressFind() {
 						</div>
 					</div>
 					<div class="get_in_touch_contents">
-						<form action="/user/signUp" method="post">
+						<form action="/user/signUp" method="post" onsubmit="return checkForm();">
 							<div>
 								<div class="row">
 									<div class="col-lg-8">
 										<input id="email" name="email" class="form_input input_email input_ph" type="email"  placeholder="Email" >
+										<div id="emailResult"></div>
 									</div>
 									<div class="col-lg-4">
-										<button>이메일인증</button>
+										<button type="button" id="emailAuth" name="emailAuth">이메일인증</button>
 									</div>
 								</div>
-								<input id="auth_number" name="auth_number" class="form_input input_email input_ph" type="Number"  placeholder="인증번호를 입력해주세요">
+								<input id="authCode" name="authCode" style="display: none" class="form_input input_email input_ph" type="text"   placeholder="인증코드 6자리를 입력해주세요">
+								<div  id="emailAuthWarn"></div>
+								
 								<input id="password" name="password" class="form_input input_website input_ph" type="password"  placeholder="비밀번호입력">
+								<div id="passwd1Result"></div>
 								<input id="password2" name="password2" class="form_input input_website input_ph" type="password"  placeholder="비밀번호확인">
+								<div id="passwd2Result"></div>
 								<input id="userName" name="userName" class="form_input input_website input_ph" type="text"  placeholder="이름을 입력해주세요">
-								<input id="phoneNumber" name="phoneNumber" class="form_input input_website input_ph" type="text"  placeholder="핸드폰번호를 입력해주세요">
+								<div id="nameResult"></div>
+								<input id="phoneNumber" name="phoneNumber" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form_input input_website input_ph" type="text"  placeholder="핸드폰번호를 입력해주세요(숫자만 입력)">
 								<div class="row">
 									<div class="col-lg-8">
 										<input id="postNumber" name="postNumber" class="form_input input_website input_ph" type="text"  placeholder="우편주소">
@@ -152,7 +263,7 @@ function addressFind() {
 								<input id="addressDtail" name="addressDetail" class="form_input input_website input_ph" type="text" placeholder="상세주소를 입력해주세요">
 							</div>
 							<div>
-								<button  type="submit" class="red_button message_submit_btn trans_300" value="Submit">회원가입</button>
+								<button  type="submit" class="red_button message_submit_btn trans_300" value="Submit" id="signUpButton" disabled="disabled">회원가입</button>
 							</div>
 						</form>
 					</div>
