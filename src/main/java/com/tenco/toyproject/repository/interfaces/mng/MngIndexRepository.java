@@ -18,5 +18,5 @@ public interface MngIndexRepository {
     User findByUsernameAndLevel(String username);
 
     public int findByStatusAllCount();
-    public List<Review> findByReview();
+    public List<MngIndexDTO.MngReviewDTO> findByReview();
 }

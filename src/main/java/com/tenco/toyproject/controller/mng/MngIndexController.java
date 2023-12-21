@@ -93,13 +93,14 @@ public class MngIndexController {
         pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
         List<MngIndexDTO.MngStatusDTO> statusDTO = mngIndexService.findByStatus(pageVO);
         model.addAttribute("paging", pageVO);
-        List<Review> reviewList = mngIndexService.findByReview();
+        List<MngIndexDTO.MngReviewDTO> reviewList = mngIndexService.findByReview();
         System.out.println(reviewList.toString());
 
         model.addAttribute("dtos",totalDTO.getMngMonthDTO());
         model.addAttribute("payOff",totalDTO.getPayOff());
         model.addAttribute("countDTO",countDTO);
         model.addAttribute("statusDTO",statusDTO);
+        model.addAttribute("reviewList",reviewList);
         return "/mng/index";
     }
 }

@@ -69,7 +69,7 @@ public class MngIndexService {
     public int findByStatusAllCount(){
         return mngIndexRepository.findByStatusAllCount();
     };
-    public List<Review> findByReview(){
+    public List<MngIndexDTO.MngReviewDTO> findByReview(){
         return mngIndexRepository.findByReview();
     }
 }
