@@ -58,6 +58,7 @@
 			position: fixed;
 			height: 100%;
 			overflow-y: auto;
+			background-color: #233242;
 		}
 
 		/*.navbar {*/
@@ -78,7 +79,7 @@
 		data-layout="vertical" data-sidebartype="full"
 		data-boxed-layout="full">
 		<header class="topbar" data-navbarbg="skin6">
-			<nav class="navbar top-navbar navbar-expand-md navbar-light">
+			<nav class="navbar top-navbar navbar-expand-md navbar-light" style="background-color: #233242;">
 				<div class="navbar-header" data-logobg="skin5">
 					<!-- This is for the sidebar toggle which is visible on mobile only -->
 					<a class="nav-toggler waves-effect waves-light d-block d-md-none"
