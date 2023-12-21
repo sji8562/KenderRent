@@ -45,6 +45,8 @@ dependencies {
 	implementation 'com.sun.mail:jakarta.mail:2.0.1'
 	// 이메일인증용 DL>
 	implementation group: 'com.auth0', name: 'java-jwt', version: '4.4.0'
+	// message전송
+	implementation 'net.nurigo:sdk:4.3.0'
 
 
 

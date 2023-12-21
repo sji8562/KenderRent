@@ -28,7 +28,102 @@
 	href="/css/styles/single_responsive.css">
 <link rel="stylesheet" type="text/css"
 	href="/css/styles/main_styles.css">
-
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	function addHeart(id) {
+    	let user = '<%=session.getAttribute("principal")%>';
+       	if(user == "null"){
+			alert("로그인이 필요한 기능입니다.");
+      		location.href='${pageContext.request.contextPath}/user/sign-in';
+        } else {
+        	var form={
+        		id:id
+           	};
+        	$.ajax({
+           		type : "POST",
+           		url : "/mypage/wish-list",
+        		cache : false,
+          		contentType : 'application/json; charset=utf-8',
+            	data : JSON.stringify(form),
+            	success : function(result) {
+           		alert("찜하기러기 끼룩끼룩~");
+           		location.reload(); 
+        		},
+				error : function(e) {
+        			console.log(e);
+          	  		alert('찜할 수 없지렁이 꿈틀꿈틀~');
+           			location.reload(); 
+        		}
+        	})
+   		}
+	}
+	</script>
+<script type="text/javascript">  
+    function removeHeart(id, element) {
+    	let user = '<%=session.getAttribute("principal")%>';
+       	if(user == "null"){
+			alert("로그인이 필요한 기능입니다.");
+      		location.href='${pageContext.request.contextPath}/user/sign-in';
+        } else {
+        	var form={
+           		id:id
+        	};
+        	$.ajax({
+              	type : "POST",
+              	url : "/mypage/wish-list",
+           		cache : false,
+              	contentType : 'application/json; charset=utf-8',
+                data : JSON.stringify(form),
+                success : function(result) {
+                	alert("찜하기러기 끼룩끼룩~");
+                	element.classList.add('active'); 
+                },
+				error : function(e) {
+            		console.log(e);
+             		alert('찜할 수 없지렁이 꿈틀꿈틀~');
+              		location.reload(); 
+            	}
+       		})
+       	}
+	}
+    </script>
+<script type="text/javascript">
+ 	function cancelHeart(id) { 
+   		let user = '<%=session.getAttribute("principal")%>'; 
+		var form = { 
+			id : id, 
+ 		}; 
+ 		$.ajax({ 
+ 			type : 'post', 
+ 			url : "/mypage/wish-list/cancel", 
+ 			cache : false, 
+ 			processData : false, 
+ 			contentType : 'application/json; charset=utf-8', 
+			data : JSON.stringify(form), 
+ 			success : function(result) {
+				location.reload();
+       		    	alert('해당 상품을 찜 취소 하셨습니다.'); 
+ 			}, 
+ 			error : function(e) { 
+ 				alert('찜 취소 할 수 없습니다.'); 
+ 				location.reload(); // 실패시 새로고침하기 
+ 			}
+ 		});
+ 	} 
+ 	</script>
+<script type="text/javascript">
+function addToCartConfirmation() {
+	let user = '<%=session.getAttribute("principal")%>'; 
+	 if (user == null || user === "null") {
+		alert("로그인이 필요한 기능입니다.");
+  		location.href='${pageContext.request.contextPath}/user/sign-in';
+  		return false;
+    } else {
+    	alert("장바구니에 추가되었습니다.");
+    	return true;
+    }
+}
+</script>
 </head>
 <body>
 	<div class="super_container">
@@ -167,13 +262,22 @@
 										style="pointer-events: none;">품절</div>
 								</c:otherwise>
 							</c:choose>
-							<form action="/cart/add?id=${product.id }" method="post">
+							<form action="/cart/add?id=${product.id }" method="post"
+								onsubmit="return addToCartConfirmation()">
 								<button type="submit" class="white_button buy_button">장바구니</button>
 							</form>
-
-							<div
-								class="product_favorite d-flex flex-column align-items-center justify-content-center">
-							</div>
+							<c:choose>
+								<c:when test="${isWished}">
+									<div onclick="cancelHeart(${product.id })"
+										class="product_favorite active d-flex flex-column align-items-center 
+										justify-content-center"></div>
+								</c:when>
+								<c:otherwise>
+									<div onclick="addHeart(${product.id })"
+										class="product_favorite d-flex flex-column align-items-center 
+										justify-content-center"></div>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 				</div>
@@ -548,7 +652,7 @@
 
 	</div>
 
-	<script src="/js/jquery-3.2.1.min.js"></script>
+
 	<script src="/css/styles/bootstrap4/popper.js"></script>
 	<script src="/css/styles/bootstrap4/bootstrap.min.js"></script>
 	<script src="/plugins/Isotope/isotope.pkgd.min.js"></script>
@@ -564,6 +668,8 @@
 		function submitForm() {
 			document.getElementById('addToCartForm').submit();
 		}
+		
 	</script>
+
 </body>
 </html>

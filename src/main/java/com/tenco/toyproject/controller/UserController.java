@@ -1,5 +1,8 @@
 package com.tenco.toyproject.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -305,6 +308,17 @@ public class UserController {
 		System.out.println("인증코드: " + code);
 		
 		return code;
+	}
+	
+	// 로그인 확인
+	@PostMapping("/check")
+	@ResponseBody
+	public Map<String, Boolean> checkLogin() {
+		User principal = (User) session.getAttribute("principal");
+		boolean login = (principal != null);
+		Map<String, Boolean> response = new HashMap<>();
+		response.put("login", login);
+		return response;
 	}
 	
 
