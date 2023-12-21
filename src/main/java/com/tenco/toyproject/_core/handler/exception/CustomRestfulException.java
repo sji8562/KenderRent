@@ -1,7 +1,6 @@
 package com.tenco.toyproject._core.handler.exception;
 
 import org.springframework.http.HttpStatus;
-
 import lombok.Getter;
 
 @Getter
