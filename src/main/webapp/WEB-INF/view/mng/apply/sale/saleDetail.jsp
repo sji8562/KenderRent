@@ -112,9 +112,11 @@
                                             <select class="form-select shadow-none form-control-line status" id="status"
                                                     name="status">
                                                 <option value="1" ${dto.status == "1" ? 'selected' : ''}>재고있음</option>
-                                                <option value="2" ${dto.status == "1" ? 'selected' : ''}>대여중</option>
-                                                <option value="3" ${dto.status == "1" ? 'selected' : ''}>소독중</option>
-                                                <option value="4" ${dto.status == "1" ? 'selected' : ''}>판매완료</option>
+                                                <option value="2" ${dto.status == "2" ? 'selected' : ''}>결제완료</option>
+                                                <option value="3" ${dto.status == "3" ? 'selected' : ''}>배송중</option>
+                                                <option value="4" ${dto.status == "4" ? 'selected' : ''}>배송완요</option>
+                                                <option value="4" ${dto.status == "5" ? 'selected' : ''}>판매완료</option>
+                                                <option value="4" ${dto.status == "12" ? 'selected' : ''}>결제취소</option>
                                             </select>
                                         </div>
                                     </div>

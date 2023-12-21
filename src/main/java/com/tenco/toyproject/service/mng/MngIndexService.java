@@ -72,4 +72,6 @@ public class MngIndexService {
     public List<MngIndexDTO.MngReviewDTO> findByReview(){
         return mngIndexRepository.findByReview();
     }
+
+
 }

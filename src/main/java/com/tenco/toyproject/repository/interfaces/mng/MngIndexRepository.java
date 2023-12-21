@@ -19,4 +19,6 @@ public interface MngIndexRepository {
 
     public int findByStatusAllCount();
     public List<MngIndexDTO.MngReviewDTO> findByReview();
+
+
 }
