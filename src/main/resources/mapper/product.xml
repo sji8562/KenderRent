@@ -102,6 +102,7 @@
 		order by create_at desc
 	</select>
 	
+
 	<insert id="addToBookmark" parameterType="com.tenco.toyproject.repository.entity.bookmark">
 		insert into bookmark(user_id, product_id)
 		value(#{userId}, #{productId})
@@ -163,5 +164,6 @@
 		select max(price) as MAX from product
 	</select>
 <!-- 	검색기능 관련 끝 -->
+
 
 </mapper>

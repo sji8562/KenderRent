@@ -34,6 +34,7 @@ public class Product {
 	private String firstCategoryName;
 	private Integer FirstCategoryCode;
 	private String secondCategoryName;
+	private Integer code; // 1: 대여용, 2: 판매용
 	public String formatDecimal() {
 		return DecimalUtil.decimalToString(price);
 	}
