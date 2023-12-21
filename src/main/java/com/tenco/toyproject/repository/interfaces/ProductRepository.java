@@ -25,7 +25,7 @@ public interface ProductRepository {
 	public void payForProduct(@Param("userId") int userId, @Param("productId") int productId, @Param("postNumber") String postNumber,
 			@Param("address") String address, @Param("addressDetail") String addressDetail);
 	public List<Map> showCustomerOrderList(int userId);
-<<<<<<< HEAD
+
 	public void applyForRefund(PayBack payBack);
 	public Sale findTid(int id);
 	public int deleteRefundFromSale(int id);
@@ -36,9 +36,7 @@ public interface ProductRepository {
 	public int deleteWishList(@Param("userId") int userId, @Param("productId") int productId);
 	public void updateTid(@Param("tid") String tid, @Param("userId") int userId, @Param("productId") int productId);
 	public int deleteFromSale(@Param("userId") int userId, @Param("productId") int productId);
-=======
-	public int applyForRefund(int productId);
-	public Order findTid(@Param("userId") int userId, @Param("productId") int productId);
+
 
 	
 	//무한스크롤 관련
@@ -46,5 +44,5 @@ public interface ProductRepository {
 	public List<Map> searchProductInfinite(@Param("keyword") String keyword, @Param("offset") int offset,@Param("limit") int limit);
 	public int searchMaxPrice();
 
->>>>>>> 091ab240b160b8d81f561bb977f8b462b3acf2f0
+
 }

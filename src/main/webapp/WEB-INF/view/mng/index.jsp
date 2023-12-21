@@ -96,7 +96,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Latest Sales</h4>
+                                <h4 class="card-title">결제내역</h4>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-hover">
@@ -117,31 +117,43 @@
                                                         <c:choose>
                                                             <c:when test="${statusDTO.transactionType == 'Rent' }">
                                                                 <c:choose>
-                                                                    <c:when test="${statusDTO.status == 1 }">
+                                                                    <c:when test="${statusDTO.status == 2 }">
                                                                         <td><span class="label label-success label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                        <td class="txt-oflo">${statusDTO.createdAt}</td>
+                                                                        <td><span class="font-medium">${statusDTO.price}</span></td>
                                                                     </c:when>
                                                                     <c:otherwise>
                                                                         <td><span class="label label-danger label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                        <td class="txt-oflo">${statusDTO.createdAt}</td>
+                                                                        <td><span class="font-medium">-${statusDTO.price}</span></td>
                                                                     </c:otherwise>
                                                                 </c:choose>
                                                             </c:when>
                                                             <c:when test="${statusDTO.transactionType == 'Sale' }">
                                                                 <c:choose>
-                                                                    <c:when test="${statusDTO.status == 1 }">
+                                                                    <c:when test="${statusDTO.status == 2 }">
                                                                         <td><span class="label label-info label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                        <td class="txt-oflo">${statusDTO.createdAt}</td>
+                                                                        <td><span class="font-medium">${statusDTO.price}</span></td>
                                                                     </c:when>
                                                                     <c:otherwise>
                                                                         <td><span class="label label-danger label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                        <td class="txt-oflo">${statusDTO.createdAt}</td>
+                                                                        <td><span class="font-medium">-${statusDTO.price}</span></td>
                                                                     </c:otherwise>
                                                                 </c:choose>
                                                             </c:when>
                                                             <c:when test="${statusDTO.transactionType == 'Purchase' }">
                                                                 <c:choose>
-                                                                    <c:when test="${statusDTO.status == 1 }">
+                                                                    <c:when test="${statusDTO.status == 2 }">
                                                                         <td><span class="label label-purple label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                        <td class="txt-oflo">${statusDTO.createdAt}</td>
+                                                                        <td><span class="font-medium">${statusDTO.price}</span></td>
                                                                     </c:when>
                                                                     <c:otherwise>
                                                                         <td><span class="label label-danger label-rounded">${statusDTO.transactionType}</span> </td>
+                                                                        <td class="txt-oflo">${statusDTO.createdAt}</td>
+                                                                        <td><span class="font-medium">-${statusDTO.price}</span></td>
                                                                     </c:otherwise>
                                                                 </c:choose>
                                                             </c:when>
@@ -151,8 +163,7 @@
                                                         </c:choose>
 
 
-                                                        <td class="txt-oflo">${statusDTO.createdAt}</td>
-                                                        <td><span class="font-medium">${statusDTO.price}</span></td>
+
                                                     </tr>
 
                                             </c:forEach>
@@ -165,10 +176,32 @@
 
                                     </tbody>
                                 </table>
+                                <div style="display: block; text-align: center;">
+                                    <c:if test="${paging.startPage != 1 }">
+                                        <a
+                                                href="index?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">&lt;</a>
+                                    </c:if>
+                                    <c:forEach begin="${paging.startPage }"
+                                               end="${paging.endPage }" var="p">
+                                        <c:choose>
+                                            <c:when test="${p == paging.nowPage }">
+                                                <b>${p }</b>
+                                            </c:when>
+                                            <c:when test="${p != paging.nowPage }">
+                                                <a href="index?nowPage=${p }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">${p }</a>
+                                            </c:when>
+                                        </c:choose>
+                                    </c:forEach>
+                                    <c:if test="${paging.endPage != paging.lastPage}">
+                                        <a
+                                                href="index?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">&gt;</a>
+                                    </c:if>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <!-- ============================================================== -->
                 <!-- Ravenue - page-view-bounce rate -->
                 <!-- ============================================================== -->
@@ -180,7 +213,7 @@
                     <div class="col-lg-6">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Recent Comments</h4>
+                                <h4 class="card-title">제품 후기</h4>
                             </div>
                             <div class="comment-widgets" style="height:430px;">
                                 <!-- Comment Row -->
