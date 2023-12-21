@@ -10,11 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import com.tenco.toyproject.dto.KakaoPayDto;
@@ -48,6 +44,8 @@ public class ProductController {
 	private UserService userService;
 	@Autowired
 	private KakaoPayService kakaoPayService;
+	@Autowired
+	private MessageController message;
 	
 	@GetMapping("categories")
 	public String categories() {
@@ -153,8 +151,7 @@ public class ProductController {
 		for (int id : productIdArray) {
 			productService.deleteCartItem(userId, id);
 	    }
-		
-		
+		message.sendOne(principal.getUserName(), principal.getPhoneNumber());
 		return "redirect:/mypage/order-list";
 	}
 	
@@ -182,9 +179,7 @@ public class ProductController {
 		model.addAttribute("userInfo", userInfo);
 		return "product/order";
 	}
-<<<<<<< HEAD
-	
-=======
+
 	@GetMapping("search")
 	public String search(Model model, HttpServletRequest request,@RequestParam(value="keyword", required=false) String keyword,
 			@RequestParam(value="price1", required=false) String price1, @RequestParam(value="price2", required=false) String price2){
@@ -211,7 +206,7 @@ public class ProductController {
 		  return productService.searchProductInfinite(keyword, page, pageSize);
     }
 
->>>>>>> 091ab240b160b8d81f561bb977f8b462b3acf2f0
+
 
 	@PostMapping("order/kakao-pay/cancel")
 	public String kakaoPayCancel(Model model, @RequestParam("orderId") int orderId) {
@@ -230,8 +225,5 @@ public class ProductController {
 		return "redirect:/mypage/order-list";
 	}
 	
-<<<<<<< HEAD
-	
-=======
->>>>>>> 091ab240b160b8d81f561bb977f8b462b3acf2f0
+
 }

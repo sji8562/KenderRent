@@ -101,9 +101,7 @@
 		where user_id = #{userId}
 		order by create_at desc
 	</select>
-
 	
-<<<<<<< HEAD
 	<insert id="addToBookmark" parameterType="com.tenco.toyproject.repository.entity.bookmark">
 		insert into bookmark(user_id, product_id)
 		value(#{userId}, #{productId})
@@ -142,7 +140,6 @@
 		and tid is null
 	</delete>
 
-=======
 	
 	
 <!-- 	검색기능 관련 -->
@@ -166,6 +163,5 @@
 		select max(price) as MAX from product
 	</select>
 <!-- 	검색기능 관련 끝 -->
->>>>>>> 091ab240b160b8d81f561bb977f8b462b3acf2f0
 
 </mapper>
