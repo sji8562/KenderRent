@@ -79,4 +79,7 @@
 		(#{email}, #{userName}, #{password}, #{postNumber}, #{address}, #{addressDetail},
 		#{phoneNumber}, 1, now())
 	</insert>
+	<select id="selectUserName" resultType="com.tenco.toyproject.repository.entity.User">
+		select * from user where user_name = #{userName}
+	</select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.tenco.toyproject.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -99,6 +101,9 @@ public class UserService {
 	@Transactional
 	public int insertUser(User user) {
 		return userRepository.insertUser(user);
+	}
+	public User selectUserName(String userName) {
+		return userRepository.selectUserName(userName);
 	}
 
 }
