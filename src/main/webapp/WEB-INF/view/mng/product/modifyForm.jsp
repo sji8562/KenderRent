@@ -27,6 +27,7 @@
 <%--                    <h4 class="card-title">물품 번호 ${product.id}번</h4>--%>
                     <%--<h5 class="card-subtitle"> All bootstrap element classies </h5>--%>
                     <form class="form-horizontal mt-4" action="/mng/product/${product.id}/modify" method="post" enctype="multipart/form-data">
+                        <div>${product.code}</div>
                         <div class="form-group">
                             <label>물품명</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="물품명을 입력하세요" value="${product.name}" required>

@@ -156,7 +156,7 @@
 						<%-- 물품관리 --%>
 						<li class="sidebar-item" id="productManagement"><a
 					class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="/mng/product/list?keyword=" aria-expanded="false"> <i
+							href="#" aria-expanded="false" disabled=""> <i
 								class="mdi mdi-dropbox"></i> <span class="hide-menu">물품
 									관리</span>
 						</a>
@@ -165,20 +165,20 @@
 								<li class="sidebar-item"><a
 
 										class="sidebar-link waves-effect waves-dark sidebar-link"
-										href="/mng/product/list?keyword="> <i class="mdi mdi-archive"></i>
+										href="/mng/product/list?code=1&keyword="> <i class="mdi mdi-archive"></i>
 									<span class="hide-menu">대여용 물품 관리</span>
 								</a></li>
 								<!-- 물품관리 -->
 								<li class="sidebar-item"><a
 										class="sidebar-link waves-effect waves-dark sidebar-link"
-										href="/mng/product/listForSale?keyword="> <i class="mdi mdi-archive"></i>
+										href="/mng/product/listForSale?code=2&keyword="> <i class="mdi mdi-archive"></i>
 									<span class="hide-menu">판매용 물품 관리</span>
 								</a></li>
 								<!-- 구매신청 -->
 								<li class="sidebar-item"><a
 										class="sidebar-link waves-effect waves-dark sidebar-link"
 										href="/mng/product/review?keyword="> <i
-										class="mdi mdi-thumb-up"></i> <span class="hide-menu">후기 관리</span>
+										class="mdi mdi-thumb-up"></i> <span class="hide-menu">대여 후기 관리</span>
 
 								</a></li>
 							</ul>
