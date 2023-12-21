@@ -46,9 +46,9 @@ public interface MngProductRepository {
     List<SecondCategory> findSecondCategoryForFirstCategory(String fId);
 
 
-    int findFirstCategoryByName(String fCategoryName);
+    int findFirstCategoryByName(Integer code, String fCategoryName);
 
-    int createFirstCategory(String fCategoryName);
+    void createFirstCategory(int code, String fCategoryName);
 
     int deleteFirstCategoryById(int fId);
 

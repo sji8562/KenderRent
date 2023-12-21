@@ -163,7 +163,7 @@
 						<li class="sidebar-item" id="productManagement"><a
 					class="sidebar-link waves-effect waves-dark sidebar-link"
 							href="/mng/product/list?keyword=" aria-expanded="false"> <i
-								class="mdi mdi-alert-outline"></i> <span class="hide-menu">물품
+								class="mdi mdi-dropbox"></i> <span class="hide-menu">물품
 									관리</span>
 						</a>
 							<ul aria-expanded="false" class="collapse first-level">
@@ -177,7 +177,7 @@
 								<!-- 물품관리 -->
 								<li class="sidebar-item"><a
 										class="sidebar-link waves-effect waves-dark sidebar-link"
-										href="/mng/product/list?keyword="> <i class="mdi mdi-archive"></i>
+										href="/mng/product/listForSale?keyword="> <i class="mdi mdi-archive"></i>
 									<span class="hide-menu">판매용 물품 관리</span>
 								</a></li>
 								<!-- 구매신청 -->
