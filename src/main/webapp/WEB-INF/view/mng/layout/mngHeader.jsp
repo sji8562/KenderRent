@@ -160,6 +160,11 @@
 							href="/mng/" aria-expanded="false"> <i
 								class="mdi mdi-view-dashboard"></i> <span class="hide-menu">Dashboard</span>
 						</a></li>
+						<li class="sidebar-item"><a
+								class="sidebar-link waves-effect waves-dark sidebar-link"
+								href="/mng/pay/list" aria-expanded="false"> <i
+								class="mdi mdi-cash-multiple"></i> <span class="hide-menu">결제 관리</span>
+						</a></li>
 						<%-- 물품관리 --%>
 						<li class="sidebar-item" id="productManagement"><a
 					class="sidebar-link waves-effect waves-dark sidebar-link"
