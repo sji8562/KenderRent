@@ -20,66 +20,129 @@
 	</select>
 
 	<insert id="addToCartById" parameterType="int">
-		INSERT INTO cart (user_id, product_id) 
-		VALUES (#{userId}, #{productId})		
+		INSERT INTO cart
+		(user_id, product_id)
+		VALUES (#{userId}, #{productId})
 	</insert>
-	
+
 	<select id="countProductCustomer" resultType="int">
-        select count(*) from board where product_id = #{productId}
-    </select>
-    
-    <delete id="deleteCartItem">
-		delete from 
-		cart where user_id = #{userId} and  product_id = #{productId}
+		select count(*)
+		from board where product_id = #{productId}
+	</select>
+
+	<delete id="deleteCartItem">
+		delete from
+		cart where user_id = #{userId} and
+		product_id = #{productId}
 	</delete>
-	
+
 	<select id="isItemInCart" resultType="int">
 		select count(*)
 		from cart
-		where user_id = #{userId} 
+		where user_id = #{userId}
 		and product_id = #{productId}
 	</select>
-	
+
 	<select id="countItemInCart" resultType="int">
 		select count(*)
 		from cart
 		where user_id = #{userId}
 	</select>
-	
+
 	<insert id="payForCart" parameterType="int">
-		insert into order(user_id, product_id)
+		insert into sale(user_id,
+		product_id)
 		select user_id, product_id
 		from cart
-		where user_id = #{userId}
+		where user_id =
+		#{userId}
 	</insert>
-	
-	<insert id="payForProduct" parameterType="com.tenco.toyproject.dto.PayForProductDTO">
-		insert into orderlist(user_id, product_id, tid)
-		values(#{userId}, #{productId}, #{tid})
+
+	<insert id="payForProduct"
+		parameterType="map">
+		insert into sale(user_id, product_id, post_number, address, address_detail)
+		values(#{userId}, #{productId}, #{postNumber}, #{address}, #{addressDetail})
 	</insert>
-	
-	<!-- 주문 완료 목록 보기 -->
+
 	<select id="showCustomerOrderList" resultType="map">
-		select * from orderlist as o
+		select * from sale as o
 			join product as p
 			on o.product_id = p.id
 			where user_id = #{userId};
 	</select>
-	
-	<!-- 환불 신청 테스트 -->
-	<delete id="applyForRefund">
-		delete from orderlist
-			where user_id = #{userId}
-			and product_id = #{productId};
+
+	<!-- 환불 신청 -->
+	<insert id="applyForRefund">
+		insert into pay_back (id, rent_id, sale_id,
+		purchase_id,
+		create_at, status, update_at, money, user_id, product_id)
+		values (#{id}, #{rentId}, #{saleId},
+		#{purchaseId},
+		#{createAt},
+		#{status}, #{updateAt}, #{money}, #{userId}, #{productId})
+	</insert>
+
+	<delete id="deleteRefundFromSale">
+		delete from sale
+		where id = #{id}
 	</delete>
-	
-	<select id="findTid" resultType="com.tenco.toyproject.repository.entity.Order">
-		select * from orderlist 
-			where user_id = #{userId}
-			and product_id = #{productId};
+
+	<select id="findTid"
+		resultType="com.tenco.toyproject.repository.entity.Sale">
+		select * from sale
+		where id = #{id}
+	</select>
+
+	<select id="showCancelList"
+		resultType="map">
+		select * from pay_back as pb
+		join product as p
+		on pb.product_id = p.id
+		where user_id = #{userId}
+		order by create_at desc
 	</select>
 
 	
+<<<<<<< HEAD
+	<insert id="addToBookmark" parameterType="com.tenco.toyproject.repository.entity.bookmark">
+		insert into bookmark(user_id, product_id)
+		value(#{userId}, #{productId})
+	</insert>
+	
+	<select id="checkWishList" resultType="int">
+		select count(*) from bookmark
+		where user_id = #{userId}
+		and product_id = #{productId} 
+	</select>
+	
+	<select id="showWishList" parameterType="map">
+		select * from bookmark as b
+		join product as p
+		on b.product_id = p.id
+		where user_id = #{id}
+	</select>
+	
+	<delete id="deleteWishList">
+		delete from bookmark
+		where user_id = #{userId}
+		and product_id = #{productId}
+	</delete>
+	
+	<update id="updateTid">
+		update sale set tid = #{tid}, STATUS = 1
+		where user_id = #{userId}
+		and product_id = #{productId}
+		and tid is null
+	</update>
+	
+	<delete id="deleteFromSale">
+		delete from sale
+		where user_id = #{userId}
+		and product_id = #{productId}
+		and tid is null
+	</delete>
+
+=======
 	
 	
 <!-- 	검색기능 관련 -->
@@ -103,5 +166,6 @@
 		select max(price) as MAX from product
 	</select>
 <!-- 	검색기능 관련 끝 -->
+>>>>>>> 091ab240b160b8d81f561bb977f8b462b3acf2f0
 
 </mapper>

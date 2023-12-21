@@ -133,13 +133,21 @@
 							</div>
 							<br>
 							<ul class="sidebar_categories">
+<<<<<<< HEAD
+								<li class="active"><a href="/mypage/main"><span>
+								<i class="fa fa-angle-double-right" aria-hidden="true"></i></span>MY 홈</a></li>
+								<li><a href="/mypage/order-list">주문 내역</a></li>
+								<li><a href="/mypage/cancel-list">취소 내역</a></li>
+								<li><a href="/mypage/wish-list">위시리스트</a></li>
+								<li><a href="#">문의 내역</a></li>
+=======
 								<li><h5>주문내역</h5></li>
 								<li><a href="order-list">전체 주문 내역</a></li>
 								<li class="active"><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>취소/반품/교환 내역</a></li>
 								<li><a href="#">환불/입금 내역</a></li>
 								<li><a href="/mypage/inquiry">문의내역</a></li>
+>>>>>>> 091ab240b160b8d81f561bb977f8b462b3acf2f0
 								<li><a href="#">회원정보 변경</a></li>
-								<li><a href="#">배송지 관리</a></li>
 							</ul>
 						</div>
 					</div>

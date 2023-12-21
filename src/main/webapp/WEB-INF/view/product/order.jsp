@@ -38,6 +38,7 @@
 			</div>
 			<div id="content" style="display: flex; justify-content: center;">
 				<div style="width: 710px">
+				
 					<!-- 주문자 정보 -->
 					<div class="box_content">
 						<div class="box_title">주문자 정보</div>
@@ -62,7 +63,9 @@
 								<label for="user_adress">주소</label>
 							</div>
 							<div class="box_info">
-								<label>${userInfo.address}</label>
+								<label id="postInfo">${userInfo.postNumber}</label>
+								<label id="addressInfo">${userInfo.address}</label>
+								<label id="detailInfo">${userInfo.addressDetail}</label>
 							</div>
 						</div>
 						<div class="box_form">
@@ -74,6 +77,7 @@
 							</div>
 						</div>
 					</div>
+					<form id="orderForm" action="/product/order/kakao-pay" method="post">
 					<!-- 배송지 정보 -->
 					<div class="box_content" style="margin-top: 16px">
 						<div class="box_title">배송지 정보</div>
@@ -91,70 +95,78 @@
 								<label for="user_name">연락처</label>
 							</div>
 							<input type="text" id="phoneNumber" name="phoneNumber"
-								class="box_input" title="번호" placeholder="연락처를 입력해주세요">
+								class="box_input" title="번호" placeholder="숫자만 입력해 주세요" 
+								oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required/>
 						</div>
 						<div class="box_form">
 							<div class="box_label">
 								<label for="user_name">주소</label>
 							</div>
 							<input type="text" id="sample4_postcode" class="box_input"
-								style="width: 350px;" title="우편번호" placeholder="우편번호"> <input
-								type="button" class="btn_address"
+								style="width: 350px;" title="우편번호" name="postNumber" placeholder="우편번호" readonly
+								onclick="sample4_execDaumPostcode()"> 
+							<input type="button" class="btn_address"
 								onclick="sample4_execDaumPostcode()" value="주소찾기"><br>
 							<div class="box_label">
 								<label for="user_name"></label>
 							</div>
-							<input type="text" id="sample4_roadAddress" class="box_input"
-								placeholder="도로명주소">
+							<input type="text" id="sample4_roadAddress" name="address" class="box_input" style="margin-bottom: 7px"
+								placeholder="도로명주소" readonly onclick="sample4_execDaumPostcode()"> 
+							<input type="hidden" id="sample4_extraAddress" class="box_input"
+								placeholder="참고항목" readonly onclick="sample4_execDaumPostcode()"> 
+							<input type="hidden" id="sample4_jibunAddress" class="box_input"
+								placeholder="지번주소" readonly onclick="sample4_execDaumPostcode()"> 
+							<span id="guide" style="color: #999; display: none"></span>
 							<div class="box_label">
 								<label for="user_name"></label>
 							</div>
-							<input type="text" id="sample4_extraAddress" class="box_input"
-								placeholder="참고항목">
-							<div class="box_label">
-								<label for="user_name"></label>
-							</div>
-							<input type="text" id="sample4_jibunAddress" class="box_input"
-								placeholder="지번주소"> <span id="guide"
-								style="color: #999; display: none"></span>
-							<div class="box_label">
-								<label for="user_name"></label>
-							</div>
-							<input type="text" id="sample4_detailAddress" class="box_input"
+							<input type="text" id="sample4_detailAddress" name="addressDetail" class="box_input"
 								placeholder="상세주소">
 						</div>
 					</div>
 					<!-- 주문 정보 -->
+					
 					<div class="box_content" style="margin-top: 16px">
 						<div class="box_title">주문 상품</div>
-						<div class="box_goods">
-							<div class="box_picture">
-								<a href="/product/detail/${orderList.id}" target="_blank"> <img
-									src="/images/product_${orderList.id}.png" width="100"
-									height="100"></a>
+						<c:forEach var="orderList" items="${orderList}" varStatus="status">
+							<c:if test="${status.index > 0}">
+								<hr>
+							</c:if>
+							<div class="box_goods" style="margin-top: 30px">
+								<div class="box_picture">
+									<a href="/product/detail/${orderList.id}" target="_blank">
+										<img src=${orderList.picUrl } class="product_picture"
+										style="vertical-align: top;" width="100" height="100">
+									</a>
+								</div>
+								<div class="box_product_info">
+									<a href="/product/detail/${orderList.id}" target="_blank"
+										class="text_product_name">
+										<input type="hidden" name="orderIds" value="${orderList.id}" /> ${orderList.name}</a>
+									<div></div>
+									<span class="text_product_price">${orderList.formatPrice()}</span>
+								</div>
 							</div>
-							<div class="box_product_info">
-								<a href="/product/detail/${orderList.id}" target="_blank"
-									class="text_product_name"> ${orderList.name}</a>
-								<div></div>
-								<span class="text_product_price">${orderList.formatPrice()}</span>
-							</div>
-						</div>
+						</c:forEach>
 						<div style="height: 20px; border-bottom: 1px solid gray;"></div>
 						<div style="padding: 16px 30px 40px;">
 							<div>
-								<span class="text_price">상품금액</span> <span class="text_number">${orderList.formatPrice()}</span>
+								<span class="text_price">상품금액</span> <span class="text_number">
+									<fmt:formatNumber value="${productPrice}" pattern="#,###" />원
+								</span>
 							</div>
 							<div style="display: block; clear: both; content: '';"></div>
 							<div>
-								<span class="text_price">배송비</span> <span class="text_number">${orderList.getDeliveryFee()}</span>
+								<span class="text_price">배송비</span> <span class="text_number"><fmt:formatNumber
+										value="${deliveryFee }" pattern="#,###" />원</span>
 							</div>
 						</div>
 						<div style="height: 20px; border-bottom: 1px solid gray;"></div>
 						<div style="padding: 16px 30px 40px;">
 							<span class="text_price" style="font-size: 18px;">총 결제 금액</span>
 							<span class="text_number"
-								style="font-size: 30px; font-weight: 700;">${orderList.totalPriceForOne()}</span>
+								style="font-size: 30px; font-weight: 700;"><fmt:formatNumber
+									value="${totalPrice}" pattern="#,###" />원</span>
 						</div>
 					</div>
 					<!-- 결제 수단 -->
@@ -172,12 +184,10 @@
 							</div>
 						</div>
 					</div>
-					<form method="post" action="order/kakao-pay">
-							<div style="text-align: center; padding: 20px 0 0 0;">
-								<input type="hidden" name="id" value="${orderList.id}" />
-								<button type="submit" class="botton_pay">결제하기</button>
-							</div>
-						</form>
+						<div style="text-align: center; padding: 20px 0 0 0;">
+							<button type="submit" class="botton_pay">결제하기</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -190,5 +200,34 @@
 		src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript"
 		src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+	<script>
+  function validateForm() {
+    var name = document.getElementById('name').value;
+    var phoneNumber = document.getElementById('phoneNumber').value;
+    var postcode = document.getElementById('sample4_postcode').value;
+    var roadAddress = document.getElementById('sample4_roadAddress').value;
+    var extraAddress = document.getElementById('sample4_extraAddress').value;
+    var jibunAddress = document.getElementById('sample4_jibunAddress').value;
+    var detailAddress = document.getElementById('sample4_detailAddress').value;
+
+    if (!name) {
+      alert('받으실 분의 이름을 입력해주세요.');
+      return false;
+    }
+    if (!phoneNumber) {
+    	alert('받으실 분의 연락처를 입력해주세요.')
+    	return false;
+    }
+    if (!postcode) {
+    	alert('받으실 분의 주소를 입력해주세요.')
+    	return false;
+    }
+
+    return true;
+  }
+
+  // Call the validateForm function when the form is submitted
+  document.getElementById('orderForm').onsubmit = validateForm;
+</script>
 </body>
 </html>
