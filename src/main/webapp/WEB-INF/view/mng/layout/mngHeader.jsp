@@ -159,7 +159,6 @@
 							href="/mng/product/list?keyword=" aria-expanded="false"> <i
 								class="mdi mdi-alert-outline"></i> <span class="hide-menu">물품
 									관리</span>
-						<li class="sidebar-item" id="productManagement"><a style="cursor: default"
 						</a>
 							<ul aria-expanded="false" class="collapse first-level">
 								<!-- 물품관리 -->
