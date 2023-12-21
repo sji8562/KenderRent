@@ -7,6 +7,7 @@
 
 <head>
 
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- Tell the browser to be responsive to screen width -->
@@ -90,6 +91,7 @@
 					<!-- ============================================================== -->
 					<div class="navbar-brand">
 
+
 						<a href="/mng/" class="logo"> <!-- Logo icon -->
 							<b class="logo-icon"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 								<img src="/assets/images/logo-icon.png" alt="homepage" class="dark-logo" /> <!-- Light Logo icon -->
@@ -99,6 +101,7 @@
 								<!-- dark Logo text --> <!-- Light Logo text -->
 								<span style="color: white">Kinder Lend Admin</span>
 							</span>
+
 
 						</a>
 					</div>
@@ -112,6 +115,7 @@
 
 
 				<%--<div class="navbar-collapse collapse" id="navbarSupportedContent"
+
 					data-navbarbg="skin6" style="justify-content: space-between;">
 					<!-- ============================================================== -->
 					<!-- Right side toggle and nav items -->
@@ -127,10 +131,12 @@
 
         
 
+
 					</li>
 						<!-- ============================================================== -->
 						<!-- User profile and search -->
 						<!-- ============================================================== -->
+
 
 					</ul>
 
@@ -301,4 +307,5 @@
 			</div>
 			<!-- End Sidebar scroll-->
 		</aside>
+
 

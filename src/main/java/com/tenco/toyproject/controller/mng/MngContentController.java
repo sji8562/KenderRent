@@ -68,6 +68,7 @@ public class MngContentController {
             return null;
         }
 
+
     }
 
     @GetMapping("disinfection-process")

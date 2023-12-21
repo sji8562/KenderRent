@@ -27,6 +27,7 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/mypage")
 public class MypageController {
+
   @Autowired
   private HttpSession session;
   @Autowired
@@ -104,4 +105,5 @@ public class MypageController {
   public String orderListDetailInfo() {
     return "mypage/orderListDetailInfo";
   }
+
 }

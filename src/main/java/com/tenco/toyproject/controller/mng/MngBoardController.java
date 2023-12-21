@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
 import com.tenco.toyproject._core.handler.exception.Exception500;
 import com.tenco.toyproject.dto.MngBoardDTO;
+import com.tenco.toyproject.dto.MngProductReplyDTO;
 import com.tenco.toyproject.dto.MngReplyDTO;
 import com.tenco.toyproject.repository.entity.Board;
 import com.tenco.toyproject.repository.entity.ProductQnaDetail;
@@ -291,6 +292,7 @@ public class MngBoardController {
 
     mngFaqService.createFaq(dto);
 
+
     return "redirect:/mng/board/faq-list";
   }
 
@@ -309,6 +311,7 @@ public class MngBoardController {
   @PostMapping("{id}/faq-update")
   public String updateFaq(MngBoardDTO.FaqSubmitDto dto, @PathVariable int id) {
     logger.info("이 글 좀 수정해주세요" + id);
+
 
     if (dto.getTitle() == null || dto.getTitle().isEmpty()) {
       throw new Exception500("질문을 입력하세요");
@@ -387,6 +390,10 @@ public class MngBoardController {
 
     List<MngBoardDTO.ProductQnaListDto> productQnaList;
 
+      //  System.out.println("상세보기 왜 안돼?" + qnaDetail);
+
+      //  System.out.println("상세보기 왜 안돼?" + qnaDetail);
+
     // 검색어가 있는 경우
     if (keyword != null && !keyword.isEmpty()) {
       // 검색어를 이용해 검색 쿼리 수행
@@ -428,13 +435,14 @@ public class MngBoardController {
 
   // 제품 문의 답변 등록
   @PostMapping("{id}/productqna-answer")
-  public String submitProductQnaAnswer(@PathVariable int id, MngReplyDTO.ProductQnaReplyDto dto) {
+  public String submitProductQnaAnswer(@PathVariable int id, MngProductReplyDTO.ProductQnaReplyDto dto) {
 
     if (dto.getReplyContent() == null || dto.getReplyContent().isEmpty()) {
       throw new Exception500("답변 내용을 입력하세요");
     }
 
     dto.setBoardId(id);
+
 
     mngProductQnaService.submitProductQnaAnswer(dto);
 

@@ -21,11 +21,15 @@
 
     <!-- 최초 insert -->
     <insert id="createContent">
+
         INSERT INTO information (content, code, created_at) VALUES (#{content}, #{code}, NOW())
+
     </insert>
 
     <!-- 회사 소개, 이용 수칙, 소동 과정 update -->
     <update id="updateMngContent">
+
         UPDATE information SET content = #{content} WHERE code = #{code} AND id = #{id}
+
     </update>
 </mapper>
