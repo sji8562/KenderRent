@@ -42,7 +42,12 @@
 										<li class="nav-item dropdown"><a href="/product/categories" class="nav-link dropdown-toggle">${firstCategories.firstCategoryName
 												}</a>
 											<div class="dropdown-menu m-0">
-												<a href="price.html" class="dropdown-item">아니야</a> <a href="feature.html" class="dropdown-item">유아침대</a> <a href="team.html" class="dropdown-item">바운서</a> <a href="testimonial.html" class="dropdown-item">쏘서/점프앤런</a> <a href="quote.html" class="dropdown-item">베베블럭/러닝홈</a> <a href="quote.html" class="dropdown-item">보행기/부스터</a>
+												<a href="price.html" class="dropdown-item">아니야</a>
+												<a href="feature.html" class="dropdown-item">유아침대</a>
+												<a href="team.html" class="dropdown-item">바운서</a>
+												<a href="testimonial.html" class="dropdown-item">쏘서/점프앤런</a>
+												<a href="quote.html" class="dropdown-item">베베블럭/러닝홈</a>
+												<a href="quote.html" class="dropdown-item">보행기/부스터</a>
 											</div></li>
 									</c:forEach>
 								</c:when>

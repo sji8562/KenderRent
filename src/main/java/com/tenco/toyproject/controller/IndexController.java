@@ -3,6 +3,7 @@ package com.tenco.toyproject.controller;
 import ch.qos.logback.core.CoreConstants;
 
 import com.tenco.toyproject.repository.entity.FirstCategory;
+import com.tenco.toyproject.repository.entity.SecondCategory;
 import com.tenco.toyproject.service.IndexService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class IndexController {
     @GetMapping({"index","/"})
     public String home(){
     	List<FirstCategory> firstCategories = indexService.findByFCategory();
+        List<SecondCategory> secondCategories = indexService.findBySecondCategoryId();
         session.setAttribute("firstCategories",firstCategories);
         return "index";
     }
