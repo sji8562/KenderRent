@@ -123,27 +123,27 @@ $(document).on("click", "#emailAuth", function() {
 		})
 		
 		//비밀번호 규칙 (숫자, 영어 대소문자, 특수문자 (!, @, #, $, %) 4~16자리 사용 가능)
-		let passwdReg = /^[a-zA-Z0-9!@#$%]{8,16}$/
-		$("#password").on("change", function() {
-			if(!passwdReg.exec($("#password").val())){
-				$("#passwd1Result").html("비밀번호 형식을 확인해주세요.<br> 영어, 숫자, 특수문자 (!, @, #, $, %) 8~16자리를 입력 가능").css("color", "red");
-			}else{
-				$("#passwd1Result").html("사용 가능한 비밀번호 형식 입니다!").css("color", "blue");
-			}
-		})
-		
-		// 비밀번호가 일치하는 지 확인
-		$("#password2").on("change", function() {
-			if(!passwdReg.exec($("#password2").val())){
-				$("#passwd2Result").html("비밀번호 형식을 확인해주세요.<br> 영어, 숫자, 특수문자 (!, @, #, $, %) 8~16자리를 입력 가능").css("color", "red");
-			}else{
-				if($("#password").val() != $("#password2").val()){
-					$("#passwd2Result").html("비밀번호가 일치하지 않습니다!").css("color", "red");
-				}else{
-					$("#passwd2Result").html("비밀번호가 일치합니다!").css("color", "blue");
-				}
-			}
-		})
+		// let passwdReg = /^[a-zA-Z0-9!@#$%]{8,16}$/
+		// $("#password").on("change", function() {
+		// 	if(!passwdReg.exec($("#password").val())){
+		// 		$("#passwd1Result").html("비밀번호 형식을 확인해주세요.<br> 영어, 숫자, 특수문자 (!, @, #, $, %) 8~16자리를 입력 가능").css("color", "red");
+		// 	}else{
+		// 		$("#passwd1Result").html("사용 가능한 비밀번호 형식 입니다!").css("color", "blue");
+		// 	}
+		// })
+		//
+		// // 비밀번호가 일치하는 지 확인
+		// $("#password2").on("change", function() {
+		// 	if(!passwdReg.exec($("#password2").val())){
+		// 		$("#passwd2Result").html("비밀번호 형식을 확인해주세요.<br> 영어, 숫자, 특수문자 (!, @, #, $, %) 8~16자리를 입력 가능").css("color", "red");
+		// 	}else{
+		// 		if($("#password").val() != $("#password2").val()){
+		// 			$("#passwd2Result").html("비밀번호가 일치하지 않습니다!").css("color", "red");
+		// 		}else{
+		// 			$("#passwd2Result").html("비밀번호가 일치합니다!").css("color", "blue");
+		// 		}
+		// 	}
+		// })
 		
 		//이름 규칙
 		let nameReg = /^[가-힣]{2,5}$/;
@@ -162,15 +162,15 @@ $(document).on("click", "#emailAuth", function() {
 			alert("이메일을 확인해주세요!");
 			return false;
 		}
-		let passwdReg = /^[a-zA-Z0-9!@#$%]{8,16}$/
-		if(!passwdReg.exec($("#password").val())){
-			alert("비밀번호 형식을 확인해주세요!");
-			return false;
-		}
-		if($("#password").val() != $("#password2").val()){
-			alert("비밀번호가 일치하는 지 확인해주세요!")
-			return false;
-		}
+		// let passwdReg = /^[a-zA-Z0-9!@#$%]{8,16}$/
+		// if(!passwdReg.exec($("#password").val())){
+		// 	alert("비밀번호 형식을 확인해주세요!");
+		// 	return false;
+		// }
+		// if($("#password").val() != $("#password2").val()){
+		// 	alert("비밀번호가 일치하는 지 확인해주세요!")
+		// 	return false;
+		// }
 		let nameReg = /^[가-힣]{2,5}$/;
 		if(!nameReg.exec($("#userName").val())){
 			alert("이름을 확인해주세요!")
