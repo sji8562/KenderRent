@@ -28,16 +28,7 @@ spring:
         classpath:db/data.sql
   
   
-  jpa:
-    defer-datasource-initialization: true
-    hibernate:
-      ddl-auto: none
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-      default_batch_fetch_size: 100
-    open-in-view: true
+  
   output:
     ansi:
       enabled: always
@@ -55,7 +46,7 @@ spring:
       mail.smtp.ssl.enable: true
       mail.smtp.ssl.trust: smtp.naber.com
       mail.smtp.starttls.enable: true
-
+  
 file:
   path: ./images/
   
@@ -64,11 +55,11 @@ mybatis:
     - classpath:mapper/**.xml
   configuration:
     map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-logging:
-  level:
-    org.mybatis: DEBUG
+#logging:
+#  level:
+#    org.mybatis: DEBUG
 #초기 파라미터 설정
 tenco:
   key: C775E7B757EDE630CD0AA1113BD102661AB38829CA52A6422AB782862F268646

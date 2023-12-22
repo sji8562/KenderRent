@@ -5,13 +5,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -126,65 +131,40 @@ public class UserController {
 //	@ResponseBody // 데이터를 반환 하고 싶을 때 
 	public String kakaoCallBack(@RequestParam("code") String code) {
 		RestTemplate rt1 = new RestTemplate();
-		// 헤더 구성 
 		HttpHeaders headers1 = new HttpHeaders();
 		headers1.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
-		// body 구성 
 		MultiValueMap<String, String> params1 = new LinkedMultiValueMap<>();
 		params1.add("grant_type", "authorization_code");
 		params1.add("client_id", "0a29e10b57cb7259eec5a50bdced4aa7");
 		params1.add("redirect_uri", "http://localhost:80/user/kakao-callback");
 		params1.add("code", code);
 		
-		// 헤더 + body 결합 
 		HttpEntity<MultiValueMap<String, String>> requestMsg1 
 			= new HttpEntity<>(params1, headers1);
 		
-		// 요청 처리 
 		ResponseEntity<OAuthToken> response1 = rt1.exchange("https://kauth.kakao.com/oauth/token", HttpMethod.POST, 
 				requestMsg1, OAuthToken.class);
-		System.out.println("--------------------");
-		System.out.println(response1.getHeaders());
-		System.out.println(response1.getBody());
-		System.out.println(response1.getBody().getAccessToken());
-		System.out.println(response1.getBody().getRefreshToken());
-		System.out.println("--------------------");
-		// 여기까지 토큰 받기 위함 // 
 		
 		RestTemplate rt2 = new RestTemplate();
-		// 헤더 구성
 		HttpHeaders headers2 = new HttpHeaders();
 		headers2.add("Authorization", "Bearer " + response1.getBody().getAccessToken());
 		headers2.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
-		// 바디 구성 - 생략(필수가 아님)
-		// 헤더 바디 결합 
 		HttpEntity<MultiValueMap<String, String>> requestMsg2 
 						= new HttpEntity<>(headers2);
 		
-		// 요청
 		ResponseEntity<KakaoProfile> response2 =  rt2.exchange("https://kapi.kakao.com/v2/user/me", HttpMethod.POST,
 				requestMsg2, KakaoProfile.class);
 		
-		System.out.println("---------------------------");
-		System.out.println(response2.getBody());
-		System.out.println("---------------------------");
 		
-		// 카카오 서버에 존재하는 정보를 요청 처리 
 		System.out.println("------------카카오 서버 정보 받기 완료---------");
-		// 1. 회원 가입 여부 확인
-		// 최초 사용자라면 우리 사이트에 회원 가입을 자동 완료
-		// 추가 정보 입력 화면 (추가 정보 있다면 기능을 만들어야함) --> DB insert 처리ㅣ
-		// 만약 소셜 사용자가 회원가입 처리 완료된 사용자라면
-		// 바로 세션 처리 및 로그인 처리
-		
 		KakaoProfile kakaoProfile = response2.getBody();
 		User user = User.builder().userName("OAuth_" + kakaoProfile.getId())
 				.password(tencoKey).build();
 		
-		User oldUser = userService.selectUserName(user.getUserName());
+		User oldUser = userService.selectUserEmail(user.getEmail());
 		if(oldUser == null) {
 			userService.insertUser(user);
-			oldUser = userService.selectUserName(user.getUserName());	
+			oldUser = userService.selectUserEmail(user.getEmail());	
 			
 		}
 		oldUser.setPassword(null);
@@ -193,11 +173,57 @@ public class UserController {
 	}
 	@GetMapping("/naver-callback")
 //	@ResponseBody // 데이터를 반환 하고 싶을 때 
-	public String naverCallBack(@RequestParam("code") String code) {
+	public String naverCallBack(@RequestParam("code") String code, @RequestParam("state") String state) {
+		try {
+			RestTemplate rt1 = new RestTemplate();
+			HttpHeaders headers1 = new HttpHeaders();
+			headers1.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+			MultiValueMap<String, String> params1 = new LinkedMultiValueMap<>();
+			params1.add("grant_type", "authorization_code");
+			params1.add("client_id", "LbaGbefoStQkPYuwldjm");
+			params1.add("client_secret", "QLL06505pS");
+			params1.add("redirect_uri", "http://localhost:80/user/naver-callback");
+			params1.add("code", code);
+			HttpEntity<MultiValueMap<String, String>> requestMsg1 = new HttpEntity<>(params1, headers1);
+			ResponseEntity<OAuthToken> response1 = rt1.exchange("https://nid.naver.com/oauth2.0/token", HttpMethod.POST, 
+					requestMsg1, OAuthToken.class);
+			
+			
+			HttpHeaders headers2 = new HttpHeaders();
+			RestTemplate rt2 = new RestTemplate();
+			HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<>(headers2);
+			headers2.add("Authorization", "Bearer " + response1.getBody().getAccessToken());
+			headers2.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+			ResponseEntity<String> response = rt2.exchange("https://openapi.naver.com/v1/nid/me", 
+					HttpMethod.POST, httpEntity, String.class);
 		
+		
+		
+			JSONParser jsonParser = new JSONParser();
+			JSONObject jsonObj =(JSONObject)jsonParser.parse(response.getBody());
+			JSONObject account = (JSONObject)jsonObj.get("response");
+			String name = String.valueOf(account.get("name"));
+			User user = new User();
+			user.setEmail(String.valueOf(account.get("email")));
+			user.setUserName(String.valueOf(account.get("name")));
+			user.setPhoneNumber(String.valueOf(account.get("mobile")));
+			user.setPassword(tencoKey);
+			System.out.println(user.getEmail());
+			User oldUser = userService.selectUserEmail(user.getEmail());
+			System.out.println(user.toString());
+			if(oldUser == null) {
+				userService.insertUser(user);
+				oldUser = userService.selectUserEmail(user.getEmail());	
+				
+			}
+			oldUser.setPassword(null);
+			session.setAttribute("principal", oldUser);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 
-        
-		return "redirect:/";
+        return "redirect:/";
+
 	}
 
 }

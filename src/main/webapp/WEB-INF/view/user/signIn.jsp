@@ -61,9 +61,9 @@
 						<div>
 							<button  type="submit" class="red_button message_submit_btn trans_300" value="Submit">로그인</button>
 							<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=0a29e10b57cb7259eec5a50bdced4aa7&redirect_uri=http://localhost:80/user/kakao-callback&prompt=login">
-			  				<img alt="" src="/images/kakao_login_large_wide.png" ></a>
-			  				<a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=LbaGbefoStQkPYuwldjm&state=STATE_STRING&redirect_uri=http://localhost:80/user/naver-callback">
-			  				<img alt="" src="/images/naver_signin.png" ></a>
+			  				<img alt="" src="/images/kakao_login_large_wide.png" height="46" width="165"></a>
+			  				<a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=LbaGbefoStQkPYuwldjm&state=123&redirect_uri=http://localhost:80/user/naver-callback">
+			  				<img alt="" src="/images/naver_signin.png" height="46" width="165"></a>
 			  				
 						</div>
 					</form>
