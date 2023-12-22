@@ -4,6 +4,12 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<style>
+    .ck-editor__editable[role="textbox"] {
+        /* editing area */
+        min-height: 500px;
+    }
+</style>
 
 <div class="page-wrapper">
 
