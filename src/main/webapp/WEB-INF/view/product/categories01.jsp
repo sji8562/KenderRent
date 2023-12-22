@@ -15,6 +15,21 @@
 <link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/categories_styles.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/categories_responsive.css">
+	<style>
+
+		.post-slider .post-wrapper{
+			width:100%;
+
+			padding-top: 101px;
+
+		}
+		.post-slider .post-wrapper .post{
+			width:100%;
+			height:170px;
+			display:inline-block;
+			background:gray;
+		}
+	</style>
 </head>
 <body>
 <div class="super_container">
@@ -23,8 +38,12 @@
 
 	<jsp:include page="../layout/header.jsp" />
 
-	<div class="fs_menu_overlay"></div>
-
+<%--	<div class="fs_menu_overlay"></div>--%>
+	<div class="post-slider ">
+		<div class="post-wrapper ">
+			<div class="post" style="background-image:url(/images/subvisual.png)"></div>
+		</div>
+	</div>
 	<!-- Hamburger Menu -->
 
 	<div class="hamburger_menu">

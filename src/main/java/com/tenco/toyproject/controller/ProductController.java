@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -47,9 +48,24 @@ public class ProductController {
 	@Autowired
 	private MessageController message;
 	
-	@GetMapping("categories")
-	public String categories() {
-		return "product/categories";
+	@GetMapping("{fId}/categories")
+	public String categories(@PathVariable Integer fId ,Model model) {
+		System.out.println(fId);
+		List<Product> productList = productService.findByCategoryId(fId);
+		System.out.println(productList.toString());
+		model.addAttribute("productList",productList);
+
+		if(fId == 1||fId == 2||fId == 6){
+			return "product/categories01";
+		}
+		return "product/categories02";
+	}
+	@GetMapping("{fId}/categories/{sId}")
+	public String categories(@PathVariable Integer fId, @PathVariable Integer sId) {
+		if(fId == 1||fId == 2||fId == 6){
+			return "product/categories02";
+		}
+		return "product/categories01";
 	}
 
 	@GetMapping("detail/{id}")

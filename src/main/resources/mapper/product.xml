@@ -163,6 +163,9 @@
 	<select id="searchMaxPrice" resultType="int">
 		select max(price) as MAX from product
 	</select>
+	<select id="findByCategoryId">
+		select * from product where first_category_id = #{id}
+	</select>
 <!-- 	검색기능 관련 끝 -->
 
 
