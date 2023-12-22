@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/responsive.css">
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
 <style>
 
@@ -57,39 +57,6 @@
 			<div class="row align-items-center fill_height">
 				<div class="col">
 					<div class="main_slider_content">
-						<h6>Spring / Summer Collection 2017</h6>
-						<h1>Get up to 30% Off New Arrivals</h1>
-						<div class="red_button shop_now_button"><a href="#">shop now</a></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Banner -->
-
-	<div class="banner">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="banner_item align-items-center" style="background-image:url(/images/banner_1.jpg)">
-						<div class="banner_category">
-							<a href="categories.html">women's</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="banner_item align-items-center" style="background-image:url(/images/banner_2.jpg)">
-						<div class="banner_category">
-							<a href="categories.html">accessories's</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="banner_item align-items-center" style="background-image:url(/images/banner_3.jpg)">
-						<div class="banner_category">
-							<a href="categories.html">men's</a>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -103,7 +70,7 @@
 			<div class="row">
 				<div class="col text-center">
 					<div class="section_title new_arrivals_title">
-						<h2>New Arrivals</h2>
+						<h2>추천 장난감</h2>
 					</div>
 				</div>
 			</div>
@@ -111,10 +78,10 @@
 				<div class="col text-center">
 					<div class="new_arrivals_sorting">
 						<ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">all</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women">women's</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">accessories</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">men's</li>
+							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">전체</li>
+							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women">대여물품</li>
+							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">판매물품</li>
+							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">인기상품</li>
 						</ul>
 					</div>
 				</div>
@@ -125,52 +92,55 @@
 
 						<!-- Product 1 -->
 
-						<div class="product-item men">
+						<div class="product-item women">
 							<div class="product discount product_filter">
 								<div class="product_image">
-									<img src="/images/product_1.png" alt="">
+									<img src="/images/product_15.jpg" alt="">
 								</div>
-								<div class="favorite favorite_left"></div>
-								<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
+								<%--<div class="favorite favorite_left"></div>--%>
+								<%--<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-500원</span></div>--%>
 								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Fujifilm X100T 16 MP Digital Camera (Silver)</a></h6>
-									<div class="product_price">$520.00<span>$590.00</span></div>
+									<h6 class="product_name"><a href="single.html">와이크라이 미니 아기울음분석기</a></h6>
+									<div class="product_price">5000원
+										<%--<span>5,500원</span>--%>
+									</div>
 								</div>
 							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
+							<%--<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>--%>
 						</div>
 
 						<!-- Product 2 -->
 
-						<div class="product-item women">
+						<%-- 대여 물품 --%>
+						<div class="product-item women men">
 							<div class="product product_filter">
 								<div class="product_image">
-									<img src="/images/product_2.png" alt="">
+									<img src="/images/product_111.png" alt="">
 								</div>
-								<div class="favorite"></div>
-								<div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
+								<%--<div class="favorite"></div>--%>
+								<%--<div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>--%>
 								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Samsung CF591 Series Curved 27-Inch FHD Monitor</a></h6>
-									<div class="product_price">$610.00</div>
+									<h6 class="product_name"><a href="single.html">엑서쏘서 트리플펀 플러스 월드</a></h6>
+									<div class="product_price">35,000원</div>
 								</div>
 							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
+							<%--<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>--%>
 						</div>
 
 						<!-- Product 3 -->
 
-						<div class="product-item women">
+						<div class="product-item women men">
 							<div class="product product_filter">
 								<div class="product_image">
-									<img src="/images/product_3.png" alt="">
+									<img src="/images/product_222.png" alt="">
 								</div>
-								<div class="favorite"></div>
+								<%--<div class="favorite"></div>--%>
 								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Blue Yeti USB Microphone Blackout Edition</a></h6>
-									<div class="product_price">$120.00</div>
+									<h6 class="product_name"><a href="single.html">사파리 쏘서</a></h6>
+									<div class="product_price">18,000원</div>
 								</div>
 							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
+							<%--<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>--%>
 						</div>
 
 						<!-- Product 4 -->
@@ -178,16 +148,16 @@
 						<div class="product-item accessories">
 							<div class="product product_filter">
 								<div class="product_image">
-									<img src="/images/product_4.png" alt="">
+									<img src="/images/product_11.jpg" alt="">
 								</div>
-								<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
-								<div class="favorite favorite_left"></div>
+								<%--<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>--%>
+								<%--<div class="favorite favorite_left"></div>--%>
 								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">DYMO LabelWriter 450 Turbo Thermal Label Printer</a></h6>
-									<div class="product_price">$410.00</div>
+									<h6 class="product_name"><a href="single.html">릴레이베이비 오가닉침받이</a></h6>
+									<div class="product_price">15,000원</div>
 								</div>
 							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
+							<%--<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>--%>
 						</div>
 
 						<!-- Product 5 -->
@@ -195,15 +165,15 @@
 						<div class="product-item women men">
 							<div class="product product_filter">
 								<div class="product_image">
-									<img src="/images/product_5.png" alt="">
+									<img src="/images/product_333.jpg" alt="">
 								</div>
-								<div class="favorite"></div>
+								<%--<div class="favorite"></div>--%>
 								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Pryma Headphones, Rose Gold & Grey</a></h6>
-									<div class="product_price">$180.00</div>
+									<h6 class="product_name"><a href="single.html">뉴나리프바운서(신생아바운서)</a></h6>
+									<div class="product_price">20,000원</div>
 								</div>
 							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
+							<%--<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>--%>
 						</div>
 
 						<!-- Product 6 -->
@@ -211,32 +181,36 @@
 						<div class="product-item accessories">
 							<div class="product discount product_filter">
 								<div class="product_image">
-									<img src="/images/product_6.png" alt="">
+									<img src="/images/product_22.jpg" alt="">
 								</div>
-								<div class="favorite favorite_left"></div>
-								<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
+								<%--<div class="favorite favorite_left"></div>--%>
+								<%--<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
+									<span>-$20</span>
+								</div>--%>
 								<div class="product_info">
-									<h6 class="product_name"><a href="#single.html">Fujifilm X100T 16 MP Digital Camera (Silver)</a></h6>
-									<div class="product_price">$520.00<span>$590.00</span></div>
+									<h6 class="product_name"><a href="#single.html">아벤트 숙면젖병 어드밴스 PES젖병 260ml 중간속도</a></h6>
+									<div class="product_price">16,000원
+										<%--<span>20,000원</span>--%>
+									</div>
 								</div>
 							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
+							<%--<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>--%>
 						</div>
 
 						<!-- Product 7 -->
 
-						<div class="product-item women">
+						<div class="product-item women men">
 							<div class="product product_filter">
 								<div class="product_image">
-									<img src="/images/product_7.png" alt="">
+									<img src="/images/product_444.png" alt="">
 								</div>
-								<div class="favorite"></div>
+								<%--<div class="favorite"></div>--%>
 								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Samsung CF591 Series Curved 27-Inch FHD Monitor</a></h6>
-									<div class="product_price">$610.00</div>
+									<h6 class="product_name"><a href="single.html">컴포트 스윙(자동바운서)</a></h6>
+									<div class="product_price">13,000원</div>
 								</div>
 							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
+							<%--<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>--%>
 						</div>
 
 						<!-- Product 8 -->
@@ -244,48 +218,48 @@
 						<div class="product-item accessories">
 							<div class="product product_filter">
 								<div class="product_image">
-									<img src="/images/product_8.png" alt="">
+									<img src="/images/product_33.jpg" alt="">
 								</div>
-								<div class="favorite"></div>
+								<%--<div class="favorite"></div>--%>
 								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Blue Yeti USB Microphone Blackout Edition</a></h6>
-									<div class="product_price">$120.00</div>
+									<h6 class="product_name"><a href="single.html">비앤비 구강청결 멸균티슈 30매</a></h6>
+									<div class="product_price">4,200원</div>
 								</div>
 							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
+							<%--<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>--%>
 						</div>
 
 						<!-- Product 9 -->
 
-						<div class="product-item men">
+						<div class="product-item women">
 							<div class="product product_filter">
 								<div class="product_image">
-									<img src="/images/product_9.png" alt="">
+									<img src="/images/product_16.jpg" alt="">
 								</div>
-								<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
-								<div class="favorite favorite_left"></div>
+								<%--<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>--%>
+								<%--<div class="favorite favorite_left"></div>--%>
 								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">DYMO LabelWriter 450 Turbo Thermal Label Printer</a></h6>
-									<div class="product_price">$410.00</div>
+									<h6 class="product_name"><a href="single.html">유팡 자외선 살균소독기 - 밀키그린</a></h6>
+									<div class="product_price">45,000원</div>
 								</div>
 							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
+							<%--<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>--%>
 						</div>
 
 						<!-- Product 10 -->
 
-						<div class="product-item men">
+						<div class="product-item women">
 							<div class="product product_filter">
 								<div class="product_image">
-									<img src="/images/product_10.png" alt="">
+									<img src="/images/product_17.jpg" alt="">
 								</div>
-								<div class="favorite"></div>
+								<%--<div class="favorite"></div>--%>
 								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Pryma Headphones, Rose Gold & Grey</a></h6>
-									<div class="product_price">$180.00</div>
+									<h6 class="product_name"><a href="single.html">타프토이즈 촉감책</a></h6>
+									<div class="product_price">5,000원</div>
 								</div>
 							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
+							<%--<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>--%>
 						</div>
 					</div>
 				</div>
@@ -293,7 +267,7 @@
 		</div>
 	</div>
 
-	<!-- Deal of the week -->
+	<%--<!-- Deal of the week -->
 
 	<div class="deal_ofthe_week">
 		<div class="container">
@@ -331,11 +305,11 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>--%>
 
 	<!-- Best Sellers -->
 
-	<div class="best_sellers">
+	<%--<div class="best_sellers">
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
@@ -537,7 +511,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>--%>
 
 	<!-- Benefit -->
 
@@ -548,8 +522,8 @@
 					<div class="benefit_item d-flex flex-row align-items-center">
 						<div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
 						<div class="benefit_content">
-							<h6>free shipping</h6>
-							<p>Suffered Alteration in Some Form</p>
+							<h6>배송 서비스</h6>
+							<p>신청만 하세요 집 앞까지 배달해 드립니다</p>
 						</div>
 					</div>
 				</div>
@@ -557,8 +531,8 @@
 					<div class="benefit_item d-flex flex-row align-items-center">
 						<div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
 						<div class="benefit_content">
-							<h6>cach on delivery</h6>
-							<p>The Internet Tend To Repeat</p>
+							<h6>저렴한 가격</h6>
+							<p>금방 자라는 아이를 위한 맞춤 장난감을 저렴하게 이용해 보세요</p>
 						</div>
 					</div>
 				</div>
@@ -566,8 +540,8 @@
 					<div class="benefit_item d-flex flex-row align-items-center">
 						<div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
 						<div class="benefit_content">
-							<h6>45 days return</h6>
-							<p>Making it Look Like Readable</p>
+							<h6>손쉬운 반납</h6>
+							<p>사용 완료 후 집에서 손쉽게 반납하실 수 있어요</p>
 						</div>
 					</div>
 				</div>
@@ -575,8 +549,8 @@
 					<div class="benefit_item d-flex flex-row align-items-center">
 						<div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
 						<div class="benefit_content">
-							<h6>opening all week</h6>
-							<p>8AM - 09PM</p>
+							<h6>연중 무휴 고객센터</h6>
+							<p>궁금한 점이 있다면 언제든지 문의해주세요</p>
 						</div>
 					</div>
 				</div>
@@ -586,7 +560,7 @@
 
 	<!-- Blogs -->
 
-	<div class="blogs">
+	<%--<div class="blogs">
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
@@ -651,11 +625,11 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>--%>
 
 	<!-- Footer -->
 
-	<jsp:include page="layout/header.jsp" />
+	<jsp:include page="layout/footer.jsp" />
 
 </div>
 
