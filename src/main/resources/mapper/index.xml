@@ -6,4 +6,7 @@
     <select id="findByFCategory">
         select * from first_category where code = 1
     </select>
+    <select id="findBySecondCategoryId">
+        select * from second_category
+    </select>
 </mapper>
