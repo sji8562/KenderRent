@@ -106,6 +106,12 @@ public class ProductService {
 	public void deleteFromSale(int userId, int productId) {
 		productRepository.deleteFromSale(userId, productId);
 	}
+	public int countReview(int productId) {
+		return productRepository.countReview(productId);
+	}
+	public List<Map> showReview(int productId) {
+		return productRepository.showReview(productId);
+	}
 
 	// 무한 스크롤 관련
 //	public int searchProductCount(String keyword) {
@@ -125,4 +131,7 @@ public class ProductService {
 		return productRepository.searchMaxPrice();
 	}
 
+	public List<Product> findByCategoryId(Integer id) {
+		return productRepository.findByCategoryId(id);
+	}
 }

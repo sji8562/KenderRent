@@ -18,6 +18,14 @@
 </head>
 <body>
 <div class="super_container">
+<!-- view/layout/header 에서 보낸 카테고리 request를 하나의 jsp 파일로 response하는 방법이 있나? -->
+<!-- header에서 각 카테고리별를 ONCLICK할때 발생하는 변수값을 REQUEST값으로 보내고, 그걸 JSP에서 받아 출력할..수있나?-->
+<!-- ${categories}? 빅사이즈 인형 버튼을 클릭시 변수값 toyB 이 categories.jsp에서 그에 따른 페이지를 구성 및 출력  -->
+<!-- ${first_category.fcid} 가 1인 경우  -->
+<!--  -->
+<!--  -->
+<!--  -->
+
 
 	<!-- Header -->
 
@@ -409,7 +417,7 @@
 								</div>
 
 								<!-- Product Sorting -->
-
+								
 								<div class="product_sorting_container product_sorting_container_bottom clearfix">
 									<ul class="product_sorting">
 										<li>

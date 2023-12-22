@@ -55,16 +55,27 @@ INSERT INTO second_category
                                                  ('동화책', 6);
 
 
-insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) values (1,2,45000,"다이치 디가드토들러 ISOFIX 오가닉브라운",null,"겁나 좋음",1,1,now());
-insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) values (1,2,45000,"다이치 디가드토들러 ISOFIX 오가닉브라운",null,"겁나 좋음",2,1,now());
-insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) values (1,2,45000,"다이치 디가드토들러 ISOFIX 오가닉브라운",null,"겁나 좋음",3,1,now());
-insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) values (1,2,45000,"다이치 디가드토들러 ISOFIX 오가닉브라운",null,"겁나 좋음",1,1,now());
-insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) values (1,2,45000,"다이치 디가드토들러 ISOFIX 오가닉브라운",null,"겁나 좋음",1,1,now());
-insert into product (first_category_id,second_category_id,price,NAME,pic_url,content,status,grade,created_at) values (1,2,55000,"다이치 퍼스트세븐 터치픽스 ISOFIX 어반그레이",null,"겁나 좋음",1,1,now());
-insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) values (1,2,55000,"다이치 퍼스트세븐 터치픽스 ISOFIX 어반그레이",null,"겁나 좋음",2,1,now());
-insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) values (1,2,55000,"다이치 퍼스트세븐 터치픽스 ISOFIX 어반그레이",null,"겁나 좋음",3,1,now());
-insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) values (1,2,55000,"다이치 퍼스트세븐 터치픽스 ISOFIX 어반그레이",null,"겁나 좋음",1,1,now());
-insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) values (1,2,55000,"다이치 퍼스트세븐 터치픽스 ISOFIX 어반그레이",null,"겁나 좋음",1,1,now());insert into cart(user_id,product_id,created_at) values (2,1,now());
+insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) 
+values (1,2,45000,"다이치 디가드토들러 ISOFIX 오가닉브라운",null,"겁나 좋음",1,1,now());
+insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) 
+values (1,2,45000,"다이치 디가드토들러 ISOFIX 오가닉브라운",null,"겁나 좋음",2,1,now());
+insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) 
+values (1,2,45000,"다이치 디가드토들러 ISOFIX 오가닉브라운",null,"겁나 좋음",3,1,now());
+insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) 
+values (1,2,45000,"다이치 디가드토들러 ISOFIX 오가닉브라운",null,"겁나 좋음",1,1,now());
+insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) 
+values (1,2,45000,"다이치 디가드토들러 ISOFIX 오가닉브라운",null,"겁나 좋음",1,1,now());
+insert into product (first_category_id,second_category_id,price,NAME,pic_url,content,status,grade,created_at) 
+values (1,2,55000,"다이치 퍼스트세븐 터치픽스 ISOFIX 어반그레이",null,"겁나 좋음",1,1,now());
+insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) 
+values (1,2,55000,"다이치 퍼스트세븐 터치픽스 ISOFIX 어반그레이",null,"겁나 좋음",2,1,now());
+insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) 
+values (1,2,55000,"다이치 퍼스트세븐 터치픽스 ISOFIX 어반그레이",null,"겁나 좋음",3,1,now());
+insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) 
+values (1,2,55000,"다이치 퍼스트세븐 터치픽스 ISOFIX 어반그레이",null,"겁나 좋음",1,1,now());
+insert into product (first_category_id,second_category_id,price,name,pic_url,content,status,grade,created_at) 
+values (1,2,55000,"다이치 퍼스트세븐 터치픽스 ISOFIX 어반그레이",null,"겁나 좋음",1,1,now());
+insert into cart(user_id,product_id,created_at) values (2,1,now());
 insert into cart(user_id,product_id,created_at) values (2,4,now());
 insert into cart(user_id,product_id,created_at) values (2,5,now());
 insert into cart(user_id,product_id,created_at) values (3,1,now());
@@ -74,10 +85,6 @@ insert into cart(user_id,product_id,created_at) values (5,10,now());
 
 insert into rent(user_id,product_id,start_day,end_day,created_at) values (2,2,"2023-12-01","2023-12-07","2023-11-29");
 insert into rent(user_id,product_id,start_day,end_day,created_at) values (3,7,"2023-12-01","2023-12-07","2023-11-29");
-
-
-
-
 
 
 

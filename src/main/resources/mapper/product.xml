@@ -140,6 +140,18 @@
 		and product_id = #{productId}
 		and tid is null
 	</delete>
+	
+	<select id="countReview" resultType="int">
+		select count(*) from review
+		where product_id = #{produtId}
+	</select>
+	
+	<select id="showReview" resultType="map">
+		select r.*, u.user_name as user_name from review as r
+		join user as u
+		on r.user_id = u.id
+		where product_id = #{productId}
+	</select>
 
 	
 	
@@ -162,6 +174,9 @@
 	</select>
 	<select id="searchMaxPrice" resultType="int">
 		select max(price) as MAX from product
+	</select>
+	<select id="findByCategoryId">
+		select * from product where first_category_id = #{id}
 	</select>
 <!-- 	검색기능 관련 끝 -->
 
