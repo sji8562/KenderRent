@@ -32,7 +32,8 @@
             <div class="row">
                 <div class="col-lg-12 text-right">
                     <div class="logo_container">
-                        <img src="/images/Logo.png" width="100" height="100">
+                        <a href="/">
+                        <img src="/images/Logo.png" width="100" height="100"></a>
                     </div>
 
                     <nav class="navbar">
@@ -41,7 +42,7 @@
                                 <c:when test="${firstCategories != null}">
                                     <c:forEach var="firstCategory" items="${firstCategories}">
                                         <li class="nav-item dropdown">
-                                            <a href="/product/categories"
+                                            <a href="/product/${firstCategory.id}/categories"
                                                class="nav-link dropdown-toggle">${firstCategory.firstCategoryName}</a>
                                             <div class="dropdown-menu m-0">
                                                 <c:choose>
@@ -51,8 +52,8 @@
                                                                 <c:when test="${secondCategory.firstCategoryId == firstCategory.id}">
                                                                     <c:forEach var="nestedItem"
                                                                                items="${secondCategory.secondCategoryName}">
-
-                                                                        <a href="price.html"
+<%--                                                                        /${firstCategories.id}/${secondCategory.id}--%>
+                                                                        <a href="/product/${firstCategory.id}/categories/${secondCategory.id}"
                                                                            class="dropdown-item">${nestedItem}</a>
 
                                                                     </c:forEach>
@@ -68,22 +69,7 @@
                             </c:choose>
 
 
-                            <%--							<li class="nav-item dropdown"><a href="/product/categories" class="nav-link dropdown-toggle">스몰사이즈 장난감</a>--%>
-                            <%--								<div class="dropdown-menu m-0">--%>
-                            <%--									<a href="price.html" class="dropdown-item">3~6개월</a> <a href="feature.html" class="dropdown-item">6~12개월</a> <a href="team.html" class="dropdown-item">12~24개월</a> <a href="testimonial.html" class="dropdown-item">24개월~</a>--%>
-                            <%--								</div></li>--%>
-                            <%--							<li class="nav-item dropdown"><a href="/product/categories" class="nav-link dropdown-toggle">유아가전제품</a>--%>
-                            <%--								<div class="dropdown-menu m-0">--%>
-                            <%--									<a href="price.html" class="dropdown-item">살균기</a> <a href="feature.html" class="dropdown-item">기타</a>--%>
-                            <%--								</div></li>--%>
-                            <%--							<li class="nav-item dropdown"><a href="/product/categories" class="nav-link dropdown-toggle">산모용품</a>--%>
-                            <%--								<div class="dropdown-menu m-0">--%>
-                            <%--									<a href="price.html" class="dropdown-item">유축기</a> <a href="feature.html" class="dropdown-item">마사지기</a>--%>
-                            <%--								</div></li>--%>
-                            <%--							<li class="nav-item dropdown"><a href="/product/categories" class="nav-link dropdown-toggle">책</a>--%>
-                            <%--								<div class="dropdown-menu m-0">--%>
-                            <%--									<a href="price.html" class="dropdown-item">촉감책</a> <a href="feature.html" class="dropdown-item">초점잭</a> <a href="feature.html" class="dropdown-item">그림책</a> <a href="feature.html" class="dropdown-item">동화책</a>--%>
-                            <%--								</div></li>--%>
+
                             <li class="nav-item dropdown"><a href="/customer/contact" class="nav-link dropdown-toggle">고객센터</a>
                                 <div class="dropdown-menu m-0">
                                     <a href="/customer/contact?type=1" class="dropdown-item">공지사항</a> <a
