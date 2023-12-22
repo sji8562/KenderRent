@@ -80,20 +80,17 @@
 
 		<div class="row">
 
-			<div class="col-lg-6 contact_col">
+			<div class="col-lg-6 contact_col mt-5">
 				<div class="contact_contents">
+					<p>부산 부산진구 중앙대로 749 4층</p>
+					<br/>
 					<h3>Contact Us</h3>
-					<p>There are many ways to contact us. You may drop us a line, give us a call or send an email, choose what suits you the most.</p>
 					<div>
-						<p>(800) 686-6688</p>
-						<p>info.deercreative@gmail.com</p>
+						<p>연락처 | (051) 912-1000</p>
+						<p>이메일 | happyrn18@gmail.com</p>
 					</div>
 					<div>
-						<p>mm</p>
-					</div>
-					<div>
-						<p>Open hours: 8.00-18.00 Mon-Fri</p>
-						<p>Sunday: Closed</p>
+						<p>영업 시간 | 9:00-18:00 월-금</p>
 					</div>
 				</div>
 

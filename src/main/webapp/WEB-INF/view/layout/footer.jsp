@@ -8,7 +8,7 @@
 						<ul class="footer_nav">
 							<%-- 회사소개 --%>
 							<li><a href="/introduce/introduction">Company Introduction</a></li>
-							<%-- 이용수칙 --%>
+							<%-- 이용 안내 --%>
 							<li><a href="/introduce/terms-of-use">Terms of Use</a></li>
 							<%-- 소독 과정 --%>
 							<li><a href="/introduce/sanitization-process">Sanitization Process</a></li>
