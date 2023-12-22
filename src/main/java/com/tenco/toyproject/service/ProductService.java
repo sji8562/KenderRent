@@ -6,11 +6,11 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.tenco.toyproject.repository.entity.Sale;
 import com.tenco.toyproject.repository.entity.PayBack;
 import com.tenco.toyproject.repository.entity.Product;
+import com.tenco.toyproject.repository.entity.Rent;
 import com.tenco.toyproject.repository.interfaces.CustomerRepository;
 import com.tenco.toyproject.repository.interfaces.ProductRepository;
 
@@ -66,15 +66,20 @@ public class ProductService {
 	public List<Map> showCustomerOrderList(int userId) {
 		return productRepository.showCustomerOrderList(userId);
 	}
-	public void applyForRefund(int productId, int userId) {
+	public void applyForRefund(int productId, int userId, int orderId) {
 		PayBack payback = new PayBack();
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		Product product = findById(productId);
+		Sale sale = findTid(orderId);
+		int status = 1;
+		if (sale.getStatus() < 4) {
+			status = 2;
+		}
 		payback.setProductId(productId);
 		payback.setCreateAt(timestamp);
 		payback.setUserId(userId);
 		payback.setMoney(product.getPrice().intValue());
-		payback.setStatus(1);
+		payback.setStatus(status);
 		productRepository.applyForRefund(payback);
 	}
 	public Sale findTid(int orderId) {
@@ -111,6 +116,12 @@ public class ProductService {
 	}
 	public List<Map> showReview(int productId) {
 		return productRepository.showReview(productId);
+	}
+	public List<Map> showRentList(int userId) {
+		return productRepository.showRentList(userId);
+	}
+	public Rent findRentList(int id) {
+		return productRepository.findRentList(id);
 	}
 
 	// 무한 스크롤 관련

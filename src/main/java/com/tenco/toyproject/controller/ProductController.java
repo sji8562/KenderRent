@@ -233,7 +233,7 @@ public class ProductController {
 		int cancelAmount = product.getPrice().intValue();
 		KakaoPayCancelResponse cancelResponse = kakaoPayService.kakaoPayCancel(userId, cancelAmount, 
 				sale.getTid());
-		productService.applyForRefund(product.getId(), userId);
+		productService.applyForRefund(product.getId(), userId, orderId);
 		productService.deleteRefundFromSale(orderId);
 		List<Map> orderList = productService.showCustomerOrderList(userId);
 		model.addAttribute("orderList", orderList);

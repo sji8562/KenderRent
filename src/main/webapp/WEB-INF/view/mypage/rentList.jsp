@@ -41,7 +41,7 @@
 								aria-hidden="true"></i> <a href="/mypage/main"
 								style="color: black">마이페이지</a></li>
 							<li class="active"><i class="fa fa-angle-right"
-								aria-hidden="true"></i>주문 내역</li>
+								aria-hidden="true"></i>대여 내역</li>
 						</ul>
 					</div>
 				</div>
@@ -57,11 +57,11 @@
 							<br>
 							<ul class="sidebar_categories">
 								<li><a href="/mypage/main">MY 홈</a></li>
-								<li class="active"><a href="/mypage/order-list"><span>
-											<i class="fa fa-angle-double-right" aria-hidden="true"></i>
-									</span>주문 내역</a></li>
+								<li><a href="/mypage/order-list">주문 내역</a></li>
 								<li><a href="/mypage/cancel-list">취소 내역</a></li>
-								<li><a href="/mypage/rent-list">대여 내역</a></li>
+								<li class="active"><a href="/mypage/rent-list"><i
+										class="fa fa-angle-double-right" aria-hidden="true"></i><span>
+									</span>대여 내역</a></li>
 								<li><a href="/mypage/wish-list">위시리스트</a></li>
 								<li><a href="#">문의 내역</a></li>
 								<li><a href="#">회원정보 변경</a></li>
@@ -72,8 +72,9 @@
 
 				<div class="col-lg-9">
 					<div class="mypage_lately_info_cont">
-						<div class="box_title" style="margin-bottom: 10px; border-bottom: none; padding-left: 40px"> 
-						주문 내역</div>
+						<div class="box_title"
+							style="margin-bottom: 10px; border-bottom: none; padding-left: 40px">
+							대여 내역</div>
 
 						<!-- 주문상품 리스트 -->
 						<div id="container"
@@ -81,9 +82,9 @@
 							<div id="content"
 								style="display: relative; justify-content: center;">
 								<c:choose>
-									<c:when test="${empty orderList}">
+									<c:when test="${empty rent}">
 										<div style="text-align: center;">
-											<p style="font-size: 18px">주문하신 상품이 없습니다.</p>
+											<p style="font-size: 18px">대여하신 상품이 없습니다.</p>
 											<a href="/">
 												<button class="continue_button" style="align-items: center;">쇼핑하러
 													가기 ></button>
@@ -93,14 +94,14 @@
 									<c:otherwise>
 										<table>
 											<tbody>
-												<c:forEach var="orderList" items="${orderList}">
+												<c:forEach var="rent" items="${rent}">
 													<tr>
 														<td class="vertical-center">
 															<div class="box_content">
 																<div class="box_title" style="margin-bottom: 10px">
 																	배송 완료
 																	<div style="float: right; padding-right: 5px;">
-																		<a href="/mypage/order-list/detail?id=${orderList.id}"
+																		<a href="/mypage/rent-list/detail?id=${rent.id}"
 																			class="text_product_name"
 																			style="font-size: 13px; color: gray;"> 주문 상세 보기 >
 																		</a>
@@ -109,21 +110,27 @@
 
 																<div class="box_goods">
 																	<div class="box_picture">
-																		<a href="/product/detail/${orderList.product_id}"> 
-																			<img src=${orderList.pic_url } width="100" height="100">
+																		<a href="/product/rent/${rent.product_id}"> <img
+																			src=${rent.pic_url } width="100" height="100">
 																		</a>
 																	</div>
 																	<div class="box_product_info">
 																		<form action="/cart/delete?id=${product.id }"
 																			method="post">
-																			<a
-																				href="/mypage/order-list/detail?id=${orderList.id}"
-																				class="text_product_name"> ${orderList.name} </a>
+																			<a href="/mypage/order-list/rent?id=${rent.id}"
+																				class="text_product_name"> ${rent.name} </a>
 																		</form>
 																		<div></div>
 																		<span class="text_product_price"> <fmt:formatNumber
-																				value="${orderList.price}" pattern="#,###" />원
+																				value="${rent.price}" pattern="#,###" />원
 																		</span>
+																		<p>
+																			대여 기간 :
+																			<fmt:formatDate value="${rent.start_day}"
+																				pattern="yyyy.MM.dd" var="formattedStartDay" />${formattedStartDay}
+																			~
+																			<fmt:formatDate value="${rent.end_day}"
+																				pattern="yyyy.MM.dd" var="formattedEndDay" />${formattedEndDay}</p>
 																	</div>
 																</div>
 																<div
@@ -131,14 +138,36 @@
 																	<form method="post"
 																		action="/product/order/kakao-pay/cancel"
 																		class="box_button" style="margin-right: 20px">
-																		<input type="hidden" name="orderId"
-																			value="${orderList.id}" />
-																		<button type="submit"
-																			onclick="alert('환불이 접수되었습니다.');"
-																			style="background: none; border: none;">환불
-																			신청</button>
+																		<input type="hidden" name="orderId" value="${rent.id}" />
+																		<button type="button" onclick="location.href='/customer/write?type=productInquiry'"
+																			style="border: none; background: none; border: none;">
+																			반납 신청</button>
 																	</form>
 																	<button type="submit" class="box_button">배송조회</button>
+																</div>
+																<div class="add_review">
+																	<form id="review_form" action="post">
+																		<div>
+																			<h1 style="font-weight: bold; float: left">리뷰작성</h1>
+																			<ul class="user_star_rating">
+																				<li><i class="fa fa-star" aria-hidden="true" onclick="setRating(1)"></i></li>
+																				<li><i class="fa fa-star" aria-hidden="true" onclick="setRating(2)"></i></li>
+																				<li><i class="fa fa-star" aria-hidden="true" onclick="setRating(3)"></i></li>
+																				<li><i class="fa fa-star" aria-hidden="true" onclick="setRating(4)"></i></li>
+																				<li><i class="fa fa-star" aria-hidden="true" onclick="setRating(5)"></i></li>
+																			</ul>
+																		</div>
+																		<div>
+																			<textarea id="review_message" class="input_review"
+																				name="message" placeholder="Your Review" rows="4"
+																				required data-error="Please, leave us a review."></textarea>
+																		</div>
+																		<div class="text-left text-sm-right">
+																			<button id="review_submit" type="submit"
+																				class="red_button review_submit_btn trans_300"
+																				value="Submit">작성 완료</button>
+																		</div>
+																	</form>
 																</div>
 															</div>
 														</td>
@@ -169,5 +198,20 @@
 	<script src="/js/dropdown.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+    function setRating(clickedIndex) {
+        var starElements = document.querySelectorAll('.user_star_rating i');
+
+        for (var i = 0; i < starElements.length; i++) {
+            if (i < clickedIndex) {
+                starElements[i].classList.remove('fa-star-o');
+                starElements[i].classList.add('fa-star');
+            } else {
+                starElements[i].classList.remove('fa-star');
+                starElements[i].classList.add('fa-star-o');
+            }
+        }
+    }
+</script>
 </body>
 </html>

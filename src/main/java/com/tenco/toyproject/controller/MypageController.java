@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tenco.toyproject.repository.entity.Product;
+import com.tenco.toyproject.repository.entity.Rent;
 import com.tenco.toyproject.repository.entity.Sale;
 import com.tenco.toyproject.repository.entity.User;
 
@@ -155,6 +156,26 @@ public class MypageController {
 		int productId = map.get("id");
 		productService.deleteWishList(userId, productId);
 		return "redirect:/mypage/wish-list";
+	}
+	
+	@GetMapping("/rent-list")
+	public String rentList(Model model) {
+		User principal = (User)session.getAttribute("principal");
+		List<Map> rent = productService.showRentList(principal.getId());
+		model.addAttribute("rent", rent);
+		return "mypage/rentList";
+	}
+	
+	@GetMapping("/rent-list/detail")
+	public String rentListDetailInfo(Model model, @RequestParam("id") int orderId) {
+		User principal = (User) session.getAttribute("principal");
+		Rent rent = productService.findRentList(orderId);
+		Product product = productService.findById(rent.getProductId());
+		User userInfo = userService.findById(principal.getId());
+		model.addAttribute("rent", rent);
+		model.addAttribute("product", product);
+		model.addAttribute("userInfo", userInfo);
+		return "mypage/rentListDetailInfo";
 	}
 
 }

@@ -47,9 +47,9 @@
 		<div class="row">
 			<div class="col-lg-4"></div>
 			<div class="col-lg-4 get_in_touch_col">
-				<div class="row">
-					<div class="logo_container">
-						<a href="/">Kender<span>Rent</span></a>
+				<div class="row" style="padding: 30px;">
+					<div class="logo_container" style="text-align: center;">
+						<a href="/"><img src="/images/Logo2.png" style="max-width: 80%; height: auto;"></a>
 						<br><br><br><br>
 					</div>
 				</div>

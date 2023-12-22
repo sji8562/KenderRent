@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import com.tenco.toyproject.repository.entity.PayBack;
 import com.tenco.toyproject.repository.entity.Sale;
 import com.tenco.toyproject.repository.entity.Product;
+import com.tenco.toyproject.repository.entity.Rent;
 
 @Mapper
 public interface ProductRepository {
@@ -37,6 +38,8 @@ public interface ProductRepository {
 	public int deleteFromSale(@Param("userId") int userId, @Param("productId") int productId);
 	public int countReview(int productId);
 	public List<Map> showReview(int productId);
+	public List<Map> showRentList(int userId);
+	public Rent findRentList(int id);
 
 
 	
