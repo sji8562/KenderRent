@@ -6,17 +6,17 @@
 
     <!-- 회사 소개 조회 -->
     <select id="getCompanyInfo" resultType="com.tenco.toyproject.repository.entity.Content">
-        select * FROM information WHERE code = 0
+        select * FROM information WHERE code = 1
     </select>
 
     <!-- 이용 수칙 조회 -->
     <select id="getRulesOfUse" resultType="com.tenco.toyproject.repository.entity.Content">
-        select * FROM information WHERE code = 1
+        select * FROM information WHERE code = 2
     </select>
 
     <!-- 소독 과정 조회 -->
     <select id="getDisinfectionProcess" resultType="com.tenco.toyproject.repository.entity.Content">
-        select * FROM information WHERE code = 2
+        select * FROM information WHERE code = 3
     </select>
 
     <!-- 최초 insert -->

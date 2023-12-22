@@ -54,7 +54,7 @@
                                                 <i class="mdi mdi-map-marker"></i>
                                                 <h5 class="card-title">오시는 길</h5>
                                             </div>
-                                            <a href="#" class="btn btn-primary">등록/수정</a>
+                                            <a href="#" class="btn btn-primary" onclick="alert('구현 예정입니다')">등록/수정</a>
                                         </div>
                                     </div>
                                 </div>
