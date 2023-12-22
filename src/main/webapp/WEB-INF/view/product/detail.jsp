@@ -124,6 +124,13 @@ function addToCartConfirmation() {
     }
 }
 </script>
+	<style>
+		/* CKEditor 테두리 없애기 */
+		.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+			border: none;
+			border-radius: 0; /* 선택적으로 border-radius를 0으로 설정할 수 있습니다. */
+		}
+	</style>
 </head>
 <body>
 	<div class="super_container">
@@ -206,8 +213,8 @@ function addToCartConfirmation() {
 									<ul>
 										<li><img src="/images/single_1_thumb.jpg" alt=""
 											data-image="/images/single_1.jpg"></li>
-										<li class="active"><img src="/images/single_2_thumb.jpg"
-											alt="" data-image="/images/single_2.jpg"></li>
+										<li class="active"><img src=${product.picUrl }
+											alt="" data-image=${product.picUrl }></li>
 										<li><img src="/images/single_3_thumb.jpg" alt=""
 											data-image="/images/single_3.jpg"></li>
 									</ul>
@@ -216,7 +223,7 @@ function addToCartConfirmation() {
 							<div class="col-lg-9 image_col order-lg-2 order-1">
 								<div class="single_product_image">
 									<div class="single_product_image_background"
-										style="background-image: url(/images/single_2.jpg)"></div>
+										style="background-image: url(${product.picUrl })"></div>
 								</div>
 							</div>
 						</div>
@@ -225,9 +232,9 @@ function addToCartConfirmation() {
 				<div class="col-lg-5">
 					<div class="product_details">
 						<div class="product_details_title">
-							<h2>상품이름 : ${product.name}</h2>
+							<h3>${product.name}</h3>
 							<!-- 상세 정보 표시 -->
-							<p>상세정보 : ${product.content}</p>
+							<%--<p style="color: gray">${product.content}</p>--%>
 							<!--  -->
 							<table>
 								<tbody>
@@ -238,9 +245,6 @@ function addToCartConfirmation() {
 										<th>등급</th>
 										<td>${product.grade}</td>
 									</tr>
-									<tr>
-										<th>수량</th>
-										<td>개</td>
 								</tbody>
 							</table>
 						</div>
@@ -310,39 +314,16 @@ function addToCartConfirmation() {
 
 					<div id="tab_1" class="tab_container active">
 						<div class="row">
-							<div class="col-lg-5 desc_col">
+							<div class="col-lg-12 desc_col">
 								<div class="tab_title">
 									<h4>상품상세정보</h4>
 								</div>
-								<div class="tab_text_block">
-									<h2>Pocket cotton sweatshirt</h2>
-									<p>Nam tempus turpis at metus scelerisque placerat nulla
-										deumantos solicitud felis. Pellentesque diam dolor, elementum
-										etos lobortis des mollis ut...</p>
+
+								<%-- ckeditor --%>
+								<div class="container">
+									<textarea id="editor" name="content">${product.content}</textarea>
 								</div>
-								<div class="tab_image">
-									<img src="/images/desc_1.jpg" alt="">
-								</div>
-								<div class="tab_text_block">
-									<h2>Pocket cotton sweatshirt</h2>
-									<p>Nam tempus turpis at metus scelerisque placerat nulla
-										deumantos solicitud felis. Pellentesque diam dolor, elementum
-										etos lobortis des mollis ut...</p>
-								</div>
-							</div>
-							<div class="col-lg-5 offset-lg-2 desc_col">
-								<div class="tab_image">
-									<img src="/images/desc_2.jpg" alt="">
-								</div>
-								<div class="tab_text_block">
-									<h2>Pocket cotton sweatshirt</h2>
-									<p>Nam tempus turpis at metus scelerisque placerat nulla
-										deumantos solicitud felis. Pellentesque diam dolor, elementum
-										etos lobortis des mollis ut...</p>
-								</div>
-								<div class="tab_image desc_last">
-									<img src="/images/desc_3.jpg" alt="">
-								</div>
+
 							</div>
 						</div>
 					</div>
@@ -352,11 +333,11 @@ function addToCartConfirmation() {
 					<div id="tab_2" class="tab_container">
 						<div class="row">
 
-							<!-- User Reviews -->
+							<!-- 상품후기 -->
 
-							<div class="col-lg-6 reviews_col">
+							<div class="reviews_col">
 								<div class="tab_title reviews_title">
-									<h4>Reviews (2)</h4>
+									<h4>상품후기 (2)</h4>
 								</div>
 
 								<!-- User Review -->
@@ -384,8 +365,7 @@ function addToCartConfirmation() {
 									</div>
 								</div>
 
-								<!-- User Review -->
-
+								
 								<div
 									class="user_review_container d-flex flex-column flex-sm-row">
 									<div class="user">
@@ -409,45 +389,6 @@ function addToCartConfirmation() {
 									</div>
 								</div>
 							</div>
-
-							<!-- Add Review -->
-
-							<div class="col-lg-6 add_review_col">
-
-								<div class="add_review">
-									<form id="review_form" action="post">
-										<div>
-											<h1>Add Review</h1>
-											<input id="review_name" class="form_input input_name"
-												type="text" name="name" placeholder="Name*"
-												required="required" data-error="Name is required.">
-											<input id="review_email" class="form_input input_email"
-												type="email" name="email" placeholder="Email*"
-												required="required" data-error="Valid email is required.">
-										</div>
-										<div>
-											<h1>Your Rating:</h1>
-											<ul class="user_star_rating">
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-											</ul>
-											<textarea id="review_message" class="input_review"
-												name="message" placeholder="Your Review" rows="4" required
-												data-error="Please, leave us a review."></textarea>
-										</div>
-										<div class="text-left text-sm-right">
-											<button id="review_submit" type="submit"
-												class="red_button review_submit_btn trans_300"
-												value="Submit">submit</button>
-										</div>
-									</form>
-								</div>
-
-							</div>
-
 						</div>
 					</div>
 
@@ -460,10 +401,9 @@ function addToCartConfirmation() {
 									<h4>상품문의</h4>
 									<br>
 									<div class="gray_button write_button">
-										<a href="customer/write?">글쓰기</a>
+										<a href="/customer/write">글쓰기</a>
 									</div>
 								</div>
-
 								<div class="row align-items-center">
 									<div class="col text-center">
 										<table class="table">
@@ -528,127 +468,46 @@ function addToCartConfirmation() {
 			<div class="row benefit_row">
 				<div class="col-lg-3 benefit_col">
 					<div class="benefit_item d-flex flex-row align-items-center">
-						<div class="benefit_icon">
-							<i class="fa fa-truck" aria-hidden="true"></i>
-						</div>
+						<div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
 						<div class="benefit_content">
-							<h6>free shipping</h6>
-							<p>Suffered Alteration in Some Form</p>
+							<h6>배송 서비스</h6>
+							<p>신청만 하세요 집 앞까지 배달해 드립니다</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-3 benefit_col">
 					<div class="benefit_item d-flex flex-row align-items-center">
-						<div class="benefit_icon">
-							<i class="fa fa-money" aria-hidden="true"></i>
-						</div>
+						<div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
 						<div class="benefit_content">
-							<h6>cach on delivery</h6>
-							<p>The Internet Tend To Repeat</p>
+							<h6>저렴한 가격</h6>
+							<p>금방 자라는 아이를 위한 맞춤 장난감을 저렴하게 이용해 보세요</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-3 benefit_col">
 					<div class="benefit_item d-flex flex-row align-items-center">
-						<div class="benefit_icon">
-							<i class="fa fa-undo" aria-hidden="true"></i>
-						</div>
+						<div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
 						<div class="benefit_content">
-							<h6>45 days return</h6>
-							<p>Making it Look Like Readable</p>
+							<h6>손쉬운 반납</h6>
+							<p>사용 완료 후 집에서 손쉽게 반납하실 수 있어요</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-3 benefit_col">
 					<div class="benefit_item d-flex flex-row align-items-center">
-						<div class="benefit_icon">
-							<i class="fa fa-clock-o" aria-hidden="true"></i>
-						</div>
+						<div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
 						<div class="benefit_content">
-							<h6>opening all week</h6>
-							<p>8AM - 09PM</p>
+							<h6>연중 무휴 고객센터</h6>
+							<p>궁금한 점이 있다면 언제든지 문의해주세요</p>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Newsletter -->
-
-	<div class="newsletter">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div
-						class="newsletter_text d-flex flex-column justify-content-center align-items-lg-start align-items-md-center text-center">
-						<h4>Newsletter</h4>
-						<p>Subscribe to our newsletter and get 20% off your first
-							purchase</p>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<form action="post">
-						<div
-							class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-lg-end justify-content-center">
-							<input id="newsletter_email" type="email"
-								placeholder="Your email" required="required"
-								data-error="Valid email is required.">
-							<button id="newsletter_submit" type="submit"
-								class="newsletter_submit_btn trans_300" value="Submit">subscribe</button>
-						</div>
-					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- Footer -->
-
-	<footer class="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div
-						class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
-						<ul class="footer_nav">
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">FAQs</a></li>
-							<li><a href="contact.html">Contact us</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div
-						class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
-						<ul>
-							<li><a href="#"><i class="fa fa-facebook"
-									aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"
-									aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-instagram"
-									aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-skype"
-									aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-pinterest"
-									aria-hidden="true"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="footer_nav_container">
-						<div class="cr">
-							©2018 All Rights Reserverd. This template is made with <i
-								class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#">Colorlib</a>
-							&amp; distributed by <a href="https://themewagon.com">ThemeWagon</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
+	<jsp:include page="../layout/footer.jsp" />
 
 	</div>
 
@@ -670,6 +529,20 @@ function addToCartConfirmation() {
 		}
 		
 	</script>
-
+	<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+	<script>
+		ClassicEditor
+				.create(document.querySelector('#editor'))
+				.then(editor => {
+					console.log("------------------------------", editor);
+					const toolbarElement = editor.ui.view.toolbar.element;
+					toolbarElement.style.display = 'none';
+					editor.enableReadOnlyMode( 'editor' );
+					console.log('Editor was initialized', editor);
+				})
+				.catch(error => {
+					console.error(error);
+				});
+	</script>
 </body>
 </html>

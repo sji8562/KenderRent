@@ -2,61 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper
-	namespace="com.tenco.toyproject.repository.interfaces.UserRepository">
-
-	
-
-	<!-- -->
-	<update id="updateById">
-		update user set email = #{email},
-		password =
-		#{password},
-		userName = #{userName}
-		where id = #{id}
-	</update>
-
-	<!-- 회원 삭제 -->
-	<delete id="deleteById">
-		delete from user_tb where id = #{id}
-	</delete>
-
-	<!-- 로그인 입력 정보로 정보 확인 -->
-	<select id="findByEmailAndPassword"
-		resultType="com.tenco.toyproject.repository.entity.User">
-		select *
-		from user
-		where email = #{email} and
-		password = #{password}
-	</select>
-
+<mapper namespace="com.tenco.toyproject.repository.interfaces.UserRepository">
 	<!-- 사용자 단일 조회 -->
 	<select id="findById"
 		resultType="com.tenco.toyproject.repository.entity.User">
 		select *
 		from user
 		where id = #{id}
-	</select>
-
-	<!-- 사용자 전체 조회 -->
-	<select id="findAll"
-		resultType="com.tenco.toyproject.repository.entity.User">
-		select *
-		from user
-	</select>
-
-	<!-- Email으로 사용자 조회 -->
-	<select id="findByEmail"
-		resultType="com.tenco.toyproject.repository.entity.User">
-		select *
-		from user
-		where email = #{email}
-	</select>
-	
-	<select id="findEmailByUserName" resultType="com.tenco.toyproject.repository.entity.User">
-		select email
-		from user
-		where user_name = #{userName}
 	</select>
 <!-- 	수정시작 -->
 
@@ -70,16 +22,22 @@
 		from user
 		where email = #{email}
 	</select>
-	<!-- 유저 회원가입 -->
 	<insert id="insertUser">
 		insert into user
 		(email, user_name, password,
-		post_number, address, address_detail, phone_number, level, created_at)
+		post_number, address, address_detail, phone_number, level, created_at, sns)
 		values
 		(#{email}, #{userName}, #{password}, #{postNumber}, #{address}, #{addressDetail},
-		#{phoneNumber}, 1, now())
+		#{phoneNumber}, 1, now(), #{sns})
 	</insert>
-	<select id="selectUserName" resultType="com.tenco.toyproject.repository.entity.User">
-		select * from user where user_name = #{userName}
+	<select id="selectUserEmail" resultType="com.tenco.toyproject.repository.entity.User">
+		select *
+		from user
+		where email = #{email}
+	</select>
+	<select id="selectUserSns" resultType="com.tenco.toyproject.repository.entity.User">
+		select *
+		from user
+		where sns = #{sns}
 	</select>
 </mapper>

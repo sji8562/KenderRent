@@ -23,7 +23,7 @@ public class User {
     private String addressDetail;
     private int level; // 1 : 유저 / 2 : 관리자
     private Timestamp createdAt; // 가입일시
-
+    private String sns;
 
     @Builder
     public User(int id, String email, String password, String userName, String phoneNumber, int level,

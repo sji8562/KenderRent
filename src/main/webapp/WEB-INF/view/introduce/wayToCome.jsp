@@ -34,10 +34,10 @@
 				<!-- Breadcrumbs -->
 
 				<div class="breadcrumbs d-flex flex-row align-items-center">
-					<ul>
-						<li><a href="/">Home</a></li>
-						<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>
-					</ul>
+					<%--<ul>--%>
+						<h4>오시는 길</h4>
+						<%--<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>--%>
+					<%--</ul>--%>
 				</div>
 
 			</div>
@@ -80,26 +80,23 @@
 
 		<div class="row">
 
-			<div class="col-lg-6 contact_col">
+			<div class="col-lg-6 contact_col mt-5">
 				<div class="contact_contents">
-					<h1>Contact Us</h1>
-					<p>There are many ways to contact us. You may drop us a line, give us a call or send an email, choose what suits you the most.</p>
+					<p>부산 부산진구 중앙대로 749 4층</p>
+					<br/>
+					<h3>Contact Us</h3>
 					<div>
-						<p>(800) 686-6688</p>
-						<p>info.deercreative@gmail.com</p>
+						<p>연락처 | (051) 912-1000</p>
+						<p>이메일 | happyrn18@gmail.com</p>
 					</div>
 					<div>
-						<p>mm</p>
-					</div>
-					<div>
-						<p>Open hours: 8.00-18.00 Mon-Fri</p>
-						<p>Sunday: Closed</p>
+						<p>영업 시간 | 9:00-18:00 월-금</p>
 					</div>
 				</div>
 
 				<!-- Follow Us -->
 
-				<div class="follow_us_contents">
+				<%--<div class="follow_us_contents">
 					<h1>Follow Us</h1>
 					<ul class="social d-flex flex-row">
 						<li><a href="#" style="background-color: #3a61c9"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -107,11 +104,11 @@
 						<li><a href="#" style="background-color: #fb4343"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
 						<li><a href="#" style="background-color: #8f6247"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 					</ul>
-				</div>
+				</div>--%>
 
 			</div>
 
-			<div class="col-lg-6 get_in_touch_col">
+			<%--<div class="col-lg-6 get_in_touch_col">
 				<div class="get_in_touch_contents">
 					<h1>Get In Touch With Us!</h1>
 					<p>Fill out the form below to recieve a free and confidential.</p>
@@ -127,14 +124,14 @@
 						</div>
 					</form>
 				</div>
-			</div>
+			</div>--%>
 
 		</div>
 	</div>
 
 	<!-- Newsletter -->
 
-	<div class="newsletter">
+	<%--<div class="newsletter">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6">
@@ -153,7 +150,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>--%>
 
 	<jsp:include page="../layout/footer.jsp" />
 	</div>

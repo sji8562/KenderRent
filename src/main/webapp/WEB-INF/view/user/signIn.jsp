@@ -17,6 +17,7 @@
 <link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
+<link rel="stylesheet" type="text/css" href="/css/login.css">
 </head>
 <body>
 <div class="super_container">
@@ -59,12 +60,29 @@
 							<input id="password" name="password" class="form_input input_website input_ph" type="password"  placeholder="Password" required="required" data-error="비밀번호를 입력해주세요">
 						</div>
 						<div>
-							<button  type="submit" class="red_button message_submit_btn trans_300" value="Submit">로그인</button>
-							<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=0a29e10b57cb7259eec5a50bdced4aa7&redirect_uri=http://localhost:80/user/kakao-callback&prompt=login">
-			  				<img alt="" src="/images/kakao_login_large_wide.png" ></a>
-			  				<a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=LbaGbefoStQkPYuwldjm&state=STATE_STRING&redirect_uri=http://localhost:80/user/naver-callback">
-			  				<img alt="" src="/images/naver_signin.png" ></a>
-			  				
+							<button  type="submit" class="red_button message_submit_btn trans_300 button__submit" value="Submit">로그인</button>
+						</div>
+						<div style="margin-top: 16px; text-align: center;">
+							<ul >
+								<li class="list-item">
+									<a href="#">아이디 찾기</a>
+								</li>
+								<li class="list-item">
+									<a href="#">비밀번호 찾기</a>
+								</li>
+								<li class="list-item">
+									<a href="#">회원가입</a>
+								</li>
+							</ul>
+						</div>
+						<div style="margin-top: 32px; padding-top: 32px; border-top: 1px solid #eee; text-align: center;">
+							<h4 class="social-title">간편 로그인</h4>
+							<div class="social-icons">
+								<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=0a29e10b57cb7259eec5a50bdced4aa7&redirect_uri=http://localhost:80/user/kakao-callback&prompt=login">
+			  					<img alt="" src="/images/kakaotalk.png" class="social-icon" style="margin-right: 40px"><span style="margin-right: 40px">카카오 로그인</span></a>
+			  					<a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=LbaGbefoStQkPYuwldjm&state=123&redirect_uri=http://localhost:80/user/naver-callback">
+			  					<img alt="" src="/images/naver.png" class="social-icon"><span>네이버 로그인</span></a>
+			  				</div>
 						</div>
 					</form>
 				</div>

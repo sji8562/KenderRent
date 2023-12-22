@@ -22,7 +22,7 @@
                 <form action="/mng/content/register" method="post">
                     <input type="number" name="id" value="${content.id}" hidden />
 
-                    <input type="number" name="code" value="1" hidden />
+                    <input type="number" name="code" value="2" hidden />
 
                     <div id="container">
                         <textarea id="summernote" name="content">${content.content}</textarea>

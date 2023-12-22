@@ -4,26 +4,27 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import com.tenco.toyproject.dto.KakaoPayDto;
 import com.tenco.toyproject.dto.response.KakaoPayCancelResponse;
-import com.tenco.toyproject.repository.entity.Sale;
 import com.tenco.toyproject.repository.entity.Product;
+import com.tenco.toyproject.repository.entity.Sale;
 import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.CustomerService;
 import com.tenco.toyproject.service.KakaoPayService;
 import com.tenco.toyproject.service.ProductService;
 import com.tenco.toyproject.service.UserService;
 import com.tenco.toyproject.vo.PageVO;
-
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -47,11 +48,32 @@ public class ProductController {
   @Autowired
   private MessageController message;
 
+  @GetMapping("{fId}/categories")
+  public String categories(@PathVariable Integer fId, Model model) {
+    System.out.println(fId);
+    List<Product> productList = productService.findByCategoryId(fId);
+    System.out.println(productList.toString());
+    model.addAttribute("productList", productList);
+
+    if (fId == 1 || fId == 2 || fId == 6) {
+      return "product/categories01";
+    }
+    return "product/categories02";
+  }
+
+  @GetMapping("{fId}/categories/{sId}")
+  public String categories(@PathVariable Integer fId, @PathVariable Integer sId) {
+    if (fId == 1 || fId == 2 || fId == 6) {
+      return "product/categories02";
+    }
+    return "product/categories01";
+  }
+
   @GetMapping("categories01")
   public String categories01() {
     return "product/categories01";
   }
-  
+
   @GetMapping("categories02")
   public String categories02() {
     return "product/categories02";
@@ -230,6 +252,52 @@ public class ProductController {
     model.addAttribute("orderList", orderList);
     model.addAttribute("refund", cancelResponse);
     return "redirect:/mypage/order-list";
+  }
+
+  @GetMapping("/rent/{id}")
+  public String rent(Model model, PageVO pageVO,
+      @RequestParam(value = "nowPage", required = false) String nowPage,
+      @RequestParam(value = "cntPerPage", required = false) String cntPerPage, @PathVariable int id,
+      HttpServletResponse response) {
+    // 페이징처리
+    int total = productService.countProductCustomer(id);
+    if (nowPage == null && cntPerPage == null) {
+      nowPage = "1";
+      cntPerPage = "10";
+    } else if (nowPage == null) {
+      nowPage = "1";
+    } else if (cntPerPage == null) {
+      cntPerPage = "10";
+    }
+    pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+    model.addAttribute("paging", pageVO);
+    // 상품별로 변경해야함
+    List<Map<String, Object>> CustomerList =
+        customerService.selectCustomerById(4, pageVO.getStart(), id); // 상품문의
+    model.addAttribute("customerList", CustomerList);
+    // 페이징 처리해서 상품문의 출력 끝
+    // 최근본 프로젝트 관련
+    Cookie cookie = new Cookie("goods" + id, String.valueOf(id));
+    cookie.setPath("/");
+    cookie.setMaxAge(60 * 60 * 24);
+    response.addCookie(cookie);
+    // 최근본 프로젝트 관련 끝
+    // 상품 정보
+    Product product = productService.findById(id);
+    model.addAttribute("product", product);
+    // 찜한 상품 확인
+    User principal = (User) session.getAttribute("principal");
+    if (principal != null) {
+      boolean isWished = productService.checkWishList(principal.getId(), id);
+      model.addAttribute("isWished", isWished);
+    }
+    // 리뷰갯수
+    int countReview = productService.countReview(id);
+    model.addAttribute("countReview", countReview);
+    // 리뷰 내용
+    List<Map> review = productService.showReview(id);
+    model.addAttribute("review", review);
+    return "product/rent";
   }
 
 }

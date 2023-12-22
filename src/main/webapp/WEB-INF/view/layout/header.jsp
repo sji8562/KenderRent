@@ -19,6 +19,7 @@
 #hamburger_menu {
 	overflow-y: scroll;
 }
+
 /*  	#hamburger_menu::-webkit-scrollbar{ */
 /*  		display: none; */
 /*  	} */
@@ -32,49 +33,43 @@
 			<div class="row">
 				<div class="col-lg-12 text-right">
 					<div class="logo_container">
-						<a href="/">Kender<span>Rent</span></a>
+						<a href="/"> <img src="/images/Logo.png" width="100"
+							height="100"></a>
 					</div>
-
 					<nav class="navbar">
 						<ul class="navbar_menu">
-							<li class="nav-item dropdown"><a href="/product/categories01"
-								class="nav-link dropdown-toggle">빅사이즈 장난감</a>
-								<div class="dropdown-menu m-0">
-									<a href="price.html" class="dropdown-item">모빌</a> <a
-										href="feature.html" class="dropdown-item">유아침대</a> <a
-										href="team.html" class="dropdown-item">바운서</a> <a
-										href="testimonial.html" class="dropdown-item">쏘서/점프앤런</a> <a
-										href="quote.html" class="dropdown-item">베베블럭/러닝홈</a> <a
-										href="quote.html" class="dropdown-item">보행기/부스터</a>
-								</div></li>
-							<li class="nav-item dropdown"><a href="/product/categories01"
-								class="nav-link dropdown-toggle">스몰사이즈 장난감</a>
-								<div class="dropdown-menu m-0">
-									<a href="price.html" class="dropdown-item">3~6개월</a> <a
-										href="feature.html" class="dropdown-item">6~12개월</a> <a
-										href="team.html" class="dropdown-item">12~24개월</a> <a
-										href="testimonial.html" class="dropdown-item">24개월~</a>
-								</div></li>
-							<li class="nav-item dropdown"><a href="/product/categories02"
-								class="nav-link dropdown-toggle">유아가전제품</a>
-								<div class="dropdown-menu m-0">
-									<a href="price.html" class="dropdown-item">살균기</a> <a
-										href="feature.html" class="dropdown-item">기타</a>
-								</div></li>
-							<li class="nav-item dropdown"><a href="/product/categories02"
-								class="nav-link dropdown-toggle">산모용품</a>
-								<div class="dropdown-menu m-0">
-									<a href="price.html" class="dropdown-item">유축기</a> <a
-										href="feature.html" class="dropdown-item">마사지기</a>
-								</div></li>
-							<li class="nav-item dropdown"><a href="/product/categories01"
-								class="nav-link dropdown-toggle">책</a>
-								<div class="dropdown-menu m-0">
-									<a href="price.html" class="dropdown-item">촉감책</a> <a
-										href="feature.html" class="dropdown-item">초점잭</a> <a
-										href="feature.html" class="dropdown-item">그림책</a> <a
-										href="feature.html" class="dropdown-item">동화책</a>
-								</div></li>
+							<c:choose>
+								<c:when test="${firstCategories != null}">
+									<c:forEach var="firstCategory" items="${firstCategories}">
+										<li class="nav-item dropdown"><a
+											href="/product/${firstCategory.id}/categories"
+											class="nav-link dropdown-toggle">${firstCategory.firstCategoryName}</a>
+											<div class="dropdown-menu m-0">
+												<c:choose>
+													<c:when test="${secondCategories != null}">
+														<c:forEach var="secondCategory"
+															items="${secondCategories}">
+															<c:choose>
+																<c:when
+																	test="${secondCategory.firstCategoryId == firstCategory.id}">
+																	<c:forEach var="nestedItem"
+																		items="${secondCategory.secondCategoryName}">
+																		<%-- /${firstCategories.id}/${secondCategory.id} --%>
+																		<a
+																			href="/product/${firstCategory.id}/categories/${secondCategory.id}"
+																			class="dropdown-item">${nestedItem}</a>
+
+																	</c:forEach>
+																</c:when>
+															</c:choose>
+														</c:forEach>
+													</c:when>
+												</c:choose>
+											</div></li>
+									</c:forEach>
+								</c:when>
+							</c:choose>
+
 							<li class="nav-item dropdown"><a href="/customer/contact"
 								class="nav-link dropdown-toggle">고객센터</a>
 								<div class="dropdown-menu m-0">
@@ -87,7 +82,7 @@
 
 						<ul class="navbar_user">
 
-							<!-- 								모달창 -->
+							<!-- 모달창 -->
 							<li><butaton type="button" data-bs-toggle="modal"
 									data-bs-target="#exampleModal" data-bs-whatever="@fat"
 									style="cursor:pointer"> <i class="fa fa-search"
@@ -95,11 +90,11 @@
 
 							<c:choose>
 								<c:when test="${sessionScope.principal != null }">
-									<!-- 									유저 아이콘 -->
+									<!-- 유저 아이콘 -->
 									<li><a href="/mypage/main"><i class="fa fa-user"
 											aria-hidden="true"></i></a></li>
 
-									<!-- 										장바구니아이콘 -->
+									<!-- 장바구니아이콘 -->
 									<li class="checkout "><a href="/cart"> <i
 											class="fa fa-shopping-cart" aria-hidden="true"></i> <span
 											id="checkout_items" class="checkout_items">${countItemCart}</span>
@@ -109,11 +104,11 @@
 								</c:when>
 
 								<c:otherwise>
-									<a class="size" href="/user/signIn" style="color: black">로그인</a>&nbsp;&nbsp;
-										<a class="size" href="/user/signUp" style="color: black">회원가입</a>
-
+									<a class="size border-right" href="/user/signIn"
+										style="color: black">로그인</a>&nbsp;&nbsp;
+                                    <a class="size" href="/user/signUp"
+										style="color: black">회원가입</a>
 								</c:otherwise>
-
 							</c:choose>
 						</ul>
 						<div class="hamburger_container" id="hambuerBtn">
@@ -124,7 +119,6 @@
 			</div>
 		</div>
 	</div>
-
 </header>
 <div class="fs_menu_overlay"></div>
 <div class="hamburger_menu">
@@ -213,15 +207,14 @@
 					<li><a href="/customer/contact?type=2">FAQ</a></li>
 					<li><a href="/customer/contact?type=3">1:1문의</a></li>
 					<li><a href="/customer/contact?type=4">상품문의</a></li>
-				</ul></li>
-
+				</ul>
 		</ul>
+
 	</div>
 </div>
 <!-- 모달창 -->
 <div class="modal fade" id="exampleModal" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
-
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header"></div>
@@ -238,11 +231,7 @@
 					</div>
 				</form>
 			</div>
-
-
 		</div>
 	</div>
-
 </div>
 <!-- 모달창 끝 -->
-
