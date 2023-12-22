@@ -40,6 +40,8 @@ public class MngIndexDTO {
         private Integer status;
         private Integer price;
         private Timestamp createdAt;
+
+
     }
     @Data
     public static class MngReviewDTO{
