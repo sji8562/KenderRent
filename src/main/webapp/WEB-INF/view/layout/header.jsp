@@ -31,31 +31,40 @@
 			<div class="row">
 				<div class="col-lg-12 text-right">
 					<div class="logo_container">
-						<a href="/">Kender<span>Rent</span></a>
+						<img src="/images/Logo.png" width="100" height="100">
 					</div>
 
 					<nav class="navbar">
 						<ul class="navbar_menu">
-							<li class="nav-item dropdown"><a href="/product/categories" class="nav-link dropdown-toggle">빅사이즈 장난감</a>
-								<div class="dropdown-menu m-0">
-									<a href="price.html" class="dropdown-item">모빌</a> <a href="feature.html" class="dropdown-item">유아침대</a> <a href="team.html" class="dropdown-item">바운서</a> <a href="testimonial.html" class="dropdown-item">쏘서/점프앤런</a> <a href="quote.html" class="dropdown-item">베베블럭/러닝홈</a> <a href="quote.html" class="dropdown-item">보행기/부스터</a>
-								</div></li>
-							<li class="nav-item dropdown"><a href="/product/categories" class="nav-link dropdown-toggle">스몰사이즈 장난감</a>
-								<div class="dropdown-menu m-0">
-									<a href="price.html" class="dropdown-item">3~6개월</a> <a href="feature.html" class="dropdown-item">6~12개월</a> <a href="team.html" class="dropdown-item">12~24개월</a> <a href="testimonial.html" class="dropdown-item">24개월~</a>
-								</div></li>
-							<li class="nav-item dropdown"><a href="/product/categories" class="nav-link dropdown-toggle">유아가전제품</a>
-								<div class="dropdown-menu m-0">
-									<a href="price.html" class="dropdown-item">살균기</a> <a href="feature.html" class="dropdown-item">기타</a>
-								</div></li>
-							<li class="nav-item dropdown"><a href="/product/categories" class="nav-link dropdown-toggle">산모용품</a>
-								<div class="dropdown-menu m-0">
-									<a href="price.html" class="dropdown-item">유축기</a> <a href="feature.html" class="dropdown-item">마사지기</a>
-								</div></li>
-							<li class="nav-item dropdown"><a href="/product/categories" class="nav-link dropdown-toggle">책</a>
-								<div class="dropdown-menu m-0">
-									<a href="price.html" class="dropdown-item">촉감책</a> <a href="feature.html" class="dropdown-item">초점잭</a> <a href="feature.html" class="dropdown-item">그림책</a> <a href="feature.html" class="dropdown-item">동화책</a>
-								</div></li>
+							<c:choose>
+								<c:when test="${firstCategories != null}">
+									<c:forEach var="firstCategories" items="${firstCategories}">
+										<li class="nav-item dropdown"><a href="/product/categories" class="nav-link dropdown-toggle">${firstCategories.firstCategoryName
+												}</a>
+											<div class="dropdown-menu m-0">
+												<a href="price.html" class="dropdown-item">아니야</a> <a href="feature.html" class="dropdown-item">유아침대</a> <a href="team.html" class="dropdown-item">바운서</a> <a href="testimonial.html" class="dropdown-item">쏘서/점프앤런</a> <a href="quote.html" class="dropdown-item">베베블럭/러닝홈</a> <a href="quote.html" class="dropdown-item">보행기/부스터</a>
+											</div></li>
+									</c:forEach>
+								</c:when>
+
+							</c:choose>
+
+<%--							<li class="nav-item dropdown"><a href="/product/categories" class="nav-link dropdown-toggle">스몰사이즈 장난감</a>--%>
+<%--								<div class="dropdown-menu m-0">--%>
+<%--									<a href="price.html" class="dropdown-item">3~6개월</a> <a href="feature.html" class="dropdown-item">6~12개월</a> <a href="team.html" class="dropdown-item">12~24개월</a> <a href="testimonial.html" class="dropdown-item">24개월~</a>--%>
+<%--								</div></li>--%>
+<%--							<li class="nav-item dropdown"><a href="/product/categories" class="nav-link dropdown-toggle">유아가전제품</a>--%>
+<%--								<div class="dropdown-menu m-0">--%>
+<%--									<a href="price.html" class="dropdown-item">살균기</a> <a href="feature.html" class="dropdown-item">기타</a>--%>
+<%--								</div></li>--%>
+<%--							<li class="nav-item dropdown"><a href="/product/categories" class="nav-link dropdown-toggle">산모용품</a>--%>
+<%--								<div class="dropdown-menu m-0">--%>
+<%--									<a href="price.html" class="dropdown-item">유축기</a> <a href="feature.html" class="dropdown-item">마사지기</a>--%>
+<%--								</div></li>--%>
+<%--							<li class="nav-item dropdown"><a href="/product/categories" class="nav-link dropdown-toggle">책</a>--%>
+<%--								<div class="dropdown-menu m-0">--%>
+<%--									<a href="price.html" class="dropdown-item">촉감책</a> <a href="feature.html" class="dropdown-item">초점잭</a> <a href="feature.html" class="dropdown-item">그림책</a> <a href="feature.html" class="dropdown-item">동화책</a>--%>
+<%--								</div></li>--%>
 							<li class="nav-item dropdown"><a href="/customer/contact" class="nav-link dropdown-toggle">고객센터</a>
 								<div class="dropdown-menu m-0">
 									<a href="/customer/contact?type=1" class="dropdown-item">공지사항</a> <a href="/customer/contact?type=2" class="dropdown-item">FAQ</a> <a href="/customer/contact?type=3" class="dropdown-item">1:1문의</a> <a href="/customer/contact?type=4" class="dropdown-item">상품질문</a>
@@ -80,7 +89,7 @@
 								</c:when>
 
 								<c:otherwise>
-									<a class="size" href="/user/signIn" style="color: black">로그인</a>&nbsp;&nbsp;
+									<a class="size border-right" href="/user/signIn" style="color: black">로그인</a>&nbsp;&nbsp;
 										<a class="size" href="/user/signUp" style="color: black">회원가입</a>
 
 								</c:otherwise>

@@ -20,6 +20,7 @@
             SUM(p.price) AS price
             FROM rent r
             INNER JOIN product p ON r.product_id = p.id
+            where r.status = 2
             GROUP BY date  -- Corrected: Use the alias 'date' instead of 'created_at'
 
             UNION ALL
@@ -30,6 +31,7 @@
             SUM(p.price) AS price
             FROM sale s
             INNER JOIN product p ON s.product_id = p.id
+            where s.status = 2
             GROUP BY date  -- Corrected: Use the alias 'date' instead of 'created_at'
 
             UNION ALL
@@ -40,6 +42,7 @@
             SUM(p.price) AS price
             FROM purchase pc
             INNER JOIN product p ON pc.product_id = p.id
+            where pc.status = 2
             GROUP BY date  -- Corrected: Use the alias 'date' instead of 'created_at'
             ) AS combined_data
         GROUP BY date;
