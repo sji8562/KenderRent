@@ -140,6 +140,18 @@
 		and product_id = #{productId}
 		and tid is null
 	</delete>
+	
+	<select id="countReview" resultType="int">
+		select count(*) from review
+		where product_id = #{produtId}
+	</select>
+	
+	<select id="showReview" resultType="map">
+		select r.*, u.user_name as user_name from review as r
+		join user as u
+		on r.user_id = u.id
+		where product_id = #{productId}
+	</select>
 
 	
 	

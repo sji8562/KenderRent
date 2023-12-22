@@ -259,6 +259,12 @@ public class ProductController {
         	boolean isWished = productService.checkWishList(principal.getId(), id);
         	model.addAttribute("isWished", isWished);
         }
+        // 리뷰갯수
+        int countReview = productService.countReview(id);
+        model.addAttribute("countReview", countReview);
+        // 리뷰 내용
+        List<Map> review = productService.showReview(id);
+        model.addAttribute("review", review);
 		return "product/rent";
 	}
 
