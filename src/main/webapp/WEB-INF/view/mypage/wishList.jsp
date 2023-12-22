@@ -100,7 +100,7 @@
 																<div class="box_goods">
 																	<div class="box_picture">
 																		<a href="/product/detail/${wishList.product_id}"></a>
-																			<img src=${wishList.picUrl} class="product_picture"
+																			<img src=${wishList.pic_url} class="product_picture"
 																			style="vertical-align: top;" width="100"></a>
 																	</div>
 																	<div class="box_product_info">

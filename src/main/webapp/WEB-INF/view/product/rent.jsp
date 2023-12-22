@@ -34,7 +34,7 @@
     	let user = '<%=session.getAttribute("principal")%>';
        	if(user == "null"){
 			alert("로그인이 필요한 기능입니다.");
-      		location.href='${pageContext.request.contextPath}/user/sign-in';
+      		location.href='${pageContext.request.contextPath}/user/signIn';
         } else {
         	var form={
         		id:id
@@ -63,7 +63,7 @@
     	let user = '<%=session.getAttribute("principal")%>';
        	if(user == "null"){
 			alert("로그인이 필요한 기능입니다.");
-      		location.href='${pageContext.request.contextPath}/user/sign-in';
+      		location.href='${pageContext.request.contextPath}/user/signIn';
         } else {
         	var form={
            		id:id
@@ -114,13 +114,17 @@
 <script type="text/javascript">
 function addToCartConfirmation() {
 	let user = '<%=session.getAttribute("principal")%>'; 
-	 if (user == null || user === "null") {
-		alert("로그인이 필요한 기능입니다.");
-  		location.href='${pageContext.request.contextPath}/user/sign-in';
-  		return false;
+	var selectedValue = document.getElementById("selectedMonth").value;
+	if (selectedValue === "") {
+    	alert("구매할 기간을 선택해주세요.");
     } else {
-    	alert("장바구니에 추가되었습니다.");
-    	return true;
+		if (user == null || user === "null") {
+			alert("로그인이 필요한 기능입니다.");
+  			location.href='${pageContext.request.contextPath}/user/signIn';
+    	} else {
+    		alert("장바구니에 추가되었습니다.");
+    		document.getElementById("cartForm").submit();
+    	}
     }
 }
 </script>
@@ -206,8 +210,8 @@ function addToCartConfirmation() {
 									<ul>
 										<li><img src="/images/single_1_thumb.jpg" alt=""
 											data-image="/images/single_1.jpg"></li>
-										<li class="active"><img src=${product.picUrl }
-											alt="" data-image=${product.picUrl }></li>
+										<li class="active"><img src=${product.picUrl } alt=""
+											data-image=${product.picUrl }></li>
 										<li><img src="/images/single_3_thumb.jpg" alt=""
 											data-image="/images/single_3.jpg"></li>
 									</ul>
@@ -233,25 +237,50 @@ function addToCartConfirmation() {
 								<tbody>
 									<tr>
 										<th scope="row">가격</th>
-										<td class="price">${product.formatPrice()}</td>
+										<td class="price" id="price">${product.formatPrice()}</td>
+									</tr>
 									<tr>
 										<th>등급</th>
 										<td>${product.grade}</td>
 									</tr>
+									<tr>
+										<th>기간</th>
+										<td><select id="selectedMonth" name="selectedMonth"
+											onchange="displayText()">
+												<option value="none">선택</option>
+												<option value="1">1개월 (+ 0원)</option>
+												<option value="2">2개월 (+ 5,000원)</option>
+												<option value="3">3개월 (+ 10,000원)</option>
+										</select></td>
+									</tr>
+									<tr>
+										<th>추가금액</th>
+										<td>
+											<p id="outputText" style="padding-top: 3px;">기간을 선택해주세요.</p>
+										</td>
+									</tr>
 								</tbody>
 							</table>
+							<div
+								style="font-weight: bold; font-size: 20px; line-height: 50px; height: 50px;">
+								총 가격 <span id="totalPriceDisplay"
+									style="color: brown; font-weight: bold; font-size: 20px; float: right; padding-right: 35px">
+									${product.formatPrice()}</span>
+							</div>
 						</div>
 						<div
-							class="free_delivery d-flex flex-row align-items-center justify-content-center">
+							class="free_delivery d-flex flex-row align-items-center justify-content-center"
+							style="margin: 15px; margin-left: 18px">
 							<span class="ti-truck"></span><span>배송비 주문시 결제 (+3,000원)</span>
 						</div>
 						<div
 							class="quantity d-flex flex-column flex-sm-row align-items-sm-left">
 							<c:choose>
 								<c:when test="${product.status == 1}">
-									<form action="/product/order" method="post">
+									<form id="purchaseForm" action="/product/order" method="post">
 										<input type="hidden" name="id" value="${product.id }" />
-										<button type="submit" class="red_button2 buy_button">구매하기</button>
+										<button type="button" class="red_button2 buy_button"
+											onclick="optionCheck()">구매하기</button>
 									</form>
 								</c:when>
 								<c:otherwise>
@@ -259,9 +288,11 @@ function addToCartConfirmation() {
 										style="pointer-events: none;">품절</div>
 								</c:otherwise>
 							</c:choose>
-							<form action="/cart/add?id=${product.id }" method="post"
-								onsubmit="return addToCartConfirmation()">
-								<button type="submit" class="white_button buy_button">장바구니</button>
+							<form id="cartForm" action="/cart/add?id=${product.id }"
+								method="post">
+								<input type="hidden" name="id" value="${product.id }" />
+								<button type="button" class="white_button buy_button"
+									onclick="addToCartConfirmation()">장바구니</button>
 							</form>
 							<c:choose>
 								<c:when test="${isWished}">
@@ -349,9 +380,9 @@ function addToCartConfirmation() {
 					<div id="tab_2" class="tab_container">
 						<div class="row">
 
-							<!-- 상품후기 -->
+							<!-- User Reviews -->
 
-							<div class="reviews_col">
+							<div class="col-lg-6 reviews_col">
 								<div class="tab_title reviews_title">
 									<h4>Reviews (2)</h4>
 								</div>
@@ -381,7 +412,8 @@ function addToCartConfirmation() {
 									</div>
 								</div>
 
-								
+								<!-- User Review -->
+
 								<div
 									class="user_review_container d-flex flex-column flex-sm-row">
 									<div class="user">
@@ -405,6 +437,45 @@ function addToCartConfirmation() {
 									</div>
 								</div>
 							</div>
+
+							<!-- Add Review -->
+
+							<div class="col-lg-6 add_review_col">
+
+								<div class="add_review">
+									<form id="review_form" action="post">
+										<div>
+											<h1>Add Review</h1>
+											<input id="review_name" class="form_input input_name"
+												type="text" name="name" placeholder="Name*"
+												required="required" data-error="Name is required.">
+											<input id="review_email" class="form_input input_email"
+												type="email" name="email" placeholder="Email*"
+												required="required" data-error="Valid email is required.">
+										</div>
+										<div>
+											<h1>Your Rating:</h1>
+											<ul class="user_star_rating">
+												<li><i class="fa fa-star" aria-hidden="true"></i></li>
+												<li><i class="fa fa-star" aria-hidden="true"></i></li>
+												<li><i class="fa fa-star" aria-hidden="true"></i></li>
+												<li><i class="fa fa-star" aria-hidden="true"></i></li>
+												<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+											</ul>
+											<textarea id="review_message" class="input_review"
+												name="message" placeholder="Your Review" rows="4" required
+												data-error="Please, leave us a review."></textarea>
+										</div>
+										<div class="text-left text-sm-right">
+											<button id="review_submit" type="submit"
+												class="red_button review_submit_btn trans_300"
+												value="Submit">submit</button>
+										</div>
+									</form>
+								</div>
+
+							</div>
+
 						</div>
 					</div>
 
@@ -416,10 +487,11 @@ function addToCartConfirmation() {
 								<div class="tab_title additional_info_title">
 									<h4>상품문의</h4>
 									<br>
-									<div class="gray_button write_button">
-										<a href="/customer/write">글쓰기</a>
-									</div>
+									<button
+										type="button" class="gray_button"
+										onclick="location.href='/customer/write?type=productInquiry'">글쓰기</button>
 								</div>
+
 								<div class="row align-items-center">
 									<div class="col text-center">
 										<table class="table">
@@ -626,6 +698,55 @@ function addToCartConfirmation() {
 		}
 		
 	</script>
+	<script>
+    function displayText() {
+        var selectedValue = document.getElementById("selectedMonth").value;
+        var basePrice = document.getElementById("price").value;
+
+        var extraTextElement = document.getElementById("outputText");
+        var totalTextElement = document.getElementById("totalPriceDisplay");
+        var totalPrice = ${product.price};
+        
+	   
+        
+        switch (selectedValue) {
+            case "1":
+            	extraTextElement.textContent = "0원";
+                break;
+            case "2":
+            	extraTextElement.textContent = "5,000원";
+                break;
+            case "3":
+            	extraTextElement.textContent = "10,000원";
+                break;
+            default:
+            	extraTextElement.textContent = "기간을 선택해주세요.";
+                break;
+        }
+        if (selectedValue != 'none') {
+            totalPrice = ${product.price} + (parseInt(selectedValue) - 1) * 5000 + 3000;
+            document.getElementById("totalPriceDisplay").textContent = totalPrice.toLocaleString('ko-KR') + '원';
+        } else {
+        	document.getElementById("totalPriceDisplay").textContent = totalPrice.toLocaleString('ko-KR') + '원';
+        }
+    }
+</script>
+	<script type="text/javascript">
+function optionCheck() {
+	let user = '<%=session.getAttribute("principal")%>';
+    var selectedValue = document.getElementById("selectedMonth").value;
+   	if (selectedValue === "") {
+    	alert("구매할 기간을 선택해주세요.");
+    } else {
+    	if(user == "null"){
+    		alert("로그인이 필요한 기능입니다.");
+      		location.href='${pageContext.request.contextPath}/user/signIn';
+        } else {
+    		document.getElementById("purchaseForm").submit();
+   		} 
+	}
+}
+</script>
 
 </body>
 </html>
