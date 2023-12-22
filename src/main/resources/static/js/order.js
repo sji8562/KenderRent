@@ -40,23 +40,7 @@ function sample4_execDaumPostcode() {
 				}
 
 				var guideTextBox = document.getElementById("guide");
-				// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-				if (data.autoRoadAddress) {
-					var expRoadAddr = data.autoRoadAddress
-						+ extraRoadAddr;
-					guideTextBox.innerHTML = '(예상 도로명 주소 : '
-						+ expRoadAddr + ')';
-					guideTextBox.style.display = 'block';
-
-				} else if (data.autoJibunAddress) {
-					var expJibunAddr = data.autoJibunAddress;
-					guideTextBox.innerHTML = '(예상 지번 주소 : '
-						+ expJibunAddr + ')';
-					guideTextBox.style.display = 'block';
-				} else {
-					guideTextBox.innerHTML = '';
-					guideTextBox.style.display = 'none';
-				}
+				
 			}
 		}).open();
 }
@@ -64,19 +48,38 @@ function sample4_execDaumPostcode() {
 document.addEventListener('DOMContentLoaded', function() {
 	var nameInput = document.getElementById('name');
 	var nameInfo = document.getElementById('nameInfo');
+	
 	var phoneInput = document.getElementById('phoneNumber');
 	var phoneInfo = document.getElementById('phoneInfo');
+	
+	var postInput = document.getElementById('sample4_postcode');
+	var postInfo = document.getElementById('postInfo');
+	
+	var addressInput = document.getElementById('sample4_roadAddress');
+	var addressInfo = document.getElementById('addressInfo');
+	
+	var detailInput = document.getElementById('sample4_detailAddress');
+	var detailInfo = document.getElementById('detailInfo');
+	
 	var useCheckbox = document.getElementById('useCheckbox');
 
 	useCheckbox.addEventListener('change', function() {
 		if (this.checked) {
 			nameInput.value = nameInfo.innerText;
 			phoneInput.value = phoneInfo.innerText;
-			nameInput.disabled = true;
-			phoneInput.disabled = true;
+			postInput.value = postInfo.innerText;
+			addressInput.value = addressInfo.innerText;
+			detailInput.value = detailInfo.innerText;
+					
 		} else {
 			nameInput.value = "";
 			phoneInput.value = "";
+			postInput.value = "";
+			addressInput.value = "";
+			detailInput.value = "";
+	
 		}
 	});
 });
+
+

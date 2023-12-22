@@ -24,4 +24,5 @@ public class MngProductDto {
         private String video;
         private String grade;
         private Timestamp createdAt;
+        private Integer code;
 }

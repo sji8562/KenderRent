@@ -292,6 +292,7 @@ public class MngBoardController {
 
     mngFaqService.createFaq(dto);
 
+
     return "redirect:/mng/board/faq-list";
   }
 
@@ -310,6 +311,7 @@ public class MngBoardController {
   @PostMapping("{id}/faq-update")
   public String updateFaq(MngBoardDTO.FaqSubmitDto dto, @PathVariable int id) {
     logger.info("이 글 좀 수정해주세요" + id);
+
 
     if (dto.getTitle() == null || dto.getTitle().isEmpty()) {
       throw new Exception500("질문을 입력하세요");
@@ -440,6 +442,7 @@ public class MngBoardController {
     }
 
     dto.setBoardId(id);
+
 
     mngProductQnaService.submitProductQnaAnswer(dto);
 

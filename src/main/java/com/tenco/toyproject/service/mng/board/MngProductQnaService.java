@@ -4,7 +4,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tenco.toyproject.dto.MngBoardDTO;
+
 import com.tenco.toyproject.dto.MngProductReplyDTO;
+
+import com.tenco.toyproject.dto.MngReplyDTO;
+
 import com.tenco.toyproject.repository.entity.ProductQnaDetail;
 import com.tenco.toyproject.repository.interfaces.mng.board.MngProductQnaRepository;
 import com.tenco.toyproject.vo.PageVO;
@@ -34,6 +38,7 @@ public class MngProductQnaService {
   }
 
   public void submitProductQnaAnswer(MngProductReplyDTO.ProductQnaReplyDto dto) {
+
     mngProductQnaRepository.submitProductQnaAnswer(dto);
   }
 

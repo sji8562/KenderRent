@@ -39,6 +39,7 @@
 	crossorigin="anonymous">
 
 
+
 <!-- Summernote CSS -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
@@ -148,159 +149,166 @@
 				</div>
 			</nav>
 		</header>
-	</div>
 
-	<aside class="left-sidebar" data-sidebarbg="skin5">
-		<!-- Sidebar scroll-->
-		<div class="scroll-sidebar">
-			<!-- Sidebar navigation-->
-			<nav class="sidebar-nav">
-				<ul id="sidebarnav">
-					<%-- 대시보드 --%>
-					<li class="sidebar-item"><a
-						class="sidebar-link waves-effect waves-dark sidebar-link"
-						href="/mng/" aria-expanded="false"> <i
-							class="mdi mdi-view-dashboard"></i> <span class="hide-menu">Dashboard</span>
-					</a></li>
-					<%-- 물품관리 --%>
-					<li class="sidebar-item" id="productManagement"><a
-						class="sidebar-link waves-effect waves-dark sidebar-link"
-						href="/mng/product/list?keyword=" aria-expanded="false"> <i
-							class="mdi mdi-dropbox"></i> <span class="hide-menu">물품 관리</span>
-					</a>
-						<ul aria-expanded="false" class="collapse first-level">
-							<!-- 물품관리 -->
-							<li class="sidebar-item"><a
-								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/product/list?keyword="> <i
-									class="mdi mdi-archive"></i> <span class="hide-menu">대여용
-										물품 관리</span>
-							</a></li>
-							<!-- 물품관리 -->
-							<li class="sidebar-item"><a
-								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/product/listForSale?keyword="> <i
-									class="mdi mdi-archive"></i> <span class="hide-menu">판매용
-										물품 관리</span>
-							</a></li>
-							<!-- 구매신청 -->
-							<li class="sidebar-item"><a
-								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/product/review?keyword="> <i
-									class="mdi mdi-thumb-up"></i> <span class="hide-menu">후기
-										관리</span>
+		<aside class="left-sidebar" data-sidebarbg="skin5">
+			<!-- Sidebar scroll-->
+			<div class="scroll-sidebar">
+				<!-- Sidebar navigation-->
+				<nav class="sidebar-nav">
+					<ul id="sidebarnav">
+						<%-- 대시보드 --%>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="/mng/" aria-expanded="false"> <i
+								class="mdi mdi-view-dashboard"></i> <span class="hide-menu">Dashboard</span>
+						</a></li>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="/mng/pay/list" aria-expanded="false"> <i
+								class="mdi mdi-cash-multiple"></i> <span class="hide-menu">결제
+									관리</span>
+						</a></li>
+						<%-- 물품관리 --%>
+						<li class="sidebar-item" id="productManagement"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="#" aria-expanded="false" disabled=""> <i
+								class="mdi mdi-dropbox"></i> <span class="hide-menu">물품
+									관리</span>
+						</a>
+							<ul aria-expanded="false" class="collapse first-level">
+								<!-- 물품관리 -->
+								<li class="sidebar-item"><a
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/product/list?code=1&keyword="> <i
+										class="mdi mdi-archive"></i> <span class="hide-menu">대여용
+											물품 관리</span>
+								</a></li>
+								<!-- 물품관리 -->
+								<li class="sidebar-item"><a
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/product/listForSale?code=2&keyword="> <i
+										class="mdi mdi-archive"></i> <span class="hide-menu">판매용
+											물품 관리</span>
+								</a></li>
+								<!-- 구매신청 -->
+								<li class="sidebar-item"><a
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/product/review?keyword="> <i
+										class="mdi mdi-thumb-up"></i> <span class="hide-menu">대여
+											후기 관리</span>
 
-							</a></li>
-						</ul></li>
-					<li class="sidebar-item" id="categoryManagement"><a
-						class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
-						aria-expanded="false" style="cursor: default"> <i
-							class="mdi mdi-format-list-bulleted-type"></i> <span
-							class="hide-menu">카테고리 관리</span>
-					</a>
-						<ul aria-expanded="false" class="collapse first-level">
-							<%--									code = 1--%>
-							<li class="sidebar-item"><a
-								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/product/categories"> <i
-									class="mdi mdi-format-list-bulleted"></i> <span
-									class="hide-menu">대여용 카테고리 관리</span>
-							</a></li>
-							<%--									code = 2--%>
-							<li class="sidebar-item"><a
-								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/product/categoriesForSale"> <i
-									class="mdi mdi-format-list-numbers"></i> <span
-									class="hide-menu">판매용 카테고리 관리</span>
-							</a></li>
-						</ul> <%-- 유저 관리 --%>
-					<li class="sidebar-item"><a
-						class="sidebar-link waves-effect waves-dark sidebar-link"
-						href="/mng/user/list" aria-expanded="false"> <i
-							class="mdi mdi-account"></i> <span class="hide-menu">유저 관리</span>
-					</a></li>
-					<%-- 신청 관리 --%>
-					<li class="sidebar-item" id="applyManagement"><a
-						class="sidebar-link waves-effect waves-dark sidebar-link"
-						href="/mng/apply/list" aria-expanded="false"> <i
-							class="mdi mdi-tooltip-text"></i> <span class="hide-menu">신청
-								관리</span>
-					</a>
-						<ul aria-expanded="false" class="collapse first-level">
-							<!-- 대여신청 -->
-							<li class="sidebar-item"><a
-								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/apply/rental-list"> <i class="mdi mdi-timer"></i>
-									<span class="hide-menu">대여신청</span>
-							</a></li>
-							<!-- 판매신청 -->
-							<li class="sidebar-item"><a
-								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/apply/sale-list"> <i
-									class="mdi mdi-cash-multiple"></i> <span class="hide-menu">판매신청</span>
-							</a></li>
-							<!-- 구매신청 -->
-							<li class="sidebar-item"><a
-								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/apply/purchase-list"> <i
-									class="mdi mdi-barcode-scan"></i> <span class="hide-menu">구매신청</span>
-							</a></li>
-						</ul></li>
-
-
-					<%-- 회사 소개 게시판 --%>
-					<li class="sidebar-item" id="boardManagement"><a
-						class="sidebar-link waves-effect waves-dark sidebar-link"
-						href="/mng/content/info" aria-expanded="false"> <i
-							class="mdi mdi-information-variant"></i> <span class="hide-menu">회사
-								소개 관리</span>
-					</a></li>
+								</a></li>
+							</ul></li>
+						<li class="sidebar-item" id="categoryManagement"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="#" aria-expanded="false" style="cursor: default"> <i
+								class="mdi mdi-format-list-bulleted-type"></i> <span
+								class="hide-menu">카테고리 관리</span>
+						</a>
+							<ul aria-expanded="false" class="collapse first-level">
+								<%--									code = 1--%>
+								<li class="sidebar-item"><a
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/product/categories"> <i
+										class="mdi mdi-format-list-bulleted"></i> <span
+										class="hide-menu">대여용 카테고리 관리</span>
+								</a></li>
+								<%--									code = 2--%>
+								<li class="sidebar-item"><a
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/product/categoriesForSale"> <i
+										class="mdi mdi-format-list-numbers"></i> <span
+										class="hide-menu">판매용 카테고리 관리</span>
+								</a></li>
+							</ul> <%-- 유저 관리 --%>
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="/mng/user/list" aria-expanded="false"> <i
+								class="mdi mdi-account"></i> <span class="hide-menu">유저
+									관리</span>
+						</a></li>
+						<%-- 신청 관리 --%>
+						<li class="sidebar-item" id="applyManagement"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="/mng/apply/list" aria-expanded="false"> <i
+								class="mdi mdi-tooltip-text"></i> <span class="hide-menu">신청
+									관리</span>
+						</a>
+							<ul aria-expanded="false" class="collapse first-level">
+								<!-- 대여신청 -->
+								<li class="sidebar-item"><a
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/apply/rental-list"> <i class="mdi mdi-timer"></i>
+										<span class="hide-menu">대여신청</span>
+								</a></li>
+								<!-- 판매신청 -->
+								<li class="sidebar-item"><a
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/apply/sale-list"> <i
+										class="mdi mdi-cash-multiple"></i> <span class="hide-menu">판매신청</span>
+								</a></li>
+								<!-- 구매신청 -->
+								<li class="sidebar-item"><a
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/apply/purchase-list"> <i
+										class="mdi mdi-barcode-scan"></i> <span class="hide-menu">구매신청</span>
+								</a></li>
+							</ul></li>
 
 
-					<%-- 게시판 관리 --%>
-					<li class="sidebar-item" id="noticeManagement"><a
-						class="sidebar-link waves-effect waves-dark sidebar-link"
-						href="/mng/board/noticeList" aria-expanded="false"> <i
-							class="mdi mdi-file-document-box"></i> <span class="hide-menu">게시판
-								관리</span>
-					</a>
-						<ul aria-expanded="false" class="collapse first-level">
-							<!-- 대여신청 -->
-							<li class="sidebar-item"><a
-								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/board/noticeList"> <i
-									class="mdi mdi-information-outline"></i> <span
-									class="hide-menu">공지사항</span>
-							</a></li>
-							<!-- 자주 묻는 질문 -->
-							<li class="sidebar-item"><a
-								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/board/faq-list?keyword="> <i
-									class="mdi mdi-comment-question-outline"></i> <span
-									class="hide-menu">자주 묻는 질문</span>
-							</a></li>
-							<!-- 1:1 문의 -->
-							<li class="sidebar-item"><a
-								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/board/qna?keyword="> <i class="mdi mdi-forum"></i>
-									<span class="hide-menu">1:1 문의</span>
-							</a></li>
-							<li class="sidebar-item"><a
-								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/board/productqna?keyword="> <i
-									class="mdi mdi-note-text"></i> <span class="hide-menu">상품질문</span>
-							</a></li>
-						</ul></li>
-				</ul>
-				<ul style="position: fixed; bottom: 0px;">
-					<li class="sidebar-item"><a
-						class="sidebar-link waves-effect waves-dark sidebar-link"
-						href="/mng/logout"> <i class="mdi mdi-power"></i> <span
-							class="hide-menu">로그아웃</span>
-					</a></li>
-				</ul>
-			</nav>
-			<!-- End Sidebar navigation -->
-		</div>
-		<!-- End Sidebar scroll-->
-	</aside>
+						<%-- 회사 소개 게시판 --%>
+						<li class="sidebar-item" id="boardManagement"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="/mng/content/info" aria-expanded="false"> <i
+								class="mdi mdi-information-variant"></i> <span class="hide-menu">회사
+									소개 관리</span>
+						</a></li>
+
+
+						<%-- 게시판 관리 --%>
+						<li class="sidebar-item" id="noticeManagement"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="/mng/board/noticeList" aria-expanded="false"> <i
+								class="mdi mdi-file-document-box"></i> <span class="hide-menu">게시판
+									관리</span>
+						</a>
+							<ul aria-expanded="false" class="collapse first-level">
+								<!-- 대여신청 -->
+								<li class="sidebar-item"><a
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/board/noticeList"> <i
+										class="mdi mdi-information-outline"></i> <span
+										class="hide-menu">공지사항</span>
+								</a></li>
+								<!-- 자주 묻는 질문 -->
+								<li class="sidebar-item"><a
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/board/faq-list?keyword="> <i
+										class="mdi mdi-comment-question-outline"></i> <span
+										class="hide-menu">자주 묻는 질문</span>
+								</a></li>
+								<!-- 1:1 문의 -->
+								<li class="sidebar-item"><a
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/board/qna?keyword="> <i class="mdi mdi-forum"></i>
+										<span class="hide-menu">1:1 문의</span>
+								</a></li>
+								<li class="sidebar-item"><a
+									class="sidebar-link waves-effect waves-dark sidebar-link"
+									href="/mng/board/productqna?keyword="> <i
+										class="mdi mdi-note-text"></i> <span class="hide-menu">상품질문</span>
+								</a></li>
+							</ul></li>
+					</ul>
+					<ul style="position: fixed; bottom: 0px;">
+						<li class="sidebar-item"><a
+							class="sidebar-link waves-effect waves-dark sidebar-link"
+							href="/mng/logout"> <i class="mdi mdi-power"></i> <span
+								class="hide-menu">로그아웃</span>
+						</a></li>
+					</ul>
+				</nav>
+				<!-- End Sidebar navigation -->
+			</div>
+			<!-- End Sidebar scroll-->
+		</aside>

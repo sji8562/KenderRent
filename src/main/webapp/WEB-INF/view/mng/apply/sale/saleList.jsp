@@ -81,7 +81,7 @@
                                                     <td class="applyDetail"><a href="/mng/apply/${saleList.id}/sale-detail">${saleList.productName}</a></td>
                                                     <td class="applyDetail"><a href="/mng/apply/${saleList.id}/sale-detail">${saleList.createdAt}</a></td>
                                                     <c:choose>
-                                                        <c:when test="${saleList.status == 1}">
+                                                        <c:when test="${saleList.status == 2}">
                                                             <td>
                                                                 <div>
                                                                     <button class="btn btn-success"
@@ -93,24 +93,31 @@
                                                                 </div>
                                                             </td>
                                                         </c:when>
-                                                        <c:when test="${saleList.status == 2}">
-                                                            <td>
-                                                                <div>
-                                                                    거래진행중
-                                                                </div>
-                                                            </td>
-                                                        </c:when>
                                                         <c:when test="${saleList.status == 3}">
                                                             <td>
                                                                 <div>
-                                                                    세척중
+                                                                    배송중
                                                                 </div>
                                                             </td>
                                                         </c:when>
                                                         <c:when test="${saleList.status == 4}">
                                                             <td>
                                                                 <div>
-                                                                    홈페이지 등록
+                                                                    배송 완료
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${saleList.status == 5}">
+                                                            <td>
+                                                                <div>
+                                                                    판매 완료
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${saleList.status == 12}">
+                                                            <td>
+                                                                <div>
+                                                                    결제 취소
                                                                 </div>
                                                             </td>
                                                         </c:when>

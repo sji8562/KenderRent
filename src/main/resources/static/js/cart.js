@@ -1,6 +1,29 @@
 /**
  * 
  */
+var selectedProducts = [];
+
+// 선택된 상품의 번호 배열 저장
+function selectedProductId() {
+    var checkboxes = document.getElementsByName('selectedProduct');
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        var currentProductId = checkboxes[i].value;
+        if (checkboxes[i].checked) {
+            if (!selectedProducts.includes(currentProductId)) {
+                selectedProducts.push(currentProductId);
+            } 
+        } else {
+            var index = selectedProducts.indexOf(currentProductId);
+            if (index !== -1) {
+                selectedProducts.splice(index, 1);
+            }
+        }
+    }
+
+    document.getElementById('selectedProductsInput').value = selectedProducts.join(",");
+    
+}
 
 function calculateTotalPrice() {
 	var checkboxes = document.getElementsByName('selectedProduct');
@@ -10,11 +33,10 @@ function calculateTotalPrice() {
 	// 계산 선택된 상품의 가격
 	for (var i = 0; i < checkboxes.length; i++) {
 		if (checkboxes[i].checked) {
-			selectedProductPrice += parseFloat(checkboxes[i].value);
+			selectedProductPrice += parseFloat(checkboxes[i].getAttribute('data-price'));
 			var deliveryFee = 3000;
 		}
 	}
-
 
 	var totalPrice = selectedProductPrice + deliveryFee;
 
@@ -37,6 +59,7 @@ function selectAll() {
 	}
 
 	calculateTotalPrice();
+	selectedProductId();
 }
 
 function toggleCheckbox(productId) {
@@ -54,3 +77,14 @@ var selectAllCheckbox = document.getElementById('selectAll');
 selectAllCheckbox.addEventListener('change', function() {
 	selectAll();
 });
+
+function validateOrder() {
+
+	var totalPrice = parseInt(document.getElementById('totalPrice').innerText.replace('원', ''), 10);
+
+	if (totalPrice === 0) {
+        alert("장바구니에서 물건을 선택해주세요.");
+        return false;
+     }
+     return true;
+ }

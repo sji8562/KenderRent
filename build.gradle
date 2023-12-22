@@ -38,8 +38,6 @@ dependencies {
 	implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
-	// <이메일인증용 DL
-	implementation 'com.sun.mail:jakarta.mail:2.0.0'
 	// spring security
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
 	implementation 'org.springframework.boot:spring-boot-starter-security:3.1.6'
@@ -51,14 +49,13 @@ dependencies {
 	implementation 'org.springframework.security:spring-security-taglibs:5.7.2'
 	// spring mail
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail
-	implementation 'org.springframework.boot:spring-boot-starter-mail:3.1.6'
-	// 이메일인증용 DL>
-	
 	implementation group: 'com.auth0', name: 'java-jwt', version: '4.4.0'
-
+	// message전송
+	implementation 'net.nurigo:sdk:4.3.0'
 
 
 	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.1.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
 }
 

@@ -1,28 +1,21 @@
 package com.tenco.toyproject.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.*;
 
+import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import com.tenco.toyproject.dto.KakaoPayDto;
 import com.tenco.toyproject.dto.response.KakaoPayCancelResponse;
-import com.tenco.toyproject.dto.response.KakaoPayResponse;
-import com.tenco.toyproject.repository.entity.Order;
+import com.tenco.toyproject.repository.entity.Sale;
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.CustomerService;
@@ -51,6 +44,8 @@ public class ProductController {
 	private UserService userService;
 	@Autowired
 	private KakaoPayService kakaoPayService;
+	@Autowired
+	private MessageController message;
 	
 	@GetMapping("categories")
 	public String categories() {
@@ -85,28 +80,55 @@ public class ProductController {
         // 상품 정보
         Product product = productService.findById(id);
         model.addAttribute("product", product);
+        // 찜한 상품 확인
+        User principal = (User) session.getAttribute("principal");
+        if(principal != null) {
+        	boolean isWished = productService.checkWishList(principal.getId(), id);
+        	model.addAttribute("isWished", isWished);
+        }
         return "product/detail";
     }
 
 	@PostMapping("order")
-	public String order(Model model, @RequestParam("id") int productId) {
+	public String order(Model model, @RequestParam("id") String selectedProducts) {
 		User principal = (User) session.getAttribute("principal");
 		User userInfo = userService.findById(principal.getId());
-		Product orderList = productService.findById(productId);
+		int[] productId = Arrays.stream(selectedProducts.split(","))
+                 .mapToInt(Integer::parseInt)
+                 .toArray();
+		List<Product> orderList = new ArrayList<>();
+		int productPrice = 0;
+		int deliveryFee = 3000;
+	    for (int id : productId) {
+	        Product product = productService.findById(id);
+	        orderList.add(product);
+	        productPrice += product.getPrice();
+	        if(product.getStatus() != 1) {
+	        	throw new CustomRestfullException("이미 품절된 물건입니다.", HttpStatus.BAD_REQUEST);
+	        }
+	    }
+	    int totalPrice = productPrice + deliveryFee;
+	    model.addAttribute("productPrice", productPrice);
+	    model.addAttribute("deliveryFee", deliveryFee);
+	    model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("orderList", orderList);
 		model.addAttribute("userInfo", userInfo);
 		return "product/order";
 	}
 	@GetMapping("order/kakao-pay")
 	public void kakaoPayGet() {
-		
 	}
 	
 	@PostMapping("order/kakao-pay")
-	public String kakaoPayReady(@RequestParam("id") int productId) {
+	public String kakaoPayReady(@RequestParam("orderIds") String[] orderIds,
+			String name, String phoneNumber, String postNumber, String address, String addressDetail) {
 		User principal = (User) session.getAttribute("principal");
 		int userId = principal.getId();
-			return "redirect:" + kakaoPayService.KakaoPayReady(productId, userId) + "?id=" + productId;
+		for (String id : orderIds) {
+			productService.payForProduct(userId, Integer.parseInt(id), postNumber, address, addressDetail);
+		}
+		String orderIdsToString = String.join(",", orderIds);
+		return "redirect:" + kakaoPayService.KakaoPayReady(orderIds, userId) + "?id=" + orderIdsToString;
 	}
 	
 	// http://localhost/product/kakao-pay/success?pg_token=T5794b2c3ad74821dd21
@@ -114,25 +136,50 @@ public class ProductController {
 	public String kakaoPaySuccess(Model model, @RequestParam("pg_token") String pg_token) {
 		User principal = (User) session.getAttribute("principal");
 		int userId = principal.getId();
-		// 단일 주문 성공시 order 테이블에 저장
 		KakaoPayDto kakao = kakaoPayService.kakaoPayInfo(pg_token, userId);
-		int productId = Integer.valueOf(kakao.getItemCode());
 		String tid = kakao.getTid();
-		productService.payForProduct(userId, productId, tid);
+		String productId = kakao.getItemCode();
+		int[] productIdArray = Arrays.stream(productId.split(","))
+                .mapToInt(Integer::parseInt)
+                .toArray();
 		model.addAttribute("info", kakao);
 		
+	    for (int id : productIdArray) {
+	        productService.updateTid(tid, userId, id);	    
+	    }
+		
+		for (int id : productIdArray) {
+			productService.deleteCartItem(userId, id);
+	    }
+		message.sendOne(principal.getUserName(), principal.getPhoneNumber());
 		return "redirect:/mypage/order-list";
 	}
 	
 	@GetMapping("order/kakao-pay/fail")
-	public String kakaoPayFail(Model model, @RequestParam("id") int productId) {
+	public String kakaoPayFail(Model model, @RequestParam("id") String orderIds) {
 		User principal = (User) session.getAttribute("principal");
 		User userInfo = userService.findById(principal.getId());
-		Product orderList = productService.findById(productId);
+		int[] productId = Arrays.stream(orderIds.split(","))
+                 .mapToInt(Integer::parseInt)
+                 .toArray();
+		List<Product> orderList = new ArrayList<>();
+		int productPrice = 0;
+		int deliveryFee = 3000;
+	    for (int id : productId) {
+	        Product product = productService.findById(id);
+	        orderList.add(product);
+	        productPrice += product.getPrice();
+	        productService.deleteFromSale(principal.getId(), id);
+	    }
+	    int totalPrice = productPrice + deliveryFee;
+	    model.addAttribute("productPrice", productPrice);
+	    model.addAttribute("deliveryFee", deliveryFee);
+	    model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("orderList", orderList);
 		model.addAttribute("userInfo", userInfo);
 		return "product/order";
 	}
+
 	@GetMapping("search")
 	public String search(Model model, HttpServletRequest request,@RequestParam(value="keyword", required=false) String keyword,
 			@RequestParam(value="price1", required=false) String price1, @RequestParam(value="price2", required=false) String price2){
@@ -160,20 +207,23 @@ public class ProductController {
     }
 
 
+
 	@PostMapping("order/kakao-pay/cancel")
-	public String kakaoPayCancel(Model model, @RequestParam("id") int productId) {
+	public String kakaoPayCancel(Model model, @RequestParam("orderId") int orderId) {
 		User principal = (User) session.getAttribute("principal");
 		int userId = principal.getId();
-		Order order = productService.findTid(userId, productId);
-		Product product = productService.findById(productId);
+		Sale sale = productService.findTid(orderId);
+		Product product = productService.findById(sale.getProductId());
 		int cancelAmount = product.getPrice().intValue();
 		KakaoPayCancelResponse cancelResponse = kakaoPayService.kakaoPayCancel(userId, cancelAmount, 
-				order.getTid());
-		productService.applyForRefund(productId);
+				sale.getTid());
+		productService.applyForRefund(product.getId(), userId);
+		productService.deleteRefundFromSale(orderId);
 		List<Map> orderList = productService.showCustomerOrderList(userId);
 		model.addAttribute("orderList", orderList);
 		model.addAttribute("refund", cancelResponse);
 		return "redirect:/mypage/order-list";
 	}
 	
+
 }

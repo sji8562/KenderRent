@@ -12,7 +12,7 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-5 align-self-center">
-                <h4 class="page-title">물품 수정</h4>
+                <h4 class="page-title">대여 물품 수정</h4>
             </div>
         </div>
     </div>
@@ -26,7 +26,8 @@
                 <div class="card card-body">
 <%--                    <h4 class="card-title">물품 번호 ${product.id}번</h4>--%>
                     <%--<h5 class="card-subtitle"> All bootstrap element classies </h5>--%>
-                    <form class="form-horizontal mt-4" action="/mng/product/${product.id}/modify" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal mt-4" action="/mng/product/${product.id}/modifyForRent" method="post" enctype="multipart/form-data">
+                        <div>${product.code}</div>
                         <div class="form-group">
                             <label>물품명</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="물품명을 입력하세요" value="${product.name}" required>
@@ -36,10 +37,19 @@
                             <input type="text" class="form-control" id="price" name="price" placeholder="물품 가격을 입력하세요" value="${product.price}" required>
                         </div>
                         <div class="form-group">
-                            <label for="example-email">카테고리</label>
+                            <label>카테고리</label>
                             <div style="display: flex;">
                                 <span style="margin-right: 10px;">
-                                    <select class="form-select" aria-label="Disabled select example" name="secondCategoryId">
+                                    <select class="form-select" aria-label="Disabled select example" id="firstCategory" name="firstCategoryId" onchange="fCategoryChange()" required>
+                                        <option value="0">1차 카테고리</option>
+                                        <c:forEach var="fCategory" items="${fCategory}">
+                                            <option value="${fCategory.id}" ${fCategory.id == product.firstCategoryId ? 'selected' : ''}>${fCategory.firstCategoryName}</option>
+                                        </c:forEach>
+                                    </select>
+                                </span>
+                                <span style="margin-right: 10px;">
+                                    <select class="form-select" aria-label="Disabled select example" id="secondCategorySelect" name="secondCategoryId">
+                                        <option value="0">2차 카테고리</option>
                                         <c:forEach var="sCategory" items="${sCategory}">
                                             <option value="${sCategory.id}" ${sCategory.id == product.secondCategoryId ? 'selected' : ''}>${sCategory.secondCategoryName}</option>
                                         </c:forEach>
@@ -85,7 +95,8 @@
                                 <textarea id="summernote" name="content">${product.content}</textarea>
                             </div>
                         </div>
-                        <button class="btn btn-secondary" onclick="history.back()">뒤로가기</button>
+                        <%--<button class="btn btn-secondary" onclick="history.back()">뒤로가기</button>--%>
+                        <a href="/mng/product/list?code=1&keyword="><button class="btn btn-secondary" type="button">목록으로</button></a>
                         <button type="submit" class="btn btn-primary">수정하기</button>
                     </form>
                 </div>

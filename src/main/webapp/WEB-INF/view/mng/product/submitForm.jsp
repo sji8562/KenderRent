@@ -27,7 +27,7 @@
                 <div class="card card-body">
                     <%--                    <h4 class="card-title">물품 번호 ${product.id}번</h4>--%>
                     <%--<h5 class="card-subtitle"> All bootstrap element classies </h5>--%>
-                    <form class="form-horizontal mt-4" action="/mng/product/register" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal mt-4" action="/mng/product/registerForRent" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">물품명</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="물품명을 입력하세요" required>
@@ -39,11 +39,26 @@
                         <div class="form-group">
                             <label>카테고리</label>
                             <div style="display: flex;">
+
                                 <span style="margin-right: 10px;">
-                                    <select class="form-select" aria-label="Disabled select example" id="secondCategoryId" name="secondCategoryId" required>
-                                        <c:forEach var="sCategory" items="${sCategory}">
-                                            <option value="${sCategory.id}">${sCategory.secondCategoryName}</option>
+                                    <select class="form-select" aria-label="Disabled select example" id="firstCategory" name="firstCategoryId" onchange="fCategoryChange()" required>
+                                        <option value="0">1차 카테고리</option>
+                                        <c:forEach var="fCategory" items="${fCategory}">
+                                            <option value="${fCategory.id}">${fCategory.firstCategoryName}</option>
                                         </c:forEach>
+                                    </select>
+                                </span>
+                                <%--<span>
+                                    <select class="form-select" aria-label="Disabled select example">
+                                        <option selected>${product.secondCategoryName}</option>
+                                    </select>
+                                </span>--%>
+                                <span style="margin-right: 10px;">
+                                    <select class="form-select" aria-label="Disabled select example" id="secondCategorySelect" name="secondCategoryId" required>
+                                        <option value="0">2차 카테고리</option>
+                                        <%--<c:forEach var="sCategory" items="${sCategory}">
+                                            <option value="${sCategory.id}">${sCategory.secondCategoryName}</option>
+                                        </c:forEach>--%>
                                     </select>
                                 </span>
                                 <%--<span>
@@ -74,8 +89,7 @@
                             <select class="form-select" aria-label="Disabled select example" id="status" name="status" required>
                                 <option value="1" selected>재고 있음</option>
                                 <option value="2" disabled style="color: grey">대여 중</option>
-                                <option value="3" disabled style="color: grey">반납 중</option>
-                                <option value="4">소독 중</option>
+                                <option value="3" style="color: grey">소독 중</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -85,7 +99,8 @@
                                 <textarea id="summernote" name="content"></textarea>
                             </div>
                         </div>
-                        <button class="btn btn-secondary" onclick="history.back()">뒤로가기</button>
+                        <input type="number" id="code" name="code" value="1" hidden />
+                        <a href="/mng/product/listForSale?code=2&keyword="><button class="btn btn-secondary" type="button">목록으로</button></a>
                         <button type="submit" class="btn btn-primary">등록하기</button>
                     </form>
                 </div>

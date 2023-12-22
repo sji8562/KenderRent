@@ -1,13 +1,15 @@
 package com.tenco.toyproject.repository.entity;
 
 
+
+import java.sql.Timestamp;
+
 import com.tenco.toyproject._core.utils.DateUtil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
 
 @Data
 @Builder

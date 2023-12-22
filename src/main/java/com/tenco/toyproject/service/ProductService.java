@@ -1,15 +1,15 @@
 package com.tenco.toyproject.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tenco.toyproject.repository.entity.Order;
+import com.tenco.toyproject.repository.entity.Sale;
+import com.tenco.toyproject.repository.entity.PayBack;
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.interfaces.CustomerRepository;
 import com.tenco.toyproject.repository.interfaces.ProductRepository;
@@ -41,7 +41,6 @@ public class ProductService {
 		return cartEntity;
 	}
 	
-	@Transactional
 	public void addToCartById(int userId, int productId) {
 		productRepository.addToCartById(userId, productId);
 	}
@@ -50,7 +49,6 @@ public class ProductService {
         return productRepository.countProductCustomer(productId);
     }
 	
-	@Transactional
 	public int deleteCartItem(int userId, int productId) {
 		return productRepository.deleteCartItem(userId, productId);		
 	}
@@ -58,23 +56,55 @@ public class ProductService {
 	public boolean isItemInCart(int userId, int productId) {
 		return productRepository.isItemInCart(userId, productId) > 0;
 	}
-	
 	public int countItemInCart(int userId) {
 		return productRepository.countItemInCart(userId);
 	}
 	
-	public void payForProduct(int userId, int productId, String tid) {
-		productRepository.payForProduct(userId, productId, tid);
+	public void payForProduct(int userId, int productId, String postNumber, String address, String addressDetail) {
+		productRepository.payForProduct(userId, productId, postNumber, address, addressDetail);
 	}
 	public List<Map> showCustomerOrderList(int userId) {
 		return productRepository.showCustomerOrderList(userId);
 	}
-	@Transactional
-	public int applyForRefund(int productId) {
-		return productRepository.applyForRefund(productId);
+	public void applyForRefund(int productId, int userId) {
+		PayBack payback = new PayBack();
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		Product product = findById(productId);
+		payback.setProductId(productId);
+		payback.setCreateAt(timestamp);
+		payback.setUserId(userId);
+		payback.setMoney(product.getPrice().intValue());
+		payback.setStatus(1);
+		productRepository.applyForRefund(payback);
 	}
-	public Order findTid(int userId, int productId) {
-		return productRepository.findTid(userId, productId);
+	public Sale findTid(int orderId) {
+		return productRepository.findTid(orderId);
+	}
+	public int deleteRefundFromSale(int orderId) {
+		return productRepository.deleteRefundFromSale(orderId);
+	}
+	public List<Map> showCancelList(int userId) {
+		return productRepository.showCancelList(userId);
+	}
+	public void addToBookmark(int userId, int productId) {
+		productRepository.addToBookmark(userId, productId);
+	}
+	public boolean checkWishList(int userId, int productId) {
+		if(productRepository.checkWishList(userId, productId) > 0) {
+			return true;
+		} else return false;
+	}
+	public List<Map> showWishList(int id) {
+		return productRepository.showWishList(id);
+	}
+	public int deleteWishList(int userId, int productId) {
+		return productRepository.deleteWishList(userId, productId);
+	}
+	public void updateTid(String tid, int userId, int productId) {
+		productRepository.updateTid(tid, userId, productId);
+	}
+	public void deleteFromSale(int userId, int productId) {
+		productRepository.deleteFromSale(userId, productId);
 	}
 
 	// 무한 스크롤 관련

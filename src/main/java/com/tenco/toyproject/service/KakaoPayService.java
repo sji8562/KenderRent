@@ -1,5 +1,6 @@
 package com.tenco.toyproject.service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -12,9 +13,7 @@ import com.tenco.toyproject.dto.KakaoPayDto;
 import com.tenco.toyproject.dto.response.KakaoPayCancelResponse;
 import com.tenco.toyproject.dto.response.KakaoPayResponse;
 import com.tenco.toyproject.repository.entity.Product;
-import com.tenco.toyproject.repository.entity.User;
 
-import jakarta.servlet.http.HttpSession;
 
 @Service
 public class KakaoPayService {
@@ -27,26 +26,42 @@ public class KakaoPayService {
 	private ProductService productService;
 
 	private Product product;
+	private String[] productIds;
 
-	public String KakaoPayReady(int productId, int userId) {
+	public String KakaoPayReady(String[] productId, int userId) {
 //		Product orderList = productService.findById(productId);
 		HttpHeaders headers = new HttpHeaders();
-		product = productService.findById(productId);
+		productIds = productId;
+		String productIdToString = String.join(",", productId);
+		int productPrice = 0;
+		int deliveryFee = 3000;
+		int count = -1;
+	    for (String id : productIds) {
+	        product = productService.findById(Integer.parseInt(id));
+	        productPrice += product.getPrice();
+	        count++;
+	    }
+	    int totalPrice = productPrice + deliveryFee;
+	    String productName = product.getName();
+	    if (productId.length > 1) {
+	    	productName = product.getName() + "외 " + count + "개";
+	    }
+	    
 		headers.add("Authorization", "KakaoAK " + "bd58a402485edbfc26668cfb00914ee0");
 		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 		params.add("cid", "TC0ONETIME");
-		params.add("partner_order_id", "KENDERENT");
+		params.add("partner_order_id", "KENDERRENT");
 		params.add("partner_user_id", String.valueOf(userId));
-		params.add("item_name", product.getName());
-		params.add("item_code", String.valueOf(product.getId()));
+		params.add("item_name", productName);
+		params.add("item_code", productIdToString);
 		params.add("quantity", "1");
-		params.add("total_amount", String.valueOf(product.getPrice()));
+		params.add("total_amount", String.valueOf(totalPrice));
 		params.add("tax_free_amount", "0");
 		params.add("approval_url", "http://localhost/product/order/kakao-pay/success"); // 성공 시 redirect url
-		params.add("cancel_url", "http://localhost/product/order/kakao-pay/cancel?id=" + product.getId()); // 취소 시 redirect url
-		params.add("fail_url", "http://localhost/product/order/kakao-pay/fail"); // 실패 시 redirect url
+		params.add("cancel_url", "http://localhost/product/order/kakao-pay/fail" + "?id=" + productIdToString); // 실패 시 redirect url
+		params.add("fail_url", "http://localhost/product/order/kakao-pay/fail"); // 취소 시 redirect url
 
 		HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(params, headers);
 
@@ -55,8 +70,6 @@ public class KakaoPayService {
 			kakaoPayResponse = rt.postForObject("https://kapi.kakao.com/v1/payment/ready", 
 					requestEntity,
 					KakaoPayResponse.class);
-			System.out.println(kakaoPayResponse.toString());
-			
 			return kakaoPayResponse.getNextRedirectPcUrl();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -72,14 +85,22 @@ public class KakaoPayService {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "KakaoAK " + "bd58a402485edbfc26668cfb00914ee0");
 		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+	
+		int productPrice = 0;
+		int deliveryFee = 3000;
+	    for (String id : productIds) {
+	        product = productService.findById(Integer.parseInt(id));
+	        productPrice += product.getPrice();
+	    }
+	    int totalPrice = productPrice + deliveryFee;
 
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 		params.add("cid", "TC0ONETIME");
 		params.add("tid", kakaoPayResponse.getTid());
-		params.add("partner_order_id", "KENDERENT");
+		params.add("partner_order_id", "KENDERRENT");
 		params.add("partner_user_id", String.valueOf(userId));
 		params.add("pg_token", pg_token);
-		params.add("total_amount", String.valueOf(product.getPrice()));
+		params.add("total_amount", String.valueOf(totalPrice));
 
 		HttpEntity<MultiValueMap<String, String>> httpEntity 
 			= new HttpEntity<MultiValueMap<String, String>>(params, headers);

@@ -46,5 +46,4 @@
     <delete id="deleteProductQna">
         DELETE FROM board WHERE code = 4 AND id = #{id}
     </delete>
-
 </mapper>

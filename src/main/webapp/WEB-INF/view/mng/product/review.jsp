@@ -11,7 +11,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h4 class="page-title">후기 관리</h4>
+                        <h4 class="page-title">대여 후기 관리</h4>
                     </div>
 <%--                    <div class="col-7 align-self-center">--%>
 <%--                        <div class="d-flex align-items-center justify-content-end">--%>
@@ -36,7 +36,7 @@
 							<div class="card">
 								<form class="row g-3" action="/mng/product/review" method="get">
 									<div class="card-body m--search-inline">
-										<h4 class="card-title">상품 후기 조회</h4>
+										<h4 class="card-title">대여 상품 후기 조회</h4>
 											<div class="m--search-inline">
 												<div class="col-auto">
 													<input type="text" class="form-control" id="keyword" name="keyword" placeholder="상품명을 입력해주세요" value="${keyword}">

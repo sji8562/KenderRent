@@ -41,108 +41,122 @@
 								aria-hidden="true"></i> <a href="/mypage/main"
 								style="color: black">마이페이지</a></li>
 							<li class="active"><i class="fa fa-angle-right"
-								aria-hidden="true"></i> 전체 주문 내역</li>
+								aria-hidden="true"></i>주문 내역</li>
 						</ul>
 					</div>
 				</div>
 			</div>
 
-
-			<div class="col-lg-3">
-				<div class="sidebar">
-					<div class="sidebar_section">
-						<div class="sidebar_title">
-							<h4>마이페이지</h4>
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="sidebar">
+						<div class="sidebar_section">
+							<div class="sidebar_title">
+								<h4>마이페이지</h4>
+							</div>
+							<br>
+							<ul class="sidebar_categories">
+								<li><a href="/mypage/main">MY 홈</a></li>
+								<li class="active"><a href="/mypage/order-list"><span>
+											<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+									</span>주문 내역</a></li>
+								<li><a href="/mypage/cancel-list">취소 내역</a></li>
+								<li><a href="/mypage/wish-list">위시리스트</a></li>
+								<li><a href="#">문의 내역</a></li>
+								<li><a href="#">회원정보 변경</a></li>
+							</ul>
 						</div>
-						<br>
-						<ul class="sidebar_categories">
-							<li class="active"><a href="/mypage/order-list"><span>
-										<i class="fa fa-angle-double-right" aria-hidden="true"></i>
-								</span>전체 주문 내역</a></li>
-							<li><a href="#">취소/반품/교환 내역</a></li>
-							<li><a href="#">환불/입금 내역</a></li>
-							<li><a href="#">문의내역</a></li>
-							<li><a href="#">회원정보 변경</a></li>
-							<li><a href="#">배송지 관리</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="mypage_lately_info_cont">
-
-
-				<!-- 주문상품 리스트 -->
-				<div id="container"
-					style="padding: 0px; display: flex; justify-content: center;">
-					<div id="content"
-						style="display: relative; justify-content: center;">
-						<c:choose>
-							<c:when test="${empty orderList}">
-								<div style="text-align: center;">
-									<p style="font-size: 18px">주문하신 상품이 없습니다.</p>
-									<a href="/">
-										<button class="continue_button" style="align-items: center;">쇼핑하러
-											가기 ></button>
-									</a>
-								</div>
-							</c:when>
-							<c:otherwise>
-								<table>
-									<tbody>
-										<c:forEach var="orderList" items="${orderList}">
-											<tr>
-												<td class="vertical-center">
-													<div class="box_content">
-														<div class="box_title" style="margin-bottom: 10px">배송
-															완료</div>
-														<div class="box_goods">
-															<div class="box_picture">
-																<a href="/product/detail/${orderList.product_id}"
-																	target="_blank"> <img src=${orderList.picUrl }
-																	width="100" height="100">
-																</a>
-															</div>
-															<div class="box_product_info">
-																<a href="/mypage/order-list/detail?id=${orderList.id}"
-																	class="text_product_name"> ${orderList.name}</a>
-																<div></div>
-																<span class="text_product_price"> <fmt:formatNumber
-																		value="${orderList.price}" pattern="#,###" />원
-																</span>
-															</div>
-														</div>
-														<div
-															style="display: flex; justify-content: center; margin-top: 30px;">
-															<form method="post"
-																action="/product/order/kakao-pay/cancel"
-																class="box_button" style="margin-right: 20px">
-																<input type="hidden" name="id"
-																	value="${orderList.product_id}" />
-																<button type="submit"
-																	onclick="alert('환불이 성공적으로 처리되었습니다.');"
-																	style="background: none; border: none;">환불 신청</button>
-															</form>
-															<button type="submit" class="box_button">배송조회</button>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</c:otherwise>
-						</c:choose>
 					</div>
 				</div>
 
+				<div class="col-lg-9">
+					<div class="mypage_lately_info_cont">
+						<div class="box_title" style="margin-bottom: 10px; border-bottom: none; padding-left: 40px"> 
+						주문 내역</div>
+
+						<!-- 주문상품 리스트 -->
+						<div id="container"
+							style="margin-left: -30px; display: flex; justify-content: center;">
+							<div id="content"
+								style="display: relative; justify-content: center;">
+								<c:choose>
+									<c:when test="${empty orderList}">
+										<div style="text-align: center;">
+											<p style="font-size: 18px">주문하신 상품이 없습니다.</p>
+											<a href="/">
+												<button class="continue_button" style="align-items: center;">쇼핑하러
+													가기 ></button>
+											</a>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<table>
+											<tbody>
+												<c:forEach var="orderList" items="${orderList}">
+													<tr>
+														<td class="vertical-center">
+															<div class="box_content">
+																<div class="box_title" style="margin-bottom: 10px">
+																	배송 완료
+																	<div style="float: right; padding-right: 5px;">
+																		<a href="/mypage/order-list/detail?id=${orderList.id}"
+																			class="text_product_name"
+																			style="font-size: 13px; color: gray;"> 주문 상세 보기 >
+																		</a>
+																	</div>
+																</div>
+
+																<div class="box_goods">
+																	<div class="box_picture">
+																		<a href="/product/detail/${orderList.product_id}"
+																			target="_blank"> <img src=${orderList.picUrl }
+																			width="100" height="100">
+																		</a>
+																	</div>
+																	<div class="box_product_info">
+																		<form action="/cart/delete?id=${product.id }"
+																			method="post">
+																			<a
+																				href="/mypage/order-list/detail?id=${orderList.id}"
+																				class="text_product_name"> ${orderList.name} </a>
+																		</form>
+																		<div></div>
+																		<span class="text_product_price"> <fmt:formatNumber
+																				value="${orderList.price}" pattern="#,###" />원
+																		</span>
+																	</div>
+																</div>
+																<div
+																	style="display: flex; justify-content: center; margin-top: 30px;">
+																	<form method="post"
+																		action="/product/order/kakao-pay/cancel"
+																		class="box_button" style="margin-right: 20px">
+																		<input type="hidden" name="orderId"
+																			value="${orderList.id}" />
+																		<button type="submit"
+																			onclick="alert('환불이 성공적으로 처리되었습니다.');"
+																			style="background: none; border: none;">환불
+																			신청</button>
+																	</form>
+																	<button type="submit" class="box_button">배송조회</button>
+																</div>
+															</div>
+														</td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<br> <br>
 			</div>
 		</div>
-		<br> <br>
-	</div>
-	</div>
-	<jsp:include page="../layout/footer.jsp" />
+		<jsp:include page="../layout/footer.jsp" />
 	</div>
 	<script src="/js/jquery-3.2.1.min.js"></script>
 	<script src="/css/styles/bootstrap4/popper.js"></script>

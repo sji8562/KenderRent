@@ -40,8 +40,13 @@ public class MngContentService {
     }
 
     public int updateMngContent(MngContentDto dto) {
-      // TODO Auto-generated method stub
-      return 0;
+
+        int resultSet = mngContentRepository.updateMngContent(dto);
+        System.out.println("여기여기여기" + resultSet);
+        if(resultSet < 1) {
+            throw new Exception500("등록에 실패했습니다");
+        }
+        return resultSet;
     }
 
 }
