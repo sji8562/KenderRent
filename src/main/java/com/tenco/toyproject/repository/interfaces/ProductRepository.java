@@ -35,6 +35,8 @@ public interface ProductRepository {
 	public int deleteWishList(@Param("userId") int userId, @Param("productId") int productId);
 	public void updateTid(@Param("tid") String tid, @Param("userId") int userId, @Param("productId") int productId);
 	public int deleteFromSale(@Param("userId") int userId, @Param("productId") int productId);
+	public int countReview(int productId);
+	public List<Map> showReview(int productId);
 
 
 	

@@ -380,102 +380,49 @@ function addToCartConfirmation() {
 					<div id="tab_2" class="tab_container">
 						<div class="row">
 
-							<!-- User Reviews -->
-
+							<!-- 사용후기 -->
 							<div class="col-lg-6 reviews_col">
 								<div class="tab_title reviews_title">
-									<h4>Reviews (2)</h4>
+									<h4>Reviews (${countReview })</h4>
 								</div>
 
 								<!-- User Review -->
-
-								<div
-									class="user_review_container d-flex flex-column flex-sm-row">
-									<div class="user">
-										<div class="user_pic"></div>
-										<div class="user_rating">
-											<ul class="star_rating">
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-											</ul>
-										</div>
-									</div>
-									<div class="review">
-										<div class="review_date">27 Aug 2016</div>
-										<div class="user_name">Brandon William</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit, sed do eiusmod tempor incididunt ut labore et dolore
-											magna aliqua.</p>
-									</div>
-								</div>
-
-								<!-- User Review -->
-
-								<div
-									class="user_review_container d-flex flex-column flex-sm-row">
-									<div class="user">
-										<div class="user_pic"></div>
-										<div class="user_rating">
-											<ul class="star_rating">
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-											</ul>
-										</div>
-									</div>
-									<div class="review">
-										<div class="review_date">27 Aug 2016</div>
-										<div class="user_name">Brandon William</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit, sed do eiusmod tempor incididunt ut labore et dolore
-											magna aliqua.</p>
-									</div>
-								</div>
-							</div>
-
-							<!-- Add Review -->
-
-							<div class="col-lg-6 add_review_col">
-
-								<div class="add_review">
-									<form id="review_form" action="post">
-										<div>
-											<h1>Add Review</h1>
-											<input id="review_name" class="form_input input_name"
-												type="text" name="name" placeholder="Name*"
-												required="required" data-error="Name is required.">
-											<input id="review_email" class="form_input input_email"
-												type="email" name="email" placeholder="Email*"
-												required="required" data-error="Valid email is required.">
-										</div>
-										<div>
-											<h1>Your Rating:</h1>
-											<ul class="user_star_rating">
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-											</ul>
-											<textarea id="review_message" class="input_review"
-												name="message" placeholder="Your Review" rows="4" required
-												data-error="Please, leave us a review."></textarea>
-										</div>
-										<div class="text-left text-sm-right">
-											<button id="review_submit" type="submit"
-												class="red_button review_submit_btn trans_300"
-												value="Submit">submit</button>
-										</div>
-									</form>
-								</div>
+								<table>
+									<tbody>
+										<c:forEach var="review" items="${review}">
+											<tr>
+												<td>${review.user_name}
+												<c:set var="rateValue" value="${review.rate}" />
+													<ul class="star_rating">
+														<li><i
+															class="fa fa-star${(rateValue >= 1) ? '' : '-o'}"
+															aria-hidden="true"></i></li>
+														<li><i
+															class="fa fa-star${(rateValue >= 2) ? '' : '-o'}"
+															aria-hidden="true"></i></li>
+														<li><i
+															class="fa fa-star${(rateValue >= 3) ? '' : '-o'}"
+															aria-hidden="true"></i></li>
+														<li><i
+															class="fa fa-star${(rateValue >= 4) ? '' : '-o'}"
+															aria-hidden="true"></i></li>
+														<li><i
+															class="fa fa-star${(rateValue == 5) ? '' : '-o'}"
+															aria-hidden="true"></i></li>
+													</ul>
+												</td>
+											</tr>
+											<tr>
+												<td>${review.created_at}</td>
+											</tr>
+											<tr>
+												<td>${review.content}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
 
 							</div>
-
 						</div>
 					</div>
 
@@ -487,8 +434,7 @@ function addToCartConfirmation() {
 								<div class="tab_title additional_info_title">
 									<h4>상품문의</h4>
 									<br>
-									<button
-										type="button" class="gray_button"
+									<button type="button" class="gray_button"
 										onclick="location.href='/customer/write?type=productInquiry'">글쓰기</button>
 								</div>
 
@@ -736,7 +682,7 @@ function optionCheck() {
 	let user = '<%=session.getAttribute("principal")%>';
     var selectedValue = document.getElementById("selectedMonth").value;
    	if (selectedValue === "") {
-    	alert("구매할 기간을 선택해주세요.");
+    	alert("기간을 선택해주세요.");
     } else {
     	if(user == "null"){
     		alert("로그인이 필요한 기능입니다.");
@@ -747,6 +693,7 @@ function optionCheck() {
 	}
 }
 </script>
+
 
 </body>
 </html>
