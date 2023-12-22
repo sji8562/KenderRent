@@ -6,6 +6,8 @@
 <html dir="ltr" lang="en">
 
 <head>
+
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Tell the browser to be responsive to screen width -->
@@ -36,6 +38,7 @@
 	integrity="sha256-7ZWbZUAi97rkirk4DcEp4GWDPkWpRMcNaEyXGsNXjLg="
 	crossorigin="anonymous">
 
+
 <!-- Summernote CSS -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
@@ -58,6 +61,7 @@
 	position: fixed;
 	height: 100%;
 	overflow-y: auto;
+	background-color: #233242;
 }
 
 /*.navbar {*/
@@ -77,7 +81,8 @@
 		data-layout="vertical" data-sidebartype="full"
 		data-boxed-layout="full">
 		<header class="topbar" data-navbarbg="skin6">
-			<nav class="navbar top-navbar navbar-expand-md navbar-light">
+			<nav class="navbar top-navbar navbar-expand-md navbar-light"
+				style="background-color: #233242;">
 				<div class="navbar-header" data-logobg="skin5">
 					<!-- This is for the sidebar toggle which is visible on mobile only -->
 					<a class="nav-toggler waves-effect waves-light d-block d-md-none"
@@ -87,6 +92,8 @@
 					<!-- Logo -->
 					<!-- ============================================================== -->
 					<div class="navbar-brand">
+
+
 						<a href="/mng/" class="logo"> <!-- Logo icon --> <b
 							class="logo-icon"> <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 								<img src="/assets/images/logo-icon.png" alt="homepage"
@@ -97,6 +104,8 @@
 								<!-- dark Logo text --> <!-- Light Logo text --> <span
 								style="color: white">Kinder Lend Admin</span>
 						</span>
+
+
 						</a>
 					</div>
 					<!-- ============================================================== -->
@@ -109,21 +118,30 @@
 
 
 					<%--<div class="navbar-collapse collapse" id="navbarSupportedContent"
+
 					data-navbarbg="skin6" style="justify-content: space-between;">
 					<!-- ============================================================== -->
 					<!-- Right side toggle and nav items -->
 
 					<!-- ============================================================== -->
-					<li class="nav-item dropdown"><a
-							href="/mng/" id="navbarDropdown" aria-expanded="false"> <img
+
+					<ul class="navbar-nav float-end">
+						<!-- ============================================================== -->
+						<!-- User profile and search -->
+						<!-- ============================================================== -->
+						<li class="nav-item dropdown"><a href="/mng/"
+							id="navbarDropdown" aria-expanded="false"> <img src="/images/Logo.png" alt="user" width="31"></a> 
+
+        
 
 
-								src="/images/Logo.png" alt="user" width="31">
-						</a>
 					</li>
 						<!-- ============================================================== -->
 						<!-- User profile and search -->
 						<!-- ============================================================== -->
+
+
+					</ul>
 
 					<a href="/mng/logout"><button type="button" class="btn">로그아웃</button></a>
 				</div>--%>
@@ -146,10 +164,9 @@
 					</a></li>
 					<%-- 물품관리 --%>
 					<li class="sidebar-item" id="productManagement"><a
-						style="cursor: default"
 						class="sidebar-link waves-effect waves-dark sidebar-link"
-						aria-expanded="false"> <i class="mdi mdi-dropbox"></i> <span
-							class="hide-menu">물품 관리</span>
+						href="/mng/product/list?keyword=" aria-expanded="false"> <i
+							class="mdi mdi-dropbox"></i> <span class="hide-menu">물품 관리</span>
 					</a>
 						<ul aria-expanded="false" class="collapse first-level">
 							<!-- 물품관리 -->
@@ -162,7 +179,7 @@
 							<!-- 물품관리 -->
 							<li class="sidebar-item"><a
 								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/product/list?keyword="> <i
+								href="/mng/product/listForSale?keyword="> <i
 									class="mdi mdi-archive"></i> <span class="hide-menu">판매용
 										물품 관리</span>
 							</a></li>
@@ -172,6 +189,7 @@
 								href="/mng/product/review?keyword="> <i
 									class="mdi mdi-thumb-up"></i> <span class="hide-menu">후기
 										관리</span>
+
 							</a></li>
 						</ul></li>
 					<li class="sidebar-item" id="categoryManagement"><a
@@ -238,6 +256,7 @@
 								소개 관리</span>
 					</a></li>
 
+
 					<%-- 게시판 관리 --%>
 					<li class="sidebar-item" id="noticeManagement"><a
 						class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -268,7 +287,7 @@
 							</a></li>
 							<li class="sidebar-item"><a
 								class="sidebar-link waves-effect waves-dark sidebar-link"
-								href="/mng/board/productqnaList"> <i
+								href="/mng/board/productqna?keyword="> <i
 									class="mdi mdi-note-text"></i> <span class="hide-menu">상품질문</span>
 							</a></li>
 						</ul></li>

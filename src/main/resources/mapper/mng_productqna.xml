@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--반드시 세미콜론 생략 -->
+<mapper
+        namespace="com.tenco.toyproject.repository.interfaces.mng.board.MngProductQnaRepository">
+
+    <!-- QNA 총 개수 -->
+    <select id="countProductQnaList" resultType="int">
+        SELECT COUNT(*) AS count FROM board WHERE code = 4 AND title LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+
+    <!-- QnA 리스트 조회 -->
+    <select id="findProductQnaByCodeWithPagenation" resultType="com.tenco.toyproject.repository.entity.Board">
+        SELECT b.id, b.title, b.code, b.user_id, u.email, b.created_at, (r.id IS NOT NULL) AS reply, r.created_at AS reply_created_at FROM board AS b
+        LEFT JOIN reply AS r ON r.board_id = b.id
+        JOIN user AS u ON u.id = b.user_id
+        WHERE b.code = 4
+        LIMIT #{start}, 5
+    </select>
+
+    <!-- QNA 리스트 조회 with 검색-->
+    <select id="findProductQnaByCodeWithPagenationAndKeyword" resultType="com.tenco.toyproject.repository.entity.Board">
+        SELECT b.id, b.title, b.code, b.user_id, u.email, b.created_at, 
+        (r.id IS NOT NULL) AS reply, r.created_at AS reply_created_at FROM board AS b                                                                                                                         
+        LEFT JOIN reply AS r ON r.board_id = b.id
+        JOIN user AS u ON u.id = b.user_id
+        WHERE b.code = 4 AND b.title LIKE CONCAT('%', #{keyword}, '%')
+        LIMIT #{pageVO.start}, 5
+    </select>
+
+    <!-- QnA 상세조회 with 답변 -->
+    <select id="findProductQnaByIdWithReply" resultType="com.tenco.toyproject.repository.entity.ProductQnaDetail">
+        SELECT b.id, b.title, b.content, b.code, b.user_id, u.email, b.created_at, r.id AS replyId, r.content AS reply_content, r.created_at AS reply_created_at FROM board AS b
+                LEFT JOIN reply AS r ON r.board_id = b.id
+                JOIN user AS u ON u.id = b.user_id
+        WHERE b.code = 4 AND b.id = #{id}
+    </select>
+
+    <!-- QnA 답변 등록 -->
+    <insert id="submitProductQnaAnswer">
+        INSERT INTO reply SET board_id = #{boardId}, content = #{replyContent}, created_at = NOW()
+    </insert>
+
+    <delete id="deleteProductQna">
+        DELETE FROM board WHERE code = 4 AND id = #{id}
+    </delete>
+
+</mapper>
