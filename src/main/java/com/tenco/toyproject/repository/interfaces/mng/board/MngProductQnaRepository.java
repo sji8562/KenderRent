@@ -7,7 +7,6 @@ import com.tenco.toyproject.dto.MngBoardDTO;
 import com.tenco.toyproject.dto.MngProductReplyDTO.ProductQnaReplyDto;
 
 
-
 import com.tenco.toyproject.repository.entity.ProductQnaDetail;
 import com.tenco.toyproject.vo.PageVO;
 
