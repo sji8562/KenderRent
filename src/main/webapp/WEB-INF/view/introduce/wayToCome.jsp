@@ -82,7 +82,7 @@
 
 			<div class="col-lg-6 contact_col">
 				<div class="contact_contents">
-					<h1>Contact Us</h1>
+					<h3>Contact Us</h3>
 					<p>There are many ways to contact us. You may drop us a line, give us a call or send an email, choose what suits you the most.</p>
 					<div>
 						<p>(800) 686-6688</p>

@@ -43,16 +43,9 @@
 					<%--<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>--%>
 					<%--</ul>--%>
 				</div>
-				<c:choose>
-					<c:when test="${content == null}">
-						<p>등록된 내용이 없습니다</p>
-					</c:when>
-					<c:otherwise>
-						<div class="container">
-							<textarea id="editor" name="content">${content}</textarea>
-						</div>
-					</c:otherwise>
-				</c:choose>
+				<div class="container">
+					<textarea id="editor" name="content">${content}</textarea>
+				</div>
 			</div>
 		</div>
 

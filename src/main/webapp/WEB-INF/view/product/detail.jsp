@@ -124,6 +124,13 @@ function addToCartConfirmation() {
     }
 }
 </script>
+	<style>
+		/* CKEditor 테두리 없애기 */
+		.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+			border: none;
+			border-radius: 0; /* 선택적으로 border-radius를 0으로 설정할 수 있습니다. */
+		}
+	</style>
 </head>
 <body>
 	<div class="super_container">
@@ -307,39 +314,16 @@ function addToCartConfirmation() {
 
 					<div id="tab_1" class="tab_container active">
 						<div class="row">
-							<div class="col-lg-5 desc_col">
+							<div class="col-lg-12 desc_col">
 								<div class="tab_title">
 									<h4>상품상세정보</h4>
 								</div>
-								<div class="tab_text_block">
-									<h2>Pocket cotton sweatshirt</h2>
-									<p>Nam tempus turpis at metus scelerisque placerat nulla
-										deumantos solicitud felis. Pellentesque diam dolor, elementum
-										etos lobortis des mollis ut...</p>
+
+								<%-- ckeditor --%>
+								<div class="container">
+									<textarea id="editor" name="content">${product.content}</textarea>
 								</div>
-								<div class="tab_image">
-									<img src="/images/desc_1.jpg" alt="">
-								</div>
-								<div class="tab_text_block">
-									<h2>Pocket cotton sweatshirt</h2>
-									<p>Nam tempus turpis at metus scelerisque placerat nulla
-										deumantos solicitud felis. Pellentesque diam dolor, elementum
-										etos lobortis des mollis ut...</p>
-								</div>
-							</div>
-							<div class="col-lg-5 offset-lg-2 desc_col">
-								<div class="tab_image">
-									<img src="/images/desc_2.jpg" alt="">
-								</div>
-								<div class="tab_text_block">
-									<h2>Pocket cotton sweatshirt</h2>
-									<p>Nam tempus turpis at metus scelerisque placerat nulla
-										deumantos solicitud felis. Pellentesque diam dolor, elementum
-										etos lobortis des mollis ut...</p>
-								</div>
-								<div class="tab_image desc_last">
-									<img src="/images/desc_3.jpg" alt="">
-								</div>
+
 							</div>
 						</div>
 					</div>
@@ -353,7 +337,7 @@ function addToCartConfirmation() {
 
 							<div class="reviews_col">
 								<div class="tab_title reviews_title">
-									<h4>Reviews (2)</h4>
+									<h4>상품후기 (2)</h4>
 								</div>
 
 								<!-- User Review -->
@@ -626,6 +610,20 @@ function addToCartConfirmation() {
 		}
 		
 	</script>
-
+	<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+	<script>
+		ClassicEditor
+				.create(document.querySelector('#editor'))
+				.then(editor => {
+					console.log("------------------------------", editor);
+					const toolbarElement = editor.ui.view.toolbar.element;
+					toolbarElement.style.display = 'none';
+					editor.enableReadOnlyMode( 'editor' );
+					console.log('Editor was initialized', editor);
+				})
+				.catch(error => {
+					console.error(error);
+				});
+	</script>
 </body>
 </html>
