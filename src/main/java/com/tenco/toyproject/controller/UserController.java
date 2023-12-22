@@ -78,6 +78,7 @@ public class UserController {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String securePassword = passwordEncoder.encode(user.getPassword());
 		user.setPassword(securePassword);
+
 		if(userService.insertUser(user) == 0) {
 			throw new CustomRestfullException("회원가입에 실패하였습니다",  HttpStatus.BAD_REQUEST);
 		}
