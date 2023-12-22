@@ -85,7 +85,7 @@
                                                     <td class="applyDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.endDay}</a></td>
                                                     <td class="applyDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.createdAt}</a></td>
                                                     <c:choose>
-                                                        <c:when test="${rentList.status == 1}">
+                                                        <c:when test="${rentList.status == 2}">
                                                             <td>
                                                                 <div>
                                                                     <button class="btn btn-success"
@@ -97,24 +97,59 @@
                                                                 </div>
                                                             </td>
                                                         </c:when>
-                                                        <c:when test="${rentList.status == 2}">
-                                                            <td>
-                                                                <div>
-                                                                    대여중
-                                                                </div>
-                                                            </td>
-                                                        </c:when>
                                                         <c:when test="${rentList.status == 3}">
                                                             <td>
                                                                 <div>
-                                                                    반납중
+                                                                    배송대기
                                                                 </div>
                                                             </td>
                                                         </c:when>
                                                         <c:when test="${rentList.status == 4}">
                                                             <td>
                                                                 <div>
+                                                                    배송중
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${rentList.status == 5}">
+                                                            <td>
+                                                                <div>
+                                                                    배송완료
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${rentList.status == 6}">
+                                                            <td>
+                                                                <div>
+                                                                    대여중
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${rentList.status == 7}">
+                                                            <td>
+                                                                <div>
+                                                                    반납중
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${rentList.status == 8}">
+                                                            <td>
+                                                                <div>
+                                                                    반납완료
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${rentList.status == 9}">
+                                                            <td>
+                                                                <div>
                                                                     세척중
+                                                                </div>
+                                                            </td>
+                                                        </c:when>
+                                                        <c:when test="${rentList.status == 12}">
+                                                            <td>
+                                                                <div>
+                                                                    결제취소
                                                                 </div>
                                                             </td>
                                                         </c:when>

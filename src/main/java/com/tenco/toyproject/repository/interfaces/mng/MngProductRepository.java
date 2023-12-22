@@ -13,15 +13,13 @@ import java.util.List;
 public interface MngProductRepository {
     // KWON
     // 물품 전체 조회
-    List<Product> findAllProductWithPagination(PageVO pageVo);
-
-//	List<Product> findAllProductWithPagination();
+    List<Product> findAllProductWithPagination(PageVO pageVO, Integer code);
 
     // 아이디로 물품 조회
     Product findProductById(Integer pId);
 
     // product 총 개수
-    public int findProductCount(String keyword);
+    public int findProductCount(Integer code, String keyword);
 
     // 특정 물품 삭제
     public int deleteByProductId(Integer id);
@@ -65,7 +63,7 @@ public interface MngProductRepository {
 
     int findProductCountByFirstCategoryId(int fId);
 
-    List<Product> findProductByKeyword(PageVO pageVO, String keyword);
+    List<Product> findProductByKeyword(PageVO pageVO, String keyword, Integer code);
 
     List<Review> findAllReviewWithPaginationAndKeyword(PageVO pageVO, String keyword);
 

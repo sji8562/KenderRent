@@ -13,7 +13,7 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-5 align-self-center">
-                <h4 class="page-title">대여 물품 등록</h4>
+                <h4 class="page-title">판매 물품 등록</h4>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
                 <div class="card card-body">
                     <%--                    <h4 class="card-title">물품 번호 ${product.id}번</h4>--%>
                     <%--<h5 class="card-subtitle"> All bootstrap element classies </h5>--%>
-                    <form class="form-horizontal mt-4" action="/mng/product/registerForRent" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal mt-4" action="/mng/product/registerForSale" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">물품명</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="물품명을 입력하세요" required>
@@ -88,8 +88,8 @@
                             <label>대여/판매여부</label>
                             <select class="form-select" aria-label="Disabled select example" id="status" name="status" required>
                                 <option value="1" selected>재고 있음</option>
-                                <option value="2" disabled style="color: grey">대여 중</option>
-                                <option value="3" style="color: grey">소독 중</option>
+                                <option value="3">소독 중</option>
+                                <option value="4">판매 완료</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -99,7 +99,7 @@
                                 <textarea id="summernote" name="content"></textarea>
                             </div>
                         </div>
-                        <input type="number" id="code" name="code" value="1" hidden />
+                        <input type="number" id="code" name="code" value="2" hidden />
                         <a href="/mng/product/listForSale?code=2&keyword="><button class="btn btn-secondary" type="button">목록으로</button></a>
                         <button type="submit" class="btn btn-primary">등록하기</button>
                     </form>

@@ -12,7 +12,7 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-5 align-self-center">
-                <h4 class="page-title">대여 물품 수정</h4>
+                <h4 class="page-title">판매 물품 수정</h4>
             </div>
         </div>
     </div>
@@ -26,8 +26,8 @@
                 <div class="card card-body">
 <%--                    <h4 class="card-title">물품 번호 ${product.id}번</h4>--%>
                     <%--<h5 class="card-subtitle"> All bootstrap element classies </h5>--%>
-                    <form class="form-horizontal mt-4" action="/mng/product/${product.id}/modifyForRent" method="post" enctype="multipart/form-data">
-                        <div>${product.code}</div>
+                    <form class="form-horizontal mt-4" action="/mng/product/${product.id}/modifyForSale" method="post" enctype="multipart/form-data">
+
                         <div class="form-group">
                             <label>물품명</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="물품명을 입력하세요" value="${product.name}" required>
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                         <%--<button class="btn btn-secondary" onclick="history.back()">뒤로가기</button>--%>
-                        <a href="/mng/product/list?code=1&keyword="><button class="btn btn-secondary" type="button">목록으로</button></a>
+                        <a href="/mng/product/list?code=2&keyword="><button class="btn btn-secondary" type="button">목록으로</button></a>
                         <button type="submit" class="btn btn-primary">수정하기</button>
                     </form>
                 </div>

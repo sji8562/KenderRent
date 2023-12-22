@@ -11,14 +11,14 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h4 class="page-title">판매용 물품 관리</h4>
+                        <h4 class="page-title">물품 관리</h4>
                     </div>
                     <div class="col-7 align-self-center">
                         <div class="d-flex align-items-center justify-content-end">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item active" aria-current="page">
-                                    	<a href="/mng/product/register" style="text-decoration: none"><button class="btn btn-primary">상품 등록</button></a>
+                                    	<a href="/mng/product/registerForSale" style="text-decoration: none"><button class="btn btn-primary">상품 등록</button></a>
                                     </li>
                                 </ol>
                             </nav>
@@ -34,7 +34,7 @@
 					<div class="card-body">
 						<div class="col-12">
 							<div class="card">
-								<form class="row g-3" action="/mng/product/list" method="get">
+								<form class="row g-3" action="/mng/product/listForSale" method="get">
 									<div class="card-body m--search-inline">
 										<h4 class="card-title">판매용 물품 관리</h4>
 											<div class="m--search-inline">
@@ -69,11 +69,11 @@
 															<tr>
 																<td scope="row">${product.id}</td>
 																<td>${product.firstCategoryName} > ${product.secondCategoryName}</td>
-																<td><a href="/mng/product/${product.id}/detail" style="text-decoration: none; color: black;">${product.name}</a></td>
+																<td><a href="/mng/product/${product.id}/detailForSale" style="text-decoration: none; color: black;">${product.name}</a></td>
 																<td>${product.grade}</td>
 																<td>${product.formatStatusToString()}</td>
 																<td>
-																	<a href="/mng/product/modify/${product.id}"><button class="btn btn-success" type="button">수정</button></a>
+																	<a href="/mng/product/modifyForSale/${product.id}"><button class="btn btn-success" type="button">수정</button></a>
 																	<a onclick="confirmOpen('del', ${product.id})"><button class="btn btn-danger" type="button">삭제</button></a>
 																</td>
 															</tr>
@@ -86,7 +86,7 @@
 									<%-- 페이징 --%>
 									<div style="display: block; text-align: center;">
 										<c:if test="${paging.startPage != 1 }">
-											<a href="/mng/product/listForSale?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">&lt;</a>
+											<a href="/mng/product/listForSale?code=2&nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">&lt;</a>
 										</c:if>
 										<c:forEach begin="${paging.startPage }"
 												   end="${paging.endPage }" var="p">
@@ -95,12 +95,12 @@
 													<b>${p }</b>
 												</c:when>
 												<c:when test="${p != paging.nowPage }">
-													<a href="/mng/product/listForSale?nowPage=${p }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">${p }</a>
+													<a href="/mng/product/listForSale?code=2&nowPage=${p }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">${p }</a>
 												</c:when>
 											</c:choose>
 										</c:forEach>
 										<c:if test="${paging.endPage != paging.lastPage}">
-											<a href="/mng/product/listForSale?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">&gt;</a>
+											<a href="/mng/product/listForSale?code=2&nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&keyword=${keyword}">&gt;</a>
 										</c:if>
 									</div>
 								</form>

@@ -3,8 +3,10 @@ package com.tenco.toyproject.service.mng;
 import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
 import com.tenco.toyproject.dto.MngIndexDTO;
 import com.tenco.toyproject.dto.MngSignInFormDto;
+import com.tenco.toyproject.repository.entity.Review;
 import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.repository.interfaces.mng.MngIndexRepository;
+import com.tenco.toyproject.vo.PageVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,6 +16,7 @@ import java.util.List;
 
 @Service
 public class MngIndexService {
+
 
     @Autowired
     MngIndexRepository mngIndexRepository;
@@ -38,8 +41,8 @@ public class MngIndexService {
         MngIndexDTO.MngCountDTO countDTO = mngIndexRepository.countByAll();
         return countDTO;
     }
-    public List<MngIndexDTO.MngStatusDTO> findByStatus(){
-        List<MngIndexDTO.MngStatusDTO> mngStatusDTOS = mngIndexRepository.findByStatus();
+    public List<MngIndexDTO.MngStatusDTO> findByStatus(PageVO pageVO){
+        List<MngIndexDTO.MngStatusDTO> mngStatusDTOS = mngIndexRepository.findByStatus(pageVO);
         return mngStatusDTOS;
     }
 
@@ -63,4 +66,12 @@ public class MngIndexService {
 
         return mngUserEntity;
     }
+    public int findByStatusAllCount(){
+        return mngIndexRepository.findByStatusAllCount();
+    };
+    public List<MngIndexDTO.MngReviewDTO> findByReview(){
+        return mngIndexRepository.findByReview();
+    }
+
+
 }

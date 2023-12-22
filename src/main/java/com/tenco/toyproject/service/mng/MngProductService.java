@@ -31,8 +31,8 @@ public class MngProductService {
 
     // KWON
     // 상품 목록 with pagination
-    public List<Product> findProductAll(PageVO pageVo) {
-        return mngRepository.findAllProductWithPagination(pageVo);
+    public List<Product> findProductAll(PageVO pageVO, Integer code) {
+        return mngRepository.findAllProductWithPagination(pageVO, code);
     }
 
     // 상품 상세조회
@@ -42,8 +42,8 @@ public class MngProductService {
 
 
     // 전체 상품 개수 조회
-    public int countProductList(String keyword) {
-        return mngRepository.findProductCount(keyword);
+    public int countProductList(Integer code, String keyword) {
+        return mngRepository.findProductCount(code, keyword);
     }
 
     // 상품 삭제
@@ -66,8 +66,8 @@ public class MngProductService {
     @Transactional
     public int createProduct(MngProductDto dto) {
 
-        int firstCategoryId = mngRepository.findFirstCategoryByfId(dto.getSecondCategoryId());
-        dto.setFirstCategoryId(firstCategoryId);
+//        int firstCategoryId = mngRepository.findFirstCategoryByfId(dto.getSecondCategoryId());
+//        dto.setFirstCategoryId(firstCategoryId);
 
         Product product = Product.builder()
                 .name(dto.getName())
@@ -104,6 +104,7 @@ public class MngProductService {
 
     }
 
+    // 상품 수정
     @Transactional
     public int updateProduct(MngProductUpdateDto dto) {
 
@@ -199,8 +200,8 @@ public class MngProductService {
         return mngRepository.findProductCountByFirstCategoryId(fId);
     }
 
-    public List<Product> findProductByKeyword(PageVO pageVO, String keyword) {
-        return mngRepository.findProductByKeyword(pageVO, keyword);
+    public List<Product> findProductByKeyword(PageVO pageVO, String keyword, Integer code) {
+        return mngRepository.findProductByKeyword(pageVO, keyword, code);
     }
 
 
