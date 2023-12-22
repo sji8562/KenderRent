@@ -17,5 +17,6 @@ public interface UserRepository {
 	public User selectUser(String email);
 	public int insertUser(User user);
 	public User selectUserEmail(String email);
+	public User selectUserSns(String sns);
 }
 

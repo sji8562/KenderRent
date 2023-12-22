@@ -142,4 +142,7 @@ public class ProductService {
 		return productRepository.searchMaxPrice();
 	}
 
+	public List<Product> findByCategoryId(Integer id) {
+		return productRepository.findByCategoryId(id);
+	}
 }

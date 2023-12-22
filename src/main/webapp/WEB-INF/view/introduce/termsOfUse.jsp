@@ -39,7 +39,7 @@
 
 				<div class="breadcrumbs d-flex flex-row align-items-center">
 					<%--<ul>--%>
-					<h4>이용수칙</h4>
+					<h4>이용 안내</h4>
 					<%--<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>--%>
 					<%--</ul>--%>
 				</div>

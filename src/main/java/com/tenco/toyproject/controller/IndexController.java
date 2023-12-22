@@ -27,10 +27,6 @@ public class IndexController {
     HttpSession session;
     @GetMapping({"index","/"})
     public String home(){
-    	List<FirstCategory> firstCategories = indexService.findByFCategory();
-        List<SecondCategory> secondCategories = indexService.findBySecondCategoryId();
-        session.setAttribute("firstCategories",firstCategories);
-        session.setAttribute("secondCategories",secondCategories);
         return "index";
     }
 

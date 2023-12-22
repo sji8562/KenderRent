@@ -16,21 +16,21 @@
 <link rel="stylesheet" type="text/css" href="/css/styles/responsive.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
-<style>
+	<style>
 
-	.post-slider .post-wrapper{
-		width:100%;
-		height:470px;
-		margin-top: 101px;
+		.post-slider .post-wrapper{
+			width:100%;
+			height:470px;
+			margin-top: 101px;
 
-	}
-	.post-slider .post-wrapper .post{
-		width:300px;
-		height:470px;
-		display:inline-block;
-		background:gray;
-	}
-</style>
+		}
+		.post-slider .post-wrapper .post{
+			width:300px;
+			height:470px;
+			display:inline-block;
+			background:gray;
+		}
+	</style>
 
 </head>
 <body>
@@ -43,13 +43,13 @@
 
 	<!-- Slider -->
 	<div class="fs_menu_overlay"></div>
-		<div class="post-slider ">
-			<div class="post-wrapper " id="slider-div">
-				<div class="post" style="background-image:url(/images/mvisual01.jpg)"></div>
-				<div class="post" style="background-image:url(/images/mvisual02.jpg)"></div>
-				<div class="post" style="background-image:url(/images/mvisual03.jpg)"></div>
-			</div>
+	<div class="post-slider ">
+		<div class="post-wrapper " id="slider-div">
+			<div class="post" style="background-image:url(/images/mvisual01.jpg)"></div>
+			<div class="post" style="background-image:url(/images/mvisual02.jpg)"></div>
+			<div class="post" style="background-image:url(/images/mvisual03.jpg)"></div>
 		</div>
+	</div>
 
 
 

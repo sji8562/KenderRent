@@ -49,5 +49,5 @@ public interface ProductRepository {
 	public int searchMaxPrice();
 
 
-
+	public List<Product> findByCategoryId(Integer id);
 }
