@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8" %>
+<%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- ============================================================== -->
 <!-- End Left Sidebar - style you can find in sidebar.scss -->
 <!-- ============================================================== -->
@@ -68,7 +68,7 @@
 										</div>
 									</div>
 									<c:choose>
-										<c:when test="${productQnaList != null }">
+										<c:when test="${boardList != null }">
 											<div class="table-responsive">
 												<table class="table" style="width: 100%;">
 													<thead class="table-light">
@@ -84,35 +84,35 @@
 														</tr>
 													</thead>
 													<tbody>
-														<c:forEach var="productQnaList" items="${productQnaList}">
+														<c:forEach var="boardList" items="${boardList}">
 															<tr>
 																<th class="applyDetail" scope="row"><a
-																	href="/mng/board/${productQnaList.id}/productQna-detail">${productQnaList.id}</a></th>
+																	href="/mng/board/${boardList.id}/productQna-detail">${boardList.id}</a></th>
 																<%--<td class="ellipsis" style="width: 60%; white-space: nowrap; overflow:hidden; text-overflow:ellipsis;">${noticeList.title}</td>--%>
-																<td class="ellipsis">${productQnaList.title}</td>
+																<td class="ellipsis">${boardList.title}</td>
 																<%--<td>${noticeList.content}</td>--%>
-																<td>${productQnaList.email}</td>
-																<td>${productQnaList.formatCreatedAtToString()}</td>
+																<td>${boardList.email}</td>
+																<td>${boardList.formatCreatedAtToString()}</td>
 																<%-- 답변 여부 --%>
 																<c:choose>
-																	<c:when test="${productQnaList.reply == 1}">
+																	<c:when test="${boardList.reply == 1}">
 																		<td style="color: green">답변완료</td>
 																	</c:when>
 																	<c:otherwise>
 																		<td style="color: red">미답변</td>
 																	</c:otherwise>
 																</c:choose>
-																<td>${productQnaList.formatReplyCreatedAtToString()}</td>
+																<td>${boardList.formatReplyCreatedAtToString()}</td>
 																<td>
 																	<div>
 																		<button class="btn btn-success"
 																			style="border: 1px solid black"
-																			onclick="location.href='/mng/board/${productQnaList.id}/productqna-detail'">조회</button>
+																			onclick="location.href='/mng/board/${boardList.id}/productqna-detail'">조회</button>
 																		&nbsp;&nbsp;
 																		<c:choose>
-																			<c:when test="${productQnaList.reply == 0}">
+																			<c:when test="${boardList.reply == 0}">
 																				<button class="btn-danger btn"
-																					onclick="location.href='/mng/board/${productQnaList.id}/productqna-delete'">삭제</button>
+																					onclick="location.href='/mng/board/${boardList.id}/productqna-delete'">삭제</button>
 																			</c:when>
 																		</c:choose>
 																	</div>
