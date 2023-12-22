@@ -41,7 +41,7 @@
 								aria-hidden="true"></i> <a href="/mypage/main"
 								style="color: black">마이페이지</a></li>
 							<li class="active"><i class="fa fa-angle-right"
-								aria-hidden="true"></i>취소 내역</li>
+								aria-hidden="true"></i> 전체 주문 내역</li>
 						</ul>
 					</div>
 				</div>
@@ -52,16 +52,16 @@
 					<div class="sidebar">
 						<div class="sidebar_section">
 							<div class="sidebar_title">
-								<a href="/mypage/main" style="color: black; font-size: 24px;">마이페이지</a>
+								<h4>마이페이지</h4>
 							</div>
 							<br>
 							<ul class="sidebar_categories">
 								<li><a href="/mypage/main">MY 홈</a></li>
-								<li><a href="/mypage/order-list">주문 내역</a></li>
-								<li class="active"><a href="/mypage/cancel-list"><span>
+								<li class="active"><a href="/mypage/order-list"><span>
 											<i class="fa fa-angle-double-right" aria-hidden="true"></i>
-									</span>취소 내역</a></li>
-									<li><a href="/mypage/rent-list">대여 내역</a></li>
+									</span>주문 내역</a></li>
+								<li><a href="/mypage/cancel-list">취소 내역</a></li>
+								<li><a href="/mypage/rent-list">대여 내역</a></li>
 								<li><a href="/mypage/wish-list">위시리스트</a></li>
 								<li><a href="#">문의 내역</a></li>
 								<li><a href="#">회원정보 변경</a></li>
@@ -72,50 +72,90 @@
 
 				<div class="col-lg-9">
 					<div class="mypage_lately_info_cont">
-					<div class="box_title" style="margin-bottom: 10px; border-bottom: none; padding-left: 40px"> 
-						취소 내역</div>
+
+
+						<!-- 주문상세 내역 -->
 						<div id="container"
 							style="margin-left: -30px; display: flex; justify-content: center;">
 							<div id="content"
 								style="display: relative; justify-content: center;">
-								<div class="col text-center">
-									<table class="table" style="width: 720px; border-bottom: 1px solid #ECECEC;">
-										<thead>
-											<tr>
-												<th class="column1">접수일자</th>
-												<th class="column2">진행상태</th>
-												<th>상품이름</th>
-												<th>상품금액</th>
-											</tr>
-										</thead>
-										<tbody>
-											<c:forEach var="cancelList" items="${cancelList}">
-												<tr>
-													<td class="vertical-center">
-														<fmt:formatDate value="${cancelList.create_at}"
-															  pattern = "yyyy년 MM월 dd일"/></td>
-													<td>
-														<c:choose>
-															<c:when test="${cancelList.status == 1}">
-																처리중
-															</c:when>
-															<c:when test="${cancelList.status == 2}">
-																완료
-															</c:when>
-														</c:choose></td>
-													<td>${cancelList.name }</td>
-													<td class="vertical-center"><fmt:formatNumber value="${cancelList.money}" pattern="#,###" />원</span></td>
-												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
+								<label style="font-weight: bold; font-size: 17px"><fmt:formatDate value="${rent.createdAt}"
+																				pattern="yyyy년 MM월 dd일" var="formattedDay" />${formattedDay}
+									주문</label>
+								<div style="float: right; padding-right: 5px;">
+									<p>주문번호 ${rent.id}</p>
+								</div>
+								<div class="box_content">
+									<div class="box_title" style="margin-bottom: 10px">결제 정보</div>
+									<div style="padding: 0px 30px 40px -20px;">
+										<div>
+											<span class="text_price">상품금액</span> <span
+												class="text_number"> <fmt:formatNumber
+													value="${product.price}" pattern="#,###" />원
+											</span>
+										</div>
+										<div style="display: block; clear: both; content: '';"></div>
+										<div>
+											<span class="text_price">배송비</span> <span class="text_number">${product.getDeliveryFee()}</span>
+										</div>
+										<div style="display: block; clear: both; content: '';"></div>
+										<div>
+											<span class="text_price">결제수단</span> <span
+												class="text_number" style="font-size: 15px">카카오페이</span>
+										</div>
+									</div>
+									<div
+										style="height: 0px; border-bottom: 1px solid gray; margin-top: 50px;"></div>
+									<div
+										style="padding: 16px 30px 40px -20px; margin-bottom: 40px;">
+										<span class="text_price"
+											style="font-size: 18px; color: black;">총 결제 금액</span> <span
+											class="text_number"
+											style="font-size: 20px; font-weight: 700;">${product.totalPriceForOne()}</span>
+									</div>
+								</div>
+								<div class="box_content">
+									<div class="box_title">배송지 정보</div>
+									<div class="box_form">
+										<div class="box_label">
+											<label for="user_name">이름</label>
+										</div>
+										<div class="box_info" id="nameInfo">
+											<label>${userInfo.userName}</label>
+										</div>
+									</div>
+									<div class="box_form">
+										<div class="box_label">
+											<label for="user_phoneNumber">연락처</label>
+										</div>
+										<div class="box_info" id="phoneInfo">
+											<label>${userInfo.phoneNumber}</label>
+										</div>
+									</div>
+									<div class="box_form">
+										<div class="box_label">
+											<label for="user_adress">주소</label>
+										</div>
+										<div class="box_info">
+											<label>${userInfo.address}</label>
+										</div>
+									</div>
+									<div class="box_form">
+										<div class="box_label">
+											<label for="user_email">이메일</label>
+										</div>
+										<div class="box_info">
+											<label>${userInfo.email}</label>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+
 				</div>
-				<br> <br> <br> <br> <br> &nbsp;
 			</div>
+			<br> <br>
 		</div>
 		<jsp:include page="../layout/footer.jsp" />
 	</div>
@@ -126,8 +166,7 @@
 	<script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 	<script src="/plugins/easing/easing.js"></script>
 	<script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-	<script src="/js/single_custom.js"></script>
-	<script src="/js/cancel.js"></script>
+	<script src="/js/categories_custom.js"></script>
 	<script src="/js/dropdown.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
