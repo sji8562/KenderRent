@@ -39,5 +39,8 @@ public class UserService {
 	public User selectUserEmail(String email) {
 		return userRepository.selectUserEmail(email);
 	}
+	public User selectUserSns(String sns) {
+		return userRepository.selectUserSns(sns);
+	}
 
 }
