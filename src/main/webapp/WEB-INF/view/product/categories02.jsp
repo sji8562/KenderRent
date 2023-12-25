@@ -74,10 +74,16 @@
 
 									<!-- Product Sorting -->
 
-									<div
-										class="product_sorting_container product_sorting_container_top">
-										<div
-											style="width: 52px; height: 50px; background-image: url(/images/icon_subtitle.png)"></div>
+
+									<div class="product_sorting_container product_sorting_container_top" style="display: flex; align-items: center;">
+										<img src="/images/icon_subtitle.png" style="margin-right: 10px;">
+										<div><c:choose>
+											<c:when test="${secondCategoryList != null}">
+												<c:forEach var="secondCategoryList" items="${secondCategoryList}">
+													<b style="font-size: 25px">${secondCategoryList.secondCategoryName}</b>
+												</c:forEach>
+											</c:when>
+										</c:choose></div>
 									</div>
 
 									<!-- Product Grid -->
@@ -88,21 +94,23 @@
 
 										<c:choose>
 											<c:when test="${productList != null}">
-												<c:forEach var="productList" items="productList">
+												<c:forEach var="productList" items="${productList}">
 													<div class="product-item">
-														<div class="product discount product_filter">
+														<a href="/product/detail/${productList.id}">
+															<div class="product discount product_filter">
 															<div class="product_image">
 																<img src="/images/${productList.picUrl}" alt="">
+
 															</div>
 															<div class="favorite favorite_left"></div>
 
 															<div class="product_info">
-																<h6 class="product_name">
-																	<a href="single.html">${productList.name}</a>
+																<h6 class="product_name">${productList.name}
 																</h6>
 																<div class="product_price">${productList.price}</div>
 															</div>
 														</div>
+														</a>
 														<div class="red_button add_to_cart_button">
 															<a href="#">add to cart</a>
 														</div>
@@ -110,293 +118,14 @@
 												</c:forEach>
 											</c:when>
 										</c:choose>
-										<div class="product-item men">
-											<div class="product discount product_filter">
-												<div class="product_image">
-													<img src="/images/product_1.png" alt="">
-												</div>
-												<div class="favorite favorite_left"></div>
 
-												<div class="product_info">
-													<h6 class="product_name">
-														<a href="single.html">Fujifilm X100T 16 MP Digital
-															Camera (Silver)</a>
-													</h6>
-													<div class="product_price">
-														$520.00<span>$590.00</span>
-													</div>
-												</div>
-											</div>
-											<div class="red_button add_to_cart_button">
-												<a href="#">add to cart</a>
-											</div>
-										</div>
-
-										<!-- Product 2 -->
-
-										<div class="product-item women">
-											<div class="product product_filter">
-												<div class="product_image">
-													<img src="/images/product_2.png" alt="">
-												</div>
-												<div class="favorite"></div>
-
-												<div class="product_info">
-													<h6 class="product_name">
-														<a href="single.html">Samsung CF591 Series Curved
-															27-Inch FHD Monitor</a>
-													</h6>
-													<div class="product_price">$610.00</div>
-												</div>
-											</div>
-											<div class="red_button add_to_cart_button">
-												<a href="#">add to cart</a>
-											</div>
-										</div>
-
-										<!-- Product 3 -->
-
-										<div class="product-item women">
-											<div class="product product_filter">
-												<div class="product_image">
-													<img src="/images/product_3.png" alt="">
-												</div>
-												<div class="favorite"></div>
-												<div class="product_info">
-													<h6 class="product_name">
-														<a href="single.html">Blue Yeti USB Microphone
-															Blackout Edition</a>
-													</h6>
-													<div class="product_price">$120.00</div>
-												</div>
-											</div>
-											<div class="red_button add_to_cart_button">
-												<a href="#">add to cart</a>
-											</div>
-										</div>
-
-										<!-- Product 4 -->
-
-										<div class="product-item accessories">
-											<div class="product product_filter">
-												<div class="product_image">
-													<img src="/images/product_4.png" alt="">
-												</div>
-
-												<div class="favorite favorite_left"></div>
-												<div class="product_info">
-													<h6 class="product_name">
-														<a href="single.html">DYMO LabelWriter 450 Turbo
-															Thermal Label Printer</a>
-													</h6>
-													<div class="product_price">$410.00</div>
-												</div>
-											</div>
-											<div class="red_button add_to_cart_button">
-												<a href="#">add to cart</a>
-											</div>
-										</div>
-
-										<!-- Product 5 -->
-
-										<div class="product-item women men">
-											<div class="product product_filter">
-												<div class="product_image">
-													<img src="/images/product_5.png" alt="">
-												</div>
-												<div class="favorite"></div>
-												<div class="product_info">
-													<h6 class="product_name">
-														<a href="single.html">Pryma Headphones, Rose Gold &
-															Grey</a>
-													</h6>
-													<div class="product_price">$180.00</div>
-												</div>
-											</div>
-											<div class="red_button add_to_cart_button">
-												<a href="#">add to cart</a>
-											</div>
-										</div>
-
-										<!-- Product 6 -->
-
-										<div class="product-item accessories">
-											<div class="product discount product_filter">
-												<div class="product_image">
-													<img src="/images/product_6.png" alt="">
-												</div>
-												<div class="favorite favorite_left"></div>
-												<div
-													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
-													<span>-$20</span>
-												</div>
-												<div class="product_info">
-													<h6 class="product_name">
-														<a href="single.html">Fujifilm X100T 16 MP Digital
-															Camera (Silver)</a>
-													</h6>
-													<div class="product_price">
-														$520.00<span>$590.00</span>
-													</div>
-												</div>
-											</div>
-											<div class="red_button add_to_cart_button">
-												<a href="#">add to cart</a>
-											</div>
-										</div>
-
-										<!-- Product 7 -->
-
-										<div class="product-item women">
-											<div class="product product_filter">
-												<div class="product_image">
-													<img src="/images/product_7.png" alt="">
-												</div>
-												<div class="favorite"></div>
-												<div class="product_info">
-													<h6 class="product_name">
-														<a href="single.html">Samsung CF591 Series Curved
-															27-Inch FHD Monitor</a>
-													</h6>
-													<div class="product_price">$610.00</div>
-												</div>
-											</div>
-											<div class="red_button add_to_cart_button">
-												<a href="#">add to cart</a>
-											</div>
-										</div>
-
-										<!-- Product 8 -->
-
-										<div class="product-item accessories">
-											<div class="product product_filter">
-												<div class="product_image">
-													<img src="/images/product_8.png" alt="">
-												</div>
-												<div class="favorite"></div>
-												<div class="product_info">
-													<h6 class="product_name">
-														<a href="single.html">Blue Yeti USB Microphone
-															Blackout Edition</a>
-													</h6>
-													<div class="product_price">$120.00</div>
-												</div>
-											</div>
-											<div class="red_button add_to_cart_button">
-												<a href="#">add to cart</a>
-											</div>
-										</div>
-
-										<!-- Product 9 -->
-
-										<div class="product-item men">
-											<div class="product product_filter">
-												<div class="product_image">
-													<img src="/images/product_9.png" alt="">
-												</div>
-												<div
-													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
-													<span>sale</span>
-												</div>
-												<div class="favorite favorite_left"></div>
-												<div class="product_info">
-													<h6 class="product_name">
-														<a href="single.html">DYMO LabelWriter 450 Turbo
-															Thermal Label Printer</a>
-													</h6>
-													<div class="product_price">$410.00</div>
-												</div>
-											</div>
-											<div class="red_button add_to_cart_button">
-												<a href="#">add to cart</a>
-											</div>
-										</div>
-
-										<!-- Product 10 -->
-
-										<div class="product-item men">
-											<div class="product product_filter">
-												<div class="product_image">
-													<img src="/images/product_10.png" alt="">
-												</div>
-												<div class="favorite"></div>
-												<div class="product_info">
-													<h6 class="product_name">
-														<a href="single.html">Pryma Headphones, Rose Gold &
-															Grey</a>
-													</h6>
-													<div class="product_price">$180.00</div>
-												</div>
-											</div>
-											<div class="red_button add_to_cart_button">
-												<a href="#">add to cart</a>
-											</div>
-										</div>
-
-										<!-- Product 11 -->
-
-										<div class="product-item women men">
-											<div class="product product_filter">
-												<div class="product_image">
-													<img src="/images/product_5.png" alt="">
-												</div>
-												<div class="favorite"></div>
-												<div class="product_info">
-													<h6 class="product_name">
-														<a href="single.html">Pryma Headphones, Rose Gold &
-															Grey</a>
-													</h6>
-													<div class="product_price">$180.00</div>
-												</div>
-											</div>
-											<div class="red_button add_to_cart_button">
-												<a href="#">add to cart</a>
-											</div>
-										</div>
-
-										<!-- Product 12 -->
-
-										<div class="product-item accessories">
-											<div class="product discount product_filter">
-												<div class="product_image">
-													<img src="/images/product_6.png" alt="">
-												</div>
-												<div class="favorite favorite_left"></div>
-												<div
-													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
-													<span>-$20</span>
-												</div>
-												<div class="product_info">
-													<h6 class="product_name">
-														<a href="single.html">Fujifilm X100T 16 MP Digital
-															Camera (Silver)</a>
-													</h6>
-													<div class="product_price">
-														$520.00<span>$590.00</span>
-													</div>
-												</div>
-											</div>
-											<div class="red_button add_to_cart_button">
-												<a href="#">add to cart</a>
-											</div>
-										</div>
 									</div>
 
 									<!-- Product Sorting -->
 
 									<div
 										class="product_sorting_container product_sorting_container_bottom clearfix">
-										<ul class="product_sorting">
-											<li><span>Show:</span> <span class="num_sorting_text">04</span>
-												<i class="fa fa-angle-down"></i>
-												<ul class="sorting_num">
-													<li class="num_sorting_btn"><span>01</span></li>
-													<li class="num_sorting_btn"><span>02</span></li>
-													<li class="num_sorting_btn"><span>03</span></li>
-													<li class="num_sorting_btn"><span>04</span></li>
-												</ul></li>
-										</ul>
-										<span class="showing_results">Showing 1–3 of 12 results</span>
+
 										<div class="pages d-flex flex-row align-items-center">
 											<div class="page_current">
 												<span>1</span>
