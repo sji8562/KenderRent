@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
+import com.tenco.toyproject.repository.entity.SecondCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -50,10 +52,13 @@ public class ProductController {
 
   @GetMapping("{fId}/categories")
   public String categories(@PathVariable Integer fId, Model model) {
-    System.out.println(fId);
+
     List<Product> productList = productService.findByCategoryId(fId);
+    List<SecondCategory> secondCategoryList = productService.findBysCategoryId(fId);
     System.out.println(productList.toString());
+    System.out.println(secondCategoryList.toString());
     model.addAttribute("productList", productList);
+    model.addAttribute("secondCategoryList", secondCategoryList);
 
     if (fId == 1 || fId == 2 || fId == 6) {
       return "product/categories01";
@@ -68,16 +73,16 @@ public class ProductController {
     }
     return "product/categories01";
   }
-
-  @GetMapping("categories01")
-  public String categories01() {
-    return "product/categories01";
-  }
-
-  @GetMapping("categories02")
-  public String categories02() {
-    return "product/categories02";
-  }
+//
+//  @GetMapping("categories01")
+//  public String categories01() {
+//    return "product/categories01";
+//  }
+//
+//  @GetMapping("categories02")
+//  public String categories02() {
+//    return "product/categories02";
+//  }
 
   @GetMapping("detail/{id}")
   public String detail(Model model, PageVO pageVO,

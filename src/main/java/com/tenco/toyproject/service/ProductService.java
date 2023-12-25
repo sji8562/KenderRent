@@ -4,13 +4,10 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
+import com.tenco.toyproject.repository.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tenco.toyproject.repository.entity.Sale;
-import com.tenco.toyproject.repository.entity.PayBack;
-import com.tenco.toyproject.repository.entity.Product;
-import com.tenco.toyproject.repository.entity.Rent;
 import com.tenco.toyproject.repository.interfaces.CustomerRepository;
 import com.tenco.toyproject.repository.interfaces.ProductRepository;
 
@@ -144,5 +141,8 @@ public class ProductService {
 
 	public List<Product> findByCategoryId(Integer id) {
 		return productRepository.findByCategoryId(id);
+	}
+	public List<SecondCategory> findBysCategoryId(Integer id) {
+		return productRepository.findBysCategoryId(id);
 	}
 }
