@@ -61,6 +61,7 @@
 								<li><a href="/mypage/main">MY 홈</a></li>
 								<li><a href="/mypage/order-list">주문 내역</a></li>
 								<li><a href="/mypage/cancel-list">취소 내역</a></li>
+								<li><a href="/mypage/rent-list">대여 내역</a></li>
 								<li class="active"><a href="/mypage/wish-list"><span>
 											<i class="fa fa-angle-double-right" aria-hidden="true"></i>
 									</span>위시리스트</a></li>

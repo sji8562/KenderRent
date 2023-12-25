@@ -1,6 +1,7 @@
 package com.tenco.toyproject.service.mng;
 
 import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
+import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import com.tenco.toyproject.dto.MngIndexDTO;
 import com.tenco.toyproject.dto.MngSignInFormDto;
 import com.tenco.toyproject.repository.entity.Review;
@@ -50,19 +51,19 @@ public class MngIndexService {
         // 1. username으로 admin id 존재 여부 확인
         User mngUserEntity = mngIndexRepository.findByUsernameAndLevel(dto.getUsername());
         if(mngUserEntity == null) {
-            throw new CustomRestfulException("존재하지 않는 계정입니다", HttpStatus.BAD_REQUEST);
+            throw new CustomRestfullException("존재하지 않는 계정입니다", HttpStatus.BAD_REQUEST);
         }
 
         // 2. 객체 상태값의 비번과 암호화 된 비번 일치 여부 확인
-//        boolean isPwdMatched = passwordEncoder.matches(dto.getPassword(), mngUserEntity.getPassword());
-//
-//        if(isPwdMatched == false) {
+        boolean isPwdMatched = passwordEncoder.matches(dto.getPassword(), mngUserEntity.getPassword());
+
+        if(isPwdMatched == false) {
+            throw new CustomRestfullException("비밀번호를 다시 확인해주세요", HttpStatus.BAD_REQUEST);
+        }
+
+//        if(dto.getPassword().equals(mngUserEntity.getPassword()) == false) {
 //            throw new CustomRestfulException("비밀번호를 다시 확인해주세요", HttpStatus.BAD_REQUEST);
 //        }
-
-        if(dto.getPassword().equals(mngUserEntity.getPassword()) == false) {
-            throw new CustomRestfulException("비밀번호를 다시 확인해주세요", HttpStatus.BAD_REQUEST);
-        }
 
         return mngUserEntity;
     }

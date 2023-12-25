@@ -237,67 +237,66 @@ public class ProductController {
 
 
 
-  @PostMapping("order/kakao-pay/cancel")
-  public String kakaoPayCancel(Model model, @RequestParam("orderId") int orderId) {
-    User principal = (User) session.getAttribute("principal");
-    int userId = principal.getId();
-    Sale sale = productService.findTid(orderId);
-    Product product = productService.findById(sale.getProductId());
-    int cancelAmount = product.getPrice().intValue();
-    KakaoPayCancelResponse cancelResponse =
-        kakaoPayService.kakaoPayCancel(userId, cancelAmount, sale.getTid());
-    productService.applyForRefund(product.getId(), userId);
-    productService.deleteRefundFromSale(orderId);
-    List<Map> orderList = productService.showCustomerOrderList(userId);
-    model.addAttribute("orderList", orderList);
-    model.addAttribute("refund", cancelResponse);
-    return "redirect:/mypage/order-list";
-  }
 
-  @GetMapping("/rent/{id}")
-  public String rent(Model model, PageVO pageVO,
-      @RequestParam(value = "nowPage", required = false) String nowPage,
-      @RequestParam(value = "cntPerPage", required = false) String cntPerPage, @PathVariable int id,
-      HttpServletResponse response) {
-    // 페이징처리
-    int total = productService.countProductCustomer(id);
-    if (nowPage == null && cntPerPage == null) {
-      nowPage = "1";
-      cntPerPage = "10";
-    } else if (nowPage == null) {
-      nowPage = "1";
-    } else if (cntPerPage == null) {
-      cntPerPage = "10";
-    }
-    pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-    model.addAttribute("paging", pageVO);
-    // 상품별로 변경해야함
-    List<Map<String, Object>> CustomerList =
-        customerService.selectCustomerById(4, pageVO.getStart(), id); // 상품문의
-    model.addAttribute("customerList", CustomerList);
-    // 페이징 처리해서 상품문의 출력 끝
-    // 최근본 프로젝트 관련
-    Cookie cookie = new Cookie("goods" + id, String.valueOf(id));
-    cookie.setPath("/");
-    cookie.setMaxAge(60 * 60 * 24);
-    response.addCookie(cookie);
-    // 최근본 프로젝트 관련 끝
-    // 상품 정보
-    Product product = productService.findById(id);
-    model.addAttribute("product", product);
-    // 찜한 상품 확인
-    User principal = (User) session.getAttribute("principal");
-    if (principal != null) {
-      boolean isWished = productService.checkWishList(principal.getId(), id);
-      model.addAttribute("isWished", isWished);
-    }
-    // 리뷰갯수
-    int countReview = productService.countReview(id);
-    model.addAttribute("countReview", countReview);
-    // 리뷰 내용
-    List<Map> review = productService.showReview(id);
-    model.addAttribute("review", review);
-    return "product/rent";
-  }
+	@PostMapping("order/kakao-pay/cancel")
+	public String kakaoPayCancel(Model model, @RequestParam("orderId") int orderId) {
+		User principal = (User) session.getAttribute("principal");
+		int userId = principal.getId();
+		Sale sale = productService.findTid(orderId);
+		Product product = productService.findById(sale.getProductId());
+		int cancelAmount = product.getPrice().intValue();
+		KakaoPayCancelResponse cancelResponse = kakaoPayService.kakaoPayCancel(userId, cancelAmount, 
+				sale.getTid());
+		productService.applyForRefund(product.getId(), userId, orderId);
+		productService.deleteRefundFromSale(orderId);
+		List<Map> orderList = productService.showCustomerOrderList(userId);
+		model.addAttribute("orderList", orderList);
+		model.addAttribute("refund", cancelResponse);
+		return "redirect:/mypage/order-list";
+	}
+	
+	@GetMapping("/rent/{id}")
+	public String rent(Model model, PageVO pageVO, @RequestParam(value="nowPage", required=false)String nowPage
+            , @RequestParam(value="cntPerPage", required=false)String cntPerPage, @PathVariable int id,  HttpServletResponse response) {
+        // 페이징처리
+        int total = productService.countProductCustomer(id);
+        if (nowPage == null && cntPerPage == null) {
+            nowPage = "1";
+            cntPerPage = "10";
+        } else if (nowPage == null) {
+            nowPage = "1";
+        } else if (cntPerPage == null) { 
+            cntPerPage = "10";
+        }
+        pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+        model.addAttribute("paging",pageVO);
+        //상품별로 변경해야함
+        List<Map<String, Object>> CustomerList = customerService.selectCustomerById(4, pageVO.getStart(), id); // 상품문의
+        model.addAttribute("customerList", CustomerList);
+        //페이징 처리해서 상품문의 출력 끝
+//		최근본 프로젝트 관련
+		Cookie cookie = new Cookie("goods"+id,String.valueOf(id));
+		cookie.setPath("/");
+		cookie.setMaxAge(60 * 60 * 24);
+		response.addCookie(cookie);
+//		최근본 프로젝트 관련 끝
+        // 상품 정보
+        Product product = productService.findById(id);
+        model.addAttribute("product", product);
+        // 찜한 상품 확인
+        User principal = (User) session.getAttribute("principal");
+        if(principal != null) {
+        	boolean isWished = productService.checkWishList(principal.getId(), id);
+        	model.addAttribute("isWished", isWished);
+        }
+        // 리뷰갯수
+        int countReview = productService.countReview(id);
+        model.addAttribute("countReview", countReview);
+        // 리뷰 내용
+        List<Map> review = productService.showReview(id);
+        model.addAttribute("review", review);
+		return "product/rent";
+	}
+
 
 }

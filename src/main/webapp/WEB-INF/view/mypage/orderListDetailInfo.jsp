@@ -61,6 +61,7 @@
 											<i class="fa fa-angle-double-right" aria-hidden="true"></i>
 									</span>주문 내역</a></li>
 								<li><a href="/mypage/cancel-list">취소 내역</a></li>
+								<li><a href="/mypage/rent-list">대여 내역</a></li>
 								<li><a href="#">위시리스트</a></li>
 								<li><a href="#">문의 내역</a></li>
 								<li><a href="#">회원정보 변경</a></li>

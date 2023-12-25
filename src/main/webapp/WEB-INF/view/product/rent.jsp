@@ -387,13 +387,22 @@ function addToCartConfirmation() {
 								</div>
 
 								<!-- User Review -->
+								<div class="review">
 								<table>
-									<tbody>
-										<c:forEach var="review" items="${review}">
+									<c:forEach var="review" items="${review}">
+										<tbody>
 											<tr>
-												<td>${review.user_name}
+												<td style="min-width: 150px;"><div class="user_name">${review.user_name}</div>
+												</td>
+												<td>
+													<div class="review_date">
+														<fmt:formatDate value="${review.created_at}" pattern="yyyy.MM.dd" var="formattedTimestamp" />${formattedTimestamp}
+													</div>	
+												</td>
+												<td style="min-width: 150px;">	
+												<div class="star-container">
 												<c:set var="rateValue" value="${review.rate}" />
-													<ul class="star_rating">
+													<ul class="star_rating" style="margin-right: 5px">
 														<li><i
 															class="fa fa-star${(rateValue >= 1) ? '' : '-o'}"
 															aria-hidden="true"></i></li>
@@ -410,18 +419,19 @@ function addToCartConfirmation() {
 															class="fa fa-star${(rateValue == 5) ? '' : '-o'}"
 															aria-hidden="true"></i></li>
 													</ul>
+													${review.rate}
+													</div>
+												</td>
+												<td style="vertical-align: middle; text-align: left; padding-top: 14px">
+													<div class="review">
+														<p style="word-wrap: break-word; margin-left: -50px; max-width: 600px;">${review.content}</p>
+													</div>	
 												</td>
 											</tr>
-											<tr>
-												<td>${review.created_at}</td>
-											</tr>
-											<tr>
-												<td>${review.content}</td>
-											</tr>
-										</c:forEach>
-									</tbody>
+										</tbody>
+									</c:forEach>
 								</table>
-
+								</div>
 							</div>
 						</div>
 					</div>

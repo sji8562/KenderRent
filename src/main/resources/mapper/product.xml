@@ -152,6 +152,19 @@
 		on r.user_id = u.id
 		where product_id = #{productId}
 	</select>
+	
+	<select id="showRentList" resultType="map">
+		select * from rent as r
+		join product as p
+		on r.product_id = p.id
+		where user_id = #{id}
+	</select>
+	
+	<select id="findRentList"
+		resultType="com.tenco.toyproject.repository.entity.Rent">
+		select * from rent
+		where id = #{id}
+	</select>
 
 	
 	
