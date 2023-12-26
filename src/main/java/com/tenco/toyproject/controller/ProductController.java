@@ -50,30 +50,30 @@ public class ProductController {
   @Autowired
   private MessageController message;
 
-  @GetMapping("{fId}/categories")
-  public String categories(@PathVariable Integer fId, Model model) {
-
-    List<Product> productList = productService.findByCategoryId(fId);
-    List<SecondCategory> secondCategoryList = productService.findBysCategoryId(fId);
-    System.out.println(productList.toString());
-    System.out.println(secondCategoryList.toString());
-    model.addAttribute("productList", productList);
-    model.addAttribute("secondCategoryList", secondCategoryList);
-
-    if (fId == 1 || fId == 2 || fId == 6) {
-      return "product/categories01";
-    }
-    return "product/categories02";
-  }
-
-  @GetMapping("{fId}/categories/{sId}")
-  public String categories(@PathVariable Integer fId, @PathVariable Integer sId) {
-    if (fId == 1 || fId == 2 || fId == 6) {
-      return "product/categories02";
-    }
-    return "product/categories01";
-  }
+//  @GetMapping("{fId}/categories")
+//  public String categories(@PathVariable Integer fId, Model model) {
 //
+//    List<Product> productList = productService.findByCategoryId(fId);
+//    List<SecondCategory> secondCategoryList = productService.findBysCategoryId(fId);
+//    System.out.println(productList.toString());
+//    System.out.println(secondCategoryList.toString());
+//    model.addAttribute("productList", productList);
+//    model.addAttribute("secondCategoryList", secondCategoryList);
+//
+//    if (fId == 1 || fId == 2 || fId == 6) {
+//      return "product/categories01";
+//    }
+//    return "product/categories02";
+//  }
+//
+//  @GetMapping("{fId}/categories/{sId}")
+//  public String categories(@PathVariable Integer fId, @PathVariable Integer sId) {
+//    if (fId == 1 || fId == 2 || fId == 6) {
+//      return "product/categories02";
+//    }
+//    return "product/categories01";
+//  }
+
 //  @GetMapping("categories01")
 //  public String categories01() {
 //    return "product/categories01";
@@ -83,11 +83,105 @@ public class ProductController {
 //  public String categories02() {
 //    return "product/categories02";
 //  }
-  @GetMapping("subCategory/mobile")
-  public String mobile() {
-    return "product/subCategory/mobile";
-  }
 
+  
+  // 부터 전우진 231226
+  @GetMapping("categories/mobile")
+  public String mobile() {
+    return "product/categories/mobile";
+  }
+  
+  @GetMapping("categories/bouncer")
+  public String bouncer() {
+    return "product/categories/bouncer";
+  }
+  
+  @GetMapping("categories/saucer")
+  public String saucer() {
+    return "product/categories/saucer";
+  }
+  
+  @GetMapping("categories/learningHome")
+  public String learningHome() {
+    return "product/categories/learningHome";
+  }
+  
+  @GetMapping("categories/walker")
+  public String walker() {
+    return "product/categories/walker";
+  }
+  
+  @GetMapping("categories/m00to06")
+  public String m00to06() {
+    return "product/categories/m00to06";
+  }
+  
+  @GetMapping("categories/m06to12")
+  public String m06to12() {
+    return "product/categories/m06to12";
+  }
+  
+  @GetMapping("categories/m12to24")
+  public String m12to24() {
+    return "product/categories/m12to24";
+  }
+  
+  @GetMapping("categories/m24to36")
+  public String m24to36() {
+    return "product/categories/m24to36";
+  }
+  
+  @GetMapping("categories/appliance")
+  public String appliance() {
+    return "product/categories/appliance";
+  }
+  
+  @GetMapping("categories/applianceETC")
+  public String applianceETC() {
+    return "product/categories/applianceETC";
+  }
+  
+  @GetMapping("categories/isofix")
+  public String isofix() {
+    return "product/categories/isofix";
+  }
+  
+  @GetMapping("categories/stroller")
+  public String stroller() {
+    return "product/categories/stroller";
+  }
+  
+  @GetMapping("categories/wrapCarrier")
+  public String wrapCarrier() {
+    return "product/categories/wrapCarrier";
+  }
+  
+  @GetMapping("categories/mater")
+  public String mater() {
+    return "product/categories/mater";
+  }
+  
+  @GetMapping("categories/bookTouch")
+  public String bookTouch() {
+    return "product/categories/bookTouch";
+  }
+  
+  @GetMapping("categories/bookBW")
+  public String bookBW() {
+    return "product/categories/bookBW";
+  }
+  
+  @GetMapping("categories/bookPic")
+  public String bookPic() {
+    return "product/categories/bookPic";
+  }
+  
+  @GetMapping("categories/bookTail")
+  public String bookTail() {
+    return "product/categories/bookTail";
+  }
+  // 까지 전우진232226
+  
   @GetMapping("detail/{id}")
   public String detail(Model model, PageVO pageVO,
       @RequestParam(value = "nowPage", required = false) String nowPage,

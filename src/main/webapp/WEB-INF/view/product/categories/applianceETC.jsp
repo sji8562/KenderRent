@@ -68,8 +68,8 @@
 
 					<div class="breadcrumbs d-flex flex-row align-items-center">
 						<ul>
-							<li><a href="index.html">Category</a></li>
-							<li class="active"><a href="index.html"><i
+							<li><a href="/">Category</a></li>
+							<li class="active"><a href="product/categories/appliance"><i
 									class="fa fa-angle-right" aria-hidden="true"></i>Appliance</a></li>
 						</ul>
 					</div>
@@ -82,12 +82,12 @@
 								<h5>Sub Category</h5>
 							</div>
 							<ul class="sidebar_categories">
-								<li><a href="#">유아가전제품</a></li>
-								<!-- <li class="active"><a href="#"> <span><i
+								<li><a href="product/categories/appliance">유아가전제품</a></li>
+								<!-- <li class="active"><a href="product/categories/appliance"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>유아가전제품
 								</a></li> -->
-								<!-- <li><a href="#">기타제품</a></li> -->
-								<li class="active"><a href="#"> <span><i
+								<!-- <li><a href="product/categories/applianceETC">기타가전제품</a></li> -->
+								<li class="active"><a href="product/categories/applianceETC"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>기타제품
 								</a></li>
 							</ul>

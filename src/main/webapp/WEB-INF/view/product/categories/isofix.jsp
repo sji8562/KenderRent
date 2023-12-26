@@ -68,8 +68,8 @@
 
 					<div class="breadcrumbs d-flex flex-row align-items-center">
 						<ul>
-							<li><a href="index.html">Category</a></li>
-							<li class="active"><a href="index.html"><i
+							<li><a href="/">Category</a></li>
+							<li class="active"><a href="product/categories/isofix"><i
 									class="fa fa-angle-right" aria-hidden="true"></i>Carriage</a></li>
 						</ul>
 					</div>
@@ -82,16 +82,16 @@
 								<h5>Sub Category</h5>
 							</div>
 							<ul class="sidebar_categories">
-								<!-- <li><a href="#">카시트</a></li> -->
-								<li class="active"><a href="#"> <span><i
+								<!-- <li><a href="product/categories/isofix">카시트</a></li> -->
+								<li class="active"><a href="product/categories/isofix"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>카시트
 								</a></li>
-								<li><a href="#">유모차</a></li>
-								<!-- <li class="active"><a href="#"> <span><i
+								<li><a href="product/categories/stroller">유모차</a></li>
+								<!-- <li class="active"><a href="product/categories/stroller"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>유모차
 								</a></li> -->
-								<li><a href="#">아기띠</a></li>
-								<!-- <li class="active"><a href="#"> <span><i
+								<li><a href="product/categories/wrapCarrier">아기띠</a></li>
+								<!-- <li class="active"><a href="product/categories/wrapCarrier"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>아기띠
 								</a></li> -->
 							</ul>

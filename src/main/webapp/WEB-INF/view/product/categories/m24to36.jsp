@@ -68,9 +68,9 @@
 
 					<div class="breadcrumbs d-flex flex-row align-items-center">
 						<ul>
-							<li><a href="index.html">Category</a></li>
-							<li class="active"><a href="index.html"><i
-									class="fa fa-angle-right" aria-hidden="true"></i>Big-sized Toys</a></li>
+							<li><a href="/">Category</a></li>
+							<li class="active"><a href="product/categories/m00to06"><i
+									class="fa fa-angle-right" aria-hidden="true"></i>Small-sized Toys</a></li>
 						</ul>
 					</div>
 
@@ -82,20 +82,20 @@
 								<h5>Sub Category</h5>
 							</div>
 							<ul class="sidebar_categories">
-								<li><a href="#">3개월부터</a></li>
-								<!-- <li class="active"><a href="#"> <span><i
+								<li><a href="product/categories/m00to06">3개월부터</a></li>
+								<!-- <li class="active"><a href="product/categories/m00to06"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>3개월부터
 								</a></li> -->
-								<li><a href="#">6개월부터</a></li>
-								<!-- <li class="active"><a href="#"> <span><i
+								<li><a href="product/categories/m06to12">6개월부터</a></li>
+								<!-- <li class="active"><a href="product/categories/m06to12"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>6개월부터
 								</a></li> -->
-								<li><a href="#">12개월부터</a></li>
-								<!-- <li class="active"><a href="#"> <span><i
+								<li><a href="product/categories/m12to24">12개월부터</a></li>
+								<!-- <li class="active"><a href="product/categories/m12to24"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>12개월부터
 								</a></li> -->
-								<!-- <li><a href="#">24개월부터</a></li> -->
-								<li class="active"><a href="#"> <span><i
+								<!-- <li><a href="product/categories/m24to36">24개월부터</a></li> -->
+								<li class="active"><a href="product/categories/m24to36"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>24개월부터
 								</a></li>
 							</ul>

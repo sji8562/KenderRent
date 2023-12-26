@@ -35,6 +35,17 @@
 	display: inline-block;
 	background: gray;
 }
+
+.product-grid {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.product-item {
+	width: 33%;
+	box-sizing: border-box;
+	padding: 10px;
+}
 </style>
 </head>
 <body>
@@ -51,7 +62,7 @@
 
 		<!-- Header -->
 
-		<jsp:include page="../layout/header.jsp" />
+		<jsp:include page="../../layout/header.jsp" />
 		<%--	<div class="fs_menu_overlay"></div>--%>
 		<div class="post-slider ">
 			<div class="post-wrapper ">
@@ -68,8 +79,8 @@
 
 					<div class="breadcrumbs d-flex flex-row align-items-center">
 						<ul>
-							<li><a href="index.html">Category</a></li>
-							<li class="active"><a href="index.html"><i
+							<li><a href="/">Category</a></li>
+							<li class="active"><a href="product/categories/mobile"><i
 									class="fa fa-angle-right" aria-hidden="true"></i>Big-sized Toys</a></li>
 						</ul>
 					</div>
@@ -82,24 +93,24 @@
 								<h5>Sub Category</h5>
 							</div>
 							<ul class="sidebar_categories">
-								<!-- <li><a href="#">모빌/유아침대</a></li> -->
-								<li class="active"><a href="#"> <span><i
+								<!-- <li><a href="mobile">모빌/유아침대</a></li> -->
+								<li class="active"><a href="mobile"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>모빌/유아침대
 								</a></li>
-								<li><a href="/product/categories/bouncer">바운서</a></li>
-								<!-- <li class="active"><a href="#"> <span><i
+								<li><a href="bouncer">바운서</a></li>
+								<!-- <li class="active"><a href="bouncer"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>바운서
 								</a></li> -->
-								<li><a href="#">쏘서/점프앤런</a></li>
-								<!-- <li class="active"><a href="#"> <span><i
+								<li><a href="saucer">쏘서/점프앤런</a></li>
+								<!-- <li class="active"><a href="saucer"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>쏘서/점프앤런
 								</a></li> -->
-								<li><a href="#">베베블럭/러닝홈</a></li>
-								<!-- <li class="active"><a href="#"> <span><i
+								<li><a href="learningHome">베베블럭/러닝홈</a></li>
+								<!-- <li class="active"><a href="learningHome"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>베베블럭/러닝홈
 								</a></li> -->
-								<li><a href="#">보행기/부스터</a></li>
-								<!-- <li class="active"><a href="#"> <span><i
+								<li><a href="walker">보행기/부스터</a></li>
+								<!-- <li class="active"><a href="walker"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>보행기/부스터
 								</a></li> -->
 							</ul>

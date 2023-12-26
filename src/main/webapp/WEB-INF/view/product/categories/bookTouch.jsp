@@ -68,8 +68,8 @@
 
 					<div class="breadcrumbs d-flex flex-row align-items-center">
 						<ul>
-							<li><a href="index.html">Category</a></li>
-							<li class="active"><a href="index.html"><i
+							<li><a href="/">Category</a></li>
+							<li class="active"><a href="product/categories/bookTouch"><i
 									class="fa fa-angle-right" aria-hidden="true"></i>Books</a></li>
 						</ul>
 					</div>
@@ -82,20 +82,20 @@
 								<h5>Sub Category</h5>
 							</div>
 							<ul class="sidebar_categories">
-								<!-- <li><a href="#">촉감책</a></li> -->
-								<li class="active"><a href="#"> <span><i
+								<!-- <li><a href="product/categories/bookTouch">촉감책</a></li> -->
+								<li class="active"><a href="product/categories/bookTouch"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>촉감책
 								</a></li>
-								<li><a href="#">초점책</a></li>
-								<!-- <li class="active"><a href="#"> <span><i
+								<li><a href="product/categories/bookBW">초점책</a></li>
+								<!-- <li class="active"><a href="product/categories/bookBW"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>초점책
 								</a></li> -->
-								<li><a href="#">그림책</a></li>
-								<!-- <li class="active"><a href="#"> <span><i
+								<li><a href="product/categories/bookPic">그림책</a></li>
+								<!-- <li class="active"><a href="product/categories/bookPic"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>그림책
 								</a></li> -->
-								<li><a href="#">동화책</a></li>
-								<!-- <li class="active"><a href="#"> <span><i
+								<li><a href="product/categories/bookTail">동화책</a></li>
+								<!-- <li class="active"><a href="product/categories/bookTail"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>동화책
 								</a></li> -->
 							</ul>

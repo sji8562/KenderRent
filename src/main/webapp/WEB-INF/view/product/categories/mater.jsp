@@ -68,8 +68,8 @@
 
 					<div class="breadcrumbs d-flex flex-row align-items-center">
 						<ul>
-							<li><a href="index.html">Category</a></li>
-							<li class="active"><a href="index.html"><i
+							<li><a href="/">Category</a></li>
+							<li class="active"><a href="product/categories/mater"><i
 									class="fa fa-angle-right" aria-hidden="true"></i>Mater</a></li>
 						</ul>
 					</div>
@@ -82,8 +82,8 @@
 								<h5>Sub Category</h5>
 							</div>
 							<ul class="sidebar_categories">
-								<!-- <li><a href="#">유축기</a></li> -->
-								<li class="active"><a href="#"> <span><i
+								<!-- <li><a href="product/categories/mater">유축기</a></li> -->
+								<li class="active"><a href="product/categories/mater"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>유축기
 								</a></li>
 							</ul>

@@ -388,7 +388,7 @@ public class MngBoardController {
     model.addAttribute("keyword", keyword);
     System.out.println(cntPerPage);
 
-    List<MngBoardDTO.ProductQnaListDto> productQnaList;
+    List<MngBoardDTO.ProductQnaListDto> boardList;
 
       //  System.out.println("상세보기 왜 안돼?" + qnaDetail);
 
@@ -397,14 +397,14 @@ public class MngBoardController {
     // 검색어가 있는 경우
     if (keyword != null && !keyword.isEmpty()) {
       // 검색어를 이용해 검색 쿼리 수행
-      productQnaList =
+      boardList =
           mngProductQnaService.findProductQnaByCodeWithPagenationAndKeyword(pageVO, keyword);
     } else {
       // 검색어가 없을 때
-      productQnaList = mngProductQnaService.findProductQnaByCodeWithPagenation(pageVO);
+      boardList = mngProductQnaService.findProductQnaByCodeWithPagenation(pageVO);
     }
 
-    model.addAttribute("productQnaList", productQnaList);
+    model.addAttribute("boardList", boardList);
 
     return "mng/board/productqna/list";
 
@@ -412,25 +412,13 @@ public class MngBoardController {
 
   // 제품 문의 상세
   @GetMapping("{id}/productqna-detail")
-  public String productqnaDetail(@PathVariable Integer id, Model model) {
-    try {
-      if (id == null) {
-        throw new CustomRestfulException("잘못된 입력입니다.", HttpStatus.BAD_REQUEST);
-      }
-      ProductQnaDetail productQna = mngProductQnaService.findProductQnaByIdWithReply(id);
-      if (productQna == null) {
-        throw new CustomRestfulException("없는 공지사항입니다.", HttpStatus.BAD_REQUEST);
-      }
-      System.out.println(productQna.toString());
-      logger.info(productQna.toString());
+  public String productQnaDetail(Model model, @PathVariable Integer id) {
+    logger.info("상세 보기" + id);
 
-      model.addAttribute("productQna", productQna);
-      return "mng/board/productQna/detail";
-    } catch (Exception e) {
-      e.printStackTrace();
-      return null;
-    }
+    ProductQnaDetail productQnaDetail = mngProductQnaService.findProductQnaByIdWithReply(id);
+    model.addAttribute("board", productQnaDetail);
 
+    return "/mng/board/productqna/detail";
   }
 
   // 제품 문의 답변 등록
