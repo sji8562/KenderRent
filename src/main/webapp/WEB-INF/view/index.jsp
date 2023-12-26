@@ -94,17 +94,19 @@
 
 						<div class="product-item women">
 							<div class="product discount product_filter">
-								<div class="product_image">
-									<img src="/images/product_15.jpg" alt="">
-								</div>
-								<%--<div class="favorite favorite_left"></div>--%>
-								<%--<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-500원</span></div>--%>
-								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">와이크라이 미니 아기울음분석기</a></h6>
-									<div class="product_price">5000원
-										<%--<span>5,500원</span>--%>
+								<a href="/product/detail/90">
+									<div class="product_image">
+										<img src="/images/product_15.jpg" alt="">
 									</div>
-								</div>
+									<%--<div class="favorite favorite_left"></div>--%>
+									<%--<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-500원</span></div>--%>
+									<div class="product_info">
+										<h6 class="product_name">와이크라이 미니 아기울음분석기</h6>
+										<div class="product_price">5000원
+											<%--<span>5,500원</span>--%>
+										</div>
+									</div>
+								</a>
 							</div>
 							<%--<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>--%>
 						</div>

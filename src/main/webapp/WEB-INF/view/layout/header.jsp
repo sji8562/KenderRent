@@ -120,7 +120,7 @@
                             </c:choose>
                         </ul>
                         <div class="hamburger_container" id="hambuerBtn">
-                            <i class="fa fa-bars fa-lg" style="display: inline"></i>
+                            <i class="fa fa-bars fa-lg" style="display: inline; cursor: pointer"></i>
                         </div>
                     </nav>
                 </div>
@@ -133,7 +133,7 @@
 <div class="fs_menu_overlay"></div>
 <div class="hamburger_menu">
 	<div class="hamburger_close">
-		<i class="fa fa-times" aria-hidden="true"></i>
+		<i class="fa fa-times" aria-hidden="true" style="cursor: pointer"></i>
 	</div>
 	<div class="hamburger_menu_content text-right">
 		<ul class="menu_top_nav">
