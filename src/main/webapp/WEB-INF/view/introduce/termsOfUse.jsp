@@ -44,8 +44,11 @@
 					<%--</ul>--%>
 				</div>
 				<c:choose>
-					<div class="container">
+					<%--<div class="container">
 						<textarea id="editor" name="content">${content}</textarea>
+					</div>--%>
+					<div id="container">
+						<div id="summernote">${content}</div>
 					</div>
 				</c:choose>
 			</div>
@@ -68,8 +71,21 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
 <script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 <script src="/js/contact_custom.js"></script>
-	<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+	<%--<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>--%>
 	<script>
+		$(document).ready(function() {
+			// Initialize Summernote
+			$('#summernote').summernote({
+				height: 300, // Set the height of the editor as needed
+				readOnly: true // Set Summernote to readonly
+			});
+			$('#summernote').summernote('disable');
+
+			// Hide the toolbar
+			$('.note-toolbar').hide();
+		});
+	</script>
+	<%--<script>
 		ClassicEditor
 				.create(document.querySelector('#editor'))
 				.then(editor => {
@@ -82,7 +98,7 @@
 				.catch(error => {
 					console.error(error);
 				});
-	</script>
+	</script>--%>
 <script src="/js/dropdown.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
