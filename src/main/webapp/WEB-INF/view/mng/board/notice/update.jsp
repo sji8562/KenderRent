@@ -48,7 +48,6 @@
             <div class="col-12">
                 <div class="card card-body">
                     <h4 class="card-title">공지사항 수정</h4>
-                    <h5 class="card-subtitle"> All bootstrap element classies </h5>
 
                         <c:choose>
                             <c:when test="${notice != null}">
@@ -63,7 +62,7 @@
                                 </div>
 
                         <button type="submit" class="btn btn-primary">수정하기</button>
-                        <button class="btn btn-secondary" onclick="location.href='/mng/board/${notice.id}/notice-delete'">삭제하기</button>
+                        <button class="btn btn-secondary" onclick="location.href='/mng/board/${notice.id}/notice-delete'" type="button">삭제하기</button>
                     </form>
                             </c:when>
                             <c:otherwise>

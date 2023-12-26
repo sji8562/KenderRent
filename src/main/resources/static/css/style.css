@@ -7560,7 +7560,7 @@ Table td vertical middle
  Breadcrumb and page title
 *******************/
 .page-breadcrumb {
-  padding: 20px 20px 0 300px; }
+  padding: 20px 20px 0 20px; }
   .page-breadcrumb .page-title {
     margin-bottom: 0px;
     font-weight: 500;
