@@ -2,6 +2,11 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta charset="UTF-8">
+<!-- Summernote CSS -->
+<link rel="stylesheet"
+	  href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
+	  integrity="sha256-IKhQVXDfwbVELwiR0ke6dX+pJt0RSmWky3WB2pNx9Hg="
+	  crossorigin="anonymous">
 <style>
 @media ( min-width : 990px) {
 	#hambuerBtn {

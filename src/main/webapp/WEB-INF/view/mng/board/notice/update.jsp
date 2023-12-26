@@ -18,9 +18,9 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-5 align-self-center">
-                <h4 class="page-title">Basic Table</h4>
+                <h4 class="page-title">공지사항</h4>
             </div>
-            <div class="col-7 align-self-center">
+            <%--<div class="col-7 align-self-center">
                 <div class="d-flex align-items-center justify-content-end">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
@@ -31,7 +31,7 @@
                         </ol>
                     </nav>
                 </div>
-            </div>
+            </div>--%>
         </div>
     </div>
     <!-- ============================================================== -->
@@ -54,7 +54,7 @@
                     <form class="form-horizontal mt-4" method="post" action="/mng/board/notice-update-proc">
                         <input type="hidden" id="id" name="id" value="${notice.id}">
                                 <div class="form-group">
-                                    <label>Default Text <span class="help"> 제목</span></label>
+                                    <label><span class="help"> 제목</span></label>
                                     <input type="text" class="form-control" name="title" value="${notice.title}">
                                 </div>
                                 <div id="container">

@@ -18,6 +18,14 @@
 <link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
+
+<style>
+	/* CKEditor 테두리 없애기 */
+	.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+		border: none;
+		border-radius: 0; /* 선택적으로 border-radius를 0으로 설정할 수 있습니다. */
+	}
+</style>
 </head>
 <body>
 	<div class="super_container">
@@ -68,7 +76,10 @@
 						<div>
 							<h2>${inquiryDetail.title }</h2>
 							<br>
-							<p >${inquiryDetail.content }</p>
+							<%--<p >${inquiryDetail.content }</p>--%>
+							<div class="container">
+								<textarea id="editor" name="content">${inquiryDetail.content}</textarea>
+							</div>
 						</div>
 						<div>
 						</div>
@@ -102,5 +113,20 @@
 <script src="/js/contact_custom.js"></script>
 <script src="/js/dropdown.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+	<script>
+		ClassicEditor
+				.create(document.querySelector('#editor'))
+				.then(editor => {
+					console.log("------------------------------", editor);
+					const toolbarElement = editor.ui.view.toolbar.element;
+					toolbarElement.style.display = 'none';
+					editor.enableReadOnlyMode( 'editor' );
+					console.log('Editor was initialized', editor);
+				})
+				.catch(error => {
+					console.error(error);
+				});
+	</script>
 </body>
 </html>

@@ -9,6 +9,9 @@ public class MyRestfullExceptionHandler {
 
     @ExceptionHandler(CustomRestfullException.class)
     public String basicException(CustomRestfullException e) {
+
+        System.out.println("여기로 왔어??????" + e.getMessage());
+
         StringBuffer sb = new StringBuffer();
         sb.append("<script>");
         sb.append("alert( '" + e.getMessage() + "' );");
