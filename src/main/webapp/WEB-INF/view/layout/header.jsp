@@ -33,7 +33,7 @@
                 <div class="col-lg-12 text-right">
                     <div class="logo_container">
                         <a href="/">
-                        <img src="/images/Logo.png" width="100" height="100"></a>
+                        <img src="/images/Logo.png" width="100" height="100" style="margin-left: -70px"></a>
                     </div>
 
                     <nav class="navbar">
