@@ -152,7 +152,7 @@
 					class="fa fa-angle-down"></i>
 			</a>
 				<ul class="menu_selection">
-					<li><a href="#">모빌</a></li>
+					<li><a href="/product/categories/mobile">모빌</a></li>
 					<li><a href="#">유아침대</a></li>
 					<li><a href="#">바운서</a></li>
 					<li><a href="#">쏘서/점프앤런</a></li>

@@ -83,6 +83,10 @@ public class ProductController {
 //  public String categories02() {
 //    return "product/categories02";
 //  }
+  @GetMapping("subCategory/mobile")
+  public String mobile() {
+    return "product/subCategory/mobile";
+  }
 
   @GetMapping("detail/{id}")
   public String detail(Model model, PageVO pageVO,

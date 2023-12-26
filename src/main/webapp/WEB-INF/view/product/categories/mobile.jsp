@@ -86,7 +86,7 @@
 								<li class="active"><a href="#"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>모빌/유아침대
 								</a></li>
-								<li><a href="#">바운서</a></li>
+								<li><a href="/product/categories/bouncer">바운서</a></li>
 								<!-- <li class="active"><a href="#"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>바운서
 								</a></li> -->
