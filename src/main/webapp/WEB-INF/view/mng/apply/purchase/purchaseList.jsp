@@ -2,6 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- ============================================================== -->
 <!-- End Left Sidebar - style you can find in sidebar.scss -->
 <!-- ============================================================== -->
@@ -88,8 +89,9 @@
                                                     <td class="applyDetail"><a
                                                             href="/mng/apply/${purchaseList.id}/purchase-detail">${purchaseList.productName}</a>
                                                     </td>
+
                                                     <td class="applyDetail"><a
-                                                            href="/mng/apply/${purchaseList.id}/purchase-detail">${purchaseList.createdAt}</a>
+                                                            href="/mng/apply/${purchaseList.id}/purchase-detail"><fmt:formatDate value="${purchaseList.createdAt }" pattern="yyyy. MM. dd" /></a>
                                                     </td>
                                                     <c:choose>
                                                         <c:when test="${purchaseList.status == 1}">

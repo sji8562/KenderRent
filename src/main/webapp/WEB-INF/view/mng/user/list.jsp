@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- ============================================================== -->
 <!-- End Left Sidebar - style you can find in sidebar.scss  -->
 <!-- ============================================================== -->
@@ -79,7 +80,7 @@
 															<td>${userList.email }</td>
 															<td>${userList.userName}</td>
 															<td>${userList.phoneNumber }</td>
-															<td>${userList.createdAt}</td>
+															<td><fmt:formatDate value="${userList.createdAt }" pattern="yyyy. MM. dd" /></td>
 															<td>
 																<div>
 																	<button class="btn btn-success"
