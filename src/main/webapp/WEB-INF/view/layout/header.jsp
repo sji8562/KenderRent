@@ -27,98 +27,103 @@
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script> -->
 <!-- <script src="/js/wow.min.js"></script> -->
 <header class="header trans_300">
-	<!-- Main Navigation -->
-	<div class="main_nav_container">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-right">
-					<div class="logo_container">
-						<a href="/"> <img src="/images/Logo.png" width="100"
-							height="100"></a>
-					</div>
-					<nav class="navbar">
-						<ul class="navbar_menu">
-							<c:choose>
-								<c:when test="${firstCategories != null}">
-									<c:forEach var="firstCategory" items="${firstCategories}">
-										<li class="nav-item dropdown"><a
-											href="/product/${firstCategory.id}/categories"
-											class="nav-link dropdown-toggle">${firstCategory.firstCategoryName}</a>
-											<div class="dropdown-menu m-0">
-												<c:choose>
-													<c:when test="${secondCategories != null}">
-														<c:forEach var="secondCategory"
-															items="${secondCategories}">
-															<c:choose>
-																<c:when
-																	test="${secondCategory.firstCategoryId == firstCategory.id}">
-																	<c:forEach var="nestedItem"
-																		items="${secondCategory.secondCategoryName}">
-																		<%-- /${firstCategories.id}/${secondCategory.id} --%>
-																		<a
-																			href="/product/${firstCategory.id}/categories/${secondCategory.id}"
-																			class="dropdown-item">${nestedItem}</a>
 
-																	</c:forEach>
-																</c:when>
-															</c:choose>
-														</c:forEach>
-													</c:when>
-												</c:choose>
-											</div></li>
-									</c:forEach>
-								</c:when>
-							</c:choose>
+    <!-- Main Navigation -->
+    <div class="main_nav_container">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-right">
+                    <div class="logo_container">
+                        <a href="/">
+                        <img src="/images/Logo.png" width="100" height="100" style="margin-left: -70px"></a>
+                    </div>
 
-							<li class="nav-item dropdown"><a href="/customer/contact"
-								class="nav-link dropdown-toggle">고객센터</a>
-								<div class="dropdown-menu m-0">
-									<a href="/customer/contact?type=1" class="dropdown-item">공지사항</a>
-									<a href="/customer/contact?type=2" class="dropdown-item">FAQ</a>
-									<a href="/customer/contact?type=3" class="dropdown-item">1:1문의</a>
-									<a href="/customer/contact?type=4" class="dropdown-item">상품질문</a>
-								</div></li>
-						</ul>
+                    <nav class="navbar">
+                        <ul class="navbar_menu">
+                            <c:choose>
+                                <c:when test="${firstCategories != null}">
+                                    <c:forEach var="firstCategory" items="${firstCategories}">
+                                        <li class="nav-item dropdown">
+                                            <a href="/product/${firstCategory.id}/categories"
+                                               class="nav-link dropdown-toggle">${firstCategory.firstCategoryName}</a>
+                                            <div class="dropdown-menu m-0">
+                                                <c:choose>
+                                                    <c:when test="${secondCategories != null}">
+                                                        <c:forEach var="secondCategory" items="${secondCategories}">
+                                                            <c:choose>
+                                                                <c:when test="${secondCategory.firstCategoryId == firstCategory.id}">
+                                                                    <c:forEach var="nestedItem"
+                                                                               items="${secondCategory.secondCategoryName}">
+<%--                                                                        /${firstCategories.id}/${secondCategory.id}--%>
+                                                                        <a href="/product/${firstCategory.id}/categories/${secondCategory.id}"
+                                                                           class="dropdown-item">${nestedItem}</a>
 
-						<ul class="navbar_user">
+                                                                    </c:forEach>
+                                                                </c:when>
+                                                            </c:choose>
+                                                        </c:forEach>
+                                                    </c:when>
+                                                </c:choose>
+                                            </div>
+                                        </li>
+                                    </c:forEach>
+                                </c:when>
+                            </c:choose>
 
-							<!-- 모달창 -->
-							<li><butaton type="button" data-bs-toggle="modal"
-									data-bs-target="#exampleModal" data-bs-whatever="@fat"
-									style="cursor:pointer"> <i class="fa fa-search"
-									aria-hidden="true"></i> </butaton></li>
 
-							<c:choose>
-								<c:when test="${sessionScope.principal != null }">
-									<!-- 유저 아이콘 -->
-									<li><a href="/mypage/main"><i class="fa fa-user"
-											aria-hidden="true"></i></a></li>
 
-									<!-- 장바구니아이콘 -->
-									<li class="checkout "><a href="/cart"> <i
-											class="fa fa-shopping-cart" aria-hidden="true"></i> <span
-											id="checkout_items" class="checkout_items">${countItemCart}</span>
-									</a></li>
-									<li><a href="/user/logout">로그아웃</a></li>
+                            <li class="nav-item dropdown"><a href="/customer/contact" class="nav-link dropdown-toggle">고객센터</a>
+                                <div class="dropdown-menu m-0">
+                                    <a href="/customer/contact?type=1" class="dropdown-item">공지사항</a> <a
+                                        href="/customer/contact?type=2" class="dropdown-item">FAQ</a> <a
+                                        href="/customer/contact?type=3" class="dropdown-item">1:1문의</a> <a
+                                        href="/customer/contact?type=4" class="dropdown-item">상품질문</a>
+                                </div>
+                            </li>
+                        </ul>
 
-								</c:when>
+                        <ul class="navbar_user">
 
-								<c:otherwise>
-									<a class="size border-right" href="/user/signIn"
-										style="color: black">로그인</a>&nbsp;&nbsp;
-                                    <a class="size" href="/user/signUp"
-										style="color: black">회원가입</a>
-								</c:otherwise>
-							</c:choose>
-						</ul>
-						<div class="hamburger_container" id="hambuerBtn">
-							<i class="fa fa-bars fa-lg" style="display: inline"></i>
-						</div>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</div>
+                            <!-- 								모달창 -->
+                            <li>
+                                <butaton type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                         data-bs-whatever="@fat" style="cursor:pointer"><i class="fa fa-search"
+                                                                                           aria-hidden="true"></i>
+                                </butaton>
+                            </li>
+
+                            <c:choose>
+                                <c:when test="${sessionScope.principal != null }">
+                                    <!-- 유저 아이콘 -->
+                                    <li><a href="/mypage/main"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+
+                                    <!-- 장바구니아이콘 -->
+                                    <li class="checkout "><a href="/cart"> <i class="fa fa-shopping-cart"
+                                                                              aria-hidden="true"></i> <span
+                                            id="checkout_items" class="checkout_items">${countItemCart}</span>
+                                    </a></li>
+                                    <li><a href="/user/logout">로그아웃</a></li>
+
+                                </c:when>
+
+                                <c:otherwise>
+                                    <a class="size border-right" href="/user/signIn" style="color: black">로그인</a>&nbsp;&nbsp;
+                                    <a class="size" href="/user/signUp" style="color: black">회원가입</a>
+
+                                </c:otherwise>
+
+                            </c:choose>
+                        </ul>
+                        <div class="hamburger_container" id="hambuerBtn">
+                            <i class="fa fa-bars fa-lg" style="display: inline"></i>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </header>
 <div class="fs_menu_overlay"></div>
 <div class="hamburger_menu">
