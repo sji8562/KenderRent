@@ -29,10 +29,11 @@ public class MngNoticeService {
 
     @Transactional
     public int noticeSubmit(MngBoardDTO.NoticeSubmitDTO dto) {
+        System.out.println("이거 나오게 해봐라"+dto.toString());
         Board board = Board.builder().title(dto.getTitle()).content(dto.getContent()).build();
 
-        mngNoticeRepository.noticeSubmit(board);
-        return 1; 
+
+        return mngNoticeRepository.noticeSubmit(board);
     }
 
     @Transactional

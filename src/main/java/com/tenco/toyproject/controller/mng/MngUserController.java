@@ -47,6 +47,7 @@ public class MngUserController {
         model.addAttribute("paging", pageVO);
         System.out.println(cntPerPage);
         List<User> userList = mngService.findAll(pageVO);
+        System.out.println(userList.toString());
         if(userList != null || !userList.isEmpty()){
             model.addAttribute("userList", userList);
         }
