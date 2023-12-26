@@ -2,6 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- ============================================================== -->
 <!-- End Left Sidebar - style you can find in sidebar.scss  -->
 <!-- ============================================================== -->
@@ -81,9 +82,11 @@
                                                     <td class="applyDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.username}</a></td>
                                                     <td class="applyDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.productId}</a></td>
                                                     <td class="applyDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.productName}</a></td>
-                                                    <td class="applyDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.startDay}</a></td>
-                                                    <td class="applyDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.endDay}</a></td>
-                                                    <td class="applyDetail"><a href="/mng/apply/${rentList.id}/rental-detail">${rentList.createdAt}</a></td>
+
+
+                                                    <td class="applyDetail"><a href="/mng/apply/${rentList.id}/rental-detail"><fmt:formatDate value="${rentList.startDay }" pattern="yyyy. MM. dd" /></a></td>
+                                                    <td class="applyDetail"><a href="/mng/apply/${rentList.id}/rental-detail"><fmt:formatDate value="${rentList.endDay }" pattern="yyyy. MM. dd" /></a></td>
+                                                    <td class="applyDetail"><a href="/mng/apply/${rentList.id}/rental-detail"><fmt:formatDate value="${rentList.createdAt }" pattern="yyyy. MM. dd" /></a></td>
                                                     <c:choose>
                                                         <c:when test="${rentList.status == 2}">
                                                             <td>

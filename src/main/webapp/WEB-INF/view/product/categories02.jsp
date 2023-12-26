@@ -111,9 +111,11 @@
 															</div>
 														</div>
 														</a>
-														<div class="red_button add_to_cart_button">
-															<a href="#">add to cart</a>
-														</div>
+														<form action="/cart/${productList.id}/add" method="get"
+															  onsubmit="return addToCartConfirmation()">
+															<button type="submit" class="red_button add_to_cart_button">장바구니 추가</button>
+														</form>
+
 													</div>
 												</c:forEach>
 											</c:when>
@@ -123,28 +125,28 @@
 
 									<!-- Product Sorting -->
 
-									<div
-										class="product_sorting_container product_sorting_container_bottom clearfix">
+<%--									<div--%>
+<%--										class="product_sorting_container product_sorting_container_bottom clearfix">--%>
 
-										<div class="pages d-flex flex-row align-items-center">
-											<div class="page_current">
-												<span>1</span>
-												<ul class="page_selection">
-													<li><a href="#">1</a></li>
-													<li><a href="#">2</a></li>
-													<li><a href="#">3</a></li>
-												</ul>
-											</div>
-											<div class="page_total">
-												<span>of</span> 3
-											</div>
-											<div id="next_page_1" class="page_next">
-												<a href="#"><i class="fa fa-long-arrow-right"
-													aria-hidden="true"></i></a>
-											</div>
-										</div>
+<%--										<div class="pages d-flex flex-row align-items-center">--%>
+<%--											<div class="page_current">--%>
+<%--												<span>1</span>--%>
+<%--												<ul class="page_selection">--%>
+<%--													<li><a href="#">1</a></li>--%>
+<%--													<li><a href="#">2</a></li>--%>
+<%--													<li><a href="#">3</a></li>--%>
+<%--												</ul>--%>
+<%--											</div>--%>
+<%--											<div class="page_total">--%>
+<%--												<span>of</span> 3--%>
+<%--											</div>--%>
+<%--											<div id="next_page_1" class="page_next">--%>
+<%--												<a href="#"><i class="fa fa-long-arrow-right"--%>
+<%--													aria-hidden="true"></i></a>--%>
+<%--											</div>--%>
+<%--										</div>--%>
 
-									</div>
+<%--									</div>--%>
 
 								</div>
 							</div>
@@ -213,6 +215,19 @@
 
 	</div>
 
+	<script type="text/javascript">
+		function addToCartConfirmation() {
+			let user = '<%=session.getAttribute("principal")%>';
+			if (user == null || user === "null") {
+				alert("로그인이 필요한 기능입니다.");
+				location.href='${pageContext.request.contextPath}/user/sign-in';
+				return false;
+			} else {
+				alert("장바구니에 추가되었습니다.");
+				return true;
+			}
+		}
+	</script>
 	<script src="/js/jquery-3.2.1.min.js"></script>
 	<script src="css/styles/bootstrap4/popper.js"></script>
 	<script src="css/styles/bootstrap4/bootstrap.min.js"></script>
