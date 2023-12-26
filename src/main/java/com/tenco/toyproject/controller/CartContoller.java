@@ -9,11 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import com.tenco.toyproject.repository.entity.Product;
@@ -21,6 +17,7 @@ import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.ProductService;
 
 import jakarta.servlet.http.HttpSession;
+import retrofit2.http.Path;
 
 @Controller
 @RequestMapping("/cart")
@@ -78,6 +75,26 @@ public class CartContoller {
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("exists", exists);
 		return ResponseEntity.ok(response);
+	}
+
+	@GetMapping("/{productId}/add")
+	public String addPageToCart(@PathVariable int productId, Model model) {
+
+		User principal = (User) session.getAttribute("principal");
+		System.out.println(principal);
+		if (principal == null) {
+			throw new CustomRestfullException("로그인이 필요합니다.", HttpStatus.BAD_REQUEST);
+		} else {
+		if (productService.isItemInCart(principal.getId(), productId)) {
+			throw new CustomRestfullException("이미 장바구니에 있는 물건입니다.", HttpStatus.BAD_REQUEST);
+		} else {
+			productService.addToCartById(principal.getId(), productId);
+			List<Product> cartList = productService.showCartById(principal.getId());
+			model.addAttribute("cartList", cartList);
+			return "redirect:/product/"+cartList.get(cartList.size()-1).getFirstCategoryId()+"/categories";
+		}
+		}
+
 	}
 
 }

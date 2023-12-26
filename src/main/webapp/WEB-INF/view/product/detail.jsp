@@ -92,30 +92,30 @@
        	}
 	}
     </script>
-<script type="text/javascript">
- 	function cancelHeart(id) { 
-   		let user = '<%=session.getAttribute("principal")%>'; 
-		var form = { 
-			id : id, 
- 		}; 
- 		$.ajax({ 
- 			type : 'post', 
- 			url : "/mypage/wish-list/cancel", 
- 			cache : false, 
- 			processData : false, 
- 			contentType : 'application/json; charset=utf-8', 
-			data : JSON.stringify(form), 
- 			success : function(result) {
-				location.reload();
-       		    	alert('해당 상품을 찜 취소 하셨습니다.'); 
- 			}, 
- 			error : function(e) { 
- 				alert('찜 취소 할 수 없습니다.'); 
- 				location.reload(); // 실패시 새로고침하기 
- 			}
- 		});
- 	} 
- 	</script>
+	<script type="text/javascript">
+		function cancelHeart(id) {
+			let user = '<%=session.getAttribute("principal")%>';
+			var form = {
+				id : id,
+			};
+			$.ajax({
+				type : 'post',
+				url : "/mypage/wish-list/cancel",
+				cache : false,
+				processData : false,
+				contentType : 'application/json; charset=utf-8',
+				data : JSON.stringify(form),
+				success : function(result) {
+					location.reload();
+					alert('해당 상품을 찜 취소 하셨습니다.');
+				},
+				error : function(e) {
+					alert('찜 취소 할 수 없습니다.');
+					location.reload(); // 실패시 새로고침하기
+				}
+			});
+		}
+	</script>
 <script type="text/javascript">
 function addToCartConfirmation() {
 	let user = '<%=session.getAttribute("principal")%>'; 
@@ -129,6 +129,7 @@ function addToCartConfirmation() {
     }
 }
 </script>
+
 
 </head>
 <body>
