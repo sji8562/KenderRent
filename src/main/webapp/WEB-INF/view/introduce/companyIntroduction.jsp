@@ -17,13 +17,14 @@
 <link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
-	<style>
+	<%--<style>
 		/* CKEditor 테두리 없애기 */
 		.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
 			border: none;
 			border-radius: 0; /* 선택적으로 border-radius를 0으로 설정할 수 있습니다. */
 		}
-	</style>
+	</style>--%>
+
 </head>
 
 
@@ -54,8 +55,12 @@
 					<%--</ul>--%>
 				</div>
 
-				<div class="container">
+				<%--<div class="container">
 					<textarea id="editor" name="content">${content}</textarea>
+				</div>--%>
+				<div id="container">
+					<%--<textarea id="editor" name="content">${product.content}</textarea>--%>
+					<div id="summernote">${content}</div>
 				</div>
 
 			</div>
@@ -80,8 +85,21 @@
 <script src="/js/contact_custom.js"></script>
 <script src="/js/dropdown.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
-<script>
+	<%--<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>--%>
+	<script>
+		$(document).ready(function() {
+			// Initialize Summernote
+			$('#summernote').summernote({
+				height: 300, // Set the height of the editor as needed
+				readOnly: true // Set Summernote to readonly
+			});
+			$('#summernote').summernote('disable');
+
+			// Hide the toolbar
+			$('.note-toolbar').hide();
+		});
+	</script>
+<%--<script>
 	ClassicEditor
 	.create(document.querySelector('#editor'))
 	.then(editor => {
@@ -94,6 +112,6 @@
 	.catch(error => {
 		console.error(error);
 	});
-</script>
+</script>--%>
 </body>
 </html>
