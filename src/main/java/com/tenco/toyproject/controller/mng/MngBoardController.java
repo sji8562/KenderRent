@@ -86,6 +86,7 @@ public class MngBoardController {
 
   @PostMapping("notice-submit-proc")
   public String noticeSubmit(MngBoardDTO.NoticeSubmitDTO noticeSubmitDTO) {
+    System.out.println("들어오지??여기도 안들어와 ??");
     try {
       if (noticeSubmitDTO == null) {
         throw new CustomRestfulException("내용을 입력해주세요", HttpStatus.BAD_REQUEST);
@@ -96,12 +97,16 @@ public class MngBoardController {
       if (noticeSubmitDTO.getContent() == null || noticeSubmitDTO.getContent().isEmpty()) {
         throw new CustomRestfulException("내용을 입력해주세요", HttpStatus.BAD_REQUEST);
       }
+      System.out.println("이거 나오게 해봐라"+noticeSubmitDTO.toString());
       int result = mngNoticeService.noticeSubmit(noticeSubmitDTO);
+
+      System.out.println(result);
       if (result != 1) {
         throw new CustomRestfulException("공지사항 생성이 되지 않았습니다.", HttpStatus.BAD_REQUEST);
       }
       return "redirect:/mng/board/noticeList";
     } catch (Exception e) {
+      System.out.println("설마 여기오겠어 ?");
       return null;
     }
 
