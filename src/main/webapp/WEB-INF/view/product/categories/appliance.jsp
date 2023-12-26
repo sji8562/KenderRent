@@ -68,9 +68,9 @@
 
 					<div class="breadcrumbs d-flex flex-row align-items-center">
 						<ul>
-							<li><a href="index.html">Category</a></li>
-							<li class="active"><a href="index.html"><i
-									class="fa fa-angle-right" aria-hidden="true"></i>Big-sized Toys</a></li>
+							<li><a href="/">Category</a></li>
+							<li class="active"><a href="product/categories/appliance"><i
+									class="fa fa-angle-right" aria-hidden="true"></i>Appliance</a></li>
 						</ul>
 					</div>
 
@@ -82,25 +82,13 @@
 								<h5>Sub Category</h5>
 							</div>
 							<ul class="sidebar_categories">
-								<!-- <li><a href="#">모빌/유아침대</a></li> -->
-								<li class="active"><a href="#"> <span><i
-											class="fa fa-angle-double-right" aria-hidden="true"></i></span>모빌/유아침대
+								<!-- <li><a href="product/categories/appliance">유아가전제품</a></li> -->
+								<li class="active"><a href="product/categories/appliance"> <span><i
+											class="fa fa-angle-double-right" aria-hidden="true"></i></span>유아가전제품
 								</a></li>
-								<li><a href="#">바운서</a></li>
-								<!-- <li class="active"><a href="#"> <span><i
-											class="fa fa-angle-double-right" aria-hidden="true"></i></span>바운서
-								</a></li> -->
-								<li><a href="#">쏘서/점프앤런</a></li>
-								<!-- <li class="active"><a href="#"> <span><i
-											class="fa fa-angle-double-right" aria-hidden="true"></i></span>쏘서/점프앤런
-								</a></li> -->
-								<li><a href="#">베베블럭/러닝홈</a></li>
-								<!-- <li class="active"><a href="#"> <span><i
-											class="fa fa-angle-double-right" aria-hidden="true"></i></span>베베블럭/러닝홈
-								</a></li> -->
-								<li><a href="#">보행기/부스터</a></li>
-								<!-- <li class="active"><a href="#"> <span><i
-											class="fa fa-angle-double-right" aria-hidden="true"></i></span>보행기/부스터
+								<li><a href="product/categories/applianceETC">기타가전제품</a></li>
+								<!-- <li class="active"><a href="product/categories/applianceETC"> <span><i
+											class="fa fa-angle-double-right" aria-hidden="true"></i></span>기타제품
 								</a></li> -->
 							</ul>
 						</div>
@@ -125,22 +113,19 @@
 										<div class="product-item men">
 											<div class="product discount product_filter">
 												<div class="product_image">
-													<img src="/images/mobile01.png" alt="">
+													<img src="/images/appliance01.png" alt="">
 												</div>
-												<%--<div class="favorite favorite_left"></div>--%>
+												<div class="favorite favorite_left"></div>
 												<div class="product_info">
 													<h6 class="product_name">
-														<a href="single.html">[대여]타이니러브 수더앤그루브 모빌 (중고제품, 모빌대여,
-															건전지 미제공)</a>
+														<a href="single.html">[대여] 와이크라이 미니 아기울음분석기 [장난감대여]</a>
 													</h6>
-													<div class="product_price">
-														$13,000원<span>15,000원</span>
-													</div>
+													<div class="product_price">$5,000원</div>
 												</div>
 											</div>
-											<%--<div class="red_button add_to_cart_button">
+											<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>--%>
+											</div>
 										</div>
 
 										<!-- Product 2 -->
@@ -148,24 +133,23 @@
 										<div class="product-item women">
 											<div class="product product_filter">
 												<div class="product_image">
-													<img src="/images/mobile02.png" alt="">
+													<img src="/images/appliance02.png" alt="">
 												</div>
-												<%--<div class="favorite"></div>--%>
-												<%--<div
+												<div class="favorite"></div>
+												<div
 													class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center">
 													<span>new</span>
-												</div>--%>
+												</div>
 												<div class="product_info">
 													<h6 class="product_name">
-														<a href="single.html">[대여] 베이비뵨 하이체어 대여 [아기식탁의자,
-															왕복무료배송]</a>
+														<a href="single.html">[대여] 중고 젖병소독기 대여 - 유팡, 해님, 레이퀸</a>
 													</h6>
-													<div class="product_price">20,000원</div>
+													<div class="product_price">17,000원</div>
 												</div>
 											</div>
-											<%--<div class="red_button add_to_cart_button">
+											<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>--%>
+											</div>
 										</div>
 
 										<!-- Product 3 -->
@@ -173,21 +157,20 @@
 										<div class="product-item women">
 											<div class="product product_filter">
 												<div class="product_image">
-													<img src="/images/mobile03.png" alt="">
+													<img src="/images/appliance03.png" alt="">
 												</div>
-												<%--<div class="favorite"></div>--%>
+												<div class="favorite"></div>
 												<div class="product_info">
 													<h6 class="product_name">
-														<a href="single.html">[대여] ELC 운전놀이대-레드 <br>
-															[3개월, 유모차장난감대여제품]
+														<a href="single.html">[대여] 프린스 라이언하트 팝 [유아용품대여,물티슈워머]
 														</a>
 													</h6>
 													<div class="product_price">8,000원</div>
 												</div>
 											</div>
-											<%--<div class="red_button add_to_cart_button">
+											<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>--%>
+											</div>
 										</div>
 
 										<!-- Product 4 -->
@@ -195,24 +178,185 @@
 										<div class="product-item accessories">
 											<div class="product product_filter">
 												<div class="product_image">
-													<img src="/images/mobile04.png" alt="">
+													<img src="/images/appliance04.png" alt="">
 												</div>
-												<%--<div
+												<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>sale</span>
-												</div>--%>
-												<%--<div class="favorite favorite_left"></div>--%>
+												</div>
+												<div class="favorite favorite_left"></div>
 												<div class="product_info">
 													<h6 class="product_name">
-														<a href="single.html">[대여] 베이비뵨 트래블 크립 라이트 [아기침대대여]</a>
+														<a href="single.html">[대여] awair 공기측정기 가정용</a>
 													</h6>
-													<div class="product_price">25,000원</div>
+													<div class="product_price">15,000원</div>
 												</div>
 											</div>
-											<%--<div class="red_button add_to_cart_button">
+											<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>--%>
+											</div>
 										</div>
+
+										<!-- Product 5 -->
+
+										<div class="product-item men">
+											<div class="product discount product_filter">
+												<div class="product_image">
+													<img src="/images/appliance05.png" alt="">
+												</div>
+												<div class="favorite favorite_left"></div>
+												<div class="product_info">
+													<h6 class="product_name">
+														<a href="single.html">[대여] 캐리어 RCAP-H034SW [공기청정기대여]</a>
+													</h6>
+													<div class="product_price">$40,000원</div>
+												</div>
+											</div>
+											<div class="red_button add_to_cart_button">
+												<a href="#">add to cart</a>
+											</div>
+										</div>
+
+										<!-- Product 6 -->
+
+										<div class="product-item women">
+											<div class="product product_filter">
+												<div class="product_image">
+													<img src="/images/appliance06.png" alt="">
+												</div>
+												<div class="favorite"></div>
+												<div
+													class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center">
+													<span>new</span>
+												</div>
+												<div class="product_info">
+													<h6 class="product_name">
+														<a href="single.html">[대여] 캐리어 CPA-Q091PD [냉난방기대여,이동식]</a>
+													</h6>
+													<div class="product_price">150,000원</div>
+												</div>
+											</div>
+											<div class="red_button add_to_cart_button">
+												<a href="#">add to cart</a>
+											</div>
+										</div>
+
+										<!-- Product 7 -->
+
+										<div class="product-item women">
+											<div class="product product_filter">
+												<div class="product_image">
+													<img src="/images/appliance07.png" alt="">
+												</div>
+												<div class="favorite"></div>
+												<div class="product_info">
+													<h6 class="product_name">
+														<a href="single.html">[대여] 캐리어 CAP-013S [공기청정기대여] </a>
+													</h6>
+													<div class="product_price">30,000원</div>
+												</div>
+											</div>
+											<div class="red_button add_to_cart_button">
+												<a href="#">add to cart</a>
+											</div>
+										</div>
+
+										<!-- Product 8 -->
+
+										<div class="product-item accessories">
+											<div class="product product_filter">
+												<div class="product_image">
+													<img src="/images/appliance08.png" alt="">
+												</div>
+												<div
+													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
+													<span>sale</span>
+												</div>
+												<div class="favorite favorite_left"></div>
+												<div class="product_info">
+													<h6 class="product_name">
+														<a href="single.html">[대여] 유팡 자외선 살균소독기 - 밀키그린
+															[새제품,젖병소독기대여]</a>
+													</h6>
+													<div class="product_price">45,000원</div>
+												</div>
+											</div>
+											<div class="red_button add_to_cart_button">
+												<a href="#">add to cart</a>
+											</div>
+										</div>
+
+										<!-- Product 9 -->
+
+										<div class="product-item women">
+											<div class="product product_filter">
+												<div class="product_image">
+													<img src="/images/appliance09.png" alt="">
+												</div>
+												<div class="favorite"></div>
+												<div
+													class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center">
+													<span>new</span>
+												</div>
+												<div class="product_info">
+													<h6 class="product_name">
+														<a href="single.html">[대여] 해님 3세대 젖병소독기 [새제품,젖병소독기대여]</a>
+													</h6>
+													<div class="product_price">50,000원</div>
+												</div>
+											</div>
+											<div class="red_button add_to_cart_button">
+												<a href="#">add to cart</a>
+											</div>
+										</div>
+
+										<!-- Product 10 -->
+
+										<div class="product-item women">
+											<div class="product product_filter">
+												<div class="product_image">
+													<img src="/images/appliance10.png" alt="">
+												</div>
+												<div class="favorite"></div>
+												<div class="product_info">
+													<h6 class="product_name">
+														<a href="single.html">[대여] 레이퀸 뉴 젖병살균기 JHS-500
+															[새제품,젖병살균기대여] </a>
+													</h6>
+													<div class="product_price">35,000원</div>
+												</div>
+											</div>
+											<div class="red_button add_to_cart_button">
+												<a href="#">add to cart</a>
+											</div>
+										</div>
+
+										<!-- Product 11 -->
+
+										<div class="product-item accessories">
+											<div class="product product_filter">
+												<div class="product_image">
+													<img src="/images/appliance11.png" alt="">
+												</div>
+												<div
+													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
+													<span>sale</span>
+												</div>
+												<div class="favorite favorite_left"></div>
+												<div class="product_info">
+													<h6 class="product_name">
+														<a href="single.html">[대여] 제습기 캐리어 CDH-1606PDS
+															[유아용품대여,항진드기필터적용,제습기대여]</a>
+													</h6>
+													<div class="product_price">35,000원</div>
+												</div>
+											</div>
+											<div class="red_button add_to_cart_button">
+												<a href="#">add to cart</a>
+											</div>
+										</div>
+
+
 									</div>
 								</div>
 							</div>
@@ -278,7 +422,6 @@
 		<!-- Newsletter -->
 		<%--<div class="newsletter">
 >>>>>>> af37d96339b5cce88e3773f914bb5724bad1deea
-
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6">

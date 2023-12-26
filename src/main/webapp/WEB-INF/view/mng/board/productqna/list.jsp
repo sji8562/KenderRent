@@ -74,8 +74,7 @@
 													<thead class="table-light">
 														<tr>
 															<th scope="col">#</th>
-															<th scope="col">제목</th>
-															<%--<th scope="col">내용</th>--%>
+															<th scope="col">상품아이디</th>
 															<th scope="col">작성자</th>
 															<th scope="col">문의일시</th>
 															<th scope="col">답변여부</th>
@@ -87,7 +86,7 @@
 														<c:forEach var="boardList" items="${boardList}">
 															<tr>
 																<th class="applyDetail" scope="row"><a
-																	href="/mng/board/${boardList.id}/productQna-detail">${boardList.id}</a></th>
+																	href="/mng/board/${boardList.id}/productqna-detail">${boardList.id}</a></th>
 																<%--<td class="ellipsis" style="width: 60%; white-space: nowrap; overflow:hidden; text-overflow:ellipsis;">${noticeList.title}</td>--%>
 																<td class="ellipsis">${boardList.title}</td>
 																<%--<td>${noticeList.content}</td>--%>
@@ -106,6 +105,7 @@
 																<td>
 																	<div>
 																		<button class="btn btn-success"
+																		type="button"
 																			style="border: 1px solid black"
 																			onclick="location.href='/mng/board/${boardList.id}/productqna-detail'">조회</button>
 																		&nbsp;&nbsp;

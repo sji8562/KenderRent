@@ -4,29 +4,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="page-wrapper">
-
-    <!-- ============================================================== -->
-    <!-- Bread crumb and right sidebar toggle -->
-    <!-- ============================================================== -->
     <div class="page-breadcrumb">
-        <div class="row"> 
+        <div class="row">
             <div class="col-5 align-self-center">
-                <h4 class="page-title">Basic Table</h4>
-            </div>
-            <div class="col-7 align-self-center">
-                <div class="d-flex align-items-center justify-content-end">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="#">Home</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Basic Table</li>
-                        </ol>
-                    </nav>
-                </div>
+                <h4 class="page-title">상품 문의 상세</h4>
             </div>
         </div>
     </div>
+
     <!-- ============================================================== -->
     <!-- End Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
@@ -67,6 +52,7 @@
         <!-- ============================================================== -->
 
 
+
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12">
@@ -74,17 +60,17 @@
 					<form class="form-horizontal mt-4"
 						action="/mng/board/${board.id}/productqna-answer" method="post">
 						<div class="form-group">
+							<label for="title">제품문의 상품아이디</label>
+							<div class="form-floating">
+								<input type="text" class="form-control" maxlength="250"
+									id="title" disabled value="${board.title}" />
+							</div>
+						</div>
+						<div class="form-group">
 							<label for="title">제품문의 작성자</label>
 							<div class="form-floating">
 								<input type="text" class="form-control" maxlength="250"
 									id="user" disabled value="${board.email}" />
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="title">제품문의 제목</label>
-							<div class="form-floating">
-								<input type="text" class="form-control" maxlength="250"
-									id="title" disabled value="${board.title}" />
 							</div>
 						</div>
 						<div class="form-group">
@@ -115,7 +101,7 @@
 							</c:choose>
 						</div>
 
-						<a href="/mng/board/productqna-list"><button class="btn btn-secondary"
+						<a href="/mng/board/productqna"><button class="btn btn-secondary"
 								type="button">목록으로</button></a>
 
 						<c:choose>
