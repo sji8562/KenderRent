@@ -14,7 +14,7 @@
 </style>
 
 
-<div class="page-wrapper">
+<body class="page-wrapper">
 	<!-- ============================================================== -->
 	<!-- Bread crumb and right sidebar toggle -->
 	<!-- ============================================================== -->
@@ -104,8 +104,9 @@
 							<div class="form-group">
 								<label>제품 상세 설명</label>
 								<div id="container">
-									<textarea id="editor" name="content">${product.content}</textarea>
+									<%--<textarea id="editor" name="content">${product.content}</textarea>--%>
 										<%--<textarea id="summernote" name="content">${product.content}</textarea>--%>
+									<div id="summernote">${product.content}</div>
 								</div>
 								<%--<textarea class="form-control" rows="5" disabled>${product.content}</textarea>--%>
 							</div>
@@ -127,5 +128,9 @@
 			<!-- ============================================================== -->
 		</div>
 
-
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>
+
+<script>
+	$('#summernote').summernote('disable');
+	$('.note-toolbar').hide();
+</script>
