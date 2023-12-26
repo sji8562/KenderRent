@@ -4,13 +4,9 @@ package com.tenco.toyproject.repository.interfaces;
 import java.util.List;
 import java.util.Map;
 
+import com.tenco.toyproject.repository.entity.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
-import com.tenco.toyproject.repository.entity.PayBack;
-import com.tenco.toyproject.repository.entity.Sale;
-import com.tenco.toyproject.repository.entity.Product;
-import com.tenco.toyproject.repository.entity.Rent;
 
 @Mapper
 public interface ProductRepository {
@@ -40,6 +36,9 @@ public interface ProductRepository {
 	public List<Map> showReview(int productId);
 	public List<Map> showRentList(int userId);
 	public Rent findRentList(int id);
+	public String findFirstCategoryName(int id);
+	public String findSecondCategoryName(int id);
+	
 
 
 	
@@ -50,4 +49,5 @@ public interface ProductRepository {
 
 
 	public List<Product> findByCategoryId(Integer id);
+	public List<SecondCategory> findBysCategoryId(Integer id);
 }

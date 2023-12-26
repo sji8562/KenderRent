@@ -55,4 +55,6 @@ public class MngBoardDTO {
       private Timestamp createdAt;
       private Integer reply; // 답변 여부
     }
+
+
 }

@@ -9,6 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Colo Shop Template">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <link rel="stylesheet" type="text/css"
 	href="/css/styles/bootstrap4/bootstrap.min.css">
 <link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css"
@@ -34,7 +37,8 @@
     	let user = '<%=session.getAttribute("principal")%>';
        	if(user == "null"){
 			alert("로그인이 필요한 기능입니다.");
-      		location.href='${pageContext.request.contextPath}/user/sign-in';
+			location.reload(); 
+      		location.href= '<%= request.getContextPath() %>/user/signIn';
         } else {
         	var form={
         		id:id
@@ -57,13 +61,14 @@
         	})
    		}
 	}
+	
 	</script>
 <script type="text/javascript">  
     function removeHeart(id, element) {
     	let user = '<%=session.getAttribute("principal")%>';
        	if(user == "null"){
 			alert("로그인이 필요한 기능입니다.");
-      		location.href='${pageContext.request.contextPath}/user/sign-in';
+      		location.href='${pageContext.request.contextPath}/user/signIn';
         } else {
         	var form={
            		id:id
@@ -116,13 +121,19 @@ function addToCartConfirmation() {
 	let user = '<%=session.getAttribute("principal")%>'; 
 	 if (user == null || user === "null") {
 		alert("로그인이 필요한 기능입니다.");
-  		location.href='${pageContext.request.contextPath}/user/sign-in';
+  		location.href='${pageContext.request.contextPath}/user/signIn';
   		return false;
     } else {
-    	alert("장바구니에 추가되었습니다.");
     	return true;
     }
 }
+</script>
+<script type="text/javascript">
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+        location.reload(true);
+    }
+});
 </script>
 	<style>
 		/* CKEditor 테두리 없애기 */
@@ -131,6 +142,7 @@ function addToCartConfirmation() {
 			border-radius: 0; /* 선택적으로 border-radius를 0으로 설정할 수 있습니다. */
 		}
 	</style>
+	
 </head>
 <body>
 	<div class="super_container">
@@ -195,9 +207,9 @@ function addToCartConfirmation() {
 							<!-- 카테고리 분류 -->
 							<li><a href="index.html">Home</a></li>
 							<li><a href="categories.html"><i
-									class="fa fa-angle-right" aria-hidden="true"></i>${product.firstCategoryId}</a></li>
+									class="fa fa-angle-right" aria-hidden="true"></i>${category[0]}</a></li>
 							<li class="active"><a href="#"><i
-									class="fa fa-angle-right" aria-hidden="true"></i>${product.secondCategoryId}</a></li>
+									class="fa fa-angle-right" aria-hidden="true"></i>${category[1]}</a></li>
 						</ul>
 					</div>
 

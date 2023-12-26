@@ -13,9 +13,10 @@
 
 	<select id="showCartById"
 		resultType="com.tenco.toyproject.repository.entity.Product">
-		SELECT p.*
+		SELECT p.*, f.code
 		FROM product p
 		JOIN cart c ON p.id = c.product_id
+		JOIN first_category f ON f.id = p.first_category_id
 		WHERE c.user_id = #{userId}
 	</select>
 
@@ -165,6 +166,16 @@
 		select * from rent
 		where id = #{id}
 	</select>
+	
+	<select id="findFirstCategoryName" resultType="String">
+		select first_category_name from first_category
+		where id = #{id}
+	</select>
+	
+	<select id="findSecondCategoryName" resultType="String">
+		select second_category_name from second_category
+		where id = #{id}
+	</select>
 
 	
 	
@@ -189,7 +200,10 @@
 		select max(price) as MAX from product
 	</select>
 	<select id="findByCategoryId">
-		select * from product where first_category_id = #{id}
+		select * from product p left join first_category fc on p.first_category_id = fc.id where p.first_category_id = #{id}
+	</select>
+	<select id="findBysCategoryId">
+		select * from second_category where first_category_id = #{id}
 	</select>
 <!-- 	검색기능 관련 끝 -->
 
