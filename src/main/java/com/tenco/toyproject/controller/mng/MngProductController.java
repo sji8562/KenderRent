@@ -1,5 +1,6 @@
 package com.tenco.toyproject.controller.mng;
 
+import com.tenco.toyproject._core.handler.MyRestfullExceptionHandler;
 import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
 import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import com.tenco.toyproject._core.handler.exception.Exception404;
@@ -152,7 +153,7 @@ public class MngProductController {
         try {
             Product product = mngService.findProductById(pId);
             if (product == null) {
-                throw new CustomRestfulException("없는 상품입니다", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("없는 상품입니다", HttpStatus.BAD_REQUEST);
             }
             System.out.println("1512345343484531423dsadasdasdasdsads" + product.toString());
             model.addAttribute(product);
@@ -740,7 +741,7 @@ public class MngProductController {
     // 대여용
     // 1차 카테고리 삭제
     @GetMapping("/delete-first-category-by-id/{fId}")
-    public List<FirstCategory> deleteFirstCategory(@PathVariable int fId) {
+    public List<FirstCategory> deleteFirstCategory(@PathVariable int fId) throws CustomRestfullException {
 //        if(fId == null){
 //            return
 //        }
@@ -749,16 +750,16 @@ public class MngProductController {
 
         try{
             if (!secondCategories.isEmpty()) {
-                throw new CustomRestfulException("하위 카테고리가 존재합니다", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("하위 카테고리가 존재합니다", HttpStatus.BAD_REQUEST);
             }
             // 해당 카테고리에 등록된 물품이 있는지 확인
             int resultRows = mngService.findProductCountByFirstCategoryId(fId);
             if (resultRows > 0) {
-                throw new CustomRestfulException("해당 카테고리에 등록된 물품이 있습니다", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("해당 카테고리에 등록된 물품이 있습니다", HttpStatus.BAD_REQUEST);
             }
             int result = mngService.deleteFirstCategoryById(fId);
             if(result != 1){
-                throw new CustomRestfulException("카테고리 삭제를 실패했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("카테고리 삭제에 실패했습니다.", HttpStatus.BAD_REQUEST);
             }
             return mngService.getFirstCategories(1);
         }catch (Exception e){
@@ -900,5 +901,4 @@ public class MngProductController {
             return null;
         }
     }
-
 }

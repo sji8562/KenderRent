@@ -127,20 +127,21 @@
 												<div class="product_image">
 													<img src="/images/prodimg/toyB/mobile/mobile01.jpg" alt="">
 												</div>
-												<div class="favorite favorite_left"></div>
+												<%--<div class="favorite favorite_left"></div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">Fujifilm X100T 16 MP Digital
 															Camera (Silver)</a>
 													</h6>
 													<div class="product_price">
-														$520.00<span>$590.00</span>
+														$520.00
+														<%--<span>$590.00</span>--%>
 													</div>
 												</div>
 											</div>
-											<div class="red_button add_to_cart_button">
+											<%--<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>
+											</div>--%>
 										</div>
 
 										<!-- Product 2 -->
@@ -150,11 +151,11 @@
 												<div class="product_image">
 													<img src="/images/prodimg/toyB/mobile/mobile02.jpg" alt="">
 												</div>
-												<div class="favorite"></div>
-												<div
+												<%--<div class="favorite"></div>--%>
+												<%--<div
 													class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center">
 													<span>new</span>
-												</div>
+												</div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">Samsung CF591 Series Curved
@@ -163,9 +164,9 @@
 													<div class="product_price">$610.00</div>
 												</div>
 											</div>
-											<div class="red_button add_to_cart_button">
+											<%--<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>
+											</div>--%>
 										</div>
 
 										<!-- Product 3 -->
@@ -175,7 +176,7 @@
 												<div class="product_image">
 													<img src="/images/prodimg/toyB/mobile/mobile03.jpg" alt="">
 												</div>
-												<div class="favorite"></div>
+												<%--<div class="favorite"></div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">Blue Yeti USB Microphone
@@ -184,9 +185,9 @@
 													<div class="product_price">$120.00</div>
 												</div>
 											</div>
-											<div class="red_button add_to_cart_button">
+											<%--<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>
+											</div>--%>
 										</div>
 
 										<!-- Product 4 -->
@@ -196,11 +197,11 @@
 												<div class="product_image">
 													<img src="/images/prodimg/toyB/mobile/mobile04.png" alt="">
 												</div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>sale</span>
-												</div>
-												<div class="favorite favorite_left"></div>
+												</div>--%>
+												<%--<div class="favorite favorite_left"></div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">DYMO LabelWriter 450 Turbo
@@ -209,9 +210,9 @@
 													<div class="product_price">$410.00</div>
 												</div>
 											</div>
-											<div class="red_button add_to_cart_button">
+											<%--<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>
+											</div>--%>
 										</div>
 
 										<!-- Product 5 -->
@@ -221,7 +222,7 @@
 												<div class="product_image">
 													<img src="/images/product_5.png" alt="">
 												</div>
-												<div class="favorite"></div>
+												<%--<div class="favorite"></div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">Pryma Headphones, Rose Gold &
@@ -230,9 +231,9 @@
 													<div class="product_price">$180.00</div>
 												</div>
 											</div>
-											<div class="red_button add_to_cart_button">
+											<%--<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>
+											</div>--%>
 										</div>
 
 										<!-- Product 6 -->
@@ -242,24 +243,25 @@
 												<div class="product_image">
 													<img src="/images/product_6.png" alt="">
 												</div>
-												<div class="favorite favorite_left"></div>
-												<div
+												<%--<div class="favorite favorite_left"></div>--%>
+												<%--<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>-$20</span>
-												</div>
+												</div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">Fujifilm X100T 16 MP Digital
 															Camera (Silver)</a>
 													</h6>
 													<div class="product_price">
-														$520.00<span>$590.00</span>
+														$520.00
+														<%--<span>$590.00</span>--%>
 													</div>
 												</div>
 											</div>
-											<div class="red_button add_to_cart_button">
+											<%--<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>
+											</div>--%>
 										</div>
 
 										<!-- Product 7 -->
@@ -269,7 +271,7 @@
 												<div class="product_image">
 													<img src="/images/product_7.png" alt="">
 												</div>
-												<div class="favorite"></div>
+												<%--<div class="favorite"></div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">Samsung CF591 Series Curved
@@ -278,9 +280,9 @@
 													<div class="product_price">$610.00</div>
 												</div>
 											</div>
-											<div class="red_button add_to_cart_button">
+											<%--<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>
+											</div>--%>
 										</div>
 
 										<!-- Product 8 -->
@@ -290,7 +292,7 @@
 												<div class="product_image">
 													<img src="/images/product_8.png" alt="">
 												</div>
-												<div class="favorite"></div>
+												<%--<div class="favorite"></div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">Blue Yeti USB Microphone
@@ -299,9 +301,9 @@
 													<div class="product_price">$120.00</div>
 												</div>
 											</div>
-											<div class="red_button add_to_cart_button">
+											<%--<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>
+											</div>--%>
 										</div>
 
 										<!-- Product 9 -->
@@ -311,11 +313,11 @@
 												<div class="product_image">
 													<img src="/images/product_9.png" alt="">
 												</div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>sale</span>
-												</div>
-												<div class="favorite favorite_left"></div>
+												</div>--%>
+												<%--<div class="favorite favorite_left"></div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">DYMO LabelWriter 450 Turbo
@@ -324,9 +326,9 @@
 													<div class="product_price">$410.00</div>
 												</div>
 											</div>
-											<div class="red_button add_to_cart_button">
+											<%--<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>
+											</div>--%>
 										</div>
 
 										<!-- Product 10 -->
@@ -336,7 +338,7 @@
 												<div class="product_image">
 													<img src="/images/product_10.png" alt="">
 												</div>
-												<div class="favorite"></div>
+												<%--<div class="favorite"></div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">Pryma Headphones, Rose Gold &
@@ -345,9 +347,9 @@
 													<div class="product_price">$180.00</div>
 												</div>
 											</div>
-											<div class="red_button add_to_cart_button">
-												<a href="#">add to cart</a>
-											</div>
+<%--											<div class="red_button add_to_cart_button">--%>
+<%--												<a href="#">add to cart</a>--%>
+<%--											</div>--%>
 										</div>
 
 										<!-- Product 11 -->
@@ -357,7 +359,7 @@
 												<div class="product_image">
 													<img src="/images/product_5.png" alt="">
 												</div>
-												<div class="favorite"></div>
+												<%--<div class="favorite"></div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">Pryma Headphones, Rose Gold &
@@ -366,9 +368,9 @@
 													<div class="product_price">$180.00</div>
 												</div>
 											</div>
-											<div class="red_button add_to_cart_button">
+											<%--<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>
+											</div>--%>
 										</div>
 
 										<!-- Product 12 -->
@@ -378,24 +380,25 @@
 												<div class="product_image">
 													<img src="/images/product_6.png" alt="">
 												</div>
-												<div class="favorite favorite_left"></div>
-												<div
+												<%--<div class="favorite favorite_left"></div>--%>
+												<%--<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>-$20</span>
-												</div>
+												</div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">Fujifilm X100T 16 MP Digital
 															Camera (Silver)</a>
 													</h6>
 													<div class="product_price">
-														$520.00<span>$590.00</span>
+														$520.00
+														<%--<span>$590.00</span>--%>
 													</div>
 												</div>
 											</div>
-											<div class="red_button add_to_cart_button">
+											<%--<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>
+											</div>--%>
 										</div>
 									</div>
 
@@ -498,6 +501,7 @@
 		<!-- Newsletter -->
 		<%--<div class="newsletter">
 >>>>>>> af37d96339b5cce88e3773f914bb5724bad1deea
+
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6">
