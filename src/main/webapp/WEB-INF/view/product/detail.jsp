@@ -87,43 +87,45 @@
        	}
 	}
     </script>
-<script type="text/javascript">
- 	function cancelHeart(id) { 
-   		let user = '<%=session.getAttribute("principal")%>'; 
-		var form = { 
-			id : id, 
- 		}; 
- 		$.ajax({ 
- 			type : 'post', 
- 			url : "/mypage/wish-list/cancel", 
- 			cache : false, 
- 			processData : false, 
- 			contentType : 'application/json; charset=utf-8', 
-			data : JSON.stringify(form), 
- 			success : function(result) {
+	<script type="text/javascript">
+		function cancelHeart(id) {
+			let user = '<%=session.getAttribute("principal")%>';
+			var form = {
+				id : id,
+			};
+			$.ajax({
+				type : 'post',
+				url : "/mypage/wish-list/cancel",
+				cache : false,
+				processData : false,
+				contentType : 'application/json; charset=utf-8',
+				data : JSON.stringify(form),
+				success : function(result) {
+					location.reload();
+					alert('해당 상품을 찜 취소 하셨습니다.');
+				},
+				error : function(e) {
+					alert('찜 취소 할 수 없습니다.');
+					location.reload(); // 실패시 새로고침하기
+				}
+			});
+		}
+	</script>
+	<script type="text/javascript">
+		function addToCartConfirmation() {
+			let user = '<%=session.getAttribute("principal")%>';
+			if (user == null || user === "null") {
+				alert("로그인이 필요한 기능입니다.");
+				location.href='${pageContext.request.contextPath}/user/sign-in';
+				return false;
+			} else {
+
 				location.reload();
-       		    	alert('해당 상품을 찜 취소 하셨습니다.'); 
- 			}, 
- 			error : function(e) { 
- 				alert('찜 취소 할 수 없습니다.'); 
- 				location.reload(); // 실패시 새로고침하기 
- 			}
- 		});
- 	} 
- 	</script>
-<script type="text/javascript">
-function addToCartConfirmation() {
-	let user = '<%=session.getAttribute("principal")%>'; 
-	 if (user == null || user === "null") {
-		alert("로그인이 필요한 기능입니다.");
-  		location.href='${pageContext.request.contextPath}/user/sign-in';
-  		return false;
-    } else {
-    	alert("장바구니에 추가되었습니다.");
-    	return true;
-    }
-}
-</script>
+				alert("장바구니에 추가되었습니다.");
+				return true;
+			}
+		}
+	</script>
 	<style>
 		/* CKEditor 테두리 없애기 */
 		.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
