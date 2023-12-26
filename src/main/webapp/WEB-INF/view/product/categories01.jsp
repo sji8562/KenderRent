@@ -127,7 +127,7 @@
 												<div class="product_image">
 													<img src="/images/mobile01.png" alt="">
 												</div>
-												<div class="favorite favorite_left"></div>
+												<%--<div class="favorite favorite_left"></div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">[대여]타이니러브 수더앤그루브 모빌 (중고제품, 모빌대여,
@@ -138,9 +138,9 @@
 													</div>
 												</div>
 											</div>
-											<div class="red_button add_to_cart_button">
+											<%--<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>
+											</div>--%>
 										</div>
 
 										<!-- Product 2 -->
@@ -150,11 +150,11 @@
 												<div class="product_image">
 													<img src="/images/mobile02.png" alt="">
 												</div>
-												<div class="favorite"></div>
-												<div
+												<%--<div class="favorite"></div>--%>
+												<%--<div
 													class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center">
 													<span>new</span>
-												</div>
+												</div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">[대여] 베이비뵨 하이체어 대여 [아기식탁의자,
@@ -163,9 +163,9 @@
 													<div class="product_price">20,000원</div>
 												</div>
 											</div>
-											<div class="red_button add_to_cart_button">
+											<%--<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>
+											</div>--%>
 										</div>
 
 										<!-- Product 3 -->
@@ -175,7 +175,7 @@
 												<div class="product_image">
 													<img src="/images/mobile03.png" alt="">
 												</div>
-												<div class="favorite"></div>
+												<%--<div class="favorite"></div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">[대여] ELC 운전놀이대-레드 <br>
@@ -185,9 +185,9 @@
 													<div class="product_price">8,000원</div>
 												</div>
 											</div>
-											<div class="red_button add_to_cart_button">
+											<%--<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>
+											</div>--%>
 										</div>
 
 										<!-- Product 4 -->
@@ -197,11 +197,11 @@
 												<div class="product_image">
 													<img src="/images/mobile04.png" alt="">
 												</div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>sale</span>
-												</div>
-												<div class="favorite favorite_left"></div>
+												</div>--%>
+												<%--<div class="favorite favorite_left"></div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">[대여] 베이비뵨 트래블 크립 라이트 [아기침대대여]</a>
@@ -209,9 +209,9 @@
 													<div class="product_price">25,000원</div>
 												</div>
 											</div>
-											<div class="red_button add_to_cart_button">
+											<%--<div class="red_button add_to_cart_button">
 												<a href="#">add to cart</a>
-											</div>
+											</div>--%>
 										</div>
 									</div>
 								</div>
@@ -278,6 +278,7 @@
 		<!-- Newsletter -->
 		<%--<div class="newsletter">
 >>>>>>> af37d96339b5cce88e3773f914bb5724bad1deea
+
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6">

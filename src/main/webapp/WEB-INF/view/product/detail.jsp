@@ -29,6 +29,11 @@
 <link rel="stylesheet" type="text/css"
 	href="/css/styles/main_styles.css">
 <script src="/js/jquery-3.2.1.min.js"></script>
+<!-- Summernote CSS -->
+<link rel="stylesheet"
+	  href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
+	  integrity="sha256-IKhQVXDfwbVELwiR0ke6dX+pJt0RSmWky3WB2pNx9Hg="
+	  crossorigin="anonymous">
 <script type="text/javascript">
 	function addHeart(id) {
     	let user = '<%=session.getAttribute("principal")%>';
@@ -124,13 +129,7 @@ function addToCartConfirmation() {
     }
 }
 </script>
-	<style>
-		/* CKEditor 테두리 없애기 */
-		.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
-			border: none;
-			border-radius: 0; /* 선택적으로 border-radius를 0으로 설정할 수 있습니다. */
-		}
-	</style>
+
 </head>
 <body>
 	<div class="super_container">
@@ -320,10 +319,10 @@ function addToCartConfirmation() {
 								</div>
 
 								<%-- ckeditor --%>
-								<div class="container">
+								<%--<div class="container">
 									<textarea id="editor" name="content">${product.content}</textarea>
-								</div>
-
+								</div>--%>
+								<div id="summernote" name="content">${product.content}</div>
 							</div>
 						</div>
 					</div>
@@ -529,7 +528,8 @@ function addToCartConfirmation() {
 		}
 		
 	</script>
-	<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+
+	<%--<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
 	<script>
 		ClassicEditor
 				.create(document.querySelector('#editor'))
@@ -543,6 +543,10 @@ function addToCartConfirmation() {
 				.catch(error => {
 					console.error(error);
 				});
-	</script>
+	</script>--%>
 </body>
+<script>
+	$('#summernote').summernote('disable');
+	$('.note-toolbar').hide();
+</script>
 </html>

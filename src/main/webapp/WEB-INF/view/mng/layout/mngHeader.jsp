@@ -28,7 +28,6 @@
 <link href="/assets/libs/chartist/dist/chartist.min.css"
 	rel="stylesheet">
 
-
 <!-- Custom CSS -->
 <link href="/dist/css/style.min.css" rel="stylesheet">
 <link href="/dist/css/mng.css" rel="stylesheet">
@@ -39,12 +38,17 @@
 	crossorigin="anonymous">
 
 
+	<!-- Include jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <!-- Summernote CSS -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
 	integrity="sha256-IKhQVXDfwbVELwiR0ke6dX+pJt0RSmWky3WB2pNx9Hg="
 	crossorigin="anonymous">
+	<!-- Include Summernote -->
+<%--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" integrity="sha384-GLhlTQ8iZS+9Ld5LKa7a5z3kzEpTluc6s/v5Z8DxN9JK6U7IE5MW5VsDUZt4Qvq" crossorigin="anonymous">--%>
+<%--<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js" integrity="sha384-SvYEXq8aS02lWqZoCc8y9vtqz6dUQDLIH9/2ScNvEbrCwfoUdMw8jC+U3+I2eE1T" crossorigin="anonymous"></script>--%>
 
 <!-- Your Custom CSS -->
 <link rel="stylesheet" href="/css/style.css">

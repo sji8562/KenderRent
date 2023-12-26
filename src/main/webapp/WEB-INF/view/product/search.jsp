@@ -75,7 +75,7 @@
 									조회하신 상품이 없습니다
 								</c:if>
 
-								Product
+								<%--Product--%>
 								<c:if test="${productList != null }">
 								<c:forEach items="${productList }" var="productList">
 								
