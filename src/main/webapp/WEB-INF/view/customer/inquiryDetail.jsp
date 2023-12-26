@@ -15,9 +15,18 @@
 <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
 <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
 <link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css">
-<link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+<%--<link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">--%>
 <link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
+
+	<!-- jQuery 포함 -->
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<!-- Summernote CSS -->
+	<%--<link rel="stylesheet"
+		  href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
+		  integrity="sha256-IKhQVXDfwbVELwiR0ke6dX+pJt0RSmWky3WB2pNx9Hg="
+		  crossorigin="anonymous">--%>
+
 </head>
 <body>
 	<div class="super_container">
@@ -36,12 +45,12 @@
 
 				<!-- Breadcrumbs -->
 
-				<div class="breadcrumbs d-flex flex-row align-items-center">
+				<%--<div class="breadcrumbs d-flex flex-row align-items-center">
 					<ul>
 						<li><a href="index.html">Home</a></li>
 						<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>
 					</ul>
-				</div>
+				</div>--%>
 
 			</div>
 		</div>
@@ -66,9 +75,13 @@
 				</c:choose>
 					<hr><br>
 						<div>
-							<h2>${inquiryDetail.title }</h2>
+							<h4>${inquiryDetail.title }</h4>
 							<br>
-							<p >${inquiryDetail.content }</p>
+							<%--<p >${inquiryDetail.content }</p>--%>
+							<div class="container">
+								<textarea id="summernote" name="content">${inquiryDetail.content}</textarea>
+								<%--<div id="summernote">${inquiryDetail.content}</div>--%>
+							</div>
 						</div>
 						<div>
 						</div>
@@ -86,21 +99,49 @@
 
 	
 	<!-- Footer -->
-
 	<jsp:include page="../layout/footer.jsp" />
 
 </div>
 
-<script src="/js/jquery-3.2.1.min.js"></script>
+<%--<script src="/js/jquery-3.2.1.min.js"></script>--%>
 <script src="/css/styles/bootstrap4/popper.js"></script>
 <script src="/css/styles/bootstrap4/bootstrap.min.js"></script>
 <script src="/plugins/Isotope/isotope.pkgd.min.js"></script>
 <script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="/plugins/easing/easing.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
-<script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<%--<script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>--%>
 <script src="/js/contact_custom.js"></script>
 <script src="/js/dropdown.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<%--<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>--%>
+	<%--<script>
+		ClassicEditor
+				.create(document.querySelector('#editor'))
+				.then(editor => {
+					console.log("------------------------------", editor);
+					const toolbarElement = editor.ui.view.toolbar.element;
+					toolbarElement.style.display = 'none';
+					editor.enableReadOnlyMode( 'editor' );
+					console.log('Editor was initialized', editor);
+				})
+				.catch(error => {
+					console.error(error);
+				});
+	</script>--%>
+	<script>
+		jQuery.noConflict();
+		jQuery(document).ready(function($) {
+			// Initialize Summernote
+			$('#summernote').summernote({
+				height: 300, // Set the height of the editor as needed
+				readOnly: true // Set Summernote to readonly
+			});
+			$('#summernote').summernote('disable');
+
+			// Hide the toolbar
+			$('.note-toolbar').hide();
+		});
+	</script>
 </body>
 </html>

@@ -4,15 +4,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <style>
-	#container {
-		width: 100%;
-	}
-	.ck-editor__editable[role="textbox"] {
-		/* editing area */
-		min-height: 500px;
-	}
+	/*#container {*/
+	/*	width: 100%;*/
+	/*}*/
+	/*.ck-editor__editable[role="textbox"] {*/
+	/*	!* editing area *!*/
+	/*	min-height: 500px;*/
+	/*}*/
 </style>
-
 
 <div class="page-wrapper">
 	<!-- ============================================================== -->
@@ -104,8 +103,8 @@
 							<div class="form-group">
 								<label>제품 상세 설명</label>
 								<div id="container">
-									<textarea id="editor" name="content">${product.content}</textarea>
-										<%--<textarea id="summernote" name="content">${product.content}</textarea>--%>
+									<%--<textarea id="editor" name="content">${product.content}</textarea>--%>
+									<div id="summernote">${product.content}</div>
 								</div>
 								<%--<textarea class="form-control" rows="5" disabled>${product.content}</textarea>--%>
 							</div>
@@ -126,6 +125,17 @@
 			<!-- End Right sidebar -->
 			<!-- ============================================================== -->
 		</div>
+	<script>
+		$(document).ready(function() {
+			// Initialize Summernote
+			$('#summernote').summernote({
+				height: 300, // Set the height of the editor as needed
+				readOnly: true // Set Summernote to readonly
+			});
+			$('#summernote').summernote('disable');
 
-
+			// Hide the toolbar
+			$('.note-toolbar').hide();
+		});
+	</script>
 <%@ include file="/WEB-INF/view/mng/layout/mngFooter.jsp" %>

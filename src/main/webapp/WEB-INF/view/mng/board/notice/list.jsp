@@ -2,6 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- ============================================================== -->
 <!-- End Left Sidebar - style you can find in sidebar.scss -->
 <!-- ============================================================== -->
@@ -79,8 +80,9 @@
                                                             href="/mng/board/${noticeList.id}/notice-detail">${noticeList.userName}</a>
                                                     </td>
                                                     <td class="applyDetail"><a
-                                                            href="/mng/board/${noticeList.id}/notice-detail">${noticeList.createdAt}</a>
+                                                            href="/mng/board/${noticeList.id}/notice-detail"><fmt:formatDate value="${noticeList.createdAt }" pattern="yyyy. MM. dd" /></a>
                                                     </td>
+
                                                     <td>
                                                         <div>
                                                             <button class="btn btn-success"

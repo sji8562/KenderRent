@@ -32,6 +32,11 @@
 <link rel="stylesheet" type="text/css"
 	href="/css/styles/main_styles.css">
 <script src="/js/jquery-3.2.1.min.js"></script>
+<!-- Summernote CSS -->
+<link rel="stylesheet"
+	  href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
+	  integrity="sha256-IKhQVXDfwbVELwiR0ke6dX+pJt0RSmWky3WB2pNx9Hg="
+	  crossorigin="anonymous">
 <script type="text/javascript">
 	function addHeart(id) {
     	let user = '<%=session.getAttribute("principal")%>';
@@ -92,30 +97,30 @@
        	}
 	}
     </script>
-<script type="text/javascript">
- 	function cancelHeart(id) { 
-   		let user = '<%=session.getAttribute("principal")%>'; 
-		var form = { 
-			id : id, 
- 		}; 
- 		$.ajax({ 
- 			type : 'post', 
- 			url : "/mypage/wish-list/cancel", 
- 			cache : false, 
- 			processData : false, 
- 			contentType : 'application/json; charset=utf-8', 
-			data : JSON.stringify(form), 
- 			success : function(result) {
-				location.reload();
-       		    	alert('해당 상품을 찜 취소 하셨습니다.'); 
- 			}, 
- 			error : function(e) { 
- 				alert('찜 취소 할 수 없습니다.'); 
- 				location.reload(); // 실패시 새로고침하기 
- 			}
- 		});
- 	} 
- 	</script>
+	<script type="text/javascript">
+		function cancelHeart(id) {
+			let user = '<%=session.getAttribute("principal")%>';
+			var form = {
+				id : id,
+			};
+			$.ajax({
+				type : 'post',
+				url : "/mypage/wish-list/cancel",
+				cache : false,
+				processData : false,
+				contentType : 'application/json; charset=utf-8',
+				data : JSON.stringify(form),
+				success : function(result) {
+					location.reload();
+					alert('해당 상품을 찜 취소 하셨습니다.');
+				},
+				error : function(e) {
+					alert('찜 취소 할 수 없습니다.');
+					location.reload(); // 실패시 새로고침하기
+				}
+			});
+		}
+	</script>
 <script type="text/javascript">
 function addToCartConfirmation() {
 	let user = '<%=session.getAttribute("principal")%>'; 
@@ -128,6 +133,7 @@ function addToCartConfirmation() {
     }
 }
 </script>
+<<<<<<< HEAD
 <script type="text/javascript">
 window.addEventListener('pageshow', function(event) {
     if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
@@ -143,6 +149,10 @@ window.addEventListener('pageshow', function(event) {
 		}
 	</style>
 	
+=======
+
+
+>>>>>>> 90acd4c56cc26be83132754441aaf2aeb0cb6233
 </head>
 <body>
 	<div class="super_container">
@@ -332,10 +342,10 @@ window.addEventListener('pageshow', function(event) {
 								</div>
 
 								<%-- ckeditor --%>
-								<div class="container">
+								<%--<div class="container">
 									<textarea id="editor" name="content">${product.content}</textarea>
-								</div>
-
+								</div>--%>
+								<div id="summernote" name="content">${product.content}</div>
 							</div>
 						</div>
 					</div>
@@ -541,7 +551,8 @@ window.addEventListener('pageshow', function(event) {
 		}
 		
 	</script>
-	<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+
+	<%--<script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
 	<script>
 		ClassicEditor
 				.create(document.querySelector('#editor'))
@@ -555,6 +566,10 @@ window.addEventListener('pageshow', function(event) {
 				.catch(error => {
 					console.error(error);
 				});
-	</script>
+	</script>--%>
 </body>
+<script>
+	$('#summernote').summernote('disable');
+	$('.note-toolbar').hide();
+</script>
 </html>
