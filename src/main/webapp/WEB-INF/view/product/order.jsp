@@ -25,6 +25,11 @@
 <link rel="stylesheet" type="text/css" href="/css/order.css">
 <title>주문 / 결제하기</title>
 </head>
+<style>
+	.m--cursor--pointer {
+		cursor: pointer;
+	}
+</style>
 <body>
 	<div class="super_container">
 		<!-- Header -->
@@ -82,7 +87,7 @@
 					<div class="box_content" style="margin-top: 16px">
 						<div class="box_title">배송지 정보</div>
 						<br> <input type="checkbox" id="useCheckbox"
-							name="useCheckbox"> <label>주문자 정보와 동일</label>
+							name="useCheckbox" class="m--cursor--pointer"> <label>주문자 정보와 동일</label>
 						<div class="box_form">
 							<div class="box_label">
 								<label for="user_name">이름</label>
@@ -105,8 +110,9 @@
 							<input type="text" id="sample4_postcode" class="box_input"
 								style="width: 350px;" title="우편번호" name="postNumber" placeholder="우편번호" readonly
 								onclick="sample4_execDaumPostcode()"> 
-							<input type="button" class="btn_address"
-								onclick="sample4_execDaumPostcode()" value="주소찾기"><br>
+							<input type="button" class="btn_address m--cursor--pointer"
+								onclick="sample4_execDaumPostcode()" value="주소찾기"
+								   ><br>
 							<div class="box_label">
 								<label for="user_name"></label>
 							</div>
@@ -185,7 +191,7 @@
 						</div>
 					</div>
 						<div style="text-align: center; padding: 20px 0 0 0;">
-							<button type="submit" class="botton_pay">결제하기</button>
+							<button type="submit" class="botton_pay m--cursor--pointer">결제하기</button>
 						</div>
 					</form>
 				</div>
