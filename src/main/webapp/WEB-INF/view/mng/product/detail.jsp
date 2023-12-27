@@ -49,7 +49,7 @@
 			<!-- Start Page Content -->
 			<!-- ============================================================== -->
 			<div class="row">
-				<div class="col-12">
+				<div class="col-12" style="padding: 0 300px;">
 					<div class="card card-body">
 						<h4 class="card-title">물품 번호 ${product.id}번</h4>
 						<%--<h5 class="card-subtitle"> All bootstrap element classies </h5>--%>
