@@ -59,7 +59,7 @@ public class CustomerController {
   }
 
   @GetMapping("/write")
-  public String inquiryDetail(@RequestParam("pId") Integer pId, @RequestParam("type") String type) {
+  public String inquiryDetail (@RequestParam(defaultValue = "0", required = false) int pId, @RequestParam("type") String type) {
     // 접근제한 해야함.
     System.out.println("ppppppppIIIIIIIIIIIIIIdddddddddddd" + pId);
     System.out.println("tttttttttttyyyyyyyppppppppppeeeeeeeeeeee" + type);
@@ -68,7 +68,7 @@ public class CustomerController {
   }
 
   @PostMapping("/write")
-  public String inquiryPro(String title, String content, @RequestParam("pId") Integer pId, @RequestParam("type") String type,
+  public String inquiryPro(String title, String content, @RequestParam(defaultValue = "0", required = false) int pId, @RequestParam("type") String type,
       @RequestParam(value = "isSecret", required = false) String isSecret) {
     // 접근제한 해야함
     // 로그인 다 되면 session값으로 user_id 넣기
@@ -80,18 +80,18 @@ public class CustomerController {
     if (isSecret != null && isSecret.equals("1")) {
       if (type.equals("inquiry")) {
         customerService.insertInquiry(principal.getId(), pId, 3, title, content, 1);
-        return "redirect:/customer/contact";
+        return "redirect:/customer/contact?type=3";
       }
       customerService.insertInquiry(principal.getId(), pId, 4, title, content, 1);
     } else {
       if (type.equals("inquiry")) {
         customerService.insertInquiry(principal.getId(), pId, 3, title, content, 0);
-        return "redirect:/customer/contact";
+        return "redirect:/customer/contact?type=3";
       }
       customerService.insertInquiry(principal.getId(), pId, 4, title, content, 0);
     }
 
-    return "redirect:/customer/contact";
+    return "redirect:/customer/contact?type=4";
   }
 
   @GetMapping("/detail")
