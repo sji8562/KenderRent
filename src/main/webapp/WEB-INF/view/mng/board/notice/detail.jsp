@@ -58,7 +58,7 @@
                         <%--<h4 class="card-title">${notice.content}</h4>--%>
                         <div class="container">
                             <%--<textarea id="editor" name="content">${notice.content}</textarea>--%>
-                                <div id="summernote">${notice.content}</div>
+                                <div>${notice.content}</div>
                         </div>
 
 

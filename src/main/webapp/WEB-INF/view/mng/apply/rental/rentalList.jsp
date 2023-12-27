@@ -49,14 +49,15 @@
                             <div class="card">
                                 <div class="card-body m--search-inline">
                                     <h4 class="card-title">대여 신청 조회</h4>
-                                    <form class="row g-3">
+                                    <%-- TODO 검색기능 구현 --%>
+                                    <%--<form class="row g-3">
                                         <div class="col-auto">
                                             <input type="text" class="form-control" id="keyword" placeholder="제품명을 입력해주세요">
                                         </div>
                                         <div class="col-auto">
                                             <button type="submit" class="btn btn-primary mb-3">검색</button>
                                         </div>
-                                    </form>
+                                    </form>--%>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table">

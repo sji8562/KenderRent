@@ -166,7 +166,7 @@
 							</c:choose>
 						</ul>
 						<div class="hamburger_container" id="hambuerBtn">
-							<i class="fa fa-bars fa-lg" style="display: inline; cursor: pointer">></i>
+							<i class="fa fa-bars fa-lg" style="display: inline; cursor: pointer"></i>
 						</div>
 					</nav>
 				</div>
