@@ -11,4 +11,6 @@ public interface IndexRepository {
     public List<FirstCategory> findByFCategory();
 
     public List<SecondCategory> findBySecondCategoryId();
+
+    List<FirstCategory> findByFCategoryCode2();
 }
