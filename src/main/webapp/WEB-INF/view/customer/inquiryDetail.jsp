@@ -77,9 +77,9 @@
 						<div>
 							<h4>${inquiryDetail.title }</h4>
 							<br>
-							<%--<p >${inquiryDetail.content }</p>--%>
+							<p >${inquiryDetail.content }</p>
 							<div class="container">
-								<textarea id="summernote" name="content">${inquiryDetail.content}</textarea>
+<%--								<textarea id="summernote" name="content">${inquiryDetail.content}</textarea>--%>
 								<%--<div id="summernote">${inquiryDetail.content}</div>--%>
 							</div>
 						</div>

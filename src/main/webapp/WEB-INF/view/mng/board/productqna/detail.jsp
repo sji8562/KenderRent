@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-body">
-                    <h4 class="card-title">공지사항 수정</h4>
+                    <h4 class="card-title">상품 문의 수정</h4>
                     <%--<h5 class="card-subtitle"> All bootstrap element classies </h5>--%>
                     <form class="form-horizontal mt-4">
                         <div class="form-group">

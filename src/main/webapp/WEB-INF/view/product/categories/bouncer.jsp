@@ -148,10 +148,10 @@
 													<img src="/images/bouncer02.png" alt="">
 												</div>
 												<div class="favorite"></div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center">
 													<span>new</span>
-												</div>
+												</div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">[대여] 뉴나리프바운서대여 [신생아바운서대여]</a>
@@ -192,10 +192,10 @@
 												<div class="product_image">
 													<img src="/images/bouncer04.png" alt="">
 												</div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>sale</span>
-												</div>
+												</div>--%>
 												<div class="favorite favorite_left"></div>
 												<div class="product_info">
 													<h6 class="product_name">
@@ -238,10 +238,10 @@
 													<img src="/images/bouncer06.png" alt="">
 												</div>
 												<div class="favorite favorite_left"></div>
-												<div
+<%--												<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>-$20</span>
-												</div>
+												</div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">[대여] 부띠끄 멜로디 대여 [신생아바운서]</a>

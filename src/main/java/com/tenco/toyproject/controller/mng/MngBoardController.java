@@ -1,6 +1,10 @@
 package com.tenco.toyproject.controller.mng;
 
 import java.util.List;
+
+import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
+import com.tenco.toyproject.repository.entity.User;
+import jakarta.servlet.http.HttpSession;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,6 +49,9 @@ public class MngBoardController {
 
   @Autowired
   private MngProductQnaService mngProductQnaService;
+
+  @Autowired
+  private HttpSession session;
 
   // 공지사항 리스트
   @GetMapping("noticeList")
@@ -271,7 +278,7 @@ public class MngBoardController {
   public String deleteFaq(@PathVariable int id) {
 
     mngFaqService.deleteBoardById(id);
-    return "redirect:/mng/board/faq-list";
+    return "redirect:/mng/board/faq-list?keyword=";
   }
 
   // faq 등록 페이지로 이동
@@ -280,25 +287,56 @@ public class MngBoardController {
     return "/mng/board/faq/submit";
   }
 
-  // faq 등록
+//  // 기존 faq 등록
+//  @PostMapping("faq-submit")
+//  public String submitFaq(MngBoardDTO.FaqSubmitDto dto) {
+//    logger.info("------------------------------" + dto.toString());
+//
+//    if (dto.getTitle() == null || dto.getTitle().isEmpty()) {
+//      throw new Exception500("질문을 입력하세요");
+//    }
+//
+//    if (dto.getContent() == null || dto.getContent().isEmpty()) {
+//      throw new Exception500("내용을 입력하세요");
+//    }
+//
+//
+//    // TODO not working..
+//    User mngPrincipal = (User) session.getAttribute("mngPrincipal");
+//
+//    System.out.println("**************************" + mngPrincipal);
+//
+//    dto.setUserId(mngPrincipal.getId());
+//    dto.setCode(2);
+//    System.out.println("**********************ddddd****" +mngPrincipal.getId());
+//    System.out.println("**********************ddddd****" +dto.getUserId());
+//
+//
+//
+//    mngFaqService.createFaq(dto);
+//
+//
+//    return "redirect:/mng/board/faq-list";
+//  }
+
+  // FAQ 등록
   @PostMapping("faq-submit")
-  public String submitFaq(MngBoardDTO.FaqSubmitDto dto) {
-    logger.info("------------------------------" + dto.toString());
+  public String submitFaq(String title, String content) {
 
-    if (dto.getTitle() == null || dto.getTitle().isEmpty()) {
-      throw new Exception500("질문을 입력하세요");
+    if (title == null || title.isEmpty()) {
+      throw new CustomRestfullException("질문을 입력하세요", HttpStatus.BAD_REQUEST);
     }
 
-    if (dto.getContent() == null || dto.getContent().isEmpty()) {
-      throw new Exception500("내용을 입력하세요");
+    if (content == null || content.isEmpty()) {
+      throw new CustomRestfullException("내용을 입력하세요", HttpStatus.BAD_REQUEST);
     }
 
-    dto.setCode(2);
+    // TODO not working..
+    User mngPrincipal = (User) session.getAttribute("mngPrincipal");
 
-    mngFaqService.createFaq(dto);
+    mngFaqService.createFaq(title, content, 2, mngPrincipal.getId());
 
-
-    return "redirect:/mng/board/faq-list";
+    return "redirect:/mng/board/faq-list?keyword=";
   }
 
   // faq 수정 페이지로 이동
@@ -326,9 +364,10 @@ public class MngBoardController {
       throw new Exception500("내용을 입력하세요");
     }
 
+
     mngFaqService.updateFaqById(dto);
 
-    return "redirect:/mng/board/faq-list";
+    return "redirect:/mng/board/faq-list?keyword=";
   }
 
   /**

@@ -194,10 +194,10 @@
 												<div class="product_image">
 													<img src="/images/saucer04.png" alt="">
 												</div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>sale</span>
-												</div>
+												</div>--%>
 												<div class="favorite favorite_left"></div>
 												<div class="product_info">
 													<h6 class="product_name">
@@ -205,7 +205,7 @@
 															[장난감대여,건전지제공]</a>
 													</h6>
 													<div class="product_price">
-														20,000원<span>24,000원</span>
+														20,000원<%--<span>24,000원</span>--%>
 													</div>
 												</div>
 											</div>

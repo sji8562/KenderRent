@@ -124,6 +124,7 @@
                                     <a class="size" href="/user/signUp"
                                        style="color: black">회원가입</a>
 
+
                                 </c:otherwise>
 
                             </c:choose>

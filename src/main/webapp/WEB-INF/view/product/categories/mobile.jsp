@@ -145,7 +145,7 @@
 															건전지 미제공)</a>
 													</h6>
 													<div class="product_price">
-														$13,000원<span>15,000원</span>
+														13,000원<%--<span>15,000원</span>--%>
 													</div>
 												</div>
 											</div>
@@ -208,10 +208,10 @@
 												<div class="product_image">
 													<img src="/images/mobile04.png" alt="">
 												</div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>sale</span>
-												</div>
+												</div>--%>
 												<div class="favorite favorite_left"></div>
 												<div class="product_info">
 													<h6 class="product_name">
