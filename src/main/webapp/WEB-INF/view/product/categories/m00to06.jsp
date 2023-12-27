@@ -144,10 +144,10 @@
 													<img src="/images/m000602.png" alt="">
 												</div>
 												<div class="favorite"></div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center">
 													<span>new</span>
-												</div>
+												</div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">[대여] 오볼 스태커 [3개월,장난감대여]</a>
@@ -187,10 +187,10 @@
 												<div class="product_image">
 													<img src="/images/m000604.png" alt="">
 												</div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>sale</span>
-												</div>
+												</div>--%>
 												<div class="favorite favorite_left"></div>
 												<div class="product_info">
 													<h6 class="product_name">
@@ -234,10 +234,10 @@
 													<img src="/images/m000606.png" alt="">
 												</div>
 												<div class="favorite favorite_left"></div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>-$20</span>
-												</div>
+												</div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">[대여] 피셔 뮤직달팽이 [3개월,장난감대여]</a>

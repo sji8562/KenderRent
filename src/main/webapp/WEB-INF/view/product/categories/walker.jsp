@@ -191,17 +191,17 @@
 												<div class="product_image">
 													<img src="/images/walker04.png" alt="">
 												</div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>sale</span>
-												</div>
+												</div>--%>
 												<div class="favorite favorite_left"></div>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">[대여] 쭈쭈 3in1 멀티보행기 블루색상 [보행기대여]</a>
 													</h6>
 													<div class="product_price">
-														22,000원<span>25,000원</span>
+														22,000원<%--<span>25,000원</span>--%>
 													</div>
 												</div>
 											</div>

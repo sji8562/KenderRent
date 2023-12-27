@@ -141,10 +141,10 @@
 													<img src="/images/isofix02.png" alt="">
 												</div>
 												<div class="favorite"></div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center">
 													<span>new</span>
-												</div>
+												</div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">[대여] 다이치 퍼스트세븐 터치픽스 ISOFIX 어반그레이
@@ -186,10 +186,10 @@
 												<div class="product_image">
 													<img src="/images/isofix04.png" alt="">
 												</div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>sale</span>
-												</div>
+												</div>--%>
 												<div class="favorite favorite_left"></div>
 												<div class="product_info">
 													<h6 class="product_name">
@@ -232,10 +232,10 @@
 													<img src="/images/isofix06.png" alt="">
 												</div>
 												<div class="favorite"></div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center">
 													<span>new</span>
-												</div>
+												</div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">[대여] RYAN 스핀 신생아용 카시트 신상품
