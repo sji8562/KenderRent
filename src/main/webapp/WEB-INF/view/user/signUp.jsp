@@ -224,7 +224,7 @@ $(document).on("click", "#emailAuth", function() {
 				<div class="col-lg-4 get_in_touch_col">
 					<%--<div class="row">
 						<div class="logo_container">
-							<a href="/">Kender<span>Rent</span></a>
+							<a href="/"><img src="/images/Logo2.png" style="max-width: 80%; height: auto;"></a>
 							<br><br><br><br>
 						</div>
 					</div>--%>
@@ -243,7 +243,9 @@ $(document).on("click", "#emailAuth", function() {
 										<div id="emailResult"></div>
 									</div>
 									<div class="col-lg-4">
-										<button type="button" class="btn btn-warning" id="emailAuth" name="emailAuth">이메일인증</button>
+
+										<button type="button" id="emailAuth" name="emailAuth" class="btn btn-dark">이메일인증</button>
+
 									</div>
 								</div>
 								<input id="authCode" name="authCode" style="display: none" class="form_input input_email input_ph" type="text"   placeholder="인증코드 6자리를 입력해주세요">
@@ -262,7 +264,10 @@ $(document).on("click", "#emailAuth", function() {
 									</div>
 									<div class="col-lg-4">
 										<span id="guide" style="color: #999; display: none"></span>
-										<button type="button" class="btn btn-warning" onclick="addressFind()" value="주소찾기">주소찾기</button>
+
+										<button type="button" onclick="addressFind()" value="주소찾기" class="btn btn-dark">주소찾기</button>
+
+
 									</div>
 								</div>
 								<input id="address" name="address" class="form_input input_website input_ph" type="text"  placeholder="주소를 입력해주세요">

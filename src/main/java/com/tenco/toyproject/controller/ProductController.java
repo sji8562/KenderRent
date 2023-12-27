@@ -229,7 +229,6 @@ public class ProductController {
       return "product/search";
     }
     List<Map> productList = productService.searchProduct(keyword);
-    // System.out.println(productList.size());
     model.addAttribute("productList", productList);
     model.addAttribute("MaxPrice", productService.searchMaxPrice());
 
@@ -241,7 +240,6 @@ public class ProductController {
       @RequestParam(defaultValue = "10") int pageSize, @RequestParam String keyword, Model model) {
     // 페이지 및 페이지 크기를 이용하여 데이터 조회
     List<Map> productList = productService.searchProductInfinite(keyword, page, pageSize);
-    // model.addAttribute("productList", productList);
     return productService.searchProductInfinite(keyword, page, pageSize);
   }
 

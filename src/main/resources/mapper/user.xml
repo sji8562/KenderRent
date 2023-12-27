@@ -40,4 +40,11 @@
 		from user
 		where sns = #{sns}
 	</select>
+	<select id="findByNameAndPhone" resultType="map">
+		select * from user
+		where user_name = #{userName} and phone_number = #{phoneNumber}
+	</select>
+	<update id="updatePassword">
+		UPDATE user SET password = #{password} where email = #{email};
+	</update>
 </mapper>

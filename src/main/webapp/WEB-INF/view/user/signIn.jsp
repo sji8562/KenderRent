@@ -67,10 +67,10 @@
 						<div style="margin-top: 16px; text-align: center;">
 							<ul >
 								<li class="list-item">
-									<a href="#">아이디 찾기</a>
+									<a href="/user/findId">아이디 찾기</a>
 								</li>
 								<li class="list-item">
-									<a href="#">비밀번호 찾기</a>
+									<a href="/user/findPassword">비밀번호 찾기</a>
 								</li>
 								<li class="list-item">
 									<a href="/user/signUp">회원가입</a>
