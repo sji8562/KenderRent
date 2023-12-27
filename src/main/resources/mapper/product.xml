@@ -196,5 +196,11 @@
 	</select>
 <!-- 	검색기능 관련 끝 -->
 
+<!-- index 페이지 신규 장난감 10개 조회 -->
+	<select id="findProductForMain" resultType="com.tenco.toyproject.repository.entity.Product">
+		SELECT p.*, fc.code FROM product AS p
+	 	LEFT JOIN first_category AS fc ON fc.id = p.first_category_id
+		ORDER BY created_at DESC LIMIT 10
+	</select>
 
 </mapper>
