@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import com.tenco.toyproject.repository.entity.User;
@@ -62,32 +59,36 @@ public class CustomerController {
   }
 
   @GetMapping("/write")
-  public String inquiryDetail() {
+  public String inquiryDetail(@RequestParam("pId") Integer pId, @RequestParam("type") String type) {
     // 접근제한 해야함.
+    System.out.println("ppppppppIIIIIIIIIIIIIIdddddddddddd" + pId);
+    System.out.println("tttttttttttyyyyyyyppppppppppeeeeeeeeeeee" + type);
 
     return "customer/inquiryWrite";
   }
 
   @PostMapping("/write")
-  public String inquiryPro(String title, String content, @RequestParam("type") String type,
+  public String inquiryPro(String title, String content, @RequestParam("pId") Integer pId, @RequestParam("type") String type,
       @RequestParam(value = "isSecret", required = false) String isSecret) {
     // 접근제한 해야함
     // 로그인 다 되면 session값으로 user_id 넣기
     // 상품문의할때 id값 받아오기#{userId}, #{productId},#{code},#{title}, #{content}, #{secret}
 
+    System.out.println("여기여기여기" + pId);
+
     User principal = (User) session.getAttribute("principal");
     if (isSecret != null && isSecret.equals("1")) {
       if (type.equals("inquiry")) {
-        customerService.insertInquiry(principal.getId(), 0, 3, title, content, 1);
+        customerService.insertInquiry(principal.getId(), pId, 3, title, content, 1);
         return "redirect:/customer/contact";
       }
-      customerService.insertInquiry(principal.getId(), 0, 4, title, content, 1);
+      customerService.insertInquiry(principal.getId(), pId, 4, title, content, 1);
     } else {
       if (type.equals("inquiry")) {
-        customerService.insertInquiry(principal.getId(), 0, 3, title, content, 0);
+        customerService.insertInquiry(principal.getId(), pId, 3, title, content, 0);
         return "redirect:/customer/contact";
       }
-      customerService.insertInquiry(principal.getId(), 0, 4, title, content, 0);
+      customerService.insertInquiry(principal.getId(), pId, 4, title, content, 0);
     }
 
     return "redirect:/customer/contact";
