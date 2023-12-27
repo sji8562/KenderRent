@@ -1,6 +1,7 @@
 package com.tenco.toyproject.controller.mng;
 
 import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
+import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import com.tenco.toyproject._core.handler.exception.Exception500;
 import com.tenco.toyproject.dto.MngUserDTO;
 import com.tenco.toyproject.repository.entity.User;
@@ -58,23 +59,23 @@ public class MngUserController {
     public String userUpdated(@PathVariable Integer id, MngUserDTO.UpdateDTO updateDTO) {
         try {
             if (updateDTO == null) {
-                throw new CustomRestfulException("다시 한번 확인해주세요", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("다시 한번 확인해주세요", HttpStatus.BAD_REQUEST);
             }
             if (updateDTO.getEmail() == null || updateDTO.getEmail().isEmpty()) {
-                throw new CustomRestfulException("이메일을 입력해주세요", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("이메일을 입력해주세요", HttpStatus.BAD_REQUEST);
             }
             if (updateDTO.getUsername() == null || updateDTO.getUsername().isEmpty()) {
-                throw new CustomRestfulException("이름을 입력해주세요", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("이름을 입력해주세요", HttpStatus.BAD_REQUEST);
             }
             if (updateDTO.getPassword() == null || updateDTO.getPassword().isEmpty()) {
-                throw new CustomRestfulException("비밀번호를 입력해주세요", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("비밀번호를 입력해주세요", HttpStatus.BAD_REQUEST);
             }
             if (updateDTO.getPhoneNumber() == null || updateDTO.getPhoneNumber().isEmpty()) {
-                throw new CustomRestfulException("전화번호를 입력해주세요", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("전화번호를 입력해주세요", HttpStatus.BAD_REQUEST);
             }
             int result = mngService.update(id, updateDTO);
             if(result != 1){
-                throw new CustomRestfulException("수정이 되지 않았습니다", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("수정이 되지 않았습니다", HttpStatus.BAD_REQUEST);
             }
             return "redirect:/mng/user";
         }catch (Exception e){
@@ -90,7 +91,7 @@ public class MngUserController {
         try {
             User user = mngService.findById(id);
             if(user == null){
-                throw new CustomRestfulException("없는 회원입니다",HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("없는 회원입니다",HttpStatus.BAD_REQUEST);
             }
             model.addAttribute("user", user);
             System.out.println(user.getUserName() + "님을 불러왔습니다.");
@@ -106,11 +107,11 @@ public class MngUserController {
         try {
             User user = mngService.findById(id);
             if (user == null){
-                throw new CustomRestfulException("없는 회원입니다",HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("없는 회원입니다",HttpStatus.BAD_REQUEST);
             }
             int result = mngService.delete(id);
             if(result != 1){
-                throw new CustomRestfulException("수정이 되지 않았습니다", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("수정이 되지 않았습니다", HttpStatus.BAD_REQUEST);
             }
             return "redirect:/mng/user/list";
         }catch (Exception e){

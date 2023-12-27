@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
 import com.tenco.toyproject._core.handler.exception.Exception500;
 import com.tenco.toyproject.dto.MngBoardDTO;
 import com.tenco.toyproject.dto.MngProductReplyDTO;
@@ -96,20 +95,20 @@ public class MngBoardController {
     System.out.println("들어오지??여기도 안들어와 ??");
     try {
       if (noticeSubmitDTO == null) {
-        throw new CustomRestfulException("내용을 입력해주세요", HttpStatus.BAD_REQUEST);
+        throw new CustomRestfullException("내용을 입력해주세요", HttpStatus.BAD_REQUEST);
       }
       if (noticeSubmitDTO.getTitle() == null || noticeSubmitDTO.getTitle().isEmpty()) {
-        throw new CustomRestfulException("제목을 입력해주세요", HttpStatus.BAD_REQUEST);
+        throw new CustomRestfullException("제목을 입력해주세요", HttpStatus.BAD_REQUEST);
       }
       if (noticeSubmitDTO.getContent() == null || noticeSubmitDTO.getContent().isEmpty()) {
-        throw new CustomRestfulException("내용을 입력해주세요", HttpStatus.BAD_REQUEST);
+        throw new CustomRestfullException("내용을 입력해주세요", HttpStatus.BAD_REQUEST);
       }
       System.out.println("이거 나오게 해봐라"+noticeSubmitDTO.toString());
       int result = mngNoticeService.noticeSubmit(noticeSubmitDTO);
 
       System.out.println(result);
       if (result != 1) {
-        throw new CustomRestfulException("공지사항 생성이 되지 않았습니다.", HttpStatus.BAD_REQUEST);
+        throw new CustomRestfullException("공지사항 생성이 되지 않았습니다.", HttpStatus.BAD_REQUEST);
       }
       return "redirect:/mng/board/noticeList";
     } catch (Exception e) {
@@ -123,11 +122,11 @@ public class MngBoardController {
   public String noticeDetail(@PathVariable Integer id, Model model) {
     try {
       if (id == null) {
-        throw new CustomRestfulException("잘못된 입력입니다.", HttpStatus.BAD_REQUEST);
+        throw new CustomRestfullException("잘못된 입력입니다.", HttpStatus.BAD_REQUEST);
       }
       Board notice = mngNoticeService.findByNotice(id);
       if (notice == null) {
-        throw new CustomRestfulException("없는 공지사항입니다.", HttpStatus.BAD_REQUEST);
+        throw new CustomRestfullException("없는 공지사항입니다.", HttpStatus.BAD_REQUEST);
       }
       System.out.println(notice.toString());
       logger.info(notice.toString());
@@ -145,7 +144,7 @@ public class MngBoardController {
   public String noticeUpdate(@PathVariable Integer id, Model model) {
     try {
       if (id == null) {
-        throw new CustomRestfulException("없는 공지사항입니다.", HttpStatus.BAD_REQUEST);
+        throw new CustomRestfullException("없는 공지사항입니다.", HttpStatus.BAD_REQUEST);
       }
       Board notice = mngNoticeService.findByNotice(id);
       model.addAttribute("notice", notice);
@@ -159,17 +158,17 @@ public class MngBoardController {
   public String noticeUpdateProc(MngBoardDTO.NoticeUpdateDTO dto) {
     try {
       if (dto == null) {
-        throw new CustomRestfulException("다시 한번 확인해주세요", HttpStatus.BAD_REQUEST);
+        throw new CustomRestfullException("다시 한번 확인해주세요", HttpStatus.BAD_REQUEST);
       }
       if (dto.getTitle() == null || dto.getTitle().isEmpty()) {
-        throw new CustomRestfulException("제목을 입력해주세요", HttpStatus.BAD_REQUEST);
+        throw new CustomRestfullException("제목을 입력해주세요", HttpStatus.BAD_REQUEST);
       }
       if (dto.getContent() == null || dto.getContent().isEmpty()) {
-        throw new CustomRestfulException("내용을 입력해주세요", HttpStatus.BAD_REQUEST);
+        throw new CustomRestfullException("내용을 입력해주세요", HttpStatus.BAD_REQUEST);
       }
       int result = mngNoticeService.noticeUpdate(dto);
       if (result != 1) {
-        throw new CustomRestfulException("업데이트 하지 못했습니다.", HttpStatus.BAD_REQUEST);
+        throw new CustomRestfullException("업데이트 하지 못했습니다.", HttpStatus.BAD_REQUEST);
       }
       return "redirect:/mng/board/" + dto.getId() + "/notice-detail";
     } catch (Exception e) {
@@ -184,7 +183,7 @@ public class MngBoardController {
     try {
       int result = mngNoticeService.deleteByNotice(id);
       if (result != 1) {
-        throw new CustomRestfulException("삭제가 되지않았습니다.", HttpStatus.BAD_REQUEST);
+        throw new CustomRestfullException("삭제가 되지않았습니다.", HttpStatus.BAD_REQUEST);
       }
       return "redirect:/mng/board/noticeList";
     } catch (Exception e) {
@@ -357,11 +356,11 @@ public class MngBoardController {
 
 
     if (dto.getTitle() == null || dto.getTitle().isEmpty()) {
-      throw new Exception500("질문을 입력하세요");
+      throw new CustomRestfullException("질문을 입력하세요", HttpStatus.BAD_REQUEST);
     }
 
     if (dto.getContent() == null || dto.getContent().isEmpty()) {
-      throw new Exception500("내용을 입력하세요");
+      throw new CustomRestfullException("내용을 입력하세요", HttpStatus.BAD_REQUEST);
     }
 
 
@@ -389,7 +388,7 @@ public class MngBoardController {
   public String submitQnaAnswer(@PathVariable int id, MngReplyDTO.QnaReplyDto dto) {
 
     if (dto.getReplyContent() == null || dto.getReplyContent().isEmpty()) {
-      throw new Exception500("답변 내용을 입력하세요");
+      throw new CustomRestfullException("답변 내용을 입력하세요", HttpStatus.BAD_REQUEST);
     }
 
     dto.setBoardId(id);

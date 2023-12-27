@@ -47,7 +47,7 @@ public class MngIndexService {
         return mngStatusDTOS;
     }
 
-    public User signIn(MngSignInFormDto dto) throws CustomRestfulException {
+    public User signIn(MngSignInFormDto dto) {
         // 1. username으로 admin id 존재 여부 확인
         User mngUserEntity = mngIndexRepository.findByUsernameAndLevel(dto.getUsername());
         if(mngUserEntity == null) {
