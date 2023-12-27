@@ -39,14 +39,18 @@ spring:
   mail:
     host: smtp.naver.com
     port: 465
-    username: wjs1kk@naver.com
-    password: dydckd!@159
+    username: m40ro1988@naver.com
+    password: t1prjKinderlend
     properties:
       mail.smtp.auth: true
       mail.smtp.ssl.enable: true
       mail.smtp.ssl.trust: smtp.naber.com
       mail.smtp.starttls.enable: true
-  
+coolsms:
+  api:
+    key: NCSTKLOBSUZP57OY
+    secret: RWF9BWRRSFGZQLADHFGYDK2YAMK1ZHMU
+  phoneNumber: 01022217307
 file:
   path: ./images/
   
