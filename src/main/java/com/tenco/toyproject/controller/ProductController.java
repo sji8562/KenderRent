@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.tenco.toyproject.repository.entity.SecondCategory;
+import com.tenco.toyproject.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -22,16 +23,12 @@ import com.tenco.toyproject.dto.response.KakaoPayCancelResponse;
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.entity.Sale;
 import com.tenco.toyproject.repository.entity.User;
-import com.tenco.toyproject.service.CustomerService;
-import com.tenco.toyproject.service.KakaoPayService;
-import com.tenco.toyproject.service.ProductService;
-import com.tenco.toyproject.service.UserService;
 import com.tenco.toyproject.vo.PageVO;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
+import retrofit2.http.Path;
 
 
 @Controller
@@ -50,24 +47,34 @@ public class ProductController {
   @Autowired
   private MessageController message;
 
-  @GetMapping("{fId}/categories")
-  public String categories(@PathVariable Integer fId, Model model) {
 
-    List<Product> productList = productService.findByCategoryId(fId);
+  @GetMapping("{fId}/categories/{sId}")
+  public String categories(@PathVariable Integer fId, @PathVariable Integer sId, Model model) {
+
+
+    List<Product> productList2 = productService.findByCategoryId(fId,sId);
     List<SecondCategory> secondCategoryList = productService.findBysCategoryId(fId);
-    System.out.println(productList.toString());
-    System.out.println(secondCategoryList.toString());
-    model.addAttribute("productList", productList);
-    model.addAttribute("secondCategoryList", secondCategoryList);
+    System.out.println("여기오자나 그치 ?");
+    System.out.println(productList2.toString());
+    System.out.println("---------------------------------"+secondCategoryList.toString());
 
+    model.addAttribute("secondCategoryList", secondCategoryList);
+    model.addAttribute("productList2", productList2);
     if(fId == 3 ||fId == 4||fId == 5){
+      List<Product> productList = productService.findByCategoryId(fId);
+      System.out.println(productList.toString());
+      model.addAttribute("productList", productList);
+
       return "product/categories02";
     }
     return "product/categories01";
   }
 //
-//  @GetMapping("{fId}/categories/{sId}")
-//  public String categories(@PathVariable Integer fId, @PathVariable Integer sId) {
+//  @GetMapping("{fId}/categories/")
+//  public String categories(@PathVariable Integer fId, @PathVariable Integer sId,Model model) {
+//    List<SecondCategory> secondCategories = productService.findBysCategoryId(fId);
+//    model.addAttribute("secondCategories", secondCategories);
+//
 //    if (fId == 1 || fId == 2 || fId == 6) {
 //      return "product/categories02";
 //    }
@@ -78,7 +85,7 @@ public class ProductController {
 //  public String categories01() {
 //    return "product/categories01";
 //  }
-//
+
 //  @GetMapping("categories02")
 //  public String categories02() {
 //    return "product/categories02";

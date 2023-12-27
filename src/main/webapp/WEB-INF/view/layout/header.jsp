@@ -54,12 +54,12 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown"><a
-                                    href="/product/categories/mobile">유아용품대여</a>
+                                    href="/product/1/categories">유아용품대여</a>
                                 <div class="dropdown-menu m-0">
                                     <c:choose>
                                         <c:when test="${firstCategories != null}">
                                             <c:forEach var="firstCategory" items="${firstCategories}">
-                                                <a href="/product/${firstCategory.id}/categories" class="dropdown-item">${firstCategory.firstCategoryName}</a>
+                                                <a href="/product/${firstCategory.id}/categories/1" class="dropdown-item">${firstCategory.firstCategoryName}</a>
                                             </c:forEach>
                                         </c:when>
                                     </c:choose>

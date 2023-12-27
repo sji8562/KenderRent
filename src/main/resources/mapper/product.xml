@@ -191,6 +191,9 @@
 	<select id="findByCategoryId">
 		select * from product p left join first_category fc on p.first_category_id = fc.id where p.first_category_id = #{id}
 	</select>
+	<select id="findByfsCategoryId">
+		select * from product p left join first_category fc on p.first_category_id = fc.id where p.first_category_id = #{id} and p.second_category_id = #{sId}
+	</select>
 	<select id="findBysCategoryId">
 		select * from second_category where first_category_id = #{id}
 	</select>
