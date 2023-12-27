@@ -30,6 +30,7 @@ public class MngBoardDTO {
         private int id;
         private String title;
         private String content;
+        private int userId;
         private int code;
     }
 
