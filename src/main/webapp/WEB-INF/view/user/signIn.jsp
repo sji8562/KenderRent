@@ -71,7 +71,7 @@
 									<a href="#">비밀번호 찾기</a>
 								</li>
 								<li class="list-item">
-									<a href="#">회원가입</a>
+									<a href="/user/signUp">회원가입</a>
 								</li>
 							</ul>
 						</div>

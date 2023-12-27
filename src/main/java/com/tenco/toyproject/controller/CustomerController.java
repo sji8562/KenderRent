@@ -54,12 +54,10 @@ public class CustomerController {
     pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 
     model.addAttribute("paging", pageVO);
-
-    List<Map<String, Object>> customerList =
-        customerService.selectCustomer(code, pageVO.getStart());
+    System.out.println("코드는 ~~~~~~~~~~~~~~~~"+ code);
+    List<Map<String, Object>> customerList = customerService.selectCustomer(code, pageVO.getStart());
     System.out.println(customerList);
     model.addAttribute("customerList", customerList);
-
     return "customer/contact";
   }
 
