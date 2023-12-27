@@ -123,40 +123,18 @@
                                        style="color: black">로그인</a>&nbsp;&nbsp;
                                     <a class="size" href="/user/signUp"
                                        style="color: black">회원가입</a>
-
-<<<<<<< HEAD
-<<<<<<< HEAD
 								</c:otherwise>
 
 							</c:choose>
 						</ul>
 						<div class="hamburger_container" id="hambuerBtn">
-							<i class="fa fa-bars fa-lg" style="display: inline; cursor: pointer"></i>
+							<i class="fa fa-bars fa-lg" style="display: inline; cursor: pointer; padding: 10px;"></i>
 						</div>
 					</nav>
 				</div>
 			</div>
 		</div>
 	</div>
-=======
-                                </c:otherwise>
->>>>>>> 8ae741ef10e02ba1dd36db2ccdf2486ee7415a6f
-=======
-
-                                </c:otherwise>
->>>>>>> f19cecb209fbafc077d3a61e8aefc3e0490e5bc6
-
-                            </c:choose>
-                        </ul>
-                        <div class="hamburger_container" id="hambuerBtn">
-                            <i class="fa fa-bars fa-lg" style="display: inline; cursor: pointer">></i>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
 </header>
 <div class="fs_menu_overlay"></div>
@@ -181,8 +159,8 @@
                     <a href="#">로그인<i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="menu_selection">
-                        <li><a href="#"><i class="fa fa-sign-in"></i>로그인</a></li>
-                        <li><a href="#"><i class="fa fa-user-plus"></i>회원가입</a></li>
+                        <li><a href="/user/signIn"><i class="fa fa-sign-in"></i>로그인</a></li>
+                        <li><a href="/user/signUp"><i class="fa fa-user-plus"></i>회원가입</a></li>
                     </ul>
                 </c:otherwise>
             </c:choose></li>

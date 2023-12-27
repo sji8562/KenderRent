@@ -9,7 +9,6 @@ public class CustomRestfullException extends RuntimeException {
 
 	public CustomRestfullException(String message, HttpStatus httpStatus) {
 		super(message);
-		System.out.println("============== CustomRestfullException ======================"+message);
 		this.status = httpStatus;
 	}
 }
