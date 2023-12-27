@@ -3,6 +3,7 @@ package com.tenco.toyproject.controller;
 import ch.qos.logback.core.CoreConstants;
 
 import com.tenco.toyproject.repository.entity.FirstCategory;
+import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.entity.SecondCategory;
 import com.tenco.toyproject.service.IndexService;
 import jakarta.servlet.http.HttpSession;
@@ -26,7 +27,11 @@ public class IndexController {
     @Autowired
     HttpSession session;
     @GetMapping({"index","/"})
-    public String home(){
+    public String home(Model model){
+
+        List<Product> productList = productService.findProductForMain();
+        model.addAttribute("productList", productList);
+
         return "index";
     }
 

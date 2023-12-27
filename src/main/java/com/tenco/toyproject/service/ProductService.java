@@ -145,4 +145,8 @@ public class ProductService {
 	public List<SecondCategory> findBysCategoryId(Integer id) {
 		return productRepository.findBysCategoryId(id);
 	}
+
+    public List<Product> findProductForMain() {
+		return productRepository.findProductForMain();
+    }
 }
