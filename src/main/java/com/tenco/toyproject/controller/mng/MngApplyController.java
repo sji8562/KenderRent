@@ -1,6 +1,6 @@
 package com.tenco.toyproject.controller.mng;
 
-import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
+import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import com.tenco.toyproject.dto.MngApplyDTO;
 import com.tenco.toyproject.service.mng.MngPurchaseService;
 import com.tenco.toyproject.service.mng.MngRentService;
@@ -99,7 +99,7 @@ public class MngApplyController {
                 model.addAttribute("rentList", rentList);
                 return "mng/apply/rental/rentalList";
             }
-            throw new CustomRestfulException("렌탈내역을 찾지 못했습니다.", HttpStatus.BAD_REQUEST);
+            throw new CustomRestfullException("렌탈내역을 찾지 못했습니다.", HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -116,7 +116,7 @@ public class MngApplyController {
                 System.out.println(dto);
                 return "mng/apply/rental/rentalDetail";
             }
-            throw new CustomRestfulException("신청을 찾지 못했습니다.", HttpStatus.BAD_REQUEST);
+            throw new CustomRestfullException("신청을 찾지 못했습니다.", HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -128,7 +128,7 @@ public class MngApplyController {
         try {
             int result = mngRentService.updateStatus(id);
             if (result != 1) {
-                throw new CustomRestfulException("신청을 업데이트하지 못했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("신청을 업데이트하지 못했습니다.", HttpStatus.BAD_REQUEST);
             }
             return "redirect:/mng/apply/rental-list";
         } catch (Exception e) {
@@ -142,7 +142,7 @@ public class MngApplyController {
         try {
             int result = mngRentService.updateById(rentalDetailUpdateDTO);
             if (result != 1) {
-                throw new CustomRestfulException("신청을 업데이트하지 못했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("신청을 업데이트하지 못했습니다.", HttpStatus.BAD_REQUEST);
             }
             return "redirect:/mng/apply/" + rentalDetailUpdateDTO.getId() + "/rental-detail";
         } catch (Exception e) {
@@ -156,7 +156,7 @@ public class MngApplyController {
         try {
             int result = mngRentService.deleteStatus(id);
             if (result != 1) {
-                throw new CustomRestfulException("신청을 업데이트하지 못했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("신청을 업데이트하지 못했습니다.", HttpStatus.BAD_REQUEST);
             }
             return "redirect:/mng/apply/rental-list";
         } catch (Exception e) {
@@ -210,7 +210,7 @@ public class MngApplyController {
         try {
             int result = mngSaleService.updateStatus(id);
             if (result != 1) {
-                throw new CustomRestfulException("신청을 업데이트하지 못했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("신청을 업데이트하지 못했습니다.", HttpStatus.BAD_REQUEST);
             }
             return "redirect:/mng/apply/sale-list";
         } catch (Exception e) {
@@ -226,7 +226,7 @@ public class MngApplyController {
             System.out.println("1111111111111111" + saleDetailUpdateDTO);
             int result = mngSaleService.updateBySale(saleDetailUpdateDTO);
             if (result != 1) {
-                throw new CustomRestfulException("신청을 업데이트하지 못했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("신청을 업데이트하지 못했습니다.", HttpStatus.BAD_REQUEST);
             }
             return "redirect:/mng/apply/" + saleDetailUpdateDTO.getId() + "/sale-detail";
         } catch (Exception e) {
@@ -241,7 +241,7 @@ public class MngApplyController {
         try{
             int result = mngSaleService.deleteStatus(id);
             if (result != 1) {
-                throw new CustomRestfulException("신청을 삭제하지 못했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("신청을 삭제하지 못했습니다.", HttpStatus.BAD_REQUEST);
             }
             return "redirect:/mng/apply/sale-list";
         }catch(Exception e){
@@ -261,7 +261,7 @@ public class MngApplyController {
                 model.addAttribute("dto", dto);
                 return "mng/apply/sale/saleDetail";
             }
-            throw new CustomRestfulException("없는 신청입니다.", HttpStatus.BAD_REQUEST);
+            throw new CustomRestfullException("없는 신청입니다.", HttpStatus.BAD_REQUEST);
         }catch(Exception e){
             e.printStackTrace();
             return null;
@@ -288,7 +288,7 @@ public class MngApplyController {
 
             List<MngApplyDTO.PurchaseListDTO> purchaseList = mngPurchaseService.findAllByPurchase(pageVO);
             if(purchaseList == null || purchaseList.isEmpty()){
-                throw new CustomRestfulException("리스트를 불러올수없습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("리스트를 불러올수없습니다.", HttpStatus.BAD_REQUEST);
             }
             model.addAttribute("purchaseList", purchaseList);
             return "mng/apply/purchase/purchaseList";
@@ -305,7 +305,7 @@ public class MngApplyController {
         try{
             int result = mngPurchaseService.updateStatus(id);
             if(result != 1){
-                throw new CustomRestfulException("업데이트 실패했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("업데이트 실패했습니다.", HttpStatus.BAD_REQUEST);
             }
             return "redirect:/mng/apply/purchase-list";
         }catch(Exception e){
@@ -320,7 +320,7 @@ public class MngApplyController {
         try{
             int result = mngPurchaseService.deleteStatus(id);
             if(result != 1){
-                throw new CustomRestfulException("삭제 실패했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("삭제 실패했습니다.", HttpStatus.BAD_REQUEST);
             }
             return "redirect:/mng/apply/purchase-list";
         }catch(Exception e){
@@ -335,7 +335,7 @@ public class MngApplyController {
         try{
             MngApplyDTO.PurchaseDetailDTO dto = mngPurchaseService.findByPurchaseId(id);
             if(dto == null){
-                throw new CustomRestfulException("없는 신청입니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("없는 신청입니다.", HttpStatus.BAD_REQUEST);
             }
             System.out.println(dto.toString());
             model.addAttribute("dto", dto);
@@ -352,7 +352,7 @@ public class MngApplyController {
             System.out.println("1111111111111111" + purchaseDetailUpdateDTO);
             int result = mngPurchaseService.updateByPurchase(purchaseDetailUpdateDTO);
             if(result != 1){
-                throw new CustomRestfulException("업데이트 실패했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("업데이트 실패했습니다.", HttpStatus.BAD_REQUEST);
             }
             return "redirect:/mng/apply/" + purchaseDetailUpdateDTO.getId() + "/purchase-detail";
         }catch(Exception e){

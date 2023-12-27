@@ -18,11 +18,14 @@ public class GlobalControllerAdvice {
     @ModelAttribute
     public void addCommonAttributes(Model model, HttpSession session) {
         List<FirstCategory> firstCategories = indexService.findByFCategory();
+        List<FirstCategory> firstcacode2 = indexService.findByFCategoryCode2();
         List<SecondCategory> secondCategories = indexService.findBySecondCategoryId();
 
         model.addAttribute("firstCategories", firstCategories);
+        model.addAttribute("firstcacode2", firstcacode2);
         model.addAttribute("secondCategories", secondCategories);
         session.setAttribute("firstCategories", firstCategories);
+        session.setAttribute("firstcacode2", firstcacode2);
         session.setAttribute("secondCategories", secondCategories);
     }
 }
