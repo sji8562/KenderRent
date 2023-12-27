@@ -125,6 +125,7 @@
                                        style="color: black">회원가입</a>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 								</c:otherwise>
 
 							</c:choose>
@@ -140,6 +141,10 @@
 =======
                                 </c:otherwise>
 >>>>>>> 8ae741ef10e02ba1dd36db2ccdf2486ee7415a6f
+=======
+
+                                </c:otherwise>
+>>>>>>> f19cecb209fbafc077d3a61e8aefc3e0490e5bc6
 
                             </c:choose>
                         </ul>
