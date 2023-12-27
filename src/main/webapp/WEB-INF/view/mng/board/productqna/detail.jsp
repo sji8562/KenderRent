@@ -11,70 +11,45 @@
             </div>
         </div>
     </div>
-
-    <!-- ============================================================== -->
-    <!-- End Bread crumb and right sidebar toggle -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Container fluid  -->
-    <!-- ============================================================== -->
-    <div class="container-fluid">
-        <!-- ============================================================== -->
-        <!-- Start Page Content -->
-        <!-- ============================================================== -->
-        <div class="row">
-            <div class="col-12">
-                <div class="card card-body">
-                    <h4 class="card-title">공지사항 수정</h4>
-                    <%--<h5 class="card-subtitle"> All bootstrap element classies </h5>--%>
-                    <form class="form-horizontal mt-4">
-                        <div class="form-group">
-                            <%--<label>Default Text <span class="help"> 제목</span></label>--%>
-								 <span class="help"> 제목</span>
-                            <input type="text" class="form-control" name="title" value="타이틀">
-                        </div>
-                        <div id="container">
-                            <textarea id="summernote" name="content">내용</textarea>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- ============================================================== -->
-        <!-- End PAge Content -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Right sidebar -->
-        <!-- ============================================================== -->
-        <!-- .right-sidebar -->
-        <!-- ============================================================== -->
-        <!-- End Right sidebar -->
-        <!-- ============================================================== -->
-
-
-
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12">
 				<div class="card card-body">
 					<form class="form-horizontal mt-4"
 						action="/mng/board/${board.id}/productqna-answer" method="post">
+						<!-- Product ID -->
 						<div class="form-group">
-							<label for="title">제품문의 상품아이디</label>
+							<label for="title">제품코드</label>
+							<div class="form-floating">
+								<input type="text" class="form-control" maxlength="250"
+									id="pId" disabled value="${board.productId}" />
+							</div>
+						</div>
+						<!-- Product Name -->
+						<div class="form-group">
+							<label for="title">제품명</label>
+							<div class="form-floating">
+								<input type="text" class="form-control" maxlength="250"
+									id="pName" disabled value="${board.productName}" />
+							</div>
+						</div>
+						<!-- Inquiry Title -->
+						<div class="form-group">
+							<label for="title">제목</label>
 							<div class="form-floating">
 								<input type="text" class="form-control" maxlength="250"
 									id="title" disabled value="${board.title}" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="title">제품문의 작성자</label>
+							<label for="title">작성자</label>
 							<div class="form-floating">
 								<input type="text" class="form-control" maxlength="250"
 									id="user" disabled value="${board.email}" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="title">제품문의 내용</label>
+							<label for="title">문의내용</label>
 							<div class="form-floating">
 								<textarea class="form-control" placeholder="제품에 대한 문의 사항을 입력하세요"
 									maxlength="250" id="content" style="height: 100px" disabled>${board.content}</textarea>
@@ -82,7 +57,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="replyContent">답변 내용</label>
+							<label for="replyContent">답변</label>
 							<c:choose>
 								<c:when test="${board.replyId == null}">
 									<%-- 답변을 안했으면 --%>

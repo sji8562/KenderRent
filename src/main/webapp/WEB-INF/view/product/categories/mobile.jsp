@@ -42,9 +42,9 @@
 }
 
 .product-item {
-	width: 33%;
 	box-sizing: border-box;
 	padding: 10px;
+	width: 33%;
 }
 </style>
 </head>
@@ -80,7 +80,7 @@
 					<div class="breadcrumbs d-flex flex-row align-items-center">
 						<ul>
 							<li><a href="/">Category</a></li>
-							<li class="active"><a href="product/categories/mobile"><i
+							<li class="active"><a href="mobile"><i
 									class="fa fa-angle-right" aria-hidden="true"></i>Big-sized Toys</a></li>
 						</ul>
 					</div>
@@ -141,11 +141,11 @@
 												<div class="favorite favorite_left"></div>
 												<div class="product_info">
 													<h6 class="product_name">
-														<a href="single.html">[대여]타이니러브 수더앤그루브 모빌 (중고제품, 모빌대여,
-															건전지 미제공)</a>
+														<a href="single.html">[대여]타이니러브 수더앤그루브 모빌
+															[중고제품,모빌대여,건전지미제공]</a>
 													</h6>
 													<div class="product_price">
-														$13,000원<span>15,000원</span>
+														13,000원<%--<span>15,000원</span>--%>
 													</div>
 												</div>
 											</div>
@@ -208,10 +208,10 @@
 												<div class="product_image">
 													<img src="/images/mobile04.png" alt="">
 												</div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>sale</span>
-												</div>
+												</div>--%>
 												<div class="favorite favorite_left"></div>
 												<div class="product_info">
 													<h6 class="product_name">

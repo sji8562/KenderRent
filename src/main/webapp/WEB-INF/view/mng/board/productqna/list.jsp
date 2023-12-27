@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" %>
-<%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- ============================================================== -->
 <!-- End Left Sidebar - style you can find in sidebar.scss -->
 <!-- ============================================================== -->
@@ -54,7 +54,8 @@
 					<div class="card-body">
 						<div class="col-12">
 							<div class="card">
-								<form class="row g-3" action="/mng/board/productqna" method="get">
+								<form class="row g-3" action="/mng/board/productqna"
+									method="get">
 									<div class="card-body m--search-inline">
 										<h4 class="card-title">제품 문의 조회</h4>
 										<div class="m--search-inline">
@@ -73,8 +74,10 @@
 												<table class="table" style="width: 100%;">
 													<thead class="table-light">
 														<tr>
-															<th scope="col">#</th>
-															<th scope="col">상품아이디</th>
+															<th scope="col">글번호</th>
+															<th scope="col">제품코드</th>
+															<th scope="col">제품명</th>
+															<th scope="col">제목</th>
 															<th scope="col">작성자</th>
 															<th scope="col">문의일시</th>
 															<th scope="col">답변여부</th>
@@ -88,8 +91,11 @@
 																<th class="applyDetail" scope="row"><a
 																	href="/mng/board/${boardList.id}/productqna-detail">${boardList.id}</a></th>
 																<%--<td class="ellipsis" style="width: 60%; white-space: nowrap; overflow:hidden; text-overflow:ellipsis;">${noticeList.title}</td>--%>
-																<td class="ellipsis">${boardList.title}</td>
-																<%--<td>${noticeList.content}</td>--%>
+																<td>${boardList.productId}</td>
+																<!-- Assuming 'productId' is the property name -->
+																<td>${boardList.productName}</td>
+																<!-- Assuming 'productName' is the property name -->
+																<td>${boardList.title}</td>
 																<td>${boardList.email}</td>
 																<td>${boardList.formatCreatedAtToString()}</td>
 																<%-- 답변 여부 --%>
@@ -104,8 +110,7 @@
 																<td>${boardList.formatReplyCreatedAtToString()}</td>
 																<td>
 																	<div>
-																		<button class="btn btn-success"
-																		type="button"
+																		<button class="btn btn-success" type="button"
 																			style="border: 1px solid black"
 																			onclick="location.href='/mng/board/${boardList.id}/productqna-detail'">조회</button>
 																		&nbsp;&nbsp;

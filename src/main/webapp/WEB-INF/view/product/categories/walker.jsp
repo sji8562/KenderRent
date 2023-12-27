@@ -35,6 +35,17 @@
 	display: inline-block;
 	background: gray;
 }
+
+.product-grid {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.product-item {
+	box-sizing: border-box;
+	padding: 10px;
+	width: 33%;
+}
 </style>
 </head>
 <body>
@@ -51,7 +62,7 @@
 
 		<!-- Header -->
 
-		<jsp:include page="../layout/header.jsp" />
+		<jsp:include page="../../layout/header.jsp" />
 		<%--	<div class="fs_menu_overlay"></div>--%>
 		<div class="post-slider ">
 			<div class="post-wrapper ">
@@ -69,7 +80,7 @@
 					<div class="breadcrumbs d-flex flex-row align-items-center">
 						<ul>
 							<li><a href="/">Category</a></li>
-							<li class="active"><a href="product/categories/mobile"><i
+							<li class="active"><a href="mobile"><i
 									class="fa fa-angle-right" aria-hidden="true"></i>Big-sized Toys</a></li>
 						</ul>
 					</div>
@@ -82,24 +93,24 @@
 								<h5>Sub Category</h5>
 							</div>
 							<ul class="sidebar_categories">
-								<li><a href="product/categories/mobile">모빌/유아침대</a></li>
-								<!-- <li class="active"><a href="product/categories/mobile"> <span><i
+								<li><a href="mobile">모빌/유아침대</a></li>
+								<!-- <li class="active"><a href="mobile"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>모빌/유아침대
 								</a></li> -->
-								<li><a href="/product/categories/bouncer">바운서</a></li>
-								<!-- <li class="active"><a href="/product/categories/bouncer"> <span><i
+								<li><a href="bouncer">바운서</a></li>
+								<!-- <li class="active"><a href="bouncer"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>바운서
 								</a></li> -->
-								<li><a href="product/categories/saucer">쏘서/점프앤런</a></li>
-								<!-- <li class="active"><a href="product/categories/saucer"> <span><i
+								<li><a href="saucer">쏘서/점프앤런</a></li>
+								<!-- <li class="active"><a href="saucer"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>쏘서/점프앤런
 								</a></li> -->
-								<li><a href="product/categories/learningHome">베베블럭/러닝홈</a></li>
-								<!-- <li class="active"><a href="product/categories/learningHome"> <span><i
+								<li><a href="learningHome">베베블럭/러닝홈</a></li>
+								<!-- <li class="active"><a href="learningHome"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>베베블럭/러닝홈
 								</a></li> -->
-								<!-- <li><a href="product/categories/walker">보행기/부스터</a></li> -->
-								<li class="active"><a href="product/categories/walker"> <span><i
+								<!-- <li><a href="walker">보행기/부스터</a></li> -->
+								<li class="active"><a href="walker"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>보행기/부스터
 								</a></li>
 							</ul>
@@ -122,7 +133,7 @@
 
 										<!-- Product 1 -->
 
-										<div class="product-item men">
+										<div class="product-item">
 											<div class="product discount product_filter">
 												<div class="product_image">
 													<img src="/images/walker01.png" alt="">
@@ -191,17 +202,17 @@
 												<div class="product_image">
 													<img src="/images/walker04.png" alt="">
 												</div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>sale</span>
-												</div>
+												</div>--%>
 												<div class="favorite favorite_left"></div>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">[대여] 쭈쭈 3in1 멀티보행기 블루색상 [보행기대여]</a>
 													</h6>
 													<div class="product_price">
-														22,000원<span>25,000원</span>
+														22,000원<%--<span>25,000원</span>--%>
 													</div>
 												</div>
 											</div>

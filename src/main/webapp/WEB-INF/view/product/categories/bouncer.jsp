@@ -35,6 +35,17 @@
 	display: inline-block;
 	background: gray;
 }
+
+.product-grid {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.product-item {
+	box-sizing: border-box;
+	padding: 10px;
+	width: 33%;
+}
 </style>
 </head>
 <body>
@@ -69,7 +80,7 @@
 					<div class="breadcrumbs d-flex flex-row align-items-center">
 						<ul>
 							<li><a href="/">Category</a></li>
-							<li class="active"><a href="product/categories/mobile"><i
+							<li class="active"><a href="mobile"><i
 									class="fa fa-angle-right" aria-hidden="true"></i>Big-sized Toys</a></li>
 						</ul>
 					</div>
@@ -86,20 +97,20 @@
 								<!-- <li class="active"><a href="mobile"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>모빌/유아침대
 								</a></li> -->
-								<!-- <li><a href="/product/categories/bouncer">바운서</a></li> -->
-								<li class="active"><a href="/product/categories/bouncer"> <span><i
+								<!-- <li><a href="bouncer">바운서</a></li> -->
+								<li class="active"><a href="bouncer"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>바운서
 								</a></li>
-								<li><a href="product/categories/saucer">쏘서/점프앤런</a></li>
-								<!-- <li class="active"><a href="product/categories/saucer"> <span><i
+								<li><a href="saucer">쏘서/점프앤런</a></li>
+								<!-- <li class="active"><a href="saucer"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>쏘서/점프앤런
 								</a></li> -->
-								<li><a href="product/categories/learningHome">베베블럭/러닝홈</a></li>
-								<!-- <li class="active"><a href="product/categories/learningHome"> <span><i
+								<li><a href="learningHome">베베블럭/러닝홈</a></li>
+								<!-- <li class="active"><a href="learningHome"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>베베블럭/러닝홈
 								</a></li> -->
-								<li><a href="product/categories/walker">보행기/부스터</a></li>
-								<!-- <li class="active"><a href="product/categories/walker"> <span><i
+								<li><a href="walker">보행기/부스터</a></li>
+								<!-- <li class="active"><a href="walker"> <span><i
 											class="fa fa-angle-double-right" aria-hidden="true"></i></span>보행기/부스터
 								</a></li> -->
 							</ul>
@@ -148,10 +159,10 @@
 													<img src="/images/bouncer02.png" alt="">
 												</div>
 												<div class="favorite"></div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center">
 													<span>new</span>
-												</div>
+												</div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">[대여] 뉴나리프바운서대여 [신생아바운서대여]</a>
@@ -192,10 +203,10 @@
 												<div class="product_image">
 													<img src="/images/bouncer04.png" alt="">
 												</div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>sale</span>
-												</div>
+												</div>--%>
 												<div class="favorite favorite_left"></div>
 												<div class="product_info">
 													<h6 class="product_name">
@@ -238,10 +249,10 @@
 													<img src="/images/bouncer06.png" alt="">
 												</div>
 												<div class="favorite favorite_left"></div>
-												<div
+<%--												<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>-$20</span>
-												</div>
+												</div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">[대여] 부띠끄 멜로디 대여 [신생아바운서]</a>

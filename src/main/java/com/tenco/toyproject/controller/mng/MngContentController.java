@@ -1,5 +1,6 @@
 package com.tenco.toyproject.controller.mng;
 
+import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -7,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
 import com.tenco.toyproject.dto.MngContentDto;
 import com.tenco.toyproject.repository.entity.Content;
 import com.tenco.toyproject.service.mng.MngContentService;
@@ -42,7 +42,7 @@ public class MngContentController {
     public String companyInfoRegister(MngContentDto dto) {
         try{
             if(dto.getContent() == null || dto.getContent().isEmpty()) {
-                throw new CustomRestfulException("내용을 입력해주세요", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("내용을 입력하세요", HttpStatus.BAD_REQUEST);
             }
 
             int result;
@@ -59,7 +59,7 @@ public class MngContentController {
             }
 
             if(result != 1){
-                throw new CustomRestfulException("회사소개 등록을 하지 못했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("회사 소개 등록에 실패했습니다", HttpStatus.BAD_REQUEST);
             }
 
             return "redirect:/mng/content/info";

@@ -27,10 +27,12 @@ public class MngFaqService {
         mngFaqRepository.deleteBoardById(id);
     }
 
-    public void createFaq(MngBoardDTO.FaqSubmitDto dto) {
-        mngFaqRepository.createFaq(dto);
+//    public void createFaq(MngBoardDTO.FaqSubmitDto dto) {
+//        mngFaqRepository.createFaq(dto);
+//    }
+    public void createFaq(String title, String content, int code, int userId) {
+        mngFaqRepository.createFaq(title, content, code, userId);
     }
-
     public Board findBoardById(int id) {
         return mngFaqRepository.findBoardById(id);
     }

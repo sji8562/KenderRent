@@ -445,7 +445,7 @@ function addToCartConfirmation() {
 									<h4>상품문의</h4>
 									<br>
 									<button type="button" class="gray_button"
-										onclick="location.href='/customer/write?type=productInquiry'">글쓰기</button>
+										onclick="location.href='/customer/write?type=productInquiry&pId=${product.id}'">글쓰기</button>
 								</div>
 
 								<div class="row align-items-center">
