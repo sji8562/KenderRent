@@ -52,19 +52,18 @@ coolsms:
     secret: RWF9BWRRSFGZQLADHFGYDK2YAMK1ZHMU
   phoneNumber: 01022217307
 file:
-  path: ./images/
+  path: ./static/images/
   
 mybatis:
   mapper-locations:
     - classpath:mapper/**.xml
   configuration:
     map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
-#logging:
-#  level:
-#    org.mybatis: DEBUG
+logging:
+  level:
+    org.mybatis: DEBUG
 #초기 파라미터 설정
 tenco:
   key: C775E7B757EDE630CD0AA1113BD102661AB38829CA52A6422AB782862F268646
