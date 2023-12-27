@@ -395,10 +395,6 @@ public class MngBoardController {
 
     List<MngBoardDTO.ProductQnaListDto> boardList;
 
-      //  System.out.println("상세보기 왜 안돼?" + qnaDetail);
-
-      //  System.out.println("상세보기 왜 안돼?" + qnaDetail);
-
     // 검색어가 있는 경우
     if (keyword != null && !keyword.isEmpty()) {
       // 검색어를 이용해 검색 쿼리 수행

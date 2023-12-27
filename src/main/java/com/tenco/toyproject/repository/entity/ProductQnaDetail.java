@@ -19,6 +19,7 @@ public class ProductQnaDetail {
 
     private Integer id; //문의하달ID
     private Integer productId; //문의제품ID
+    private String productName;
     
     private String title; // 문의 제목
     private String content; // 문의 내용

@@ -2,11 +2,9 @@ package com.tenco.toyproject.repository.interfaces.mng.board;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import com.tenco.toyproject.dto.MngBoardDTO;
-
 import com.tenco.toyproject.dto.MngProductReplyDTO.ProductQnaReplyDto;
-
-
 import com.tenco.toyproject.repository.entity.ProductQnaDetail;
 import com.tenco.toyproject.vo.PageVO;
 
@@ -24,6 +22,8 @@ public interface MngProductQnaRepository {
 
     void deleteProductQna(int id);
 
-    List<MngBoardDTO.ProductQnaListDto> findProductQnaByCodeWithPagenationAndKeyword(PageVO pageVO, String keyword);
-
+    List<MngBoardDTO.ProductQnaListDto> findProductQnaByCodeWithPagenationAndKeyword(
+        @Param("pageVO") PageVO pageVO, 
+        @Param("keyword") String keyword
+      );
 }

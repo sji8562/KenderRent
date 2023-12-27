@@ -17,12 +17,13 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 public class Board {
     private int id;
-    private String title;
+    private int productId;
+    private String productName;
 
 //    @Lob
-    private String content;
+    private String title;
     private int userId;
-    private int productId;
+    private String content;
     private Timestamp createdAt;
 
     private int reply; // 답변 여부

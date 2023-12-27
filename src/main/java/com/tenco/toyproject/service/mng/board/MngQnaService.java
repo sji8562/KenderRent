@@ -39,4 +39,5 @@ public class MngQnaService {
     public List<MngBoardDTO.QnaListDto> findQnaByCodeWithPagenationAndKeyword(PageVO pageVO, String keyword) {
         return mngQnaRepository.findQnaByCodeWithPagenationAndKeyword(pageVO, keyword);
     }
+    
 }
