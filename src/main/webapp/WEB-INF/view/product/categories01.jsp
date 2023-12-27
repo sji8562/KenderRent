@@ -134,7 +134,7 @@
 															건전지 미제공)</a>
 													</h6>
 													<div class="product_price">
-														$13,000원<span>15,000원</span>
+														13,000원<%--<span>15,000원</span>--%>
 													</div>
 												</div>
 											</div>

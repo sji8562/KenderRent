@@ -25,7 +25,7 @@
 
     <!-- FAQ 등록 -->
     <insert id="createFaq">
-        INSERT INTO board (title, content, code, created_at) VALUES (#{title}, #{content}, #{code}, NOW())
+        INSERT INTO board (title, content, code, user_id, created_at) VALUES (#{title}, #{content}, #{code}, #{userId}, NOW())
     </insert>
 
     <!-- 게시글 삭제 -->

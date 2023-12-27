@@ -1,7 +1,6 @@
 package com.tenco.toyproject.controller.mng;
 
 import com.tenco.toyproject._core.handler.MyRestfullExceptionHandler;
-import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
 import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import com.tenco.toyproject._core.handler.exception.Exception404;
 import com.tenco.toyproject._core.handler.exception.Exception500;
@@ -170,7 +169,7 @@ public class MngProductController {
         try {
             Product product = mngService.findProductById(pId);
             if (product == null) {
-                throw new CustomRestfulException("없는 상품입니다", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("존재하지 않는 상품입니다", HttpStatus.BAD_REQUEST);
             }
             model.addAttribute(product);
 
@@ -186,7 +185,7 @@ public class MngProductController {
         try{
             int result = mngService.deleteProduct(id);
             if(result != 1){
-                throw new CustomRestfulException("삭제 되지 않았습니다", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("삭제에 실패했습니다", HttpStatus.BAD_REQUEST);
             }
             return "redirect:/mng/product/list";
         }catch(Exception e){
@@ -200,7 +199,7 @@ public class MngProductController {
         try{
             int result = mngService.deleteProductReview(id);
             if(result != 1){
-                throw new CustomRestfulException("삭제 되지 않았습니다", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("삭제에 실패했습니다", HttpStatus.BAD_REQUEST);
             }
             return "redirect:/mng/product/review";
         }catch(Exception e){
@@ -222,13 +221,13 @@ public class MngProductController {
             List<SecondCategory> sCategory = mngService.findSecondCategoryByFirstCategoryId(Integer.toString(product.getFirstCategoryId()));
 
             if (product == null) {
-                throw new CustomRestfulException("없는 상품입니다", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("존재하지 않는 상품입니다", HttpStatus.BAD_REQUEST);
             }
             if (fCategory == null) {
-                throw new CustomRestfulException("없는 1차 카테고리입니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("존재하지 않는 1차 카테고리입니다", HttpStatus.BAD_REQUEST);
             }
             if (sCategory == null) {
-                throw new CustomRestfulException("없는 2차 카테고리입니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("존재하지 않는 2차 카테고리입니다", HttpStatus.BAD_REQUEST);
             }
 //        System.out.println(fCategory.toString());
 //        model.addAttribute("fCategory", fCategory);
@@ -251,13 +250,13 @@ public class MngProductController {
             List<SecondCategory> sCategory = mngService.findSecondCategoryByFirstCategoryId(Integer.toString(product.getFirstCategoryId()));
 
             if (product == null) {
-                throw new CustomRestfulException("없는 상품입니다", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("존재하지 않는 상품입니다", HttpStatus.BAD_REQUEST);
             }
             if (fCategory == null) {
-                throw new CustomRestfulException("없는 1차 카테고리입니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("존재하지 않는 1차 카테고리입니다", HttpStatus.BAD_REQUEST);
             }
             if (sCategory == null) {
-                throw new CustomRestfulException("없는 2차 카테고리입니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("존재하지 않는 2차 카테고리입니다", HttpStatus.BAD_REQUEST);
             }
 //        System.out.println(fCategory.toString());
 //        model.addAttribute("fCategory", fCategory);
@@ -281,9 +280,8 @@ public class MngProductController {
             List<FirstCategory> fCategory = mngService.findCategoryAll(1); // 대여 물품 조회
             model.addAttribute("fCategory", fCategory);
             if (fCategory == null) {
-                throw new CustomRestfulException("1차 카테고리를 찾을 수 없습니다", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("1차 카테고리를 찾을 수 없습니다", HttpStatus.BAD_REQUEST);
             }
-
 
             model.addAttribute("fCategory", fCategory);
 
@@ -303,7 +301,7 @@ public class MngProductController {
             List<FirstCategory> fCategory = mngService.findCategoryAll(2); // 판매 물품 조회
             model.addAttribute("fCategory", fCategory);
             if (fCategory == null) {
-                throw new CustomRestfulException("1차 카테고리를 찾을 수 없습니다", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("1차 카테고리를 찾을 수 없습니다", HttpStatus.BAD_REQUEST);
             }
 
 
@@ -332,13 +330,13 @@ public class MngProductController {
 
         try {
             if (dto == null)
-                throw new CustomRestfulException("입력 받은 값이 없습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("입력 받은 값이 없습니다.", HttpStatus.BAD_REQUEST);
             if (dto.getName() == null || dto.getName().isEmpty()) {
-                throw new CustomRestfulException("물품 명을 입력해주세요.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("물품명을 입력해주세요.", HttpStatus.BAD_REQUEST);
 
             }
             if (dto.getPrice() <= 0) {
-                throw new CustomRestfulException("물품 가격은 0원 이하일 수 없습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("물품 가격은 0원 이하일 수 없습니다.", HttpStatus.BAD_REQUEST);
             }
 
             if (dto.getFirstCategoryId() == 0) {
@@ -346,11 +344,11 @@ public class MngProductController {
             }
 
             if (dto.getSecondCategoryId() == 0) {
-                throw new CustomRestfulException("2차 카테고리를 선택해주세요", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("2차 카테고리를 선택해주세요", HttpStatus.BAD_REQUEST);
             }
 
             if (dto.getContent() == null || dto.getContent().isEmpty()) {
-                throw new CustomRestfulException("제품 상세 설명을 입력해주세요.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("제품 상세 설명을 입력해주세요.", HttpStatus.BAD_REQUEST);
             }
 
             // 상품 썸네일 등록
@@ -364,7 +362,7 @@ public class MngProductController {
             if (!file.isEmpty()) {
                 // 파일 사이즈 체크
                 if (file.getSize() > Define.MAX_FILE_SIZE) {
-                    throw new CustomRestfulException("파일 크기는 200MB 미만이어야 합니다.", HttpStatus.BAD_REQUEST);
+                    throw new CustomRestfullException("파일 크기는 200MB 미만이어야 합니다.", HttpStatus.BAD_REQUEST);
                 }
             }
 
@@ -401,7 +399,7 @@ public class MngProductController {
 
             int result = mngService.createProduct(dto);
             if(result != 1){
-                throw new CustomRestfulException("제품 등록이 실패했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("제품 등록에 실패했습니다.", HttpStatus.BAD_REQUEST);
             }
 
             return "redirect:/mng/product/list?code=1&keyword=";
@@ -418,13 +416,13 @@ public class MngProductController {
 
         try {
             if (dto == null)
-                throw new CustomRestfulException("입력 받은 값이 없습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("입력 받은 값이 없습니다.", HttpStatus.BAD_REQUEST);
             if (dto.getName() == null || dto.getName().isEmpty()) {
-                throw new CustomRestfulException("물품 명을 입력해주세요.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("물품명을 입력해주세요.", HttpStatus.BAD_REQUEST);
 
             }
             if (dto.getPrice() <= 0) {
-                throw new CustomRestfulException("물품 가격은 0원 이하일 수 없습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("물품 가격은 0원 이하일 수 없습니다.", HttpStatus.BAD_REQUEST);
             }
 
             if (dto.getFirstCategoryId() == 0) {
@@ -432,11 +430,11 @@ public class MngProductController {
             }
 
             if (dto.getSecondCategoryId() == 0) {
-                throw new CustomRestfulException("2차 카테고리를 선택해주세요", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("2차 카테고리를 선택해주세요", HttpStatus.BAD_REQUEST);
             }
 
             if (dto.getContent() == null || dto.getContent().isEmpty()) {
-                throw new CustomRestfulException("제품 상세 설명을 입력해주세요.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("제품 상세 설명을 입력해주세요.", HttpStatus.BAD_REQUEST);
             }
 
             // 상품 썸네일 등록
@@ -450,7 +448,7 @@ public class MngProductController {
             if (!file.isEmpty()) {
                 // 파일 사이즈 체크
                 if (file.getSize() > Define.MAX_FILE_SIZE) {
-                    throw new CustomRestfulException("파일 크기는 200MB 미만이어야 합니다.", HttpStatus.BAD_REQUEST);
+                    throw new CustomRestfullException("파일 크기는 200MB 미만이어야 합니다.", HttpStatus.BAD_REQUEST);
                 }
             }
 
@@ -487,7 +485,7 @@ public class MngProductController {
 
             int result = mngService.createProduct(dto);
             if(result != 1){
-                throw new CustomRestfulException("제품 등록이 실패했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("제품 등록에 실패했습니다.", HttpStatus.BAD_REQUEST);
             }
 
             return "redirect:/mng/product/listForSale?code=2&keyword=";
@@ -502,14 +500,14 @@ public class MngProductController {
     public String modifyProduct(MngProductUpdateDto dto, @PathVariable Integer id) {
         try {
             if (dto.getName() == null || dto.getName().isEmpty()) {
-                throw new CustomRestfulException("물품명을 입력해주세요.", HttpStatus.NOT_FOUND);
+                throw new CustomRestfullException("물품명을 입력해주세요.", HttpStatus.NOT_FOUND);
             }
             if (dto.getPrice() <= 0) {
-                throw new CustomRestfulException("물품 가격은 0원 이하일 수 없습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("물품 가격은 0원 이하일 수 없습니다.", HttpStatus.BAD_REQUEST);
             }
 
             if (dto.getContent() == null || dto.getContent().isEmpty()) {
-                throw new CustomRestfulException("제품 상세 설명을 입력해주세요.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("제품 상세 설명을 입력해주세요.", HttpStatus.BAD_REQUEST);
             }
             // 상품 썸네일 등록
             MultipartFile file = null;
@@ -522,7 +520,7 @@ public class MngProductController {
             if (!file.isEmpty()) {
                 // 파일 사이즈 체크
                 if (file.getSize() > Define.MAX_FILE_SIZE) {
-                    throw new CustomRestfulException("파일 크기는 200MB 미만이어야 합니다.", HttpStatus.BAD_REQUEST);
+                    throw new CustomRestfullException("파일 크기는 200MB 미만이어야 합니다.", HttpStatus.BAD_REQUEST);
                 }
             }
             if (file != null && !file.isEmpty()) {
@@ -570,7 +568,7 @@ public class MngProductController {
 
             int result = mngService.updateProduct(dto);
             if(result != 1){
-                throw new CustomRestfulException("제품 등록이 실패했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("제품 등록에 실패했습니다.", HttpStatus.BAD_REQUEST);
             }
             return "redirect:/mng/product/" + dto.getId() + "/detail";
         } catch (Exception e) {
@@ -584,14 +582,14 @@ public class MngProductController {
     public String modifyProductForSale(MngProductUpdateDto dto, @PathVariable Integer id) {
         try {
             if (dto.getName() == null || dto.getName().isEmpty()) {
-                throw new CustomRestfulException("물품명을 입력해주세요.", HttpStatus.NOT_FOUND);
+                throw new CustomRestfullException("물품명을 입력해주세요.", HttpStatus.NOT_FOUND);
             }
             if (dto.getPrice() <= 0) {
-                throw new CustomRestfulException("물품 가격은 0원 이하일 수 없습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("물품 가격은 0원 이하일 수 없습니다.", HttpStatus.BAD_REQUEST);
             }
 
             if (dto.getContent() == null || dto.getContent().isEmpty()) {
-                throw new CustomRestfulException("제품 상세 설명을 입력해주세요.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("제품 상세 설명을 입력해주세요.", HttpStatus.BAD_REQUEST);
             }
             // 상품 썸네일 등록
             MultipartFile file = null;
@@ -604,7 +602,7 @@ public class MngProductController {
             if (!file.isEmpty()) {
                 // 파일 사이즈 체크
                 if (file.getSize() > Define.MAX_FILE_SIZE) {
-                    throw new CustomRestfulException("파일 크기는 200MB 미만이어야 합니다.", HttpStatus.BAD_REQUEST);
+                    throw new CustomRestfullException("파일 크기는 200MB 미만이어야 합니다.", HttpStatus.BAD_REQUEST);
                 }
             }
             if (file != null && !file.isEmpty()) {
@@ -652,7 +650,7 @@ public class MngProductController {
 
             int result = mngService.updateProduct(dto);
             if(result != 1){
-                throw new CustomRestfulException("제품 등록이 실패했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("제품 등록에 실패했습니다.", HttpStatus.BAD_REQUEST);
             }
             return "redirect:/mng/product/" + dto.getId() + "/detailForSale";
         } catch (Exception e) {
@@ -699,7 +697,7 @@ public class MngProductController {
 
         try {
             if(fId == null|| fId.isEmpty()){
-                throw new CustomRestfulException("id값이 없습니다", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("id값이 없습니다", HttpStatus.BAD_REQUEST);
             }
             List<SecondCategory> secondCategory = mngService.findSecondCategoryByFirstCategoryId(fId);
             return secondCategory;
@@ -722,13 +720,13 @@ public class MngProductController {
             int resultRowCount = mngService.findFirstCategoryByName(fCode, fCategoryName);
 
             if (resultRowCount > 0) {
-                throw new CustomRestfulException("이미 존재하는 카테고리입니다", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("이미 존재하는 카테고리입니다", HttpStatus.BAD_REQUEST);
 
             }
 
             int result = mngService.addFirstCategory(fCode, fCategoryName);
             if(result != 1){
-                throw new CustomRestfulException("카테고리 등록을 실패했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("카테고리 등록에 실패했습니다.", HttpStatus.BAD_REQUEST);
             }
 
             return mngService.getFirstCategories(fCode);
@@ -741,7 +739,7 @@ public class MngProductController {
     // 대여용
     // 1차 카테고리 삭제
     @GetMapping("/delete-first-category-by-id/{fId}")
-    public List<FirstCategory> deleteFirstCategory(@PathVariable int fId) throws CustomRestfullException {
+    public List<FirstCategory> deleteFirstCategory(@PathVariable int fId) {
 //        if(fId == null){
 //            return
 //        }
@@ -790,12 +788,12 @@ public class MngProductController {
 
 
             if (resultRowCount > 0) {
-                throw new CustomRestfulException("이미 존재하는 카테고리입니다", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("이미 존재하는 카테고리입니다", HttpStatus.BAD_REQUEST);
             }
 
             int result = mngService.addSecondCategory(fCategory, sCategoryName);
             if(result != 1){
-                throw new CustomRestfulException("카테고리 생성에 실패했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("카테고리 생성에 실패했습니다.", HttpStatus.BAD_REQUEST);
             }
 
             return mngService.findSecondCategoryByFirstCategoryId(fCategory);
@@ -819,14 +817,14 @@ public class MngProductController {
             int resultRows = mngService.findProductBySecondCategoryId(sId);
 
             if (resultRows > 0) {
-                throw new CustomRestfulException("해당 카테고리에 등록된 상품이 있습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("해당 카테고리에 등록된 상품이 있습니다.", HttpStatus.BAD_REQUEST);
             }
 
             System.out.println("--- 찾았따!!! ---" + secondCategory);
 
             int result = mngService.deleteSecondCategoryById(secondCategory.getId());
             if(result != 1){
-                throw new CustomRestfulException("삭제하지 못했습니다.", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("삭제하지 못했습니다.", HttpStatus.BAD_REQUEST);
             }
         }catch (Exception e) {
             e.printStackTrace();
@@ -890,7 +888,7 @@ public class MngProductController {
         try {
             Review review = mngService.findProductReviewById(pId);
             if (review == null) {
-                throw new CustomRestfulException("없는 후기입니다", HttpStatus.BAD_REQUEST);
+                throw new CustomRestfullException("존재하지 않는 후기입니다", HttpStatus.BAD_REQUEST);
             }
             System.out.println("1512345343484531423dsadasdasdasdsads" + review.toString());
             model.addAttribute(review);

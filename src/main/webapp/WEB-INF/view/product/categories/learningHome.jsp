@@ -159,10 +159,10 @@
 													<img src="/images/learningHome02.png" alt="">
 												</div>
 												<div class="favorite"></div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center">
 													<span>new</span>
-												</div>
+												</div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">[대여] 뉴어라운드 위고 [1회대여품,위고대여,장난감대여]</a>
@@ -202,10 +202,10 @@
 												<div class="product_image">
 													<img src="/images/learningHome04.png" alt="">
 												</div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>sale</span>
-												</div>
+												</div>--%>
 												<div class="favorite favorite_left"></div>
 												<div class="product_info">
 													<h6 class="product_name">
@@ -213,7 +213,7 @@
 															[3개월,6개월,장난감대여]</a>
 													</h6>
 													<div class="product_price">
-														8,000원<span>12,000원</span>
+														8,000원<%--<span>12,000원</span>--%>
 													</div>
 												</div>
 											</div>
@@ -251,10 +251,10 @@
 													<img src="/images/learningHome06.png" alt="">
 												</div>
 												<div class="favorite favorite_left"></div>
-												<div
+												<%--<div
 													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 													<span>-$20</span>
-												</div>
+												</div>--%>
 												<div class="product_info">
 													<h6 class="product_name">
 														<a href="single.html">[대여] 피셔프라이스 러닝테이블 대여 [장난감,유아용품]</a>

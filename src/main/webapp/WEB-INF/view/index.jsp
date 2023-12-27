@@ -45,9 +45,9 @@
 	<div class="fs_menu_overlay"></div>
 	<div class="post-slider ">
 		<div class="post-wrapper " id="slider-div">
-			<div class="post" style="background-image:url(/images/mvisual01.jpg)"></div>
-			<div class="post" style="background-image:url(/images/mvisual02.jpg)"></div>
-			<div class="post" style="background-image:url(/images/mvisual03.jpg)"></div>
+			<div class="post" style="background-image:url(../../../../../images/mvisual01.jpg)"></div>
+			<div class="post" style="background-image:url(../../../../../images/mvisual02.jpg)"></div>
+			<div class="post" style="background-image:url(../../../../../images/mvisual03.jpg)"></div>
 		</div>
 	</div>
 

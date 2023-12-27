@@ -57,7 +57,7 @@
 						<h1>상품문의</h1>
 					</c:if>
 					<br><br>
-					<form action="/customer/write?type=${param.type}" method="post">
+					<form action="/customer/write?type=${param.type}&pId=${param.pId}" method="post">
 						<div>
 						<div class="row">
 							<div class = "col-lg-8 ">
