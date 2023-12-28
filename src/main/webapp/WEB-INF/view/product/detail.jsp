@@ -179,8 +179,10 @@ window.addEventListener('pageshow', function(event) {
 
 							<div class="col-lg-9 image_col order-lg-2 order-1">
 								<div class="single_product_image">
-									<div class="single_product_image_background"
-										style="background-image: url(${product.picUrl })"></div>
+									<%--<div class="single_product_image_background"
+										style="background-image: url(${product.picUrl })"></div>--%>
+										<div class="single_product_image_background"
+											 style="background-image: url(${product.formatImgUrl() })"></div>
 								</div>
 							</div>
 						</div>
