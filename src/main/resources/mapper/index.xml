@@ -4,10 +4,26 @@
 <!--반드시 세미콜론 생략-->
 <mapper namespace="com.tenco.toyproject.repository.interfaces.IndexRepository">
     <select id="findByFCategory">
-        select * from first_category where code = 1
+        SELECT
+            fc.id AS firstCategoryId,
+            MIN(sc.id) AS lowSCategoryId,
+            fc.first_category_name
+        FROM
+            first_category fc
+                LEFT JOIN second_category sc ON fc.id = sc.first_category_id WHERE fc.code = 1
+        GROUP BY
+            fc.id, fc.first_category_name;
     </select>
     <select id="findByFCategoryCode2">
-        select * from first_category where code = 2
+        SELECT
+            fc.id AS firstCategoryId,
+            MIN(sc.id) AS lowSCategoryId,
+            fc.first_category_name
+        FROM
+            first_category fc
+                LEFT JOIN second_category sc ON fc.id = sc.first_category_id WHERE fc.code = 2
+        GROUP BY
+            fc.id, fc.first_category_name;
     </select>
     <select id="findBySecondCategoryId">
         select * from second_category

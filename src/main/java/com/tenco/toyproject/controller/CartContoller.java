@@ -90,8 +90,9 @@ public class CartContoller {
 		} else {
 			productService.addToCartById(principal.getId(), productId);
 			List<Product> cartList = productService.showCartById(principal.getId());
+			System.out.println("----------------------------------------------------------"+cartList.toString());
 			model.addAttribute("cartList", cartList);
-			return "redirect:/product/"+cartList.get(cartList.size()-1).getFirstCategoryId()+"/categories";
+			return "redirect:/product/"+cartList.get(cartList.size()-1).getFirstCategoryId()+"/categories/"+cartList.get(cartList.size()-1).getSecondCategoryId();
 		}
 		}
 

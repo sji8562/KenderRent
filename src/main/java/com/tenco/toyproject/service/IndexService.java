@@ -1,5 +1,6 @@
 package com.tenco.toyproject.service;
 
+import com.tenco.toyproject.dto.HeaderDTO;
 import com.tenco.toyproject.repository.entity.FirstCategory;
 import com.tenco.toyproject.repository.entity.SecondCategory;
 import com.tenco.toyproject.repository.interfaces.IndexRepository;
@@ -13,10 +14,10 @@ public class IndexService {
 
     @Autowired
     IndexRepository indexRepository;
-    public List<FirstCategory> findByFCategory(){
+    public List<HeaderDTO> findByFCategory(){
         return indexRepository.findByFCategory();
     }
-    public List<FirstCategory> findByFCategoryCode2(){
+    public List<HeaderDTO> findByFCategoryCode2(){
         return indexRepository.findByFCategoryCode2();
     }
 

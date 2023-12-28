@@ -44,19 +44,19 @@
                                     <c:choose>
                                         <c:when test="${firstCategories != null}">
                                             <c:forEach var="firstCategory" items="${firstCategories}">
-                                                <a href="/product/${firstCategory.id}/categories/1" class="dropdown-item">${firstCategory.firstCategoryName}</a>
+                                                <a href="/product/${firstCategory.firstCategoryId}/categories/${firstCategory.lowSCategoryId}" class="dropdown-item">${firstCategory.firstCategoryName}</a>
                                             </c:forEach>
                                         </c:when>
                                     </c:choose>
                                 </div>
                             </li>
                             <li class="nav-item dropdown"><a
-                                    href="/product/7/categories/1">유아용품판매</a>
+                                    href="/product/7/categories/21">유아용품판매</a>
                                 <div class="dropdown-menu m-0">
                                     <c:choose>
                                         <c:when test="${firstcacode2 != null}">
                                             <c:forEach var="firstcacode2" items="${firstcacode2}">
-                                                <a href="/product/${firstcacode2.id}/categories/1" class="dropdown-item">${firstcacode2.firstCategoryName}</a>
+                                                <a href="/product/${firstcacode2.firstCategoryId}/categories/${firstcacode2.lowSCategoryId}" class="dropdown-item">${firstcacode2.firstCategoryName}</a>
 
                                             </c:forEach>
                                         </c:when>
