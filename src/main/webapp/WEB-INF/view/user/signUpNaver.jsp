@@ -125,7 +125,7 @@ function addressFind() {
 				<div class="col-lg-4 get_in_touch_col">
 					<div class="row">
 						<div class="logo_container">
-							<a href="/">Kender<span>Rent</span></a>
+							<a href="/"><img src="/images/Logo2.png" style="max-width: 80%; height: auto;"></a>
 							<br><br><br><br>
 						</div>
 					</div>
@@ -139,7 +139,7 @@ function addressFind() {
 									</div>
 									<div class="col-lg-4">
 										<span id="guide" style="color: #999; display: none"></span>
-										<button type="button" onclick="addressFind()" value="주소찾기">주소찾기</button>
+										<button class="btn btn-dark" type="button" onclick="addressFind()" value="주소찾기">주소찾기</button>
 									</div>
 								</div>
 								<input id="address" name="address" class="form_input input_website input_ph" type="text"  placeholder="주소를 입력해주세요">
