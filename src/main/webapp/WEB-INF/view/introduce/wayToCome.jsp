@@ -1,9 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Colo Shop Template">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/css/styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
+<link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
+<link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
+
+</head>
+<body>
+	<div class="super_container">
 
 	<!-- Header -->
 
-	<jsp:include page="../layout/headerSub.jsp" />
+	<jsp:include page="../layout/header.jsp" />
 
 	<div class="container contact_container">
 		<div class="row">
@@ -27,18 +49,18 @@
 			<div class="col-lg-12">
 				<div id="kakaoMap" style="width:100%;height:400px;">
 				<script>
-				
-					var mapContainer = document.getElementById('kakaoMap'), // 지도를 표시할 div 
-					    mapOption = { 
+
+					var mapContainer = document.getElementById('kakaoMap'), // 지도를 표시할 div
+					    mapOption = {
 							center: new kakao.maps.LatLng(35.15962538113229, 129.0601872452189), // 이미지 지도의 중심좌표
 					        level: 3, // 이미지 지도의 확대 레벨
-					        
+
 					    };
-					
+
 					var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-					
-					// 마커가 표시될 위치입니다 
-					var markerPosition  = new kakao.maps.LatLng(35.15962538113229, 129.0601872452189); 
+
+					// 마커가 표시될 위치입니다
+					var markerPosition  = new kakao.maps.LatLng(35.15962538113229, 129.0601872452189);
 
 					// 마커를 생성합니다
 					var marker = new kakao.maps.Marker({
@@ -47,8 +69,8 @@
 
 					// 마커가 지도 위에 표시되도록 설정합니다
 					marker.setMap(map);
-					
-					
+
+
 				</script>
 				</div>
 			</div>
@@ -132,7 +154,6 @@
 
 	<jsp:include page="../layout/footer.jsp" />
 	</div>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/css/styles/bootstrap4/popper.js"></script>
 <script src="/styles/bootstrap4/bootstrap.min.js"></script>

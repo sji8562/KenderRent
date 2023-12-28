@@ -1,9 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
 
+<head>
+<title>Contact Us</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Colo Shop Template">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/css/styles/bootstrap4/bootstrap.min.css">
+<link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css">
+<link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
+<link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
 <script src="/js/jquery-3.2.1.min.js"></script>
 <!-- CSS only -->
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -12,7 +29,7 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <script>
-	
+
 function addressFind() {
 	new daum.Postcode(
 		{
@@ -44,10 +61,10 @@ function addressFind() {
 				// 우편번호와 주소 정보를 해당 필드에 넣는다.
 				document.getElementById('address').value = roadAddr;
 				document.getElementById('postNumber').value = data.zonecode;
-				
+
 				var guideTextBox = document.getElementById("guide");
 				// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-				
+
 			}
 		}).open();
 }
@@ -56,12 +73,12 @@ function addressFind() {
 
 
 <script type="text/javascript">
-	
-	
+
+
 	$(function() {
 		// 이메일 규칙
-		
-		
+
+
 	});
 	function checkForm() {
 		if($("#address").val() == ""){
@@ -74,10 +91,14 @@ function addressFind() {
 		}
 	}
 </script>
+</head>
+
+<body>
+	<div class="super_container">
 
 		<!-- Header -->
 
-		<jsp:include page="../layout/headerSub.jsp" />
+		<jsp:include page="../layout/header.jsp" />
 
 		<div class="fs_menu_overlay"></div>
 

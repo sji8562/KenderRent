@@ -2,7 +2,32 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Colo Shop Template">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css"
+	href="/css/styles/bootstrap4/bootstrap.min.css">
+<link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css"
+	href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css"
+	href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css"
+	href="/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css">
+<link rel="stylesheet" type="text/css"
+	href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+<link rel="stylesheet" type="text/css"
+	href="/css/styles/single_styles.css">
+<link rel="stylesheet" type="text/css"
+	href="/css/styles/single_responsive.css">
+<link rel="stylesheet" type="text/css"
+	href="/css/styles/main_styles.css">
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 	function addHeart(id) {
@@ -22,18 +47,18 @@
             	data : JSON.stringify(form),
             	success : function(result) {
            		alert("찜하기러기 끼룩끼룩~");
-           		location.reload(); 
+           		location.reload();
         		},
 				error : function(e) {
         			console.log(e);
           	  		alert('찜할 수 없지렁이 꿈틀꿈틀~');
-           			location.reload(); 
+           			location.reload();
         		}
         	})
    		}
 	}
 	</script>
-<script type="text/javascript">  
+<script type="text/javascript">
     function removeHeart(id, element) {
     	let user = '<%=session.getAttribute("principal")%>';
        	if(user == "null"){
@@ -51,44 +76,44 @@
                 data : JSON.stringify(form),
                 success : function(result) {
                 	alert("찜하기러기 끼룩끼룩~");
-                	element.classList.add('active'); 
+                	element.classList.add('active');
                 },
 				error : function(e) {
             		console.log(e);
              		alert('찜할 수 없지렁이 꿈틀꿈틀~');
-              		location.reload(); 
+              		location.reload();
             	}
        		})
        	}
 	}
     </script>
 <script type="text/javascript">
- 	function cancelHeart(id) { 
-   		let user = '<%=session.getAttribute("principal")%>'; 
-		var form = { 
-			id : id, 
- 		}; 
- 		$.ajax({ 
- 			type : 'post', 
- 			url : "/mypage/wish-list/cancel", 
- 			cache : false, 
- 			processData : false, 
- 			contentType : 'application/json; charset=utf-8', 
-			data : JSON.stringify(form), 
+ 	function cancelHeart(id) {
+   		let user = '<%=session.getAttribute("principal")%>';
+		var form = {
+			id : id,
+ 		};
+ 		$.ajax({
+ 			type : 'post',
+ 			url : "/mypage/wish-list/cancel",
+ 			cache : false,
+ 			processData : false,
+ 			contentType : 'application/json; charset=utf-8',
+			data : JSON.stringify(form),
  			success : function(result) {
 				location.reload();
-       		    	alert('해당 상품을 찜 취소 하셨습니다.'); 
- 			}, 
- 			error : function(e) { 
- 				alert('찜 취소 할 수 없습니다.'); 
- 				location.reload(); // 실패시 새로고침하기 
+       		    	alert('해당 상품을 찜 취소 하셨습니다.');
+ 			},
+ 			error : function(e) {
+ 				alert('찜 취소 할 수 없습니다.');
+ 				location.reload(); // 실패시 새로고침하기
  			}
  		});
- 	} 
+ 	}
  	</script>
 <script type="text/javascript">
 function addToCartConfirmation() {
-	let user = '<%=session.getAttribute("principal")%>'; 
+	let user = '<%=session.getAttribute("principal")%>';
 	var selectedValue = document.getElementById("selectedMonth").value;
 	if (selectedValue === "") {
     	alert("구매할 기간을 선택해주세요.");
@@ -102,11 +127,13 @@ function addToCartConfirmation() {
     }
 }
 </script>
-
+</head>
+<body>
+	<div class="super_container">
 
 		<!-- Header -->
 
-		<jsp:include page="../layout/headerSub.jsp" />
+		<jsp:include page="../layout/header.jsp" />
 
 		<!-- Hamburger Menu -->
 
