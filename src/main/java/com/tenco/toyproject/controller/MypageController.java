@@ -1,20 +1,12 @@
 package com.tenco.toyproject.controller;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
+import com.tenco.toyproject.dto.UserUpdateDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.entity.Rent;
@@ -49,48 +41,66 @@ public class MypageController {
   @GetMapping("/main")
   public String main(HttpServletRequest request, HttpServletResponse response, Model model) {
     // 최근 본 상품
+	  System.out.println("여기?11111");
     ArrayList<Integer> cookieList = new ArrayList<Integer>();
+	  System.out.println("여기?2222222222");
     Cookie[] cookies = request.getCookies();
+	  System.out.println("여기?33333333333");
     ArrayList<Integer> goodsCookie = new ArrayList<Integer>();
+	  System.out.println("여기?44444444444");
     if (cookies != null) {
+		System.out.println("여기?555555555555");
       for (int i = 0; i < cookies.length; i++) {
         if (cookies[i].getName().startsWith("goods")) {
           goodsCookie.add(Integer.parseInt(cookies[i].getValue()));
         }
       }
+		System.out.println("여기?666666666666");
     }
+	  System.out.println("여기?777777777777777777");
     System.out.println(goodsCookie);
     // 필요없는 쿠키 삭제
-    if (goodsCookie.size() >= 4) {
-      int count = goodsCookie.size() - 3;
-      for (int i = 0; i < cookies.length; i++) {
-        if (cookies[i].getName().startsWith("goods")) {
-          cookies[i].setPath("/");
-          cookies[i].setValue(null);
-          cookies[i].setMaxAge(0);
-          response.addCookie(cookies[i]);
-          System.out.println(goodsCookie.size());
 
-          goodsCookie.remove(i);
-          count--;
-        }
-        if (count == 0) {
-          break;
-        }
-      }
-    }
+	  if (goodsCookie.size() >= 4) {
+		  System.out.println("여기?8888888888888888");
+		  int count = goodsCookie.size() - 3;
+		  System.out.println("여기?9999999999999999");
 
-    ArrayList<Product> goodsProduct = new ArrayList<>();
-    for (int i : goodsCookie) {
-      Product product = productService.findById(i);
-      goodsProduct.add(product);
+		  Iterator<Integer> iterator = goodsCookie.iterator();
+		  while (iterator.hasNext()) {
+			  int i = iterator.next();
+			  if (cookies[i].getName().startsWith("goods")) {
+				  cookies[i].setPath("/");
+				  cookies[i].setValue(null);
+				  cookies[i].setMaxAge(0);
+				  response.addCookie(cookies[i]);
+				  System.out.println(goodsCookie.size());
+				  iterator.remove(); // 안전하게 제거
+				  count--;
+			  }
+			  if (count == 0) {
+				  break;
+			  }
+		  }
 
-    }
-    Collections.reverse(goodsProduct);
-    model.addAttribute("goodsProduct", goodsProduct);
-    System.out.println(goodsProduct.get(0).toString());
+		  System.out.println("여기?1010101010101010101010101010");
+	  }
 
-    return "mypage/main";
+	  ArrayList<Product> goodsProduct = new ArrayList<>();
+	  for (int i : goodsCookie) {
+		  Product product = productService.findById(i);
+		  goodsProduct.add(product);
+	  }
+
+	  Collections.reverse(goodsProduct);
+	  model.addAttribute("goodsProduct", goodsProduct);
+	  if (!goodsProduct.isEmpty()) {
+		  System.out.println(goodsProduct.get(0).toString());
+	  } else {
+		  System.out.println("goodsProduct이 비어 있습니다.");
+	  }
+
+	  return "mypage/main";
   }
 
   @GetMapping("/inquiry")
@@ -177,5 +187,29 @@ public class MypageController {
 		model.addAttribute("userInfo", userInfo);
 		return "mypage/rentListDetailInfo";
 	}
+	//유저 업데이트
+	@GetMapping("/user-update")
+	public String userUpdate(Model model){
+
+		User principal = (User) session.getAttribute("principal");
+		User userInfo = userService.findById(principal.getId());
+		System.out.println(userInfo.toString());
+		model.addAttribute("userInfo",userInfo);
+		return "mypage/userUpdate";
+	}
+
+	@PostMapping("{id}/user-update")
+	public String userUpdateProc(@PathVariable Integer id ,UserUpdateDTO userUpdateDTO){
+		System.out.println("이거 나와야한다"+userUpdateDTO.toString());
+	  mypageService.userUpdate(id,userUpdateDTO);
+
+
+		return "redirect:/mypage/user-update";
+	}
 
 }
+//	private String password;
+//	private String userName;
+//	private String address;
+//	private String addressDetail;
+//	private String phoneNumber;

@@ -3,7 +3,7 @@
 <!-- Footer -->
 <div class="benefit">
 	<div class="container">
-		<div class="row benefit_row">
+		<div class="row benefit_row signup">
 			<div class="col-lg-3 benefit_col">
 				<div class="benefit_item d-flex flex-row align-items-center">
 					<div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
