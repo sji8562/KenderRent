@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-		 pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -118,7 +118,7 @@
                                         <c:when test="${productList2 != null}">
                                         <c:forEach var="productList2" items="${productList2}" >
                                             <div class="product-item">
-                                                <a href="/product/rent/${productList2.id}">
+                                                <a href="/product/detail/${productList2.id}">
                                                     <div class="product discount product_filter">
                                                         <div class="product_image">
                                                             <img src="/images/${productList2.picUrl}" alt="">
@@ -153,6 +153,8 @@
 				</div>
 			</div>
 		</div>
+
+
 
 		<jsp:include page="../layout/footer.jsp" />
 

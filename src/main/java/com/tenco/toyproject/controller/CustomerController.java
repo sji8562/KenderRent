@@ -61,8 +61,6 @@ public class CustomerController {
   @GetMapping("/write")
   public String inquiryDetail (@RequestParam(defaultValue = "0", required = false) int pId, @RequestParam("type") String type) {
     // 접근제한 해야함.
-    System.out.println("ppppppppIIIIIIIIIIIIIIdddddddddddd" + pId);
-    System.out.println("tttttttttttyyyyyyyppppppppppeeeeeeeeeeee" + type);
 
     return "customer/inquiryWrite";
   }

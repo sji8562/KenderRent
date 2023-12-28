@@ -54,9 +54,6 @@ public class ProductController {
 
     List<Product> productList2 = productService.findByCategoryId(fId,sId);
     List<SecondCategory> secondCategoryList = productService.findBysCategoryId(fId);
-    System.out.println("여기오자나 그치 ?");
-    System.out.println(productList2.toString());
-    System.out.println("---------------------------------"+secondCategoryList.toString());
 
     model.addAttribute("secondCategoryList", secondCategoryList);
     model.addAttribute("productList2", productList2);
@@ -67,34 +64,12 @@ public class ProductController {
 
       return "product/categories02";
     }
+    if(fId >= 7 ){
+      return "product/categories03";
+    }
     return "product/categories01";
   }
-//
-//  @GetMapping("{fId}/categories/")
-//  public String categories(@PathVariable Integer fId, @PathVariable Integer sId,Model model) {
-//    List<SecondCategory> secondCategories = productService.findBysCategoryId(fId);
-//    model.addAttribute("secondCategories", secondCategories);
-//
-//    if (fId == 1 || fId == 2 || fId == 6) {
-//      return "product/categories02";
-//    }
-//    return "product/categories01";
-//  }
 
-//  @GetMapping("categories01")
-//  public String categories01() {
-//    return "product/categories01";
-//  }
-
-//  @GetMapping("categories02")
-//  public String categories02() {
-//    return "product/categories02";
-//  }
-
-  
-  // 부터 전우진 231226
-
-  // 까지 전우진232226
   
   @GetMapping("detail/{id}")
   public String detail(Model model, PageVO pageVO,
@@ -120,9 +95,9 @@ public class ProductController {
     // 페이징 처리해서 상품문의 출력 끝
     // 최근본 프로젝트 관련
     Cookie cookie = new Cookie("goods" + id, String.valueOf(id));
-    cookie.setPath("/");
-    cookie.setMaxAge(60 * 60 * 24);
-    response.addCookie(cookie);
+    cookie.setPath("/");  //
+    cookie.setMaxAge(60 * 60 * 24); //
+    response.addCookie(cookie); //
     // 최근본 프로젝트 관련 끝
     // 상품 정보
     Product product = productService.findById(id);
@@ -139,9 +114,9 @@ public class ProductController {
   @PostMapping("order")
   public String order(Model model, @RequestParam("id") String selectedProducts) {
     User principal = (User) session.getAttribute("principal");
-    User userInfo = userService.findById(principal.getId());
+    User userInfo = userService.findById(principal.getId());  //세션은 들고왔는데 세션 체크 안함
     int[] productId =
-        Arrays.stream(selectedProducts.split(",")).mapToInt(Integer::parseInt).toArray();
+        Arrays.stream(selectedProducts.split(",")).mapToInt(Integer::parseInt).toArray(); //
     List<Product> orderList = new ArrayList<>();
     int productPrice = 0;
     int deliveryFee = 3000;
@@ -153,7 +128,7 @@ public class ProductController {
         throw new CustomRestfullException("이미 품절된 물건입니다.", HttpStatus.BAD_REQUEST);
       }
     }
-    int totalPrice = productPrice + deliveryFee;
+    int totalPrice = productPrice + deliveryFee; //
     model.addAttribute("productPrice", productPrice);
     model.addAttribute("deliveryFee", deliveryFee);
     model.addAttribute("totalPrice", totalPrice);
@@ -161,9 +136,6 @@ public class ProductController {
     model.addAttribute("userInfo", userInfo);
     return "product/order";
   }
-
-  @GetMapping("order/kakao-pay")
-  public void kakaoPayGet() {}
 
   @PostMapping("order/kakao-pay")
   public String kakaoPayReady(@RequestParam("orderIds") String[] orderIds, String name,

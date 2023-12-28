@@ -45,7 +45,7 @@
                     <nav class="navbar">
                         <ul class="navbar_menu">
                             <li class="nav-item dropdown"><a
-                                    href="/product/categories/appliance">회사소개</a>
+                                    href="/introduce/introduction">회사소개</a>
                                 <div class="dropdown-menu m-0">
                                     <a href="/introduce/introduction" class="dropdown-item">회사소개</a>
                                     <a href="/introduce/sanitization-process" class="dropdown-item">소독과정</a>
@@ -66,12 +66,12 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown"><a
-                                    href="/product/categories/m00to06">유아용품판매</a>
+                                    href="/product/7/categories/1">유아용품판매</a>
                                 <div class="dropdown-menu m-0">
                                     <c:choose>
                                         <c:when test="${firstcacode2 != null}">
                                             <c:forEach var="firstcacode2" items="${firstcacode2}">
-                                                <a href="/product/${firstcacode2.id}/categories" class="dropdown-item">${firstcacode2.firstCategoryName}</a>
+                                                <a href="/product/${firstcacode2.id}/categories/1" class="dropdown-item">${firstcacode2.firstCategoryName}</a>
 
                                             </c:forEach>
                                         </c:when>
@@ -82,7 +82,7 @@
                                     href="/introduce/terms-of-use">이용안내</a>
                             </li>
 
-                            <li class="nav-item dropdown"><a href="/customer/contact"
+                            <li class="nav-item dropdown"><a href="/customer/contact?type=1"
                                                              class="nav-link dropdown-toggle">고객센터</a>
                                 <div class="dropdown-menu m-0">
                                     <a href="/customer/contact?type=1" class="dropdown-item">공지사항</a>
