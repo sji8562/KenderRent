@@ -21,6 +21,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +32,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
+import com.tenco.toyproject._core.utils.SmsUtil;
 import com.tenco.toyproject.dto.UserSignInFormDto;
 import com.tenco.toyproject.dto.response.KakaoProfile;
 import com.tenco.toyproject.dto.response.OAuthToken;
@@ -38,7 +40,11 @@ import com.tenco.toyproject.repository.entity.User;
 import com.tenco.toyproject.service.UserService;
 
 import jakarta.mail.internet.MimeMessage;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import net.nurigo.sdk.message.model.Message;
+import net.nurigo.sdk.message.request.SingleMessageSendingRequest;
+import net.nurigo.sdk.message.response.SingleMessageSentResponse;
 
 @Controller
 @RequestMapping("/user")
@@ -49,6 +55,8 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private JavaMailSenderImpl mailSender;
+	@Autowired
+	private SmsUtil smsUtil;
 	@Value("${tenco.key}")
 	private String tencoKey;
 	
@@ -78,11 +86,12 @@ public class UserController {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String securePassword = passwordEncoder.encode(user.getPassword());
 		user.setPassword(securePassword);
-
+		
 		if(userService.insertUser(user) == 0) {
 			throw new CustomRestfullException("회원가입에 실패하였습니다",  HttpStatus.BAD_REQUEST);
 		}
-		
+		session.removeAttribute("email");
+		session.removeAttribute("authCode");
 		return "redirect:/user/signIn";
 	}
 	
@@ -119,6 +128,8 @@ public class UserController {
             helper.setSubject(title);
             helper.setText(content, true);
             mailSender.send(message);
+            session.setAttribute("checkNum", checkNum);
+    		session.setAttribute("email", email);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -242,5 +253,64 @@ public class UserController {
 		
 		return "redirect:/";
 	}
+	@GetMapping("findId")
+	public String findId() {
+		return "user/findId";
+	}
+	@PostMapping("/send-one")
+	@ResponseBody
+	public String sendSmsToFindEmail(String userName, String phoneNumber) {
+        //수신번호 형태에 맞춰 "-"을 ""로 변환
+        System.out.println("dd");
+        Map foundUser = userService.findByNameAndPhone(userName, phoneNumber);
+        Random rand = new Random();
+        String randomNum = "";
+        for (int i = 0; i < 4; i++) {
+            String random = Integer.toString(rand.nextInt(10));
+            randomNum += random;
+        }       
+        smsUtil.sendOne(phoneNumber, randomNum);
+        return randomNum;
+    }
+	@PostMapping("/findId")
+	public String findIdPro(Model model, String userName, String phoneNumber) {
+		Map foundUser = userService.findByNameAndPhone(userName, phoneNumber);
+		model.addAttribute("foundUser", foundUser);
+		return "/user/findIdResult";
+	}
+	@GetMapping("/findPassword")
+	public String findPassword() {
+		
+		return "user/findPassword";
+	}
+	
+	@GetMapping("/passwordChange")
+	public String passwordChange(String email, String authCode) {
+		String authEmail = String.valueOf(session.getAttribute("email"));
+		String checkNum = String.valueOf(session.getAttribute("checkNum"));
+		if(email == null || authCode == null) {
+			throw new CustomRestfullException("잘못된 접근입니다", HttpStatus.BAD_REQUEST);
+		}
+		if(!email.equals(authEmail) || !checkNum.equals(authCode)) {
+			throw new CustomRestfullException("잘못된 접근입니다", HttpStatus.BAD_REQUEST);
+		}
+		session.removeAttribute("email");
+		session.removeAttribute("authCode");
+		return "/user/passwordChange";
+	}
+	
+	@PostMapping("/passwordChangePro")
+	public String passwordChangePro(String email, String password) {
+		System.out.println(email);
+		System.out.println(password);
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String securePassword = passwordEncoder.encode(password);
+		int result = userService.updatePassword(securePassword, email);
+		
+		return "redirect:/user/signIn";
+	}
+		
+	
+
 
 }

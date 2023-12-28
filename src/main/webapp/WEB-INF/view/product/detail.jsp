@@ -423,7 +423,7 @@ window.addEventListener('pageshow', function(event) {
 									<h4>상품문의</h4>
 									<br>
 									<div class="gray_button write_button">
-										<a href="/customer/write">글쓰기</a>
+										<a href="/customer/write?type=productInquiry&pId=${product.id}">글쓰기</a>
 									</div>
 								</div>
 								<div class="row align-items-center">

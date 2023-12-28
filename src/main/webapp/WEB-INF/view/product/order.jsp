@@ -25,6 +25,11 @@
 <link rel="stylesheet" type="text/css" href="/css/order.css">
 <title>주문 / 결제하기</title>
 </head>
+<style>
+.m--cursor--pointer {
+	cursor: pointer;
+}
+</style>
 <body>
 	<div class="super_container">
 		<!-- Header -->
@@ -77,13 +82,15 @@
 							</div>
 						</div>
 					</div>
+
 					<form id="orderForm" action="/product/order/kakao-pay"
 						method="post">
 						<!-- 배송지 정보 -->
 						<div class="box_content" style="margin-top: 16px">
 							<div class="box_title">배송지 정보</div>
 							<br> <input type="checkbox" id="useCheckbox"
-								name="useCheckbox"> <label>주문자 정보와 동일</label>
+								name="useCheckbox" class="m--cursor--pointer"> <label>주문자
+								정보와 동일</label>
 							<div class="box_form">
 								<div class="box_label">
 									<label for="user_name">이름</label>
@@ -108,7 +115,7 @@
 									style="width: 350px;" title="우편번호" name="postNumber"
 									placeholder="우편번호" readonly
 									onclick="sample4_execDaumPostcode()"> <input
-									type="button" class="btn_address"
+									type="button" class="btn_address m--cursor--pointer"
 									onclick="sample4_execDaumPostcode()" value="주소찾기"><br>
 								<div class="box_label">
 									<label for="user_name"></label>
@@ -131,6 +138,7 @@
 									name="addressDetail" class="box_input" placeholder="상세주소">
 							</div>
 						</div>
+						
 						<!-- 주문 정보 -->
 
 						<div class="box_content" style="margin-top: 16px">
@@ -170,12 +178,12 @@
 											value="${deliveryFee }" pattern="#,###" />원</span>
 								</div>
 								<c:if test="${optionPrice ne 0}">
-								<div style="display: block; clear: both; content: '';"></div>
+									<div style="display: block; clear: both; content: '';"></div>
 									<div>
-										<span class="text_price">추가금액</span> 
-										<span class="text_number">
-											<fmt:formatNumber value="${optionPrice }" pattern="#,###" />원</span>
-											<input type="hidden" id="selectedOption" name="selectedOption" value="${(optionPrice div 5000) + 1}">
+										<span class="text_price">추가금액</span> <span class="text_number">
+											<fmt:formatNumber value="${optionPrice }" pattern="#,###" />원
+										</span> <input type="hidden" id="selectedOption"
+											name="selectedOption" value="${(optionPrice div 5000) + 1}">
 									</div>
 								</c:if>
 							</div>
@@ -193,14 +201,16 @@
 							<br>
 							<div style="flex: 1 1; position: relative;">
 								<div class="payment_box">
-									<input type="radio" name="payment" id="payment_select" class="payment_radio" checked> 
-										<label class="payment_label">카카오페이 결제 
-										<img src="/images/payment_icon_yellow_small.png" width="60" height="25"></label>
+									<input type="radio" name="payment" id="payment_select"
+										class="payment_radio" checked> <label
+										class="payment_label">카카오페이 결제 <img
+										src="/images/payment_icon_yellow_small.png" width="60"
+										height="25"></label>
 								</div>
 							</div>
 						</div>
 						<div style="text-align: center; padding: 20px 0 0 0;">
-							<button type="submit" class="botton_pay">결제하기</button>
+							<button type="submit" class="botton_pay m--cursor--pointer">결제하기</button>
 						</div>
 					</form>
 				</div>

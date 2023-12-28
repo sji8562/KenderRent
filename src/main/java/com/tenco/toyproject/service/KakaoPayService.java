@@ -27,6 +27,7 @@ public class KakaoPayService {
 
 	private Product product;
 	private String[] productIds;
+	private int optionPrice = 0; 
 
 	public String KakaoPayReady(String[] productId, int userId, String selectedOption) {
 //		Product orderList = productService.findById(productId);
@@ -41,7 +42,6 @@ public class KakaoPayService {
 	        productPrice += product.getPrice();
 	        count++;
 	    }
-	    int optionPrice = 0;
 		if (selectedOption == null) {
 			optionPrice = 0;
 		} else {
@@ -103,7 +103,8 @@ public class KakaoPayService {
 	        product = productService.findById(Integer.parseInt(id));
 	        productPrice += product.getPrice();
 	    }
-	    int totalPrice = productPrice + deliveryFee;
+		
+		int totalPrice = productPrice + deliveryFee + optionPrice;
 
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 		params.add("cid", "TC0ONETIME");

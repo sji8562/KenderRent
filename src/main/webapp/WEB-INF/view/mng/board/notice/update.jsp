@@ -58,7 +58,7 @@
                                     <input type="text" class="form-control" name="title" value="${notice.title}">
                                 </div>
                                 <div id="container">
-                                    <textarea id="summernote" name="content">${notice.content}</textarea>
+                                    <textarea id="content" name="content" style="width: 100%; min-height: 300px;">${notice.content}</textarea>
                                 </div>
 
                         <button type="submit" class="btn btn-primary">수정하기</button>

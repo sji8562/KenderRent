@@ -142,6 +142,9 @@ public class ProductService {
 	public List<Product> findByCategoryId(Integer id) {
 		return productRepository.findByCategoryId(id);
 	}
+	public List<Product> findByCategoryId(Integer id,Integer sId) {
+		return productRepository.findByfsCategoryId(id,sId);
+	}
 	public List<SecondCategory> findBysCategoryId(Integer id) {
 		return productRepository.findBysCategoryId(id);
 	}
@@ -152,4 +155,8 @@ public class ProductService {
 		return productRepository.findSecondCategoryName(id);
 	}
 	
+
+    public List<Product> findProductForMain() {
+		return productRepository.findProductForMain();
+    }
 }

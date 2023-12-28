@@ -16,6 +16,9 @@ public class IndexService {
     public List<FirstCategory> findByFCategory(){
         return indexRepository.findByFCategory();
     }
+    public List<FirstCategory> findByFCategoryCode2(){
+        return indexRepository.findByFCategoryCode2();
+    }
 
     public List<SecondCategory> findBySecondCategoryId() {
         return indexRepository.findBySecondCategoryId();

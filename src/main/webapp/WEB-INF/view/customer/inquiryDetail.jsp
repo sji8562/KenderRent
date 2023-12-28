@@ -20,7 +20,7 @@
 <link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
 
 	<!-- jQuery 포함 -->
-	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<%--<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>--%>
 	<!-- Summernote CSS -->
 	<%--<link rel="stylesheet"
 		  href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
@@ -77,9 +77,9 @@
 						<div>
 							<h4>${inquiryDetail.title }</h4>
 							<br>
-							<%--<p >${inquiryDetail.content }</p>--%>
+							<p >${inquiryDetail.content }</p>
 							<div class="container">
-								<textarea id="summernote" name="content">${inquiryDetail.content}</textarea>
+<%--								<textarea id="summernote" name="content">${inquiryDetail.content}</textarea>--%>
 								<%--<div id="summernote">${inquiryDetail.content}</div>--%>
 							</div>
 						</div>

@@ -77,13 +77,15 @@
 
 									<div class="product_sorting_container product_sorting_container_top" style="display: flex; align-items: center;">
 										<img src="/images/icon_subtitle.png" style="margin-right: 10px;">
-										<div><c:choose>
-											<c:when test="${secondCategoryList != null}">
-												<c:forEach var="secondCategoryList" items="${secondCategoryList}">
-													<b style="font-size: 25px">${secondCategoryList.secondCategoryName}</b>
-												</c:forEach>
-											</c:when>
-										</c:choose></div>
+										<div>
+											<c:choose>
+												<c:when test="${secondCategoryList != null}">
+													<c:forEach var="secondCategoryList" items="${secondCategoryList}">
+														<b style="font-size: 25px">${secondCategoryList.secondCategoryName}</b>
+													</c:forEach>
+												</c:when>
+											</c:choose>
+										</div>
 									</div>
 
 									<!-- Product Grid -->
@@ -96,20 +98,20 @@
 											<c:when test="${productList != null}">
 												<c:forEach var="productList" items="${productList}">
 													<div class="product-item">
-														<a href="/product/detail/${productList.id}">
+														<a href="/product/rent/${productList.id}">
 															<div class="product discount product_filter">
-															<div class="product_image">
-																<img src="/images/${productList.picUrl}" alt="">
+																<div class="product_image">
+																	<img src="/images/${productList.picUrl}" alt="">
 
-															</div>
-															<div class="favorite favorite_left"></div>
+																</div>
+																<div class="favorite favorite_left"></div>
 
-															<div class="product_info">
-																<h6 class="product_name">${productList.name}
-																</h6>
-																<div class="product_price">${productList.price}</div>
+																<div class="product_info">
+																	<h6 class="product_name">${productList.name}
+																	</h6>
+																	<div class="product_price">${productList.price}</div>
+																</div>
 															</div>
-														</div>
 														</a>
 														<form action="/cart/${productList.id}/add" method="get"
 															  onsubmit="return addToCartConfirmation()">

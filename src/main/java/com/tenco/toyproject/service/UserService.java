@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,6 +42,12 @@ public class UserService {
 	}
 	public User selectUserSns(String sns) {
 		return userRepository.selectUserSns(sns);
+	}
+	public Map findByNameAndPhone(String name, String phoneNumber) {
+		return userRepository.findByNameAndPhone(name, phoneNumber);
+	}
+	public int updatePassword(String password, String email) {
+		return userRepository.updatePassword(password, email);
 	}
 
 }

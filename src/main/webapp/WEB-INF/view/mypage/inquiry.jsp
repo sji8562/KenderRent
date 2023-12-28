@@ -119,9 +119,9 @@
 							<c:if test="${param.type == 3 || param.type == null}">
 								<button onclick="location.href='/customer/write?type=inquiry'" type="button" class="btn btn-outline-secondary float-right btn-lg"  style='cursor:pointer;'>글쓰기</button>
 							</c:if>
-							<c:if test="${param.type == 4 }">
+							<%--<c:if test="${param.type == 4 }">
 								<button onclick="location.href='/customer/write?type=productInquiry'" type="button" class="btn btn-outline-secondary float-right btn-lg"  style='cursor:pointer;'>글쓰기</button>
-							</c:if>
+							</c:if>--%>
 						</div>
 						
 					</div>

@@ -212,7 +212,7 @@ $(document).on("click", "#emailAuth", function() {
 					<div class="breadcrumbs d-flex flex-row align-items-center">
 						<ul>
 							<li><a href="index.html">Home</a></li>
-							<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>
+							<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>sign up</a></li>
 						</ul>
 					</div>
 
@@ -222,9 +222,15 @@ $(document).on("click", "#emailAuth", function() {
 			<div class="row">
 				<div class="col-lg-4"></div>
 				<div class="col-lg-4 get_in_touch_col">
-					<div class="row">
+					<%--<div class="row">
 						<div class="logo_container">
-							<a href="/">Kender<span>Rent</span></a>
+							<a href="/"><img src="/images/Logo2.png" style="max-width: 80%; height: auto;"></a>
+							<br><br><br><br>
+						</div>
+					</div>--%>
+					<div class="row" style="padding: 30px;">
+						<div class="logo_container" style="text-align: center;">
+							<a href="/"><img src="/images/Logo2.png" style="max-width: 80%; height: auto;"></a>
 							<br><br><br><br>
 						</div>
 					</div>
@@ -237,7 +243,9 @@ $(document).on("click", "#emailAuth", function() {
 										<div id="emailResult"></div>
 									</div>
 									<div class="col-lg-4">
-										<button type="button" id="emailAuth" name="emailAuth">이메일인증</button>
+
+										<button type="button" id="emailAuth" name="emailAuth" class="btn btn-dark">이메일인증</button>
+
 									</div>
 								</div>
 								<input id="authCode" name="authCode" style="display: none" class="form_input input_email input_ph" type="text"   placeholder="인증코드 6자리를 입력해주세요">
@@ -256,7 +264,10 @@ $(document).on("click", "#emailAuth", function() {
 									</div>
 									<div class="col-lg-4">
 										<span id="guide" style="color: #999; display: none"></span>
-										<button type="button" onclick="addressFind()" value="주소찾기">주소찾기</button>
+
+										<button type="button" onclick="addressFind()" value="주소찾기" class="btn btn-dark">주소찾기</button>
+
+
 									</div>
 								</div>
 								<input id="address" name="address" class="form_input input_website input_ph" type="text"  placeholder="주소를 입력해주세요">

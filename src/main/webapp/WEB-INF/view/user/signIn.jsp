@@ -56,8 +56,10 @@
 				<div class="get_in_touch_contents">
 					<form action="/user/signIn" method="post">
 						<div>
-							<input id="email" name="email" class="form_input input_email input_ph" type="email"  placeholder="Email" required="required" data-error="이메일을 입력해주세요">
-							<input id="password" name="password" class="form_input input_website input_ph" type="password"  placeholder="Password" required="required" data-error="비밀번호를 입력해주세요">
+							<input id="email" name="email" class="form_input input_email input_ph" type="email"  placeholder="Email" required="required" data-error="이메일을 입력해주세요"
+								   oninput="this.value=this.value.replace(/[^a-zA-Z0-9~!@#$%^&*()_+|<>?:{}.]/g,'');">
+							<input id="password" name="password" class="form_input input_website input_ph" type="password"  placeholder="Password" required="required" data-error="비밀번호를 입력해주세요"
+								   oninput="this.value=this.value.replace(/[^a-zA-Z0-9~!@#$%^&*()_+|<>?:{}]/g,'');">
 						</div>
 						<div>
 							<button  type="submit" class="red_button message_submit_btn trans_300 button__submit" value="Submit">로그인</button>
@@ -65,13 +67,13 @@
 						<div style="margin-top: 16px; text-align: center;">
 							<ul >
 								<li class="list-item">
-									<a href="#">아이디 찾기</a>
+									<a href="/user/findId">아이디 찾기</a>
 								</li>
 								<li class="list-item">
-									<a href="#">비밀번호 찾기</a>
+									<a href="/user/findPassword">비밀번호 찾기</a>
 								</li>
 								<li class="list-item">
-									<a href="#">회원가입</a>
+									<a href="/user/signUp">회원가입</a>
 								</li>
 							</ul>
 						</div>

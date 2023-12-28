@@ -1,7 +1,7 @@
 package com.tenco.toyproject.controller.mng;
 
 import com.sun.tools.jconsole.JConsoleContext;
-import com.tenco.toyproject._core.handler.exception.CustomRestfulException;
+import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import com.tenco.toyproject.dto.MngApplyDTO;
 import com.tenco.toyproject.dto.MngIndexDTO;
 import com.tenco.toyproject.dto.MngSignInFormDto;
@@ -46,15 +46,15 @@ public class MngIndexController {
     }
 
     @PostMapping("/sign-in")
-    public String signInProc(MngSignInFormDto dto) throws CustomRestfulException {
+    public String signInProc(MngSignInFormDto dto) {
 
         // 1. 유효성 검사
         if(dto.getUsername() == null || dto.getUsername().isEmpty()) {
-            throw new CustomRestfulException("username을 입력하세요", HttpStatus.BAD_REQUEST);
+            throw new CustomRestfullException("아이디를 입력하세요", HttpStatus.BAD_REQUEST);
         }
 
         if(dto.getPassword() == null || dto.getPassword().isEmpty()) {
-            throw new CustomRestfulException("password를 입력하세요", HttpStatus.BAD_REQUEST);
+            throw new CustomRestfullException("비밀번호를 입력하세요", HttpStatus.BAD_REQUEST);
         }
 
         // 2. 서비스 호출

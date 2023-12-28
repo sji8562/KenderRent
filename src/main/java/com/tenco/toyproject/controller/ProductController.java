@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.tenco.toyproject.repository.entity.SecondCategory;
+import com.tenco.toyproject.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -22,15 +23,12 @@ import com.tenco.toyproject.dto.response.KakaoPayCancelResponse;
 import com.tenco.toyproject.repository.entity.Product;
 import com.tenco.toyproject.repository.entity.Sale;
 import com.tenco.toyproject.repository.entity.User;
-import com.tenco.toyproject.service.CustomerService;
-import com.tenco.toyproject.service.KakaoPayService;
-import com.tenco.toyproject.service.ProductService;
-import com.tenco.toyproject.service.UserService;
 import com.tenco.toyproject.vo.PageVO;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import retrofit2.http.Path;
 
 @Controller
 @RequestMapping("/product")
@@ -48,39 +46,51 @@ public class ProductController {
 	@Autowired
 	private MessageController message;
 
-	@GetMapping("{fId}/categories")
-	public String categories(@PathVariable Integer fId, Model model) {
-
-		List<Product> productList = productService.findByCategoryId(fId);
-		List<SecondCategory> secondCategoryList = productService.findBysCategoryId(fId);
-		System.out.println(productList.toString());
-		System.out.println(secondCategoryList.toString());
-		model.addAttribute("productList", productList);
-		model.addAttribute("secondCategoryList", secondCategoryList);
-
-		if (fId == 1 || fId == 2 || fId == 6) {
-			return "product/categories01";
-		}
-		return "product/categories02";
-	}
-
 	@GetMapping("{fId}/categories/{sId}")
-	public String categories(@PathVariable Integer fId, @PathVariable Integer sId) {
-		if (fId == 1 || fId == 2 || fId == 6) {
+	public String categories(@PathVariable Integer fId, @PathVariable Integer sId, Model model) {
+
+		List<Product> productList2 = productService.findByCategoryId(fId, sId);
+		List<SecondCategory> secondCategoryList = productService.findBysCategoryId(fId);
+		System.out.println("여기오자나 그치 ?");
+		System.out.println(productList2.toString());
+		System.out.println("---------------------------------" + secondCategoryList.toString());
+
+		model.addAttribute("secondCategoryList", secondCategoryList);
+		model.addAttribute("productList2", productList2);
+		if (fId == 3 || fId == 4 || fId == 5) {
+			List<Product> productList = productService.findByCategoryId(fId);
+			System.out.println(productList.toString());
+			model.addAttribute("productList", productList);
+
 			return "product/categories02";
 		}
 		return "product/categories01";
 	}
 //
+//  @GetMapping("{fId}/categories/")
+//  public String categories(@PathVariable Integer fId, @PathVariable Integer sId,Model model) {
+//    List<SecondCategory> secondCategories = productService.findBysCategoryId(fId);
+//    model.addAttribute("secondCategories", secondCategories);
+//
+//    if (fId == 1 || fId == 2 || fId == 6) {
+//      return "product/categories02";
+//    }
+//    return "product/categories01";
+//  }
+
 //  @GetMapping("categories01")
 //  public String categories01() {
 //    return "product/categories01";
 //  }
-//
+
 //  @GetMapping("categories02")
 //  public String categories02() {
 //    return "product/categories02";
 //  }
+
+	// 부터 전우진 231226
+
+	// 까지 전우진232226
 
 	@GetMapping("detail/{id}")
 	public String detail(Model model, PageVO pageVO, @RequestParam(value = "nowPage", required = false) String nowPage,
@@ -117,15 +127,12 @@ public class ProductController {
 			boolean isWished = productService.checkWishList(principal.getId(), id);
 			model.addAttribute("isWished", isWished);
 		}
-		String[] category = { productService.findFirstCategoryName(product.getFirstCategoryId()),
-				productService.findSecondCategoryName(product.getSecondCategoryId()) };
-		model.addAttribute("category", category);
 		return "product/detail";
 	}
 
 	@PostMapping("order")
 	public String order(Model model, @RequestParam("id") String selectedProducts,
-			@RequestParam(required = false, name ="selectedOption") String selectedOption) {
+			@RequestParam(required = false, name = "selectedOption") String selectedOption) {
 		User principal = (User) session.getAttribute("principal");
 		if (principal == null) {
 			throw new CustomRestfullException("로그인이 필요한 기능입니다.", HttpStatus.BAD_REQUEST);
@@ -153,7 +160,7 @@ public class ProductController {
 					optionPrice = 10000;
 				}
 			}
-			
+
 			int totalPrice = productPrice + deliveryFee + optionPrice;
 			model.addAttribute("optionPrice", optionPrice);
 			model.addAttribute("productPrice", productPrice);
@@ -171,14 +178,16 @@ public class ProductController {
 
 	@PostMapping("order/kakao-pay")
 	public String kakaoPayReady(@RequestParam("orderIds") String[] orderIds, String name, String phoneNumber,
-			String postNumber, String address, String addressDetail, @RequestParam(required = false, name ="selectedOption") String selectedOption) {
+			String postNumber, String address, String addressDetail,
+			@RequestParam(required = false, name = "selectedOption") String selectedOption) {
 		User principal = (User) session.getAttribute("principal");
 		int userId = principal.getId();
 		for (String id : orderIds) {
 			productService.payForProduct(userId, Integer.parseInt(id), postNumber, address, addressDetail);
 		}
 		String orderIdsToString = String.join(",", orderIds);
-		return "redirect:" + kakaoPayService.KakaoPayReady(orderIds, userId, selectedOption) + "?id=" + orderIdsToString + "&selectedOption=" + selectedOption;
+		return "redirect:" + kakaoPayService.KakaoPayReady(orderIds, userId, selectedOption) + "?id=" + orderIdsToString
+				+ "&selectedOption=" + selectedOption;
 	}
 
 	// http://localhost/product/kakao-pay/success?pg_token=T5794b2c3ad74821dd21
@@ -204,7 +213,8 @@ public class ProductController {
 	}
 
 	@GetMapping("order/kakao-pay/fail")
-	public String kakaoPayFail(Model model, @RequestParam("id") String orderIds, @RequestParam(required = false, name ="selectedOption") String selectedOption) {
+	public String kakaoPayFail(Model model, @RequestParam("id") String orderIds,
+			@RequestParam(required = false, name = "selectedOption") String selectedOption) {
 		User principal = (User) session.getAttribute("principal");
 		User userInfo = userService.findById(principal.getId());
 		int[] productId = Arrays.stream(orderIds.split(",")).mapToInt(Integer::parseInt).toArray();
@@ -227,7 +237,7 @@ public class ProductController {
 				optionPrice = 10000;
 			}
 		}
-		
+
 		int totalPrice = productPrice + deliveryFee + optionPrice;
 		model.addAttribute("optionPrice", optionPrice);
 		model.addAttribute("productPrice", productPrice);
@@ -249,7 +259,6 @@ public class ProductController {
 			return "product/search";
 		}
 		List<Map> productList = productService.searchProduct(keyword);
-		// System.out.println(productList.size());
 		model.addAttribute("productList", productList);
 		model.addAttribute("MaxPrice", productService.searchMaxPrice());
 
@@ -261,7 +270,6 @@ public class ProductController {
 			@RequestParam(defaultValue = "10") int pageSize, @RequestParam String keyword, Model model) {
 		// 페이지 및 페이지 크기를 이용하여 데이터 조회
 		List<Map> productList = productService.searchProductInfinite(keyword, page, pageSize);
-		// model.addAttribute("productList", productList);
 		return productService.searchProductInfinite(keyword, page, pageSize);
 	}
 
@@ -322,9 +330,6 @@ public class ProductController {
 		// 리뷰 내용
 		List<Map> review = productService.showReview(id);
 		model.addAttribute("review", review);
-		String[] category = { productService.findFirstCategoryName(product.getFirstCategoryId()),
-				productService.findSecondCategoryName(product.getSecondCategoryId()) };
-		model.addAttribute("category", category);
 		return "product/rent";
 	}
 

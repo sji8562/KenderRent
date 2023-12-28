@@ -114,7 +114,6 @@
 						</div>
 					</div>
 				</div>
-				<br> <br> <br> <br> <br> &nbsp;
 			</div>
 		</div>
 		<jsp:include page="../layout/footer.jsp" />

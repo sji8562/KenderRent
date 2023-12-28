@@ -49,5 +49,8 @@ public interface ProductRepository {
 
 
 	public List<Product> findByCategoryId(Integer id);
+	public List<Product> findByfsCategoryId(Integer id,Integer sId);
 	public List<SecondCategory> findBysCategoryId(Integer id);
+
+    List<Product> findProductForMain();
 }
