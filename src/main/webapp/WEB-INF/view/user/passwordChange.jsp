@@ -4,7 +4,7 @@
 <html>
 
 <head>
-<title>Contact Us</title>
+	<title>Kinder Lend</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Colo Shop Template">
@@ -19,6 +19,7 @@
 <link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
 <script src="/js/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/styles/main_styles.css">
 <!-- CSS only -->
 z
 
