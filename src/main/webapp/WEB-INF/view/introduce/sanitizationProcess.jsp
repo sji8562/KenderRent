@@ -8,7 +8,7 @@
 <meta name="description" content="Colo Shop Template">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="/css/styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
 <link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
@@ -23,6 +23,19 @@
 <%--			border-radius: 0; /* 선택적으로 border-radius를 0으로 설정할 수 있습니다. */--%>
 <%--		}--%>
 <%--	</style>--%>
+	<link rel="stylesheet" type="text/css" href="/css/styles/main_styles.css">
+	<link rel="stylesheet" type="text/css" href="/css/styles/responsive.css">
+	<style>
+		.signup{
+			display: flex;
+			flex-wrap: wrap;
+			margin-right: -15px;
+			margin-left: -15px;
+			--bs-gutter-x: 0;
+			--bs-gutter-y: 0;
+			margin-top: 0;
+		}
+	</style>
 </head>
 <body>
 	<div class="super_container">
