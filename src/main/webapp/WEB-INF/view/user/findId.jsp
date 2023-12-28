@@ -4,7 +4,7 @@
 <html>
 
 <head>
-	<title>Contact Us</title>
+	<title>Kinder Lend</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="Colo Shop Template">
@@ -18,7 +18,18 @@
 	<link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
 	<link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
-
+	<link rel="stylesheet" type="text/css" href="/css/styles/main_styles.css">
+	<style>
+		.signup{
+			display: flex;
+			flex-wrap: wrap;
+			margin-right: -15px;
+			margin-left: -15px;
+			--bs-gutter-x: 0;
+			--bs-gutter-y: 0;
+			margin-top: 0;
+		}
+	</style>
 	<!-- CSS only -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -136,7 +147,7 @@
 							<div id="nameResult"></div>
 						</div>
 						<div>
-							<button  type="submit" class="red_button message_submit_btn trans_300" value="Submit" id="findIdButton" disabled="disabled">아이디찾기</button>
+							<button  type="submit" class=" message_submit_btn trans_300" value="Submit" id="findIdButton" disabled="disabled">아이디찾기</button>
 						</div>
 					</form>
 				</div>

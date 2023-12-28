@@ -3,6 +3,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- Summernote CSS -->
+<style>
+    .signup{
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 0;
+        margin-top: 0;
+    }
+</style>
 
 <header class="header trans_300">
 
