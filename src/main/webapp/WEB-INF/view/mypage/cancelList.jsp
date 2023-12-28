@@ -2,35 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Colo Shop Template">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css"
-	href="/css/styles/bootstrap4/bootstrap.min.css">
-<link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css"
-	href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css"
-	href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css"
-	href="/plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css"
-	href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-<link rel="stylesheet" type="text/css"
-	href="/css/styles/categories_styles.css">
-<link rel="stylesheet" type="text/css"
-	href="/css/styles/categories_responsive.css">
-<link rel="stylesheet" type="text/css" href="/css/myPage.css">
-<link rel="stylesheet" type="text/css" href="/css/order.css">
-<body>
-	<div class="super_container">
+
 		<!-- Header -->
-		<jsp:include page="../layout/header.jsp" />
+<jsp:include page="../layout/headerSub.jsp" />
 		<div class="container product_section_container">
 			<div class="row">
 				<div class="col product_section clearfix">

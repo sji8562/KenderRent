@@ -1,31 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Colo Shop Template">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="/css/styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
-<link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
-<link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
-
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
-
-</head>
-<body>
-	<div class="super_container">
 
 	<!-- Header -->
 
-	<jsp:include page="../layout/header.jsp" />
+	<jsp:include page="../layout/headerSub.jsp" />
 
 	<div class="container contact_container">
 		<div class="row">
@@ -154,6 +132,7 @@
 
 	<jsp:include page="../layout/footer.jsp" />
 	</div>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/css/styles/bootstrap4/popper.js"></script>
 <script src="/styles/bootstrap4/bootstrap.min.js"></script>
