@@ -133,7 +133,7 @@ function addToCartConfirmation() {
     }
 }
 </script>
-<<<<<<< HEAD
+
 <script type="text/javascript">
 window.addEventListener('pageshow', function(event) {
     if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
@@ -149,10 +149,7 @@ window.addEventListener('pageshow', function(event) {
 		}
 	</style>
 	
-=======
 
-
->>>>>>> 90acd4c56cc26be83132754441aaf2aeb0cb6233
 </head>
 <body>
 	<div class="super_container">
@@ -163,48 +160,7 @@ window.addEventListener('pageshow', function(event) {
 
 		<!-- Hamburger Menu -->
 
-		<div class="hamburger_menu">
-			<div class="hamburger_close">
-				<i class="fa fa-times" aria-hidden="true"></i>
-			</div>
-			<div class="hamburger_menu_content text-right">
-				<ul class="menu_top_nav">
-					<li class="menu_item has-children"><a href="#"> usd <i
-							class="fa fa-angle-down"></i>
-					</a>
-						<ul class="menu_selection">
-							<li><a href="#">cad</a></li>
-							<li><a href="#">aud</a></li>
-							<li><a href="#">eur</a></li>
-							<li><a href="#">gbp</a></li>
-						</ul></li>
-					<li class="menu_item has-children"><a href="#"> English <i
-							class="fa fa-angle-down"></i>
-					</a>
-						<ul class="menu_selection">
-							<li><a href="#">French</a></li>
-							<li><a href="#">Italian</a></li>
-							<li><a href="#">German</a></li>
-							<li><a href="#">Spanish</a></li>
-						</ul></li>
-					<li class="menu_item has-children"><a href="#"> My Account
-							<i class="fa fa-angle-down"></i>
-					</a>
-						<ul class="menu_selection">
-							<li><a href="#"><i class="fa fa-sign-in"
-									aria-hidden="true"></i>Sign In</a></li>
-							<li><a href="#"><i class="fa fa-user-plus"
-									aria-hidden="true"></i>Register</a></li>
-						</ul></li>
-					<li class="menu_item"><a href="#">home</a></li>
-					<li class="menu_item"><a href="#">shop</a></li>
-					<li class="menu_item"><a href="#">promotion</a></li>
-					<li class="menu_item"><a href="#">pages</a></li>
-					<li class="menu_item"><a href="#">blog</a></li>
-					<li class="menu_item"><a href="#">contact</a></li>
-				</ul>
-			</div>
-		</div>
+
 
 		<div class="container single_product_container">
 			<div class="row">
@@ -212,16 +168,6 @@ window.addEventListener('pageshow', function(event) {
 
 					<!-- Breadcrumbs -->
 
-					<div class="breadcrumbs d-flex flex-row align-items-center">
-						<ul>
-							<!-- 카테고리 분류 -->
-							<li><a href="index.html">Home</a></li>
-							<li><a href="categories.html"><i
-									class="fa fa-angle-right" aria-hidden="true"></i>${category[0]}</a></li>
-							<li class="active"><a href="#"><i
-									class="fa fa-angle-right" aria-hidden="true"></i>${category[1]}</a></li>
-						</ul>
-					</div>
 
 				</div>
 			</div>
@@ -230,18 +176,7 @@ window.addEventListener('pageshow', function(event) {
 				<div class="col-lg-7">
 					<div class="single_product_pics">
 						<div class="row">
-							<div class="col-lg-3 thumbnails_col order-lg-1 order-2">
-								<div class="single_product_thumbnails">
-									<ul>
-										<li><img src="/images/single_1_thumb.jpg" alt=""
-											data-image="/images/single_1.jpg"></li>
-										<li class="active"><img src=${product.picUrl }
-											alt="" data-image=${product.picUrl }></li>
-										<li><img src="/images/single_3_thumb.jpg" alt=""
-											data-image="/images/single_3.jpg"></li>
-									</ul>
-								</div>
-							</div>
+
 							<div class="col-lg-9 image_col order-lg-2 order-1">
 								<div class="single_product_image">
 									<div class="single_product_image_background"
@@ -323,8 +258,7 @@ window.addEventListener('pageshow', function(event) {
 						<ul
 							class="tabs d-flex flex-sm-row flex-column align-items-left align-items-md-center justify-content-center">
 							<li class="tab active" data-active-tab="tab_1"><span>상품상세정보</span></li>
-							<li class="tab" data-active-tab="tab_2"><span>상품후기</span></li>
-							<li class="tab" data-active-tab="tab_3"><span>상품문의</span></li>
+							<li class="tab" data-active-tab="tab_2"><span>상품문의</span></li>
 						</ul>
 					</div>
 				</div>
@@ -352,71 +286,11 @@ window.addEventListener('pageshow', function(event) {
 
 					<!-- Tab Additional Info -->
 
-					<div id="tab_2" class="tab_container">
-						<div class="row">
 
-							<!-- 상품후기 -->
-
-							<div class="reviews_col">
-								<div class="tab_title reviews_title">
-									<h4>상품후기 (2)</h4>
-								</div>
-
-								<!-- User Review -->
-
-								<div
-									class="user_review_container d-flex flex-column flex-sm-row">
-									<div class="user">
-										<div class="user_pic"></div>
-										<div class="user_rating">
-											<ul class="star_rating">
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-											</ul>
-										</div>
-									</div>
-									<div class="review">
-										<div class="review_date">27 Aug 2016</div>
-										<div class="user_name">Brandon William</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit, sed do eiusmod tempor incididunt ut labore et dolore
-											magna aliqua.</p>
-									</div>
-								</div>
-
-								
-								<div
-									class="user_review_container d-flex flex-column flex-sm-row">
-									<div class="user">
-										<div class="user_pic"></div>
-										<div class="user_rating">
-											<ul class="star_rating">
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-											</ul>
-										</div>
-									</div>
-									<div class="review">
-										<div class="review_date">27 Aug 2016</div>
-										<div class="user_name">Brandon William</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit, sed do eiusmod tempor incididunt ut labore et dolore
-											magna aliqua.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 
 					<!-- 상품문의 -->
 
-					<div id="tab_3" class="tab_container">
+					<div id="tab_2" class="tab_container">
 						<div class="row">
 							<div class="col additional_info_col">
 								<div class="tab_title additional_info_title">
@@ -483,50 +357,6 @@ window.addEventListener('pageshow', function(event) {
 
 	</div>
 
-	<!-- Benefit -->
-
-	<div class="benefit">
-		<div class="container">
-			<div class="row benefit_row">
-				<div class="col-lg-3 benefit_col">
-					<div class="benefit_item d-flex flex-row align-items-center">
-						<div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
-						<div class="benefit_content">
-							<h6>배송 서비스</h6>
-							<p>신청만 하세요 집 앞까지 배달해 드립니다</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 benefit_col">
-					<div class="benefit_item d-flex flex-row align-items-center">
-						<div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
-						<div class="benefit_content">
-							<h6>저렴한 가격</h6>
-							<p>금방 자라는 아이를 위한 맞춤 장난감을 저렴하게 이용해 보세요</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 benefit_col">
-					<div class="benefit_item d-flex flex-row align-items-center">
-						<div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
-						<div class="benefit_content">
-							<h6>손쉬운 반납</h6>
-							<p>사용 완료 후 집에서 손쉽게 반납하실 수 있어요</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 benefit_col">
-					<div class="benefit_item d-flex flex-row align-items-center">
-						<div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
-						<div class="benefit_content">
-							<h6>연중 무휴 고객센터</h6>
-							<p>궁금한 점이 있다면 언제든지 문의해주세요</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<!-- Footer -->
 	<jsp:include page="../layout/footer.jsp" />

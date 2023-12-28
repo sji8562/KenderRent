@@ -137,48 +137,7 @@ function addToCartConfirmation() {
 
 		<!-- Hamburger Menu -->
 
-		<div class="hamburger_menu">
-			<div class="hamburger_close">
-				<i class="fa fa-times" aria-hidden="true"></i>
-			</div>
-			<div class="hamburger_menu_content text-right">
-				<ul class="menu_top_nav">
-					<li class="menu_item has-children"><a href="#"> usd <i
-							class="fa fa-angle-down"></i>
-					</a>
-						<ul class="menu_selection">
-							<li><a href="#">cad</a></li>
-							<li><a href="#">aud</a></li>
-							<li><a href="#">eur</a></li>
-							<li><a href="#">gbp</a></li>
-						</ul></li>
-					<li class="menu_item has-children"><a href="#"> English <i
-							class="fa fa-angle-down"></i>
-					</a>
-						<ul class="menu_selection">
-							<li><a href="#">French</a></li>
-							<li><a href="#">Italian</a></li>
-							<li><a href="#">German</a></li>
-							<li><a href="#">Spanish</a></li>
-						</ul></li>
-					<li class="menu_item has-children"><a href="#"> My Account
-							<i class="fa fa-angle-down"></i>
-					</a>
-						<ul class="menu_selection">
-							<li><a href="#"><i class="fa fa-sign-in"
-									aria-hidden="true"></i>Sign In</a></li>
-							<li><a href="#"><i class="fa fa-user-plus"
-									aria-hidden="true"></i>Register</a></li>
-						</ul></li>
-					<li class="menu_item"><a href="#">home</a></li>
-					<li class="menu_item"><a href="#">shop</a></li>
-					<li class="menu_item"><a href="#">promotion</a></li>
-					<li class="menu_item"><a href="#">pages</a></li>
-					<li class="menu_item"><a href="#">blog</a></li>
-					<li class="menu_item"><a href="#">contact</a></li>
-				</ul>
-			</div>
-		</div>
+
 
 		<div class="container single_product_container">
 			<div class="row">
@@ -186,16 +145,7 @@ function addToCartConfirmation() {
 
 					<!-- Breadcrumbs -->
 
-					<div class="breadcrumbs d-flex flex-row align-items-center">
-						<ul>
-							<!-- 카테고리 분류 -->
-							<li><a href="index.html">Home</a></li>
-							<li><a href="categories.html"><i
-									class="fa fa-angle-right" aria-hidden="true"></i>${category[0]}</a></li>
-							<li class="active"><a href="#"><i
-									class="fa fa-angle-right" aria-hidden="true"></i>${category[1]}</a></li>
-						</ul>
-					</div>
+
 
 				</div>
 			</div>
@@ -204,18 +154,7 @@ function addToCartConfirmation() {
 				<div class="col-lg-7">
 					<div class="single_product_pics">
 						<div class="row">
-							<div class="col-lg-3 thumbnails_col order-lg-1 order-2">
-								<div class="single_product_thumbnails">
-									<ul>
-										<li><img src="/images/single_1_thumb.jpg" alt=""
-											data-image="/images/single_1.jpg"></li>
-										<li class="active"><img src=${product.picUrl } alt=""
-											data-image=${product.picUrl }></li>
-										<li><img src="/images/single_3_thumb.jpg" alt=""
-											data-image="/images/single_3.jpg"></li>
-									</ul>
-								</div>
-							</div>
+
 							<div class="col-lg-9 image_col order-lg-2 order-1">
 								<div class="single_product_image">
 									<div class="single_product_image_background"

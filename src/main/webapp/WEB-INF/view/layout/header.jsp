@@ -54,7 +54,7 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown"><a
-                                    href="/product/1/categories">유아용품대여</a>
+                                    href="/product/1/categories/1">유아용품대여</a>
                                 <div class="dropdown-menu m-0">
                                     <c:choose>
                                         <c:when test="${firstCategories != null}">
