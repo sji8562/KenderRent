@@ -4,19 +4,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Colo Shop Template">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="/css/styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
-<link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
-<link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Colo Shop Template">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/css/styles/bootstrap4/bootstrap.min.css">
+	<link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
+	<link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
+
+	<link rel="stylesheet" type="text/css" href="/css/styles/main_styles.css">
+
+
+<%--	<style>--%>
+<%--		.signup{--%>
+<%--			display: flex;--%>
+<%--			flex-wrap: wrap;--%>
+<%--			margin-right: -15px;--%>
+<%--			margin-left: -15px;--%>
+<%--			--bs-gutter-x: 0;--%>
+<%--			--bs-gutter-y: 0;--%>
+<%--			margin-top: 0;--%>
+<%--		}--%>
+<%--	</style>--%>
 	<%--<style>
 		/* CKEditor 테두리 없애기 */
 		.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {

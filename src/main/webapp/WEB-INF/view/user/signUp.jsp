@@ -18,8 +18,9 @@
 	<link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
 	<link rel="stylesheet" type="text/css" href="/css/styles/main_styles.css">
-	<link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
 	<link rel="stylesheet" type="text/css" href="/css/styles/responsive.css">
+	<link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
+
 
 	<script src="/js/jquery-3.2.1.min.js"></script>
 	<!-- CSS only -->

@@ -4,20 +4,33 @@
 <html>
 <head>
 <title>로그인</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Colo Shop Template">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="/css/styles/bootstrap4/bootstrap.min.css">
-<link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css">
-<link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
-<link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
-<link rel="stylesheet" type="text/css" href="/css/login.css">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Colo Shop Template">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/css/styles/bootstrap4/bootstrap.min.css">
+	<link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
+	<link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css">
+	<link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
+	<link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
+	<link rel="stylesheet" type="text/css" href="/css/login.css">
+	<link rel="stylesheet" type="text/css" href="/css/styles/main_styles.css">
+	<link rel="stylesheet" type="text/css" href="/css/styles/responsive.css">
+	<style>
+		.signup{
+			display: flex;
+			flex-wrap: wrap;
+			margin-right: -15px;
+			margin-left: -15px;
+			--bs-gutter-x: 0;
+			--bs-gutter-y: 0;
+			margin-top: 0;
+		}
+	</style>
 </head>
 <body>
 <div class="super_container">
@@ -62,7 +75,7 @@
 								   oninput="this.value=this.value.replace(/[^a-zA-Z0-9~!@#$%^&*()_+|<>?:{}]/g,'');">
 						</div>
 						<div>
-							<button  type="submit" class="red_button message_submit_btn trans_300 button__submit" value="Submit">로그인</button>
+							<button  type="submit" class="message_submit_btn trans_300 button__submit" value="Submit">로그인</button>
 						</div>
 						<div style="margin-top: 16px; text-align: center;">
 							<ul >
