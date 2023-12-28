@@ -9,4 +9,13 @@
 		from board 
 			where user_id = #{userId} and code = #{code}
 	</select>
+	<update id="userUpdate">
+		update user set password = #{userUpdateDTO.password} , user_name = #{userUpdateDTO.userName}, address = #{userUpdateDTO.address}, address_detail = #{userUpdateDTO.addressDetail}, phone_number = #{userUpdateDTO.phoneNumber} , post_number = #{userUpdateDTO.postNumber} where id = #{id}
+	</update>
+	<update id="userUpdateNonPw">
+		update user set user_name = #{userUpdateDTO.userName}, address = #{userUpdateDTO.address}, address_detail = #{userUpdateDTO.addressDetail}, phone_number = #{userUpdateDTO.phoneNumber} , post_number = #{userUpdateDTO.postNumber} where id = #{id}
+	</update>
+
+
 </mapper>
+
