@@ -113,8 +113,8 @@ public class ProductController {
 
   @PostMapping("order")
   public String order(Model model, @RequestParam("id") String selectedProducts) {
-    User principal = (User) session.getAttribute("principal");
-    User userInfo = userService.findById(principal.getId());  //세션은 들고왔는데 세션 체크 안함
+	  User principal = (User) session.getAttribute("principal");
+	  User userInfo = userService.findById(principal.getId());  //세션은 들고왔는데 세션 체크 안함
     int[] productId =
         Arrays.stream(selectedProducts.split(",")).mapToInt(Integer::parseInt).toArray(); //
     List<Product> orderList = new ArrayList<>();
@@ -298,5 +298,6 @@ public class ProductController {
 		model.addAttribute("review", review);
 		return "product/rent";
 	}
+
 
 }
