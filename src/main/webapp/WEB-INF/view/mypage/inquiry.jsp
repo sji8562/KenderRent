@@ -103,7 +103,7 @@
 												<td><a href="/customer/detail?id=${userCustomerList.id }">🔒${userCustomerList.title }</a></td>
 											</c:if>
 										<td>${sessionScope.principal.userName }</td>
-										<td><fmt:formatDate value="${userCustomerList.create_at }" pattern="yyyy. MM. dd" /></td>
+										<td><fmt:formatDate value="${userCustomerList.created_at }" pattern="yyyy. MM. dd" /></td>
 										<c:if test="${userCustomerList.status != null}">
 											<td>답변완료</td>
 										</c:if>

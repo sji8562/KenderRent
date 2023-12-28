@@ -122,7 +122,6 @@ function addToCartConfirmation() {
 			alert("로그인이 필요한 기능입니다.");
   			location.href='${pageContext.request.contextPath}/user/signIn';
     	} else {
-    		alert("장바구니에 추가되었습니다.");
     		document.getElementById("cartForm").submit();
     	}
     }
@@ -192,9 +191,9 @@ function addToCartConfirmation() {
 							<!-- 카테고리 분류 -->
 							<li><a href="index.html">Home</a></li>
 							<li><a href="categories.html"><i
-									class="fa fa-angle-right" aria-hidden="true"></i>${product.firstCategoryId}</a></li>
+									class="fa fa-angle-right" aria-hidden="true"></i>${category[0]}</a></li>
 							<li class="active"><a href="#"><i
-									class="fa fa-angle-right" aria-hidden="true"></i>${product.secondCategoryId}</a></li>
+									class="fa fa-angle-right" aria-hidden="true"></i>${category[1]}</a></li>
 						</ul>
 					</div>
 
@@ -247,7 +246,7 @@ function addToCartConfirmation() {
 										<th>기간</th>
 										<td><select id="selectedMonth" name="selectedMonth"
 											onchange="displayText()">
-												<option value="none">선택</option>
+												<option value="">선택</option>
 												<option value="1">1개월 (+ 0원)</option>
 												<option value="2">2개월 (+ 5,000원)</option>
 												<option value="3">3개월 (+ 10,000원)</option>
@@ -279,6 +278,7 @@ function addToCartConfirmation() {
 								<c:when test="${product.status == 1}">
 									<form id="purchaseForm" action="/product/order" method="post">
 										<input type="hidden" name="id" value="${product.id }" />
+										<input type="hidden" id="selectedOption" name="selectedOption" value="" />
 										<button type="button" class="red_button2 buy_button"
 											onclick="optionCheck()">구매하기</button>
 									</form>
@@ -698,12 +698,12 @@ function optionCheck() {
     		alert("로그인이 필요한 기능입니다.");
       		location.href='${pageContext.request.contextPath}/user/signIn';
         } else {
+        	document.getElementById("selectedOption").value = selectedValue;
     		document.getElementById("purchaseForm").submit();
    		} 
 	}
 }
 </script>
-
 
 </body>
 </html>

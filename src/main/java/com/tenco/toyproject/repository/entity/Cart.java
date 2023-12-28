@@ -16,5 +16,15 @@ public class Cart {
 	private int userId;
 	private int productId;
 	private Timestamp createdAt;
+	private int option;
 	
+	public String optionToString() {
+		if (option == 1) {
+			return "1개월";
+		} else if (option == 2) {
+			return "2개월";
+		} else {
+			return "3개월";
+		}
+	}
 }

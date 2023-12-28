@@ -104,7 +104,7 @@
 																		style="font-size: 12px; padding-top: 8px; padding-left: 5px;">[품절]</label>
 																</c:when>
 															</c:choose></a>
-															<div class="cart_table_option">옵션설명</div>
+															<div class="cart_table_option">선택기간: ${product.code}개월</div>
 														</div>
 													</td>
 													<td class="vertical-center">${product.formatPrice()}</td>
