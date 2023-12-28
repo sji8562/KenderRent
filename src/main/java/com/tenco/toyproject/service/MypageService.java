@@ -3,7 +3,9 @@ package com.tenco.toyproject.service;
 import java.util.List;
 import java.util.Map;
 
+import com.tenco.toyproject.dto.BoardDTO;
 import com.tenco.toyproject.dto.UserUpdateDTO;
+import com.tenco.toyproject.repository.entity.Board;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,4 +30,8 @@ public class MypageService {
 		userUpdateDTO.setPassword(securePassword);
 		return mypageRepository.userUpdate(id,userUpdateDTO);
     }
+
+	public List<BoardDTO> findByQna(int id) {
+		return mypageRepository.findByQna(id);
+	}
 }

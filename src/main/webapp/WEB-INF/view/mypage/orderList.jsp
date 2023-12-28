@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>Kinder Lend</title>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Colo Shop Template">
@@ -63,8 +64,8 @@
 								<li><a href="/mypage/cancel-list">취소 내역</a></li>
 								<li><a href="/mypage/rent-list">대여 내역</a></li>
 								<li><a href="/mypage/wish-list">위시리스트</a></li>
-								<li><a href="#">문의 내역</a></li>
-								<li><a href="#">회원정보 변경</a></li>
+								<li><a href="/mypage/qna">문의 내역</a></li>
+								<li><a href="/mypage/user-update">회원정보 변경</a></li>
 							</ul>
 						</div>
 					</div>

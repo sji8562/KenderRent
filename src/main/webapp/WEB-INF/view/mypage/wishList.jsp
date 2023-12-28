@@ -2,25 +2,26 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-z
+
+<title>Kinder Lend</title>
 <link rel="stylesheet" type="text/css"
-	href="/css/styles/bootstrap4/bootstrap.min.css">
+	  href="/css/styles/bootstrap4/bootstrap.min.css">
 <link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
+	  rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css"
-	href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+	  href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 <link rel="stylesheet" type="text/css"
-	href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+	  href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
 <link rel="stylesheet" type="text/css"
-	href="/plugins/OwlCarousel2-2.2.1/animate.css">
+	  href="/plugins/OwlCarousel2-2.2.1/animate.css">
 <link rel="stylesheet" type="text/css"
-	href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+	  href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 <link rel="stylesheet" type="text/css"
-	href="/css/styles/categories_styles.css">
+	  href="/css/styles/categories_styles.css">
 <link rel="stylesheet" type="text/css"
-	href="/css/styles/categories_responsive.css">
+	  href="/css/styles/categories_responsive.css">
 <link rel="stylesheet" type="text/css"
-	href="/css/styles/single_responsive.css">
+	  href="/css/styles/single_responsive.css">
 <link rel="stylesheet" type="text/css" href="/css/myPage.css">
 <link rel="stylesheet" type="text/css" href="/css/order.css">
 <body>
@@ -59,8 +60,8 @@ z
 								<li class="active"><a href="/mypage/wish-list"><span>
 											<i class="fa fa-angle-double-right" aria-hidden="true"></i>
 									</span>위시리스트</a></li>
-								<li><a href="#">문의 내역</a></li>
-								<li><a href="#">회원정보 변경</a></li>
+								<li><a href="/mypage/qna">문의 내역</a></li>
+								<li><a href="/mypage/user-update">회원정보 변경</a></li>
 							</ul>
 						</div>
 					</div>

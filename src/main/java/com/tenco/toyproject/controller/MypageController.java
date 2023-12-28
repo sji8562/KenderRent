@@ -2,16 +2,13 @@ package com.tenco.toyproject.controller;
 
 import java.util.*;
 
+import com.tenco.toyproject.dto.BoardDTO;
 import com.tenco.toyproject.dto.UserUpdateDTO;
+import com.tenco.toyproject.repository.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import com.tenco.toyproject.repository.entity.Product;
-import com.tenco.toyproject.repository.entity.Rent;
-import com.tenco.toyproject.repository.entity.Sale;
-import com.tenco.toyproject.repository.entity.User;
 
 import com.tenco.toyproject.service.MypageService;
 
@@ -41,30 +38,26 @@ public class MypageController {
   @GetMapping("/main")
   public String main(HttpServletRequest request, HttpServletResponse response, Model model) {
     // 최근 본 상품
-	  System.out.println("여기?11111");
     ArrayList<Integer> cookieList = new ArrayList<Integer>();
-	  System.out.println("여기?2222222222");
     Cookie[] cookies = request.getCookies();
-	  System.out.println("여기?33333333333");
     ArrayList<Integer> goodsCookie = new ArrayList<Integer>();
-	  System.out.println("여기?44444444444");
     if (cookies != null) {
-		System.out.println("여기?555555555555");
+
       for (int i = 0; i < cookies.length; i++) {
         if (cookies[i].getName().startsWith("goods")) {
           goodsCookie.add(Integer.parseInt(cookies[i].getValue()));
         }
       }
-		System.out.println("여기?666666666666");
+
     }
-	  System.out.println("여기?777777777777777777");
+
     System.out.println(goodsCookie);
     // 필요없는 쿠키 삭제
 
 	  if (goodsCookie.size() >= 4) {
-		  System.out.println("여기?8888888888888888");
+
 		  int count = goodsCookie.size() - 3;
-		  System.out.println("여기?9999999999999999");
+
 
 		  Iterator<Integer> iterator = goodsCookie.iterator();
 		  while (iterator.hasNext()) {
@@ -83,7 +76,6 @@ public class MypageController {
 			  }
 		  }
 
-		  System.out.println("여기?1010101010101010101010101010");
 	  }
 
 	  ArrayList<Product> goodsProduct = new ArrayList<>();
@@ -203,13 +195,17 @@ public class MypageController {
 		System.out.println("이거 나와야한다"+userUpdateDTO.toString());
 	  mypageService.userUpdate(id,userUpdateDTO);
 
-
 		return "redirect:/mypage/user-update";
 	}
 
+	@GetMapping("/qna")
+	public String qnaList(Model model){
+		User principal = (User) session.getAttribute("principal");
+		System.out.println("유저들고온다"+principal.getId());
+	  List<BoardDTO> boardList = mypageService.findByQna(principal.getId());
+		System.out.println(boardList.toString());
+		model.addAttribute("boardList",boardList);
+	  return "mypage/qnaList";
+	}
+
 }
-//	private String password;
-//	private String userName;
-//	private String address;
-//	private String addressDetail;
-//	private String phoneNumber;
