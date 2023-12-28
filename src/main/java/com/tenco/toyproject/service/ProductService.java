@@ -148,6 +148,13 @@ public class ProductService {
 	public List<SecondCategory> findBysCategoryId(Integer id) {
 		return productRepository.findBysCategoryId(id);
 	}
+	public String findFirstCategoryName(int id) {
+		return productRepository.findFirstCategoryName(id);
+	}
+	public String findSecondCategoryName(int id) {
+		return productRepository.findSecondCategoryName(id);
+	}
+	
 
     public List<Product> findProductForMain() {
 		return productRepository.findProductForMain();

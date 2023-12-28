@@ -36,6 +36,9 @@ public interface ProductRepository {
 	public List<Map> showReview(int productId);
 	public List<Map> showRentList(int userId);
 	public Rent findRentList(int id);
+	public String findFirstCategoryName(int id);
+	public String findSecondCategoryName(int id);
+	
 
 
 	

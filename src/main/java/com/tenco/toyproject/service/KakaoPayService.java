@@ -27,8 +27,9 @@ public class KakaoPayService {
 
 	private Product product;
 	private String[] productIds;
+	private int optionPrice = 0; 
 
-	public String KakaoPayReady(String[] productId, int userId) {
+	public String KakaoPayReady(String[] productId, int userId, String selectedOption) {
 //		Product orderList = productService.findById(productId);
 		HttpHeaders headers = new HttpHeaders();
 		productIds = productId;
@@ -41,7 +42,17 @@ public class KakaoPayService {
 	        productPrice += product.getPrice();
 	        count++;
 	    }
-	    int totalPrice = productPrice + deliveryFee;
+		if (selectedOption == null) {
+			optionPrice = 0;
+		} else {
+			if (selectedOption.equals("2") || selectedOption.equals("2.0")) {
+				optionPrice = 5000;
+			} else if (selectedOption.equals("3") || selectedOption.equals("3.0")) {
+				optionPrice = 10000;
+			}
+		}
+		
+		int totalPrice = productPrice + deliveryFee + optionPrice;
 	    String productName = product.getName();
 	    if (productId.length > 1) {
 	    	productName = product.getName() + "외 " + count + "개";
@@ -60,7 +71,7 @@ public class KakaoPayService {
 		params.add("total_amount", String.valueOf(totalPrice));
 		params.add("tax_free_amount", "0");
 		params.add("approval_url", "http://localhost/product/order/kakao-pay/success"); // 성공 시 redirect url
-		params.add("cancel_url", "http://localhost/product/order/kakao-pay/fail" + "?id=" + productIdToString); // 실패 시 redirect url
+		params.add("cancel_url", "http://localhost/product/order/kakao-pay/fail" + "?id=" + productIdToString + "&selectedOption=" + selectedOption); // 실패 시 redirect url
 		params.add("fail_url", "http://localhost/product/order/kakao-pay/fail"); // 취소 시 redirect url
 
 		HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(params, headers);
@@ -92,7 +103,8 @@ public class KakaoPayService {
 	        product = productService.findById(Integer.parseInt(id));
 	        productPrice += product.getPrice();
 	    }
-	    int totalPrice = productPrice + deliveryFee;
+		
+		int totalPrice = productPrice + deliveryFee + optionPrice;
 
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 		params.add("cid", "TC0ONETIME");

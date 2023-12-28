@@ -49,7 +49,7 @@ public class Product {
 	
 	// 대여, 판매 구분
 	public String formatItemForSale() {
-		if (firstCategoryId < 10) {
+		if (code == 1) {
 			return "대여";
 		} else return "판매";
 	}
