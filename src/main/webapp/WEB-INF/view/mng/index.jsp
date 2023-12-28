@@ -119,7 +119,7 @@
                                                                     class="label label-success label-rounded">${statusDTO.transactionType}</span>
                                                             </td>
 
-                                                            <td class="txt-oflo"><fmt:formatDate value="${statusDTO.createdAt }" pattern="yyyy. MM. dd" /></td>
+                                                            <td class="txt-oflo"><fmt:formatDate value="${statusDTO.createdAt}" pattern="yyyy. MM. dd" /></td>
                                                             <td><span class="font-medium"><fmt:formatNumber value="${statusDTO.price}" pattern="###,###"/></span></td>
                                                         </c:when>
                                                         <c:otherwise>
@@ -127,7 +127,7 @@
                                                                     class="label label-danger label-rounded">${statusDTO.transactionType}</span>
                                                             </td>
 
-                                                            <td class="txt-oflo"><fmt:formatDate value="${statusDTO.createdAt }" pattern="yyyy. MM. dd" /></td>
+                                                            <td class="txt-oflo"><fmt:formatDate value="${statusDTO.createdAt}" pattern="yyyy. MM. dd" /></td>
                                                             <td><span class="font-medium">-<fmt:formatNumber value="${statusDTO.price}" pattern="###,###"/></span>
                                                             </td>
                                                         </c:otherwise>
@@ -139,14 +139,14 @@
                                                             <td><span
                                                                     class="label label-info label-rounded">${statusDTO.transactionType}</span>
                                                             </td>
-                                                            <td class="txt-oflo">$<fmt:formatDate value="${statusDTO.createdAt }" pattern="yyyy. MM. dd" /></td>
+                                                            <td class="txt-oflo">$<fmt:formatDate value="${statusDTO.createdAt}" pattern="yyyy. MM. dd" /></td>
                                                             <td><span class="font-medium"><fmt:formatNumber value="${statusDTO.price}" pattern="###,###"/></span></td>
                                                         </c:when>
                                                         <c:otherwise>
                                                             <td><span
                                                                     class="label label-danger label-rounded">${statusDTO.transactionType}</span>
                                                             </td>
-                                                            <td class="txt-oflo"><fmt:formatDate value="${statusDTO.createdAt }" pattern="yyyy. MM. dd" /></td>
+                                                            <td class="txt-oflo"><fmt:formatDate value="${statusDTO.createdAt}" pattern="yyyy. MM. dd" /></td>
                                                             <td><span class="font-medium">-<fmt:formatNumber value="${statusDTO.price}" pattern="###,###"/></span>
                                                             </td>
                                                         </c:otherwise>
@@ -158,7 +158,7 @@
                                                             <td><span
                                                                     class="label label-purple label-rounded">${statusDTO.transactionType}</span>
                                                             </td>
-                                                            <td class="txt-oflo"><fmt:formatDate value="${statusDTO.createdAt }" pattern="yyyy. MM. dd" />}</td>
+                                                            <td class="txt-oflo"><fmt:formatDate value="${statusDTO.createdAt}" pattern="yyyy. MM. dd" />}</td>
 
                                                             <td><span class="font-medium"><fmt:formatNumber value="${statusDTO.price}" pattern="###,###"/></span></td>
                                                         </c:when>
@@ -166,7 +166,7 @@
                                                             <td><span
                                                                     class="label label-danger label-rounded">${statusDTO.transactionType}</span>
                                                             </td>
-                                                            <td class="txt-oflo"><fmt:formatDate value="${statusDTO.createdAt }" pattern="yyyy. MM. dd" /></td>
+                                                            <td class="txt-oflo"><fmt:formatDate value="${statusDTO.createdAt}" pattern="yyyy. MM. dd" /></td>
                                                             <td><span class="font-medium">-<fmt:formatNumber value="${statusDTO.price}" pattern="###,###"/></span>
                                                             </td>
                                                         </c:otherwise>

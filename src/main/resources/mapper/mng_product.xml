@@ -54,6 +54,7 @@
          JOIN first_category AS fc ON fc.id = p.first_category_id
          JOIN second_category AS sc ON sc.id = p.second_category_id
         WHERE fc.code = #{code}
+        ORDER BY p.id DESC
         LIMIT #{pageVO.start}, 5
     </select>
 
@@ -63,6 +64,7 @@
          JOIN first_category AS fc ON fc.id = p.first_category_id
          JOIN second_category AS sc ON sc.id = p.second_category_id
         WHERE fc.code = #{code} AND p.name LIKE CONCAT('%', #{keyword}, '%')
+        ORDER BY p.id DESC
         LIMIT #{pageVO.start}, 5
     </select>
 

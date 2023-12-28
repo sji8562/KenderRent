@@ -158,7 +158,7 @@ function addToCartConfirmation() {
 							<div class="col-lg-9 image_col order-lg-2 order-1">
 								<div class="single_product_image">
 									<div class="single_product_image_background"
-										style="background-image: url(${product.picUrl })"></div>
+										style="background-image: url(${product.formatImgUrl() })"></div>
 								</div>
 							</div>
 						</div>
@@ -169,7 +169,7 @@ function addToCartConfirmation() {
 						<div class="product_details_title">
 							<h3>${product.name}</h3>
 							<!-- 상세 정보 표시 -->
-							<p style="color: gray">${product.content}</p>
+							<%--<p style="color: gray">${product.content}</p>--%>
 							<!--  -->
 							<table>
 								<tbody>
