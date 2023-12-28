@@ -151,7 +151,7 @@
 								<div class="box_goods" style="margin-top: 30px">
 									<div class="box_picture">
 										<a href="/product/detail/${orderList.id}" target="_blank">
-											<img src=${orderList.picUrl } class="product_picture"
+											<img src=${orderList.formatImgUrl() } class="product_picture"
 											style="vertical-align: top;" width="100" height="100">
 										</a>
 									</div>
