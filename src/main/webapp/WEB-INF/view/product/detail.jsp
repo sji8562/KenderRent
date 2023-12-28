@@ -2,41 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Colo Shop Template">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<link rel="stylesheet" type="text/css"
-	href="/css/styles/bootstrap4/bootstrap.min.css">
-<link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css"
-	href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css"
-	href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css"
-	href="/plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css">
-<link rel="stylesheet" type="text/css"
-	href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-<link rel="stylesheet" type="text/css"
-	href="/css/styles/single_styles.css">
-<link rel="stylesheet" type="text/css"
-	href="/css/styles/single_responsive.css">
-<link rel="stylesheet" type="text/css"
-	href="/css/styles/main_styles.css">
+
+
 <script src="/js/jquery-3.2.1.min.js"></script>
 <!-- Summernote CSS -->
-<link rel="stylesheet"
-	  href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css"
-	  integrity="sha256-IKhQVXDfwbVELwiR0ke6dX+pJt0RSmWky3WB2pNx9Hg="
-	  crossorigin="anonymous">
+
 <script type="text/javascript">
 	function addHeart(id) {
     	let user = '<%=session.getAttribute("principal")%>';
@@ -141,23 +111,19 @@ window.addEventListener('pageshow', function(event) {
     }
 });
 </script>
-	<style>
-		/* CKEditor 테두리 없애기 */
-		.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
-			border: none;
-			border-radius: 0; /* 선택적으로 border-radius를 0으로 설정할 수 있습니다. */
-		}
-	</style>
-	
 
-</head>
-<body>
-	<div class="super_container">
+	
 
 		<!-- Header -->
 
-		<jsp:include page="../layout/header.jsp" />
-
+		<jsp:include page="../layout/headerSub.jsp" />
+<style>
+	/* CKEditor 테두리 없애기 */
+	.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+		border: none;
+		border-radius: 0; /* 선택적으로 border-radius를 0으로 설정할 수 있습니다. */
+	}
+</style>
 		<!-- Hamburger Menu -->
 
 
