@@ -59,6 +59,13 @@ public class UserController {
 	private SmsUtil smsUtil;
 	@Value("${tenco.key}")
 	private String tencoKey;
+	@Value("${kakao.key}")
+	private String kakaoKey;
+	@Value("${naver.clientkey}")
+	private String naverCKey;
+	@Value("${naver.secretkey}")
+	private String naverSKey;
+
 	
 	@GetMapping("signIn")
 	public String signIn() {
@@ -146,7 +153,7 @@ public class UserController {
 		headers1.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 		MultiValueMap<String, String> params1 = new LinkedMultiValueMap<>();
 		params1.add("grant_type", "authorization_code");
-		params1.add("client_id", "0a29e10b57cb7259eec5a50bdced4aa7");
+		params1.add("client_id", kakaoKey);
 		params1.add("redirect_uri", "http://localhost:80/user/kakao-callback");
 		params1.add("code", code);
 		
@@ -204,8 +211,8 @@ public class UserController {
 			headers1.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 			MultiValueMap<String, String> params1 = new LinkedMultiValueMap<>();
 			params1.add("grant_type", "authorization_code");
-			params1.add("client_id", "LbaGbefoStQkPYuwldjm");
-			params1.add("client_secret", "QLL06505pS");
+			params1.add("client_id", naverCKey);
+			params1.add("client_secret", naverSKey);
 			params1.add("redirect_uri", "http://localhost:80/user/naver-callback");
 			params1.add("code", code);
 			HttpEntity<MultiValueMap<String, String>> requestMsg1 = new HttpEntity<>(params1, headers1);

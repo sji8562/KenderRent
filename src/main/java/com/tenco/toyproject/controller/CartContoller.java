@@ -70,7 +70,7 @@ public class CartContoller {
 
 	@GetMapping("/check")
 	@ResponseBody
-	public ResponseEntity<Map<String, Boolean>> checkCartItem(@RequestParam("id") int id) {
+	public ResponseEntity<?> checkCartItem(@RequestParam("id") int id) {
 		boolean exists = checkCartItemExist(id);
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("exists", exists);

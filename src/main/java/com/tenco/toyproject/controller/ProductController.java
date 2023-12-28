@@ -55,122 +55,88 @@ public class ProductController {
 		System.out.println(productList2.toString());
 		System.out.println("---------------------------------" + secondCategoryList.toString());
 
-		model.addAttribute("secondCategoryList", secondCategoryList);
-		model.addAttribute("productList2", productList2);
-		if (fId == 3 || fId == 4 || fId == 5) {
-			List<Product> productList = productService.findByCategoryId(fId);
-			System.out.println(productList.toString());
-			model.addAttribute("productList", productList);
+    model.addAttribute("secondCategoryList", secondCategoryList);
+    model.addAttribute("productList2", productList2);
+    if(fId == 3 ||fId == 4||fId == 5){
+      List<Product> productList = productService.findByCategoryId(fId);
+      System.out.println(productList.toString());
+      model.addAttribute("productList", productList);
 
-			return "product/categories02";
-		}
-		return "product/categories01";
-	}
-//
-//  @GetMapping("{fId}/categories/")
-//  public String categories(@PathVariable Integer fId, @PathVariable Integer sId,Model model) {
-//    List<SecondCategory> secondCategories = productService.findBysCategoryId(fId);
-//    model.addAttribute("secondCategories", secondCategories);
-//
-//    if (fId == 1 || fId == 2 || fId == 6) {
-//      return "product/categories02";
-//    }
-//    return "product/categories01";
-//  }
+      return "product/categories02";
+    }
+    if(fId >= 7 ){
+      return "product/categories03";
+    }
+    return "product/categories01";
+  }
 
-//  @GetMapping("categories01")
-//  public String categories01() {
-//    return "product/categories01";
-//  }
+  
+  @GetMapping("detail/{id}")
+  public String detail(Model model, PageVO pageVO,
+      @RequestParam(value = "nowPage", required = false) String nowPage,
+      @RequestParam(value = "cntPerPage", required = false) String cntPerPage, @PathVariable int id,
+      HttpServletResponse response) {
+    // 페이징처리
+    int total = productService.countProductCustomer(id);
+    if (nowPage == null && cntPerPage == null) {
+      nowPage = "1";
+      cntPerPage = "10";
+    } else if (nowPage == null) {
+      nowPage = "1";
+    } else if (cntPerPage == null) {
+      cntPerPage = "10";
+    }
+    pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+    model.addAttribute("paging", pageVO);
+    // 상품별로 변경해야함
+    List<Map<String, Object>> CustomerList =
+        customerService.selectCustomerById(4, pageVO.getStart(), id); // 상품문의
+    model.addAttribute("customerList", CustomerList);
+    // 페이징 처리해서 상품문의 출력 끝
+    // 최근본 프로젝트 관련
+    Cookie cookie = new Cookie("goods" + id, String.valueOf(id));
+    cookie.setPath("/");  //
+    cookie.setMaxAge(60 * 60 * 24); //
+    response.addCookie(cookie); //
+    // 최근본 프로젝트 관련 끝
+    // 상품 정보
+    Product product = productService.findById(id);
+    model.addAttribute("product", product);
+    // 찜한 상품 확인
+    User principal = (User) session.getAttribute("principal");
+    if (principal != null) {
+      boolean isWished = productService.checkWishList(principal.getId(), id);
+      model.addAttribute("isWished", isWished);
+    }
+    return "product/detail";
+  }
 
-//  @GetMapping("categories02")
-//  public String categories02() {
-//    return "product/categories02";
-//  }
+  @PostMapping("order")
+  public String order(Model model, @RequestParam("id") String selectedProducts) {
+    User principal = (User) session.getAttribute("principal");
+    User userInfo = userService.findById(principal.getId());  //세션은 들고왔는데 세션 체크 안함
+    int[] productId =
+        Arrays.stream(selectedProducts.split(",")).mapToInt(Integer::parseInt).toArray(); //
+    List<Product> orderList = new ArrayList<>();
+    int productPrice = 0;
+    int deliveryFee = 3000;
+    for (int id : productId) {
+      Product product = productService.findById(id);
+      orderList.add(product);
+      productPrice += product.getPrice();
+      if (product.getStatus() != 1) {
+        throw new CustomRestfullException("이미 품절된 물건입니다.", HttpStatus.BAD_REQUEST);
+      }
+    }
+    int totalPrice = productPrice + deliveryFee; //
+    model.addAttribute("productPrice", productPrice);
+    model.addAttribute("deliveryFee", deliveryFee);
+    model.addAttribute("totalPrice", totalPrice);
+    model.addAttribute("orderList", orderList);
+    model.addAttribute("userInfo", userInfo);
+    return "product/order";
+  }
 
-	// 부터 전우진 231226
-
-	// 까지 전우진232226
-
-	@GetMapping("detail/{id}")
-	public String detail(Model model, PageVO pageVO, @RequestParam(value = "nowPage", required = false) String nowPage,
-			@RequestParam(value = "cntPerPage", required = false) String cntPerPage, @PathVariable int id,
-			HttpServletResponse response) {
-		// 페이징처리
-		int total = productService.countProductCustomer(id);
-		if (nowPage == null && cntPerPage == null) {
-			nowPage = "1";
-			cntPerPage = "10";
-		} else if (nowPage == null) {
-			nowPage = "1";
-		} else if (cntPerPage == null) {
-			cntPerPage = "10";
-		}
-		pageVO = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		model.addAttribute("paging", pageVO);
-		// 상품별로 변경해야함
-		List<Map<String, Object>> CustomerList = customerService.selectCustomerById(4, pageVO.getStart(), id); // 상품문의
-		model.addAttribute("customerList", CustomerList);
-		// 페이징 처리해서 상품문의 출력 끝
-		// 최근본 프로젝트 관련
-		Cookie cookie = new Cookie("goods" + id, String.valueOf(id));
-		cookie.setPath("/");
-		cookie.setMaxAge(60 * 60 * 24);
-		response.addCookie(cookie);
-		// 최근본 프로젝트 관련 끝
-		// 상품 정보
-		Product product = productService.findById(id);
-		model.addAttribute("product", product);
-		// 찜한 상품 확인
-		User principal = (User) session.getAttribute("principal");
-		if (principal != null) {
-			boolean isWished = productService.checkWishList(principal.getId(), id);
-			model.addAttribute("isWished", isWished);
-		}
-		return "product/detail";
-	}
-
-	@PostMapping("order")
-	public String order(Model model, @RequestParam("id") String selectedProducts,
-			@RequestParam(required = false, name = "selectedOption") String selectedOption) {
-		User principal = (User) session.getAttribute("principal");
-		if (principal == null) {
-			throw new CustomRestfullException("로그인이 필요한 기능입니다.", HttpStatus.BAD_REQUEST);
-		} else {
-			User userInfo = userService.findById(principal.getId());
-			int[] productId = Arrays.stream(selectedProducts.split(",")).mapToInt(Integer::parseInt).toArray();
-			List<Product> orderList = new ArrayList<>();
-			int productPrice = 0;
-			int deliveryFee = 3000;
-			for (int id : productId) {
-				Product product = productService.findById(id);
-				orderList.add(product);
-				productPrice += product.getPrice();
-				if (product.getStatus() != 1) {
-					throw new CustomRestfullException("이미 품절된 물건입니다.", HttpStatus.BAD_REQUEST);
-				}
-			}
-			int optionPrice = 0;
-			if (selectedOption == null) {
-				optionPrice = 0;
-			} else {
-				if (selectedOption.equals("2")) {
-					optionPrice = 5000;
-				} else if (selectedOption.equals("3")) {
-					optionPrice = 10000;
-				}
-			}
-
-			int totalPrice = productPrice + deliveryFee + optionPrice;
-			model.addAttribute("optionPrice", optionPrice);
-			model.addAttribute("productPrice", productPrice);
-			model.addAttribute("deliveryFee", deliveryFee);
-			model.addAttribute("totalPrice", totalPrice);
-			model.addAttribute("orderList", orderList);
-			model.addAttribute("userInfo", userInfo);
-		}
-		return "product/order";
-	}
 
 	@GetMapping("order/kakao-pay")
 	public void kakaoPayGet() {
