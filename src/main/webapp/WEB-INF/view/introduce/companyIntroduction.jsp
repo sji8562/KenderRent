@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>Kinder Lend</title>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="Colo Shop Template">
@@ -16,8 +17,8 @@
 	<link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
 	<link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
-
 	<link rel="stylesheet" type="text/css" href="/css/styles/main_styles.css">
+
 
 
 <%--	<style>--%>

@@ -3,7 +3,9 @@ package com.tenco.toyproject.repository.interfaces;
 import java.util.List;
 import java.util.Map;
 
+import com.tenco.toyproject.dto.BoardDTO;
 import com.tenco.toyproject.dto.UserUpdateDTO;
+import com.tenco.toyproject.repository.entity.Board;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -14,4 +16,6 @@ public interface MypageRepository {
     public int userUpdate(Integer id, UserUpdateDTO userUpdateDTO);
 
     public int userUpdateNonPw(Integer id, UserUpdateDTO userUpdateDTO);
+
+    public List<BoardDTO> findByQna(int id);
 }

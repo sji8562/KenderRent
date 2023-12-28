@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Contact Us</title>
+	<title>Kinder Lend</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Colo Shop Template">
@@ -18,6 +18,7 @@
 <link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
 <link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
+	<link rel="stylesheet" type="text/css" href="/css/styles/main_styles.css">
 </head>
 <body>
 	<div class="super_container">
@@ -84,7 +85,7 @@
 							<textarea id="content" class="input_ph input_message" name="content"  placeholder="내용" rows="10" required data-error="Please, write us a message."></textarea>
 						</div>
 						<div>
-							<button type="submit" class="red_button message_submit_btn trans_300" value="Submit">문의하기</button>
+							<button type="submit" class="message_submit_btn trans_300" value="Submit">문의하기</button>
 						</div>
 					</form>
 				</div>

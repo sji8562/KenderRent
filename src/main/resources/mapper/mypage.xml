@@ -15,7 +15,9 @@
 	<update id="userUpdateNonPw">
 		update user set user_name = #{userUpdateDTO.userName}, address = #{userUpdateDTO.address}, address_detail = #{userUpdateDTO.addressDetail}, phone_number = #{userUpdateDTO.phoneNumber} , post_number = #{userUpdateDTO.postNumber} where id = #{id}
 	</update>
-
+	<select id="findByQna">
+		select b.id AS boardId, b.title, b.content , b.code,b.user_id AS createUser , b.product_id AS createProduct , b.secret , b.created_at AS createdAt , r.id AS replyId, r.content AS replyContent, r.created_at AS replyAt from board b left join reply r on b.id = r.board_id where b.user_id = #{id}
+	</select>
 
 </mapper>
 
