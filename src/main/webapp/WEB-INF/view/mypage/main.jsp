@@ -212,7 +212,7 @@
 								<li style="width: 25%; float: left; margin-right: 50px">
 									<div class="item_cont">
 										<div class="item_photo_box">
-											<a href="/product/detail/${goodsProduct.id }"> <img src=${goodsProduct.picUrl } width="250" alt="${goodsProduct.name }" title="${goodsProduct.name }" class="middle">
+											<a href="/product/detail/${goodsProduct.id }"> <img src=${goodsProduct.formatImgUrl() } width="250" alt="${goodsProduct.name }" title="${goodsProduct.name }" class="middle">
 											</a>
 										</div>
 										<!-- //item_photo_box -->

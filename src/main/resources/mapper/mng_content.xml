@@ -22,7 +22,7 @@
     <!-- 최초 insert -->
     <insert id="createContent">
 
-        INSERT INTO information (content, code, created_at) VALUES (#{content}, #{code}, NOW())
+        INSERT INTO information (content, code) VALUES (#{content}, #{code})
 
     </insert>
 

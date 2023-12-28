@@ -89,8 +89,7 @@
 													<td>
 														<div>
 															<a href="/product/detail/${product.id}" target="_blank">
-																<img src=${product.picUrl
-																}
+																<img src=${product.formatImgUrl()}
 																	class="product_picture"
 																style="vertical-align: top;"></a>
 														</div>

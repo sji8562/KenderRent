@@ -51,7 +51,7 @@
 									<h4 class="card-title">유저 조회</h4>
 									<form class="row g-3">
 										<div class="col-auto">
-											<input type="text" class="form-control" id="keyword" placeholder="__을 입력해주세요">
+											<input type="text" class="form-control" id="keyword" placeholder="이메일을 입력해주세요">
 										</div>
 										<div class="col-auto">
 											<button type="submit" class="btn btn-primary mb-3">검색</button>
