@@ -1,54 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%--new hot best--%>
-<%--<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>--%>
-<%--<div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>--%>
-<%--<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>--%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Colo Shop Template">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css"
-	href="/css/styles/bootstrap4/bootstrap.min.css">
-<link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css"
-	href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css"
-	href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css"
-	href="/plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css"
-	href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-<link rel="stylesheet" type="text/css"
-	href="/css/styles/categories_styles.css">
-<link rel="stylesheet" type="text/css"
-	href="/css/styles/categories_responsive.css">
-<style>
-.post-slider .post-wrapper {
-	width: 100%;
-	padding-top: 101px;
-}
 
-.post-slider .post-wrapper .post {
-	width: 100%;
-	height: 170px;
-	display: inline-block;
-	background: gray;
-}
-</style>
-</head>
-<body>
-
-	<div class="super_container">
 
 		<!-- Header -->
 
-		<jsp:include page="../layout/header.jsp" />
+		<jsp:include page="../layout/headerSub.jsp" />
 
 		<%--<div class="fs_menu_overlay"></div>--%>
 		<div class="post-slider ">
@@ -124,31 +82,6 @@
 										</c:choose>
 
 									</div>
-
-									<!-- Product Sorting -->
-
-<%--									<div--%>
-<%--										class="product_sorting_container product_sorting_container_bottom clearfix">--%>
-
-<%--										<div class="pages d-flex flex-row align-items-center">--%>
-<%--											<div class="page_current">--%>
-<%--												<span>1</span>--%>
-<%--												<ul class="page_selection">--%>
-<%--													<li><a href="#">1</a></li>--%>
-<%--													<li><a href="#">2</a></li>--%>
-<%--													<li><a href="#">3</a></li>--%>
-<%--												</ul>--%>
-<%--											</div>--%>
-<%--											<div class="page_total">--%>
-<%--												<span>of</span> 3--%>
-<%--											</div>--%>
-<%--											<div id="next_page_1" class="page_next">--%>
-<%--												<a href="#"><i class="fa fa-long-arrow-right"--%>
-<%--													aria-hidden="true"></i></a>--%>
-<%--											</div>--%>
-<%--										</div>--%>
-
-<%--									</div>--%>
 
 								</div>
 							</div>
