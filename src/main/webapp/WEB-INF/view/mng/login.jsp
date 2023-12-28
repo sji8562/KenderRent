@@ -55,7 +55,7 @@
                     <input type="text" class="form-control" id="username" name="username"
                            placeholder="아이디를 입력하세요" required
                            oninput="this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');"
-                           value="admin"
+                           <%--value="admin"--%>
                     >
                 </div>
                 <div class="form-group col-md-12">
@@ -63,7 +63,7 @@
                     <input type="password" class="form-control" id="password" name="password"
                            placeholder="비밀번호를 입력하세요" required
                            oninput="this.value=this.value.replace(/[^a-zA-Z0-9~!@#$%^&*()_+|<>?:{}]/g,'');"
-                           value="1234"
+                           <%--value="1234"--%>
                     >
                 </div>
             </div>

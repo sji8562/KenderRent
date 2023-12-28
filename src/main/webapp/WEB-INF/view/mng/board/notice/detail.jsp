@@ -56,7 +56,7 @@
                         <c:when test="${notice != null}">
                         <h4 class="card-title">${notice.title}</h4>
                         <%--<h4 class="card-title">${notice.content}</h4>--%>
-                        <div class="container">
+                        <div class="container" style="white-space: pre-wrap;">
                             <%--<textarea id="editor" name="content">${notice.content}</textarea>--%>
                                 <div>${notice.content}</div>
                         </div>
