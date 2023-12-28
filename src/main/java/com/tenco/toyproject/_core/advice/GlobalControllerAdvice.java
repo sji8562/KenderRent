@@ -1,5 +1,6 @@
 package com.tenco.toyproject._core.advice;
 
+import com.tenco.toyproject.dto.HeaderDTO;
 import com.tenco.toyproject.repository.entity.FirstCategory;
 import com.tenco.toyproject.repository.entity.SecondCategory;
 import com.tenco.toyproject.service.IndexService;
@@ -17,9 +18,8 @@ public class GlobalControllerAdvice {
     IndexService indexService;
     @ModelAttribute
     public void addCommonAttributes(Model model, HttpSession session) {
-        List<FirstCategory> firstCategories = indexService.findByFCategory();
-        List<FirstCategory> firstcacode2 = indexService.findByFCategoryCode2();
-
+        List<HeaderDTO> firstCategories = indexService.findByFCategory();
+        List<HeaderDTO> firstcacode2 = indexService.findByFCategoryCode2();
 
         model.addAttribute("firstCategories", firstCategories);
         model.addAttribute("firstcacode2", firstcacode2);
