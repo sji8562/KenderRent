@@ -105,7 +105,7 @@
 														<div class="box_goods">
 															<div class="box_picture">
 																<a href="/product/rent/${rent.product_id}"> <img
-																		src=${rent.pic_url } width="100" height="100">
+																		src=/images/${rent.pic_url } width="100" height="100">
 																</a>
 															</div>
 															<div class="box_product_info">
