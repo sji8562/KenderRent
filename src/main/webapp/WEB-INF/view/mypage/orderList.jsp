@@ -99,7 +99,7 @@
 														<td class="vertical-center">
 															<div class="box_content">
 																<div class="box_title" style="margin-bottom: 10px">
-																	배송 완료
+																	결제 완료
 																	<div style="float: right; padding-right: 5px;">
 																		<a href="/mypage/order-list/detail?id=${orderList.id}"
 																			class="text_product_name"

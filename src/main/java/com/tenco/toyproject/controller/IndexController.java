@@ -36,16 +36,4 @@ public class IndexController {
     }
 
 
-    @GetMapping("/mng/pages-profile")
-    public String profile() {
-        return "/mng/pages-profile";
-    }
-
-    @GetMapping("/icon-material")
-    public String icon() {
-        return "/mng/icon-meterial";
-    }
-    
-    
-
 }

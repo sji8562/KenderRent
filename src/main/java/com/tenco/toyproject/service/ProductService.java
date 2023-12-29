@@ -4,8 +4,10 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
+import com.tenco.toyproject._core.handler.exception.CustomRestfullException;
 import com.tenco.toyproject.repository.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.tenco.toyproject.repository.interfaces.CustomerRepository;
@@ -132,9 +134,25 @@ public class ProductService {
 		System.out.println( productRepository.searchProductInfinite(keyword, offset, pageSize).size());
 		return productRepository.searchProductInfinite(keyword, offset, pageSize);
 	}
-	public List<Map> searchProduct(String keyword){
-		return productRepository.searchProduct(keyword);
+	public List<Map> searchProduct(String keyword, String sortBy){
+		System.out.println("여기 들어오기라도 하냐 ?"+keyword);
+		System.out.println("여기 들어오기라도 하냐 ?"+sortBy);
+		if(sortBy.equals("highPrice")){
+			System.out.println("하이프라이스 들어왔다");
+			return productRepository.searchProductHighPrice(keyword,sortBy);
+		}else if(sortBy.equals("lowPrice")){
+			System.out.println("로우프라이스 들어왔다");
+			return productRepository.searchProductLowPrice(keyword,sortBy);
+		}else if(sortBy.equals("createdAt")){
+			System.out.println("만든날짜 들어왔다");
+			return productRepository.searchProductCreatedAt(keyword,sortBy);
+		}else{
+			return null;
+		}
+
 	}
+
+
 	public int searchMaxPrice() {
 		return productRepository.searchMaxPrice();
 	}
