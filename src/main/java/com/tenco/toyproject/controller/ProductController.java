@@ -215,6 +215,7 @@ public class ProductController {
 	@GetMapping("search")
 	public String search(Model model, HttpServletRequest request,
 			@RequestParam(value = "keyword", required = false) String keyword,
+			@RequestParam(value = "sortBy", required = false) String sortBy,
 			@RequestParam(value = "price1", required = false) String price1,
 			@RequestParam(value = "price2", required = false) String price2) {
 
@@ -222,7 +223,13 @@ public class ProductController {
 			List<Map> productList = null;
 			return "product/search";
 		}
-		List<Map> productList = productService.searchProduct(keyword);
+		System.out.println(sortBy);
+		if(sortBy == null || sortBy.isEmpty()){
+			throw new CustomRestfullException("잘못된 경로입니다.",HttpStatus.BAD_REQUEST);
+		}
+		List<Map> productList = productService.searchProduct(keyword,sortBy);
+
+		System.out.println(productList.toString());
 		model.addAttribute("productList", productList);
 		model.addAttribute("MaxPrice", productService.searchMaxPrice());
 

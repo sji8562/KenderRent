@@ -181,11 +181,25 @@
 	
 <!-- 	검색기능 관련 -->
 <!-- 	검색한 상품 목록 -->
-	<select id="searchProduct" resultType="Map">
+
+
+	<select id="searchProductHighPrice" resultType="Map">
 		select * from product
-		where name Like CONCAT('%', #{keyword}, '%') 
-		limit 0, 5;
+		where name Like CONCAT('%', #{keyword}, '%') order by price desc limit 0,5;
+
 	</select>
+	<select id="searchProductLowPrice" resultType="Map">
+		select * from product
+		where name Like CONCAT('%', #{keyword}, '%') order by price limit 0,5;
+
+	</select>
+
+	<select id="searchProductCreatedAt" resultType="Map">
+		select * from product
+		where name Like CONCAT('%', #{keyword}, '%') order by created_at limit 0,5;
+
+	</select>
+
 	<select id="searchProductInfinite" resultType="Map">
 		select * from product
 		where name Like CONCAT('%', #{keyword}, '%') 

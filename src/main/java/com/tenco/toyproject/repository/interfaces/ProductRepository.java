@@ -44,6 +44,10 @@ public interface ProductRepository {
 	
 	//무한스크롤 관련
 	public List<Map> searchProduct(String keyword);
+	public List<Map> searchProductHighPrice(String keyword, String sortBy);
+	public List<Map> searchProductLowPrice(String keyword, String sortBy);
+
+	public List<Map> searchProductCreatedAt(String keyword, String sortBy);
 	public List<Map> searchProductInfinite(@Param("keyword") String keyword, @Param("offset") int offset,@Param("limit") int limit);
 	public int searchMaxPrice();
 

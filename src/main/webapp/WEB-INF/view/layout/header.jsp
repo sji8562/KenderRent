@@ -235,7 +235,9 @@
                 <form action="/product/search">
                     <div class="mb-3">
                         <input type="text" class="form-control" name="keyword">
+                        <input type="hidden" class="form-control" name="sortBy" value="lowPrice">
                     </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
                                 data-bs-dismiss="modal" style="cursor: pointer">닫기
