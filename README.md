@@ -85,6 +85,7 @@
     <li>[사용자] 로그인 화면 구현</li>
     <li>[사용자] review 화면 및 기능 구현</li>
     <li>git README 작성</li>
+    <li>API 명세서 작성</li>
   </ul>
 </details>
 <details>
@@ -120,7 +121,8 @@
 
 ## 프로젝트 소개
 - **이름** : Kinder Lend
-- **목적** : Kinder Lend는 당신의 유아 용품의 세계를 특별하게 만들어 드립니다. <br> 안심하고 이용할 수 있는 중고 유아 용품 대여의 선두주자로, Kinder Lend는 철저한 소독 절차를 거친 안전한 상품을 저렴한 가격에 제공합니다. 우리의 핵심 목표는 부모님들에게 경제적인 대안을 제공하면서 동시에 지속 가능한 소비 문화를 선도하는 것입니다. <br> Kinder Lend와 함께라면, 아이들의 성장과 함께하는 즐거움을 놓치지 않으면서도 환경을 생각하는 미래 지향적인 육아 생활을 경험할 수 있습니다.<br>  
+- **목적** : Kinder Lend는 당신의 유아 용품의 세계를 특별하게 만들어 드립니다. <br> 안심하고 이용할 수 있는 중고 유아 용품 대여의 선두주자로, Kinder Lend는 철저한 소독 절차를 거친 안전한 상품을 저렴한 가격에 제공합니다. 우리의 핵심 목표는 부모님들에게 경제적인 대안을 제공하면서 동시에 지속 가능한 소비 문화를 선도하는 것입니다. <br> Kinder Lend와 함께라면, 아이들의 성장과 함께하는 즐거움을 놓치지 않으면서도 환경을 생각하는 미래 지향적인 육아 생활을 경험할 수 있습니다.<br>
+- **수익모델** : 저희는 중고 제품을 구매하고 판매하거나 대여하는 공유 경제 기반의 서비스입니다. <br> 이를 위해 제품의 대여 서비스 이용료와 구매한 가격에 일정한 마진을 부과하여 이를 판매하는 마진 기반의 수익 모델을 채택하고 있습니다. <br> 이를 통해 소비자들은 저렴한 가격에 제품을 얻을 수 있고, 동시에 공유 경제의 원칙에 따라 중고 제품을 효율적으로 활용하며, 우리는 제품의 추가 가치를 창출하여 수익을 얻고 있습니다.
 - **주요 기능** ✏
 
   `* 사용자 *`
@@ -151,32 +153,34 @@
     <img src="https://github.com/sji8562/KinderLend/assets/94952331/85dc7cd3-21ff-49a1-92ac-ee20b547630f" width=850>
 </div>
     
-- **화면 구성** 💻 << gif로 바꾸기
-
+- **화면 구성** 💻
+  
   `* 사용자 *`
   
 <div align="center"> 
   
-|<img src="https://github.com/sji8562/KenderRent/assets/94952331/46368217-01ad-45a7-ae12-36298a394854/" width=400>|<img src="https://github.com/sji8562/KenderRent/assets/94952331/742b0339-691e-4ee1-af4e-c2ae9c6b74d6" width=400>|
+|<img src="https://github.com/sji8562/KenderRent/assets/94952331/46368217-01ad-45a7-ae12-36298a394854/" width=400>|<img src="https://github.com/sji8562/KinderLend/assets/94952331/e279dd9d-3593-40d5-b7cd-2b077873607d" width=400>|
 |:---:|:---:|
-|메인 화면|카테고리|
-|<img src=""width=400>|<img src=""width=400>|
+|메인 화면|로그인|
+|<img src="https://github.com/sji8562/KinderLend/assets/94952331/0c0e99ba-caa6-4d81-9abf-1560c922e9bd" width=400>|<img src="https://github.com/sji8562/KinderLend/assets/94952331/f98ecd43-b8e6-471a-a79c-7bbfdaf2391b" width=400>|
+|아이디 찾기|비밀번호 찾기|
+|<img src="https://github.com/sji8562/KinderLend/assets/94952331/ff6d344a-5257-4134-8e5b-183d26e52b08" width=400>|<img src="https://github.com/sji8562/KinderLend/assets/94952331/ff311784-b759-431f-92ef-b99ce68bce36" width=400>|
 |대여하기|구매하기|
-|<img src=""width=400>|<img src=""width=400>|
+|<img src="https://github.com/sji8562/KinderLend/assets/94952331/bfc5da9a-8e49-4819-b00f-1bcf8291549b" width=400>|<img src="https://github.com/sji8562/KinderLend/assets/94952331/8cb2910a-b7fc-4215-b686-0bb500870674" width=400>|
 |결제 화면|장바구니|
-|<img src=""width=400>|<img src=""width=400>|
+|<img src="https://github.com/sji8562/KinderLend/assets/94952331/4d0889db-9e52-4d68-9524-57b306de8f1a" width=400>|<img src="https://github.com/sji8562/KinderLend/assets/94952331/e246be60-23ae-4770-b9b8-d6beae166ece" width=400>|
 |주문 내역|주문 상세|
-|<img src=""width=400>|<img src=""width=400>|
+|<img src="https://github.com/sji8562/KinderLend/assets/94952331/1f8a7141-f190-450e-904b-f65b9619643c" width=400>|<img src="https://github.com/sji8562/KinderLend/assets/94952331/5474fc30-9d15-4aa7-a125-9cf0c4571a27" width=400>|
 |대여 내역|위시리스트|
-|<img src=""width=400>|<img src=""width=400>|
+|<img src="https://github.com/sji8562/KinderLend/assets/94952331/145d3cad-2da6-4ffc-8947-0773f14e5263" width=400>|<img src="https://github.com/sji8562/KinderLend/assets/94952331/a9754af3-30b9-4bb4-a554-53476c50708c" width=400>|
 |취소(환불) 내역|마이페이지|
-|<img src=""width=400>|<img src=""width=400>|
+|<img src="https://github.com/sji8562/KinderLend/assets/94952331/0c5239b4-b94d-43c3-b02b-d088232a86f0" width=400>|<img src="https://github.com/sji8562/KinderLend/assets/94952331/fa6e6c26-cafc-4b04-95e4-00ea81ebca49" width=400>|
 |공지사항|1:1문의|
-|<img src=""width=400>|<img src=""width=400>|
+|<img src="https://github.com/sji8562/KinderLend/assets/94952331/b5b25a0f-b671-4aef-b031-7be14fd4d759" width=400>|<img src="https://github.com/sji8562/KinderLend/assets/94952331/ece2f29c-1c76-459c-acd1-9200ed9b0800" width=400>|
 |FAQ|상품문의|
-|<img src=""width=400>|<img src=""width=400>|
+|<img src="https://github.com/sji8562/KinderLend/assets/94952331/2104a69f-b009-4501-bca8-1942c7a5f9fe" width=400>|<img src="https://github.com/sji8562/KinderLend/assets/94952331/447808b8-b103-4acb-b24b-9c424faea612" width=400>|
 |회사소개|이용안내|
-|<img src=""width=400>|<img src=""width=400>|
+|<img src="https://github.com/sji8562/KinderLend/assets/94952331/a9e31511-77db-4b91-a8c4-cf8471e2ef8e" width=400>|<img src="https://github.com/sji8562/KinderLend/assets/94952331/b6538ab4-09ad-4ade-a1de-412249034812" width=400>|
 |소독과정|오시는길|
 
 
@@ -191,8 +195,12 @@
 |<img src="https://github.com/sji8562/KenderRent/assets/94952331/83914283-2415-425b-bb70-4f2e9b61c27b" width=400> |<img src="https://github.com/sji8562/KenderRent/assets/94952331/b1d8df02-cc90-40a3-acb5-64e15c41b35d" width=400>| 
 |:---:|:---:|
 |메인 화면(대시보드)|회원 관리|
-| <img src="https://github.com/sji8562/KenderRent/assets/94952331/35695195-8d69-4fdc-89ba-e37a1ed4a970" width=400> | <img src="https://github.com/sji8562/KenderRent/assets/94952331/b1d8df02-cc90-40a3-acb5-64e15c41b35d" width=400> |
-|물품 관리|고객센터 관리|
+| <img src="https://github.com/sji8562/KenderRent/assets/94952331/35695195-8d69-4fdc-89ba-e37a1ed4a970" width=400> | <img src="https://github.com/sji8562/KinderLend/assets/94952331/8d896d0e-7b2c-4550-b42d-c9955eda60e4" width=400> |
+|물품 관리|결제 관리|
+| <img src="https://github.com/sji8562/KinderLend/assets/94952331/bfa97cf4-38c0-4d44-b13b-7c5a423d6b99" width=400> | <img src="https://github.com/sji8562/KinderLend/assets/94952331/ccfc8cf6-c04a-4838-ae6f-6449dfcf7da7" width=400> |
+|회사소개 관리|카테고리 관리|
+| <img src="https://github.com/sji8562/KinderLend/assets/94952331/4d8d4ff3-af5e-4ead-823d-0e075ae852b7" width=400> | <img src="https://github.com/sji8562/KinderLend/assets/94952331/faebfe50-b004-4455-a6da-fa2d93e9004b" width=400> |
+|대여신청 관리|게시판 관리|
 
 </div>
 <br>
@@ -204,34 +212,60 @@
 
 ## API 명세서
 
-- **회원 관련 API**
-  
-|기능|Method|Request param|URL|Return Page|
-|----|:----:|----|----|----|
-|회원 가입|POST|UserSignInFormDto|/user/signUp|회원 가입 후 로그인 페이지|
-|로그인|POST|User|/user/signIn|로그인 후 메인 페이지|
-|로그아웃|GET||/user/logout|로그아웃 후 메인 페이지|
-|아이디 찾기|POST|userName, phoneNumber|/user/findId|아이디 찾기 결과 페이지|
-|비밀번호 찾기|GET|email, authCode|/user/findPassword|비밀번호 변경하기 페이지|
-|비밀번로 변경|POST|email, password|/user/passwordChange|비밀번호 변경 후 로그인 페이지|
-|회원 정보 변경||||
+API 명세서 : https://plume-hardboard-263.notion.site/ffb45515453d49a7b88858de227da757?v=8ee6e86d303747c8a9b70340db28d83f&pvs=4
 
-- **상품 관련 API**
-  
-|기능|Method|Request param|URL|Return Page|
-|----|:----:|----|----|----|
-|제품 목록|||/product||
-|제품 상세(구매)|GET|id|/product/detail/{id}|상세 페이지|
-|제품 상세(대여)|GET|id|/product/rent/{id}|상세 페이지|
-|구매하기|POST|selectedProducts, selectedOption|/product/order|결제 페이지|
-|카카오페이(구매)|POST|pg_token|/product/order/kakao-pay/success|구매 성공 시 주문 내역 페이지|
-|카카오페이(취소)|GET|orderIds, selectedOption|/product/order/kakao-pay/fail|구매 취소 시 구매 페이지|
-|카카오페이(환불)|POST|orderId|/product/order/kakao-pay/cancel|환불 후 취소 내역 페이지|
-|검색|GET|keyword, price1, price2|/product/search|검색|
-|검색 결과|GET|keyword|/product/getData|검색 결과 페이지|
-|장바구니 추가|POST|productId|/cart/add|추가 후 장바구니 보기 페이지|
-|장바구니 보기|GET||/cart|장바구니 목록 페이지|
-|장바구니 삭제|POST|id|/cart/delete|삭제 후 장바구니 목록 페이지|
+<details>
+  <summary>장바구니 API</summary>
+  <img src="https://github.com/sji8562/KinderLend/assets/94952331/a6b842f0-7622-4f78-b75e-a4fab9757971">
+</details>
+<details>  
+  <summary>고객센터 API</summary>
+  <img src="https://github.com/sji8562/KinderLend/assets/94952331/78004d14-84fa-40c6-838f-d040273df1d9">
+</details>
+<details>
+  <summary>회사소개 API</summary>
+  <img src="https://github.com/sji8562/KinderLend/assets/94952331/754650d9-cf44-4334-b7b3-7d3de3e6b3b3">
+</details>
+<details>
+  <summary>문자 API</summary>
+  <img src="https://github.com/sji8562/KinderLend/assets/94952331/ab3af50d-b8dc-4c37-9dd7-6dba34949467">
+</details>
+<details>
+  <summary>마이페이지 API</summary>
+  <img src="https://github.com/sji8562/KinderLend/assets/94952331/61d6ffcd-8fdd-447a-b9a8-708b6815abcc">
+</details>
+<details>
+  <summary>상품 API</summary>
+  <img src="https://github.com/sji8562/KinderLend/assets/94952331/3838e984-c99a-4efb-971e-4de1b09dc943">
+</details>
+<details>
+<summary>사용자 API</summary>
+  <img src="https://github.com/sji8562/KinderLend/assets/94952331/bafc5fcd-eab8-4893-8dff-e4c6b9f388d8">
+</details>
+<details>
+<summary>신청관리 API</summary>
+  <img src="https://github.com/sji8562/KinderLend/assets/94952331/1db3fd56-0e1c-495e-a330-7d96fe69c186">
+</details>
+<details>
+<summary>고객센터관리 API</summary>
+  <img src="https://github.com/sji8562/KinderLend/assets/94952331/e43d8eca-4b96-4301-8fd9-b2ce324a63cf">
+</details>
+<details>
+<summary>회사소개관리 API</summary>
+  <img src="https://github.com/sji8562/KinderLend/assets/94952331/bd1737de-1ea5-47f3-aa0c-5c5b339c42aa">
+</details>
+<details>
+<summary>관리자 API</summary>
+  <img src="https://github.com/sji8562/KinderLend/assets/94952331/ae61ff04-3d5f-41c3-8327-b5680d74d0b9">
+</details>
+<details>
+<summary>결제관리 API</summary>
+  <img src="https://github.com/sji8562/KinderLend/assets/94952331/faeb812c-633b-419d-bb47-bb80a9292bb6">
+</details>
+
+
+
+
 
 
 
