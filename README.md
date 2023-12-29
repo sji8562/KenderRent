@@ -28,12 +28,12 @@
     <ul>
         <li>노션 일정 관리 적용 및 역할 분배</li>
         <li>[관리자] 로그인/로그아웃 및 로그인 interceptor 처리</li>
-        <li>[관리자] 결제 관리 페이지 HTML, CSS 작업, 데이터 바인딩</li>
-        <li>[관리자] 물품 관리 페이지 HTML, CRUD 및 검색 기능 구현</li>
-        <li>[관리자] 1, 2차 카테고리 관리 HTML, CRD</li>
-        <li>[관리자] 후기 관리 HTML, 조회 및 삭제, 검색 기능 구현</li>
-        <li>[관리자] 1:1 문의 HTML, RUD</li>
-        <li>[관리자] FAQ HTML, CRUD</li>
+        <li>[관리자] 결제 관리 페이지 HTML, CSS 작업, 데이터 바인딩, 페이징 기능 구현</li>
+        <li>[관리자] 물품 관리 페이지 HTML, CRUD 기능, 검색 및 페이징 기능 구현</li>
+        <li>[관리자] 1, 2차 카테고리 관리 HTML, CRD 기능 구현</li>
+        <li>[관리자] 후기 관리 HTML, 조회 및 삭제, 검색 및 페이징 기능 구현</li>
+        <li>[관리자] 1:1 문의 HTML, RUD 기능, 조회 및 삭제, 검색 및 페이징 기능 구현</li>
+        <li>[관리자] FAQ HTML, CRUD 기능, 검색 및 페이징 기능 구현</li>
         <li>[관리자] 이용 수칙, 소독 과정, 회사 소개 CUD 기능 구현</li>
         <li>[사용자] 이용 수칙 페이지, 소독 과정 페이지, 회사 소개 페이지 HTML 및 데이터 바인딩</li>
         <li>[사용자] 메인 페이지</li>
@@ -51,10 +51,10 @@
     <li>db 테이블 ERD 관리 db 더미데이터</li>
     <li>프로젝트 초기 셋팅</li>
     <li>물품 썸네일 사진처리</li>
-    <li>[관리자] 회원 RUD ,HTML, CSS작업</li>
-    <li>[관리자] 신청관리  RUD,HTML, CSS작업</li>
-    <li>[관리자] 공지사항 CRUD,HTML, CSS작업</li>
-    <li>[관리자] 대시보드,HTML, CSS작업</li>
+    <li>[관리자] 회원 RUD ,HTML, CSS ,데이터바인딩 , 페이징 작업</li>
+    <li>[관리자] 신청관리  RUD,HTML, ,데이터바인딩 , 페이징  CSS작업</li>
+    <li>[관리자] 공지사항 CRUD,HTML, ,데이터바인딩 , 페이징  CSS작업</li>
+    <li>[관리자] 대시보드,HTML, CSS  ,데이터바인딩</li>
     <li>[관리자] 모든 컨트롤러 예외처리</li>
     <li>[관리자] 모든 스크립트 문법 mng.js로 옮김</li>
     <li>[관리자] 모든 css 문법 mng.css로 옮김</li>
@@ -62,6 +62,11 @@
     <li>[사용자] 렌트 리스트 조회 기능구현</li>
     <li>[사용자] 헤더 정리</li>
     <li>[사용자] 소셜로그인 clientkey secretkey 변수화</li>
+    <li>[사용자] 회원정보 수정 HTML , CSS ,데이터바인딩 작업</li>
+    <li>[사용자] 문의내역 리스트  HTML , CSS ,데이터바인딩 작업</li>
+    <li>[사용자] footer CSS 작업</li>
+    <li>[사용자] 헤더 코드테이블 작업</li>
+    
   </ul>
 </details>
 <details>
