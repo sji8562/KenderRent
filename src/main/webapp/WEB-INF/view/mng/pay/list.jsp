@@ -2,6 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/mng/layout/mngHeader.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- ============================================================== -->
 <!-- End Left Sidebar - style you can find in sidebar.scss  -->
 <!-- ============================================================== -->
@@ -60,8 +61,12 @@
                                                             <td>${pay.userName}</td>
                                                             <%--<td>1</td>--%>
                                                             <%--<td>${pay.}</td>--%>
-                                                            <td>${pay.price}</td>
-                                                            <td>${pay.createdAt}</td>
+
+                                                            <td><fmt:formatNumber value="${pay.price}" pattern="###,###"/></td>
+                                                            <%--<td>${pay.price}</td>--%>
+
+                                                            <td><fmt:formatDate value="${pay.createdAt}" pattern="yyyy. MM. dd" /></td>
+                                                            <%--<td>${pay.createdAt}</td>--%>
                                                             <td>
                                                                 <div>
                                                                     <button id="cancelBtn" name="cancelBtn" class="btn-danger btn" type="button" onclick="openConfirm(event)">
