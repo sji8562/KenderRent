@@ -138,9 +138,6 @@ public class ProductController {
   }
 
 
-	@GetMapping("order/kakao-pay")
-	public void kakaoPayGet() {
-	}
 
 	@PostMapping("order/kakao-pay")
 	public String kakaoPayReady(@RequestParam("orderIds") String[] orderIds, String name, String phoneNumber,
@@ -152,6 +149,7 @@ public class ProductController {
 			productService.payForProduct(userId, Integer.parseInt(id), postNumber, address, addressDetail);
 		}
 		String orderIdsToString = String.join(",", orderIds);
+		System.out.println("결제 들어가쏘?");
 		return "redirect:" + kakaoPayService.KakaoPayReady(orderIds, userId, selectedOption) + "?id=" + orderIdsToString
 				+ "&selectedOption=" + selectedOption;
 	}

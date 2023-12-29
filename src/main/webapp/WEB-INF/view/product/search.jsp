@@ -60,16 +60,16 @@
 									</li>
 									
 									<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">낮은가격순</li>
-									<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women">높은가격순</li>
-									<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">상품평순</li>
-									<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">등록일순</li>
+									<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter="highSort">높은가격순</li>
+									<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter="rate">상품평순</li>
+									<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter="createdAt">등록일순</li>
 								</ul>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col">
-						
+
 							<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
 								<c:if test="${productList == null }">
 									조회하신 상품이 없습니다
@@ -79,11 +79,10 @@
 								<c:if test="${productList != null }">
 								<c:forEach items="${productList }" var="productList">
 								
-								<div  class="product-item">
-
+								<div  class="product-item ${product.code == 1 ? 'highSort' : 'rate'}">
 									<div class="product discount product_filter">
 										<div class="product_image">
-											<img src=${productList.pic_url } alt="">
+											<img src=/images/${productList.pic_url } alt="">
 										</div>
 										<div class="favorite favorite_left"></div>
 										<div class="product_info">

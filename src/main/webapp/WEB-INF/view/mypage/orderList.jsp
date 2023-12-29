@@ -111,7 +111,7 @@
 																<div class="box_goods">
 																	<div class="box_picture">
 																		<a href="/product/detail/${orderList.product_id}"> 
-																			<img src=${orderList.pic_url } width="100" height="100">
+																			<img src=/images/${orderList.pic_url } width="100" height="100">
 																		</a>
 																	</div>
 																	<div class="box_product_info">
