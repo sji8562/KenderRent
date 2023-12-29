@@ -19,6 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/styles/contact_styles.css">
 	<link rel="stylesheet" type="text/css" href="/css/styles/contact_responsive.css">
 	<link rel="stylesheet" type="text/css" href="/css/styles/main_styles.css">
+	<script src="/js/jquery-3.2.1.min.js"></script>
 	<style>
 		.signup{
 			display: flex;
@@ -42,6 +43,7 @@
 	<script type="text/javascript">
 
 		$(document).on("click", "#phoneAuth", function() {
+			console.log("눌렀는데?");
 			let phoneNumber = $("#phoneNumber").val(); //사용자가 입력한 이메일 값 얻어오기
 			let userName = $("#userName").val();
 			//Ajax로 전송
