@@ -1,8 +1,15 @@
 <h1>Kinder Lend 👶</h1>
+
+<h3>이 프로젝트는 Annotation 기반 Spring MVC 패턴으로 웹 애플리케이션을 구현하였습니다.</h3>
+<br>
+
 <div align="center"> 
   <img src="src/main/resources/static/images/Logo.png" width=300>
-  <p>Kinder Lend는 안전한 중고 유아 용품 대여를 통해 부모들에게 편안하고 경제적인 대안을 제공하며, <br> 지속 가능한 소비 문화를 선도합니다.</p>
+  <p><strong>Kinder Lend는 안전한 중고 유아 용품 대여를 통해 부모들에게 편안하고 경제적인 대안을 제공하며, <br> 지속 가능한 소비 문화를 선도합니다.</strong></p>  
 </div>
+<br>
+
+
 
 
 ## 목차
@@ -206,7 +213,12 @@
 <br>
 
 - **시연 영상** 🎬
-업로드 예정
+
+<div align="center">
+  
+[![Video Label](http://img.youtube.com/vi/VUfh422nqlQ/0.jpg)](https://youtu.be/VUfh422nqlQ)
+
+</div>
 
 <br><br>
 
@@ -273,65 +285,84 @@ API 명세서 : https://plume-hardboard-263.notion.site/ffb45515453d49a7b88858de
 
 ## STACKS
 
-- **Environment**
-<div>
-  &emsp;<img src="https://img.shields.io/badge/intellijidea-000000?style=for-the-badge&logo=intellijidea&logoColor=white">
-  <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
-  <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"><img src="https://img.shields.io/badge/3.1.6-515151?style=for-the-badge">
-  <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"><img src="https://img.shields.io/badge/8.0.31-515151?style=for-the-badge"> 
+<details open>
+  <summary><strong>Backend</strong></summary>
+  <ul>
+    <li>SpringBoot: 4.20.1</li>
+    <li>Java: 17.0.9</li>
+    <li>Apache Tomcat: 9.0</li>
+  </ul>
+</details>
+  
+[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1704182842073?alt=media&token=e64d3ee9-b0b5-4242-bf08-d56c5deebe26)](https://github.com/msdio/stackticon)
+<br>
+
+
+<details>
+  <summary><strong>Frontend</strong></summary>
+  <ul>
+    <li>HTML5</li>
+    <li>CSS3</li>
+    <li>JavaScript</li>
+    <li>jQuery</li>
+    <li>BootStrap</li>
+  </ul>
+</details>
+
+[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1704180563226?alt=media&token=e86c70d3-c393-441a-aa23-e05d2d4b3bd8)](https://github.com/msdio/stackticon)
+<br>
+
+<details open>
+  <summary><strong>DataBase</strong></summary>
+  <ul>
+    <li>MySQL: 8.0.31</li>    
+  </ul>
+</details>
+
+[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1704180293126?alt=media&token=99aedd38-0935-4373-b2af-6586650cf88f)](https://github.com/msdio/stackticon)
+<br>
+
+<details open>
+  <summary><strong>BuildTool</strong></summary>
+  <ul>
+    <li>Gradle: 7.1.1</li>
+  </ul>
+</details>
+
+[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1704180470227?alt=media&token=428f7735-33ee-42d9-a000-e6f957b6a486)](https://github.com/msdio/stackticon)
+<br>
+
+<details>
+  <summary><strong>Communication</strong></summary>
+  <ul>
+    <li>Notion</li>
+    <li>Discord</li>
+  </ul>
+</details>
+
+[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1704180504507?alt=media&token=76a14946-e910-44e8-a78c-3bd34be47711)](https://github.com/msdio/stackticon)
+<br>
+
+
+<details open>
+  <summary><strong>외부 API</strong></summary>
+  <ul>
+    <li>카카오톡 소셜 로그인 API</li>
+    <li>네이버 소셜 로그인 API</li>
+    <li>카카오페이 API</li>
+    <li>Kakao 지도 API</li>
+    <li>DAUM 주소 API</li>
+    <li>coolSMS API (문자 전송)</li>
+    <li>Naver Mail API (이메일 인증)</li>
+  </ul>
+</details>
+
+<br>
+
+<details open>
+  <summary><strong>Dependencies</strong></summary>
   <br>
-</div>
-
-- **Backend** 
-<div>
-  &emsp;<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"><img src="https://img.shields.io/badge/17.0.9-515151?style=for-the-badge">  
-  <img src="https://img.shields.io/badge/mybatis-281E1F?style=for-the-badge&logo=mybatis&logoColor=white"><img src="https://img.shields.io/badge/3.0.3-515151?style=for-the-badge">
-  <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white"><img src="https://img.shields.io/badge/9.0-515151?style=for-the-badge">
-  <img src="https://img.shields.io/badge/lombok-AD3922?style=for-the-badge&logo=lombok&logoColor=white">
-  <br>
-</div>
-<br>
-
-- **Frontend**
-<div>
-  &emsp;<img src="https://img.shields.io/badge/html-E34F26?style=for-the-badge&logo=html&logoColor=white">
-  <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css&logoColor=white">
-  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white">
-  <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=Bootstrap&logoColor=white"> 
-  <img src="https://img.shields.io/badge/jquery-0769AD?style=for-the-badge&logo=jquery&logoColor=white">  
-</div>
-<br>
-
-- **DataBase**
-<div>
-  &emsp;<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"><img src="https://img.shields.io/badge/8.0.31-515151?style=for-the-badge"> 
-</div>
-<br>
-
-- **BuildTool**
-<div>
-  &emsp;<img src="https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=Gradle&logoColor=white"><img src="https://img.shields.io/badge/7.1.1-515151?style=for-the-badge">
-</div>
-<br>
-
-- **Communication**
-<div>
-  &emsp;<img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
-  <img src="https://img.shields.io/badge/discord-5662F6?style=for-the-badge&logo=discord&logoColor=white">
-</div>
-<br>
-
-- **외부 API**
-  + 카카오톡 소셜 로그인 API
-  + 네이버 소셜 로그인 API
-  + 카카오페이 API
-  + Kakao 지도 API
-  + DAUM 주소 API
-  + coolSMS API (문자 전송)
-  + Naver Mail API (이메일 인증)
-<br>
-
-- **Dependencies**
+  
 ```java
 implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 implementation 'org.springframework.boot:spring-boot-starter-validation'
@@ -359,6 +390,8 @@ implementation group: 'com.googlecode.json-simple', name: 'json-simple', version
 implementation 'org.springframework.boot:spring-boot-starter-mail'
 implementation group: 'net.nurigo', name: 'sdk', version: '4.3.0'
 ```
+</details>
+
 <br>
 
 ## ERD
