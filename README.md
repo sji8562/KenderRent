@@ -288,8 +288,8 @@ API 명세서 : https://plume-hardboard-263.notion.site/ffb45515453d49a7b88858de
 <details open>
   <summary><strong>Backend</strong></summary>
   <ul>
-    <li>SpringBoot: 4.20.1</li>
-    <li>Java: 17.0.9</li>
+    <li>SpringBoot: 3.1.6</li>
+    <li>Java: 17</li>
     <li>Apache Tomcat: 9.0</li>
   </ul>
 </details>
