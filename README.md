@@ -325,7 +325,7 @@ API 명세서 : https://plume-hardboard-263.notion.site/ffb45515453d49a7b88858de
 <details open>
   <summary><strong>BuildTool</strong></summary>
   <ul>
-    <li>Gradle: 7.1.1</li>
+    <li>Gradle: 8.4.0</li>
   </ul>
 </details>
 
